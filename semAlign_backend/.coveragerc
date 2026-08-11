@@ -1,0 +1,15 @@
+[run]
+source = .
+omit =
+    */tests/*
+    */scripts/*
+    */.venv/*
+    */models/*
+    */services/conflict_detection/*
+    */services/preprocessing/*
+    */services/reporting/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    if TYPE_CHECKING:

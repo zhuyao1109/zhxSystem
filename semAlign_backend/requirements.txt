@@ -1,0 +1,75 @@
+# ==================== Web Framework ====================
+
+# FastAPI 核心框架
+fastapi==0.104.1
+# 开发服务器（支持热重载）
+uvicorn[standard]==0.24.0
+# 生产服务器（高性能）
+gunicorn==21.2.0
+
+# ==================== Database ====================
+
+# SQLAlchemy ORM 框架
+sqlalchemy==2.0.23
+# 数据库迁移工具
+alembic==1.12.1
+
+# ==================== Authentication ====================
+
+# JWT Token 处理
+python-jose[cryptography]==3.3.0
+# 密码加密（注意：bcrypt 必须 <=4.0.1，与 passlib 兼容）
+bcrypt==4.0.1
+passlib[bcrypt]==1.7.4
+# 文件上传支持
+python-multipart==0.0.6
+
+# ==================== Validation ====================
+
+# Pydantic 数据验证
+pydantic>=2.7.4,<3.0
+# Pydantic 配置管理
+pydantic-settings>=2.1.0,<3.0
+# 邮箱验证（支持 EmailStr 类型）
+email-validator==2.1.0
+
+# ==================== Utilities ====================
+
+# 环境变量管理
+python-dotenv==1.0.0
+# OpenAI-compatible LLM client，用于标准对齐 AI 助手
+openai>=1.0.0,<2
+
+# ==================== File Processing ====================
+
+# 与 opencv-python 4.13+、pandas 2.2+ 对齐：需 numpy 2.x（勿与环境中已装的 numpy 1.26 混用）
+numpy>=2.0.0,<3
+# PDF 文件解析
+pdfplumber==0.10.3
+# OCR / PDF 高级抽取
+pymupdf==1.26.4
+pillow==11.3.0
+rapidocr-onnxruntime==1.4.4
+# Excel 数据（2.2+ 官方兼容 numpy 2）
+pandas>=2.2.0,<3
+# Excel 读取引擎
+openpyxl==3.1.2
+# Excel 旧版本支持
+xlrd==2.0.1
+
+# ==================== Testing ====================
+pytest==7.4.3
+pytest-cov==4.1.0
+httpx>=0.27.0,<0.28
+
+# ==================== NLP ====================
+# 中文分词（条款对齐 / 相似度计算）
+jieba>=0.42.1
+
+# ==================== Vector Retrieval ====================
+chromadb==1.0.15
+langchain==0.3.27
+langchain-chroma==0.2.5
+langchain-community==0.3.27
+langchain-text-splitters==0.3.9
+sentence-transformers==5.0.0

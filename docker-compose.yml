@@ -1,0 +1,51 @@
+services:
+  backend:
+    build:
+      context: ./semAlign_backend
+      dockerfile: Dockerfile
+    container_name: semalign-backend
+    restart: unless-stopped
+    environment:
+      APP_ENV: production
+      DEBUG: "false"
+      DATABASE_URL: sqlite:////app/data/semalign.db
+      SECRET_KEY: ${SECRET_KEY:-change-me-to-a-long-random-secret-key-32chars}
+      CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:8080"]}
+      UPLOAD_DIR: /app/data/uploads
+      TEXT_OUTPUT_DIR: /app/data/texts
+      IMAGE_OUTPUT_DIR: /app/data/images
+      CHROMA_DB_DIR: /app/data/chroma_db
+      BM25_INDEX_PATH: /app/data/bm25_chunks.pkl
+      EMBEDDING_MODEL_DIR: /app/models/gte-multilingual-base
+      FOURZ_API_KEY: ${FOURZ_API_KEY:-}
+      FOURZ_API_BASE: ${FOURZ_API_BASE:-}
+      FOURZ_API_MODEL: ${FOURZ_API_MODEL:-gpt-4o-mini}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_API_BASE: ${DEEPSEEK_API_BASE:-https://api.deepseek.com/v1}
+      DEEPSEEK_API_MODEL: ${DEEPSEEK_API_MODEL:-deepseek-chat}
+      ALIGNMENT_CHAT_MODE: ${ALIGNMENT_CHAT_MODE:-auto}
+      SEARCH_RAG_ENABLED: ${SEARCH_RAG_ENABLED:-false}
+    volumes:
+      - ./semAlign_backend/data:/app/data
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  frontend:
+    build:
+      context: ./semAlign
+      dockerfile: Dockerfile
+    container_name: semalign-frontend
+    restart: unless-stopped
+    ports:
+      # 8080：原演示端口；80：兼容部分网络只放行标准 HTTP 端口
+      - "${FRONTEND_PORT:-8080}:80"
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy

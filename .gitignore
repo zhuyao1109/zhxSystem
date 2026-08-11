@@ -1,0 +1,37 @@
+# Python
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/coverage.xml
+*.py[cod]
+*.db
+
+# Node
+**/node_modules/
+**/dist/
+
+# 环境变量（保留示例文件）
+.env
+.env.*
+!.env.docker.example
+
+# 运行数据与本地产物
+semAlign_backend/data/
+semAlign_backend/models/
+semAlign_backend/chroma_db/
+chroma_db/
+sonar/
+.coverage
+__MACOSX/
+
+# 大包与历史快照（非当前源码树）
+*.zip
+*.tar.gz
+*.pdf
+pdf/
+semAlign-source-*/
+semAlign_0615.zip
+
+# 嵌入模型权重占位（如目录存在可保留空目录说明）
+semAlign_backend/models/gte-multilingual-base/*
+!semAlign_backend/models/gte-multilingual-base/.gitkeep
