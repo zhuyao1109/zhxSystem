@@ -1,0 +1,1702 @@
+ICS3510005
+. .
+L79
+中 华 人 民 共 和 国 国 家 标 准
+GB/T319165—2015
+.
+信息技术 云数据存储和管理
+第 部分 基于键值 的
+5 Key-Value
+: ( )
+云数据管理应用接口
+Informationtechnology—Clouddatastorageandmanagement—
+Part5 Key-Valuebasedclouddatamanagementapplicationinterface
+:
+2015-09-11发布 2016-05-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T319165—2015
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语 定义和缩略语
+3 、 ……………………………………………………………………………………… 1
+术语和定义
+3.1 ………………………………………………………………………………………… 1
+缩略语
+3.2 ……………………………………………………………………………………………… 1
+数据模型
+4 Key-Value …………………………………………………………………………………… 1
+基于 的云数据管理应用接口通用要求
+5 Key-Value …………………………………………………… 2
+概述
+5.1 ………………………………………………………………………………………………… 2
+数据一致性要求
+5.2 …………………………………………………………………………………… 2
+补充出错信息
+5.3 ……………………………………………………………………………………… 3
+公共请求头
+5.4 ………………………………………………………………………………………… 3
+公共响应头
+5.5 ………………………………………………………………………………………… 3
+基于 的云数据管理应用接口定义
+6 Key-Value ………………………………………………………… 3
+概述
+6.1 ………………………………………………………………………………………………… 3
+列出账号所有表
+6.2 …………………………………………………………………………………… 4
+创建表
+6.3 ……………………………………………………………………………………………… 5
+删除表
+6.4 ……………………………………………………………………………………………… 6
+获取元数据
+6.5 ………………………………………………………………………………………… 7
+添加 更新元数据
+6.6 / ………………………………………………………………………………… 10
+插入 更新数据
+6.7 / …………………………………………………………………………………… 11
+删除数据
+6.8 …………………………………………………………………………………………… 14
+获取数据
+6.9 …………………………………………………………………………………………… 16
+条件表达式查询数据
+6.10 …………………………………………………………………………… 19
+附录 规范性附录 补充出错信息
+A( ) …………………………………………………………………… 24
+Ⅰ
+GB/T319165—2015
+.
+前 言
+信息技术 云数据存储和管理 分为六部分
+GB/T31916《 》 :
+第 部分 总则
+——— 1 : ;
+第 部分 基于对象的云存储应用接口
+——— 2 : ;
+第 部分 分布式文件存储应用接口
+——— 3 : ;
+第 部分 基于块的云存储应用接口
+——— 4 : ;
+第 部分 基于键值 的云数据管理应用接口
+——— 5 : (Key-Value) ;
+第 部分 分布式关系数据库应用接口
+——— 6 : 。
+本部分为 的第 部分
+GB/T31916 5 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本部分由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本部分起草单位 东北大学软件学院 中国移动通信有限公司研究院 中国电子技术标准化研究
+: 、 、
+院 东软集团 用友软件股份有限公司 上海计算机软件技术开发中心 浪潮 北京 电子信息产业有限公
+、 、 、 、 ( )
+司 华为技术有限公司 开普互联信息有限公司 华中科技大学 北京邮电大学
+、 、 、 、 。
+本部分主要起草人 宋杰 杜宇健 王洁萍 蔡立志 余祥 颜秉珩 李海波 何光宇 陈岭 郑峻 田忠
+: 、 、 、 、 、 、 、 、 、 、 、
+丁蔚 周可 吴涛 刘建毅 陈志峰 王卫国 丛培勇 杨丽蕴 朱志良
+、 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T319165—2015
+.
+信息技术 云数据存储和管理
+第5部分 基于键值 Key-Value 的
+: ( )
+云数据管理应用接口
+1 范围
+的本部分给出了键值数据模型 规定了键值的云数据管理应用接口通用要求和接口定义
+GB/T31916 , 。
+本部分适用于基于键值的云数据管理系统的设计 开发和使用
+、 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+数据元和交换格式 信息交换 日期和时间表示法
+GB/T7408—2005
+信息技术 可扩展置标语言
+GB/T18793—2002 (XML)1.0
+信息技术 云数据存储和管理应用接口 第 部分 总则
+GB/T31916.1 1 :
+超文本传输协议
+RFC2616 (HTTP)1.1(HypertextTransferProtocolHTTP/1.1)
+3 术语 定义和缩略语
+、
+31 术语和定义
+.
+界定的以及下列术语和定义适用于本文件
+GB/T31916 。
+311
+..
+基于键值的云数据管理 Key-Valuebasedclouddatamanagement
+一种以键值数据模型组织数据 以服务的方式对外提供对键值数据模型中各种数据对象操作的数
+,
+据管理方式
+。
+32 缩略语
+.
+下列缩略语适用于本文件
+。
+原子性 一致性 隔离性 持久性
+ACID 、 、 、 (Atomicity,Consistency,Isolation,Durability)
+应用程序编程接口
+API (ApplicationProgrammingInterface)
+基本可用 软状态 最终一致
+BASE 、 、 (BasicallyAvailable,Softstate,EventualConsistency)
+创建 更新 读取 删除
+CURD 、 、 、 (Create,Update,Read,Delete)
+超文本传输协议
+HTTP (HypertextTransferProtocol)
+对象标记
+JSON JavaScript (JavaScriptObjectNotation)
+可扩展置标语言
+XML (ExtensibleMarkupLanguage)
+4 Key-Value数据模型
+数据模型的组成如图 所示
+Key-Value 1 。
+1
+GB/T319165—2015
+.
+图1 Key-Value数据模型
+数据模型用来描述实体及其属性
+Key-Value 。
+注1 实体是现实世界中任何可区分 可识别的客观事物 抽象事件 以及事物与事物之间的联系
+: 、 、 , 。
+注2 属性是实体的特征 一个实体可用若干属性来描述 属性包括属性名和属性值
+: , 。 。
+数据模型的组成元素包括表 行 列和时间戳 表是由行组成的数据集合 每行描述一
+Key-Value 、 、 。 。
+个实体 不同的行由不同的行键 来唯一标识 行中的数据由三元组 组成 其中 代
+。 (R) 。 (K,V,T) 。 ,“K”
+表列名 代表列值 代表时间戳 列名描述实体的属性名 列值描述实体的属性值 时间戳用来
+,“V” ,“T” 。 , 。
+标记列值的版本信息 通过三元组 可以唯一地标识实体属性值
+。 (R,K,T) 。
+5 基于Key-Value的云数据管理应用接口通用要求
+51 概述
+.
+基于 的云数据管理应用接口通用要求包括接口协议 身份安全管理 数据一致性要求
+Key-Value 、 、 、
+状态码信息描述 补充出错信息 公共请求头 公共响应头和出错信息描述要求 项内容 其中 接口协
+、 、 、 8 。 ,
+议 身份安全管理 状态码信息描述和出错信息描述要求 项内容见 中相应部分
+、 、 4 GB/T31916.1 。
+52 数据一致性要求
+.
+云数据管理为保证数据的 特性 应满足数据的最终一致性要求 基于 的云数据
+BASE , 。 Key-Value
+管理宜满足数据强一致性要求 在可用性 容错性占主导时可降低为数据最终一致性要求
+。 、 。
+注 数据管理系统存在强一致性和最终一致性两种一致性要求 关系数据库管理系统为保证数据的 特性
+: 。 ACID ,
+应满足数据的强一致性要求 强一致性指在数据更新完成后 任何后续访问都将返回更新过的值 最终一致
+。 , ;
+性 存储系统保证如果对象没有新的更新 最终 在不一致窗口关闭之后 所有访问都将返回最后更新的值
+: , ( ) 。
+的概念引用
+ACID GB/T17173.1—1997。
+2
+GB/T319165—2015
+.
+53 补充出错信息
+.
+基于 的云数据管理发生的出错响应较为复杂 需要对 见 状态码进
+Key-Value , HTTP( RFC2616)
+行补充出错信息描述
+。
+补充出错信息描述见附录
+A。
+54 公共请求头
+.
+公共请求头应包括信息见表
+1。
+表1 公共请求头信息
+名称 描述 选择状态
+主机信息 如 必选
+Host , :example.clouddb.cn
+可选
+Accept text/xml
+或 可选
+Content-Type text/xml */*
+授权信息 由用户 和 信息组成 如
+, AccessID Signature , :Authorization = 必选
+Authorization
+"CloudDB"+""+ AccessID+":"+Signature
+55 公共响应头
+.
+公共响应头应包括信息见表
+2。
+表2 公共响应头信息
+名称 描述 选择状态
+可选
+Content-Type text/xml
+6 基于Key-Value的云数据管理应用接口定义
+61 概述
+.
+基于 的云数据管理应用接口包括表级操作接口和行级操作接口
+Key-Value 。
+表级操作包括
+:
+列出账号所有表
+a) ;
+创建表
+b) ;
+删除表
+c) ;
+获取元数据
+d) ;
+添加 更新元数据
+e) / 。
+行级操作包括
+:
+插入 更新数据
+a) / ;
+删除数据
+b) ;
+获取数据
+c) ;
+条件表达式查询数据
+d) 。
+3
+GB/T319165—2015
+.
+62 列出账号所有表
+.
+621 功能描述
+..
+列出给定账户下所有表的名称
+。
+结果数据集由多个表的名称组成 结果数据集为 格式 见 由响应消息
+, XML ( GB/T18793—2002),
+体返回到客户端
+。
+622 请求定义
+..
+请求定义表述为
+:
+Account
+GET/[ ]HTTP/1.1
+623 请求URL
+..
+请求 表述为
+URL :
+Account
+http://example.clouddb.cn/[ ]
+其中 Account表示账户
+:[ ] ID。
+624 请求消息头
+..
+按公共请求头定义
+。
+625 请求消息体
+..
+无
+。
+626 响应状态码
+..
+状态码包括
+200,400,401,405,406,408,500,501,503。
+627 响应消息头
+..
+按公共响应头定义
+。
+628 响应消息体
+..
+当返回 时 响应消息体应包含信息见表
+200 , 3。
+表3 响应消息体信息
+名称 类型 描述 选择状态
+包含该账户创建的所有表的名称
+标签 ; 必选
+Tables 父标签 无
+:
+该账户创建的某个表的名称
+字符串 ; 可选
+Name 父标签
+:Tables
+当返回 时 消息体包含的错误名称为
+400 , DateSkewed。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包括的错误名称为
+405 , MethodNotAllowed。
+4
+GB/T319165—2015
+.
+当返回 时 消息体包括的错误名称为
+406 , NotAcceptable。
+当返回 时 消息体包括的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包括的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包括的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包括的错误名称为
+503 , ServiceUnavailable。
+629 示例
+..
+请求消息见示例
+1。
+示例1
+:
+GET/MyAccountHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:text/xml
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1200OK
+Content-Type:text/xml
+<Tables>
+<Name>Table001</Name>
+<Name>Table002</Name>
+</Tables>
+63 创建表
+.
+631 功能描述
+..
+创建一张新的数据表 表名在同一账户下唯一
+, 。
+632 请求定义
+..
+请求定义表述为
+:
+Account Table
+PUT/[ ]/[ ]HTTP/1.1
+633 请求URL
+..
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+634 请求消息头
+..
+按公共请求头定义
+。
+635 请求消息体
+..
+无
+。
+5
+GB/T319165—2015
+.
+636 响应状态码
+..
+状态码包括
+201,400,401,403,405,408,409,500,501,503。
+637 响应消息头
+..
+按公共响应头定义
+。
+638 响应消息体
+..
+当返回 时 无消息体
+201 , 。
+当返回 时 消息体包含的错误名称为 之一
+400 , InvalidTableName、DateSkewed 。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+403 , TableAlreadyExist。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+409 , TooManyTables。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+639 示例
+..
+请求消息见示例
+1。
+示例1
+:
+PUT/MyAccount/MyTableHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1201Created
+64 删除表
+.
+641 功能描述
+..
+删除一张表 表中包含的行及其列同时被删除
+, 。
+642 请求定义
+..
+请求定义表述为
+:
+Account Table
+DELETE/[ ]/[ ]HTTP/1.1
+643 请求URL
+..
+Account Table
+http://example.clouddb.cn/[ ]/[ ]
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+644 请求消息头
+..
+按公共请求头定义
+。
+6
+GB/T319165—2015
+.
+645 请求消息体
+..
+无
+。
+646 响应状态码
+..
+状态码包括
+204,400,401,404,405,408,500,501,503。
+647 响应消息头
+..
+按公共响应头定义
+。
+648 响应消息体
+..
+当返回 时 无消息体
+204 , 。
+当返回 时 消息体包含的错误名称为 之一
+400 , InvalidRequestBody、DateSkewed 。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+649 示例
+..
+请求消息见示例
+1。
+示例1
+:
+DELETE/MyAccount/MyTableHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1204OK
+65 获取元数据
+.
+651 功能描述
+..
+获得一张表的元数据信息 元数据包括系统元数据和用户自定义元数据
+, 。
+系统元数据包括表创建时间 表拥有者 表中行个数 表中不同的列名的列的个数 表中
+、 、 、 、 Key/Value
+对的个数 表中所有数据的总大小 表中所有行键的大小 表中所有列名的大小 表中所有列值的大小和
+、 、 、 、
+表中所有时间戳的大小 各个系统元数据项可选 也可扩充新的系统元数据项
+。 , 。
+用户自定义元数据为用户添加的文本格式的元数据 可以是纯文本 等数据格式 各
+, 、XML、JSON 。
+个用户自定义元数据项可选 也可扩充新的用户自定义元数据项
+, 。
+结果数据集为 格式 通过响应消息体返回到客户端
+XML , 。
+注 数据大小以千字节 为单位
+: (kb) 。
+7
+GB/T319165—2015
+.
+652 请求定义
+..
+请求定义表述为
+:
+Account Table
+GET/[ ]/[ ]HTTP/1.1
+653 请求URL
+..
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+654 请求消息头
+..
+按公共请求头定义
+。
+655 请求消息体
+..
+无
+。
+656 响应状态码
+..
+状态码包括
+200,400,401,404,405,406,408,500,501,503。
+657 响应消息头
+..
+按公共响应头定义
+。
+658 响应消息体
+..
+当返回 时 响应消息体应包括信息见表
+200 , 4。
+表4 响应消息体信息
+名称 类型 描述 选择状态
+包含表的元数据信息 包括系统元数据和用户自定义元数据
+标签 , ; 必选
+Metadata 父标签 无
+:
+包含表的系统元数据信息
+标签 ; 必选
+System 父标签
+:Metadata
+系统元数据 表创建时间
+字符串 : ; 必选
+CreateDate 父标签
+:Metadata\System
+系统元数据 表拥有者
+字符串 : ; 可选
+Owner 父标签
+:Metadata\System
+系统元数据 表中行个数
+整数 : ; 可选
+RowCount 父标签
+:Metadata\System
+系统元数据 表中不同的列名的列的个数
+整数 : ; 可选
+ColumnNameCount 父标签
+:Metadata\System
+系统元数据 表中键 值对的个数
+整数 : / ; 可选
+ColumnCount 父标签
+:Metadata\System
+8
+GB/T319165—2015
+.
+表4 续
+( )
+名称 类型 描述 选择状态
+系统元数据 表中所有数据的总大小
+整数 : (kb); 可选
+TotalSize 父标签
+:Metadata\System
+系统元数据 表中所有行键的大小
+整数 : (kb); 可选
+RowKeySize 父标签
+:Metadata\System
+系统元数据 表中所有列名的大小
+整数 : (kb); 可选
+ColumnNameSize 父标签
+:Metadata\System
+系统元数据 表中所有列值的大小
+整数 : (kb); 可选
+ColumnValueSize 父标签
+:Metadata\System
+系统元数据 表中所有时间戳的大小
+: (kb);
+时间 父标签 可选
+TimestampSize :Metadata\System。
+时间格式引用
+GB/T7408—2005
+当返回 时 消息体包含的错误名称为
+400 , DateSkewed。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+406 , NotAcceptable。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+659 示例
+..
+请求消息见示例
+1。
+示例1
+:
+GET/MyAccount/MyTableHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1200OK
+Content-Type:text/xml
+<Metadata>
+<System>
+<CreateDate>20110503T173008+08</CreateDate>
+<Owner>MyCount</Owner>
+<RowCount>999</RowCount>
+<ColumnNameCount>999</ColumnNameCount>
+<ColumnCount>999</ColumnCount>
+<TotalSize>999</TotalSize>
+9
+GB/T319165—2015
+.
+<RowKeySize>999</RowKeySize>
+<ColumnNameSize>999</ColumnNameSize>
+<ColumnValueSize>999</CoumnValueSize>
+<TimeStampSize>999</TimeStampSize>
+</System>
+<User>
+{
+"Subject":"IlikeKey-ValueDB",
+"Author":"Rusty",
+"Tags":["DB","key-value","cloud"].
+}
+</User>
+</Metadata>
+66 添加/更新元数据
+.
+661 功能描述
+..
+添加或者更新一张表的用户自定义元数据
+。
+662 请求定义
+..
+请求定义表述为
+:
+Account Table
+POST/[ ]/[ ]HTTP/1.1
+663 请求URL
+..
+Account Table
+http://example.clouddb.cn/[ ]/[ ]
+其中
+:
+Account表示账户
+[ ] ID;
+Table 表示表名
+[ ] ;
+Type 为用户定义的请求消息体类型 如 或
+[ ] , text/plain、text/xml application/json;
+User-definedMetadatainrequestbody 表示用户提交的自定义元数据
+[ ] 。
+664 请求消息头
+..
+用户需指定
+Content-type。
+665 请求消息体
+..
+用户自定义
+。
+666 响应状态码
+..
+状态码包括
+201,204,400,401,404,405,408,409,413,415,500,501,503。
+如果创建元数据成功 响应状态码为 如果更新元数据成功 响应状态码为
+, 201; , 204。
+667 响应消息头
+..
+按公共响应头定义
+。
+668 响应消息体
+..
+当返回 时 无消息体
+201 , 。
+10
+GB/T319165—2015
+.
+当返回 时 无消息体
+204 , 。
+当返回 时 消息体包含的错误名称为 之一
+400 , InvalidRequestBody、DateSkewed 。
+当返回 时 消息体包含的错误名称为
+401 , Unauthorized、MissingAuthorization、AccountProblems、
+之一
+AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+409 , TooLargeMetadata。
+当返回 时 消息体包含的错误名称为
+413 , RequestEntityTooLarge。
+当返回 时 消息体包含的错误名称为
+415 , UnsupportedMediaType。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+669 示例
+..
+请求消息见示例
+1。
+示例1
+:
+POST/MyAccount/MyTableHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:application/json
+{
+"Subject":"IlikeKey-ValueDB",
+"Author":"Rusty",
+"PostedDate":"20110503T173008+08",
+"Tags":["DB","key-value","cloud"].
+}
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1201Created
+67 插入/更新数据
+.
+671 功能描述
+..
+创建或更新多个列 并指定其列值
+, 。
+用户提供的输入数据集由多个行组成 每个行包含唯一行键和若干列名与列值组成键 值对 数据
+。 / ,
+集为 格式 随请求消息体发送到服务端
+XML , 。
+对于插入 更新数据的某行数据 如果目标数据表中行键不存在 则在目标数据表中插入该新行
+/ , , 。
+对于插入 更新数据的某行数据 如果目标数据表中行键存在 若指定列不存在 则在该行中增加新
+/ , : ,
+列 并自动分配时间戳 若指定列存在 则更新该列 并自动分配时间戳
+, ; , , 。
+数据管理系统需要对数据库中每张表的最大行数 每行的最大列数 或表的最大数据量进行限定
+, , 。
+若插入 更新操作超过了数据管理系统的限定 则操作失败
+/ , 。
+672 请求定义
+..
+请求定义表述为
+:
+11
+GB/T319165—2015
+.
+Account Table
+PUT/[ ]/[ ]/RowHTTP/1.1
+673 请求URL
+..
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]/Row
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+674 请求消息头
+..
+按公共请求头定义
+。
+675 请求消息体
+..
+请求消息体应包括信息见表
+5。
+表5 请求消息体
+名称 类型 描述 选择状态
+包含插入 更新数据的所有行
+标签 \ ; 必选
+Values 父标签 无
+:
+包含插入 更新数据的所有行的行键
+标签 \ ; 必选
+Row 父标签
+:Values
+指定在某行创建或更新列 若行键已经存在 则更新数据 若行键不
+, , ,
+字符串 存在 则插入新行 必选
+Key , ;
+父标签
+:Values\Row
+包含插入 更新数据的所有列的列名
+标签 \ ; 必选
+Column 父标签
+:Values\Row
+指定插入 更新数据的所有列的列名 若列名存在 则更新该列 否
+\ , , ,
+字符串 则插入该列 必选
+Name ;
+父标签
+:Values\Row\Column
+在指定列名的列插入 更新数据
+字符串 \ ; 必选
+Value 父标签
+:Values\Row\Column
+676 响应状态码
+..
+状态码包括
+200,201,204,400,401,404,405,408,409,413,415,500,501,503。
+如果数据插入成功 响应状态码为 如果数据更新成功 响应状态码为 如果两者均发生且
+, 200; , 204;
+成功 响应状态码为
+, 200。
+677 响应消息头
+..
+按公共响应头定义
+。
+678 响应消息体
+..
+当返回 时 无消息体
+200 , 。
+当返回 时 无消息体
+201 , 。
+当返回 时 无消息体
+204 , 。
+12
+GB/T319165—2015
+.
+当返回 时 消息体包含的错误名称为
+400 , InvalidRequestBody、InvalidRowKey、InvalidColumn-
+之一
+Name、InvalidColumnValue、DateSkewed 。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为 之一
+409 , TooLargeData、TooManyRows、TooManyColumns 。
+当返回 时 消息体包含的错误名称为
+413 , RequestEntityTooLarge。
+当返回 时 消息体包含的错误名称为
+415 , UnsupportedMediaType。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+679 示例
+..
+请求消息见示例
+1。
+示例1
+:
+PUT/MyAccount/MyTable/RowHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:text/xml
+<Values>
+<Row>
+<Key>Row001</Key>
+<Column>
+<Name>Color</Name>
+<Value>Blue</Value>
+</Column>
+<Column>
+<Name>Size</Name>
+<Value>Med</Value>
+</Column>
+<Column>
+<Name>Price</Name>
+<Value>14.99</Value>
+</Column>
+</Row>
+<Row>
+<Key>Row002</Key>
+<Column>
+<Name>Length</Name>
+<Value>12.98</Value>
+</Column>
+<Column>
+<Name>Width</Name>
+<Value>4.56</Value>
+13
+GB/T319165—2015
+.
+</Column>
+</Row>
+</Values>
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1200OK
+68 删除数据
+.
+681 功能描述
+..
+删除某一行或多行的一或多列
+。
+用户提供的输入数据集由多个行组成 每个行包含行键 列名和时间戳 可选 数据集为 格
+, 、 ( ), XML
+式 随请求消息体发送到服务端
+, 。
+对于删除数据的某行 如果仅包含行键 若目标数据表中该行键存在 则删除该行的所有列 若该行
+, : , ;
+不存在 则操作失败
+, 。
+对于删除数据的某行 如果包含行键和若干列名 若目标数据表中行键存在 若某列存在 则删除该
+, , : ,
+列 若某列不存在 则操作失败
+; , 。
+对于删除数据的某行的某列名设定了时间戳值 则删除早于指定时间戳的所有列值版本 若未设定
+, ;
+时间戳 则删除所有数据版本
+, 。
+682 请求定义
+..
+请求定义表述为
+:
+Account Table
+DELETE/[ ]/[ ]/RowHTTP/1.1
+683 请求URL
+..
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]/Row
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+684 请求消息头
+..
+按公共请求头定义
+。
+685 请求消息体
+..
+请求消息体应包括信息见表
+6。
+表6 请求消息体
+名称 类型 描述 选择状态
+包含待删除的所有行
+标签 ; 必选
+Rows 父标签 无
+:
+包含待删除的所有行的行键
+标签 ; 必选
+Row 父标签
+:Rows
+待删除的所有行的行键 若该行不存在 则操作失败
+字符串 , , ; 必选
+Key 父标签
+:Rows\Row
+14
+GB/T319165—2015
+.
+表6 续
+( )
+名称 类型 描述 选择状态
+包含待删除的行的所有列
+标签 ; 可选
+Column 父标签
+:Rows\Row
+待删除的行的所有列的列名 若该列不存在 则操作失败
+字符串 , , ; 必选
+Name 父标签
+:Rows\Row\Column
+某列的时间戳 若指定 则删除时间戳之前的所有版本 若该版本不
+, , ,
+存在 则操作失败
+, ,
+时间 若不指定 则删除所有版本 可选
+Timestamp , ;
+父标签
+:Rows\Row\Column。
+时间格式引用
+GB/T7408—2005
+686 响应状态码
+..
+状态码包括
+204,400,401,404,405,408,415,500,501,503。
+687 响应消息头
+..
+按公共响应头定义
+。
+688 响应消息体
+..
+当返回 时 无消息体
+204 , 。
+当返回 时 消息体包含的错误名称为
+400 , InvalidRequestBody、InvalidTimestamp、DateSkewed
+之一
+。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist、RowKeyNotExist、ColumnNotExist、
+之一
+ColumnOnTimestampNotExist 。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+415 , UnsupportedMediaType。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+689 示例
+..
+请求消息见示例
+1。
+示例1
+:
+DELETE/MyAccount/MyTable/RowHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:text/xml
+<Rows>
+<Row>
+15
+GB/T319165—2015
+.
+<Key>Row001</Key>
+<Column>
+<Name>Color</Name>
+</Column>
+<Column>
+<Name>Price</Name>
+<Timestamp>20110503T173008+08</Timestamp>
+</Column>
+</Row>
+<Row>
+<Key>Row002</Key>
+</Row>
+</Rows>
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1204NoContent
+69 获取数据
+.
+691 功能描述
+..
+获取一行或多行的一个或多个列 用户提供的输入数据集由多个行组成 每个行包含行键 列名和
+。 , 、
+时间戳 可选 数据集为 格式 随请求消息体发送到服务端
+( ), XML , 。
+对于请求消息体的某行 如果仅包含行键 若目标数据表中该行键存在 则返回该行的所有列 若该
+, : , ;
+行不存在 则操作失败 对于请求消息体的某行 如果包含行键和若干列名 若目标数据表中该行键存
+, 。 , ,
+在 若某列存在 则返回该列 若某列不存在 则操作失败
+: , ; , 。
+对于请求消息体的某行的某列名 若未设定时间戳 则返回最新版本列值 若设定了时间戳 则返回
+: , ; ,
+早于指定时间戳的 唯一 最新版本列值 若该版本不存在 则等同于该列不存在 操作失败
+( ) ; , , 。
+结果数据集由多行组成 每行包含行键 列名和列值 结果数据集为 格式 随响应消息体返回
+, 、 , XML ,
+到客户端
+。
+692 请求定义
+..
+请求定义表述为
+:
+Account Table
+POST/[ ]/[ ]/RowHTTP/1.1
+693 请求URL
+..
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]/Row
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+694 请求消息头
+..
+按公共请求头定义
+。
+695 请求消息体
+..
+请求消息体应包括信息见表
+7。
+16
+GB/T319165—2015
+.
+表7 请求消息体
+名称 标签值 描述 选择状态
+包含待获取的所有行
+标签 ; 必选
+Rows 父标签 无
+:
+包含待获取的所有行的行键
+标签 ; 必选
+Row 父标签
+:Rows
+待获取所有行的行键 若该行不存在 则操作失败
+字符串 , , ; 必选
+Key 父标签
+:Rows\Row
+包含待获取的行的所有列
+标签 ; 可选
+Column 父标签
+:Rows\Row
+待获取的行的所有列的列名 若该列不存在 则操作失败
+字符串 , , ; 必选
+Name 父标签
+:Rows\Row\Column
+某列的时间戳 若指定 则获取时间戳之前的所有版本 若该版本不
+, , ,
+存在 则操作失败 若不指定 则获取所有版本
+时间 , , , ; 可选
+Timestamp 父标签
+:Rows\Row\Column。
+时间格式引用
+GB/T7408—2005
+696 响应状态码
+..
+状态码包括
+200,400,401,404,405,406,408,409,415,500,501,503。
+697 响应消息头
+..
+按公共响应头定义
+。
+698 响应消息体
+..
+当返回 时 响应消息体应包括信息见表
+200 , 8。
+表8 响应消息体
+名称 类型 描述 选择状态
+包含所获取数据的所有行
+标签 ; 必选
+Values 父标签 无
+:
+包含所获取的所有行的行键
+标签 ; 必选
+Row 父标签
+:Values
+所获取的所有行的行键
+字符串 ; 必选
+Key 父标签
+:Values\Row
+包含所获取的行的所有列
+标签 ; 必选
+Column 父标签
+:Values\Row
+所获取的行的所有列的列名
+字符串 ; 必选
+Name 父标签
+:Values\Row\Column
+指定行 指定列所获取的列值
+字符串 、 ; 必选
+Value 父标签
+:Values\Row\Column
+17
+GB/T319165—2015
+.
+当返回 时 消息体包含的错误名称为
+400 , InvalidRequestBody、InvalidTimestamp、DateSkewed
+之一
+。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为
+404 , TableNotExist、RowKeyNotExist、ColumnNotExist、
+之一
+ColumnOnTimestampNotExist 。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+406 , NotAcceptable。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为
+409 , TooLargeResultSize。
+当返回 时 消息体包含的错误名称为
+415 , UnsupportedMediaType。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+699 示例
+..
+请求消息见示例
+1。
+示例1
+:
+GET/MyAccount/MyTable/RowHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:text/xml
+<Rows>
+<Row>
+<Key>Row001</Key>
+<Column>
+<Name>Color</Name>
+</Column>
+<Column>
+<Name>Price</Name>
+<Timestamp>20110503T173008+08</Timestamp>
+</Column>
+</Row>
+<Row>
+<Key>Row002</Key>
+</Row>
+</Rows>
+响应消息见示例
+2。
+示例2
+:
+HTTP/1.1206OK
+Content-Type:text/xml
+<Values>
+<Row>
+<Key>Row001</Key>
+<Column>
+18
+GB/T319165—2015
+.
+<Name>Color</Name>
+<Value>Blue</Value>
+</Column>
+<Column>
+<Name>Price</Name>
+<Value>14.99</Value>
+</Column>
+</Row>
+<Row>
+<Key>Row002</Key>
+<Column>
+<Name>Color</Name>
+<Value>Black</Value>
+</Column>
+<Column>
+<Name>Size</Name>
+<Value>Med</Value>
+</Column>
+<Column>
+<Name>Price</Name>
+<Value>7.89</Value>
+</Column>
+<Column>
+<Name>Length</Name>
+<Value>12.98</Value>
+</Column>
+<Column>
+<Name>Width</Name>
+<Value>4.56</Value>
+</Column>
+</Row>
+</Values>
+610 条件表达式查询数据
+.
+6101 功能描述
+. .
+使用一组条件表达式查询某数据库表 返回满足条件的行 多个条件表达式用 或 运
+, 。 “AND” “OR”
+算符连接 条件表达式形见示例
+, 。
+示例
+:
+Colunm
+EqualNotEqualGreaterLessGreaterEqualLessEqualLikeNotLikeNullNotNull
+| | | | | | | | |
+GivenValue Timestamp
+[on ]
+在查询条件中 若指定列不存在 则条件表达式返回空
+, , 。
+在查询条件中 若指定列的时间戳 则参与逻辑运算的列值为该时间戳之前的最新版本 若该版本
+, , ,
+不存在 则等同于列不存在 若不指定列的时间戳 则参与逻辑运算的列值为最新版本
+, ; , 。
+结果数据集由多个行组成 每行包含行键和特定列的值 对于每一行 行键默认为返回结果 列则
+, 。 , ,
+默认为不返回结果 除非明确指定该列需要返回 结果数据集为 格式 随响应消息体返回到客
+( )。 XML ,
+19
+GB/T319165—2015
+.
+户端
+。
+在指定的返回列中 若某行该列不存在 则该行不包括此列
+, , 。
+在返回列定义中 若指定列的时间戳 则返回的列值为该时间戳之前的最新版本 若该版本不存在
+, , , ,
+则等同于列不存在 若不指定列的时间戳 则返回的列值为最新版本
+; , 。
+查询请求可以指定结果集大小和偏移量 即上一次返回结果的行数 以实现分页查询 此功能亦可
+, , 。
+通过限制客户端一次可以访问的数据量 同时在响应消息中添加数据未结束的标识来实现 本部分对相
+, ,
+关实现细节不做规范
+。
+当结果集大小未指定 且查询结果超出云存储系统预设的最大结果集大小 则返回最大结果集行
+, ,
+数 且响应状态码为 否则 返回指定结果集行数 且响应状态码为
+, 206; , , 206。
+当返回结果集大小小于或等于指定 或预设 结果集大小 则返回全部查询结果 且响应状态码
+( ) , ,
+为
+200。
+当指定的结果集大小大于云存储系统预设的最大结果集大小 则操作失败
+, 。
+当未指定偏移量 返回结果集从首行开始 否则 从指定偏移量 行键 的下一行开始
+, ; , ( ) 。
+6102 请求定义
+. .
+请求定义表述为
+:
+Account Table
+POST/[ ]/[ ]/QueryHTTP/1.1
+6103 请求URL
+. .
+请求 表述为
+URL :
+Account Table
+http://example.clouddb.cn/[ ]/[ ]/Query
+其中 Account表示账户 Table 表示表名
+:[ ] ID,[ ] 。
+6104 请求消息头
+. .
+按公共请求头定义
+。
+6105 请求消息体
+. .
+请求消息体见表
+9。
+表9 请求消息体
+名称 类型 描述 选择状态
+包含条件查询的所有条件和结果集设定
+标签 ; 必选
+Conditions 父标签 无
+:
+结果集设定 结果集大小
+整数 : ; 可选
+Size 父标签
+:Conditions
+结果集设定 偏移量
+整数 : ; 可选
+Offset 父标签
+:Conditions
+包含条件查询的所有条件
+标签 ; 可选
+Condition 父标签
+:Conditions
+查询条件 查询条件序号 标识查询条件的顺序
+整数 : , ; 必选
+Index 父标签
+:Conditions\Condition
+20
+GB/T319165—2015
+.
+表9 续
+( )
+名称 类型 描述 选择状态
+查询条件 某查询列的列名 若列名不存在 则该条件返回 其
+: , , False,
+字符串 中行键的列名定义为 必选
+Column “RowKey”;
+父标签
+:Conditions\Condition
+查询条件 某查询列的时间戳 若指定 则参与逻辑运算的或返回的
+: , ,
+列值为该时间戳之前的最新版本 若该版本不存在 则等同于列名
+, ,
+时间 不存在 若不指定 则参与逻辑运算的或返回的列值为最新版本 可选
+Timestamp ; , ;
+父标签
+:Conditions\Condition。
+时间格式引用
+GB/T7408—2005
+查询条件 运算符 可选值包括
+: , ,Equal|NotEqual|Greater|Less|
+在默认情况
+字符串 GreaterEqual|LessEqual|Like|NotLike|Null|NotNull , 必选
+Operator 结果集包含行键 不包含任何列
+, ;
+父标签
+:Conditions\Condition
+查询条件 同运算符相应的条件值
+字符串 : ; 可选
+Value 父标签
+:Conditions\Condition
+查询条件 逻辑运算符 可选值包括 表示当前条件和下一
+: , And|Or,
+字符串 个条件的运算逻辑 可选
+Logic ;
+父标签
+:Conditions\Condition
+包含条件查询所返回的所有列
+标签 ; 可选
+Select 父标签
+:Conditions
+某返回列的列名 返回结果集包含的列 若对于某行该列不存在 则
+, , ,
+字符串 结果中该行数据不包含该列 必选
+Column ;
+父标签
+:Conditions\Select
+某返回列的时间戳 若指定 则返回的列值为该时间戳之前的最新
+, ,
+版本 若该版本不存在 则等同于列名不存在 若不指定 则返回的
+, , ; ,
+时间 列值为最新版本 必选
+Timestamp ;
+父标签
+:Conditions\Select。
+时间格式引用
+GB/T7408—2005
+6106 响应状态码
+. .
+状态码包括
+200,206,400,401,404,405,406,408,409,413,415,500,501,503。
+返回全部结果集时状态码为 返回部分结果集时状态码为
+200; 206。
+6107 响应消息头
+. .
+按公共响应头定义
+。
+6108 响应消息体
+. .
+当返回 或 时 响应消息体应包括信息见表
+200 206 , 10。
+21
+GB/T319165—2015
+.
+表10 响应消息体
+名称 类型 描述 选择状态
+包含所获取数据的所有行
+标签 ; 必选
+Values 父标签 无
+:
+包含所获取的所有行的行键
+标签 ; 可选
+Row 父标签
+:Values
+所获取的所有行的行键
+字符串 ; 必选
+Key 父标签
+:Values\Row
+包含所获取的行的所有列
+标签 ; 可选
+Column 父标签
+:Values\Row
+所获取的行的所有列的列名
+字符串 ; 必选
+Name 父标签
+:Values\Row\Column
+指定行 指定列所获取的列值
+字符串 、 ; 必选
+Value 父标签
+:Values\Row\Column
+当 返 回 时 消 息 体 包 含 的 错 误 名 称 为
+400 , InvalidRequestBody、InvalidTimestamp、
+之一
+InvalidOperator、InvalidLogic、InvalidConditionOrders、DateSkewed 。
+当返回 时 消息体包含的错误名称为
+401 , AccountNotExist、Unauthorized、MissingAuthorization、
+之一
+AccountProblems、AccountDisabled 。
+当返回 时 消息体包含的错误名称为 之一
+404 , TableNotExist、ColumnNotExist、OffsetOverflow 。
+当返回 时 消息体包含的错误名称为
+405 , MethodNotAllowed。
+当返回 时 消息体包含的错误名称为
+406 , NotAcceptable。
+当返回 时 消息体包含的错误名称为
+408 , RequestTimeout。
+当返回 时 消息体包含的错误名称为 之一
+409 , TooLargeResultSize、TooManyConditions 。
+当返回 时 消息体包含的错误名称为
+413 , RequestEntityTooLarge。
+当返回 时 消息体包含的错误名称为
+415 , UnsupportedMediaType。
+当返回 时 消息体包含的错误名称为
+500 , InternalServerError。
+当返回 时 消息体包含的错误名称为
+501 , NotImplemented。
+当返回 时 消息体包含的错误名称为
+503 , ServiceUnavailable。
+6109 示例
+. .
+请求消息见示例
+1。
+示例1
+:
+POST/MyAccount/MyTable/QueryHTTP/1.1
+Host:example.clouddb.cn
+Accept:text/xml
+Content-type:text/xml
+<Conditions>
+<Size>2</Size>
+<Offset>99</Offset>
+<Condition>
+<Index>1</Index>
+<Column>Color</Column>
+22
+GB/T319165—2015
+.
+<Timestamp>20110503T173008+08</Timestamp>
+<Operatot>Equal</Operator>
+<Value>Red</Value>
+<Logic>And</Logic>
+</Condition>
+<Condition>
+<Index>2</Index>
+<Column>Price</Column>
+<Operator>Less</Operator>
+<Value>5</Value>
+</Condition>
+<Select>
+<Column>Length</Column>
+<Timestamp>20110503T173008+08</Timestamp>
+</Select>
+<Select>
+<Column>Width</Column>
+</Select>
+</Conditions>
+消息响应见示例
+2。
+示例2
+:
+HTTP/1.1206PartialContent
+Content-Type:text/xml
+<Values>
+<Row>
+<Key>Row001</Key>
+<Column>
+<Name>Length</Name>
+<Value>1024</Value>
+</Column>
+<Column>
+<Name>Width</Name>
+<Value>768</Value>
+</Column>
+</Row>
+<Row>
+<Key>Row002</Key>
+<Column>
+<Name>Length</Name>
+<Value>1280</Value>
+</Column>
+<Column>
+<Name>Width</Name>
+<Value>1024</Value>
+</Column>
+</Row>
+</Values>
+23
+GB/T319165—2015
+.
+附 录 A
+规范性附录
+( )
+补充出错信息
+基于 的云数据管理对 状态码的补充出错信息描述见表
+Key-Value HTTP A.1。
+表A1 补充出错信息描述
+.
+状态码 消息描述
+当状态码为 时 对应的错误名称和错误消息是以下内容之一
+400 , :
+请求消息体 格式不合法
+• InvalidRequestBody( XML );
+表名不合法
+• InvalidTableName( );
+行键不合法
+• InvalidRowKey( );
+列名不合法
+• InvalidColumnName( );
+列值不合法
+400 • InvalidColumnValue( );
+时间戳不合法
+• InvalidTimestamp( );
+操作运算符不合法
+• InvalidOperator( );
+逻辑运算符不合法
+• InvalidLogic( );
+查询条件顺序不合法
+• InvalidConditionOrders( );
+请求发起的时间和系统时间偏差太大
+• DateSkewed( )
+当状态码为 时 对应的错误名称和错误消息是以下内容之一
+401 , :
+账户不存在
+• AccountNotExist( );
+此请求中权限证书无效
+• Unauthorized( );
+401 请求消息缺少授权信息
+• MissingAuthorization( );
+账户问题
+• AccountProblems( );
+账户停服
+• AccountDisabled( )
+当状态码为 时 对应的错误名称和错误消息是以下内容之一
+403 , :
+403 请求中的表名已存在于此账户下
+• TableAlreadyExist( )
+当状态码为 时 对应的错误名称和错误消息是以下内容之一
+404 , :
+请求的表不存在
+• TableNotExist( );
+行键不存在
+• RowKeyNotExist( );
+404 列名不存在
+• ColumnNotExist( );
+给定时间戳下该列尚不存在
+• ColumnOnTimestampNotExist( );
+偏移量大于结果集大小
+• OffsetOverflow( )
+当状态码为 时 对应的错误名称和错误消息是以下内容之一
+409 , :
+元数据大小超出限制
+• TooLargeMetadata( );
+数据大小超出限制
+• TooLargeData( );
+设置的结果集大小超出限制
+• TooLargeResultSize( );
+409 创建数据表数目超出限制
+• TooManyTables( );
+插入数据行数目超出限制
+• TooManyRows( );
+插入数据列数目超出限制
+• TooManyColumns( );
+条件数目超出限制
+• TooManyConditions( )
+24

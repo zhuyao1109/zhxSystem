@@ -1,0 +1,2798 @@
+ICS3524060
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T26840—2011
+电子商务 药品核心元数据
+Electroniccommerce—Coremetadataformedicine
+2011-07-29发布 2011-12-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T26840—2011
+目 次
+前言 …………………………………………………………………………………………………………
+Ⅲ
+范围 ………………………………………………………………………………………………………
+1 1
+规范性引用文件 …………………………………………………………………………………………
+2 1
+术语和定义 ………………………………………………………………………………………………
+3 1
+缩略语 ……………………………………………………………………………………………………
+4 1
+药品核心元数据属性 ……………………………………………………………………………………
+5 1
+药品核心元数据描述方法 ………………………………………………………………………………
+6 2
+药品核心元数据 图描述 …………………………………………………………………………
+7 UML 3
+药品核心元数据字典描述 ………………………………………………………………………………
+8 4
+元数据的扩展原则与方法………………………………………………………………………………
+9 11
+元数据扩展类型与原则………………………………………………………………………………
+9.1 11
+元数据扩展方法………………………………………………………………………………………
+9.2 11
+附录 规范性附录 药品核心元数据 ………………………………………………
+A( ) XMLSchema 15
+附录 资料性附录 药品核心元数据示例 ……………………………………………………………
+B( ) 27
+参考文献 ……………………………………………………………………………………………………
+32
+Ⅰ
+GB/T26840—2011
+前 言
+本标准的附录 为规范性附录 附录 为资料性附录
+A , B 。
+本标准由全国电子业务标准化技术委员会提出并归口
+。
+本标准起草单位 中国标准化研究院 多友科技 北京 有限公司
+: 、 ( ) 。
+本标准主要起草人 马建红 刘颖 章建方 张荫芬 陈爱峰
+: 、 、 、 、 。
+Ⅲ
+GB/T26840—2011
+电子商务 药品核心元数据
+1 范围
+本标准规定了电子商务交易活动中药品核心元数据的属性 描述方法 扩展原则与方法
+、 、 。
+本标准适用于电子商务活动中对药品基本信息的描述 编码 建库 查询和发布
+、 、 、 。
+2 规范性引用文件
+下列文件中的条款通过本标准的引用而成为本标准的条款 凡是注日期的引用文件 其随后所有
+。 ,
+的修改单 不包括勘误的内容 或修订版均不适用于本标准 然而 鼓励根据本标准达成协议的各方研究
+( ) , ,
+是否可使用这些文件的最新版本 凡是不注日期的引用文件 其最新版本适用于本标准
+。 , 。
+数据元和交换格式 信息交换 日期和时间表示方法
+GB/T7408—2005 (ISO8601:2000,IDT)
+表示货币和资金的代码
+GB/T12406—2008 (ISO4217:2001,IDT)
+国际贸易计量单位代码
+GB/T17295—2008
+元数据的 置标规则
+GB/T24639—2009 XMLSchema
+电子商务 产品核心元数据
+GB/T24662—2009
+关于实施国家药品编码管理的通知 国食药监办 号
+《 》 [2009]315
+信息技术 开放式分布处理 统一建模语言
+ISO/IEC19501:2005 (UML)(Informationtechnol-
+ogy—Opendistributedprocessing—Unifiedmodelinglanguage(UML))
+术语工作中统一建模语言 符号使用指南
+ISO/TR24156:2008 (UML) (GuidelinesforusingUML
+notationinterminologywork)
+3 术语和定义
+确立的以及下列术语和定义适用于本标准
+GB/T24662—2009 。
+31
+.
+药品 medicine
+用于预防 治疗 诊断人的疾病 有目的地调节人的生理机能并规定有适应症 用法和用量的物质
+、 、 , 、 ,
+包括中药材 中药饮片 中成药 化学原料药及其制剂 抗生素 生化药品 放射性药品 血清 疫苗 血液
+、 、 、 、 、 、 、 、 、
+制品和诊断药品等
+。
+中华人民共和国药品管理法 第 条
+[《 》 102 ]
+注 本标准中的药品不包括中药材 中药饮片和化学原料药
+: 、 。
+32
+.
+药品核心元数据 coremetadataformedicine
+描述药品数据的元数据项的基本集合
+。
+4 缩略语
+下列缩略语适用于本标准
+。
+统一建模语言
+UML: (UnifiedModelingLanguage)
+可扩展置标语言
+XML: (ExtensibleMarkupLanguage)
+5 药品核心元数据属性
+本标准依据 使用以下八个属性对每个元数据元素和元数据实体进行描述
+GB/T24662—2009, 。
+1
+GB/T26840—2011
+中文名称
+a)
+赋予元数据元素或元数据实体的中文名称
+。
+英文名称
+b)
+赋予元数据元素或元数据实体的英文名称 英文名称以牛津英语词典的英文拼写为准
+。 。
+标记
+c)
+元数据元素或元数据实体的英文标记名称 标记应遵守如下规则
+。 :
+标记不应包括空格 破折号 下划线或分隔符等
+1) 、 、 ;
+元数据实体标记应采用 命名方式 即每个英文单词的首字母均
+2) UCC(UpperCamelCase) ,
+大写 其他字母均为小写 并把这些单词组合起来 元数据元素标记应采用
+, , ; LCC(Lower
+命名方式 即除第一个英文单词外 每个单词的首字母大写 并把这些单词组
+CamelCase) , , ,
+合起来
+。
+定义
+d)
+对元数据元素或元数据实体含义的解释
+。
+数据类型
+e)
+对元数据元素的有效值域和允许对该值域内的值进行有效操作的规定 例如数值型 字符串
+, 、 、
+日期型 布尔型等
+、 。
+注 本标准中元数据实体的数据类型为复合型
+: 。
+值域
+f)
+元数据元素所允许值的集合
+。
+约束 条件
+g) /
+元数据元素或元数据实体的一个说明符 说明一个元数据元素或元数据实体在元数据中是始
+,
+终选用还是有时选用 即 含有值 该说明符分别为
+( , )。 :
+必选 表示该元数据元素或元数据实体是必备的
+1) M: , ;
+条件必选 表示该元数据元素或元数据实体在满足约束条件中所定义的条件时是必备
+2) C: ,
+的 条件必选用于以下三种可能性之一
+, :
+当在多个选项中进行选择时 至少有一个选项为必选
+——— , ;
+当一个元数据元素已经使用时 选用另一个元数据实体或元数据元素
+——— , ;
+当一个元数据元素已经选择了一个特定值时 选用另一个元数据元素
+——— , 。
+可选 表示该元数据元素或元数据实体根据实际应用是可选的
+3) O: , 。
+注 是 的缩写 表示必选 是 的缩写 表示条件必选 是 的缩写 表示
+:“M” “Must” , ;“C” “Condition” , ;“O” “Option” ,
+可选
+。
+最大出现次数
+h)
+元数据元素或元数据实体在实际使用时可能重复出现的最大次数 只出现一次用 表示 不
+。 “1” ,
+固定次数的重复出现用 表示 允许不为 的固定出现次数 并用相应的数字 即
+“N” , 1 , ( “2”、“3”、
+表示
+…) 。
+6 药品核心元数据描述方法
+本标准采用三种方式定义和描述元数据 图描述 字典描述和
+:UML 、 XMLSchema。
+图描述
+a) UML
+本标准采用 图来描述元数据实体和元数据元素之间的关系
+UML 。
+在 图中 用类的概念表示元数据实体 用类的属性的概念表示元数据元素 用类的属性的多
+UML , , ,
+重性以及类间关系的基数来表示元数据元素和元数据实体约束 条件属性和最大出现次数属性
+/ 。
+2
+GB/T26840—2011
+本标准使用的符号及有关内容应遵守 的相关规定 本
+ISO/IEC19501:2005、ISO/TR24156:2008 。
+标准使用的 符号如图 所示
+UML 1 。
+图1 UML符号及说明
+药品核心元数据 图描述见第 章
+UML 7 。
+字典描述
+b)
+数据字典以表格的形式对每个元数据元素和元数据实体的中文名称 英文名称 标记 定义 数据类
+、 、 、 、
+型 值域 约束 条件和最大出现次数等八个属性进行完整说明
+、 、 / 。
+药品核心元数据字典描述见第 章
+8 。
+c) XMLSchema
+本标准运用 语法对电子商务药品核心元数据内容进行描述 按照
+XMLSchema , GB/T24639—
+的相关规定 给出药品核心元数据的 详见附录
+2009 , XMLSchema, A。
+此外 本标准还给出了药品核心元数据的示例 参见附录
+, , B。
+7 药品核心元数据UML图描述
+药品核心元数据 图描述如图 所示
+UML 2 。
+3
+GB/T26840—2011
+图2 药品核心元数据UML图
+8 药品核心元数据字典描述
+药品核心元数据字典描述见表
+1。
+4
+GB/T26840—2011
+5
+,+*)(’&%$#"!!!
+876
+!32
+10
+/.-,
++!!*
+)(
+&%$’
+&%$#
+"!
+,:9
+54
+,;CBA@?>=<+*!
+’
+"
+%$%&%$#"
+%$%&%$#"
+-,;
+!
+GFED-
+’
+"
+/ON
+IHMLDA@KJ!
+*-($%/.-,*+#*()(&#"
+*-($%/.-,*+#*()(&#"
+IHA@
+’
+‘@_^]\"[$ZY! dcbD"5’4$3!!2#a
+’
+"
+A_g^fQP(Ge"*
+XQW
+VUP(DTSLRA@!
+1+#*()(&#/
+1+#*()(&#"
+QP(A@
+’0’
+onmlkjih‘A@
+VqDp
+A@Dvu#t(A@g^!
+’
+"
+[$ZY!
+XQW
+<#/%;:9.1&#8-.77%
+<#/%;:9.1&#8-.776
+&%sr
+20’
+&%
+zyxjih‘A@g^w!
+’
+"
+[$ZY!
+XQW
+(cid:128)A@(cid:127)Ds~}|*{Dt
+#/%;>$(&-//-)
+#/%;>$(&-//-=
+&%A>
+40’
+&%A>Ds
+’
+C
+[$ZY!
+XQW
+&%$’D&%srA@!
+#/%;B<(A:*#
+#/%;B<(A:*@
+&%$’
+?0’
+’
+"
+[$ZY!
+XQW
+(cid:132)(cid:131)(cid:130)(cid:129)D&%srA@!
+*(E*(7
+*(E*(D
+(cid:132)(cid:131)(cid:130)(cid:129)
+50’
+’
+"
+[$ZY!
+XQW
+&%(cid:134)(cid:133)DA@!
+#/%;A%)(/#B)
+#/%;A%)(/#B=
+&%(cid:134)(cid:133)
+F0’
+@(cid:137)(cid:136)(cid:138)}|(cid:137)(cid:136)A@(cid:135)^!
+’
+=
+[$ZY!
+XQW
+xjih‘A@g^(cid:141)(cid:140)(cid:139)A
+-;#<*#)(A
+-;#<*#)(H
+%"$tz
+G0’
+(cid:148)(cid:147)(cid:146)(cid:145)D(cid:144)(cid:143)(cid:142)tzy
+h‘A@(cid:153)?^wA@(cid:150)(cid:149)!
+K.#=*-($%.$<(:#J$.-7/(
+*-($%.$<(:#J$.-7/+
+(cid:152)
+(cid:151)
+(cid:150)
+(cid:149)
+’
+=
+[$ZY!
+XQW
+D(cid:158)(cid:157)tz(cid:156)(cid:155)(cid:154)Myxji
+I0’
+-;#$%)(,($
+-;#$%)(,($.#=
+"(cid:147)
+"qD(cid:159)(cid:147)
+|¤§ƒ¥⁄y£%¢¡^#!
+#$%)(,($.#=*-($%.$<(:#.
+#$%)(,($.#=*-($%.$<(:#J
+A
+(cid:137)
+@
+(cid:160)
+’
+=
+[$ZY!
+XQW
+(cid:147)(cid:152)(cid:151)D(cid:144)“'A@D(cid:137)(cid:136)}
+30’
+$)9&-.DA%)(&#".-L-;
+$)9&-.DA%)(&#".-L-;
+"(cid:147)(cid:152)(cid:151)
+"q(cid:159)
+书书书
+GB/T26840—2011
+6
+"!!!!
+987
+#43
+21
+0/.-
+,!!+
+*)
+’&%(
+’&%$
+#"
+-;:
+65
+!
+3
+)210,#)/.-$,,*#+*$>#=!
+0FE
+DC/BA@?>=!
+)(’%&%$
+)(’%&%$
+</&%$
+#!"!
+!
+3
+P%ON!
+MLK
+J8HGIDC!
+2+*6-056,65)(2
+2+*6-056,65)(4
+HG
+!!"!
+[ZYIXWVUTSR?!
+!
+3
+P%ON!
+MLK
++*6-01/9.*,
++*6-01/9.*8
+0Q
+7!"!
+a‘_SI^CI]\
+!
+$
+P%ON!
+MLK
+aBcbIDC!
+=+6=0<50(
+=+6=0<50;
+cb
+:!"!
+!
+$
+P%ON!
+MLK
+eddfIDC!
++*6-62*(9*5
++*6-62*(9*&
+ed
+>!"!
+nmlkVh‘%jiIDC!
+!
+$
+P%ON!
+MLK
+256-26.)-50.0@5
+256-26.)-50.0@&
+hg
+?!"!
+qpIo
+!
+3
+P%ON!
+MLK
+rxIDCwv_utsR!
+2+*6-056C+6
+2+*6-056C+B
+rSR
+A!"!
+G0.-26+69CFC+F)=02*C
+G26+69CFC+F)=02*E
+!
+3
+P%ON!
+MLK
+z-~yB}|IDC_{!
+z_y_
+D!"!
++*6-
++*6-0.-
+(cid:128)(cid:127)I(cid:133)(cid:132)}(cid:131)(cid:130)DC_{!
+!
+3
+P%ON!
+MLK
+2-5),,J)2.)IC0
+2-5),,J)2.)ICF
+S(cid:129)(cid:128)(cid:127)
+H!"!
+hr
+!
+3
+P%ON!
+MLK
+^(cid:140)I(cid:139)(cid:138)S(cid:137)C(cid:136)!
+2+*6-056C+60.-+*5
+2+*6-056C+60.-+*&
+(cid:135)(cid:134)
+K!"!
+M
+$
+P%ON!
+MLK
+(cid:143)(cid:140)I(cid:142)(cid:141)S(cid:130)DC_{!
+)2L.*82+*6-/05).(
+)2L.*82+*6-/05).;
+(cid:143)(cid:140)(cid:142)(cid:141)
+#7"!
+!
+$
+P%ON!
+MLK
+aB(cid:147)(cid:146)IDC!
+)=0.*-2
+)=0.*-4
+(cid:145)(cid:144)
+!7"!
+!
+3
+P%ON!
+MLK
+(cid:153)(cid:152)(cid:149)(cid:148)I_(cid:149)(cid:151)(cid:132)DC!
+),6N,1)@2
+),6N,1)@4
+(cid:150)(cid:149)(cid:148)
+77"!
+I(cid:155)(cid:154)¡$(cid:160)(cid:159)(cid:158)(cid:133)(cid:157)DC!
+!
+$
+P%ON!
+MLK
+*M+*6-056,65)(2
+*M+*6-056,65)(4
+(cid:156))(cid:155)(cid:154)
+:7"!
+’&(cid:156))
++*6-056,62201&)+656C)3
++*6-056,62201&)+656C)3
+/
+e
+D
+C
+M
+3
+0¥⁄
+£¢I/eDCqp!
+>7"!
++*6-09.*,+B
++*6-09.*,+B
+£¢
+V(cid:156))§ƒ/eDCI_u!
++*6-056,62201&)+656C)9
++*6-056,62201&)+656C)3
+/
+e
+D
+C
+!
+3
+P%ON!
+MLK
+%(cid:156))‹(cid:155)=«“'$(cid:156))¤ƒ
+!">7"!
+C.0C+0-4
+C.0C+0-4
+(cid:156))
+m(cid:156))‹fi%(cid:156))B›
+书书书
+GB/T26840—2011
+7
+"!!!!
+987
+#43
+21
+0/.-
+,!!+
+*)
+’&%(
+’&%$
+#"
+-;:
+65
+/>=<DCBA’&=<!
+*1(0-)(/(..-,+&*()(’&2
+*1(0-)(/(..-,+&*()(’&%
+/
+>
+=
+<
+!
+%
+L%KJ!
+IHG
+#"$#"!
+@?D$FE
+&’1+
+&’1+
+@?
+?/>=<$FE/>=<!
+*1(0-)(/(..-,+&*()(’&2
+*1(0-)(/(..-,+&*()(’&%
+/
+>
+=
+<
+!
+%
+L%KJ!
+IHG
+3"$#"!
+’&%$DNM@
+&2-4
+&2-4
+’&
+&760)-/6*-%&*()(’&%
+&760)-/6*-%&*()(’&%
+P
+O
+=
+<
+!
+%
+0XW
+RQDVUPO=<TS!
+5#"!
+*1(0-271/*8
+*1(0-271/*8
+RQ
+5>>#$?>$=<#;:
+\[!
+!
+@
+0ZY
+ZYD=<PO!
+&0-9&760)-/6*-2
+&0-9&760)-/6*-%
+ZYPO
+!"5#"!
+_^D+]D$
+%$dcPO=<AbaPO!
+!
+@
+L%KJ!
+IHG
+kjPO;gf&ih;gfe
+7&B26401,
+7&B26401A
+#‘PO
+#"5#"!
+#‘Dnm=<DPOl
+5>>#$?>$=<#;:
+\[!
+!
+%
+0ZY
+ZYvuDt<sr=<!
+&/(A/,&ED’*&
+&/(A/,&ED’*C
+qZpo
+3"5#"!
+_^D+]D$
+DVUxwPO=<TS!
+7&760)-/6*-%&*()(’&%
+7&760)-/6*-%&*()(’&%
+P
+O
+=
+<
+!
+%
+0XW
+F#"!
+RQ
+*1(0-271/*8
+*1(0-271/*8
+RQxw
+x
+w
+P
+O
+!
+%
+L%KJ!
+IHG
+’&xwD=<PO!
+&2-47&760)-/6*-2
+&2-47&760)-/6*-%
+!"F#"!
+’&
+!
+@
+L%KJ!
+IHG
+zy|{DxwPO!
+..&7’’G&760)-/6*-2
+..&7’’G&760)-/6*-%
+zyPO
+#"F#"!
+(cid:138)(cid:137)(cid:136)(cid:135)(cid:134)(cid:133)(cid:132)(cid:131)(cid:130)(cid:129)$M! ax(cid:142)w&(cid:141)(cid:127)D*(cid:140)(cid:137)(cid:136)&(cid:139)
+(cid:128)
+(cid:127)
+~
+}
+!
+%
+L%KJ!
+IHG
+baxw(cid:147)(cid:146)(cid:131)(cid:133)E(cid:145)(cid:144)(cid:143)&b
+&’1+*1(0-I(*-H71
+&’1+*1(0-I(*-H7@
+3"F#"!
+@?
+&Dg(cid:154)(cid:135)(cid:153)(cid:152)(cid:134)(cid:151)A(cid:150)g(cid:149)(cid:148)
+(cid:159))@?D(cid:158)(cid:157)(cid:156)(cid:155)
+书书书
+GB/T26840—2011
+8
+"!!!!
+987
+#43
+21
+0/.-
+,!!+
+*)
+’&%(
+’&%$
+#"
+-;:
+65
+.(-,1’(0’(/.(-,+*)(’0
+.(-,1’(0’(/.(-,+*)(’&
+?
+>
+=
+<
+!
+5
+J%IH!
+GFE
+#DCBA@C?>=<!
+%"$#"!
+(42,1+-3-,’2/
+(42,1+-3-,’2/
+#BA@
+8.-’*,+13*.15)((8
+8.-’*,+13*.15)((7
+B
+&57
+!
+5
+J%IH!
+GFE
+#DKBBN&57ML!
+6"$#"!
+(42,1+-3-,’2/2+-,+1’&
+(42,1+-3-,’2/2+-,+1’&
+#K
+QP+ZYXROWVOU!
+’(2=-,1,.2<2’02;:182:
+’(2=-,1,.2<2’02;:1829
+Q
+P
++
+O
+!
+5
+J%IH!
+GFE
+$"$#"!
+RTSC^]\[RO
+:10-+.-’&
+:10-+.-’&
+"RTS!R
+4
+5
+0dc
+ba‘_C?>=<ML!
+.(-,1@’(3.?,+1,.(/
+.(-,1@’(3.?,+1,.(/
+ba‘_
+>"$#"!
+!
+A
+J%IH!
+GFE
+&eCR‘_?>=<!
+2@1.
+2@14
+&e
+!">"$#"!
+!
+5
+J%IH!
+GFE
+h#gfC?>=<!
+’2D@*42.(C02:2,
+’2D@*42.(C02:2B
+h#gf
+#">"$#"!
+!
+A
+J%IH!
+GFE
+h#jiC?>=<!
+’2D@*4G13
+’2D@*4G1F
+h#ji
+E">"$#"!
+!
+A
+J%IH!
+GFE
+mlkfC?>=<!
+:-1@I2
+:-1@IH
+mlkf
+%">"$#"!
+!
+A
+J%IH!
+GFE
+onqpC?>=<!
+<<2’))1
+<<2’))J
+on
+6">"$#"!
+!
+A
+J%IH!
+GFE
+hDrlC?>=<!
+2)(/:1,<(0
+2)(/:1,<(&
+hDrl
+$">"$#"!
+Cxw?>tsMLvu!
+<<2.-<*K2.-+-)25
+I.?<<2.-<*K2.-+-)25
+t
+s
+M
+L
+4
+A
+0dc
+#
+ba
+.(-,1@’(3.?
+.(-,1@’(3
+ba?>
+.(-,1’(0’(/<<2.-<*D
+<<2.-<*K
+?
+>
+t
+s
+!
+5
+J%IH!
+GFE
+’&C?>ts!
+!"#
+2@14
+2@14.(-,1’(0’(/
+’&
+!
+A
+J%IH!
+GFE
+onqpC?>ts!
+<<2’))J<<2.-<*D
+<<2’))J<<2.-<*K
+onts
+#"#
+(cid:132)OU(cid:131)(cid:130)(cid:129)(cid:128)(cid:127)R~$}! (cid:137)?(cid:136)>$(cid:135){C*(cid:134)OU$(cid:133)
+|
+{
+z
+y
+!
+5
+J%IH!
+GFE
+(cid:138)(cid:137)?>(cid:144)(cid:143)(cid:127)(cid:129)(cid:142)(cid:141)(cid:140)(cid:139)$(cid:138)
+2)(/.(-,1L-.18’(
+2)(/.(-,1L-.18’A
+E"#
+hP
+$C(cid:147)(cid:153)(cid:131)(cid:152)(cid:151)(cid:130)(cid:150)(cid:149)(cid:148)(cid:147)(cid:146)(cid:145)
+(cid:158))hPC(cid:157)(cid:156)(cid:155)(cid:154)
+书书书
+GB/T26840—2011
+9
+"!!!!
+987
+#43
+21
+0/.-
+,!!+
+*)
+’&%(
+’&%$
+#"
+-;:
+65
+(+’/.,+-,+*&&)(’&%3
+(+’/.,+-,+*&&)(’&%$
+?
+>
+=
+<
+5
+4
+J%IH!
+GFE
+#DCBA@C?>=<!
+#"!
++2)/.1’0’/,)*
++2)/.1’0’/,)*
+#BA@
+)1’/1.,9=(’<;--%8:++=
+)1’/1.,9=(’<;--%8:++7
+5
+4
+J%IH!
+GFE
+#DKBBN987ML!
+#KB987
+6"!
++2)/.1’0’/,)*
++2)/.1’0’/,)*
+5
+?
+J%IH!
+GFE
+PO/QCML=<?>=<!
+)-+1&&&)(’&%3
+)-+18&&)(’&%$
+PO=<
+>"!
+TS+]\[URZYRX!
+,+)C’/./()&),-)B;.=);
+,+)C’/./()&),-)B;.=)A
+T
+S
++
+R
+5
+4
+J%IH!
+GFE
+@"!
+UWVCa‘_^UR
+;.-’1(’,9
+;.-’1(’,9
+"UWV!U
+2
+?
+0ih
+edCcbMLgf!
+(+’/.F,+0(E)1’,9
+(+’/.F,+0(E)1’,9
+edcb
+D"!
+5
+4
+-ml!
+01-
+cbkjCML!
+)1’,9/’(%
+)1’,9/’(G
+bj
+5"D"!
+DII!&>I#!5H#$7ut!
+q%npUo$QnCbj!
+5
+4
+GFE
+<1(),,%1
+<1(),,%*
+Qn
+!"D"!
+’&C+]$
+sr
+DII!&6K!@5H#$7ut!
+o$’&Cwx)CMLwv!
+5
+4
+GFE
+/’(G),%&.)F
+/’(G),%&.)4
+kjwv
+J"D"!
+’&C+]$
+s|%{%z%y
+2
+4
+0ih
+ed~}C?>=<ML!
+(+’/.F,+0(E/1./(+*
+(+’/.F,+0(E/1./(+*
+ed~}
+K"!
+5
+?
+J%IH!
+GFE
+&(cid:127)CU~}?>=<!
+)F.(
+)F.2
+&(cid:127)
+5"K"!
+5
+4
+J%IH!
+GFE
+(cid:130)#(cid:129)(cid:128)C?>=<!
+,)3F%2)(+L-);)/
+,)3F%2)(+L-);)H
+(cid:130)#(cid:129)(cid:128)
+!"K"!
+5
+?
+J%IH!
+GFE
+(cid:130)#(cid:132)(cid:131)C?>=<!
+,)3F%2N.0
+,)3F%2N.M
+(cid:130)#(cid:132)(cid:131)
+J"K"!
+5
+?
+J%IH!
+GFE
+(cid:135)(cid:134)(cid:133)(cid:128)C?>=<!
+;’.FP)
+;’.FPO
+(cid:135)(cid:134)(cid:133)(cid:128)
+#"K"!
+5
+?
+J%IH!
+GFE
+(cid:137)(cid:136)(cid:139)(cid:138)C?>=<!
+&&),::.
+&&),::Q
+(cid:137)(cid:136)
+6"K"!
+书书书
+GB/T26840—2011
+10
+"!!!!
+987
+#43
+21
+0/.-
+,!!+
+*)
+’&%(
+’&%$
+#"
+-;:
+65
+0
+/
+J%IH!
+GFE
+?>=<DCBA@!
+-,&+*)(’&.
+-,&+*)(’&%
+?>=<
+$"#"!
+<
+;
+0VU
+NMTSDLKRQPO!
+7&4():9&8765’4*32%
+7&4():9&8765’4*32%
+NMLK
+1
+0
+;
+J%IH!
+GFE
+’&[ZLKYXLKDRQ!
+9-5’4*32.
+9-5’4*32%
+WLK
+0"1
+ECC!$DCBA@#?>
+_^!
+0
+/
+0]\
+]\DLKNMRQ!
+-()=5’4*32.
+-()=5’4*32%
+]\LK
+!"1
+ba+‘D$
+Q
+e
+d
+c
+G4,-:8&&<-()F484(9-+
+jihgfNMRQedc!
+-74F4,-:8&&<-()F484(9-F
+f
+N
+M
+R
+0
+;
+J%IH!
+GFE
+GI9-H7&4():9&876-74F
+1"1
+#>Dk
+-F4I9-H7&4():9&876
+j
+i
+h
+g
+-F4
+#k
+0
+/
+J%IH!
+GFE
+loedcDnmNMRQ!
+-(4H3-K
+-(4H3-J
+le
+B"1
+<
+;
+0VU
+NMpdDWLKRQ!
+7&4():9&876(F)(7&+
+7&4():9&876(F)(7&+
+NMpd
+E"1
+0
+/
+J%IH!
+GFE
+&qDXpdWLK!
+-:)7
+-:)<
+&q
+0"E"1
+0
+;
+J%IH!
+GFE
+?#srDWLK!
+9-3:2<-7&5.-*-(
+9-3:2<-7&5.-*-@
+?#sr
+!"E"1
+0
+/
+J%IH!
+GFE
+?#utDWLK!
+9-3:2<M)8
+9-3:2<M)L
+?#ut
+1"E"1
+0
+/
+J%IH!
+GFE
+w<vrDWLK!
+*4):G-
+*4):GN
+w<vr
+B"E"1
+0
+/
+J%IH!
+GFE
+loyxDWLK!
+’’-9,,)
+’’-9,,O
+lo
+E"E"1
+0
+/
+J%IH!
+GFE
+?>=<DWLK!
+-,&+*)(’&.
+-,&+*)(’&%
+?>=<
+$"E"1
+&(cid:130)(cid:129).-(cid:128)D.-(cid:128)(cid:127)~}|{%z!!
+&p(cid:142)DS(cid:141)(cid:140)(cid:139)#j(cid:136)zR(cid:138)Q(cid:137)’#j(cid:136)z(cid:135)(cid:134)(cid:133)#%(cid:132)(cid:131)
+)!!
+书书书
+GB/T26840—2011
+9 元数据的扩展原则与方法
+91 元数据扩展类型与原则
+.
+元数据的扩展类型与扩展原则如下
+:
+定义新的元数据实体
+a)
+按照本标准第 章规定的相关属性定义新的元数据实体
+5 。
+扩展现有元数据实体
+b)
+扩展现有元数据实体时应遵循以下原则
+:
+扩展的元数据实体可以包含扩展的和本标准规定的现有的元数据元素 以下简称 现有元
+——— ( “
+数据元素 作为其组成部分
+”), ;
+在扩展元数据实体时 不应改变本标准中规定的现有的元数据实体 以下简称 现有元数
+——— , ( “
+据实体 的中文名称 英文名称 标记和定义
+”) 、 、 ;
+允许对现有元数据实体施加比本标准要求更加严格的约束 条件 如在本标准中是可选的
+——— / ,
+元数据实体 在扩展后可以是必选的
+, ;
+对现有元数据实体施加更严格的最大出现次数限制
+——— 。
+定义新的元数据元素
+c)
+按照本标准第 章规定的相关属性定义新的元数据元素
+5 。
+扩展现有元数据元素
+d)
+扩展现有元数据元素时应遵循以下原则
+:
+在扩展元数据元素时 不应改变本标准中现有元数据元素的中文名称 英文名称 标记 定
+——— , 、 、 、
+义或数据类型属性
+;
+允许对元数据元素的值域采用比本标准更严格的限制 如在本标准中规定的药品元数据
+——— ,
+元素 通用名称 的值域为 自由文本 在电子商务其他特定药品标准中可以限定为适当
+“ ” “ ”,
+值的列表
+;
+允许对本标准认可的值域的使用进行限制 如现有元数据元素的值域有 个值 在扩展后
+——— , 5 ,
+可以规定它的值域只包含其中 个值 要求用户从这 个中选择 个
+3 , 3 1 ;
+允许对现有元数据元素施加比本标准要求更加严格的约束 条件 如在本标准中是可选的
+——— / ,
+元数据元素 在扩展后可以是必选的
+, ;
+允许对现有元数据元素施加更严格的最大出现次数限制
+——— ;
+建立新的代码表 代替值域为 自由文本 的现有元数据元素的值域
+——— , “ ” 。
+92 元数据扩展方法
+.
+对本标准定义的元数据元素或元数据实体进行扩展时 可以根据以下 个步骤进行扩展 具体如
+, 9 ,
+图 所示
+3 。
+11
+GB/T26840—2011
+图3 元数据扩展方法
+步骤 分析现有元数据
+1:
+对现有元数据实体和元数据元素进行全面分析 如果能够满足需要 就直接使用现有元数据 不必
+, , ,
+进行元数据扩展 在不能满足需要的情况下进行扩展 分析方法如下
+。 。 :
+在现有元数据的元数据实体无法满足要求的情况下 需要通过建立新的元数据实体以满足需
+a) ,
+要 则进行步骤
+, 2;
+在现有元数据的元数据实体无法满足要求的情况下 需要通过扩展现有元数据实体以满足需
+b) ,
+要 则进行步骤
+, 3;
+在现有元数据的元数据元素无法满足要求的情况下 需要通过建立新的元数据元素以满足需
+c) ,
+要 则进行步骤
+, 4;
+12
+GB/T26840—2011
+在现有元数据的元数据元素无法满足要求的情况下 需要通过扩展现有元数据元素以满足需
+d) ,
+要 则进行步骤
+, 5;
+在现有元数据实体或元数据元素的约束 条件无法满足要求的情况下 需要通过更改现有元数
+e) / ,
+据约束 条件以满足需要 则进行步骤
+/ , 6;
+在现有元数据元素的值域无法满足要求的情况下 需要通过建立新的元数据代码表以满足需
+f) ,
+要 则进行步骤
+, 7;
+在现有元数据代码表中的值无法满足要求需要扩展的情况下 则进行步骤
+g) , 8。
+步骤 定义新的元数据实体
+2:
+需要新的元数据实体以满足需要时进入本步骤
+:
+根据本标准第 章的要求 给出新元数据实体的相关属性信息
+a) 5 , ;
+确定构成元数据实体的元数据元素
+b) ;
+如果构成元数据实体的元数据元素需要新建 则进入步骤
+c) , 4;
+进入步骤 建立元数据扩展文档
+d) 9, 。
+步骤 扩展现有元数据实体
+3:
+需要扩展现有元数据实体以满足需要时进入本步骤
+:
+如果现有元数据实体的元数据元素需要新建 则进入步骤
+a) , 4;
+如果现有元数据实体的元数据元素需要扩展 则进入步骤
+b) , 5;
+若需要对现有元数据实体定义更严格的约束 条件 则进入步骤
+c) / , 6;
+进入步骤 建立元数据扩展文档
+d) 9, 。
+步骤 定义新的元数据元素
+4:
+需要新的元数据元素以满足需要时进入本步骤
+:
+根据本标准第 章的要求 给出新元数据元素的相关属性信息
+a) 5 , ;
+如果该元数据元素需要新的代码表 则进入步骤
+b) , 7;
+进入步骤 建立元数据扩展文档
+c) 9, 。
+步骤 扩展现有元数据元素
+5:
+需要扩展现有元数据元素以满足需要时进入本步骤
+:
+若需要对现有元数据元素定义更严格的约束 条件 则进入步骤
+a) / , 6;
+如果该元数据元素需要新的代码表 则进入步骤
+b) , 7;
+如果该元数据元素的代码值需要修改 则进入步骤
+c) , 8;
+进入步骤 建立元数据扩展文档
+d) 9, 。
+步骤 定义更严格的元数据约束 条件
+6: /
+需要对元数据实体或元数据元素定义更严格的约束 条件时进入本步骤
+/ :
+定义该元数据实体或元数据元素的新的约束 条件
+a) / ;
+进入步骤 建立元数据扩展文档
+b) 9, 。
+步骤 定义新的代码表
+7:
+需要新的代码表以满足某个元数据元素的值域时进入本步骤
+:
+建立新的元数据代码表 并添加代码表中的值
+a) , ;
+进入步骤 建立元数据扩展文档
+b) 9, ;
+使用新元数据代码表以满足需要
+c) 。
+步骤 增加或减少代码表的值
+8:
+需要对现有的代码表进行增加或减少代码表中的项时进入本步骤
+:
+修改该代码表 增加或减少代码表中的项
+a) , ;
+进入步骤 建立元数据扩展文档
+b) 9, ;
+13
+GB/T26840—2011
+使用新元数据代码表以满足需要
+c) 。
+步骤 完成元数据扩展文档
+9:
+完成上述扩展步骤以后 根据需要对扩展后形成的药品核心元数据 按照相应格式在相关文档中
+, ,
+记录
+。
+14
+GB/T26840—2011
+附 录 A
+规范性附录
+( )
+药品核心元数据XMLSchema
+本附录规定了药品核心元数据的 具体如下
+XMLSchema, :
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+xsschematargetNamespace="http www.e-service.org.cnmedicine"
+< : :// /
+xmlnsxs="http www.w3.org2001XMLSchema"xmlns="http www.e-service.org.cnmedicine"
+: :// / / :// /
+elementFormDefault="qualified"attributeFormDefault="unqualified"version="1.0"
+>
+xsannotation
+< : >
+xsdocumentation 电子商务 药品核心元数据 xsdocumentation
+< : > </ : >
+xsdocumentationV1.0 xsdocumentation
+< : > </ : >
+xsdocumentation 中国××××院 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselementname="metadata"
+< : >
+xsannotation
+< : >
+xsdocumentation 元数据 xsdocumentation
+< : > </ : >
+xsdocumentationmetadata xsdocumentation
+< : > </ : >
+xsdocumentation 定义电子商务药品核心元数据的根实体 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="MedicineInformation"
+< : />
+xselementref="MedicineBusinessInformation"minOccurs="0"maxOccurs="unbounded"
+< : />
+xselementref="PublishInformation"maxOccurs="unbounded"
+< : />
+xsanynamespace=" other"processContents="lax"minOccurs="0"
+< : ##
+maxOccurs="unbounded"
+/>
+xssequence
+</ : >
+xsanyAttributeprocessContents="lax"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+-- 元数据 实体集信息 --
+<! ******** 《 》********** >
+xselementname="MedicineInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 药品信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品的一组信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="medicineID"type="xsstring"
+< : : >
+xsannotation
+< : >
+15
+GB/T26840—2011
+xsdocumentation 药品标识符 xsdocumentation
+< : > </ : >
+xsdocumentation 药品唯一不变的标识代码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="approvedDrugNames"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 通用名称 xsdocumentation
+< : > </ : >
+xsdocumentation 国家药品标准中收载的药品名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="commodityName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 商品名称 xsdocumentation
+< : > </ : >
+xsdocumentation 经国家药品监督管理部门批准的特定企业使用的该药品专用的商品名
+< : >
+称 xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="englishName"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 英文名称 xsdocumentation
+< : > </ : >
+xsdocumentation 药品通用名称的英文名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="pinYin"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 汉语拼音 xsdocumentation
+< : > </ : >
+xsdocumentation 药品通用名称的汉语拼音 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="chemicalName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 化学名称 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的化学名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xschoice
+< : >
+xsannotation
+< : >
+xsdocumentation 批准文号 进口注册证号 医药产品注册证号是三选一的关系 xs
+< : > 、 、 </ :
+documentation
+>
+xsannotation
+</ : >
+xselementname="licenseNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+16
+GB/T26840—2011
+xsdocumentation 批准文号 xsdocumentation
+< : > </ : >
+xsdocumentation 国内药品生产企业在生产药品前报请国家药品监督管理部门批准后
+< : >
+获得的身份证明 xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="importRegistrationCertificateNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 进口注册证号 xsdocumentation
+< : > </ : >
+xsdocumentation 进口药品经国务院药品监督管理部门组织审查批准颁发的证书的编
+< : >
+号 xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="registrationCertificateNoForMedicalProduct"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 医药产品注册证号 xsdocumentation
+< : > </ : >
+xsdocumentation 中国香港 澳门和台湾地区企业生产的药品所取得的注册证书的编
+< : > 、
+号 xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xschoice
+</ : >
+xselementname="OTCType"type="xsboolean"
+< : : >
+xsannotation
+< : >
+xsdocumentationOTC类别 xsdocumentation
+< : > </ : >
+xsdocumentation 是否为非处方类药品 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="specifications"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 规格 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的规格大小 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="formulation"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 剂型 xsdocumentation
+< : > </ : >
+xsdocumentation 为适应治疗或预防的需要而制备的药物应用形式
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="packaging"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 包装 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的包装方式 xsdocumentation
+< : > </ : >
+17
+GB/T26840—2011
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="composition"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 成分 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的组成成分 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="characteristics"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 性状 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的颜色 形状或味道等特征的描述 xsdocumentation
+< : > 、 </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="indications"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 适应症 xsdocumentation
+< : > </ : >
+xsdocumentation 适宜于采用这种药品的病症 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="dosageAndAdministration"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 用法用量 xsdocumentation
+< : > </ : >
+xsdocumentation 服用药品的具体方法和数量 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="adverseEffects"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 不良反应 xsdocumentation
+< : > </ : >
+xsdocumentation 服用药品时身体发生的不良症状 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="contraindications"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 禁忌 xsdocumentation
+< : > </ : >
+xsdocumentation 医药上应避免的事物 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="precautionsForUse"type="xsstring"minOccurs="0"
+< : :
+maxOccurs="unbounded"
+>
+xsannotation
+< : >
+xsdocumentation 注意事项 xsdocumentation
+< : > </ : >
+xsdocumentation 服用药品时应注意的事项 xsdocumentation
+< : > </ : >
+18
+GB/T26840—2011
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="storage"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 贮藏 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的存放方式 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="shelfLife"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 有效期 xsdocumentation
+< : > </ : >
+xsdocumentation 药品发挥效用的有效期限 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="specificationNo"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 执行标准 xsdocumentation
+< : > </ : >
+xsdocumentation 药品在生产过程中所执行的标准名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MedicineClassificationInformation"maxOccurs="unbounded"
+< : >
+xsannotation
+< : >
+xsdocumentation 药品分类信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品分类的信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="medicineClassificationStandard"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 药品分类标准 xsdocumentation
+< : > </ : >
+xsdocumentation 采用的药品分类国家标准或国际标准 也可以是行业标准 地方标
+< : > , 、
+准 企业标准等 xsdocumentation
+、 </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="medicineClassificationCode"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 药品分类代码 xsdocumentation
+< : > </ : >
+xsdocumentation 药品名称在采用的药品分类体系中的代码
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="medicineClassificationName"type="xsstring"
+< : : >
+xsannotation
+< : >
+19
+GB/T26840—2011
+xsdocumentation 药品分类名称 xsdocumentation
+< : > </ : >
+xsdocumentation 药品分类体系中药品分类代码对应的中文名称
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="MedicineManufactureInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 药品生产信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品生产情况的信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="manufactureDate"type="xsdate"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 生产日期 xsdocumentation
+< : > </ : >
+xsdocumentation 生产药品的日期 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="lotNumber"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 生产批号 xsdocumentation
+< : > </ : >
+xsdocumentation 生产单位在药品生产过程中 给同一次投料 同一次生产工艺所生
+< : > , 、
+产的药品赋予的批号 xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="endShelfLife"type="xsdate"
+< : : >
+xsannotation
+< : >
+xsdocumentation 有效期至 xsdocumentation
+< : > </ : >
+xsdocumentation 药品失去药性的截止日期 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="MedicineManufacturerInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 药品生产企业信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品生产企业情况的信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+20
+GB/T26840—2011
+xssequence
+< : >
+xselementname="manufacturerName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 生产企业名称 xsdocumentation
+< : > </ : >
+xsdocumentation 生产药品的企业名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="manufactureAddress"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 生产地址 xsdocumentation
+< : > </ : >
+xsdocumentation 生产企业的详细地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="organizationCode"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 组织机构代码 xsdocumentation
+< : > </ : >
+xsdocumentation 对中华人民共和国内依法注册 依法登记的机关 企事业单位 社会团
+< : > 、 、 、
+体和民办非企业单位颁发一个在全国范围内唯一的 始终不变的代码标识
+、
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="productionCorporationCertificateNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 生产企业许可证号 xsdocumentation
+< : > </ : >
+xsdocumentation 生产企业的许可证的编号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="goodManufacturingPracticeCertificateNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentationGMP证书号 xsdocumentation
+< : > </ : >
+xsdocumentation 药品GMP认证证书编号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="legalRepresentativeorPrincipal"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 法定代表人 负责人 xsdocumentation
+< : > ( )</ : >
+xsdocumentation 依法律或法人章程规定代表法人行使职权的负责人
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementref="ContactInformation"maxOccurs="unbounded"
+< : >
+xsannotation
+< : >
+xsdocumentation 联系信息 xsdocumentation
+< : > </ : >
+21
+GB/T26840—2011
+xsdocumentation 药品生产企业的联系信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xsanynamespace=" other"processContents="lax"minOccurs="0"maxOccurs="
+< : ##
+unbounded"
+/>
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsanynamespace=" other"processContents="lax"minOccurs="0"
+< : ##
+maxOccurs="unbounded"
+/>
+xssequence
+</ : >
+xsanyAttributeprocessContents="lax"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="MedicineBusinessInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 药品经营企业信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品经营企业情况的信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="businessCorporationName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 经营企业名称 xsdocumentation
+< : > </ : >
+xsdocumentation 经营企业的名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="businessAddress"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 经营地址 xsdocumentation
+< : > </ : >
+xsdocumentation 经营企业的详细地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="organizationCode"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 组织机构代码 xsdocumentation
+< : > </ : >
+xsdocumentation 对中华人民共和国内依法注册 依法登记的机关 企事业单位 社
+< : > 、 、 、
+会团体和民办非企业单位颁发一个在全国范围内唯一的 始终不变的代码标识 xsdocumentation
+、 </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="businessCorporationCertificateNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+22
+GB/T26840—2011
+xsdocumentation 经营企业许可证号 xsdocumentation
+< : > </ : >
+xsdocumentation 经营企业的许可证的编号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="goodSupplyingPracticeCertificateNo"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentationGSP证书号 xsdocumentation
+< : > </ : >
+xsdocumentation 药品GSP认证证书编号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="businessRange"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 经营范围 xsdocumentation
+< : > </ : >
+xsdocumentation 经营企业经营药品的种类范围 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="legalRepresentativeorPrincipal"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 法定代表人 负责人 xsdocumentation
+< : > ( )</ : >
+xsdocumentation 依法律或法人章程规定代表法人行使职权的负责人
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="PriceInformation"minOccurs="0"maxOccurs="unbounded"
+< : >
+xsannotation
+< : >
+xsdocumentation 价格信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品价格的信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="unitPrice"type="xsdouble"
+< : : >
+xsannotation
+< : >
+xsdocumentation 单价 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的单位价格 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="currency"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 币种 xsdocumentation
+< : > </ : >
+xsdocumentation 单价的币种 如人民币 美元等 xsdocumentation
+< : > , 、 </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="measureUnit"type="xsstring"
+< : : >
+23
+GB/T26840—2011
+xsannotation
+< : >
+xsdocumentation 计量单位 xsdocumentation
+< : > </ : >
+xsdocumentation 计量药品的标准量的名称 如盒 袋 支 瓶等
+< : > , 、 、 、
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementref="ContactInformation"maxOccurs="unbounded"
+< : >
+xsannotation
+< : >
+xsdocumentation 联系信息 xsdocumentation
+< : > </ : >
+xsdocumentation 药品经营企业的联系信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xsanynamespace=" other"processContents="lax"minOccurs="0"
+< : ##
+maxOccurs="unbounded"
+/>
+xssequence
+</ : >
+xsanyAttributeprocessContents="lax"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="PublishInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 发布信息 xsdocumentation
+< : > </ : >
+xsdocumentation 描述药品发布的一组信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="publisher"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 发布方 xsdocumentation
+< : > </ : >
+xsdocumentation 药品的发布人或发布单位名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="publishDate"type="xsdate"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 发布日期 xsdocumentation
+< : > </ : >
+xsdocumentation 药品信息发布的日期 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="certificateNoofmedicineInformationService"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 互联网药品信息服务资格证书号 xsdocumentation
+< : > </ : >
+24
+GB/T26840—2011
+xsdocumentation 互联网药品信息服务资格证书的编号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="webSite"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 网址 xsdocumentation
+< : > </ : >
+xsdocumentation 药品信息所在的互联网地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementref="ContactInformation"maxOccurs="unbounded"
+< : >
+xsannotation
+< : >
+xsdocumentation 联系信息 xsdocumentation
+< : > </ : >
+xsdocumentation 药品发布方的联系信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xsanynamespace=" other"processContents="lax"minOccurs="0"
+< : ##
+maxOccurs="unbounded"
+/>
+xssequence
+</ : >
+xsanyAttributeprocessContents="lax"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="ContactInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 联系信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="name"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 姓名 xsdocumentation
+< : > </ : >
+xsdocumentation 发布方联系人的姓名 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="telephoneNumber"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 电话号码 xsdocumentation
+< : > </ : >
+xsdocumentation 企业的电话号码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="faxNumber"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 传真号码 xsdocumentation
+< : > </ : >
+xsdocumentation 企业的传真号码 xsdocumentation
+< : > </ : >
+25
+GB/T26840—2011
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="e-mail"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 电子邮箱 xsdocumentation
+< : > </ : >
+xsdocumentation 企业的电子邮箱 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="address"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 地址 xsdocumentation
+< : > </ : >
+xsdocumentation 企业的详细地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="postalCode"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 邮政编码 xsdocumentation
+< : > </ : >
+xsdocumentation 企业的邮政编码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xsanynamespace=" other"processContents="lax"maxOccurs="unbounded"
+< : ## />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+26
+GB/T26840—2011
+附 录 B
+资料性附录
+( )
+药品核心元数据示例
+B1 示例概述
+.
+本附录按照第 章的要求给出完整的核心元数据示例 所填元数据内容仅仅具有示意性
+8 , 。
+B2 元数据示例
+.
+药品信息
+——— :
+药品标识符
+——— :86900073000×××
+通用名称 罗红 片
+——— : ××
+商品名称 罗红 片
+——— : ××
+英文名称
+——— :×××Tablets
+汉语拼音
+——— :Luohong××Pian
+化学名称 甲氧基乙氧基 甲基 肟 素
+——— :9-[O-[(2- )- ] ]××
+批准文号 国药准字
+——— : H109700××
+类别
+———OTC :false
+规格
+——— :150mg
+剂型 片剂
+——— :
+包装 铝塑包装 每盒 片
+——— : , 6
+成分 本品主要成分为罗红
+——— : ××
+性状 本品为白色或类白色片
+——— :
+适应症 本品适用于化脓性链球菌引起的咽炎及扁桃体炎 敏感菌所致的鼻窦炎 中耳炎 急
+——— : , 、 、
+性支气管炎 慢性支气管炎急性发作 肺炎支原体或衣原体所致的肺炎 沙眼衣原体引起的
+、 , ;
+尿道炎和宫颈炎 敏感细菌引起的皮肤软组织感染
+;
+用法用量 空腹口服 一般疗程为 日 日 成人一次 片 一日 次 也可
+——— : , 5 ~12 。 150mg(1 ), 2 ;
+一次 片 一日 次
+300mg(2 ), 1
+不良反应 主要不良反应为腹痛 腹泻 恶心 呕吐等胃肠道反应 但发生率明显低于红霉素
+——— : 、 、 、 , 。
+偶见皮疹 皮肤瘙痒 头昏 头痛 肝功能异常 及 升高 外周血细胞下降等
+、 、 、 、 (ALT AST )、
+禁忌 对本品 红霉素或其他大环内酯类药物过敏者禁用
+——— : 、
+注意事项 肝功能不全者慎用 严重肝硬化者的半衰期延长至正常水平 倍以上 如确实
+——— :1. 。 2 ,
+需要使用 则一次给药 片 一日 次 轻度肾功能不全者不需作剂量调整 严
+, 150mg(1 ), 1 。2. ,
+重肾功能不全者给药时间延长一倍 一次给药 片 一日 次 本品与红霉素
+, 150mg(1 ), 1 。3.
+存在交叉耐药性 食物对本品的吸收有影响 进食后服药会减少吸收 与牛奶同服可增加
+。4. , ,
+吸收 服用本品后可影响驾驶及机械操作能力
+。5.
+贮藏 密封 在干燥处保存
+——— : ,
+有效期 个月
+——— :24
+执行标准 中国药典 版第二部
+——— :《 》2005
+药品分类信息
+——— :
+药品分类标准 全国主要产品分类与代码 第 部分 可运输产品
+——— :GB/T7635.1—2002《 1 : 》
+药品分类代码
+——— :35257.2××
+27
+GB/T26840—2011
+药品分类名称 罗红
+——— : ××
+药品生产信息
+——— :
+生产日期
+——— :2009-01-01
+生产批号
+——— :090909
+有效期至
+——— :2011-01-01
+药品生产企业信息
+——— :
+生产企业名称 北京 药业有限公司
+——— : ××××
+生产地址 北京市 区 路 号
+——— : ×× ×× ××
+组织机构代码
+——— :111111×××
+生产企业许可证号 京
+——— : ××××××××××
+证书号 京
+———GMP : F12××
+法定代表人 王
+——— : ××
+联系信息
+——— :
+姓名 布
+——— : ××
+电话号码
+——— :010-12345678
+传真号码
+——— :010-12345678
+电子信箱
+——— :bu××@163.com
+地址 北京市 区 路 号
+——— : ×× ×× ××
+邮政编码
+——— :100000
+药品经营企业信息
+——— :
+经营企业名称 安徽省 生化药业有限公司
+——— : ××
+经营地址 安徽省 街 号
+——— : ×× ××
+组织机构代码
+——— :000000×××
+经营企业许可证号 徽
+——— : ××××××
+证书号
+———GSP :I41××
+经营范围 中成药 化学制剂 生化药品
+——— : 、 、
+法定代表人 负责人 李
+——— ( ): ××
+价格信息
+——— :
+单价
+——— :12
+币种 人民币
+——— :
+计量单位 盒
+——— :
+联系信息
+——— :
+姓名 赵
+——— : ××
+电话号码
+——— :022-12345777
+传真号码
+——— :022-12345777
+电子信箱
+——— :zhao××@163.com
+地址 天津市 产业区 道 号
+——— : ×× ×× ××
+邮政编码
+——— :300333
+发布信息
+——— :
+发布方 广州 信息技术有限公司
+——— : ××
+发布日期
+——— :2009-02-05
+互联网药品信息服务资格证书号 经营性
+——— :[×]- -2009-00××
+网址
+——— :http://www.yiyao××.com
+28
+GB/T26840—2011
+联系信息
+——— :
+姓名 徐
+——— : ××
+电话号码
+——— :020-12345666
+传真号码
+——— :020-12345666
+电子信箱
+——— :xu××@163.com
+地址 广州市 区 路 号
+——— : ×× ×× ××
+邮政编码
+——— :510666
+B3 元数据XML编码示例
+.
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+metadataxmlns="http www.e-service.org.cnmedicine"
+< :// /
+xmlnsxsi="http www.w3.org2001XMLSchema-instance"
+: :// / /
+xsischemaLocation="http www.e-service.org.cnmedicinemedicine.xsd"
+: :// / >
+MedicineInformation
+< >
+medicineID86900073000××× medicineID
+< > </ >
+approvedDrugNames 罗红××片 approvedDrugNames
+< > </ >
+commodityName 罗红××片 commodityName
+< > </ >
+englishName ×××Tablets englishName
+< > </ >
+pinYinLuohong××Pian pinYin
+< > </ >
+chemicalName9-O- 2-甲氧基乙氧基-甲基 肟 ××素 chemicalName
+< > [ [( ) ] ] </ >
+licenseNo 国药准字H109700×× licenseNo
+< > </ >
+OTCTypefalse OTCType
+< > </ >
+specifications150mg specifications
+< > </ >
+formulation 片剂 formulation
+< > </ >
+packaging 铝塑包装 每盒6片 packaging
+< > , </ >
+composition 本品主要成分为罗红×× composition
+< > </ >
+characteristics 本品为白色或类白色片 characteristics
+< > </ >
+本品适用于化脓性链球菌引起的咽炎及扁桃体炎 敏感菌所致的鼻窦炎 中耳炎
+<indications> , 、 、
+急性支气管炎 慢性支气管炎急性发作 肺炎支原体或衣原体所致的肺炎 沙眼衣原体引起的尿道炎和
+、 , ;
+宫颈炎 敏感细菌引起的皮肤软组织感染
+; </indications>
+空腹口服 一般疗程为 日 日 成人一次 片 一日
+<dosageAndAdministration> , 5 ~12 。 150mg(1 ),
+次 也可一次 片 一日 次
+2 ; 300mg(2 ), 1 </dosageAndAdministration>
+主要不良反应为腹痛 腹泻 恶心 呕吐等胃肠道反应 但发生率明显低于红霉
+<adverseEffects> 、 、 、 ,
+素 偶见皮疹 皮肤瘙痒 头昏 头痛 肝功能异常 及 升高 外周血细胞下降等
+。 、 、 、 、 (ALT AST )、 </adverseEf-
+fects>
+对本品 红霉素或其他大环内酯类药物过敏者禁用
+<contraindications> 、 </contraindications>
+肝功能不全者慎用 严重肝硬化者的半衰期延长至正常水平 倍以上
+<precautionsForUse>1. 。 2 ,
+如确实需要使用 则一次给药 片 一日 次 轻度肾功能不全者不需作剂量调整 严重肾
+, 150mg(1 ), 1 。2. ,
+功能不全者给药时间延长一倍 一次给药 片 一日 次 本品与红霉素存在交叉耐药性
+, 150mg(1 ), 1 。3. 。
+食物对本品的吸收有影响 进食后服药会减少吸收 与牛奶同服可增加吸收 服用本品后可影响驾
+4. , , 。5.
+驶及机械操作能力
+</precautionsForUse>
+storage 密封 在干燥处保存 storage
+< > , </ >
+shelfLife24个月 shelfLife
+< > </ >
+29
+GB/T26840—2011
+specificationNo 中国药典 2005版第二部 specificationNo
+< >《 》 </ >
+MedicineClassificationInformation
+< >
+medicineClassificationStandardGBT7635.1 2002 全国主要产品分类与代码 第1部分
+< > / — 《 :
+可运输产品 medicineClassificationStandard
+》</ >
+medicineClassificationCode35257.2×× medicineClassificationCode
+< > </ >
+medicineClassificationName 罗红×× medicineClassificationName
+< > </ >
+MedicineClassificationInformation
+</ >
+MedicineManufactureInformation
+< >
+manufactureDate2009-01-01 manufactureDate
+< > </ >
+lotNumber090909 lotNumber
+< > </ >
+endShelfLife2011-01-01 endShelfLife
+< > </ >
+MedicineManufactureInformation
+</ >
+MedicineManufacturerInformation
+< >
+manufacturerName 北京××××药业有限公司 manufacturerName
+< > </ >
+manufactureAddress 北京市××区××路××号 manufactureAddress
+< > </ >
+organizationCode111111××× organizationCode
+< > </ >
+productionCorporationCertificateNo 京×××××××××× productionCorporation-
+< > </
+CertificateNo
+>
+goodManufacturingPracticeCertificateNo 京 F12× × goodManufacturingPracticeCer-
+< > </
+tificateNo
+>
+legalRepresentativeorPrincipal 王×× legalRepresentativeorPrincipal
+< > </ >
+ContactInformation
+< >
+name 布×× name
+< > </ >
+telephoneNumber010-12345678 telephoneNumber
+< > </ >
+faxNumber010-12345678 faxNumber
+< > </ >
+e-mailbu×× 163.com e-mail
+< > @ </ >
+address 北京市××区××路××号 address
+< > </ >
+postalCode100000 postalCode
+< > </ >
+ContactInformation
+</ >
+MedicineManufacturerInformation
+</ >
+MedicineInformation
+</ >
+MedicineBusinessInformation
+< >
+businessCorporationName 安徽省××生化药业有限公司 businessCorporationName
+< > </ >
+businessAddress 安徽省××街××号 businessAddress
+< > </ >
+organizationCode000000××× organizationCode
+< > </ >
+businessCorporationCertificateNo 徽×××××× businessCorporationCertificateNo
+< > </ >
+goodSupplyingPracticeCertificateNoI41×× goodSupplyingPracticeCertificateNo
+< > </ >
+businessRange 中成药 化学制剂 生化药品 businessRange
+< > 、 、 </ >
+legalRepresentativeorPrincipal 李×× legalRepresentativeorPrincipal
+< > </ >
+PriceInformation
+< >
+unitPrice12 unitPrice
+< > </ >
+currency 人民币 currency
+< > </ >
+measureUnit 盒 measureUnit
+< > </ >
+30
+GB/T26840—2011
+PriceInformation
+</ >
+ContactInformation
+< >
+name 赵×× name
+< > </ >
+telephoneNumber022-12345777 telephoneNumber
+< > </ >
+faxNumber022-12345777 faxNumber
+< > </ >
+e-mailzhao×× 163.com e-mail
+< > @ </ >
+address 天津市××产业区××道××号 address
+< > </ >
+postalCode300333 postalCode
+< > </ >
+ContactInformation
+</ >
+MedicineBusinessInformation
+</ >
+PublishInformation
+< >
+publisher 广州××信息技术有限公司 publisher
+< > </ >
+publishDate2009-02-05 publishDate
+< > </ >
+certificateNoofmedicineInformationService × -经营性-2009-00×× certificateNoof-
+< >[ ] </
+medicineInformationService
+>
+webSitehttp www.yiyao××.com webSite
+< > :// </ >
+ContactInformation
+< >
+name 徐×× name
+< > </ >
+telephoneNumber020-12345666 telephoneNumber
+< > </ >
+faxNumber020-12345666 faxNumber
+< > </ >
+e-mailxu×× 163.com e-mail
+< > @ </ >
+address 广州市××区××路××号 address
+< > </ >
+postalCode510666 postalCode
+< > </ >
+ContactInformation
+</ >
+PublishInformation
+</ >
+metadata
+</ >
+31
+GB/T26840—2011
+参 考 文 献
+中华人民共和国药品管理法 中华人民共和国主席令 号
+[1] 《 》 [2001]45
+全国主要产品分类与代码 第 部分 可运输产品
+[2] GB/T7635.1—2002 1 :
+32
+中 华 人 民 共 和 国
+国 家 标 准
+电子商务 药品核心元数据
+GB/T26840—2011
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京复兴门外三里河北街 号
+16
+邮政编码
+:100045
+网址
+:www.gb168.cn
+服务热线
+:010-68522006
+年 月第一版
+2011 11
+*
+书号
+:155066·1-43693
+版权专有 侵权必究
+—
+/
+1102
+04862T
+BG

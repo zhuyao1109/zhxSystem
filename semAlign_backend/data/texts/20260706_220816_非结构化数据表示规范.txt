@@ -1,0 +1,2427 @@
+ICS3524070
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T32909—2016
+非结构化数据表示规范
+Unstructureddataexpressionspecification
+2016-08-29发布 2017-03-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T32909—2016
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+缩略语
+4 …………………………………………………………………………………………………… 1
+非结构化数据 表示框架
+5 DDL ………………………………………………………………………… 2
+概述
+5.1 ………………………………………………………………………………………………… 2
+整体框架
+5.2 …………………………………………………………………………………………… 2
+基本抽象描述符
+5.3 …………………………………………………………………………………… 3
+基本抽象描述方案
+5.4 ………………………………………………………………………………… 5
+根元素
+5.5 ……………………………………………………………………………………………… 7
+数据类型
+6 ………………………………………………………………………………………………… 8
+基本数据类型
+6.1 ……………………………………………………………………………………… 8
+数值数据类型
+6.1.1 ………………………………………………………………………………… 8
+字符串数据类型
+6.1.2 ……………………………………………………………………………… 9
+日期数据类型
+6.1.3 ………………………………………………………………………………… 9
+扩展数据类型
+6.2 ……………………………………………………………………………………… 10
+标量
+6.2.1 …………………………………………………………………………………………… 10
+向量
+6.2.2 …………………………………………………………………………………………… 11
+矩阵
+6.2.3 …………………………………………………………………………………………… 11
+基本属性描述
+7 …………………………………………………………………………………………… 13
+基本元素
+7.1 …………………………………………………………………………………………… 13
+唯一标识符描述符
+7.1.1 …………………………………………………………………………… 13
+时间描述方案
+7.1.2 ………………………………………………………………………………… 13
+人物描述符
+7.1.3 …………………………………………………………………………………… 13
+地点描述方案
+7.1.4 ………………………………………………………………………………… 14
+创建信息描述方案
+7.2 ………………………………………………………………………………… 14
+修改信息描述方案
+7.3 ………………………………………………………………………………… 15
+格式与大小描述方案
+7.4 ……………………………………………………………………………… 15
+数据定位描述符
+7.5 …………………………………………………………………………………… 16
+语义特征描述
+8 …………………………………………………………………………………………… 16
+对象描述方案
+8.1 ……………………………………………………………………………………… 16
+事件描述方案
+8.2 ……………………………………………………………………………………… 17
+概念描述方案
+8.3 ……………………………………………………………………………………… 17
+数据编码描述方案
+8.4 ………………………………………………………………………………… 17
+数据语义描述方案
+8.5 ………………………………………………………………………………… 18
+Ⅰ
+GB/T32909—2016
+底层特征描述
+9 …………………………………………………………………………………………… 19
+图像类型
+9.1 …………………………………………………………………………………………… 19
+颜色相关描述符
+9.1.1 ……………………………………………………………………………… 19
+纹理特征
+9.1.2 ……………………………………………………………………………………… 25
+形状特征
+9.1.3 ……………………………………………………………………………………… 26
+局部特征
+9.1.4 ……………………………………………………………………………………… 27
+音频类型
+9.2 …………………………………………………………………………………………… 28
+标量序列
+9.2.1 ……………………………………………………………………………………… 28
+低级音频描述符
+9.2.2 ……………………………………………………………………………… 30
+静音描述符
+9.2.3 …………………………………………………………………………………… 32
+特征描述符
+9.2.4 MFCC …………………………………………………………………………… 32
+视频类型
+9.3 …………………………………………………………………………………………… 33
+时间域特征描述类型
+9.3.1 ………………………………………………………………………… 33
+运动特征
+9.3.2 ……………………………………………………………………………………… 35
+镜头和关键帧描述符
+9.3.3 ………………………………………………………………………… 38
+文本类型
+9.4 …………………………………………………………………………………………… 39
+原始数据描述
+10 ………………………………………………………………………………………… 40
+关联描述符
+11 …………………………………………………………………………………………… 41
+语义特征 底层特征关联描述符
+11.1 - ………………………………………………………………… 41
+基本属性 原始数据关联描述符
+11.2 - ………………………………………………………………… 41
+语义特征 原始数据关联描述符
+11.3 - ………………………………………………………………… 42
+底层特征 原始数据关联描述符
+11.4 - ………………………………………………………………… 42
+附录 规范性附录 类型语法定义
+A( ) Unsigned ……………………………………………………… 43
+附录 资料性附录 非结构化数据表示 定义
+B( ) XMLSchema ……………………………………… 47
+Ⅱ
+GB/T32909—2016
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本标准起草单位 北京航空航天大学 中国电子技术标准化研究院 清华大学 浙江大学 中国人民
+: 、 、 、 、
+大学
+。
+本标准主要起草人 马殿富 郎波 黄雷 高林 吴新松 刘贤刚 卫凤林 李莹 张展新 王朝坤 王建民
+: 、 、 、 、 、 、 、 、 、 、 、
+陈俊 庄越挺 陈岭 邵健 孙建伶 杜小勇 陈晋川
+、 、 、 、 、 、 。
+Ⅲ
+GB/T32909—2016
+非结构化数据表示规范
+1 范围
+本标准规定了文本 音频 视频 图像等非结构化数据的统一数据表示
+、 、 、 。
+本标准适用于非结构化管理系统中非结构化数据的表示
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 可扩展置标语言
+GB/T18793—2002 (XML)1.0
+可扩展置标语言模式
+XMLSchema (XMLSchema,W3CRecommendation,2May2001)
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+特征 feature
+数据的特性
+。
+32
+.
+逆向文件频率 inversedocumentfrequencyIDF
+;
+一个词语普遍重要性的度量 由总文件数目除以包含该词语的文件数目 将得到的商取对数获得
+, , 。
+33
+.
+词频 termfrequencyTF
+;
+某一给定的词语在文件中出现的次数
+。
+4 缩略语
+下列缩略语适用于本文件
+。
+描述符
+D: (Descriptor)
+描述定义语言
+DDL: (DescriptionDefinitionLanguage)
+描述方案
+DS: (DescriptionScheme)
+逆向文件频率
+IDF: (InverseDocumentFrequency)
+全球定位系统
+GPS: (GlobalPositioningSystem)
+梅尔频率倒谱系数
+MFCC: (MelFrequencyCepstrumCoefficient)
+尺度不变特征转换
+SIFT: (Scale-InvariantFeatureTransform)
+词频
+TF: (TermFrequency)
+词频 逆向文件频率
+TF-IDF: - (TermFrequency-InverseDocumentFrequency)
+统一建模语言
+UML: (UnifiedModelingLanguage)
+1
+GB/T32909—2016
+5 非结构化数据DDL表示框架
+51 概述
+.
+本标准通过抽象类定义的方式 用 来表达非结构化数据 表示框架
+, XMLSchema DDL ,XMLSchema
+的语法及使用方式见 和 非结构化数据表示 定义见附录
+GB/T18793—2002 XMLSchema。 XMLSchema B。
+52 整体框架
+.
+非结构化数据表示的 类图如图 所示
+UML 1 。
+图1 标准整体框架UML类图
+本标准定义了
+BaseType、DType、DSType、BasicAttributionDSType、SemanticDSType、LowFea-
+tureDSType、RawDataDSType、AssociatioDType、BasicAttributionDType、SemanticDType、LowFea-
+tureDType、RawDataDType、VisualDType、AudioDType、TextDType、VisualDSType、AudioDSType
+和 共 个抽象类 具体各抽象类的含义如下
+TextDSType 18 。 :
+是基准类型
+a) BaseType ;
+是抽象的描述符类型 是所有描述符的超类
+b) DType , ;
+是抽象的描述方案类型 是所有描述方案的超类
+c) DSType , ;
+是基本属性的描述方案基准类型
+d) BasicAttributionDSType ;
+是语义特征的描述方案基准类型
+e) SemanticDSType ;
+是底层特征的描述方案基准类型
+f) LowFeatureDSType ;
+是原始数据的描述方案基准类型
+g) RawDataDSType ;
+用于描述基本属性 语义特征 底层特征和原始数据之间的关联关系
+h) AssociatioDType 、 、 ;
+是基本属性的描述符基准类型
+i) BasicAttributionDType ;
+是语义特征的描述符基准类型
+j) SemanticDType ;
+是底层特征的描述符基准类型
+k) LowFeatureDType ;
+是原始数据的描述符基准类型
+l) RawDataDType ;
+是图像或视频类数据对其中的图像部分进行操作提取的描述方案基准类型
+m)VisualDSType ;
+2
+GB/T32909—2016
+是音频相关特征描述方案基准类型
+n) AudioDSType ;
+是文本相关特征描述方案基准类型
+o) TextDSType ;
+是图像或视频类数据对其中的图像部分进行操作提取的描述符基准类型
+p) VisualDType ;
+是音频相关特征描述符基准类型
+q) AudioDType ;
+是文本相关特征描述符基准类型
+r) TextDType 。
+其中 的语法形式定义如下
+BaseType :
+<complexTypename="BaseType"abstract="true">
+<complexContent>
+<restrictionbase="anyType"/>
+</complexContent>
+</complexType>
+的语法形式定义如下
+DType :
+-<comliexTypename="DType"abstract="true">
+-<complexContent>
+<extensionbase="BaseType"/>
+</complexContent>
+</complexType>
+的语法形式定义如下
+DSType :
+<complexTypename="DSType"abstract="true">
+<complexContent>
+<extensionbase="BaseType"/>
+</complexContent>
+</complexType>
+53 基本抽象描述符
+.
+非结构化数据基本抽象描述符的关系如图 所示
+2 。
+图2 基本抽象描述符
+3
+GB/T32909—2016
+基本属性描述符 语义特征描述符 底层特征描述符 原始数据描述符和关联描述符这 类基本抽
+、 、 、 5
+象描述符的语法定义如下
+:
+-<complexTypename="BasicAttributionDType"abstract="true">
+-<complexContent>
+<extensionbase="DType"/>
+</complexContent>
+</complexType>
+-<complexTypename="SemanticDType"abstract="true">
+-<complexContent>
+-<extensionbase="DType">
+</complexContent>
+</complexType>
+<complexTypename="LowFeatureDType"abstract="true">
+-<complexContent>
+<extensionbase="DType"/>
+</complexContent>
+</complexType>
+<complexTypename="RawDataDType"abstract="true">
+-<complexContent>
+<extensionbase="DType"/>
+</complexContent>
+</complexType>
+<complexTypename="AssociationDType"abstract="true">
+-<complexContent>
+<extensionbase="DType"/>
+</complexContent>
+</complexType>
+4
+GB/T32909—2016
+视频 音频 文本的描述符抽象类型的语法定义如下 其中视频描述符主要指基于图像内容进行操
+、 、 ,
+作所获得的描述符
+:
+-<complexTypename="VisualDType"abstract="true">
+-<complexContent>
+<extensionbase="LowFeatureDType"/>
+</complexContent>
+</complexType>
+-<complexTypename="AudioDType"abstract="true">
+-<complexContent>
+-<extensionbase="LowFeatureDType">
+<attributename="channels"type="integerVector"use="optional"/>
+</extension>
+</complexContent>
+</complexType>
+<complexTypename="TextDType"abstract="true">
+-<complexContent>
+<extensionbase="LowFeatureDType"/>
+</complexContent>
+</complexType>
+54 基本抽象描述方案
+.
+非结构化数据基本抽象描述方案的关系如图 所示
+3 。
+图3 基本抽象描述方案
+5
+GB/T32909—2016
+基本属性描述方案 语义特征描述方案 底层特征描述方案 原始数据描述方案和关联描述符语法
+、 、 、
+形式定义如下
+:
+基本属性描述方案定义
+<!-- -->
+-<complexTypename="BasicAttributionDSType"abstract="true">
+-<complexContent>
+<extensionbase="DSType"/>
+</complexContent>
+</complexType>
+语义特征描述方案定义
+<!-- -->
+-<complexTypename="SemanticDSType"abstract="true">
+-<complexContent>
+<extensionbase="DSType"/>
+</complexContent>
+</complexType>
+底层特征描述方案定义
+<!-- -->
+<complexTypename="LowFeatureDSType"abstract="true">
+<complexContent>
+<extensionbase="DSType"/>
+</complexContent>
+</complexType>
+原始数据描述方案定义
+<!-- -->
+<complexTypename="RawDataDSType"abstract="true">
+<complexContent>
+<extensionbase="DSType"/>
+</complexContent>
+</complexType>
+关联描述符定义
+<!-- -->
+<complexTypename="AssociationDType"abstract="true">
+<complexContent>
+<extensionbase="DType"/>
+</complexContent>
+</complexType>
+6
+GB/T32909—2016
+视频 音频 文本的描述方案抽象类型的语法定义如下
+、 、 :
+-<complexTypename="VisualDSType"abstract="true">
+- <complexContent>
+<extensionbase="LowFeatureDSType"/>
+</complexContent>
+</complexType>
+-<complexTypename="AudioDSType"abstract="true">
+-<complexContent>
+-<extensionbase="LowFeatureDSType">
+<attributename="channels"type="integerVector"use="optional"/>
+</extension>
+</complexContent>
+</complexType>
+-<complexTypename="TextDSType"abstract="true">
+-<complexContent>
+<extensionbase="LowFeatureDSType"/>
+</complexContent>
+</complexType>
+55 根元素
+.
+描述文件根元素从 节点开始 子元素为 实例序列
+XML unstructuredData , UnstructuredDataType ,
+每一个 实例由其基本属性描述方案 语义属性描述方案 底层特征描述方案以
+UnstructuredDataType 、 、
+及原始数据描述方案及其 属性构成 其语法形式定义如下
+ID 。 :
+根元素
+<!-- -->
+<elementname="unstructuredData">
+<complexType>
+根元素包含多个非结构化数据
+<!-- -->
+<sequence>
+<elementname="datum"type="UnstructuredDataType"minOccurs="0"maxOccurs=
+"unbounded"/>
+</sequence>
+</complexType>
+</element>
+-
+7
+GB/T32909—2016
+其中 包含非结构化数据类型定义 包括基本属性描述方案 语义特征描述
+UnstructuredDataType , 、
+方案 底层特征描述方案 原始数据描述方案以及关联关系描述符 其语法形式定义如下
+、 、 , :
+<complexTypename="UnstructuredDataType">
+<sequence>
+<elementname="basicDS"type="BasicAttributionDSType"minOccurs="1"maxOccurs=
+"unbounded"/>
+<elementname="semanticDS"type="SemanticDSType"minOccurs="1"maxOccurs="un-
+bounded"/>
+<elementname="lowFeatureDS"type="LowFeatureDSType"minOccurs="1"maxOccurs=
+"unbounded"/>
+<elementname="rawDataDS"type="RawDataDSType"minOccurs="1"maxOccurs="un-
+bounded"/>
+<elementname="association"type="AssociationDType"minOccurs="0"maxOccurs="un-
+bounded"/>
+</sequence>
+<attributename="id"type="ID"use="required">
+</complexType>
+6 数据类型
+61 基本数据类型
+.
+611 数值数据类型
+..
+数值数据类型如表 所示
+1 。
+表1 数值数据类型
+名称 描述
+有正负的 位整数
+byte 8
+十进制数
+decimal
+有正负的 位整数
+int 32
+整数值
+integer
+有正负的 位整数
+long 64
+仅包含负值的整数
+negativeInteger (…,-2,-1)
+仅包含非负值的整数
+nonNegativeInteger (0,1,2,…)
+仅包含非正值的整数
+nonPositiveInteger (…,-2,-1,0)
+仅包含正值的整数
+positiveInteger (1,2,…)
+有正负的 位整数
+short 16
+无正负的 位整数
+unsignedLong 64
+8
+GB/T32909—2016
+表1 续
+( )
+名称 描述
+无正负的 位整数
+unsignedInt 32
+无正负的 位整数
+unsignedShort 16
+无正负的 位整数
+unsignedByte 8
+布尔型
+boolean
+浮点双精度
+double
+浮点单精度
+float
+二进制块类型
+hexBinary
+612 字符串数据类型
+..
+字符串数据类型如表 所示
+2 。
+表2 字符串数据类型
+名称 描述
+在 中提交 属性的字符串
+ID XML ID
+在 中提交 属性的字符串
+IDREF XML IDREF
+包含合法的语言 的字符串
+IDREFSlanguage id
+包含合法 名称的字符串
+Name XML
+在 中提交 属性的字符串
+NMTOKEN XML NMTOKEN
+不包含换行符 回车或制表符的字符串
+normalizedString 、
+字符串
+string
+不包含换行符 回车或制表符 开头或结尾空格或者多个连续空格的字符串
+token 、 、
+613 日期数据类型
+..
+日期数据类型如表 所示
+3 。
+表3 日期数据类型
+名称 描述
+定义一个日期值
+date :“YYYY-MM-DD”
+定义一个日期和时间值
+dateTime :“YYYY-MM-DDThh:mm:ss”
+定义一个时间间隔 时间间隔使用下面的格式来规定 nn n n n n 其
+: :“P Y M DT H M S”,
+中 表示周期 必需 n 表示年数n 表示月数n 表示天数 表示时间部分
+P ( );Y ;M ;D ;T
+duration 的起始 若规定小时 分钟和秒 则此选项为必需 n 表示小时数n 表示分钟
+( 、 , );H ;M
+数n 表示秒数
+;S
+定义日期的一个部分 天
+gDay ——— (DD)
+9
+GB/T32909—2016
+表3 续
+( )
+名称 描述
+定义日期的一个部分 月
+gMonth ——— (MM)
+定义日期的一个部分 月和天
+gMonthDay ——— (MM-DD)
+定义日期的一个部分 年
+gYear ——— (YYYY)
+定义日期的一个部分 年和月
+gYearMonth ——— (YYYY-MM)
+定义一个时间值
+time :“hh:mm:ss”
+62 扩展数据类型
+.
+621 标量
+..
+6211 Unsigned类型
+...
+语法定义见附录
+A。
+6212 取值区间 01 数据类型
+... [,]
+语法形式定义如下
+:
+<simpleTypename="zeroToOneType">
+<restrictionbase="float">
+<minInclusivevalue="0.0"/> <maxInclusivevalue="1.0"/>
+</restriction>
+</simpleType>
+6213 取值区间 -11 数据类型
+... [ ,]
+语法形式定义如下
+:
+<simpleTypename="minusOneToOneType">
+<restrictionbase="float">
+<minInclusivevalue="-1.0"/> <maxInclusivevalue="+1.0"/>
+</restriction>
+</simpleType>
+6214 非负实数类型
+...
+语法形式定义如下
+:
+<simpleTypename="nonNegativeReal">
+<restrictionbase="double">
+<minInclusivevalue="0.0"/>
+</restriction>
+</simpleType>
+10
+GB/T32909—2016
+622 向量
+..
+6221 整型向量类型
+...
+语法形式定义如下
+:
+-<simpleTypename="integerVector">
+<listitemType="integer"/>
+</simpleType>
+6222 浮点向量类型
+...
+语法形式定义如下
+:
+<simpleTypename="floatVector">
+<listitemType="float"/>
+</simpleType>
+6223 字符串向量类型
+...
+语法形式定义如下
+:
+<simpleTypename="stringVector">
+<listitemType="string"/>
+</simpleType>
+6224 元素取值区间 01 向量类型
+... [,]
+语法形式定义如下
+:
+<simpleTypename="zeroToOneVector">
+<list>
+<simpleType>
+<restrictionbase="float">
+<minInclusivevalue="0"/>
+<maxInclusivevalue="1.0"/>
+</restriction>
+</simpleType>
+</list>
+</simpleType>
+623 矩阵
+..
+6231 概述
+...
+本标准定义的矩阵为多维空间矩阵 其中维度由一属性项控制 该属性项定义为一个整数数组 其
+, , ,
+中整数的个数为矩阵维度 矩阵定义在向量之上 并添加了相关约束 采取行向量优先方式
+。 , , 。
+11
+GB/T32909—2016
+6232 整型矩阵类型
+...
+该整型矩阵基于整型向量 其语法形式定义如下
+, :
+-<complexTypename="IntegerMatrixType">
+-<simpleContent>
+-<extensionbase="integerVector">
+<attributeuse="required"ref="reservedDim"/>
+</extension>
+</simpleContent>
+</complexType>
+其中 类型语法形式定义如下 该内置属性类型仅用于矩阵类型的定义使用
+reservedDim , 。
+类型是一个正整数数组 其中数组长度代表矩阵维度
+reservedDim , 。
+<attributename="reservedDim">
+<simpleType>
+<restrictionbase="listOfPositiveIntegerForDim">
+<minLengthvalue="1"/>
+</restriction>
+</simpleType>
+</attribute>
+<simpleTypename="listOfPositiveIntegerForDim">
+<listitemType="positiveInteger"/>
+</simpleType>
+6233 浮点型矩阵类型
+...
+该浮点型矩阵基于浮点型向量 其语法形式定义如下
+, :
+-<complexTypename="FloatMatrixType">
+-<simpleContent>
+-<extensionbase="floatVector">
+<attributeuse="required"ref="reservedDim"/>
+</extension>
+</simpleContent>
+</complexType>
+12
+GB/T32909—2016
+7 基本属性描述
+71 基本元素
+.
+711 唯一标识符描述符
+..
+此描述符可作为多媒体内容描述的唯一标识 用此描述符可唯一区分和定位对应非结构化数据
+, 。
+其语法形式定义如下
+:
+<complexTypename="UIdentifierDType">
+<elementname="IdValue"type="string"/>
+<attributename="IdOrganization"type="string"/>
+<attributename="IdName"type="string"/>
+</complexType>
+其中
+:
+描述多媒体内容唯一标识符的类型
+UIdentifierDType: ;
+唯一标识符的值
+IdValue: ;
+指定标识的组织或者机构
+IdOrganization: ;
+标识符的名称
+IdName: 。
+712 时间描述方案
+..
+此描述方案用于规范时间段描述 由时间点描述符 开始时间 和时间段描述符 持续时间 两个元
+, ( ) ( )
+素组成 其语法形式定义如下
+。 :
+<complexTypename="TimeDSType">
+<sequence>
+<choice>
+<elementname="TimePoint"type="time"/>
+<elementname="DataTimePoint"type="dateTime"/>
+</choice>
+<elementname="TimeDuration"type="duration"/>
+</sequence>
+</complexType>
+713 人物描述符
+..
+此描述符主要包括人物 和姓名两个属性 其语法形式定义如下
+ID 。 :
+<complexTypename="PersonDType">
+<attributename="Id"type="ID"/>
+<attributename="Name"type="string"/>
+</complexType>
+<elementname="Person"type="PersonDType"/>
+13
+GB/T32909—2016
+其中
+:
+人物描述符类型
+PersonDType: ;
+一个人物描述实例的标识符
+Id: ;
+一个人物描述实例的姓名
+Name: 。
+714 地点描述方案
+..
+此描述方案用于位置的描述 位置可以是真实的 历史的或是虚构的
+, 、 。
+<complexTypename="PlaceDSType">
+<sequence>
+<elementname="PlaceName"type="string"maxOccurs="unbounded"/>
+<elementname="PlaceRole"type="string"minOccurs="0"/>
+<elementname="Planet"type="string"minOccurs="0"/>
+<elementname="GPSCoordinates"type="string"minOccurs="0"/>
+<elementname="Country"type="string"minOccurs="0"/>
+<elementname="Region"type="string"minOccurs="0"/>
+<elementname="PostingIdentifier"type="string"minOccurs="0"/>
+<elementname="AdministrativeUnit"type="string"minOccurs="0"/>
+<elementname="PostalAddress"type="string"minOccurs="0"/>
+<elementname="InternalCoordinates"type="string"minOccurs="0"/>
+<attributename="id"type="ID"use="optional"/>
+</sequence>
+</complexType>
+其中
+:
+描述方案描述的对象
+PlaceDSType: ;
+位置的名称
+PlaceName: ;
+位置的作用 例如射击位置 邮寄地址等
+PlaceRole: , 、 ;
+星球的名称 默认为地球
+Planet: , ;
+系统上的坐标
+GPSCoordinates:GPS ;
+国家代码
+Country: ;
+地区代码
+Region: ;
+邮政编码
+PostingIdentifier: ;
+行政单位的名称
+AdimistrativeUnit: ;
+邮政地址
+PostalAddress: ;
+用于描述内部地址的文本 能够唯一定位到该地址
+InternalCoordinates: , ;
+位置描述实例的标识符
+id: 。
+72 创建信息描述方案
+.
+此描述方案用于描述内容的创建 包括创建者 创建地点 创建时间和创建描述 其语法形式定义
+, 、 、 。
+如下
+:
+14
+GB/T32909—2016
+<complexTypename="CreationDSType">
+<sequence>
+<elementname="Creator"type="PersonDType" minOccurs="0"maxOccurs="unbounded"/>
+<elementname="CreationLocation"type="PlaceDSType" minOccurs="0"maxOccurs="1"/>
+<elementname="CreationDate"type="TimePointDType" minOccurs="0"maxOccurs="1"/>
+<elementname="CreationDescription"type="string"minOccurs="0"maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+其中
+:
+表示非结构化数据类型内容的创建 包括时间 地点等
+CreationDSType: , 、 ;
+非结构化数据的创作者
+Creator: ;
+非结构化数据的创建地点
+CreationLocation: ;
+非结构化数据的创建日期
+CreationDate: ;
+基于文本注释的文本内容的描述
+CreationDescription: 。
+73 修改信息描述方案
+.
+此描述方案用于描述内容的修改 包括修改者 修改地点 修改时间和修改描述 其语法形式定义
+, 、 、 。
+如下
+:
+<complexTypename="ModifyDSType">
+<sequence>
+<elementname="Modifier"type="PersonDType" minOccurs="0"maxOccurs="unbounded"/>
+<elementname="ModifyLocation"type="PlaceDSType" minOccurs="0"maxOccurs="1"/>
+<elementname="ModifyDate"type="TimePointDType" minOccurs="0"maxOccurs="1"/>
+<elementname="ModifyDescription"type="string"minOccurs="0"maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+其中
+:
+表示非结构化数据类型内容的修改 包括时间 地点等
+ModifyDSType: , 、 ;
+非结构化数据的修改者
+Modifier: ;
+非结构化数据的修改地点
+ModifyLocation: ;
+非结构化数据的修改日期
+ModifyDate: ;
+基于文本注释的文本内容的修改描述
+ModifyDescription: 。
+74 格式与大小描述方案
+.
+此描述符用于描述非结构化数据的文件格式以及文件大小 其语法形式定义如下
+。 :
+15
+GB/T32909—2016
+<complexTypename="FormatAndSizeDType">
+<sequence>
+<elementname="FileFormat"type="string"/>
+<elementname="FileSize"type="nonNegativeInteger"minOccurs="0"/>
+<sequence>
+</complexType>
+其中
+:
+非结构化数据实例的文件格式
+FileFormat: ;
+非结构化数据的物理存储大小
+FileSize: 。
+75 数据定位描述符
+.
+此描述符用于指定引用的媒体数据的位置 其语法形式定义如下
+。 :
+<complexTypename="DataLocatorDType">
+<sequence>
+<elementname="DataURL"type="string"minOccurs="1"maxOccurs="unbounded"/>
+</sequence>
+</complexType>
+其中
+:
+引用的数据位置的描述符类型
+DataLocatorDType: ;
+使用 定位
+DataURL: URL 。
+8 语义特征描述
+81 对象描述方案
+.
+此描述方案描述可察觉的或抽象的对象 一个可察觉的对象是一个存在的实体 一个抽象对象是
+。 ,
+对一个可察觉对象的抽象和概括 其语法形式定义如下
+。 :
+<complexTypename="ObjectDSType">
+<sequence>
+<elementname="Objectname"type="string"/>
+<elementname="ObjectProperty"type="string"minOccurs="0"maxOccurs=
+"unbounded"/>
+</sequence>
+<attributename="id"type="ID"use="optional"/>
+</complexType>
+16
+GB/T32909—2016
+82 事件描述方案
+.
+此描述方案用于描述可察觉的或抽象的事件 一个事件包括事件名 事件发生时间 地点 主题以
+。 、 、 、
+及对事件的描述 其语法形式定义如下
+, :
+<complexTypename="EventDSType">
+<sequence>
+<choicemaxOccurs="unbounded"minOccurs="0">
+<elementname="Event"type="EventDSType"/>
+<elementname="EventRef"type="mpeg7:ReferenceType"/>
+</choice>
+<elementname="Name"type="string"/>
+<elementname="Time"maxOccurs="unbounded"type="TimeDSType"minOccurs="0"/>
+<elementname="Place"maxOccurs="unbounded"type="PlaceDSType"minOccurs="0"/>
+<elementname="Theme"maxOccurs="string"type="1"minOccurs="0"/>
+<elementname="Desctription"maxOccurs="string"type="1"minOccurs="0"/>
+</sequence>
+</complexType>
+83 概念描述方案
+.
+此描述方案描述不能用普通方法或抽象方法对其对象 事件 时间 位置和状态进行描述的语法实
+、 、 、
+体 它是用一种特性或多种特性群来表述的 其语法形式定义如下
+, 。 :
+<complexTypename="ConceptDSType">
+<complexContent>
+<sequence>
+<elementname="Definition"type="string"minOccurs="0"/>
+<elementname="Property"maxOccurs="unbounded"type="string"minOccurs="0"/>
+<elementname="Label"maxOccurs="unbounded"type="string"/>
+</sequence>
+</complexContent>
+</complexType>
+84 数据编码描述方案
+.
+此描述方案用于指定数据的编码参数 其语法形式定义如下
+。 :
+<complexTypename="DataCodingDSType">
+<sequence>
+<elementname="Resolution"type="nonNegativeInteger"minOccurs="0"/>
+<elementname="FrameWidth"type="nonNegativeInteger"minOccurs="0"/>
+<elementname="FrameHeight"type="nonNegativeInteger"minOccurs="0"/>
+<elementname="FrameRate"type="float"minOccurs="0"/>
+17
+GB/T32909—2016
+<elementname="AudioSamplingRate"type="float"minOccurs="0"/>
+<elementname="CompressionFormat"type="string"minOccurs="0"/>
+<elementname="QuantizerCoarseness"type="nonNegativeInteger"minOccurs="0"/>
+<elementname="PredictionMode"type="string"minOccurs="0"/>
+<elementname="BitRate"type="float"minOccurs="0"/>
+<elementname="Bandwidth"type="float"minOccurs="0"/>
+<attributename="Id"type="ID"/>
+</sequence>
+</complexType>
+其中
+:
+表示数据编码参数的描述方案
+DataCodingDSType: ;
+每帧的分辨率
+Resolution: ;
+视频图像帧的宽度 以像素为单位
+FrameWidth: , ;
+视频图像帧的高度 以像素为单位
+FrameHeight: , ;
+帧速率 以赫兹为单位
+FrameRate: , ;
+音频的采样率 以赫兹为单位
+AudioSamplingRate: , ;
+视频采用的压缩格式
+CompressionFormat: ;
+采样的准确性
+QuantizerCoarseness: ;
+视频内容的预测编码所采用的算法类型
+PredictionMode: ;
+视频编码的同步传输所需的位速率
+BitRate: ;
+视频编码覆盖的赫兹带宽
+Bandwidth: ;
+数据编码参数描述方案实例的标识符
+Id: 。
+85 数据语义描述方案
+.
+此方案主要用于存储数据的描述 其语法形式定义如下
+。 :
+<elementname="DataInformation"type="DataInformationType"/>
+<complexTypename="DataInformationType">
+<sequence>
+<elementname="DataIdentification"type="DataIdentificationType"/>
+<elementname="DataProfile"type="DataProfile"maxOccurs="unbounded"/>
+</sequence>
+<attributename="id"type="ID"/>
+</complexType>
+<complexTypename="DataProfile">
+<sequence>
+<elementname="DataFormat"type="string"/>
+<elementname="DataCoding"type="DataCodingDSType"minOccurs="0"maxOccurs="
+unbounded"/>
+<elementname="Title"type="String"/>
+<elementname="Theme"type="String"/>
+</sequence>
+</complexType>
+18
+GB/T32909—2016
+其中
+:
+数据信息包含一个或多个数据内容描述
+DataInformation: ;
+数据实体的标识
+DataIdentification: ;
+被描述实体的数据内容描述 该描述主要包括数据格式 数据编码 标题 主题等
+DataProfile: , 、 、 、 ;
+数据信息描述实例的标识符
+id: 。
+类型的语法形式定义如下
+DataIdentification :
+<!--DefinitiontheDataIdentificationDS-->
+<complexTypename="DataIdentificationType">
+<sequence>
+<elementname="Identifier"type="UIdentifier"minOccurs="0"/>
+<elementname="AudioDomain"type="mpeg7:ControlledTerm"minOccurs="0"
+maxOccurs="unbounded"/>
+<elementname="VisualDomain"type="mpeg7:ControlledTerm"minOccurs="0"
+maxOccurs="unbounded"/>
+<elementname="ImageDomain"type="mpeg7:ControlledTerm"minOccurs="0"
+maxOccurs="unbounded"/>
+<sequence>
+</complexType>
+<complexTypename="UIdentifier">
+<elementname="IdValue"type="string"/>
+<attributename="IdOrganization"type="string"/>
+<attributename="IdName"type="string"/>
+</complexType>
+其中
+:
+表示数据内容标识的描述方案
+DataIdentification: ;
+表示唯一标识数据内容
+Identifier: ;
+有关音频的来源 采集或使用的信息
+AudioDomain: 、 ;
+有关视频的来源 采集或使用的信息
+VisualDomain: 、 ;
+有关图像的来源 采集或使用的信息
+ImageDomain: 、 。
+9 底层特征描述
+91 图像类型
+.
+911 颜色相关描述符
+..
+9111 颜色空间类型
+...
+颜色空间可由单独的 的整型矩阵或内置的颜色空间来表示 内置的颜色空间包括
+3×3 , :
+类型 颜色空间
+a) RGB :RGB 。
+类型 用 的一个线性变换来表示
+b) YCbCr : RGB :
+Y=0.299*R+0.587*G+0.114*B
+Cb=-0.169*R-0.331*G+0.500*B
+Cr=0.500*R-0.419*G-0.081*B
+19
+GB/T32909—2016
+类型 用 的一个非线性变换来表示 由表示颜色的亮度的值 表示颜色丰富
+c) HSV : RGB , (Value)、
+程度的饱和度 和表示占主导的频谱颜色的色调 用 的角度来表示
+(Saturation) (Hue, 0°~360° )
+所组成 它们的值由规一化的 值导出 范围从 到
+。 RGB ( 0 1)。
+类型 定义为非线性的 源于 颜色空间的可逆变换 在 颜色空间中有以
+d) HMMD : 、 RGB 。 HMMD
+下 个特性
+5 :
+与 中的定义一样
+1) Hue: HSV ;
+显示有多黑的颜色 给出阴影或黑色的程度
+2) Max: , ;
+显示有多白的颜色 给出浅色或白色的程度
+3) Min: , ;
+显示包含了多少的灰度 并且与纯色有多接近 给出色调和色的程度 转换公式为
+4) Diff: , , ,
+Diff=Max-Min;
+仿真颜色的亮度 其转换公式为
+5) Sum: , Sum=(Max+Min)/2。
+和 的转换公式和 颜色空间中 和 的转换公式相同
+Max、Min Hue HSV Min、Max Hue 。
+类型 用一个来自于参照颜色空间成分的线性矩阵变换来表示
+e) LinearMatrix : :
+C1=ColorTransMat[0][0]*R+ColorTransMat[0][1]*G+ColorTransMat[0][2]*B
+C2=ColorTransMat[1][0]*R+ColorTransMat[1][1]*G+ColorTransMat[1][2]*B
+C3=ColorTransMat[2][0]*R+ColorTransMat[2][1]*G+ColorTransMat[2][2]*B
+其中 为一 线性矩阵 其每个元素取值范围为
+ColorTransMat 3×3 , [-1,1]。
+类型 用 的一个线性变换来表示
+f) Monochrome : RGB :
+Y=0.299*R+0.587*G+0.114*B
+颜色空间的语法形式定义如下
+:
+<complexTypename="ColorSpaceType">
+<complexContent>
+<extensionbase="VisualDType">
+<choice>
+<elementname="LinearMatrix">
+<complexTypebase="IntegerMatrix"derivedBy="restriction">
+<minInclusivevalue="0"/>
+<maxInclusivevalue="65535"/>
+<attributename="sizes"use="fixed"value="33"/>
+</complexType>
+</element>
+<attributename="type"type="colorSpaceType"/>
+</choice>
+</extension>
+</complexContent>
+</complexType>
+<simpleTypename="colorSpaceType"base="string">
+<enumerationvalue="RGB"/>
+<enumerationvalue="YCbCr"/>
+<enumerationvalue="HSV"/>
+<enumerationvalue="HMMD"/>
+<enumerationvalue="LinearMatrix"/>
+<enumerationvalue="Monochrome"/>
+</simpleType>
+20
+GB/T32909—2016
+9112 主导颜色描述符
+...
+主导颜色描述符主要用于定义图像 区域中的 种 种主要颜色 包括定义了其色彩空间 量化
+/ 1 ~8 , 、
+方式 主导颜色的值 色彩值的偏差等 其语法形式定义如下
+、 、 。 :
+-<complexTypename="DominantColorType"final="#all">
+-<complexContent>
+-<extensionbase="VisualDType">
+-<sequence>
+<elementname="ColorSpace"type="ColorSpaceType"minOccurs="0"/>
+<elementname="ColorQuantization"type="ColorQuantizationType"minOccurs="0"/>
+<elementname="SpatialCoherency"type="unsigned5"/>
+-<elementname="Value"maxOccurs="8">
+-<complexType>
+-<sequence>
+<elementname="Percentage"type="unsigned5"/>-<elementname="Index">
+-<simpleType>
+-<restriction>
+-<simpleType>
+<listitemType="unsigned12"/></simpleType>
+<lengthvalue="3"/>
+</restriction>
+</simpleType>
+</element>
+-<elementname="ColorVariance"minOccurs="0">
+-<simpleType>
+-<restriction>
+-<simpleType>
+<listitemType="unsigned1"/></simpleType>
+<lengthvalue="3"/>
+</restriction>
+</simpleType>
+</element>
+</sequence>
+</complexType>
+</element>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+21
+GB/T32909—2016
+其中 类型的语法形式定义如下
+ColorQuantizationType :
+-<complexTypename="ColorQuantizationType"final="#all">
+-<sequencemaxOccurs="3">
+-<elementname="Component">
+-<simpleType>
+-<restrictionbase="string">
+<enumerationvalue="R"/>
+<enumerationvalue="G"/>
+<enumerationvalue="B"/>
+<enumerationvalue="Y"/>
+<enumerationvalue="Cb"/>
+<enumerationvalue="Cr"/>
+<enumerationvalue="H"/>
+<enumerationvalue="S"/>
+<enumerationvalue="V"/>
+<enumerationvalue="Max"/>
+<enumerationvalue="Min"/>
+<enumerationvalue="Diff"/>
+<enumerationvalue="Sum"/>
+</restriction>
+</simpleType>
+</element>
+<elementname="NumOfBins"type="unsigned12"/>
+</sequence>
+</complexType>
+9113 色彩内容描述符
+...
+色彩内容描述符主要包括由 变换得到的色彩直方图 系数数量以及每个系数的位数 其语法
+harr 、 ,
+形式定义如下
+:
+<complexTypename="ScalableColorType">
+<complexContent>
+<extensionbase="VisualDType">
+<elementname="Coefficients"type="integerVectorType"/>
+<attributename="numberOfCoefficients"type="unsigned3"/>
+<attributename="numberOfBitplanesDiscarded"type="unsigned3"/>
+</extension>
+</complexContent>
+</complexType>
+22
+GB/T32909—2016
+9114 颜色结构描述符
+...
+颜色结构描述符语法形式定义如下
+:
+-<complexTypename="ColorStructureType"final="#all">
+-<complexContent>
+-<extensionbase="VisualDType">
+-<sequence>
+-<elementname="Values">
+-<simpleType>
+-<restriction>
+-<simpleType>
+<listitemType="unsigned8"/>
+</simpleType>
+<minLengthvalue="1"/>
+<maxLengthvalue="256"/>
+</restriction>
+</simpleType>
+</element>
+</sequence>
+<attributename="colorQuant"type="unsigned3"use="required"/> </extension>
+</complexContent>
+</complexType>
+9115 颜色布局描述符
+...
+颜色布局描述符的语法形式定义如下
+:
+<complexTypename="ColorLayoutType">
+<complexContent>
+<extensionbase="VisualDType">
+<elementname="YCoeff">
+<complexType>
+<elementname="YDCCoeff"type="unsigned6"/>
+<elementname="YACCoeff">
+<simpleTypebase="unsigned5"derivedBy=list"/>
+<maxLengthvalue="63"/>
+</simpleType>
+</element>
+</complexType>
+</element>
+<elementname="CbCoeff">
+23
+GB/T32909—2016
+<complexType>
+<elementname="CbDCCoeff"type="unsigned6"/>
+<elementname="CbACCoeff">
+<simpleTypebase="unsigned5"derivedBy="list">
+<maxLengthvalue="63"/>
+</simpleType>
+</element>
+</complexType>
+</element>
+<elementname="CbCoeff">
+<complexType>
+<elementname="CrDCCoeff"type="unsigned6"/>
+<elementname="CrACCoeff">
+<simpleTypebase="unsigned5"derivedBy="list">
+<maxLengthvalue="63"/>
+</simpleType>
+</element>
+</complexType>
+</element>
+<attributename="numOfYCoeff"type="numberOfCoeffType"use="default"value="6"/>
+<attributename="numOfCCoeff"type="numberOfCoeffType"use="default"value="3"/>
+</extension>
+</complexContent>
+</complexType>
+其中 的定义如下
+numberOfCoeffType :
+<simpleTypename="numberOfCoeffType"base="positiveInteger">
+<enumerationvalue="1"/>
+<enumerationvalue="3"/>
+<enumerationvalue="6"/>
+<enumerationvalue="10"/>
+<enumerationvalue="15"/>
+<enumerationvalue="21"/>
+<enumerationvalue="28"/>
+<enumerationvalue="64"/>
+</simpleType>
+24
+GB/T32909—2016
+912 纹理特征
+..
+9121 均匀纹理特征
+...
+均匀纹理特征主要用于表示图像中的纹理方面的特征 其语法形式定义如下
+, :
+-<complexTypename="HomogeneousTextureType">
+<complexContent>
+<extensionbase="VisualDType">
+<elementname="Average"type="unsigned8"/>
+<elementname="StandardDeviation"type="unsigned8"/>
+<elementname="Energy">
+<simpleTypebase="unsigned8"derivedBy="list">
+<lengthvalue="30"/>
+</simpleType>
+</element>
+<elementname="EnergyDeviation"minOccurs="0"maxOccurs="1">
+<simpleTypebase="unsigned8"derivedBy="list">
+<lengthvalue="30"/>
+</simpleType>
+</element>
+</extension>
+</complexContent>
+</complexType>
+9122 边缘直方图描述符
+...
+边缘直方图描述符主要用于图像中的边缘信息 其语法形式定义如下
+, :
+-<complexTypename="EdgeHistogramType">
+<complexContent>
+<extensionbase="VisualDType">
+<elementname="BinCounts">
+<simpleTypebase="unsigned3"derivedBy="list">
+<lengthvalue="80"/>
+</simpleType>
+</element>
+</extension>
+</complexContent>
+</complexType>
+25
+GB/T32909—2016
+913 形状特征
+..
+9131 区域形状描述符
+...
+区域形状描述符的语法形式定义如下
+:
+<complexTypename="RegionShapeType">
+<complexContent>
+<extensionbase="VisualDType"
+<elementname="ArtDE">
+<simpleTypebase="unsigned4"derivedBy="list">
+<lengthvalue="35"/>
+</simpleType>
+</element>
+</extension>
+</complexContent>
+</complexType>
+9132 轮廓形状描述符
+...
+轮廓形状描述符的语法形式定义如下
+:
+<complexTypename="ContourShapeType">
+<complexContent>
+<extensionbase="VisualDType">
+<elementname="GlobalCurvatureVector">
+<simpleTypebase="unsigned6"derivedBy="list">
+<lengthvalue="2"/>
+</simpleType>
+</element>
+<elementname="PrototypeCurvatureVector"minOccurs="0"
+maxOccurs="1">
+<simpleTypebase="unsigned6"derivedBy="list">
+<lengthvalue="2"/>
+</simpleType>
+</element>
+<elementname="HighestPeak"type="unsigned7"/>
+<elementname="Peak"maxOccurs="63">
+<complexType>
+<elementname="xpeak"type="unsigned6"/>
+<elementname="ypeak"type="unsigned3"/>
+</complexType>
+</element>
+<attributename="numberOfPeaks"type="unsigned6"/>
+</extension>
+</complexContent>
+</complexType>
+26
+GB/T32909—2016
+914 局部特征
+..
+9141 局部区域描述符
+...
+局部区域描述符的语法形式定义如下
+:
+-<complexTypename="RegionLocatorType"final="#all">
+-<sequence>
+-<elementname="CoordRef"minOccurs="0">
+-<complexType>
+<attributename="ref"type="IDREF"use="required"/>
+<attributename="spatialRef"type="boolean"use="optional"default="false"/>
+</complexType>
+</element>
+-<elementname="Box"maxOccurs="unbounded"minOccurs="0">
+-<complexType>
+-<simpleContent>
+-<extensionbase="BoxListType">
+<attributename="unlocatedRegion"type="boolean"use="optional"
+default="false"/>
+</extension>
+</simpleContent>
+</complexType>
+</element>
+-<elementname="Polygon"maxOccurs="unbounded"minOccurs="0">
+<complexType>
+<sequence>
+<elementname="Coords"type="IntegerMatrixType"/>
+</sequence>
+<attributename="unlocatedRegion"type="boolean"use="optional"default="false"/>
+</complexType>
+</element>
+</sequence>
+</complexType>
+其中 的语法形式定义如下
+BoxList :
+-<complexTypename="BoxListType">
+-<simpleContent>
+<restrictionbase="IntegerMatrixType"/>
+</simpleContent>
+</complexType>
+27
+GB/T32909—2016
+9142 SIFT特征描述符
+...
+特征描述具有尺度不变性 可在图像中检测出关键点 是一种局部特征描述 特征描
+SIFT , , 。SIFT
+述符的语法形式定义如下
+:
+<complexTypename="SIFTDType">
+<complexContent>
+<extensionbase="VisualDType"
+<sequence>
+<elementname="Position"minOccurs="0"maxOccurs="1">
+<complexType>
+<sequence>
+<elementname="x"type="Integer"/>
+<elementname="y"type="Integer"/>
+</sequence>
+</complexType>
+</element>
+<elementname="MainDirection"type="float"minOccurs="0"maxOccurs="1"/>
+<elementname="Feature"minOccurs="1"maxOccurs="1">
+<complexType>
+<elementname="descript"type="floatVector"/>
+<attributename="dimCount"type="Integer"/>
+</complexType>
+</element>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中
+:
+定义了 描述符的类型
+SIFTDType: sift ;
+定义了 特征所在的位置点 有 和 两个元素 可选
+Position: sift , x y , ;
+定义了 特征点的主方向
+MainDirection: sift ;
+定义了具体的特征描述值 由于提取 特征的方式不同 导致 特征描述值有 位
+Feature: , sift , sift 128
+或 位等差别 因此采用可变向量的描述形式 用 来记录维度
+64 , , dimCount 。
+92 音频类型
+.
+921 标量序列
+..
+9211 标量序列基类型
+...
+标量序列基类型的语法形式定义如下
+:
+28
+GB/T32909—2016
+<complexTypename="ScalableSeriesType"abstract="true">
+<sequence>
+<elementname="Scaling"minOccurs="0"maxOccurs="unbounded">
+<complexType>
+<attributename="ratio"type="positiveInteger"use="required"/>
+<attributename="numOfElements"type="positiveInteger"use="required"/>
+</complexType>
+</element>
+</sequence>
+<attributename="totalNumOfSamples"type="positiveInteger"use="required"/>
+</complexType>
+9212 标量序列类型
+...
+标量序列类型的语法形式定义如下
+:
+<complexTypename="SeriesOfScalarType">
+<complexContent>
+<extensionbase="ScalableSeriesType">
+<sequence>
+<elementname="Raw"type="floatVector"minOccurs="0"/>
+<elementname="Min"type="floatVector"minOccurs="0"/>
+<elementname="Max"type="floatVector"minOccurs="0"/>
+<elementname="Mean"type="floatVector"minOccurs="0"/>
+<elementname="Random"type="floatVector"minOccurs="0"/>
+<elementname="First"type="floatVector"minOccurs="0"/>
+<elementname="Last"type="floatVector"minOccurs="0"/>
+<elementname="Variance"type="floatVector"minOccurs="0"/>
+<elementname="Weight"type="floatVector"minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+9213 向量序列类型
+...
+向量序列类型的语法形式定义如下
+:
+29
+GB/T32909—2016
+<complexTypename="SeriesOfVectorType">
+<complexContent>
+<extensionbase="ScalableSeriesType">
+<sequence>
+<elementname="Raw"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Min"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Max"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Mean"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Random"type="FloatMatrixType"minOccurs="0"/>
+<elementname="First"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Last"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Variance"type="FloatMatrixType"minOccurs="0"/>
+<elementname="Covariance"type="FloatMatrixType"minOccurs="0"/>
+<elementname="VarianceSummed"type="floatVector"minOccurs="0"/>
+<elementname="MaxSqDist"type="floatVector"minOccurs="0"/>
+<elementname="Weight"type="floatVector"minOccurs="0"/>
+</sequence>
+<attributename="vectorSize"type="positiveInteger"default="1"/>
+</extension>
+</complexContent>
+</complexType>
+922 低级音频描述符
+..
+9221 音频LLD标量
+...
+音频 标量的语法形式定义如下
+LLD :
+-<complexTypename="AudioLLDScalarType"abstract="true">
+-<complexContent>
+-<extensionbase="AudioDType">
+-<choice>
+<elementname="Scalar"type="float"/>
+-<elementname="SeriesOfScalar"maxOccurs="unbounded">
+-<complexType>
+-<complexContent>
+-<extensionbase="SeriesOfScalarType">
+<attributename="hopSize"type="mediaDurationType"default=
+"PT10N1000F"/>
+</extension>
+</complexContent>
+30
+GB/T32909—2016
+</complexType>
+</element>
+</choice>
+<attributename="confidence"type="zeroToOneType"use="optional"/>
+</extension>
+</complexContent>
+</complexType>
+其中 类型的语法形式定义如下
+mediaDurationType :
+-<simpleTypename="mediaDurationType">
+-<restrictionbase="basicDurationType">
+<patternvalue="\-? P(\d+D)? (T(\d+H)? (\d+M)? (\d+S)? (\d+N)?)? (\d
++F)?"/>
+</restriction>
+</simpleType>
+9222 音频LLD向量
+...
+音频 向量的语法形式定义如下
+LLD :
+-<complexTypename="AudioLLDVectorType"abstract="true">
+-<complexContent>
+-<extensionbase="AudioDType">
+-<choice>
+<elementname="Vector"type="floatVector"/>
+-<elementname="SeriesOfVector"maxOccurs="unbounded">
+-<complexType>
+-<complexContent>
+-<extensionbase="SeriesOfVectorType">
+<attributename="hopSize"type="mediaDurationType"default="
+PT10N1000F"/>
+</extension>
+</complexContent>
+</complexType>
+</element>
+</choice>
+</extension>
+</complexContent>
+</complexType>
+31
+GB/T32909—2016
+9223 音频波谱
+...
+音频波谱的语法形式定义如下
+:
+-<complexTypename="AudioWaveformType">
+-<complexContent>
+-<extensionbase="AudioLLDScalarType">
+<attributename="minRange"type="float"use="optional"/>
+<attributename="maxRange"type="float"use="optional"/>
+</extension>
+</complexContent>
+</complexType>
+923 静音描述符
+..
+静音描述符的语法形式定义如下
+:
+<complexTypename="SilenceDType">
+<complexContent>
+<extensionbase="AudioDType">
+<attributename="confidence"type="zeroToOneType"default="1.0"/>
+<attributename="minDurationRef"type="anyURI"use="optional"/>
+</extension>
+</complexContent>
+</complexType>
+924 MFCC特征描述符
+..
+特征描述符的语法形式定义如下
+MFCC :
+<complexTypename="MFCCDType">
+<complexContent>
+<extensionbase="AudioDType"
+<elementname="feature"type="floatVector"/>
+<attributename="dimCount"type="nonNegativeInteger"/>
+</extension>
+</complexContent>
+</complexType>
+32
+GB/T32909—2016
+93 视频类型
+.
+931 时间域特征描述类型
+..
+媒体时间域特征类型的语法形式定义如下
+:
+-<complexTypename="MediaTimeType">
+-<sequence>
+-<choice>
+<elementname="MediaTimePoint"type="mediaTimePointType"/>
+<elementname="MediaRelTimePoint"type="MediaRelTimePointType"/>
+<elementname="MediaRelIncrTimePoint"type="MediaRelIncrTimePointType"/>
+</choice>
+-<choiceminOccurs="0">
+<elementname="MediaDuration"type="mediaDurationType"/>
+<elementname="MediaIncrDuration"type="MediaIncrDurationType"/>
+</choice>
+</sequence>
+</complexType>
+其中 类型的语法形式定义如下
+MediaTimePointType :
+-<simpleTypename="mediaTimePointType">
+-<restrictionbase="basicTimePointType">
+<patternvalue="(\-? \d+(\-\d{2}(\-\d{2})?)?)? (T\d{2}(:\d{2}(:\d{2}(:\d
++)?)?)?)? (F\d+)?"/>
+</restriction>
+</simpleType>
+类型的语法形式定义如下
+MediaDurationType :
+-<simpleTypename="mediaDurationType">
+-<restrictionbase="basicDurationType">
+<patternvalue="\-? P(\d+D)? (T(\d+H)? (\d+M)? (\d+S)? (\d+N)?)? (\d
++F)?"/>
+</restriction>
+</simpleType>
+33
+GB/T32909—2016
+类型的语法形式定义如下
+MediaIncrDurationType :
+-<complexTypename="MediaIncrDurationType">
+-<simpleContent>
+-<extensionbase="integer">
+<attributename="mediaTimeUnit"type="mediaDurationType"use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+类型的语法形式定义如下
+MediaRelTimePointType :
+-<complexTypename="MediaRelTimePointType">
+-<simpleContent>
+-<extensionbase="mediaTimeOffsetType">
+<attributename="mediaTimeBase"type="xPathRefType"use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+-<simpleTypename="mediaTimeOffsetType">
+-<restrictionbase="basicDurationType">
+<patternvalue="\-? P(\d+D)? (T(\d+H)? (\d+M)? (\d+S)? (\d+N)?)?
+(\d+F)?"/>
+</restriction>
+</simpleType>
+类型的语法形式定义如下
+xPathRefType :
+<!--DefinitionofxPathRefdatatype-->
+-<simpleTypename="xPathRefType">
+-<restrictionbase="xPathType">
+<patternvalue="/? ((((child::)? ((\i\c*:)? (\i\c*)(\[\d+\])?))|\.|(\.\.))/)*
+((((child::)? ((\i\c*:)? (\i\c*)
+(\[\d+\])?))|\.)|((attribute::|@)((\i\c*:)? (\i\c*|\*))))"/>
+</restriction>
+</simpleType>
+<!--DefinitionofxPathdatatype-->
+-<simpleTypename="xPathType">
+<restrictionbase="token"/>
+</simpleType>
+34
+GB/T32909—2016
+的类型定义如下
+MediaRelIncrTimePointType :
+-<complexTypename="MediaRelIncrTimePointType">
+-<simpleContent>
+-<extensionbase="integer">
+<attributename="mediaTimeUnit"type="mediaDurationType"use="optional"/>
+<attributename="mediaTimeBase"type="xPathRefType"use="optional"/>
+</extension>
+</simpleContent>
+</complexType>
+932 运动特征
+..
+9321 镜头运动描述符
+...
+镜头运动描述符语法形式定义如下
+:
+<complexTypename="CameraMotionType">
+<complexContent>
+<extensionbase="VisualDType">
+<sequenceminOccurs="0"maxOccurs="unbounded">
+<elementname="Segment"type="SegmentedCameraMotionType"/>
+</sequence>
+<attributename="numberOfSegments"type="unsigned"use="required"/>
+<attributename="mode"type="boolean"use="required"/>
+</extension>
+</complexContent>
+</complexType>
+<complexTypename="SegmentedCameraMotionType">
+<elementname="Time"type="MediaTimeType"/>
+<elementname="FractionalPresence"type="FractionalPresenceType"/>
+<elementname="AmountOfMotion"type="AmountOfMotiontype"/>
+<elementname="FOE_FOC_HorizontalPositiontype="float"/>
+<elementname="FOE_FOC_VerticalPositiontype="float"/>
+</complexType>
+35
+GB/T32909—2016
+其中 的语法形式定义如下
+AmountOfMotionType :
+<complexTypename="AmountOfMotionType">
+<sequence>
+<elementname="TRACK_LEFT"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="TRACK_RIGHT"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="BOOM_DOWN"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="BOOM_UP"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="DOLLY_FOWARD"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="DOLLY_BACKWARD"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="PAN_LEFT"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="PAN_RIGHT"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="TILT_DOWN"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="TILT_UP"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="ROLL_CLOCKWISE"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="ROLL_ANTICOLOCKWISE"type="unsigned11" minOccurs="0"
+maxOccurs="1"/>
+<elementname="ZOOM_IN"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+<elementname="ZOOM_OUT"type="unsigned11" minOccurs="0"maxOccurs="1"/>
+</sequence>
+</complexType>
+的语法形式定义如下
+FractionalPresenceType :
+</complexTypename="FractionalPresenceType">
+<sequence>
+<elementname="TRACK_LEFT"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="TRACK_RIGHT"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="BOOM_DOWN"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="BOOM_UP"type="unsigned7"minOccurs="0"maxOccurs="1"/>
+<elementname="DOLLY_FOWARD"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="DOLLY_BACKWARD"type="unsigned7" minOccurs="0"
+maxOccurs="1"/>
+<elementname="PAN_LEFT"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="PAN_RIGHT"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+36
+GB/T32909—2016
+<elementname="TILT_DOWN"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="TILT_UP"type="unsigned7"minOccurs="0"maxOccurs="1"/>
+<elementname="ROLL_CLOCKWISE"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="ROLL_ANTICOLOCKWISE"type="unsigned7"minOccurs="0"
+maxOccurs="1"/>
+<elementname="ZOOM_IN"type="unsigned7"minOccurs="0"maxOccurs="1"/>
+<elementname="ZOOM_OUT"type="unsigned7" minOccurs="0"maxOccurs="1"/>
+<elementname="FIXED"type="unsigned7"minOccurs="0"maxOccurs="1"/>
+</sequence>
+</complexType>
+9322 运动活动性描述符
+...
+运动活动性描述符语法形式定义如下
+:
+<complexTypename="MotionActivityType">
+<complexContent>
+<extensionbase="VisualDType">
+<sequence>
+<elementname="Intensity"type="intensityType"/>
+<elementname="DominantDirection"type="unsigned3"minOccurs="0"maxOccurs="1"/>
+<elementname="SpatialParameters"minOccurs="0"maxOccurs="1">
+<complexType>
+<elementname="Nsr"type="unsigned6"/>
+<elementname="Nmr"type="unsigned5"/>
+<elementname="Nlr"type="unsigned5"/>
+</complexType>
+</element>
+<elementname="SpaLocNumber"type="SpaLocNumberType"minOccurs="0"
+maxOccurs="1"/>
+<elementname="SpatialLocalizationParameters"minOccurs="0"maxOccurs="1">
+<simpleTypebase="unsigned3"derivedBy="list"/>
+</element>
+<elementname="TemporalParameters"minOccurs="0"maxOccurs="1">
+<simpleTypebase="unsigned6"derivedBy="list">
+<lengthvalue="5"/>
+</simpleType>
+</element>
+</sequence>
+</extension>
+</complexContent>
+37
+GB/T32909—2016
+其中 和 的语法形式定义如下
+intensityType SpaLocNumberType :
+<simpleTypename="intensityType"base="nonNegativeInteger">
+<minInclusivevalue="1"/>
+<maxInclusivevalue="5"/>
+</simpleType>
+<simpleTypename="SpaLocNumberType"base="positiveInteger">
+<enumerationvalue="4"/>
+<enumerationvalue="16"/>
+<enumerationvalue="64"/>
+<enumerationvalue="256"/>
+</simpleType>
+933 镜头和关键帧描述符
+..
+9331 镜头描述符
+...
+镜头描述符语法形式定义如下
+:
+<complexTypename="ShotDType">
+<complexContent>
+<extensionbase="VisualDType"
+<sequence>
+<elementname="startTimePoint"type="mediaTimePointType"/>
+<elementname="duration"type="mediaDurationType"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中
+:
+定义了 描述符的类型
+ShotDType: shot ;
+表示镜头的开始时间点
+startTimePoint: ;
+表示镜头的时长
+duration: 。
+9332 关键帧描述符
+...
+关键帧描述符的语法形式定义如下
+:
+38
+GB/T32909—2016
+<complexTypename="KeyframeDType">
+<complexContent>
+<extensionbase="VisualDType"
+<sequence>
+<elementname="timePoint"type="mediaTimePointType"/>
+<elementname="keyframeContent"type="hexBinary"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中
+:
+定义了 描述符的类型
+KeyframeDType: shot ;
+表示该关键帧在视频中的时间位置
+timePoint: ;
+表示该关键帧的内容 具体为图像内容 用二进制文件存储
+keyframeContent: , , 。
+94 文本类型
+.
+文本描述方案语法形式定义如下
+:
+<complexTypename="TextDescription">
+<complexContent>
+<extensionbase="TextDSType">
+<sequence>
+<elementname="keyWordList"type="keyWordFeatureType"minOccurs="0"
+maxOccurs="unbound"/>
+<elementname="Sentence"type="string"minOccurs="0"/>
+<elementname="Sentence"type="string"minOccurs="0"/>
+<elementname="Paragraph"type="string"minOccurs="0"/>
+<elementname="Abstract"type="string"minOccurs="0"/>
+<elementname="Time"type="string"minOccurs="0"/>
+<elementname="Place"type="string"minOccurs="0"/>
+<elementname="People"type="string"minOccurs="0"/>
+<elementname="Event"type="string"minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+39
+GB/T32909—2016
+其中关键字特征描述符的语法形式定义如下
+:
+<complexTypename="keyWordFeatureType">
+<complexContent>
+<extensionbase="TextDType">
+<sequence>
+<elementname="KeyWordList"type="stringVector"/>
+<elementname="WeightList"type="floatVector"/>
+</sequence>
+<attributename="DimCount"type="nonNegativeInteger"/>
+<attributename="Algorithm"type="string"/>
+</extension>
+</complexContent>
+</complexType>
+其中
+:
+表示出现的关键字序列
+KeyWordList: ;
+为关键序列所对应的权重向量 即其长度与顺序关键字序列一一对应
+WeightList: , ;
+为该关键字序列的长度
+DimCount: ;
+为权重所采用的计算方法 如采用 权重 或 权重
+Algorithm: , TF-IDF , TF 。
+10 原始数据描述
+定位原始数据的描述符的语法形式定义如下
+:
+<complexTypename="InsRawDataDType">
+-<complexContent>
+<extensionbase="RawDataDType"/>
+<sequenceminOccurs="0"maxOccurs="unbounded">
+为数据文件的存放路径
+<!--DATA_File_id -->
+<elementname="DATA_File_path"type="String"/>
+<elementname="ContenLength"type="decimal"/>
+<elementname="LastModified"type="dateTime"/>
+<elementname="ContenMD5"type="String"/>
+<elementname="ContenType"type="String"/>
+<elementname="ContenEncoding"type="String"/>
+</sequence>
+<attributename="fileCount"type="nonNegativeInteger"/>
+</extension>
+</complexContent>
+</complexType>
+40
+GB/T32909—2016
+11 关联描述符
+111 语义特征-底层特征关联描述符
+.
+该关联描述符主要用于描述语义特征描述符与底层特征描述符存在关联关系 其语法形式定义
+。
+如下
+:
+<complexTypename="Semantic-LowfeatureAssociation">
+<complexContent>
+<extensionbase="AssociationDType">
+<sequence>
+<elementname="semantic"type="SemanticDType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="lowfeature"type="LowFeatureDType"minOccurs="1"
+maxOccurs="unbounded"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+和 均为抽象类 继承自这两个类的可实例化的类型均可刻画
+SemanticDType LowFeatureDType ,
+这种关联关系
+。
+112 基本属性-原始数据关联描述符
+.
+该关联描述符主要用于描述语义特征描述符与底层特征描述符存在关联关系 其语法形式定义
+。
+如下
+:
+<complexTypename="BasicAttribution-RawDataAssociation">
+<complexContent>
+<extensionbase="AssociationDType">
+<sequence>
+<elementname="basicAttibution"type="BasicAttributionDType"minOccurs="1"max-
+Occurs="unbounded"/>
+<elementname="rawData"type="RawDataDType"minOccurs="1"maxOccurs="un-
+bounded"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+41
+GB/T32909—2016
+113 语义特征-原始数据关联描述符
+.
+该关联描述符主要用于描述语义特征描述符与底层特征描述符存在关联关系 其语法形式定义
+。
+如下
+:
+<complexTypename="Semantic-RawDataAssociation">
+<complexContent>
+<extensionbase="AssociationDType">
+<sequence>
+<elementname="semantic"type="SemanticDType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="rawData"type="RawDataDType"minOccurs="1"
+maxOccurs="unbounded"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+114 底层特征-原始数据关联描述符
+.
+该关联描述符主要用于描述语义特征描述符与底层特征描述符存在关联关系 其语法形式定义
+。
+如下
+:
+<complexTypename="LowFeature-RawDataAssociation">
+<complexContent>
+<extensionbase="AssociationDType">
+<sequence>
+<elementname="lowFeature"type="LowFeatureDType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="rawData"type="RawDataDType"minOccurs="1"
+maxOccurs="unbounded"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+42
+GB/T32909—2016
+附 录 A
+规范性附录
+( )
+Unsigned类型语法定义
+-<simpleTypename="unsigned1">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="1"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned2">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="3"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned3">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="7"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned4">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="15"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned5">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="31"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned6">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="63"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned7">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="127"/>
+</restriction>
+</simpleType>
+43
+GB/T32909—2016
+-<simpleTypename="unsigned8">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="255"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned9">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="511"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned10">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="1023"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned11">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="2047"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned12">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="4095"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned13">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="8191"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned14">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="16383"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned15">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="32767"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned16">
+44
+GB/T32909—2016
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="65535"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned17">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="131071"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned18">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="262143"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned19">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="524287"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned20">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="1048575"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned21">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="2097151"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned22">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="4194303"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned23">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="8388607"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned24">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="16777215"/>
+45
+GB/T32909—2016
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned25">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="33554431"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned26">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="67108863"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned27">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="134217727"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned28">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="268435455"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned29">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="536870911"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned30">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="1073741823"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned31">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="2147483647"/>
+</restriction>
+</simpleType>
+-<simpleTypename="unsigned32">
+-<restrictionbase="nonNegativeInteger">
+<minInclusivevalue="0"/> <maxInclusivevalue="4294967295"/>
+</restriction>
+</simpleType>
+46
+GB/T32909—2016
+附 录 B
+资料性附录
+( )
+非结构化数据表示XMLSchema定义
+B1 非结构化数据表示XMLSchema定义
+.
+非结构化数据表示的 定义如下
+XMLSchema :
+<complexTypename="UnstructuredDataType">
+<sequence>
+<elementname="basicDS"type="InstanceBasicAttributionDSType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="semanticDS"type="InstanceSemanticDSType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="lowFeatureDS"type="InstanceLowFeatureDSType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="rawDataDS"type="InstanceRawDataDSType"minOccurs="1"
+maxOccurs="unbounded"/>
+<elementname="association"type="InstanceAssociationDType"minOccurs="0"
+maxOccurs="unbounded"/>
+</sequence>
+<attributename="id"type="ID"use="required">
+</complexType>
+其中
+InstanceBasicAttributionDSType、InstanceSemanticDSType、InstanceLowFeatureDSType、
+和 的定义见
+InstanceRawDataDSType InstanceAssociationDType B.2~B.6。
+B2 InstanceBasicAttributionDSType
+.
+的语法形式定义如下
+InstanceBasicAttributionDSType :
+<complexTypename="InstanceBasicAttributionDSType">
+<complexContent>
+<extensionbase="BasicAttributionDSType">
+<sequence>
+<elementname="creationInfo"type="CreationDSType"/>
+<elementname="fileFormat"type="string"/>
+<elementname="fileSize"type="nonNegativeInteger"minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中 定义见
+CreationDSType 9.2。
+47
+GB/T32909—2016
+B3 InstanceSemanticDSType
+.
+的语法形式定义如下
+InstanceSemanticDSType :
+<complexTypename="InstanceSemanticDSType">
+<complexContent>
+<extensionbase="SemanticDSType">
+<sequence>
+<elementname="DataCoding"type="DataCodingDSType"minOccurs="0"
+maxOccurs="unbounded"/>
+<elementname="Title"type="String"/>
+<elementname="Theme"type="String"/>
+<elementname="Keyword"type="String"/>
+<attributename="id"type="ID"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中 见 定义
+DataCodingDSType 10.4 。
+B4 InstanceLowFeatureDSType
+.
+的语法形式定义如下
+InstanceLowFeatureDSType :
+-<complexTypename="InstanceLowFeatureDSType">
+-<complexContent>
+-<extensionbase="LowFeatureDSType">
+-<sequence>
+<elementname="imageFeature"type="StillRegionFeatureType"minOccurs="0"/>
+<elementname="audioFeature"type="AudioSignatureType"minOccurs="0"/>
+<elementname="videoFeature"type="VideoSegmentType"minOccurs="0"/>
+<elementname="textFeature"type="TextDescription"minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+其中 给出一个图像的描述方案 该描述方案包含有主导颜色描述符 色彩
+StillRegionFeatureType , 、
+内容描述符 颜色结构描述符 颜色布局描述符 边缘直方图描述符等描述符 该方案从各个方面来描述
+、 、 、 ,
+图像的底层特征 其 的语法形式定义如下
+, XMLSchema :
+48
+GB/T32909—2016
+-<complexTypename="StillRegionFeatureType">
+-<complexContent>
+-<extensionbase="VisualDSType">
+-<sequence>
+<elementname="DominantColor"type="DominantColorType"minOccurs="0"/>
+<elementname="ScalableColor"type="ScalableColorType"minOccurs="0"/>
+<elementname="ColorStructure"type="ColorStructureType"minOccurs="0"/>
+<elementname="ColorLayout"type="ColorLayoutType"minOccurs="0"/>
+<elementname="Edge"type="EdgeHistogramType"minOccurs="0"/>
+<elementname="HomogeneousPattern"type="HomogeneousTextureType"
+minOccurs="0"/>
+<elementname="ShapeMask"type="RegionShapeType"minOccurs="0"/>
+<elementname="Contour"type="ContourShapeType"minOccurs="0"/>
+<elementname="Sift"type="SIFTDType"minOccurs="0"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+给出了用于音频实例检索的音频指纹的描述方案 其语法格式定义如下
+AudioSignatureType , :
+<complexTypename="AudioSignatureType">
+<complexContent>
+<extensionbase="AudioDSType">
+<sequence>
+<elementname="Flatness"type="AudioSpectrumFlatnessType"/>
+<elementname="MFCC"type="MFCCDType"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<complexTypename="AudioSpectrumFlatnessType">
+<complexContent>
+<extensionbase="AudioLLDVectorType">
+<attributename="loEdge"type="float"default="250"/>
+<attributename="hiEdge"type="float"default="16000"/>
+</extension>
+</complexContent>
+</complexType>
+49
+GB/T32909—2016
+给出了视频片段特征描述方案 其语法形式定义如下
+VideoSegmentType , :
+<complexTypename="VideoSegmentType">
+-<sequence>
+<elementname="MediaTime"type="MediaTimeType"minOccurs="0"/>
+-<choicemaxOccurs="unbounded"minOccurs="0">
+<elementname="VisualDescriptor"type="VisualDType"/>
+<elementname="VisualDescriptionScheme"type="VisualDSType"/>
+<elementname="VisualTimeSeriesDescriptor"type="VisualTimeSeriesType"/>
+<elementname="GofGopFeature"type="GofGopFeatureType"/>
+</choice>
+</sequence>
+</complexType>
+-<complexTypename="GofGopFeatureType">
+-<sequence>
+<elementname="Descriptor"type="VisualDType"/>
+</sequence>
+-<attributename="aggregation"use="optional">
+-<simpleType>
+-<restrictionbase="string">
+<enumerationvalue="Average"/>
+<enumerationvalue="Median"/>
+<enumerationvalue="SplitMerge"/>
+</restriction>
+</simpleType>
+</attribute>
+</complexType>
+-<complexTypename="VisualTimeSeriesType"abstract="true">
+-<sequence>
+<elementname="TimeIncr"type="mediaDurationType"/>
+</sequence>
+<attributename="offset"type="mediaDurationType"use="optional"default="PT0S"/>
+</complexType>
+B5 InstanceRawDataDSType
+.
+的语法形式定义如下
+InstanceRawDataDSType :
+50
+GB/T32909—2016
+<complexTypename="InstanceRawDataDSType">
+-<complexContent>
+<extensionbase="RawDataDType"/>
+<elementname="rawData"type="InsRawDataDType"/>
+</extension>
+</complexContent>
+</complexType>
+<complexTypename="InsRawDataDType">
+-<complexContent>
+<extensionbase="RawDataDType"/>
+<sequenceminOccurs="0"maxOccurs="unbounded">
+为数据文件的存放路径
+<!--DATA_File_id -->
+<elementname="DATA_File_path"type="String"/>
+</sequence>
+<attributename="fileCount"type="nonNegativeInteger"/>
+</complexContent>
+</complexType>
+B6 InstanceAssociationDType
+.
+的语法形式定义如下
+InstanceAssociationDType :
+<complexTypename="InstanceAssociationDType">
+<complexContent>
+<extensionbase="AssociationDType">
+<sequence>
+<elementname="semantic"type="patternType"minOccurs="1"maxOccurs="un-
+bounded"/>
+<elementname="lowfeature"type="instanceFeatureDType"minOccurs="1"maxOccurs
+="unbounded"/>
+</sequence>
+</extension>
+</complexContent>
+</complexType>
+<simpleTypename="patternType">
+-<complexContent>
+<extensionbase="SemanticDType"/>
+<elementname="pattern"type="string"/>
+51
+GB/T32909—2016
+</extension>
+</complexContent>
+</simpleType>
+<simpleTypename="instanceFeatureDType">
+-<complexContent>
+<extensionbase="LowFeatureDType"/>
+<sequenceminOccurs="0"maxOccurs="unbounded">
+<elementname="color"type="DominantColorType"/>
+</sequence>
+</extension>
+</complexContent>
+</simpleType>
+52

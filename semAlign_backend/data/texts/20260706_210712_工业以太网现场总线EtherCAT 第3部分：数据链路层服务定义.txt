@@ -1,0 +1,2128 @@
+ICS25040
+.
+N10
+中 华 人 民 共 和 国 国 家 标 准
+GB/T312303—2014
+.
+工业以太网现场总线
+EtherCAT
+第 部分 数据链路层服务定义
+3
+:
+IndustrialethernetfieldbusEtherCAT—Part3DataLinkLayerservicedefinition
+:
+2014-09-30发布 2015-04-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T312303—2014
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+本部分与 标准的关系
+1.1 IEC ………………………………………………………………………… 1
+概述
+1.2 ………………………………………………………………………………………………… 1
+规范
+1.3 ………………………………………………………………………………………………… 1
+一致性
+1.4 ……………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语 定义 符号 缩略语和约定
+3 、 、 、 ………………………………………………………………………… 2
+参考模型术语和定义
+3.1 ……………………………………………………………………………… 2
+服务约定术语和定义
+3.2 ……………………………………………………………………………… 3
+数据链路层服务术语和定义
+3.3 ……………………………………………………………………… 4
+符号和缩略语
+3.4 ……………………………………………………………………………………… 7
+一般约定
+3.5 …………………………………………………………………………………………… 9
+数据链路层服务和概念
+4 ………………………………………………………………………………… 9
+工作原理
+4.1 …………………………………………………………………………………………… 9
+拓扑
+4.2 ………………………………………………………………………………………………… 10
+数据链路层概述
+4.3 …………………………………………………………………………………… 10
+错误检测概述
+4.4 ……………………………………………………………………………………… 11
+参数和过程数据处理介绍
+4.5 ………………………………………………………………………… 11
+节点参考模型
+4.6 ……………………………………………………………………………………… 11
+操作概述
+4.7 …………………………………………………………………………………………… 12
+寻址
+4.8 ………………………………………………………………………………………………… 13
+从站分类
+4.9 …………………………………………………………………………………………… 15
+从站的通信层结构
+4.10 ……………………………………………………………………………… 16
+通信服务
+5 ………………………………………………………………………………………………… 17
+概述
+5.1 ………………………………………………………………………………………………… 17
+读服务
+5.2 ……………………………………………………………………………………………… 17
+写服务
+5.3 ……………………………………………………………………………………………… 20
+组合读写服务
+5.4 ……………………………………………………………………………………… 22
+网络服务
+5.5 …………………………………………………………………………………………… 25
+邮箱
+5.6 ………………………………………………………………………………………………… 26
+本地交互
+6 ………………………………………………………………………………………………… 30
+本地读
+6.1 (readlocal)………………………………………………………………………………… 30
+本地写
+6.2 (Writelocal)……………………………………………………………………………… 31
+本地事件
+6.3 (Eventlocal)…………………………………………………………………………… 31
+参考文献
+…………………………………………………………………………………………………… 32
+Ⅰ
+GB/T312303—2014
+.
+图 包含单个 的以太网帧内的逻辑数据映射
+1 EtherCATDLPDU ………………………………… 10
+图 数据链路参考模型
+2 EtherCAT …………………………………………………………………… 12
+图 开放模式下 网段
+3 EtherCAT ……………………………………………………………………… 13
+图 直连模式下 网段
+4 EtherCAT ……………………………………………………………………… 13
+图 寻址模式概览
+5 ……………………………………………………………………………………… 14
+图 现场总线内存管理单元概览
+6 ……………………………………………………………………… 15
+图 通信分层
+7 …………………………………………………………………………………………… 16
+图 服务原语流
+8 EtherCAT …………………………………………………………………………… 17
+图 成功的邮箱写序列
+9 ………………………………………………………………………………… 27
+图 成功的邮箱读序列
+10 ………………………………………………………………………………… 27
+表 自增式物理读
+1 (APRD) …………………………………………………………………………… 17
+表 配置的地址物理读
+2 (FPRD)………………………………………………………………………… 18
+表 广播读
+3 (BRD) ……………………………………………………………………………………… 19
+表 逻辑读
+4 (LRD) ……………………………………………………………………………………… 19
+表 自增式物理写
+5 (APWR) …………………………………………………………………………… 20
+表 配置的地址物理写
+6 (FPWR) ……………………………………………………………………… 20
+表 广播写
+7 (BWR)……………………………………………………………………………………… 21
+表 逻辑写
+8 (LWR)……………………………………………………………………………………… 21
+表 自动递增物理读 写
+9 / (APRW)……………………………………………………………………… 22
+表 配置的地址物理读 写
+10 / (FPRW) ………………………………………………………………… 23
+表 广播读 写
+11 / (BRW)………………………………………………………………………………… 23
+表 逻辑读 写
+12 / (LRW)………………………………………………………………………………… 24
+表 自动递增物理读 多重写
+13 / (ARMW)……………………………………………………………… 24
+表 配置的地址物理读 多写
+14 / (FRMW)……………………………………………………………… 25
+表 提供网络变量
+15 (PNV) …………………………………………………………………………… 26
+表 邮箱写
+16 ……………………………………………………………………………………………… 28
+表 邮箱读更新
+17 ………………………………………………………………………………………… 29
+表 邮箱读
+18 ……………………………………………………………………………………………… 29
+表 本地读
+19 ……………………………………………………………………………………………… 30
+表 本地写
+20 ……………………………………………………………………………………………… 31
+表 本地事件
+21 …………………………………………………………………………………………… 31
+Ⅱ
+GB/T312303—2014
+.
+前 言
+工业以太网现场总线 分为以下 个部分
+GB/T31230《 EtherCAT》 6 :
+第 部分 概述
+——— 1 : ;
+第 部分 物理层服务和协议规范
+——— 2 : ;
+第 部分 数据链路层服务定义
+——— 3 : ;
+第 部分 数据链路层协议规范
+——— 4 : ;
+第 部分 应用层服务定义
+——— 5 : ;
+第 部分 应用层协议规范
+——— 6 : 。
+本部分为 的第 部分
+GB/T31230 3 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+本部分由中国机械工业联合会提出
+。
+本部分由全国工业过程测量和控制标准化技术委员会 归口
+(SAC/TC124) 。
+本部分起草单位 机械工业仪器仪表综合技术经济研究所 北京仪综测业科技发展有限公司 西南
+: 、 、
+大学 上海自动化仪表股份有限公司 中科院 沈阳 自动化研究所 清华大学 北京航空航天大学 北京
+、 、 ( ) 、 、 、
+交通大学 北京和利时系统工程有限公司 中科院计算所顺德分所 欧姆龙工业自动化公司 倍福北京分
+、 、 、 、
+公司 中国
+、ETG 。
+本部分主要起草人 谢素芬 高镜媚 刘丹 刘枫 包伟华 杨志家 王雪 刘艳强 范瑜 罗安 陈冰冰
+: 、 、 、 、 、 、 、 、 、 、 、
+李天兵 关鹏 范斌 程庚
+、 、 、 。
+Ⅲ
+GB/T312303—2014
+.
+工业以太网现场总线EtherCAT
+第3部分 数据链路层服务定义
+:
+1 范围
+11 本部分与IEC标准的关系
+.
+的本部分依赖于 系列文件类型 中相对应的部分
+GB/T31230 IEC61158 12 。
+12 概述
+.
+数据链路层部分为自动化设备之间的时间关键信息通信提供共同要素 时间关键 一
+EtherCAT 。“ ”
+词代表存在一个时窗 在此时窗内 要求完成一个或多个有明确定义的指定动作 在时窗内没有完成指
+, , 。
+定的动作 有可能造成需要该动作的应用的失败 甚至会影响设备 厂房及人身安全
+, , 、 。
+本部分以抽象的方式定义了由 现场总线数据链路层提供的外部可视服务 它借助于
+EtherCAT , :
+服务原语的动作和事件
+a) ;
+原语动作和事件相关的参数以及它们采用的格式
+b) ;
+动作和事件之间的关系及其有效序列
+c) 。
+本部分的目的是定义下列两项提供的服务
+:
+在现场总线参考模型应用层和数据链路层之间的边界处的 总线应用层
+a) EtherCAT ;
+现场总线参考模型的数据链路层和系统管理层边界的系统管理
+b) 。
+13 规范
+.
+本部分的主要目的是定义适合于时间关键通信的数据链路层概念性服务的特点 并以此补充
+, OSI
+基本参考模型 来指导服务于时间关键的通信数据链路协议的开发 其次 是为了从现有的工业通信协
+, ; ,
+议中另辟路径
+。
+本部分可作为正式 编程接口的根据 不过 它不是正式的编程接口 任何正式的接口都需要解
+DL 。 , ,
+决本规范未涉及的实现问题 包括
+, :
+各种多八位位组服务参数的大小和八位位组的排序
+a) ;
+成对的请求和证实 或指示和响应以及原语之间的相关性
+b) , 。
+14 一致性
+.
+本部分不指定个别的设备或产品 也不具体规定工业自动化系统中的数据链路层实体的实现
+, 。
+本部分虽然没有与设备的一致性 然而通过执行相应的满足本部分中 数据链路层服务
+, EtherCAT
+定义的数据链路层协议可以实现一致性
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 开放系统互连 基本参考模型 第 部分 基本模型
+GB/T9387.1 1 :
+1
+GB/T312303—2014
+.
+信息技术 开放系统互连 基本参考模型 第 部分 命名与编址
+GB/T9387.3 3 :
+信息技术 开放系统互连 基本参考模型 服务定义约定
+GB/T17967 OSI
+信息技术 系统间通信和信息交换 局域网和城域网 特殊要求 第 部分
+ISO/IEC8802-3 3 :
+带冲突检测的载波侦听多路访问 的访问方法和物理层规范
+(CSMA/CD) (Informationtechnology—
+Telecommunicationsandinformationexchangebetweensystems—Localandmetropolitanareanet-
+works—Specificrequirements—Part3:Carriersensemultipleaccesswithcollisiondetection(CSMA/
+CD)accessmethodandphysicallayerspecifications)
+用于局域网和城域网的 标准 媒体访问控制 网桥
+IEEE802.1D IEEE (MAC) [IEEEStandard
+forLocaland metropolitanareanetworks—Media AccessControl (MAC)Bridges;availableat
+<http://wwwi.eee.org>]
+3 术语 定义 符号 缩略语和约定
+、 、 、
+下列术语 定义 符号 缩略语和约定适用于本文件
+、 、 、 。
+31 参考模型术语和定义
+.
+311
+..
+DL地址 DL-address GB/T93873
+[ .]
+312
+..
+DL无连接模式传输 DL-connectionless-modetransmission GB/T93871
+[ .]
+313
+..
+对应 N 实体 correspondent N-entities
+() ()
+对应DL实体 N=2 correspondentDL-entities N=2
+( ) ( )
+对应Ph实体 N=1 correspondentPh-entities N=1 GB/T93871
+( ) ( ) [ .]
+314
+..
+DL双工传输 DL-duplex-transmission GB/T93871
+[ .]
+315
+..
+N 实体 N-entity
+() ()
+DL实体 N=2 DL-entity N=2
+( ) ( )
+Ph实体 N=1 Ph-entity N=1 GB/T93871
+( ) ( ) [ .]
+316
+..
+N 层 N-layer
+() ()
+DL层 N=2 DL-layer N=2
+( ) ( )
+Ph层 N=1 Ph-layer N=1 GB/T93871
+( ) ( ) [ .]
+317
+..
+层管理 layer-management GB/T93871
+[ .]
+318
+..
+对等实体 peer-entities GB/T93871
+[ .]
+319
+..
+原语名 primitivename GB/T93873
+[ .]
+3110
+..
+DL协议 DL-protocol GB/T93871
+[ .]
+3111
+..
+DL协议数据单元 DL-protocol-data-unit GB/T93871
+[ .]
+2
+GB/T312303—2014
+.
+3112
+..
+DL中继 DL-relay GB/T93871
+[ .]
+3113
+..
+复位 reset GB/T93871
+[ .]
+3114
+..
+响应DL地址 responding-DL-address GB/T93873
+[ .]
+3115
+..
+路由 routing GB/T93871
+[ .]
+3116
+..
+分段 segmenting GB/T93871
+[ .]
+3117
+..
+N 服务 N-service
+() ()
+DL服务 N=2 DL-service N=2
+( ) ( )
+Ph服务 N=1 Ph-service N=1 GB/T93871
+( ) ( ) [ .]
+3118
+..
+N 服务访问点 N-service-access-point
+() ()
+DL服务访问点 N=2 DL-service-access-point N=2
+( ) ( )
+Ph服务访问点 N=1 Ph-service-access-point N=1 GB/T93871
+( ) ( ) [ .]
+3119
+..
+DL服务数据单元 DL-service-data-unit GB/T93871
+[ .]
+3120
+..
+DL单工传输 DL-simplex-transmission GB/T93871
+[ .]
+3121
+..
+DL子系统 DL-subsystem GB/T93871
+[ .]
+3122
+..
+系统管理 systems-management GB/T93871
+[ .]
+3123
+..
+DLS-用户 DLS-user GB/T93871
+[ .]
+3124
+..
+DLS用户数据 DLS-user-data GB/T93871
+[ .]
+32 服务约定术语和定义
+.
+321
+..
+接受者 acceptor GB/T17967
+[ ]
+322
+..
+不对称服务 asymmetricalservice GB/T17967
+[ ]
+323
+..
+证实 原语 confirm primitive GB/T17967
+( ) ( ) [ ]
+324
+..
+交付 原语 deliver primitive GB/T17967
+( ) ( ) [ ]
+325
+..
+DL服务原语 DL-service-primitive GB/T17967
+[ ]
+326
+..
+DL服务提供者 DL-service-provider GB/T17967
+[ ]
+3
+GB/T312303—2014
+.
+327
+..
+DL服务用户 DL-service-user GB/T17967
+[ ]
+328
+..
+DL-用户可选功能 DL-user-optional-facility GB/T17967
+[ ]
+329
+..
+指示 原语 indication primitive GB/T17967
+( ) ( ) [ ]
+3210
+..
+请求 原语 request primitive GB/T17967
+( ) ( ) [ ]
+3211
+..
+请求者 requestor GB/T17967
+[ ]
+3212
+..
+响应 原语 response primitive GB/T17967
+( ) ( ) [ ]
+3213
+..
+提交 原语 submit primitive GB/T17967
+( ) ( ) [ ]
+3214
+..
+对称服务 symmetricalservice GB/T17967
+[ ]
+33 数据链路层服务术语和定义
+.
+331
+..
+应用 application
+生产或消费数据的函数或数据结构
+。
+332
+..
+应用对象 applicationobjects
+管理并提供网络间和网络设备内运行时信息交换的多个对象类
+。
+333
+..
+基本型从站 basicslave
+只支持数据物理寻址的从站设备
+。
+334
+..
+比特 bit
+由 和 组成的信息单元 是可发送的最小数据单元
+1 0 , 。
+335
+..
+客户端 client
+使用另一个对象 服务器 的服务来执行任务的对象
+a) ( ) ;
+服务器所响应的消息的发起者
+b) 。
+336
+..
+连接 connection
+在相同或不同设备中的两个应用对象之间的逻辑绑定
+。
+337
+..
+周期的 cyclic
+以定期和重复方式进行重复的事件
+。
+338
+..
+循环冗余校验 cyclicredundancycheckCRC
+;
+从数据阵列中计算出来的余数 用来作为该阵列的检验码
+, 。
+4
+GB/T312303—2014
+.
+339
+..
+数据 data
+泛指现场总线上传送的任何信息
+。
+3310
+..
+数据一致性 dataconsistency
+实现客户端与服务器之间及其内部对输入输出数据对象的一致性传输和访问的方法
+。
+3311
+..
+设备 device
+连接到至少由一个通信部件 网络部件 组成的现场总线的物理实体 并且该物理实体可能包含一
+( ) ,
+个控制部件和 或一个终端部件 变送器 执行器等
+/ ( 、 )。
+3312
+..
+分布式时钟 distributedclocks
+同步从站并维持一个全局时基的方法
+。
+3313
+..
+DL-段 链接 本地链接 DLsegmentlinklocallink
+, , , ,
+其中任何连接的 都可以直接通信 而无需加入任何 中继的单个 子网 无论何时 参
+DLE , DL DL 。 ,
+与到一个通信实例的所有 在试图通信期间都同时关注 子网
+DLE, DL 。
+3314
+..
+误差 error
+由计算 观察或测量而来的值或状态与指定或理论上正确的值或状态之间的差异
+、 。
+3315
+..
+事件 event
+状态发生变化的实例
+。
+3316
+..
+现场总线内存管理单元 fieldbusmemorymanagementunit
+现场总线内存管理单元具有在逻辑地址和物理内存间建立一个或多个对应关系的功能
+。
+3317
+..
+现场总线内存管理单元实体 fieldbusmemorymanagementunitentity
+现场总线内存管理单元的单个元素 一个连贯的逻辑地址空间和一个连贯的物理内存位置之间的
+:
+对应关系
+。
+3318
+..
+帧 frame
+的同义语
+DLPDU 。
+3319
+..
+完整型从站 fullslave
+同时支持数据的物理寻址和逻辑寻址的从站设备
+。
+3320
+..
+接口 interface
+由功能特性 信号特性或其他适当的特性定义的两个功能单元之间的共享边界
+、 。
+3321
+..
+主站 master
+控制网络上的数据传送 通过发送报文来初始化对从站的媒体访问 并构成控制系统的接口的
+, ,
+设备
+。
+5
+GB/T312303—2014
+.
+3322
+..
+映射 mapping
+两个对象间的对应关系 使得一个对象成为另一对象的一部分
+, 。
+3323
+..
+媒体 medium
+在两点或多点间传输通信信号的电缆 光纤或其他介质
+、 。
+3324
+..
+报文 message
+用于传送信息的一系列有序的八位位组
+。
+注 通常用于在应用层对等实体之间传递信息
+: 。
+3325
+..
+网络 network
+所有的媒体 连接器 中继器 路由器 网关和相关节点通信部件 用以实现一组通信设备互连
+、 、 、 、 , 。
+3326
+..
+节点 node
+出现在本地链路上的单个 实体
+a) DL ;
+网络中一个链路的端点 或两个及以上链路的交汇点 见
+b) , [ IEC61158-2]。
+3327
+..
+对象 object
+设备内某一特定组件的抽象描述
+。
+注 一个对象可以是
+: :
+一个设备能力的抽象描述 它由以下任一或所有部分组成
+a) , :
+数据 随时间改变的信息
+1) ( );
+组态 行为的参数
+2) ( );
+方法 用数据和组态可以做的事情
+3) ( );
+相关数据 以变量的形式 和操作这些数据的方法 程序 的集合 这些方法具有明确定义的接口和行为
+b) ( ) ( ) 。 。
+3328
+..
+过程数据 processdata
+以测量和控制为目的的数据对象 其中包含指定周期传输或非周期传输的应用对象
+, 。
+3329
+..
+接收DLS-用户 receivingDLS-user
+作为 用户数据接收者的 服务用户
+DL- DL 。
+注 服务用户可同时作为发送和接收 用户
+:DL DLS- 。
+3330
+..
+发送DLS-用户 sendingDLS-user
+作为 用户数据源的 服务用户
+DL- DL 。
+3331
+..
+服务器 server
+为另一个 客户端 对象提供服务的对象
+( ) 。
+3332
+..
+服务 service
+对象和 或对象类的执行是建立在另一个对象和 或对象类的请求基础上的操作或功能
+/ / 。
+6
+GB/T312303—2014
+.
+3333
+..
+从站 slave
+只有在被主站或前面的从站启动后 才能执行媒体访问的 实体
+, DL 。
+3334
+..
+同步管理器 Syncmanager
+控制单元的集合 用来协调对同时使用的对象的访问
+, 。
+3335
+..
+同步管理器通道 Syncmanagerchannel
+用来协调对同时使用的对象的访问的单个控制单元
+。
+3336
+..
+交换机 switch
+在 中定义的 桥
+IEEE802.1D MAC 。
+34 符号和缩略语
+.
+自增式物理读
+APRD: (Auto-incrementphysicalread)
+自增式物理读 写
+APRW: / (Auto-incrementphysicalread/write)
+自增式物理写
+APWR: (Auto-incrementphysicalwrite)
+自增式物理读 多重写
+ARMW: / (Auto-incrementphysicalread/multiplewrite)
+广播读
+BRD: (Broadcastread)
+广播读 写
+BRW: / (Broadcastread/write)
+广播写
+BWR: (Broadcastwrite)
+控制器局域网
+CAN: (Controllerareanetwork)
+基于 服务的 应用协议
+CoE: EtherCAT CAN (CANapplicationprotocoloverType12services)
+带冲突检测的载波侦听多路访问
+CSMA/CD: (Carriersensemultipleaccesswithcollisiondetec-
+tion)
+分布式时钟
+DC: (Distributedclocks)
+数据链路层 作为前缀
+DL-: ( )(Data-linklayer(asaprefix))
+连接
+DLC:DL (DL-connection)
+连接端点
+DLCEP:DL (DL-connection-end-point)
+实体 数据链路层的本地活动实例
+DLE:DL ( )[DL-entity(thelocalactiveinstanceofthedata-link
+layer)]
+数据链路层
+DLL: (DL-layer)
+协议控制信息
+DLPCI:DL (DL-protocol-control-information)
+协议数据单元
+DLPDU:DL (DL-protocol-data-unit)
+管理
+DLM:DL (DL-management)
+管理实体 数据链路层管理的本地活动实例
+DLME:DL ( )[DL-managemententity(thelocalactive
+instanceofDL-management)]
+管理服务
+DLMS:DL (DL-managementservice)
+服务
+DLS:DL (DL-service)
+服务访问点
+DLSAP:DL (DL-service-access-point)
+服务数据单元
+DLSDU:DL (DL-service-data-unit)
+电可擦可编程只读存储器
+2
+EPROM: (Electricallyerasableprogrammablereadonlymemory)
+基于 服务的以太网隧道
+EoE: EtherCAT (EthernettunneledoverType12services)
+7
+GB/T312303—2014
+.
+从站控制器
+ESC:EtherCAT (Type12slavecontroller)
+帧校验序列
+FCS: (Framechecksequence)
+先进先出 队列方式
+FIFO: ( )[First-infirst-out(queuingmethod)]
+现场总线内存管理单元
+FMMU: (Fieldbusmemorymanagementunit)
+基于 服务的文件访问
+FoE: EtherCAT (FileaccesswithType12services)
+配置的地址物理读
+FPRD: (Configuredaddressphysicalread)
+配置的地址物理读 写
+FPRW: / (Configuredaddressphysicalread/write)
+配置的地址物理写
+FPWR: (Configuredaddressphysicalwrite)
+配置的地址物理读 多重写
+FRMW: / (Configuredaddressphysicalread/multiplewrite)
+帧头
+HDR: (Header)
+标识符
+ID: (Identifier)
+互联网协议
+IP: (InternetProtocol)
+局域网
+LAN: (Localareanetwork)
+逻辑存储器读
+LRD: (Logicalmemoryread)
+逻辑存储器读 写
+LRW: / (Logicalmemoryread/write)
+逻辑存储器写
+LWR: (Logicalmemorywrite)
+媒体访问控制
+MAC: (Mediumaccesscontrol)
+媒 体 相 关 接 口 中 规 定
+MDI: (ISO/IEC 8802-3 )[Media-dependentinterface(specifiedin
+ISO/IEC8802-3)]
+邮箱数据交换
+MDX: (Mailboxdataexchange)
+媒 体 无 关 接 口 中 规 定
+MII: (ISO/IEC8802-3 )[Media-independentinterface(specifiedin
+ISO/IEC8802-3)]
+物理设备接口 允许 用户访问 服务的一组单元
+PDI: ( DL- DL )[Physicaldeviceinterface(asetof
+elementsthatallowsaccesstoDL-servicesfromtheDL-user)]
+过程数据对象
+PDO: (Processdataobject)
+物理层 作为前缀
+Ph-: ( )[Physicallayer(asaprefix)]
+物理层实体 物理层的本地活动实例
+PhE: ( )[Ph-entity(thelocalactiveinstanceofthephysical
+layer)]
+物理层
+PhL: (Ph-layer)
+物理层设备 中规定
+PHY: (ISO/IEC8802-3 )[Physicallayerdevice(specifiedinISO/IEC8802-3)]
+发布网络变量
+PNV: (Publishnetworkvariable)
+开放系统互连
+OSI: (Opensystemsinterconnection)
+服务质量
+QoS: (Qualityofservice)
+随机存取存储器
+RAM: (Randomaccessmemory)
+接收
+Rx: (Receive)
+服务数据对象
+SDO: (Servicedataobject)
+从站信息接口
+SII: (Slaveinformationinterface)
+同步管理器
+SyncM: (Synchronizationmanager)
+传输控制协议
+TCP: (Transmissioncontrolprotocol)
+发送
+Tx: (Transmit)
+用户数据包协议
+UDP: (Userdatagramprotocol)
+工作计数器
+WKC: (Workingcounter)
+8
+GB/T312303—2014
+.
+35 一般约定
+.
+本部分采用 中给出的描述性约定
+GB/T17967 。
+服务模型 服务原语和时间序列图完全是抽象的描述 它们不代表实现的规范
+、 , 。
+通过用来表达服务用户 服务提供者交互 见 的服务原语 用来传递指示用户 提供
+/ ( GB/T17967) , /
+者交互中可用信息的参数
+。
+本部分用表格的形式描述 原语的组成参数 在本部分后续的表中列出了用于各组 原语
+DLS 。 DLS
+的参数 每个表最多由 列组成 包括服务参数名称 那些原语和 使用的参数传送方向各占一列
+。 6 , 、 DLS :
+请求原语的输入参数
+——— ;
+指示原语的输出参数
+——— ;
+响应原语的输入参数
+——— ;
+证实原语的输出参数
+——— ;
+注 请求 指示 响应和证实原语也被各自认作 请求者 提交 接收者 交付
+: 、 、 requestor.submit( . ),acceptor.deliver( . ),
+接收者 提交 和 请求者 交付 见
+acceptor.submit( . ) requestor.deliver( . )( GB/T17967)。
+一个参数 或其一部分 示于每个表的各行中 在相应的服务原语列内 为了表示原语参数的用法
+( ) 。 ,
+类型和列内参数方向 规定了如下代码
+, :
+对于该原语 参数是强制性的
+———M, , 。
+由用户选择参数 根据 用户的动态用法可提供也可不提供 在不提供的情况下 为参
+———U, , DLS- 。 ,
+数提供一个默认值
+。
+与其他参数或 用户环境有关的条件参数
+———C, DLS- 。
+空白 无参数提供
+———( ), 。
+某些项目通过括号内的项进一步定义 它们可能是参数特定的约束
+, :
+是指该参数从语义上与表中左侧紧邻的服务原语参数相同
+———(=), 。
+在任何特定接口上 并非所有的参数需要作明确的声明 其中一些可能隐含地与原语相关联
+, 。 。
+在表示这些接口的图上 虚线是指因果或时序关系 而波浪线是指大致同时发生的事件
+, , 。
+4 数据链路层服务和概念
+41 工作原理
+.
+本部分描述了一种旨在最大限度地利用全双工以太网带宽的实时以太网技术 媒体访问控制采用
+。
+主站 从站原则 主站节点 通常是控制系统 发送以太网帧给从站节点 从站节点从这些帧中提取和插
+/ , ( ) ,
+入数据
+。
+从以太网的角度看 一个 网段就是一个单个的以太网设备 它接收和发送标准的
+, EtherCAT ,
+以太网帧 然而这种以太网设备并不局限于带有下游微处理器的单个以太网控制器
+ISO/IEC8802-3 。 ,
+也可以包含大量的 从站设备 当以太网帧传到这些设备的时候 它们处理传入的以太网帧
+EtherCAT 。 , ,
+并在把帧传到下一个从站设备之前 从中读取数据和 或插入自己的数据 网段内的最后一个从站设备
+, / 。
+沿着设备链反向发送完全处理的以太网帧 并通过第一个从站设备把收集的信息返回给主站 主站接收
+, ,
+信息作为以太网响应帧
+。
+此方法采用以太网全双工的功能 双方向的通信都是独立执行的 在主站发送的路径上每个从站读
+: ,
+9
+GB/T312303—2014
+.
+和写 并且 在返回主站路径上以太网帧再通过各中间从站时 仅执行发送到接收的时间的测量
+, , , 。
+主站设备和由一个或几个从站设备组成的 网段间的全双工通信可不通过交换机建立
+EtherCAT 。
+42 拓扑
+.
+通信系统的拓扑结构对自动化的成功应用是一个非常重要的因素 拓扑结构对布线 诊断功能 冗
+。 、 、
+余选项和热插拔功能都有很大影响
+。
+以太网常用的星型拓扑结构会导致布线人力及基础设施成本的增加 所以 尤其是对自动化应用
+。 , ,
+往往优先考虑总线型或树型拓扑结构
+。
+从站节点的排列是一个开环型总线 在开环的一端 主站设备可以直接发送帧 或通过以太网交换
+, , ,
+机发送 另一端就可以接收环上每个从站处理好的帧 每一个以太网帧从第一个节点传递给下一个节
+; 。
+点 然后按顺序传给后续节点 最后一个节点使用全双工以太网能力将以太网帧返回到主站 由此产
+, 。 。
+生的拓扑结构是一个物理线型
+。
+原则上 分支在任何地方都是可以的 它可以用来把线型结构提升为树型结构 而树型结构支持非
+, , ,
+常简单的布线 比如 单独的分支可以拓展到控制柜或机器模块 而干线却只能从一个模块到下一个模
+。 , ,
+块 如果设备有两个以上的端口则可以分支 除了 个串行接口的基本集 本标准还允许最多两个分
+。 。 2 ,
+支链路
+。
+端口nn不为 收到的以太网帧被转发端口n 如果没有端口n 以太网帧则被转发到
+( 0) +1, +1,
+端口 如果没有设备连接或者端口被主站关闭 那么发送到该端口的请求将被处理 就好像相同的数
+0。 , ,
+据被该端口接收一样 即环路闭合
+( )。
+43 数据链路层概述
+.
+单个以太网帧可以携带多个被无间隙地打包到以太网帧中的 这些
+EtherCATDLPDU。 DLPDU
+可以分别寻址多个节点 以太网帧以最后一个 结束 除非当该帧小于 个八位位
+。 EtherCATDLPDU , 64
+组时 以太网帧将被填充至 个八位位组
+, 64 。
+与从每个从站节点单独发送 接收以太网帧相比 这种打包方式提高了以太网带宽利用率 然而
+/ , 。 ,
+对于仅有两比特用户数据的双通道数字输入节点 单个 的开销依然可能过多
+, EtherCATDLPDU 。
+因此 从站节点也可支持逻辑地址映射 过程数据可以被插入到逻辑地址空间的任何地方 如果
+, 。 。
+包含的读 写服务针对位于相应逻辑地址的过程映像区 而不是针对某个特定节
+EtherCATDLPDU / ,
+点 那么从站节点在过程数据的相应位置插入或提取数据 如图 所示
+, , 1 。
+图1 包含单个EtherCATDLPDU的以太网帧内的逻辑数据映射
+检测到地址与过程映像相匹配的每个节点插入其数据 因此 用单个 可以实现
+, , EtherCATDLPDU
+10
+GB/T312303—2014
+.
+多个节点同时寻址 这样 通过单个 主站可以完成一个完整的分类逻辑过程映像
+。 , EtherCATDLPDU, ,
+与从站设备的物理布线顺序无关
+。
+主站不再需要额外的映射 所以过程数据可以直接传输到一个或多个不同的控制任务中 每个任
+, 。
+务可以创建自己的过程映像并在其时间范围内 内交换过程映像 节点的物理顺序完全是
+(Timeframe) 。
+任意的 仅和首次初始化阶段相关
+, 。
+逻辑地址空间大小为 个八位位组 现场总线可以被认为一个用于自动化系
+32
+2 (4GB)。EtherCAT
+统的串行背板 并使其在大的和非常小的自动化设备下都能连接到分布式进程数据 使用标准的以太
+, 。
+网控制器和标准的以太网电缆 大量的 通道可与自动化设备连接 因此 具有高带宽 低
+, I/O , EtherCAT 、
+延迟和良好的有效可用数据传输率 同时 为了保留现存的技术和标准 像现场总线扫描仪这样的设备
+。 , ,
+也可以连接
+。
+44 错误检测概述
+.
+主站与从站节点 检查以太网帧校验序列 来确定一个帧是否被正确接收
+EtherCAT (DLE) (FCS) 。
+由于一个或几个从站会在数据传输过程中修改以太网帧 会在每个节点接收时被检查并在转发过
+,FCS
+程中重新计算 如果检测到校验和错误 从站不进行 修复 而是通过增加错误计数器来通知主站
+。 , FCS , ,
+以确保在一个开环拓扑里能够精准地确定单一错误源的位置
+。
+当向 读或写数据时 被寻址的从站增加位于 尾部的工作计数器
+EtherCATDLPDU , DLPDU
+仅转发 但不从 提取或插入信息的从站不改变工作计数器 通过比较
+(WKC)。 DLPDU DLPDU 。 WKC
+与期望访问的从站节点数目 主站能检测出期望数目的节点是否已经处理过相应的
+, DLPDU。
+45 参数和过程数据处理介绍
+.
+在数据传输特性方面 工业通信系统需要满足不同的需求 在对时序要求相对不关键且传输是由
+, 。
+控制系统触发的情况下 参数数据可以大批量非周期性传送 在事件驱动模式中 诊断数据也是非周期
+, , ,
+性传送 但时序要求更为苛刻 传输通常是由外围设备触发
+, , 。
+另一方面 过程数据通常以不同的周期时间循环传输 在过程数据通信中时序要求是最严格的
+, 。 。
+支持各种不同的服务和协议以满足这些不同的要求
+GB/T31230 。
+46 节点参考模型
+.
+461 到OSI基本参考模型的映射
+..
+服务描述使用 的原则 方法和模型 模型为通信标准提供了一
+EtherCAT GB/T9387.1(OSI) 、 。OSI
+个分层的方法 即层可以独立开发和修改 规范定义了从整个 通信协议栈的顶层到底
+, 。EtherCAT OSI
+层的功能 中间层 即 层 的功能并入 数据链路层或其 用户 数据
+。OSI ( 3~6 ) EtherCAT DL 。EtherCAT
+链路参考模型如图 所示
+2 。
+11
+GB/T312303—2014
+.
+图2 EtherCAT数据链路参考模型
+462 数据链路层特征
+..
+数据链路层为相连的设备之间的数据通信提供时间关键的基本支持 时间关键 一词用来描述带
+。“ ”
+时窗的应用 在此时窗内 要求完成一个或多个有明确定义的指定动作 在时窗内没有完成指定的动
+, , 。
+作 有可能造成需要该动作的应用的失败 甚至会危害设备 系统及人身安全
+, , 、 。
+数据链路层的任务是根据存储在预先定义的内存位置上的数据链路层参数完成计算 比较 且产生
+、 ,
+帧校验序列 并通过从以太网帧中提取数据或将数据包含到以太网帧中实现通信 在物理内存中通过
+, 。
+邮箱配置或过程数据区 用户都可以获得该数据
+,DL- 。
+47 操作概述
+.
+471 与ISO/IEC8802-3的关系
+..
+本部分规定 以外的数据链路层服务
+ISO/IEC8802-3 。
+472 EtherCAT模式
+..
+4721 开放模式 Openmode
+... ( )
+在开放模式下 一个或多个 网段可连到一个标准的交换机设备 如图 所示
+, EtherCAT , 3 。
+网段中的第一个从站设备具有一个表示整个网段的 地址 如果以太
+EtherCAT ISO/IEC8802-3MAC 。
+网帧符合 的编码规则 该从站设备用以太网帧中的源地址字段代替目的地址字段 用它自己
+EtherCAT , ,
+的 地址代替该帧的源地址字段 如果通过 协议传输这类帧 那么该从站设备以与 地
+MAC 。 UDP , MAC
+址相同的方式处理源和目的 地址以及源和目的 端口号 以确保响应帧完全符合 协议
+IP UDP , UDP/IP
+标准 此外 该设备保护网段内的从站设备不受主站设备或普通以太网设备非授权的访问
+。 , 。
+12
+GB/T312303—2014
+.
+图3 开放模式下EtherCAT网段
+4722 直连模式 Directmode
+... ( )
+在直连模式下 网段连接到控制设备或主站设备的标准以太网口 如图 所示 不对以
+,EtherCAT , 4 。
+太网帧的 地址字段进行校验
+MAC 。
+图4 直连模式下EtherCAT网段
+473 逻辑拓扑结构
+..
+逻辑上 网段内从站设备的布置构成一个全双工开环总线连接 在开环的输入端 主站
+,EtherCAT , ,
+设备可以直接或通过标准以太网交换机插入帧 在开环的输出端可以接收所有从站处理好的帧 所有
+; 。
+帧从第一个从站设备传递给下一个从站设备 最后一个从站设备通过其他所有从站设备将数据帧返回
+。
+到主站 结果是由全双工物理线的连续段构成的一个开环的逻辑环
+。 。
+从站设备按照它们在开环结构中的物理顺序 按一个接一个的八位位组来 飞速 处理接收到的以
+, “ ”
+太网帧 这种情况下 当这些帧被转发到开环结构中的下一个设备时 每个从站识别并相应地执行相关
+。 , ,
+命令 延迟一个固定的时间 通常低于 当以太网帧传到该从站设备时 数据链路层进行数据的提
+( , 1μs)。 ,
+取和插入 这种方式与从站设备中 或连接到从站设备 的任何微处理器的响应时间无关
+, ( ) 。
+全双工的物理分支可以在 网段的任何位置 因为分支不会破坏逻辑环路 分支可以用
+EtherCAT , 。
+来建立一个灵活的树型结构 从而允许非常简单的布线
+, 。
+48 寻址
+.
+481 寻址概述
+..
+如图 所示 从站支持不同的寻址模式 在 的首部含有一个 比特的地址
+5 , 。 EtherCATDLPDU 32 ,
+用来实现物理节点寻址或逻辑寻址
+。
+13
+GB/T312303—2014
+.
+图5 寻址模式概览
+482 网段寻址 Segmentaddressing
+.. ( )
+网段寻址使用符合 的 地址
+ISO/IEC8802-3 MAC 。
+483 设备寻址
+..
+4831 设备地址的结构
+...
+在这种寻址模式下 每个 内的 比特的地址被分成 比特从站设备地址和
+, EtherCATDLPDU 32 16
+比特从站设备内的物理地址 从而有 个从站设备地址 每个都带有相关的 比特本地地址空间
+16
+16 , 2 , 16 。
+通过设备寻址 每个 都能唯一对应一个从站设备
+, EtherCATDLPDU 。
+这种模式最适合传输参数数据 有如下两种不同的设备寻址机制
+。 :
+位置寻址
+——— ;
+节点寻址
+——— 。
+4832 位置寻址 Positionaddressing
+... ( )
+位置寻址是根据每个从站设备在网段内的物理位置进行寻址 当 经过从站设备时 每个
+。 DLPDU ,
+从站设备 比特地址字段值加 所以收到一个地址字段值为 的 的从站设备是被寻址的设
+16 1, 0 DLPDU
+备 由于经过节点时更新地址采用这一机制 位置寻址中的从站设备地址被称为一个自动递增地址
+。 ,
+(auto-incrementaddress)。
+示例 如果要寻址网段内第十个从站设备 主站设备将通过地址寻址发送一个初始地址值为 的 该地址
+: , -9 DLPDU,
+值在 经过每个从站设备时递增
+DLPDU 1。
+通常 位置寻址用于启动阶段 在启动时 主站分配配置好的节点地址给各个从站 启动后 可以使用那些节点地
+, 。 , 。 ,
+址来寻址从站 而不管它们在网段内的物理位置
+, 。
+这种基于拓扑结构的寻址机制的优点是不用在从站节点上手动设置节点地址
+。
+4833 节点寻址 Nodeaddressing
+... ( )
+节点寻址是通过主站在数据链路层启动阶段配置的节点地址来寻址从站 这确保了即使网段的拓
+。
+扑结构改变或者设备增加 减少 从站设备也能通过相同的地址配置来寻址
+/ , 。
+从站设备的节点寻址被称为配置站地址
+(configuredstationaddress)。
+484 逻辑寻址 Logicaladdressing
+.. ( )
+对于网段内的逻辑寻址 每个 的整个 比特地址字段被用来作为一个单一的
+, EtherCATDLPDU 32
+非结构化的地址 逻辑寻址时 不是寻址单个从站 而是寻址网段范围为 逻辑地址空间的一段区
+。 , , 4GB
+14
+GB/T312303—2014
+.
+域 任何数量的从站可能使用相同或者重叠的区域
+。 。
+这种模式使用的数据区域地址被称为逻辑地址
+(logicaladdress)。
+逻辑寻址方式特别适合于传输和 或交换周期性的过程数据
+/ 。
+485 FMMU介绍
+..
+现场总线内存管理单元 将从站本地物理内存地址映射到网段范围内的逻辑地址 如
+(FMMU) ,
+图 所示
+6 。
+图6 现场总线内存管理单元概览
+实体由主站设备配置 并在数据链路启动阶段传送给从站设备 每个 实体需要以
+FMMU , 。 FMMU
+下配置信息 按位的逻辑起始地址 物理内存起始地址 位长度 指定映射方向 输入或输出 的类型 从
+: 、 、 、 ( ) 。
+而 从站设备内存中的任何数据都可以按位映射到逻辑地址
+, 。
+从站设备收到一个逻辑寻址的 时 检查是否有 实体地址匹配 如果
+EtherCATDLPDU , FMMU 。
+有 它将数据插入到 数据字段的相关位置 输入类型 或从 的相关位置提取数据 输
+, DLPDU ( ), DLPDU (
+出类型 因此 可以根据控制应用的要求来灵活组装和优化
+)。 , DLPDU。
+486 同步管理器 SyncManger介绍
+.. ( )
+同步管理器 控制对 用户内存的访问 每个同步管理器 通道定义了一个一致
+(SyncM) DLS- , (SyncM)
+的 用户内存区
+DLS- 。
+49 从站分类
+.
+491 完整型从站 Fullslave
+.. ( )
+基本型从站和完整型从站有一个区别 完整型从站支持所有的寻址方式 基本型从站仅支持寻址方
+, ,
+式的一个子集 主站设备可支持基本型从站的功能 以允许与另一主站设备直接通信 从站设备应支持
+。 , ,
+完整型从站的功能
+。
+完整型从站支持以下方式
+:
+逻辑寻址
+a) ;
+位置寻址
+b) ;
+节点寻址
+c) 。
+因此完整型从站设备需要 和地址自增两个功能
+FMMU 。
+完整型从站可支持网段寻址 支持网段寻址的完整型从站被称为网段寻址从站设备
+。 。
+15
+GB/T312303—2014
+.
+只有完整型从站才能在 网段内相连
+EtherCAT 。
+492 基本型从站 Basicslave
+.. ( )
+基本型从站设备支持节点寻址和网段寻址
+。
+410 从站的通信层结构
+.
+从主站可读写的属性与从站的物理内存相关 物理内存包含寄存器和 用户内存 在 中
+。 DL 。 DLL
+寄存器区内的信息包括配置 管理和设备标识 用户内存的用途由 用户规定 图 给出了
+、 。DL DL 。 7
+用户与 之间和 与通信之间的交互的框图
+DL DLL DLL 。
+图7 通信分层
+对寄存器区的写服务 可能会 取决于所写的寄存器 对 用户产生一个事件指示原语 然
+DL (1) ( ) DL ,
+后会从 用户产生一个本地读请求原语以获取被写的值 否则 写服务只访问寄存器区而不
+DL (2)。 ,DL
+告知 用户 用户能通过读本地原语随时读取寄存器区
+DL (3)。DL 。
+用户在需要和可能时可以通过本地写寄存器来设置寄存器和更新寄存器 对寄存器区的
+DL (4)。
+读服务仅访问寄存器区 无需通知 用户
+DL , DL (5)。
+访问 用户内存区域由同步管理器来协调 在没有同步管理器的情况下 可以通过与寄存器访
+DL 。 ,
+问相似的方法来访问 但由于一致性限制和缺乏指示由主站引起变化的事件将限制使用这种方法 对
+, 。
+用户内存访问的描述假设使用同步管理器
+DL 。
+对 用户内存区的 写服务 将对 用户产生事件指示原语 然后由 用户本地读请求
+DL DL (6) DL , DL
+原语得到写入的值
+(7)。
+用户根据本地写请求原语写 用户内存区 主站通过 读服务读取 用户内存区
+DL DL (8)。 DL DL
+这将给 用户一个事件指示原语 来表明 用户内存区已经被读取 并可以被 用户再次
+(9), DL (10) DL , DL
+写入
+。
+从站响应所有读和写请求 而且可能响应读 写联合请求
+, / 。
+16
+GB/T312303—2014
+.
+5 通信服务
+51 概述
+.
+从主站的角度来描述的服务 从站内服务的执行在第 章中描述
+。 6 。
+数据链路层规定了从站内的读 写 交换 读之后立即覆盖 数据的服务
+、 、 ( ) 。
+注 为了简化表达 使用 读内存 来替代 从物理内存读数据 同样的 使用 写内存 来替代 写数据到物理内
+: , “ ” “ ”。 , “ ” “
+存
+”。
+通过读服务 主站从一个或多个从站中读取寄存器或者 用户内存
+, DL 。
+除了广播读外 所有读服务的变型的基本服务过程是一样的 被寻址的单元将数据拷贝到 参
+, 。 data
+数中 而在广播服务中 从站将对 参数与内存或寄存器数据执行按位或操作
+。 , data 。
+如果只有一个从站连接到主站 服务过程将按照客户端 服务器模型执行 如果有多个从站连接
+, - 。
+总是串联 服务过程的调用将以一个从站的输出作为下一个从站的输入的方式处理
+( ), 。
+服务过程和 中定义的过程类似 但将转发和处理合并了 由于 使用证实
+IEEE802.1D , 。 EtherCAT
+服务而不是 中规定的非证实服务 因此服务原语之间的信息流处理过程适用于这种情
+IEEE802.1D ,
+况 主站发起一个请求服务并接收一个相应的证实 每个从站接收一个它所接收的数据指示 同时在
+。 。 ,
+可能的更新后转发给下一个从站 图 说明了这个控制过程
+。 8 。
+图8 EtherCAT服务原语流
+52 读服务
+.
+521 概述
+..
+通过读服务 主站从一个或多个从站的内存中读取数据
+, 。
+522 位置物理读 PositionalphysicalreadAPRD
+.. ( , )
+通过 服务 主站按照网段中从站物理顺序的先后选择一个从站 从其内存或者寄存器中读
+APRD , ,
+取数据 表 列出了 服务的服务原语和参数
+。 1 APRD 。
+表1 自增式物理读 APRD
+( )
+请求 证实
+DL-AUTOINCREMENT-PHYSICALREAD
+参数名称 输入 输出
+Ordinaldevicenumber M M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+17
+GB/T312303—2014
+.
+参数描述
+Ordinaldevicenumber
+该参数规定所连线的通信链路中被寻址设备的顺序索引 在给主站的证实中 也给出经过的从站
+。 ,
+设备的数量
+。
+Devicedataarea
+该参数规定从从站中读数据时数据在从站物理内存中的存储位置
+。
+DLS-userdata
+当对被寻址从站的访问有效时 证实原语中该参数规定从该设备中读取的数据 否则原样返回请求
+, ;
+原语中所规定的值
+。
+Workingcounter
+该参数在每次数据被成功读取时递增
+。
+523 配置的地址物理读 Configured-addressphysicalreadFPRD
+.. ( , )
+通过 服务 主站依据从站的配置站地址去选择一个从站 并从其内存或寄存器中读取数据
+FPRD , , 。
+表 列出了 服务的服务原语和参数
+2 FPRD 。
+表2 配置的地址物理读 FPRD
+( )
+请求 证实
+DL-CONFIGURED-PHYSICALREAD
+参数名称 输入 输出
+Configureddevicenumber M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Configureddevicenumber
+该参数规定被寻址设备的配置的站地址
+。
+Devicedataarea
+该参数规定从从站中读数据时数据在从站物理内存中的存储位置
+。
+DLS-userdata
+当对被寻址从站的访问有效时 证实原语中该参数规定从该设备中读取的数据 否则原样返回请求
+, ;
+原语中所规定的值
+。
+Workingcounter
+该参数在每次数据被成功读取时递增
+。
+524 广播读 BroadcastreadBRD
+.. ( , )
+通过 主站从物理内存或寄存器中读取数据 这些数据是将输入数据与所有从站中被选择的
+BRD, ,
+对象执行按位或操作而得到的 表 列出了 服务的服务原语和参数
+。 3 BRD 。
+18
+GB/T312303—2014
+.
+表3 广播读 BRD
+( )
+请求 证实
+DL-BROADCAST-READ
+参数名称 输入 输出
+Broadcastaddress M M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Broadcastaddress
+每个从站递增该参数
+。
+Devicedataarea
+该参数指定读数据时数据在物理内存中的存储位置
+。
+DLS-userdata
+在证实原语中 该参数规定将请求的 参数与响应时所选对象进行按位或操作的结果
+, data 。
+Workingcounter
+对请求数据进行按位或操作的所有从站递增该参数
+。
+525 逻辑读 LogicalreadLRD
+.. ( , )
+通过 服务 主站依据逻辑地址选择从站 并从一个或多个从站的内存或寄存器中读取数据
+LRD , , 。
+表 列出了 服务的服务原语和参数
+4 LRD 。
+表4 逻辑读 LRD
+( )
+请求 证实
+DL-LOGICAL-READ
+参数名称 输入 输出
+Logicalmemoryaddress M
+DLS-userdata U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Logicalmemoryaddress
+该参数规定要读取的数据在逻辑内存中的起始地址
+。
+DLS-userdata
+该参数规定被读取的数据
+。
+Workingcounter
+该参数经过所有检测到与请求逻辑内存区地址匹配的从站时递增
+。
+19
+GB/T312303—2014
+.
+53 写服务
+.
+531 概述
+..
+通过写服务 主站向一个或多个从站的寄存器或内存中写入数据
+, 。
+532 位置物理写 PositionalphysicalwriteAPWR
+.. ( , )
+通过 服务 主站依据在这个网段中从站的物理顺序选择一个从站 往其内存或寄存器中写
+APWR , ,
+入数据 表 列出了 服务的服务原语和参数
+。 5 APWR 。
+表5 自增式物理写 APWR
+( )
+请求 证实
+DL-AUTOINCREMENT-PHYSICALWRITE
+参数名称 输入 输出
+Ordinaldevicenumber M M
+Devicedataarea M
+DLS-userdata U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Ordinaldevicenumber
+该参数规定所连线的通信链路中被寻址设备的顺序索引 在给主站的证实中 也给出经过的从站
+。 ,
+设备的数量
+。
+Devicedataarea
+该参数规定从从站中读数据时数据在从站物理内存中的存储位置
+。
+DLS-userdata
+该参数规定要写入的数据
+。
+Workingcounter
+该参数在每次数据成功写入后递增
+。
+533 配置的地址物理写 Configured-addressphysicalwriteFPWR
+.. ( , )
+通过 服务 主站依据从站的配置站地址选择一个从站 并往其内存或寄存器中写入数据
+FPWR , , 。
+表 列出了 服务的服务原语和参数
+6 FPWR 。
+表6 配置的地址物理写 FPWR
+( )
+请求 证实
+DL-CONFIGURED-PHYSICALWRITE
+参数名称 输入 输出
+Configureddevicenumber M
+Devicedataarea M
+DLS-userdata U
+Workingcounter M M(=)
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+20
+GB/T312303—2014
+.
+参数描述
+Configureddevicenumber
+该参数规定被寻址设备的配置的站地址
+。
+Devicedataarea
+该参数规定向从站中写数据时 数据在从站物理内存中的存储位置
+, 。
+DLS-userdata
+该参数规定将要写入的数据
+。
+Workingcounter
+该参数在数据成功写入时递增
+。
+534 广播写 BroadcastwriteBWR
+.. ( , )
+通过 服务 主站向所有从站的物理内存写数据 表 列出了 服务的服务原语和参数
+BWR , 。 7 BWR 。
+表7 广播写 BWR
+( )
+请求 证实
+DL-BROADCAST-WRITE
+参数名称 输入 输出
+Broadcastaddress M M
+Devicedataarea M
+DLS-userdata U
+Workingcounter M M(=)
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Broadcastaddress
+每个从站递增该参数
+。
+Devicedataarea
+该参数规定向从站中写数据时 数据在物理内存中的存储位置
+, 。
+DLS-userdata
+该参数规定将要写入的数据
+。
+Workingcounter
+向每个从站的物理内存区写数据时 该参数递增
+, 。
+535 逻辑写 LogicalwriteLWR
+.. ( , )
+通过 服务 主站依据逻辑地址选择一个或多个从站并往其内存或寄存器中写入数据 表
+LWR , 。 8
+列出了 服务的服务原语和参数
+LWR 。
+表8 逻辑写 LWR
+( )
+请求 证实
+DL-LOGICAL-WRITE
+参数名称 输入 输出
+Logicalmemoryaddress M
+DLS-userdata U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+21
+GB/T312303—2014
+.
+参数描述
+Logicalmemoryaddress
+该参数规定要写入的数据在逻辑内存中的起始地址
+。
+DLS-userdata
+该参数规定要写入的数据
+。
+Workingcounter
+检测地址到与请求逻辑内存区地址匹配的所有从站递增该参数
+。
+54 组合读写服务
+.
+541 概述
+..
+被寻址从站的读和 或写的规则适用于组合读写服务
+/ 。
+542 位置物理读/写 Positionalphysicalread/writeAPRW
+.. ( , )
+通过 服务 主站按照网段中从站的物理顺序选择从站 读取其内存或寄存器 并往该从站内
+APRW , , ,
+存或寄存器中写入数据 表 列出了 服务的服务原语和参数
+。 9 APRW 。
+表9 自动递增物理读/写 APRW
+( )
+请求 证实
+DL-AUTOINCREMENT-PHYSICALREADWRITE
+参数名称 输入 输出
+Ordinaldevicenumber M M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Ordinaldevicenumber
+该参数规定所连线的通信链路中被寻址设备的顺序索引 在给主站的证实中 也给出经过的从站
+。 ,
+设备的数量
+。
+Devicedataarea
+该参数规定要读取和写入数据在从站的物理内存内的存储位置
+。
+DLS-userdata
+该参数规定要读取或写入的数据
+。
+Workingcounter
+当数据被成功读 写时 该参数递增
+/ , 。
+543 配置的地址物理读/写 Configured-addressphysicalread/writeFPRW
+.. ( , )
+通过 服务 主站依据从站的配置站地址选择一个从站 并从其内存或寄存器中读并写入数
+FPRW , ,
+据 表 列出了 服务的服务原语和参数
+。 10 FPRW 。
+22
+GB/T312303—2014
+.
+表10 配置的地址物理读/写 FPRW
+( )
+请求 证实
+DL-CONFIGURED-PHYSICALREADWRITE
+参数名称 输入 输出
+Configureddevicenumber M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Configureddevicenumber
+该参数规定被寻址设备的配置的站地址
+。
+Devicedataarea
+该参数规定要读取和写入的数据在从站的物理内存内的存储位置
+。
+DLS-userdata
+该参数规定要读取或写入的数据
+。
+Workingcounter
+当数据被成功读 写时 该参数递增
+/ , 。
+544 广播读/写 Broadcastread/writeBRW
+.. ( , )
+通过 服务 主站读取被所有从站按位或操作的物理内存或寄存器 并写入在前面的所有从站
+BRW , ,
+处收集的数据 表 列出了 服务的服务原语和参数
+。 11 BRW 。
+表11 广播读/写 BRW
+( )
+请求 证实
+DL-BROADCAST-READWRITE
+参数名称 输入 输出
+Broadcastaddress M M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Broadcastaddress
+每个从站递增该参数
+。
+Devicedataarea
+该参数规定要读取和写入的数据在从站的物理内存内的存储位置
+。
+DLS-userdata
+该参数规定写入设备的数据 或者从每个设备读取的数据按位或操作的结果
+, 。
+23
+GB/T312303—2014
+.
+Workingcounter
+对请求的数据按位或操作并写数据到其物理内存的所有从站递增该参数
+。
+545 逻辑读/写 Logicalread/writeLRW
+.. ( , )
+通过 服务 主站通过逻辑地址选择一个或多个从站 并对其内存进行读 写 表 列出了
+LRW , , / 。 12
+服务的服务原语和参数
+LRW 。
+表12 逻辑读/写 LRW
+( )
+请求 证实
+DL-LOGICAL-READWRITE
+参数名称 输入 输出
+Logicalmemoryaddress M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Logicalmemoryaddress
+该参数规定要读 写的数据在逻辑内存中存储的起始地址
+/ 。
+DLS-Userdata
+该参数规定要读 写的数据
+/ 。
+Workingcounter
+当数据被成功读 写时 该参数递增
+/ , 。
+546 位置物理读/多重写 Positionalphysicalread/multiplewriteARMW
+.. ( , )
+通过 服务 主站通过从站在网段内的物理顺序选择一个从站 读取其内存或寄存器的数
+ARMW , ,
+据 并向其后所有其他从站的相同内存或寄存器写入参数 值 表 列出了 服务的服务原
+, data 。 13 ARMW
+语和参数
+。
+表13 自动递增物理读/多重写 ARMW
+( )
+请求 证实
+DL-AUTOINCREMENT-READMULTIPLEWRITE
+参数名称 输入 输出
+Ordinaldevicenumber M M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Ordinaldevicenumber
+该参数规定所连线的通信链路中被寻址设备的顺序索引 在给主站的证实中 也给出经过的从站
+。 ,
+24
+GB/T312303—2014
+.
+设备的数量
+。
+Devicedataarea
+该参数规定要读取和写入的数据在从站的物理内存内的存储位置
+。
+DLS-userdata
+该参数规定要读取或写入的数据
+。
+Workingcounter
+当数据被成功读写时 该参数递增
+, 。
+547 配置的地址物理读/多重写 Configured-addressphysicalread/multiplewriteFRMW
+.. ( , )
+通过 服务 主站通过从站的配置站地址选择一个从站 从其内存或寄存器中读取数据 并
+FRMW , , ,
+且把数据写入所有其他从站的相同对象 表 列出了 服务的服务原语和参数
+。 14 FRMW 。
+表14 配置的地址物理读/多写 FRMW
+( )
+请求 证实
+DL-CONFIGURED-READMUTIPLEWRITE
+参数名称 输入 输出
+Configureddevicenumber M
+Devicedataarea M
+DLS-userdata U U
+Workingcounter M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Configureddevicenumber
+该参数规定执行读操作设备的配置的站地址
+。
+Devicedataarea
+该参数规定要读取和写入的数据在从站物理内存内的存储位置
+。
+DLS-userdata
+该参数规定要读取或写入的数据
+。
+Workingcounter
+当数据被成功读写时 该参数递增
+, 。
+55 网络服务
+.
+551 概述
+..
+网络变量服务从发布者的角度来描述 数据链路层规定发布的服务 该服务是专门为主站之间或
+。 。
+主站和标准的以太网设备之间的通信服务
+。
+552 提供网络变量 ProvidenetworkvariablePNV
+.. ( , )
+通过 服务 主站给一个或其他多个站 主站或从站 提供数据 主要通过目的 地址寻址
+PNV , ( ) 。 MAC
+组地址 单独地址 收到指示的站将数据传送给 用户 表 列出了 服务的服务原语和
+( / )。 DL- 。 15 PNV
+参数
+。
+25
+GB/T312303—2014
+.
+表15 提供网络变量 PNV
+( )
+请求 指示
+DL-PROVIDE-NETWORKVARIABLE
+参数名称 输入 输出
+PublisherID M M(=)
+Cycle M M(=)
+Listofnetworkvariable M M(=)
+参数描述
+PublisherID
+该参数规定标识八位位组串的值
+。
+Cycle
+该参数是从站周期的数字标识符 可用于检测新的值
+, 。
+Listofnetworkvariable
+该参数规定网络变量的列表 列表中的每个参数规定如下
+。 :
+Index
+该参数规定网络变量提供者内的惟一标识符
+。
+Hashvalue
+该参数规定描述网络变量的变量结构描述的哈希值 哈希算法是提供者特定的
+。 。
+Data
+该参数规定发布者数据的值
+。
+56 邮箱
+.
+561 概述
+..
+邮箱是双向工作的 由主站到从站 及由从站到主站 它支持 个方向上独立全双工通信和多数据
+: , 。 2
+链路用户协议 从站与从站间的通信通过类似路由器的主站进行管理 邮箱首部包含了一个允许主站
+。 。
+进行重定向服务的地址字段
+。
+邮箱使用了两个同步管理器通道 每个方向一个通道 例如同步管理器通道 用于主站发送到从
+, ( 0
+站 而同步管理器通道 为从站到主站 配置为邮箱模式的同步管理器通道防止另一边的数据超限
+, 1 )。 。
+通常邮箱通信是非周期性的 并对单个从站进行寻址 因此 使用不需要 现场总线内存管理单
+, 。 , FMMU(
+元 的物理寻址 而不是用逻辑寻址
+) , 。
+5611 主站到从站的通信
+...
+主站必须检查从站邮箱命令的应答中的工作计数器 如果工作计数器没有增加
+(workingcounter)。
+通常是因为从站没有完全读取上一条命令 或在规定的时间期限内没有响应 主站必须重发该邮箱命
+( ) ,
+令 进一步的错误校正由更高层协议负责
+。 。
+5612 从站到主站的通信
+...
+主站必须确定从站是否用邮箱命令填满了同步管理器 并且尽快地发送适当的读命令
+, 。
+确定从站是否填满同步管理器有各种不同的方法 一个很好的办法是把同步管理器 的配置首部
+。 1
+的 配置为一个逻辑地址 并周期性的读取该位 使用逻辑地址能够从多个从站同时读取
+“writtenbit” , 。
+该位 并且给每个从站配置一个独立的位地址 该方法的缺点是每个从站都需要一个
+, 。 FMMU。
+26
+GB/T312303—2014
+.
+另外一个方法就是简单地轮询同步管理器数据区 如果从站通过新命令填充了该区域 则读命令的
+, ,
+工作计数器就递增一次
+。
+主站必须检查从站邮箱命令的应答中的工作计数器 如果工作计数器没有增加 通常是因为从站
+。 (
+没有完全读取上一条命令 或在规定的时间期限内没有响应 主站必须重发该邮箱命令 主站必须翻转
+) , 。
+同步管理器区的重试 参数 通过翻转重试参数 从站必须把上次读取的数据放入邮箱内 进一
+(retry) 。 , 。
+步的错误校正由更高层协议负责
+。
+邮箱服务原语映射到 用户内存原语的对应关系为
+DL- :
+Mailboxwrite event,readlocal
+Mailboxreadupdate Writelocal
+Mailboxread event
+图 给出在邮箱写序列成功时主站和从站间的原语
+9 。
+图9 成功的邮箱写序列
+图 给出邮箱读序列成功时主站和从站间的原语
+10 。
+图10 成功的邮箱读序列
+562 邮箱数据传输服务
+..
+5621 邮箱写 Mailboxwrite
+... ( )
+表 给出了邮箱写服务 基于写 主站到从站的传输 内存来得到一个确认的数据传输
+16 , ( ) 。
+27
+GB/T312303—2014
+.
+表16 邮箱写
+请求 指示 证实
+DL-MAILBOX-WRITE
+参数名称 输入 输出 输出
+D_address M
+MBX M
+S_address M M(=)
+Channel M M(=)
+Priority M M(=)
+Cnt M M(=)
+Type M M(=)
+DLS-userdata U U(=)
+DL-status M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Daddress
+_
+该参数规定目的节点的节点地址 从而允许从站到从站的通信或者使用虚拟地址进行超出网络边
+,
+界的通信
+。
+MBX
+该参数规定邮箱
+。
+Saddress
+_
+该参数规定源站的站地址 从而允许从站到从站的通信或者使用虚拟地址进行超出网络边界的
+,
+通信
+。
+Channel
+该参数规定通信通道
+。
+Priority
+该参数规定通信优先级
+。
+Cnt
+该参数规定一个服务计数器
+。
+Type类型
+该参数规定被使用的邮箱服务的协议类型
+。
+DLS-userdata
+该参数规定将要被写入或已经写入的数据
+。
+DL-status
+该参数规定操作的结果
+。
+5622 邮箱读更新 Mailboxreadupdate
+... ( )
+表 给出了邮箱读更新服务 基于本地写内存 只要有重复操作的可能 更新缓冲区就必须被
+17 , 。 ,
+保留
+。
+28
+GB/T312303—2014
+.
+表17 邮箱读更新
+请求 证实
+DL-MAILBOX-READUPD
+参数名称 输入 输出
+D_address M
+Channel M
+Priority M
+Cnt M
+Type M
+DLS-userdata U
+DL-status M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Daddress
+_
+该参数规定目的节点的节点地址 从而允许从站到从站的通信或者使用虚拟地址进行超出网络边
+,
+界的通信
+。
+Channel
+该参数规定通信通道
+。
+Priority
+该参数规定通信优先级
+。
+Cnt
+该参数规定一个服务计数器
+。
+Type
+该参数规定所使用的邮箱服务的协议类型
+。
+DLS-userdata
+该参数规定读取的数据
+。
+DL-status
+该参数规定操作的结果
+。
+5623 邮箱读 Mailboxread
+... ( )
+表 给出了邮箱读服务 基于读 从站到主站的传输 内存来得到一个确认的数据传输
+18 , ( ) 。
+表18 邮箱读
+请求 指示 证实
+DL-MAILBOX-READ
+参数名称 输入 输出 输出
+S_address M
+MBX M
+D_address C
+Channel C
+Priority C
+Type C
+Cnt C
+DLS-userdata C
+DL-status M M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+29
+GB/T312303—2014
+.
+参数描述
+Saddress
+_
+该参数规定源站的站地址
+。
+MBX
+该参数规定邮箱
+。
+Daddress
+_
+该参数规定目的节点的节点地址 从而允许从站到从站的通信或者使用虚拟地址进行超出网络边
+,
+界的通信
+。
+Channel
+该参数规定通信通道
+。
+Priority
+该参数规定通信优先级
+。
+Type
+该参数规定所使用的邮箱服务的协议类型
+。
+Cnt
+该参数规定一个服务计数器
+。
+DLS-userdata
+该参数规定读取的数据
+。
+DL-status
+该参数规定操作的结果
+。
+6 本地交互
+61 本地读 readlocal
+. ( )
+本地读功能使 用户可以从内存区读取数据 表 给出了该功能的原语和参数
+DL 。 19 。
+表19 本地读
+请求 证实
+DL-READLOCAL
+参数名称 输入 输出
+Memoryarea M
+DLS-userdata U
+DL-status M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Memoryarea
+该参数规定要读取的内存区
+。
+DLS-userdata
+该参数规定从指定的内存区读取的数据
+。
+DL-status
+该参数规定操作结果
+。
+30
+GB/T312303—2014
+.
+62 本地写 Writelocal
+. ( )
+本地写功能使 用户可以在内存区写数据 表 给出了该功能的原语和参数
+DL , 20 。
+表20 本地写
+请求 证实
+DL-WRITELOCAL
+参数名称 输入 输出
+Memoryarea M
+DLS-userdata U
+DL-status M
+注 证实原语和与其之前发送的请求原语的关联方法是本地实现的 见
+: 。 1.3。
+参数描述
+Memoryarea
+该参数规定可写的内存区
+。
+DLS-userdata
+该参数规定在指定要写入内存区的数据
+。
+DL-status
+该参数规定操作的结果
+。
+63 本地事件 Eventlocal
+. ( )
+本地事件功能使 用户可以得到某一事件的指示 表 给出了该功能的原语和参数
+DL , 21 。
+表21 本地事件
+指示
+DL-EVENTLOCAL
+参数名称 输出
+Syncmanager C
+Type C
+参数描述
+Syncmanager
+该参数表示同步管理器通道
+。
+Type
+该参数表示事件的类型 读或写
+( )。
+31
+GB/T312303—2014
+.
+参 考 文 献
+[1] IEC/TR61158-1(Ed.2.0) Industrialcommunicationnetworks—Fieldbusspecifications—
+Part1:OverviewandguidancefortheIEC61158andIEC61784series
+[2] IEC61158-2 Industrialcommunicationnetworks—Fieldbusspecifications—Part2:Physicallayer
+specificationandservicedefinition
+[3] IEC61158-3-12 Industrialcommunicationnetworks—Fieldbusspecifications—Part3-12:Data-link
+layerservicedefinition—Type12elements
+[4] IEC61158-4-12 Industrialcommunicationnetworks—Fieldbusspecifications—Part4-12:Data-link
+layerprotocolspecification—Type12elements
+[5] IEC61158-5-12 Industrialcommunicationnetworks—Fieldbusspecifications—Part5-12:Appli-
+cationlayerservicedefinition—Type12elements
+[6] IEC61158-6-12 Industrialcommunicationnetworks—Fieldbusspecifications—Part6-12:Appli-
+cationlayerprotocolspecification—Type12elements
+[7] IEC61588 Precisionclocksynchronizationprotocolfornetworkedmeasurementandcontrolsys-
+tem
+[8] IEC61784-2 Industrialcommunicationnetworks—Profiles—Part2:Additionalfieldbusprofiles
+forreal-timenetworksbasedonISO/IEC8802-3
+[9] ISO/IEC/TR8802-1 Informationtechnology—Telecommunicationsandinformationexchangebetween
+systems—Localandmetropolitanareanetworks—Specificrequirements—Part1:OverviewofLocal
+AreaNetworkStandards
+[10] IEEE802.1Q IEEEStandardforLocalandmetropolitanareanetworks—VirtualBridged
+LocalAreaNetworks;availableat<http://wwwi.eee.org>
+[11] IETFRFC768 UserDatagramProtocol;availableat<http://wwwi.etf.org>
+[12] IETFRFC791 InternetProtocol;availableathttp://wwwi.etf.org
+[13] ETG.1000.2EtherCATSpecificationPart2:Physicallayerspecificationandservicedefini-
+tion
+[14] ETG.1000.3EtherCATSpecificationPart3:DataLinkLayerservicedefinition
+[15] ETG.1000.4EtherCATSpecificationPart4:Data-linklayerprotocolspecification
+[16] ETG.1000.5EtherCATSpecificationPart5:Applicationlayerservicedefinition
+[17] ETG.1000.6EtherCATSpecificationPart6:Applicationlayerprotocolspecification
+[18] ETG.1100EtherCATSpecificationCommunicationprofiles
+32

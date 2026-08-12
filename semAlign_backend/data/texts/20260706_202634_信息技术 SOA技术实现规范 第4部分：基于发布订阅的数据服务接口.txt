@@ -1,0 +1,1307 @@
+ICS3510005
+. .
+L79
+中 华 人 民 共 和 国 国 家 标 准
+GB/T324194—2016
+.
+信息技术 技术实现规范
+SOA
+第 部分 基于发布/订阅的数据服务接口
+4
+:
+Informationtechnology—SOAtechnicalimplementationspecification—
+Part4Publish/subscribebaseddataservicesinterface
+:
+2016-10-13发布 2017-05-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T324194—2016
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义及缩略语
+3 …………………………………………………………………………………… 1
+术语和定义
+3.1 ………………………………………………………………………………………… 1
+缩略语
+3.2 ……………………………………………………………………………………………… 2
+数据服务接口
+4 …………………………………………………………………………………………… 2
+相关约定
+4.1 …………………………………………………………………………………………… 2
+数据发布端点
+4.2 ……………………………………………………………………………………… 4
+数据获取端点
+4.3 ……………………………………………………………………………………… 7
+数据接收端点
+4.4 ……………………………………………………………………………………… 7
+服务接口的实现
+4.5 Web ……………………………………………………………………………… 8
+附录 规范性附录 接口的 绑定
+A( ) SOAP ……………………………………………………………… 9
+附录 规范性附录 接口的 绑定
+B( ) JSON ……………………………………………………………… 17
+参考文献
+…………………………………………………………………………………………………… 22
+GB/T324194—2016
+.
+前 言
+信息技术 技术实现规范 分为 个部分
+GB/T32419《 SOA 》 6 :
+第 部分 服务描述
+——— 1 : ;
+第 部分 服务注册与发现
+——— 2 : ;
+第 部分 服务管理
+——— 3 : ;
+第 部分 基于发布 订阅的数据服务接口
+——— 4 : / ;
+第 部分 服务集成开发
+——— 5 : ;
+第 部分 身份管理服务
+——— 6 : 。
+本部分为 的第 部分
+GB/T32419 4 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本部分由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本部分起草单位 北京航空航天大学 北京大学 中国电子技术标准化研究院 国家信息中心 北京
+: 、 、 、 、
+方位捷迅科技有限公司
+。
+本部分主要起草人 梅宏 赵永望 马殿富 王潮阳 袁媛 徐枫 宦茂盛
+: 、 、 、 、 、 、 。
+Ⅰ
+GB/T324194—2016
+.
+信息技术 SOA技术实现规范
+第4部分 基于发布/订阅的数据服务接口
+:
+1 范围
+的本部分规定了基于发布 订阅的数据服务接口 包括相关约定 数据发布端点 数据
+GB/T32419 / , 、 、
+获取端点 数据接收端点和 服务接口的实现
+、 Web 。
+本部分适用于 技术实现的开发 集成和应用
+SOA 、 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 面向服务的体系结构 术语
+GB/T29262—2012 (SOA)
+信息技术 面向服务的体系结构 应用的总体技术要求
+GB/T29263—2012 (SOA)
+3 术语和定义及缩略语
+31 术语和定义
+.
+界定的以及下列术语和定义适用于本文件
+GB/T29262—2012 。
+311
+..
+数据源 datasource
+数据的原始来源地
+。
+312
+..
+数据主题 datatopic
+数据源经发布后形成的一个数据类别
+。
+313
+..
+发布 publish
+将数据源与主题进行映射并在网络上以服务形式进行公开的过程
+。
+314
+..
+数据发布端点 datapublishingendpoint
+数据主题在网络上发布形成的服务访问点
+。
+315
+..
+数据获取端点 dataaccessendpoint
+数据发布者上用于获取实际数据的服务访问点
+。
+316
+..
+订阅 subscribe
+通过调用数据发布端点的服务 来表明对某种数据的兴趣 并通过注册的方式将数据使用者的数据
+, ,
+接收端点告知数据发布端点
+。
+1
+GB/T324194—2016
+.
+317
+..
+数据接收端点 datasubscribingendpoint
+数据订阅者上用于接收通知的服务访问点
+。
+318
+..
+通知 notification
+在数据主题更新时 数据发布端点发送给数据接收端点的一个数据消息
+, 。
+32 缩略语
+.
+下列缩略语适用于本文件
+。
+对象标记
+JSON Javascript (javascriptobjectnotation)
+简单对象访问协议
+SOAP (simpleobjectaccessprotocol)
+可扩展标记语言
+XML (extensiblemarkuplanguage)
+4 数据服务接口
+41 相关约定
+.
+411 综述
+..
+本部分中数据服务的运行模式主要基于发布 订阅的网络服务模式 本条给出接口所涉及的发布
+/ 。 、
+订阅 通知和数据获取这 个动作的相关约定 基于发布 订阅模式所进行的应用开发 除了应遵循
+、 4 。 / ,
+中 的要求外 还应符合本条的要求
+GB/T29263—2012 7.4 , 。
+412 发布
+..
+数据发布将数据源与主题进行映射 并将数据的可获取地址在网络上进行公布 发布过程会形成
+, 。
+一个数据主题及相应的数据发布端
+:
+数据源 数据主题和数据发布端点之间有以下关系
+a) 、 :
+同一个数据源可以被发布为多个数据主题 每个数据主题包含不同的名称 每个数据主题
+1) , ,
+是对数据源的一种封装 形成 可表示的数据
+, XML ;
+多个数据主题可被发布在同一个数据发布端点
+2) 。
+数据主题的构成可包括以下属性
+b) :
+主题名称 每个主题唯一的 用于区分的标识名称
+1) : , ;
+数据类型 该主题发布的数据的类型 以 表示
+2) : , XMLSchema ;
+数据的有效期 该主题数据的有效时间 以年月日时分秒表示的截止时间
+3) : , ;
+数据更新的周期 该主题对应数据源中数据的更新周期 以秒为单位
+4) : , 。
+数据发布端点的构成可包括以下属性
+c) :
+所对应的数据主题
+1) ;
+访问地址 通过该地址可访问发布端点中各种服务和数据
+2) : ;
+数据发布端点的服务接口 至少包含数据订阅服务 主题查询服务 数据获取服务
+3) : 、 、 。
+413 订阅
+..
+订阅的具体要求如下
+:
+订阅者通过与数据发布端点的消息交互 进行一系列数据订阅的操作 具体有
+a) , , :
+数据订阅 订阅者通过调用服务发布端点的订阅服务 并告知订阅的数据主题 数据订阅
+1) : , 、
+2
+GB/T324194—2016
+.
+类型和数据接收端的地址 从而在数据发布端点建立数据主题与数据接收端点的兴趣关
+,
+系 订阅成功后 数据主题的数据更新将按订阅类型通知给订阅者
+。 , 。
+数据退订 订阅者通过调用服务发布端点的退订服务 告知服务发布端点 该数据接收端
+2) : , ,
+点与数据发布端点的订阅关系撤销 退订成功后 该数据主题的数据将不再通知给该订
+。 ,
+阅者
+。
+暂停订阅 订阅者通过调用服务发布端点的暂停订阅服务 告知服务发布端点 该数据接
+3) : , ,
+收端点与数据发布端点的订阅关系暂停 暂停成功后 该数据主题的数据将不再通知给
+。 ,
+该订阅者 直到订阅者重启该订阅后 数据通知恢复正常
+。 , 。
+重启订阅 订阅者在暂停订阅某个数据主题后 可调用数据发布端点的重启订阅服务 重
+4) : , ,
+新恢复对该数据主题的订阅
+。
+更新订阅 订阅者在订阅某个数据主题后 可通过调用数据发布端点的更新订阅服务 更
+5) : , ,
+新对该主题订阅的类型或参数
+。
+订阅者订阅某个数据主题时 可有多种不同的订阅类型 包括
+b) , , :
+订阅的时域类型 数据订阅的时域类型指订阅者在成功订阅某个数据主题后 数据发布端
+1) : ,
+点将按其订阅的时域条件进行数据通知 具体的时域条件有
+, :
+起止时间 给定订阅的起止时间 以年月日时分秒为单位 在该时间范围内 数据发
+——— : ( ), ,
+布者有数据更新时会通知订阅者
+;
+特定时间 给定订阅的一个时间点 以年月日时分秒为单位 当该时间到达时 数据
+——— : ( ), ,
+发布者将数据通知给订阅者
+;
+持续时间 给定从当前时间开始 订阅的一段持续时间 以秒为单位 从当前时间开
+——— : , ( ),
+始的一段持续时间内 数据发布者有数据更新时会通知订阅者
+, ;
+滞后时间 给定从当前时刻开始的一个滞后时间 以秒为单位 从那个时间起 数据
+——— : ( ), ,
+发布者有数据更新时会通知订阅者
+;
+终止时间 给定一个终止时间 以年月日时分秒为单位 从当前时间到该终止时间范
+——— : ( ),
+围内 数据发布者有数据更新时会通知订阅者
+, ;
+间隔时间 给定一个时间间隔周期 以秒为单位 每隔一个周期时间 数据发布者将
+——— : ( ), ,
+数据通知给订阅者
+。
+订阅的频域类型 数据订阅的频域类型指订阅者在成功订阅某个数据主题后 数据发布端
+2) : ,
+点将按其订阅的频域条件进行数据通知 具体的频域条件有
+。 :
+订阅次数 给定一个整数值n 当订阅者接收到n个该数据主题的数据更新后 不再
+——— : , ,
+订阅该主题
+。
+订阅消息的构成可包含以下属性
+c) :
+订阅的主题
+1) ;
+订阅的类型
+2) ;
+订阅者的数据接收端点信息
+3) 。
+414 通知
+..
+数据源有新数据时 相关数据主题的数据发布端点通过调用该主题订阅者的数据接收端点服务 将
+, ,
+数据消息通知给订阅者
+。
+由于数据源的不同 本部分支持两种模式的通知类型 数据通知和引用通知 数据通知是数据发布
+, : 。
+端点可将数据封装在通知消息的消息体中的一种方式 引用通知是数据发布端点将数据获取端点封装
+,
+在通知消息的消息体中的一种方式 数据接收端点得到数据获取端点后 通过调用数据获取端点的服
+。 ,
+务接口 来获得具体的数据
+, 。
+3
+GB/T324194—2016
+.
+通知的构成可包含以下属性
+:
+数据主题名称
+a) ;
+数据更新的时间
+b) ;
+数据内容或数据获取点地址
+c) 。
+415 数据获取
+..
+订阅者通过数据发布端点上的数据获取服务 可查询数据发布端点上的数据主题 并可获得某个主
+, ,
+题的最新数据
+。
+42 数据发布端点
+.
+421 综述
+..
+数据发布端点的接口为包括订阅服务 订阅 退订 暂停订阅 重启订阅 更新订阅等 主题查询服
+( 、 、 、 、 )、
+务等提供支持
+。
+422 数据订阅服务消息格式
+..
+订阅者通过数据发布端点调用数据订阅服务时 应使用表 表 表 所描述的格式
+, 1、 2、 3 。
+表1 调用订阅服务消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Subscribe
+订阅的主题名称 字符串
+Topic
+订阅类型 复杂类型 具体见表
+Subscriptiontype ( 2)
+数据接收端地址 字符串
+Datasubscriptionendpoiont
+表2 订阅内容消息格式
+订阅类型 字段名称 含义描述 字段类型
+订阅的起始时间 日期时间
+起止时间 from
+订阅的终止时间 日期时间
+to
+特定时间 订阅的一个时间点 日期时间
+when
+订阅从当前时间开始持续一段
+持续时间 整数
+keepon 时间 单位
+( :s)
+滞后时间 从该时间开始订阅有效 日期时间
+after
+截止时间 订阅一直有效 直到该截止时间 日期时间
+until ,
+间隔时间 一个时间间隔周期 单位 整数
+foreach ( :s)
+订阅次数 订阅的次数 整数
+times
+4
+GB/T324194—2016
+.
+表3 订阅服务返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串
+Response
+其中 订阅成功时 字符串值为 失败时 字符串值为 并跟上错
+, ,Response “OK”; ,Response “ERROR”
+误类型信息
+。
+423 数据退订服务
+..
+订阅者通过数据发布端点调用数据退订服务时 应使用表 表 所描述的格式
+, 4、 5 。
+表4 退订消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Unsubscribe
+订阅的主题名称 字符串
+Topic
+表5 退订返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串
+Response
+其中 订阅成功时 字符串值为 失败时 字符串值为 并跟上错
+, ,Response “OK”; ,Response “ERROR”
+误类型信息
+。
+424 暂停订阅服务
+..
+订阅者通过数据发布端点调用暂停订阅服务时 应使用表 表 所描述的格式
+, 6、 7 。
+表6 暂停订阅消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Suspendsubscribe
+订阅的主题名称 字符串
+Topic
+表7 暂停订阅返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串
+Response
+其中 订阅成功时 字符串值为 失败时 字符串值为 并跟上错
+, ,Response “OK”; ,Response “ERROR”
+误类型信息
+。
+425 重启订阅服务
+..
+订阅者通过数据发布端点调用重启订阅服务时 应使用表 表 所描述的格式
+, 8、 9 。
+5
+GB/T324194—2016
+.
+表8 重新订阅消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Resumesubscribe
+订阅的主题名称 字符串
+Topic
+表9 重新订阅返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串
+Response
+其中 订阅成功时 字符串值为 失败时 字符串值为 并跟上错
+, ,Response “OK”; ,Response “ERROR”
+误类型信息
+。
+426 更新订阅服务
+..
+订阅者通过数据发布端点调用更新订阅服务时 应使用表 表 所描述的格式
+, 10、 11 。
+表10 更新订阅消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Updatesubscribe
+订阅的主题名称 字符串
+Topic
+订阅类型 复杂类型
+Subscriptiontype
+数据接收端地址 字符串
+Datasubscriptionenpoiont
+其中 订阅类型具体内容与 的类型一致
+, 4.2.2 。
+表11 更新订阅返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串
+Response
+其中 订阅成功时 字符串值为 失败时 字符串值为 并跟上错
+, ,Response “OK”; ,Response “ERROR”
+误类型信息
+。
+427 数据主题查询服务
+..
+订阅者通过数据发布端点调用数据主题查询服务时 应使用表 表 所描述的格式
+, 12、 13 。
+表12 数据主题查询消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Gettopic
+订阅的主题名称 字符串
+Topic
+6
+GB/T324194—2016
+.
+表13 数据主题查询返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串或复杂结构
+Response
+其中 成功时 值包含 以及一个 的数据结构 失败时 字符串值为
+, ,Response “OK” Topic ; ,Response
+并跟上错误类型信息
+“ERROR” 。
+43 数据获取端点
+.
+431 综述
+..
+数据获取端点的服务主要用于数据接收端点向数据发布者发送消息以获取实际的数据 主要为数
+,
+据获取服务
+。
+432 数据获取服务
+..
+订阅者通过数据获取端点调用数据获取服务时 应使用表 表 所描述的格式
+, 14、 15 。
+表14 获取数据消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Getdata
+订阅的主题名称 字符串
+Topic
+表15 获取数据返回结果消息格式
+字段名称 含义描述 字段类型
+返回值 字符串或复杂结构
+Response
+其中 成功时 值包含 以及一个数据值结构 失败时 字符串值为
+, ,Response “OK” ; ,Response
+并跟上错误类型信息
+“ERROR” 。
+44 数据接收端点
+.
+441 综述
+..
+数据接收端点的服务主要用于所订阅的时域 频域条件满足时 数据发布端点向接收端点发送通知
+、 ,
+时所调用的服务接口 主要为通知服务
+, 。
+442 通知服务
+..
+数据发布端点调用数据接收端点的通知服务时 可直接发送主题数据的值 也可发送获取主题数据
+, ,
+的获取点地址 应使用表 所描述的格式
+, 16 。
+7
+GB/T324194—2016
+.
+表16 调用通知服务消息格式
+字段名称 含义描述 字段类型
+消息名称 字符串
+Notify
+主题名称 字符串
+Topic
+主题的数据 字符串
+Data
+数据访问点 字符串
+Datapoint
+45 Web服务接口的实现
+.
+第 章规定的面向数据的 服务接口可有多种不同的实现方法 包括 服务和 服务
+4 Web , SOAP JSON
+等 第 章规定的接口与 和 的绑定 分别见附录 和附录
+。 4 SOAP JSON , A B。
+8
+GB/T324194—2016
+.
+附 录 A
+规范性附录
+( )
+接口的SOAP绑定
+A1 综述
+.
+在使用 作为 服务消息的编码规范时 应使用本附录定义的接口和消息类型
+SOAP Web , 。
+本附录使用 规范[1]进行定义和描述 规范定义的 元素命名空间为
+SOAP1.2 。SOAP XML http://
+前缀为 使用 进行数据定义时 元素
+www.w3.org/2003/05/soap-envelope, soap。 XMLschema ,schema
+的命名空间为 前缀为 本部分定义的 元素的命名空
+http://www.w3.org/2001/XMLSchema, xs。 XML
+间为 前缀为
+http://www.nits.org.cn/soa/dataservice, ds。
+A2 数据订阅服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsSubscribe
+< : >
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsSubscriptiontype
+< : >
+[
+fromtofrom= xsdateTime to= xsdateTime
+< ” : ” ” : ”>|
+whentime= xsdateTime
+< ” : ”>|
+keepontime= xsint
+< ” : ”>|
+aftertime= xsint
+< ” : ”>|
+utiltime= xsdateTime
+< ” : ”>|
+foreachtime= xsint
+< ” : ”>|
+timescount= xsint
+< ” : ”>
+]
+dsSubscriptiontype
+</ : >
+dsDatasubscriptionendpoiont
+< : >
+xsanyURI
+:
+dsDatasubscriptionendpoiont
+</ : >
+dsSubscribe
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+9
+GB/T324194—2016
+.
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsSubscribeResponse
+< : >
+[
+ok
+< />|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsSubscribeResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A3 数据退订服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsUnsubscribe
+< : >
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsUnsubscribe
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsUnsubscribeResponse
+< : >
+[
+ok
+< />|
+error
+< >
+10
+GB/T324194—2016
+.
+xsstring
+:
+error
+</ >
+]
+dsUnsubscribeResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A4 暂停订阅服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsSuspendsubscribe
+< : >
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsSuspendsubscribe
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsSuspendsubscribeResponse
+< : >
+[
+ok
+< />|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsSuspendsubscribeResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+11
+GB/T324194—2016
+.
+A5 重启订阅服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsResumesubscribe
+< : >
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsResumesubscribe
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsResumesubscribeResponse
+< : >
+[
+ok
+< />|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsResumesubscribeResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A6 更新订阅服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsUpdatesubscribe
+< : >
+12
+GB/T324194—2016
+.
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsSubscriptiontype
+< : >
+[
+fromtofrom= xsdateTime to= xsdateTime
+< ” : ” ” : ”>|
+whentime= xsdateTime
+< ” : ”>|
+keepontime= xsint
+< ” : ”>|
+aftertime= xsint
+< ” : ”>|
+utiltime= xsdateTime
+< ” : ”>|
+foreachtime= xsint
+< ” : ”>|
+timescount= xsint
+< ” : ”>
+]
+dsSubscriptiontype
+</ : >
+dsDatasubscriptionendpoiont
+< : >
+xsanyURI
+:
+dsDatasubscriptionendpoiont
+</ : >
+dsUpdatesubscribe
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsUpdatesubscribeResponse
+< : >
+[
+ok
+< />|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsUpdatesubscribeResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A7 数据获取服务
+.
+请求消息定义为
+:
+13
+GB/T324194—2016
+.
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsGetdata
+< : >
+dsTopic
+< : >
+xsstring
+:
+dsTopic
+</ : >
+dsGetdata
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsGetdataResponse
+< : >
+[
+ok
+< >
+any
+{ }
+ok
+</ >|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsGetdataResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A8 数据主题查询服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsGettopic
+< : >
+dsTopic
+< : >
+xsstring
+:
+14
+GB/T324194—2016
+.
+dsTopic
+</ : >
+dsGettopic
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+响应消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsGettopicResponse
+< : >
+[
+ok
+< >
+topic
+< >
+datatype any datatype
+< >{ }</ >
+validtimexsdateTime validtime
+< > : </ >
+periodxsint period
+< > : </ >
+topic
+</ >
+ok
+</ >|
+error
+< >
+xsstring
+:
+error
+</ >
+]
+dsGettopicResponse
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+A9 通知服务
+.
+请求消息定义为
+:
+soapEnvelope
+< : >
+soapHeader
+< : >
+soapHeader
+</ : >
+soapBody
+< : >
+dsNotify
+< : >
+dstopic
+< : >
+xsstring
+:
+dstopic
+</ : >
+[
+dsdata any dsdata
+< : >{ }</ : >|
+15
+GB/T324194—2016
+.
+dsdatapointxsanyURI dsdatapoint
+< : > : </ : >
+]
+dsNotify
+</ : >
+soapBody
+</ : >
+soapEnvelope
+</ : >
+16
+GB/T324194—2016
+.
+附 录 B
+规范性附录
+( )
+接口的JSON绑定
+B1 综述
+.
+在使用 作为 服务消息的编码规范时 应使用本附录定义的接口和消息类型
+JSON Web , 。
+B2 数据订阅服务
+.
+请求消息定义为
+:
+{
+message Subscribe
+“ ”:“ ”,
+topic string
+“ ”: ,
+subscriptiontype
+“ ”:{
+fromto from to
+“ ”:{“ ”:,“ ”:}|
+when string
+“ ”: |
+keepon number
+“ ”: |
+after string
+“ ”: |
+util string
+“ ”: |
+foreach number
+“ ”: |
+times number
+“ ”:
+},
+datasubscriptionendpoint string
+“ ”:
+}
+响应消息定义为
+:
+{
+message SubscribeResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal ok
+“ ”:“ ”|
+error string
+“ ”:
+}
+}
+B3 数据退订服务
+.
+请求消息定义为
+:
+17
+GB/T324194—2016
+.
+{
+message Unsubscribe
+“ ”:“ ”,
+topic string
+“ ”: ,
+}
+响应消息定义为
+:
+{
+message UnsubscribeResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal ok
+“ ”:“ ”|
+error string
+“ ”:
+}
+}
+B4 暂停订阅服务
+.
+请求消息定义为
+:
+{
+message Suspendsubscribe
+“ ”:“ ”,
+topic string
+“ ”: ,
+}
+响应消息定义为
+:
+{
+message SuspendsubscribeResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal ok
+“ ”:“ ”|
+error string
+“ ”:
+}
+}
+B5 重启订阅服务
+.
+请求消息定义为
+:
+{
+message Resumesubscribe
+“ ”:“ ”,
+topic string
+“ ”: ,
+}
+18
+GB/T324194—2016
+.
+响应消息定义为
+:
+{
+message ResumesubscribeResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal ok
+“ ”:“ ”|
+error string
+“ ”:
+}
+}
+B6 更新订阅服务
+.
+请求消息定义为
+:
+{
+message Updatesubscribe
+“ ”:“ ”,
+topic string
+“ ”: ,
+subscriptiontype
+“ ”:{
+fromto from to
+“ ”:{“ ”:,“ ”:}|
+when string
+“ ”: |
+keepon number
+“ ”: |
+after string
+“ ”: |
+util string
+“ ”: |
+foreach number
+“ ”: |
+times number
+“ ”:
+},
+datasubscriptionendpoint string
+“ ”:
+}
+响应消息定义为
+:
+{
+message UpdatesubscribeResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal ok
+“ ”:“ ”|
+error string
+“ ”:
+}
+}
+B7 数据获取服务
+.
+请求消息定义为
+:
+19
+GB/T324194—2016
+.
+{
+message Getdata
+“ ”:“ ”,
+topic string
+“ ”: ,
+}
+响应消息定义为
+:
+{
+message GetdataResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal object
+“ ”: |
+error string
+“ ”:
+}
+}
+B8 数据主题查询服务
+.
+请求消息定义为
+:
+{
+message Gettopic
+“ ”:“ ”,
+topic string
+“ ”: ,
+}
+响应消息定义为
+:
+{
+message GettopicResponse
+“ ”:“ ”,
+response
+“ ”:
+{
+normal
+“ ”:
+{
+datatype object
+“ ”: ,
+validtime string
+“ ”: ,
+period number
+“ ”:
+}|
+error string
+“ ”:
+}
+}
+B9 通知服务
+.
+请求消息定义为
+:
+20
+GB/T324194—2016
+.
+{
+message Notify
+“ ”:“ ”,
+topic string
+“ ”: ,
+data object datapoint string
+“ ”: |“ ”:
+}
+21
+GB/T324194—2016
+.
+参 考 文 献
+[1] SOAPVersion1.2Part1:MessagingFramework(SecondEdition),http://www.w3.org/
+TR/soap12/
+22

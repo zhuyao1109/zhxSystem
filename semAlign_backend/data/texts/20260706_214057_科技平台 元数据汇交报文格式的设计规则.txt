@@ -1,0 +1,1054 @@
+ICS3524001
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T32846—2016
+科技平台
+元数据汇交报文格式的设计规则
+Generalscienceandtechnologyinfrastructure—
+Designrulesformetadataarchivingmessageformat
+2016-08-29发布 2017-03-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T32846—2016
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+基于 报文结构的设计规则
+4 XML ……………………………………………………………………… 2
+基于 报文的功能结构
+4.1 XML ……………………………………………………………………… 2
+基于 的报文格式的逻辑结构
+4.2 XML ……………………………………………………………… 3
+报文结构标记说明
+4.3 ………………………………………………………………………………… 3
+元数据映射为 的规则
+5 XMLSchema …………………………………………………………………… 4
+总则
+5.1 ………………………………………………………………………………………………… 4
+元数据实体映射为 的规则
+5.2 XMLSchema ………………………………………………………… 5
+元数据类型实体映射为 的规则
+5.3 XMLSchema …………………………………………………… 5
+元数据元素映射为 的规则
+5.4 XMLSchema ………………………………………………………… 6
+代码表映射为 的规则
+5.5 XMLSchema ……………………………………………………………… 6
+的设计规则
+6 XMLSchema ……………………………………………………………………………… 6
+的语法规则
+6.1 XMLSchema ………………………………………………………………………… 6
+的结构设计规则
+6.2 XMLSchema …………………………………………………………………… 6
+的前导说明部分设计规则
+6.3 XMLSchema ………………………………………………………… 7
+的根元素设计规则
+6.4 XMLSchema ………………………………………………………………… 7
+附录 资料性附录 科技平台资源核心元数据汇交报文格式
+A( ) ……………………………………… 8
+参考文献
+…………………………………………………………………………………………………… 15
+GB/T32846—2016
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由中华人民共和国科学技术部提出
+。
+本标准由全国科技平台标准化技术委员会 归口
+(SAC/TC486) 。
+本标准起草单位 中国标准化研究院 国家科技基础条件平台中心 北京航空航天大学 中科院网络
+: 、 、 、
+中心 中国农业科学院 国家信息中心
+、 、 。
+本标准主要起草人 刘守华 陈志辉 王德庆 王志强 周琼琼 程苹 范治成 洪岩 杨青海 尹书蕊
+: 、 、 、 、 、 、 、 、 、 、
+宦茂盛 张辉 阎保平 方沩 顾金刚
+、 、 、 、 。
+Ⅰ
+GB/T32846—2016
+科技平台
+元数据汇交报文格式的设计规则
+1 范围
+本标准规定了科技平台建设中元数据汇交过程中基于 的报文格式的设计规则 包括报文结
+XML ,
+构 元数据映射为 的规则以及 的设计规则 并给出了资源核心元数据的汇
+、 XMLSchema XMLSchema ,
+交报文格式
+。
+本标准适用于科技平台间元数据汇交的 报文格式设计
+XML 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+元数据的 置标规则
+GB/T24639—2009 XMLSchema
+科技平台 资源核心元数据
+GB/T30523—2014
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+科技平台 generalscienceandtechnologyinfrastructure
+运用现代信息技术等手段 有效整合科技资源 为科技创新和经济社会发展提供共享服务的网络
+, ,
+化 社会化的组织体系
+、 。
+定义
+[GB/T31075—2014, 2.1.1]
+32
+.
+元数据 metadata
+定义和描述其他数据的数据
+。
+定义
+[GB/T18391.1—2009, 3.2.16]
+33
+.
+元数据元素 metadataelement
+元数据的基本单元
+。
+注1 与 术语中的属性同义
+: UML 。
+注2 元数据元素在元数据实体中是唯一的
+: 。
+定义
+[GB/T19710—2005, 4.6]
+34
+.
+元数据实体 metadataentity
+一组说明数据相同特性的元数据元素
+。
+注1 与 术语中的类同义
+: UML 。
+注2 可以包括一个或一个以上的元数据实体
+: 。
+1
+GB/T32846—2016
+定义
+[GB/T19710—2005, 4.7]
+35
+.
+元数据类型实体 metadatatypeentity
+一种可作为自定义的数据类型被重复引用的元数据实体
+。
+定义
+[GB/T24639—2009, 2.4]
+36
+.
+元数据子集 metadatasection
+元数据的子集合 由相关的元数据实体和元素组成
+, 。
+注 与 术语中的包同义
+: UML 。
+定义
+[GB/T19710—2005, 4.8]
+37
+.
+报文 message
+一个已标识 命名和结构化的在功能上相互关联的段的集合 它涵盖某一特定交易类型的需求 并
+、 , ,
+在报文规范中说明 一个报文用报文头开始 用报文尾结束
+。 , 。
+定义
+[GB/T14805.1—2007, 4.66]
+38
+.
+报文头 messageheader
+开始并唯一标识报文的服务段
+。
+定义
+[GB/T14805.1—2007, 4.69]
+39
+.
+报文体 messagebody
+一个已标识 命名和结构化的 在功能上与段相关联的集合 它涵盖某一特定交易类型的需求 不包
+、 、 , ,
+括报文头和报文尾 并在报文规范中说明
+, 。
+定义
+[GB/T14805.1—2007, 4.67]
+310
+.
+报文尾 messagetrailer
+结束报文的服务段
+。
+定义
+[GB/T14805.1—2007, 4.71]
+4 基于XML报文结构的设计规则
+41 基于XML报文的功能结构
+.
+基于 的报文格式遵循 的规定 报文格式的功能结构与国内外惯用的报
+XML GB/T24639—2009 。
+文格式的功能结构相同 由报文头 报文体和报文尾组成 见图 其中
+, 、 , 1。 :
+报文头 包括报文标识 报文功能 发送方标识 接收方标识以及报文生成日期 时间的信息等
+——— : 、 、 、 / 。
+报文体 报文的主体信息 由元数据实体 元数据类型实体和元数据元素构成 如科技平台资源
+——— : , 、 ,
+核心元数据汇交报文的报文体包括 所规定的 条核心元数据 分别是标
+GB/T30523—2014 9 ,
+识符 名称 最近提交日期 描述 提交机构 关键词 访问限制 资源类别和资源信息链接地址
+、 、 、 、 、 、 、 ,
+其中提交机构和资源类别属于元数据实体 其他为元数据元素
+, 。
+报文尾 关于报文结束的一些说明信息 如签名信息
+——— : , 。
+附录 给出了科技平台资源核心元数据的报文格式应用实例
+A 。
+2
+GB/T32846—2016
+图1 报文功能结构
+42 基于XML的报文格式的逻辑结构
+.
+元数据子集 元数据实体 元数据类型实体和元数据元素间的关系如图 所示 其中
+、 、 2 , :
+元数据子集由相关的元数据实体和元数据元素组成
+——— 。
+元数据实体由其他元数据实体和元数据元素组成 元数据实体可以与元数据类型实体相关
+——— 。
+联 也可以与其他元数据实体相关联
+, 。
+元数据实体和元数据元素可以用数据字典的方式描述 并通过以下属性定义元数据实体和元
+——— ,
+数据元素 即 中文名称 英文名称 短名 定义 注解 数据类型 值域 子元素 其中注解包括约
+, : 、 、 、 、 、 、 、 ,
+束条件和最大出现次数
+。
+图2 基于XML的元数据汇交报文格式的逻辑结构
+43 报文结构标记说明
+.
+报文结构及其标记说明见表 表头按下列定义
+1。 :
+3
+GB/T32846—2016
+报文层 标识元数据在报文结构中的位置 用 表示
+——— (Level): , 0、1、2 。
+标记名 的元素名称
+———XML (XMLTagName):XML 。
+说明 对标记名的简要解释和应用说明
+——— (Description): 。
+约束 对元数据在报文中的制约 该元数据在报文中的状态 是
+——— (Constraints): , :M(Mondatory)
+必备型 是可选型 是条件型 对于代码与名称 描述的数据元 两
+;O(Optional) ;C(Conditional) , / ,
+者至少选择其中之一
+。
+出现次数 指该元数据在报文中重复出现的次数 可选且出现一次 n可选且
+——— (Repeats): :0..1 ;0..
+可出现多次 必选且出现一次 n必选且可出现多次
+;1..1 ;1.. 。
+类型和长度 指元数据的数据取值类型和最大字节数 表示字符型 表示
+——— (Type/Length): 。a ,n
+数字型 表示数字字符型 表示固定的 位数字长度 表示 个数字字符的不定
+,an ,n8 8 ,an..70 70
+长度
+。
+表1 报文功能结构及其标记说明
+报文层 标记名 说明 约束 出现次数 类型和长度
+XMl
+Level XMLTagName Description Contraints Repeats Type/Length
+元数据汇交
+0 M 1..1
+报文开始 给出报文标识 报文功能 报文参
+, 、 、
+报文头 考号 交换双方的标识及报文生成日期 时
+1 、 / M 1..1
+间等
+给出报文标识的名称和报文格式 版本等
+报文标识 、
+2 信息 M 1..1
+报文功能 给出报文的功能
+2 O 0..1
+发送方标识 发送方的唯一标识 如组织机构代码
+2 , M 1..1 an..70
+接收方标识 报文接收方的标识
+2 M 1..1 an..70
+报文生成日期 该报文生成的日期和时间
+2 M 1..1 Date
+报文中涉及科技平台元数据汇交业务的相
+报文体
+1 关部分 M 1..n
+元数据实体
+———
+元数据类型实体
+… ———
+元数据元素
+———
+如需对报文进行数字签名 应采用 颁
+, W3C
+布的 数字签名规范
+签名信息 XML (W3CXMLsigna-
+1 O 0..1 an..64
+turerecommendationon12February2002)
+进行加签处理
+5 元数据映射为XMLSchema的规则
+51 总则
+.
+规则1 应详细说明 的前导说明 部分
+: XMLSchema (prolog) 。
+规则2 应将元数据根实体定义为一个根元素
+: (rootelement)。
+规则3 应将元数据实体定义为 的元素
+: XMLSchema (element)。
+4
+GB/T32846—2016
+规则4 应将元数据类型实体定义为 的复杂类型
+: XMLSchema (complexType)。
+规则5 应将元数据元素定义为 的元素
+: XMLSchema (element)。
+规则6 应将元数据标准中的代码表定义为 的简单类型
+: XMLSchema (simpleType)。
+规则7 不应将元数据子集转换为
+: XMLSchema。
+规则8 元数据实体 元数据类型实体 元数据元素的中文名称 英文名称以及定义注解用
+: 、 、 、 XML
+的注释说明 具体规则如下
+Schema , :
+元数据实体 元数据类型实体 元数据元素的中文名称用注释说明 即
+——— 、 、 , :
+元数据类型实体中文名称
+<xs:documentation> </xs:documentation>
+元数据实体 元数据类型实体 元数据元素的英文名称用注释说明 即
+——— 、 、 , :
+元数据类型实体英文名称
+<xs:documentation> </xs:documentation>
+元数据实体 元数据类型实体 元数据元素的定义 注解用注释说明 即
+——— 、 、 、 , :
+元数据类型实体的定义 注解等
+<xs:documentation> 、 </xs:documentation>
+52 元数据实体映射为XMLSchema的规则
+.
+规则9 元数据实体名称定义为 中的元素 其 属性的值应为元数据
+: XMLSchema (element), name
+实体的短名
+。
+规则10 元数据实体的类型定义为 所包含的
+: elementname complexType。
+规则11 元数据实体的出现次数用 和 表达
+: maxOccurs minOccurs 。
+其中 表示该元数据实体可以出现的最大实例数目
+maxOccurs 。
+当元数据实体是可选或条件必选时 用 表示该元数据实体的可选属性 且
+, minOccurs , minOccurs
+=0。
+当元数据实体是必选时
+,minOccurs=1。
+规则12 如果组成元数据实体的元数据元素之间 元数据实体之间 元数据元素和元数据实体之间
+: 、 、
+有条件必选关系 使用 表示 如果没有条件必选关系 只是序列关系 则用 表示
+, “xs:choice” , , , sequence 。
+示例 元数据实体 负责方单位信息 包含的 个子元素 负责人姓名 负责人单位名称和负责人职务 之间是条件必
+: “ ” 3 “ 、 ”
+选关系 使用 表示为
+, “xs:choice” :
+xscomplexType
+< : >
+xschoice
+< : >
+xselementname="rpIndName"type="xsstring"
+< : : />
+xselementname="rpOrgName"type="xsstring"
+< : : />
+xselementname="rpPosName"type="xsstring"
+< : : />
+xschoice
+</ : >
+xscomplexType
+</ : >
+53 元数据类型实体映射为XMLSchema的规则
+.
+规则13 元数据类型实体定义为复杂类型 其 的值应用元数据类型实体的
+: (complexType), name
+短名
+“ +Type”。
+示例 引用和负责单位信息 是元数据类型实体 按照本规则 相应的 代码为
+:“ ” , , XMLSchema :
+xscomplexTypename="CitationType"
+< : >
+xssequence
+< : >
+xselementname="resTitle"
+< : >
+xselementname="resRefDate"
+< : >
+……
+xssequence
+</ : >
+5
+GB/T32846—2016
+xscomplexType
+</ : >
+规则14 组成元数据类型实体的元数据元素之间 元数据实体之间 元数据元素和元数据实体之间
+: 、 、
+是序列关系 用 表示
+, sequence 。
+54 元数据元素映射为XMLSchema的规则
+.
+规则15 元数据元素名称定义为元素 其 的值应用元数据元素的缩写名
+: (element), name 。
+规则16 元数据元素的类型用 属性说明 属性的值可以是元数据类型实体名称 元数据
+: type ,type 、
+代码表名称或系统默认的数据类型名称
+。
+规则17 元数据元素的出现次数用 和 表达
+: maxOccurs minOccurs 。
+其中 表示该元数据元素可以具有的最大实例数目
+maxOccurs 。
+当元数据元素是可选项或条件必选项时 用 表示该元数据元素的可选属性 且
+, minOccurs , minOc-
+curs=0。
+当元数据元素是必选项时
+,minOccurs=1。
+规则18 元数据元素的值域 没有特定约束无需说明
+: , 。
+如需说明 则
+, :
+对数值型类型的元数据元素 用 和 说明其最大最小
+——— , “minInclusivevalue” “maxInclusivevalue”
+范围
+;
+示例
+:
+restrictionbase="Integer"
+< >
+minInclusivevalue="0"
+< />
+maxInclusivevalue="4095"
+< />
+restriction
+</ >
+对文本型类型的元数据元素 用 说明其字符串长度
+——— , “xs:length” 。
+55 代码表映射为XMLSchema的规则
+.
+规则19 元数据标准中的代码表定义为 其 属性为代码表的英文缩写名
+: simpleType, name 。
+规则20 如果存在元数据代码表的定义或说明则用注释表示 如果不存在则不用说明
+: , 。
+规则21 元数据代码表的代码值定义为 的枚举值
+: simpleType 。
+规则22 元数据代码表的代码值的定义用注释 说明
+: (annotation) 。
+6 XMLSchema的设计规则
+61 XMLSchema的语法规则
+.
+元数据的 应符合 的要求 包括
+XMLSchema W3CXMLSchema , :
+———W3CXMLSchemaPart0:Primer;
+———W3CXMLSchemaPart1:Structures;
+———W3CXMLSchemaPart2:Datatypes。
+62 XMLSchema的结构设计规则
+.
+规则23 整体结构应包括前导说明部分 元素定义部分以及开始标记和结束
+:XMLSchema (prolog)、
+标记
+。
+规则24 前导说明部分 需要声明报文的版本 字符集 命名空间以及一些注释信息
+: : 、 、 。
+规则25 元素定义部分 是 的主体部分 科技平台元数据报文的 的主
+: : XMLSchema , XMLSchema
+6
+GB/T32846—2016
+体部分主要是元数据实体 元数据元素 数据类型 代码等分别定义为 的元素 类型和属
+、 、 、 XMLSchema 、
+性后形成的部分
+。
+规则26 开始标记和结束标记 元素是 中的第一个出现的元素
+: :“Schema” XMLSchema 。
+命名空间 是 模式的开始标记 表明该文档是一个 模式文
+<xs:schemaxmlns:xs=" "> XML , XML
+档 同时定义了命名空间 相应地 是结束标记放在文档的末尾 因此 一个完整的
+, , ,“</xs:schema>” 。 ,
+模式的结构如下
+XML :
+xsschemaxmlnsxs"命名空间"
+< : : >
+……
+xsschema
+</ : >
+63 XMLSchema的前导说明部分设计规则
+.
+规则27 的字符集
+:XMLSchema
+如果 中元素 属性 数据类型等内容都用英文表达 则 属性值为
+——— XMLSchema 、 、 , encoding “UTF-8”;
+如果 中元素 属性 数据类型等内容中包含中文 则 属性值为
+——— XMLSchema 、 、 , encoding
+“GB2312”。
+规则28 命名空间 的说明
+: (namespace)
+的前导说明部分应包含命名空间的定义
+XMLSchema :
+科技平台资源核心元数据内容的命名空间的值为
+http://www.escience.gov.cn/。
+xmlversion="1.0"encoding="GB2312"
+<? ?>
+xsschematargetNamespace="http www.escience.gov.cn"
+< : :// /
+xmlns="http www.escience.gov.cn"
+:// / >
+规则29 应在前导说明部分以注释的形式说明以下内容
+: :
+元数据标准名称
+——— ;
+元数据标准版本
+——— ;
+编写单位或编写人
+———XMLSchema ;
+完成时间
+———XMLSchema 。
+64 XMLSchema的根元素设计规则
+.
+规则30 元数据的根实体定义为 的根元素 根元素的名称是 根元素的类
+: XMLSchema , “metadata”,
+型定义为
+“xs:complexType”。
+示例 声明 科技平台资源核心元数据 作为 的根元素为
+: “ ” XMLSchema :
+xselementname="metadata"
+< : >
+xsannotation
+< : >
+documentation元数据 documentation
+< > </ >
+documentationMetadata documentation
+< > </ >
+documentation定义科技平台资源内容描述元数据的根实体 documentation
+< > </ >
+xsannotation
+</ : >
+xscomplexType"
+< : >
+xssequence
+< : >
+……
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+7
+GB/T32846—2016
+附 录 A
+资料性附录
+( )
+科技平台资源核心元数据汇交报文格式
+A1 报文结构
+.
+报文结构见图
+A.1。
+图A1 报文结构简图
+.
+8
+GB/T32846—2016
+A2 报文结构标记说明
+.
+报文结构标记说明见表
+A.1。
+表A1 报文结构及标记说明
+.
+报文层 标记名 说明 约束 出现次数 类型和长度
+XMl
+Level XMLTagName Description Contraints Repeats Type/Length
+元数据汇交
+0 M 1..1
+报文开始 给出报文标识 报文功能 报文
+, 、 、
+报文头 参考号 交换双方的标识及报文生成日
+1 、 M 1..1
+期 时间等
+/
+给出报文标识的名称和报文格式 版本等
+报文标识 、
+2 信息 M 1..1
+报文功能 给出报文的功能
+2 O 0..1
+发送方标识 发送方的组织结构代码
+2 M 1..1 an..70
+接收方标识 报文接收方的标识
+2 M 1..1 an..70
+报文生成日期 该报文生成的日期和时间
+2 M 1..1
+报文中涉及科技平台元数据汇交业务的
+报文体 n
+1 相关部分 M 1..
+标识符 科技资源的唯一标识编码
+2 M 1..1
+名称 科技资源的名称
+2 M 1..1
+最近提交日期 最近一次提交核心元数据的日期
+2 M 1..1
+科技资源内容的综述性介绍 包括科技
+描述 。
+2 资源的来源 特征 指标 用途等 M 1..1
+、 、 、
+提交机构 提交资源核心元数据的单位或机构
+2 M 1..1
+提交机构名称 提交机构的组织机构名称
+3 M 1..1
+提交机构通信地址 与提交机构联系的通信地址
+3 M 1..1
+提交机构邮政编码 与提交机构通信地址相对应的邮政编码
+3 M 1..1
+提交机构联系电话 提交机构联系人的联系电话 n
+3 M 1..
+提交机构电子信箱 提交机构联系人的电子邮件地址 n
+3 M 1..
+用于描述资源信息主题的通用词 形式化
+关键词 、 n
+2 词或短语 M 1..
+为保护隐私权或知识产权 对访问资源信
+访问限制 ,
+2 息施加的限制或约束 M 1..1
+资源类别 资源的分类信息 n
+2 M 1..
+用于描述资源主题的通用词 形式化词或
+类目名称 、 n
+3 短语 M 1..
+类目代码 分类标准中类目名称对应的代码 n
+3 M 1..
+9
+GB/T32846—2016
+表A1 续
+.( )
+报文层 标记名 说明 约束 出现次数 类型和长度
+XMl
+Level XMLTagName Description Contraints Repeats Type/Length
+分类标准名称 分类标准名称
+3 M 1..1
+分类标准版本号 分类标准的版本号
+3 O 0..1
+资源信息链接地址 资源详细信息的有效绝对网络地址 n
+2 M 1..
+如需对报文进行数字签名 应采用
+, W3C
+颁布的 数字签名规范
+数字签名 XML (W3CXML
+1 O 0..1 an..64
+signaturerecommendationon12February
+进行加签处理
+2002)
+A3 报文XMLSchema
+.
+按照映射规则 科技平台资源核心元数据汇交报文 为
+, XMLSchema :
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+xsschemaxmlnsxs="http www.w3.org2001XMLSchema"elementFormDefault="qualified"
+< : : :// / /
+attributeFormDefault="unqualified"
+>
+xselementname="metadata"
+< : >
+xsannotation
+< : >
+xsdocumentation 科技平台资源核心元数据 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="MessageHead"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="messID"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 报文标识 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="messFun"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 报文功能 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="messRefNo"
+< : >
+xsannotation
+< : >
+xsdocumentation 报文参考号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+10
+GB/T32846—2016
+xselement
+</ : >
+xselementname="messSentID"
+< : >
+xsannotation
+< : >
+xsdocumentation 报文发送方标识 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="messReceiveID"
+< : >
+xsannotation
+< : >
+xsdocumentation 报文接收方标识 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="messDatetime"type="xsdateTime"
+< : : >
+xsannotation
+< : >
+xsdocumentation 报文发送时间 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="MessageBody"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="resId"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 标识符 xsdocumentation
+< : > </ : >
+xsdocumentationResourceIdentifier xsdocumentation
+< : > </ : >
+xsdocumentation 科技资源的唯一标识编码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="resTitle"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 名称 xsdocumentation
+< : > </ : >
+xsdocumentationResourceTitle xsdocumentation
+< : > </ : >
+xsdocumentation 科技资源的名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="upDate"type="xsdate"
+< : : >
+xsannotation
+< : >
+xsdocumentation 最近提交日期 xsdocumentation
+< : > </ : >
+xsdocumentationDateOfUpdate xsdocumentation
+< : > </ : >
+xsdocumentation 最近一次提交核心元数据的日期 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+11
+GB/T32846—2016
+xselementname="descrp"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 描述 xsdocumentation
+< : > </ : >
+xsdocumentationDescription xsdocumentation
+< : > </ : >
+xsdocumentation 科技资源内容的综述性介绍 包括科技资源的来源 特征 指标 用途
+< : > 。 、 、 、
+等 xsdocumentation
+。</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="idPoC"
+< : >
+xsannotation
+< : >
+xsdocumentation 提交机构 xsdocumentation
+< : > </ : >
+xsdocumentationPointOfContact xsdocumentation
+< : > </ : >
+xsdocumentation 提交资源核心元数据的单位或机构 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="orgName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 提交机构名称 xsdocumentation
+< : > </ : >
+xsdocumentationOrganizationName xsdocumentation
+< : > </ : >
+xsdocumentation 提交机构的组织机构名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="cntAdd"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 提交机构通信地址 xsdocumentation
+< : > </ : >
+xsdocumentationAddress xsdocumentation
+< : > </ : >
+xsdocumentation 与提交机构联系的通信地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="postCode"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 提交机构邮政编码 xsdocumentation
+< : > </ : >
+xsdocumentationPostalCode xsdocumentation
+< : > </ : >
+xsdocumentation 与提交机构通信地址相对应的邮政编码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="cntPhone"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 提交机构联系电话 xsdocumentation
+< : > </ : >
+xsdocumentationPhone xsdocumentation
+< : > </ : >
+xsdocumentation 提交机构联系人的联系电话 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+12
+GB/T32846—2016
+xselement
+</ : >
+xselementname="cntEmail"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 提交机构电子信箱 xsdocumentation
+< : > </ : >
+xsdocumentationElectronicMailAddress xsdocumentation
+< : > </ : >
+xsdocumentation 提交机构联系人的电子邮件地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="keyword"type="xsstring"maxOccurs="unbounded"
+< : : >
+xsannotation
+< : >
+xsdocumentation 关键词 xsdocumentation
+< : > </ : >
+xsdocumentationKeyword xsdocumentation
+< : > </ : >
+xsdocumentation 用于描述资源信息主题的通用词 形式化词或短语 xsdocumenta-
+< : > 、 。</ :
+tion
+>
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="accConsts"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 访问限制 xsdocumentation
+< : > </ : >
+xsdocumentationAccessConstraints xsdocumentation
+< : > </ : >
+xsdocumentation 为保护隐私权或知识产权 对访问资源信息施加的限制或约束 xsdoc-
+< : > , </ :
+umentation
+>
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="resCat"
+< : >
+xsannotation
+< : >
+xsdocumentation 资源类别 xsdocumentation
+< : > </ : >
+xsdocumentationResourceCategory xsdocumentation
+< : > </ : >
+xsdocumentation 资源的分类信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="cateName"type="xsstring"maxOccurs="unbounded"
+< : : >
+xsannotation
+< : >
+xsdocumentation 类目名称 xsdocumentation
+< : > </ : >
+xsdocumentationCategoryName xsdocumentation
+< : > </ : >
+xsdocumentation 用于描述资源主题的通用词 形式化词或短语 xsdocumentation
+< : > 、 </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="cateCode"type="xsstring"maxOccurs="unbounded"
+< : : >
+13
+GB/T32846—2016
+xsannotation
+< : >
+xsdocumentation 类目代码 xsdocumentation
+< : > </ : >
+xsdocumentationCategoryCode xsdocumentation
+< : > </ : >
+xsdocumentation 分类标准中类目名称对应的代码 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="cateStdN"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 分类标准名称 xsdocumentation
+< : > </ : >
+xsdocumentationCategoryStandardName xsdocumentation
+< : > </ : >
+xsdocumentation 分类标准的名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="cateStdR"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 分类标准的版本号 xsdocumentation
+< : > </ : >
+xsdocumentationCategoryStandardRevision xsdocumentation
+< : > </ : >
+xsdocumentation 分类标准的版本号 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="onlAdr"type="xsstring"maxOccurs="unbounded"
+< : : >
+xsannotation
+< : >
+xsdocumentation 资源信息链接地址 xsdocumentation
+< : > </ : >
+xsdocumentationOnlineAddress xsdocumentation
+< : > </ : >
+xsdocumentation 资源详细信息的有效绝对网络地址 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+14
+GB/T32846—2016
+参 考 文 献
+行政 商业和运输业电子数据交换 应用级语法规则
+[1] GB/T14805.1—2007 、 (EDIFACT)
+语法版本号 语法发布号 第 部分 公用的语法规则
+( :4, :1) 1 :
+信息技术 元数据注册系统 第 部分 框架
+[2] GB/T18391.1—2009 (MDR) 1 :
+地理信息 元数据
+[3] GB/T19710—2005
+运输指示报文 格式
+[4] GB/T19947—2005 XML
+科技平台标准化工作指南
+[5] GB/Z30525—2014
+科技平台 通用术语
+[6] GB/T31075—2014

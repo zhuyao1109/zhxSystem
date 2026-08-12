@@ -1,0 +1,5020 @@
+ICS3316001
+. .
+M63
+中 华 人 民 共 和 国 国 家 标 准
+GB/T28430—2012
+数字电视系统数据广播技术规范
+Technicalspecificationofdatabroadcastingindigitaltelevisionsystem
+2012-06-29发布 2012-10-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T28430—2012
+目 次
+前言 …………………………………………………………………………………………………………
+Ⅰ
+引言 …………………………………………………………………………………………………………
+Ⅱ
+范围 ………………………………………………………………………………………………………
+1 1
+规范性引用文件 …………………………………………………………………………………………
+2 1
+缩略语 ……………………………………………………………………………………………………
+3 1
+数据封装格式 ……………………………………………………………………………………………
+4 3
+数据管道 ……………………………………………………………………………………………
+4.1 3
+数据流 ………………………………………………………………………………………………
+4.2 4
+多协议封装 …………………………………………………………………………………………
+4.3 6
+数据轮播……………………………………………………………………………………………
+4.4 10
+对象轮播……………………………………………………………………………………………
+4.5 21
+解码器模型…………………………………………………………………………………………
+4.6 25
+数据广播相关业务的规定………………………………………………………………………………
+5 26
+信息的发送方式 ……………………………………………………………………………
+5.1 EPG 26
+中间件业务的发送方式……………………………………………………………………………
+5.2 26
+数据广播中 系统的规定……………………………………………………………………………
+6 CA 26
+实施方法…………………………………………………………………………………………………
+7 26
+数据广播前端技术要求和测量方法……………………………………………………………………
+8 26
+附录 规范性附录 实施方法…………………………………………………………………………
+A( ) 27
+附录 规范性附录 私有数据广播系统注册 …………………………………………………………
+B( ) 68
+附录 资料性附录 文本字符编码 ……………………………………………………………………
+C( ) 69
+附录 规范性附录 数据广播前端的技术要求 ………………………………………………………
+D( ) 72
+附录 规范性附录 前端测量方法 ……………………………………………………………………
+E( ) 73
+附录 规范性附录 数据轮播的 消息………………………………………………………
+F( ) DSM-CC 75
+附录 规范性附录 将 消息封装到 段中 ………………………
+G( ) DSM-CC GB/T17975.1—2010 80
+附录 规范性附录 目录中的对象命名………………………………………………………………
+H ( ) 82
+GB/T28430—2012
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由国家广播电影电视总局提出
+。
+本标准由全国广播电影电视标准化技术委员会 归口
+(SAC/TC239) 。
+本标准起草单位 国家广播电影电视总局广播科学研究院 国家广播电影电视总局广播电视规
+: 、
+划院
+。
+本标准主要起草人 杨杰 崔竞飞 朱佩江 胡毓铭 杨威 李培琳 牛妍华 万倩 李博 崔俊生
+: 、 、 、 、 、 、 、 、 、 。
+Ⅰ
+GB/T28430—2012
+引 言
+本标准从我国数字电视系统数据广播的技术和业务特点出发 在 数字电视系统
+, GY/T201—2004《
+中的数据广播规范 的基础上进行了补充和修改 对数据广播前端系统通用技术要求和测量方法进行了
+》 ,
+补充规范 在本标准的编制过程中 还参照了 数字电视广播业务信息规范 和
+。 , GB/T28161—2011《 》
+有线数字电视系统技术要求和测量方法 的相关内容
+GY/T221—2006《 》 。
+Ⅱ
+GB/T28430—2012
+数字电视系统数据广播技术规范
+1 范围
+本标准规定了数字电视广播系统中基于传送流的数据广播的数据结构 数据交换 数据传输协
+、 、
+议等
+。
+本标准适用于地面数字电视 有线数字电视和卫星数字电视广播系统中的数据广播系统
+、 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息交换用汉字编码字符集 基本集
+GB2312—1980
+信息技术 通用多八位编码字符集
+GB13000—2010 (UCS)
+信息处理 八位单字节编码图形字符集 第一部分 拉丁字母一
+GB/T15273.1—1994 :
+信息技术 系统间远程通信和信息交换 局域网和城域网 特定要
+GB/Z15629.1—2000
+求 第 部分 局域网标准综述
+1 :
+信息技术 系统间远程通信和信息交换 局域网和城域网 特定要
+GB/T15629.2—2008
+求 第 部分 逻辑链路控制
+2 :
+信息技术 运动图像及其伴音信息的通用编码 第 部分 系统
+GB/T17975.1—2010 1 :
+数字电视广播业务信息规范
+GB/T28161—2011
+有线数字电视系统技术要求和测量方法
+GY/T221—2006
+信息技术 运动图像及其伴音信息的通用编码 第 部分 数字存储媒
+ISO/IEC13818-6:1998 6 :
+体命令和控制的扩展
+(Informationtechnology—Genericcodingofmovingpicturesandassociated
+audioinformation—Part6:ExtensionsforDSM-CC)
+对于 多点传送的主机扩展名
+IETFRFC1112 IP (HostextensionsforIPmulticasting)
+压缩数据格式规范 版
+IETFRFC1950 ZLIB 3.3 (ZLIBCompressedDataFormatSpecification
+version3.3)
+简化压缩数据格式规范 版
+IETFRFC1951 1.3 (DEFLATECompressedDataFormatSpecifica-
+tionversion1.3)
+多目标互联网邮件扩展 第 部分 消息主体格式
+IETFRFC2045 1 :INTERNET (Multipurpose
+InternetMailExtensions(MIME)PartOne:FormatofInternetMessageBodies)
+多目标互联网邮件扩展 第 部分 媒体类型
+IETFRFC2046 2 : (MultipurposeInternetMail
+Extensions(MIME)PartTwo:MediaTypes)
+数字视频广播 交互业务的网络独立协议
+ETSIEN300802 (DVB) DVB (DigitalVideoBroad-
+casting(DVB);Network-independentprotocolsforDVBinteractiveservices)
+3 缩略语
+下列缩略语适用于本文件
+。
+1
+GB/T28430—2012
+授权和格式标识
+AFI (AuthorityandFormatIdentifier)
+应用移植接口
+API (ApplicationPortabilityInterface)
+广播 间协议
+BIOP ORB (BroadcastInterORBProtocol)
+条件接收
+CA (ConditionalAccess)
+公用数据表示
+CDR (CommonDataRepresentation)
+公共对象请求代理结构
+CORBA (CommonObjectRequestBrokerArchitecture)
+循环冗余校验
+CRC (CyclicRedundancyCheck)
+数据轮播
+DC (DataCarousel)
+下载数据块消息
+DDB DSM-CC (DownloadDataBlockmessageofDSM-CC)
+下载信息指示消息
+DII DSM-CC (DownloadInfoIndicationmessageofDSM-CC)
+下载服务器初始化消息
+DSI DSM-CC (DownloadServerInitiatemessageofDSM-CC)
+数字存储媒体 命令与控制
+DSM-CC - (DigitalStorageMedia-Command&Control)
+用户 网络模式
+DSM-CCU-N DSM-CC - (DSM-CCUsertoNetwork)
+用户 用户模式
+DSM-CCU-U DSM-CC - (DSM-CCUsertoUser)
+事件信息表
+EIT (EventInformationTable)
+电子节目指南
+EPG (ElectronicProgramGuide)
+基本流
+ES (ElementaryStream)
+图形交换格式
+GIF (GraphicsInterchangeFormat)
+超文本描述语言
+HTML (HyperTextMark-upLanguage)
+接口定义语言
+IDL (InterfaceDefinitionLanguage)
+互联网工程任务组
+IETF (InternetEngineeringTaskForce)
+互联网 间协议
+IIOP ORB (InternetInterORBProtocol)
+互操作对象基准
+IOR (InteroperableObjectReference)
+互联网协议
+IP (InternetProtocol)
+联合图像专家组
+JPEG (JointPhotographicExpertsGroup)
+逻辑链路控制
+LLC (LogicalLinkControl)
+媒体接入控制
+MAC (MediaAccessControl)
+最大传输单元
+MTU (MaximumTransportUnit)
+正常播放时间
+NPT (NormalPlayTime)
+网络业务接入点
+NSAP (NetworkServiceAccessPoint)
+对象轮播
+OC (ObjectCarousel)
+目标管理组
+OMG (ObjectManagementGroup)
+目标建模技术
+OMT (ObjectModellingTechnique)
+目标请求代理
+ORB (ObjectRequestBroker)
+组织机构统一标识
+OUI (OrganizationalUniqueIdentifier)
+节目关联表
+PAT (ProgramAssociationTable)
+节目时钟参考
+PCR (ProgramClockReference)
+打包的基本流
+PES (PacketizedElementaryStream)
+包标识
+PID (PacketIdentifier)
+锁相环
+PLL (PhaseLockedLoop)
+节目映射表
+PMT (ProgramMapTable)
+点到点协议
+PPP (PointtoPointProtocol)
+节目特定信息
+PSI (ProgramSpecificInformation)
+2
+GB/T28430—2012
+展现时间戳
+PTS (PresentationTimeStamp)
+评议征求
+RFC (RequestForComments)
+业务描述表
+SDT (ServiceDescriptionTable)
+业务信息
+SI (ServiceInformation)
+子网附属点
+SNAP (SubNetworkAttachmentPoint)
+传输控制协议
+TCP (TransferControlProtocol)
+传送流
+TS (TransportStream)
+比特串 左位在先
+bslbf , (bitstring,leftbitfirst)
+百万分之一
+ppm (partspermillion)
+余数多项式系数 高阶在前
+rpchof , (remainderpolynomialcoefficient,higherorderfirst)
+无符号整数 高位在先
+uimsbf , (unsignedinteger,mostsignificantbitfirst)
+4 数据封装格式
+41 数据管道
+.
+411 基本概念
+..
+数据管道规范支持数字电视系统中简单异步端到端的数据广播业务 数据直接在 包的载荷中
+, TS
+传输 见 数据管道的具体实施方法见附录
+, GB/T17975.1—2010。 A。
+412 数据传输规范
+..
+数据广播业务直接将要广播的数据插入 包中
+TS 。
+数据广播业务可通过业务特有的方式来使用 包中的 域和
+TS payload_unit_start_indicator
+域 的使用应符合
+transport_priority 。adaptation_field GB/T17975.1—2010。
+按照数据管道进行数据传输时 其数据格式是与业务相关的 在本标准中不做规定
+, , 。
+413 PSI和SI规范
+..
+4131 PSI和SI的使用方法
+...
+数据广播业务通过包含在 中的一个或多个 来标明使用了数据管道
+SI data_broadcast_descriptor 。
+每个 通过 与一个具体的数据管道相关联 特别指出
+data_broadcast_descriptor component_tag 。 ,com-
+域的值应该与可能存在于用作数据管道的码流的 中 的
+ponent_tag PMT stream_identifier_descriptor
+域的值相同
+component_tag 。
+4132 data_broadcast_descriptor
+...
+按以下方式使用
+data_broadcast_descriptor :
+此域置为 标明一个数据管道 见附录
+● data_broadcast_id: 0x0001, , B;
+此域的值应该与用作数据管道的码流的 的
+● component_tag: stream_identifier_descriptor com-
+域的值相同
+ponent_tag ;
+此域置为
+● selector_length: 0;
+此域不使用
+● selector_byte: 。
+4133 流类型
+...
+中的 不在本标准中定义
+PMT stream_type 。
+3
+GB/T28430—2012
+42 数据流
+.
+421 基本概念
+..
+数据流规范支持数字电视系统中面向数据流 端到端的异步 同步或从同步方式的数据广播业务
+、 、 ,
+数据在打包的基本流 的包中传输 定义见
+(PES) ,PES GB/T17975.1—2010。
+异步数据流定义为只有数据 没有任何时序要求的流 例如
+、 , RS-232。
+同步数据流定义为带时序要求的流 这种情况下 接收端能够从同步数据流中再生数据和时钟
+。 , 。
+从同步的数据流定义为带时序要求的流 这种情况下 流中的数据能够同步地与其他数据流 例如
+。 , (
+音频 视频 一起回放
+, ) 。
+数据流方式的具体实施方法见附录
+A。
+422 异步数据流
+..
+4221 数据传输规范
+...
+数据广播业务的数据放在 定义的 包中 该 包的长度不能为零
+GB/T17975.1—2010 PES , PES 。
+中规定了如何把 包映射到 包中
+GB/T17975.1—2010 PES TS 。
+异步数据流的规范使用标准的 包的句法和语义 并有以下约束
+PES , :
+此域置为
+● stream_id: 0xBF(private_stream_2);
+比特域 数值非零
+● PES_packet_length:16 , 。
+4222 PSI和SI规范
+...
+42221 PSI和SI的使用方法
+....
+数据广播业务通过包含在 中的一个或多个 来标明异步数据流的使
+SI data_broadcast_descriptor
+用 每个 通过 来与特定的流相关联 特别指出 如果作为
+。 data_broadcast_descriptor component_tag 。 ,
+数据流的码流 中出现了 的 则这两个
+PMT stream_identifier_descriptor component_tag, component_
+的值应该是相同的
+tag 。
+42222 data_broadcast_descriptor
+....
+按以下方式使用
+data_broadcast_descriptor :
+此域置为 标明异步数据流 见附录
+● data_broadcast_id: 0x0002, , B;
+此域和流的 中的 值相同 数据在
+● component_tag: stream_identifier_descriptor component_tag ,
+该流中传输
+;
+此域置为
+● selector_length: 0;
+此域不使用
+● selector_byte: 。
+42223 流类型
+....
+通过设定流类型为 或用户自定义的数值 可以在一个业务的 中标明异步数据流
+0x06 , PMT 。
+423 同步或从同步数据流
+..
+4231 数据传输规范
+...
+数据广播业务将要广播的数据放在 中定义的 包内 该 包应是非
+GB/T17975.1—2010 PES 。 PES
+零长度的 把 包映射到 包的定义 见
+。 PES TS , GB/T17975.1—2010。
+4
+GB/T28430—2012
+同步和从同步数据流使用标准的 包的句法和语义 并有以下约束
+PES , :
+对于同步或从同步的数据流 此域置为
+● stream_id: , 0xBD(private_stream_1);
+比特的域 数值非零
+● PES_packet_length:16 , 。
+数据使用 结构插入 包中 结构的句法见表
+PES_data_packet PES 。PES_data_packet 1。
+表1 PES_data_packet结构
+句 法 比特数 类型
+PES_data_packet(){
+data_identifier 8 uimsbf
+sub_stream_id 8 uimsbf
+PTS_extension_flag 1 bslbf
+output_data_rate_flag 1 bslbf
+reserved 2 bslbf
+PES_data_packet_header_length 4 uimsbf
+if(PTS_extension_flag==“1”){
+reserved 7 bslbf
+PTS_extension 9 bslbf
+}
+if(output_data_rate_flag==“1”){
+reserved 4 bslbf
+output_data_rate 28 uimsbf
+}
+for(i=0;i<N1;i++){
+PES_data_private_data_byte 8 bslbf
+}
+for(i=0;i<N2;i++){
+PES_data_byte 8 bslbf
+}
+}
+的语义如下
+PES_data_packet :
+比特域 定义了 包中的数据类型 同一数据流中用于传送数据的
+● data_identifier:8 , PES 。 PES
+包 的值相同 编码见表
+,data_identifier , 2;
+表2 data_identifier域的编码
+意 义
+data_identifier
+为将来使用保留
+0x00~0x0F
+保留
+0x10~0x1F
+数字电视系统字幕
+0x20
+数字电视系统同步数据流
+0x21
+数字电视系统从同步数据流
+0x22
+为将来使用保留
+0x23~0x7F
+用户定义
+0x80~0xFF
+5
+GB/T28430—2012
+比特域 用户自定义
+● sub_stream_id:8 , ;
+比特域 对于同步数据流 此域置为 对于从同步数据流 此域置为
+● PTS_extension_flag:1 。 , “1”。 ,
+时表明在 中有 此域置为 时表明没有
+“1” PES_data_packet PTS_extension, “0” PTS_extension;
+比特域 对于从同步数据流 此域置为 对于同步数据流 此域置
+● output_data_rate_flag:1 。 , “0”。 ,
+为 时表明在 中有 此域置为 时表明没有
+“1” PES_data_packet output_data_rate, “0” output_data
+_rate;
+比特域 标明包含 的包头中
+● PES_data_packet_header_length:4 。 PES_data_private_data_byte
+的可选择域的长度
+;
+比特域 此域扩展了 包头中的 此域含有 比特 值 将数据的
+● PTS_extension:9 。 PES PTS; 9 PCR ,
+时间分辨率从 扩展到
+PTS 11.1us(90kHz) 37ns(27MHz);
+比特域 标明同步数据流再生信号的码率 输出码率被编码成 比特的
+● output_data_rate:28 , 。 28
+正整数
+;
+此域与具体业务相关联 如果此域出现 标准的数字电视接收机
+● PES_data_private_data_byte: 。 ,
+将会跳过这些数据
+;
+此域传送要广播的数据
+● PES_data_byte: 。
+4232 PSI和SI规范
+...
+42321 PSI和SI的使用方法
+....
+数据广播业务通过包含在 中的一个或多个 来标明同步数据流或从同
+SI data_broadcast_descriptor
+步数据流的使用 每个 通过 和一个特定的流相关 特别指
+。 data_broadcast_descriptor component_tag 。
+出 的值应与可能出现的作为数据流的码流 的 的
+,component_tag PMT stream_identifier_descriptor
+的值相同
+component_tag 。
+42322 data_broadcast_descriptor
+....
+按以下的方式使用
+data_broadcast_descriptor :
+此域置为 标明同步数据流 置为 标明从同步数据流 见附
+● data_broadcast_id: 0x0003, ; 0x0004, ;
+录
+B。
+此域与传输数据的码流中 的 域值
+● component_tag: stream_identifier_descriptor component_tag
+相同
+。
+此域置为零
+● selector_length: 。
+此域不使用
+● selector_byte: 。
+42323 流类型
+....
+通过在业务的 中将 置为 或用户自定义的值来标明业务中存在同步数据流
+PMT stream_type 0x06
+或从同步的数据流
+。
+43 多协议封装
+.
+431 基本概念
+..
+多协议封装规范支持数字电视系统中需要用通信协议中的数据报来传输的数据广播业务
+。
+遵循多协议封装规范的数据报传输把数据报封装在 段中 见 这
+DSM-CC , ISO/IEC13818-6:1998,
+和 的私有段格式是兼容的
+GB/T17975.1—2010 。
+多协议封装的具体实施方法见附录
+A。
+6
+GB/T28430—2012
+432 数据传输规范
+..
+数据报封装在与私有数据 段兼容的 中 见
+DSM-CC datagram_section , ISO/IEC13818-6:1998。
+定义了如何将该段映射到 流中
+GB/T17975-1 TS 。
+的句法见表
+datagram_section 3。
+表3 datagram_section的句法
+句 法 比特数 助记符
+datagram_section(){
+table_id 8 uimsbf
+section_syntax_indicator 1 bslbf
+private_indicator 1 bslbf
+reserved 2 bslbf
+section_length 12 uimsbf
+MAC_address_6 8 uimsbf
+MAC_address_5 8 uimsbf
+reserved 2 bslbf
+payload_scrambling_control 2 bslbf
+address_scrambling_control 2 bslbf
+LLC_SNAP_flag 1 bslbf
+current_next_indicator 1 bslbf
+section_number 8 uimsbf
+last_section_number 8 uimsbf
+MAC_address_4 8 uimsbf
+MAC_address_3 8 uimsbf
+MAC_address_2 8 uimsbf
+MAC_address_1 8 uimsbf
+if(LLC_SNAP_flag== “1”){
+LLC_SNAP()
+}
+else{
+for(j=0;j<N1;j++){
+IP_datagram_data_byte 8 bslbf
+}
+}
+if(section_number==last_section_number){
+for(j=0;j<N2;j++){
+stuffing_byte 8 bslbf
+}
+}
+if(section_syntax_indicator==“0”){
+checksum 32 uimsbf
+}
+else{
+CRC_32 32 rpchof
+}
+}
+7
+GB/T28430—2012
+的语义如下
+datagram_section :
+比特域 置为 私有数据的 段 见
+● table_id:8 , 0x3E( DSM-CC , ISO/IEC13818-6:1998);
+此域按照 中定义的设置
+● section_syntax_index_indicator: ISO/IEC13818-6:1998 ;
+此域按照 中的定义设置
+● private_indicator: ISO/IEC13818-6:1998 ;
+比特域 置为
+● reserved:2 , “11”;
+此域按照 中的定义设置
+● section_length: ISO/IEC13818-6:1998 ;
+比特域 内容为目标的 地址 地址被分成 个 比特的
+● MAC_address_[1~6]:48 , MAC 。MAC 6 8
+域 从 到 分别标识 包含 地址的最
+, MAC_address_1 MAC_address_6 。MAC_address_1 MAC
+高字节 域包含 地址的最低字节 图 显示了 地址在该段中各个
+,MAC_address_6 MAC 。 1 MAC
+域的映射 中包含了一个在 域中指定的未加扰或
+。MAC_address address_scrambling_control
+加扰的 地址
+MAC ;
+注 各个字节中的比特次序并没有反转 每个字节的最高位仍然最先传送
+: , 。
+图1 MAC地址字节到section的映射
+比特域 标明该段载荷的加扰模式 包括了跟在
+● payload_scambling_control:2 , 。 MAC_address_
+后面的载荷 但不包括校验和或 域在内 见表 所采用的加扰方法由用户自定义
+1 , CRC32 , 4。 ;
+表4 payload_scambling_control域的编码
+值
+payload_scambling_control
+未加扰
+00
+业务定义
+01
+业务定义
+10
+业务定义
+11
+比特域 标明 地址的加扰模式 见表 该域使 地址
+● address_scrambling_control:2 , MAC , 5。 MAC
+可动态变化 所采用的加扰方法由用户自定义
+。 ;
+表5 address_scrambling_control域的编码
+值
+address_scrambling_control
+未加扰
+00
+业务定义
+01
+业务定义
+10
+业务定义
+11
+8
+GB/T28430—2012
+比特标志位 该标志位置为 标明在载荷的 之后携带
+● LLC_SNAP_flag:1 。 “1”, MAC_address_1
+封装的数据报 结构应标明传送的数据报的类型 该标志位置为
+LLC/SNAP 。LLC/SNAP 。
+标明在载荷的 之后将包含一个没有用 封装的 数据报
+“0”, MAC_address_1 LLC/SNAP IP ;
+比特域 置为
+● current_next_indicator:1 , “1”;
+比特域 如果数据报需要多个段传输 此域标明在分割过程中段的位置
+● section_number:8 。 , 。
+否则置为
+“0”;
+比特域 标明携带数据报的最后一段的序号 即分割过程的最后段的
+● last_section_number:8 , ,
+序号
+;
+此结构包含 遵循 规范和 遵循
+● LLC_SNAP: LLC GB/T15629.2—2008 SNAP GB/Z15629.1—
+规范的数据报 如果该段中的载荷被加扰 见 这些字节也将
+2000 。 ( payload_scrambling_mode),
+被加扰
+;
+这些字节包含数据报的数据 如果该段中的载荷被加扰 见
+● IP_datagram_data_byte: 。 ( payload_
+这些字节也将被加扰
+scrambling_mode), ;
+可选的 比特域 值不指定 如果该段中的载荷被加扰 见
+● stuffing_byte: 8 , 。 ( payload_scrambling_
+这些字节也将被加扰 以便协助宽总线环境中的分组加密和数据处理 使用的
+mode), , 。 stuffing
+数目应符合定义在 中的数据对齐需求
+_byte data_broadcast_descriptor ;
+此域按 定义设置 它对整个 进行运算
+● checksum: ISO/IEC13818-6:1998 。 datagram_section ;
+此域按 定义设置 它对整个 进行运算
+● CRC_32: ISO/IEC13818-6:1998 。 datagram_section 。
+433 PSI和SI规范
+..
+4331 PSI和SI的使用方法
+...
+数据广播业务通过包含在 中的一个或多个 来标明数据报的传输 每
+SI data_broadcast_descriptor 。
+个 通过 和特定的流相关 特别指出 值应与
+data_broadcast_identifier component_tag 。 ,component_tag
+可能出现的 用作数据报传输的流的 的 中 的值
+、 PMT stream_identifier_descriptor component_tag
+相同
+。
+4332 data_broadcast_identifier_descriptor
+...
+按以下的方式使用
+data_broadcast_identifier_descriptor :
+此域置为 标明多协议封装 见附录
+● data_broadcast_id: 0x0005, , B;
+此域与可能出现在用作数据广播的流的 的
+● component_tag: PMT stream_identifier_descriptor
+中 的值相同
+component_tag ;
+此域置为
+● selector_length: 0x02;
+此域用于传输表 定义的 结构
+● selector_byte: 6 multiprotocol_encapsulation_info ;
+表6 multiprotocol_encapsulation_info结构的句法
+句 法 比特数 类型
+multiprotocol_encapsulation_info(){
+MAC_address_range 3 uimsbf
+MAC_IP_mapping_flag 1 bslbf
+alignment_indicator 1 bslbf
+reserved 3 bslbf
+max_sections_per_datagram 8 uimsbf
+}
+9
+GB/T28430—2012
+结构的语义如下
+multiprotocol_encapsulation_info :
+比特域 标明 地址字节数目 该数目依照表 来说明区分接收端
+● MAC_address_range:3 , MAC , 7
+时哪几位的 字节是有效的
+MAC_address ;
+表7 MAC_address_range域的编码
+有效的 字节
+MAC_address_range MAC_address
+保留
+0x00
+0x01 6
+0x02 6,5
+0x03 6,5,4
+0x04 6,5,4,3
+0x05 6,5,4,3,2
+0x06 6,5,4,3,2,1
+保留
+0x07
+比特标志位 如果使用 中描述的从 到 的
+● MAC_IP_mapping_flag:1 。 IETFRFC1112 IP MAC
+映射 此标志位置为 如果此标志位被置为 从 到 的映射在本标准范围之外
+, “1”。 “0”, IP MAC ;
+比特域 标明 和 流字节对齐 见表
+● alignment_indicator:1 。 datagram_section TS , 8;
+表8 alignment_indicator域的编码
+值 对齐的比特数
+缺省值
+0 8( )
+1 32
+比特域 置为
+● reserved:3 , “111”;
+比特域 标明传输一个数据报单元的段的最大数目
+● max_section_per_datagram:8 , 。
+4333 流类型
+...
+当一个业务中出现多协议数据流时 则把该流的 值在该业务的 中设置为
+, stream_type PMT 0x0D
+或一个用户定义值
+。
+44 数据轮播
+.
+441 基本概念
+..
+数据轮播规范支持数字电视系统中周期性数据模块传输的数据广播业务 这些模块是已知大小
+。
+的 并且可在数据轮播中及时更新 添加或移除 如果业务需要 这些模块还可以组成模块群 模块群也
+, 、 。 , ,
+可以组成模块超群
+。
+遵循数据轮播规范的数据广播在 中定义的 数据轮播中传输 而本标准定义了在
+DSM-CC DSM-CC ,
+10
+GB/T28430—2012
+数字电视系统中使用的附加结构和描述符 因为用于准备离线内容的 和时序参数没有明确基准
+。 PID ,
+所以按照以上方式定义
+。
+数据轮播的具体实施方法见附录
+A。
+442 数据传输规范
+..
+4421 描述
+...
+数据轮播规范是基于 数据轮播规范的 见 数据轮播规
+DSM-CC , ISO/IEC13818-6:1998。DSM-CC
+范实现了到接收端的数据循环传输 在数据轮播中传输的数据按照 模块 传输 模块由 块 组成 数
+。 “ ” , “ ” 。
+据轮播中 除了每个模块中的最后一个块可能较小外 模块中的所有其他块都是相同大小的 模块是数
+, , 。
+据轮播中逻辑无关的数据组的描述 当业务需要时 模块可以组合成一个模块群 同样 群又可以组合
+。 , 。 ,
+成超群
+。
+数据轮播规范用到了 的下载规范中的四个消息 数据由 消
+DSM-CC 。 DownloadDataBlock(DDB)
+息携带 对模块的控制由 和 消息提
+, DownloadInfoIndication,DownloadServerInitiate DownloadCancel
+供 描述了超群中的群 描述了一个群中的模块 基
+。DownloadServerInitiate ,DownloadInfoIndication 。
+于这些控制消息 接收端可以从网络中获得模块的子集 这些消息的句法和语义见
+, 。 ISO/IEC13818-6:
+本标准将规定这些消息在数据轮播中的使用
+1998。 。
+4422 数据轮播的结构
+...
+数据轮播可有一层或两层控制信息 结构见如图 数据轮播最简单的模式是一个数据轮播拥有
+, 2。
+一个 控 制 层 该 控 制 层 描 述 了 单 个 群 在 这 种 情 况 下 表 中 包 含 了 指 向
+, 。 ,SDT/EIT
+消息的 这个消息描述了数据轮播使用的
+DownloadInfoIndication data_broadcast_descriptor。 Modu-
+域中的模块 这个域包含了一个描述符的循环 描述符中可能包含了各种不同的信息 如指
+leInfoByte 。 , ,
+向 消息位置的指针
+DownloadDataBlock 。
+当需要两层控制信息时 消息用于描述超群中的不同的群
+,DownloadServerInitiate 。DownloadIn-
+消息的用途和单层数据轮播中的用途一样
+foIndication 。
+消息描述了拥有 域的群 同时支持平台多样性
+DownloadServerInitiate GroupInfoByte , 。GroupIn-
+域同样由一个描述符的循环组成 描述符中可能包含了各种不同的信息
+foByte , 。
+解码器应能在两种轮播方式下都可以工作 业务提供商可以任意选择使用其中一种轮播方式
+。 。
+群和模块可以通过专用 与 或共享 传送 如果没有提供明确的位置相关信息 位置由控
+PID / PID 。 ,
+制消息继承得到 图 中每个箭头表示了获得所指向的消息所需要的访问信息
+。 2 。
+11
+GB/T28430—2012
+说明
+:
+DSI———DownloadServerInitiate;
+gi———GroupInfoBytes;
+DII———DownloadInfoIndication;
+mi———ModuleInfoBytes;
+DDB———DownloadDataBlock;
+位置参考
+→——— (transactionId,optionalcomponentTag)。
+图2 数据轮播的结构
+在数据轮播中这些信息由以下部分组成
+:
+指向业务中特定码流的指针
+● component_tag, ;
+控制消息或模块的独有的指示符
+● transaction/moduleidentifier, 。
+接收端可以利用这些值从码流中有效地滤出消息 而且基于 也对说明模块和块大小的
+。 DSM-CC,
+和 消息参数进行了规定
+DownloadServerInitiate DownloadInfoIndication 。
+在本标准中 规定的 用法被限制为一个从
+,DSM-CC compatibilityDescriptor() DownloadServerIni-
+到 的前向查询机制
+tiate DownloadInfoIndication 。
+12
+GB/T28430—2012
+消息的 位于 域中 称作
+DSI compatibilityDescriptor GroupInfoIndication , GroupCompatibility()。
+在一个超群 在两层数据轮播情况下 或一个群 在单层数据轮播情况下 中的所有
+( ) ( ) DownloadDat-
+和 消息拥有相同的 这意味着群可以共享模块 因为所有
+aBlock DownloadInfoIndication downloadId。 ,
+的 在 的范围内是唯一的
+moduleId downloadId 。
+每个控制消息都拥有一个 作为该消息唯一的指示符 基于以下的语义
+transaction_id 。 ,Transport_
+和 可以用于有效地滤出数据轮播中的数据
+id module_id 。
+对于两层轮播
+:
+对于 消息 的最低 个有效字节应该在
+● DownloadServerInitiate ,transactionId 2 0x0000-0x0001
+范围中
+;
+对于 消息 的最低 个有效字节应该在
+● DownloadInfoIndication ,transactionId 2 0x0002-0xFFFF
+范围中
+。
+对于单层轮播
+:
+对于 消息 的最低 个有效字节应该在
+● DownloadInfoIndication ,transactionId 2 0x0000-0x0001
+范围中
+。
+4423 DownloadServerInitiate消息
+...
+消息用于建立一个超群 语义如下
+DownloadServerInitiate 。 :
+此域置为 个字节的
+● serverId: 20 0xFF;
+此域置为 此结构应该只包含 定义的
+● compatibilityDescriptor(): 0x0000, DSM-CC compatibili-
+中 域
+tyDescriptor() compatibilityDescriptorLength ;
+此域定义了后面的 结构的字节长度
+● privateDataLength: GroupInfoIndication ;
+此域用于传输表 中定义的 结构
+● privateDataByte: 9 GroupInfoIndication 。
+表9 GroupInfoIndication结构
+句 法 字 节 数
+GroupInfoIndication(){
+NumberOfGroups 2
+for(i=0;i<numberOfGroups;i++){
+GroupId 4
+GroupSize 4
+GroupCompatibility()
+GroupInfoLength 2
+for(i=0;i<N;i++){
+groupInfoByte 1
+}
+}
+privateDataLength 2
+for(i=0;i<privateDataLength;i++){
+privateDataByte 1
+}
+}
+13
+GB/T28430—2012
+结构的语义如下
+GroupInfoIndication :
+比特域 标明了此域后面循环中群的个数
+● NumberOfGroup:16 , ;
+比特域 此域值等于描述该群的 消息中的
+● GroupId:32 , DownloadInfoIndication transactionId
+的值
+;
+比特域 标明了群中所有模块的字节总长度
+● GroupSize:32 , ;
+此结构和 中 结构相同
+● GroupCompatibility: DSM-CC CompatibilityDescriptor ;
+比特域 标明了后面的描述符循环的字节长度
+● GroupInfoLength:16 , ;
+此域传输了描述符列表 每个描述符定义了一个或多个属性 在循环中的描述
+● GroupInfoByte: , 。
+符说明了群的特性
+;
+此域定义了后面的 域的字节长度
+● PrivateDataLength: privateDataByte ;
+此域由用户定义
+● PrivateDataByte: 。
+4424 DownloadInfoIndication消息
+...
+消息包含了群内模块的描述以及数据轮播的一些普通参数 如
+DownloadInfoIndication (
+和 每个模块由一些属性来描述 其中 和
+downloadId blockSize)。 , moduleId,moduleSize moduleVersion
+被 定义为 消息中的域 模块的其他属性由后面定义的描述符传输
+DSM-CC DownloadInfoIndication 。 。
+在 范围内的值在本标准中不使用
+moduleId 0xFFF0-0xFFFF 。
+数据轮播中 消息的语义如下
+DownloadInfoIndication :
+此域置为 此结构只包含 定义的
+● compatibilityDescriptor(): 0x0000, DSM-CC compatibilityDe-
+中的 域
+scriptor() CompatibilityDescriptorLength ;
+此域定义了被描述模块的 域的字节长度
+● moduleInfoLength: moduleInfo ;
+此域传输描述符列表 当 的值不在 范围内时 每
+● moduleInfoByte: , moduleId 0xFFF0-0xFFFF ,
+个描述符定义了一个或多个模块的属性 在这种情况下 结构包含了带有用
+。 ,moduleInfoByte
+作描述符循环结构的 域的 结构
+privateDataByte ModuleInfo ;
+此域定义了 域的字节长度
+● privateDataLength: privateDataByte ;
+此域由用户定义
+● privateDataByte: 。
+4425 DownloadDataBlock消息
+...
+消息包含了被分割的模块中的块 按照 规范通过 包的载荷传输
+DownloadDataBlock , DSM-CC TS 。
+4426 DownloadCancel消息
+...
+消息向接收端指示终止数据轮播模块的周期传输 消息在群一
+DownloadCancel 。DownloadCancel
+级 或在超群一级 按照 规范通过 包的载荷传输
+、 , DSM-CC TS :
+此域定义了 域的字节长度
+● privateDataLength: privateDataByte ;
+此域由用户定义
+● privateDataByte: 。
+443 描述符
+..
+4431 描述符的标识和位置
+...
+表 包含数据轮播规范所定义的描述符 这些描述符有自己专用的 这些描述符
+10 。 descriptor_tag,
+不能在本标准的数据轮播规范之外使用
+。
+14
+GB/T28430—2012
+表10 数据轮播定义的描述符 值和允许的位置
+、
+描述符 值 简短描述
+Tag DII-moduleInfo DSI-groupinfo
+reserved 0x00
+数据的类型描述符
+type 0x01 + +
+数据的名称描述符
+name 0x02 + +
+文本描述
+info 0x03 + +
+级联的数据模块
+module_link 0x04 +
+CRC32 0x05 + CRC
+数据位置
+location 0x06 + +
+预计下载时间
+est_download_time 0x07 + +
+连接描述群的 消息
+group_link 0x08 + DII
+指示了压缩结构
+compressed_module 0x09 +
+数据轮播描述符的 值的分配见表
+tag 11。
+表11 数据轮播描述符的tag值的分配
+数据轮播中的私有描述符的 值
+tag
+表 中目前分配的值
+0x00~0x09 10
+为将来使用保留
+0x0A~0x7F
+私有描述符
+0x80~0xFF
+4432 type_descriptor
+...
+包含作为一系列字符的模块或群的类型 表 给出了类型描述符的句法
+type_descriptor 。 12 。
+表12 type_descriptor的句法
+句 法 字节数 值
+type_descriptor(){
+descriptor_tag 1 0x01
+descriptor_length 1
+for(i=0;i<N;i++){
+字符串
+text_char 1
+}
+}
+的语义如下
+type_descriptor :
+比特域 标识了描述符 对于 此域置为
+● descriptor_tag:8 , 。 type_descriptor 0x01;
+比特域 标明紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 一个字符串域说明了符合媒体类型规范 和
+● text_char:8 , IETFRFC2045 IETFRFC
+15
+GB/T28430—2012
+的模块和群的类型
+2046 。
+4433 name_descriptor
+...
+包含了模块或群的名称 表 给出了 的句法
+name_descriptor 。 13 name_descriptor 。
+表13 name_descriptor的句法
+句 法 字节数 值
+name_descriptor(){
+descriptor_tag 1 0x02
+descriptor_length 1
+for(i=0;i<N;i++){
+模块的名称 如
+text_char 1 , “index”
+}
+}
+的语义如下
+name_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 name_descriptor 0x02;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 一个字符串域说明了模块和群的名称 文本信息的编码方式参见本标准
+● text_char:8 , 。
+的附录
+C。
+4434 info_descriptor
+...
+包含了一个无格式文本描述 表 给出了 的句法
+info_descriptor 。 14 info_descriptor 。
+表14 info_descriptor的句法
+句 法 字节数 值
+info_descriptor(){
+descriptor_tag 1 0x03
+descriptor_length 1
+ISO_639_language_code 3
+for(i=0;i<N;i++){
+模块或群的描述
+text_char 1
+}
+}
+的语义如下
+info_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 info_descriptor 0x03;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+此 字节域标识了后面的文本域使用的语言
+● ISO_639_language_code: 3 。ISO_639_language_
+包含了 描述的 字符编码 每个字符按 的规定编码成
+code ISO639-2 3 。 GB/T15273.1—1994
+比特 并依次放入 字节域中 对于中文此域置为
+8 , 3 。 “chi”;
+16
+GB/T28430—2012
+比特域 字符串域说明了模块和群的名称 文本信息的编码方式参见本标准的附
+● Text_char:8 , 。
+录
+C。
+4435 module_link_descriptor
+...
+包含了将哪些模块从数据轮播中取出并连接成完整数据片的信息 同时告
+module_link_descriptor ,
+知解码器模块连接的顺序 表 给出了 的句法
+。 15 module_link_descriptor 。
+表15 module_link_descriptor的句法
+句 法 字节数 值
+module_link_descriptor(){
+descriptor_tag 1 0x04
+descriptor_length 1
+position 1
+module_id 2
+}
+的语义如下
+module_link_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 module_link_descriptor 0x04;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 标明了模块在数据链中的位置 值为 表示模块是列表的第一个模块
+● position:8 , 。 0x00 ,
+值为 表示模块是列表中间的模块 值为 表示模块是列表的最后一个模块
+0x01 , 0x02 ;
+比特域 标明了列表中的下一个模块 对于列表中最后一个值 此域忽略
+● module_id:16 , 。 , 。
+4436 CRC32_descriptor
+...
+标明了整个模块的 的计算结果 表 给出了 的
+CRC32_descriptor CRC32 。 16 CRC32_descriptor
+句法
+。
+表16 CRC32_descriptor的句法
+句 法 字节数 值
+CRC32_descriptor(){
+descriptor_tag 1 0x05
+descriptor_length 1
+CRC_32 4
+}
+的语义如下
+CRC32_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 CRC32_descriptor 0x05;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 包含此模块计算出的 计算方法见 的附录
+● CRC_32:32 , CRC, GB/T17975.1—2010 A。
+4437 location_descriptor
+...
+包含了块 模块或群在轮播中相关数据所在的 表 给出了
+location_descriptor 、 PID。 17 location_de-
+17
+GB/T28430—2012
+的句法
+scriptor 。
+表17 location_descriptor的句法
+句 法 字节数 值
+location_descriptor(){
+descriptor_tag 1 0x06
+descriptor_length 1
+location_tag 1
+}
+的语义如下
+location_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 location_descriptor 0x06;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 此域值与 的描述符 中的
+● location_tag:8 , stream_identifier_descriptor(PSI ) component_
+值相同
+tag 。
+4438 est_download_time_descriptor
+...
+包含了一个模块或群预计下载时间的整数值 表 给出了
+est_download_time_descriptor 。 18 est_
+的句法
+download_time_descriptor 。
+表18 est_download_time_descriptor的句法
+句 法 字节数 值
+est_download_time_descriptor(){
+descriptor_tag 1 0x07
+descriptor_length 1
+est_download_time 4
+}
+的语义如下
+est_download_time_descriptor :
+比特域 标识了描述符 对于 此域设置
+● descriptor_tag:8 , 。 est_download_time_descriptor
+为
+0x07;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 给出了以秒为单位的预计下载时间
+● est_download_time:32 , 。
+4439 group_link_descriptor
+...
+包含了连接起来的群描述 以描述一个更大的群的信息 当一个群的大小
+group_link_descriptor , 。
+超过了单个 消息的最大长度而必须展开放入多个这样的消息中时 此描述符
+DownloadInfoIndication ,
+是非常重要的 它同时告知解码器关于所连接的群的描述的顺序 当连接顺序并不重要时 此描述符不
+, 。 ,
+是严格需要的 它只是提供了一种方法来识别所有需要被连接的群描述 表 给出了
+, 。 19 group_link_de-
+的句法
+scriptor 。
+18
+GB/T28430—2012
+表19 group_link_descriptor的句法
+句 法 字节数 值
+group_link_descriptor(){
+descriptor_tag 1 0x08
+descriptor_length 1
+position 1
+group_id 4
+}
+的语义如下
+group_link_descriptor :
+比特域 标识了描述符 对于 此域设置为
+● descriptor_tag:8 , 。 group_link_descriptor 0x08;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 标明了群描述在数据链中的位置 值为 表示群描述是列表的一个群
+● position:8 , 。 0x00
+描述 值为 表示群描述是列表中间的群描述 值为 表示群描述是列表的最后一个群
+, 0x01 , 0x02
+描述
+;
+比特域 表明了列表中的下一个群描述 对于列表中最后一个值 此域忽略
+● group_id:32 , 。 , 。
+44310 private_descriptor
+...
+表 给出了 的句法
+20 private_descriptor 。
+表20 private_descriptor的句法
+句 法 字节数 值
+private_descriptor(){
+见表
+descriptor_tag 1 11
+descriptor_length 1
+for(i=0;i<N;i++){
+descriptor_byte 1
+}
+}
+的语义如下
+private_descriptor :
+比特域 标识了描述符 对于 此域如表 中所定义 设置
+● descriptor_tag:8 , 。 private_descriptor 11 ,
+范围为
+0x80-0xFF;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+的数据
+● descriptor_byte:private_descriptor 。
+44311 compressed_module_descriptor
+...
+的出现指示了模块中的数据使用 中定义的
+compressed_module_descriptor IETFRFC1950 “zlib”
+结构 表 给出了 的句法
+。 21 compressed_module_descriptor 。
+19
+GB/T28430—2012
+表21 compressed_module_descriptor的句法
+句 法 字节数 值
+compressed_module_descriptor(){
+descriptor_tag 1 0x09
+descriptor_length 1
+compression_method 1
+original_size 4
+}
+的语义如下
+compressed_module_descriptor :
+比特域 标识了描述符 对于 此域设置
+● descriptor_tag:8 , 。 compressed_module_descriptor
+为
+0x09;
+比特域 标明了紧跟在此域后面的描述符内容的字节长度
+● descriptor_length:8 , ;
+比特域 标明了所用的压缩方法 见 中 的结构
+● compressed_method:8 , 。 IETFRFC1950 zlib
+定义
+;
+比特域 标明了模块压缩前的字节长度
+● original_size:32 , 。
+444 PSI和SI规范
+..
+4441 PSI和SI的使用方法
+...
+数据广播业务通过包含在 中的一个或多个 来标明使用了数据轮播
+SI data_broadcast_descriptor 。
+每个描述符应该通过 和特定的码流关联起来 的值应该与可能出现
+component_tag 。component_tag
+的 用作数据轮播的码流的 中 中 的值相同
+、 PMT stream_identifier_descriptor component_tag 。
+按以下方式使用
+data_broadcast_descriptor :
+此域置为 标明了数据轮播 见附录
+● data_broadcast_id: 0x0006, , B;
+此域值和用于数据轮播的码流的 中 中
+● component_tag: PMT stream_identifier_descriptor
+的值相同
+component_tag ;
+此域置为
+● selector_length: 0x10;
+用于传输表 中定义的 结构
+● selector_byte: 22 data_carousel_info 。
+表22 data_carousel_info结构的句法
+句 法 比特数 类型
+data_carousel_info(){
+carousel_type_id 2 bslbf
+reserved 6 bslbf
+transaction_id 32 uimsbf
+time_out_value_DSI 32 uimsbf
+time_out_value_DII 32 uimsbf
+reserved 2 bslbf
+leak_rate 22 bslbf
+}
+20
+GB/T28430—2012
+的语义如下
+data_carousel_info :
+比特域 标明了数据轮播的类型 此域采用表 所示的编码方式
+● carousel_type_id:2 , 。 23 ;
+表23 carousel_type_id的值
+的值
+carousel_type_id
+保留
+00
+单层轮播
+01
+两层轮播
+10
+保留
+11
+比特域 置为
+● reserved:6 , “111111”;
+比特域 此域和最顶层的 消息或
+● transaction_id:32 , DownloadServerInitiate DownloadInfoIndi-
+消息中的 的值相同 值 用于向接收端表明相关码流上的任
+cation transactionId 。 0xFFFFFFFF
+何收到的 消息 两层轮播的情况 或 消息 一
+DownloadServerInitiate ( ) DownloadInfoIndication (
+层轮播的情况 都是有效的
+) ;
+比特域 标明了以 为单位的推荐超时时限 接收端将它用于中断超
+● time_out_value_DSI:32 , ms ,
+时的 的获取 值 用于向接收端指出没有推荐的超时
+DownloadServerInitiate 。 0xFFFFFFFF
+时限
+;
+比特域 标明了以 为单位的推荐超时时限 接收端将它用于中断超
+● time_out_value_DII:32 , ms ,
+时的 的获取 值 用于向接收端指出没有推荐的超时
+DownloadInfoIndication 。 0xFFFFFFFF
+时限
+;
+比特域 置为
+● reserved:2 , “11”;
+比特域 标明了业务所用的解码器模型中的移出速率R 移出速率编码成一个
+● leak_rate:22 , xn。
+比特正整数 的单位为 字节 秒
+22 。leak_rate 50 / 。
+4442 流类型
+...
+包含数据轮播的码流的 中该业务的 按 的规定设置为
+PMT steam_type GB/T17975.1—2010
+或用户定义的值 表明了业务中存在数据轮播
+0x0B , 。
+45 对象轮播
+.
+451 基本概念
+..
+对象轮播规范用来支持数字电视系统中需要对 对象进行周期性广播的数据广播业
+DSM-CCU-U
+务 依照对象轮播规范的数据广播按照 中定义的 对象轮播和 数据轮播规
+。 DSM-CC DSM-CC DSM-CC
+范进行传输
+。
+对象轮播的具体实施方法见附录
+A。
+452 对象轮播的范围
+..
+为了支持通过数字电视系统进行 对象的周期性广播的数据广播业务 加入了对象轮
+DSM-CCU-U ,
+播的定义
+。
+符合对象轮播规范的数据广播要遵循 对象轮播和 数据轮播规范进行传输
+DSM-CC DSM-CC 。
+21
+GB/T28430—2012
+453 数据传输规范
+..
+4531 描述
+...
+对象轮播规范是基于 对象轮播规范制定的 对象轮播代表了由网络中的
+DSM-CC 。 DSM-CCU-U
+对象集合组成的一个特定业务域 该业务域有一个业务网关 为接收机提供业务图表和对象名
+, , 。
+广播网络中的业务网关的唯一识别是通过在 中定义的 地址来实现的 该地址包
+DSM-CC NSAP 。
+含了网络相关部分 使得在当前网络环境中地址唯一 轮播 地址用来从其他业务域查询对象轮
+, 。 NSAP
+播 其句法和语义在下面定义
+, 。
+4532 轮播NSAP地址
+...
+轮播 地址格式定义如图 所示
+NSAP 3 。
+图3 轮播NSAP地址格式
+和 的语义在 中定义 补充如下
+AFI、Type、carouselId specifier DSM-CC , :
+比特域 置为 标明 格式用于用户自定义
+● AFI:8 , 0x00。 NSAP ;
+比特域 置为 标明对象轮播使用 地址
+● Type:8 , 0x00。 NSAP ;
+比特域 设置为对象轮播的标识符 也就是 域
+● carouselId:32 , , carouselId ;
+比特域 按照 规范传输 域 值置为 和 码
+● specifier:32 , DSM-CC specifierType ( 0x01) OUI 。OUI
+码的值应遵循 注册机构为数字电视系统分配的值
+IEEE802 ;
+此域传送表 定义的 结构
+● privateData: 24 service_location 。
+表24 service_location结构的句法
+句 法 比特数 类型
+service_location(){
+transport_stream_id 16 uimsbf
+org_network_id 16 uimsbf
+service_id 16 uimsbf
+reserved 32 bslbf
+}
+结构的语义如下
+service_location :
+比特域 标明轮播所在的 流
+● transport_stream_id:16 , TS ;
+比特域 标明了生成轮播的传输系统的
+● org_network_id:16 , network_id;
+比特域 标明了包含该对象轮播的业务标识符 此域与 中相关的
+● service_id:16 , 。 PMT program
+相同
+_number ;
+比特域 保留
+● reserved:32 , 。
+454 PSI和SI规范
+..
+4541 PSI和SI的使用方法
+...
+数据广播业务通过包含在 中的一个或多个 来标明使用了对象轮播
+SI data_broadcast_descriptor 。
+22
+GB/T28430—2012
+每个描述符指向一个对象轮播并且通过 来和特定的流相关联 特别指出
+component_tag 。 ,component_
+的值应该和可能出现在用作对象轮播的码流的 中 的
+tag PMT stream_identifier_descriptor component
+的值相同 通过使用对象名表 每个 可以启动一个基于语言判据的更
+_tag 。 , data_broadcast_descriptor
+高层协议
+。
+对象轮播可以通过多个数据广播业务来实现 数据广播业务通过使用 第一个描述符循环中
+。 PMT
+由 定义的 来标识它们是特定对象轮播的一部分
+DSM-CC carousel_identifier_descriptor 。
+此外 对象轮播使用 见 来标识广播对象的码流 和数据业务流之间的关联要
+, Tap( DSM-CC) 。Tap
+么通过 中定义的 来实现 要么通过 中定义的
+DSM-CC association_tag , SI stream_identifier_descriptor
+来实现 在后面这种情况中 若 的 值是作为基准的
+。 , stream_identifier_descriptor component_tag asso-
+最低有效字节的值 该 最高有效字节置为
+ciation_tag , association_tag 0x00。
+最后 对象轮播中的流对象可以与数据广播的 流绑定 也可以与其他数字电视业务的
+,U-U ES , ES
+流绑定 或者与完整的数字电视业务绑定 如果数据对象要与其他数字电视业务的 流或完整的数
+, 。 ES
+字电视业务绑定 数据广播业务的 要在第一个描述符循环中包含
+, PMT deferred_association_tags_de-
+scriptor。
+将在 条中描述
+defferred_tags_descriptor 4.5.4.3 。
+4542 data_broadcast_descriptor
+...
+按以下方式使用
+data_broadcast_descriptor :
+此域置为 标明对象轮播 见附录
+● data_broadcast_id: 0x0007, , B;
+此域值等于用作对象轮播的流中可能出现的 中
+● component_tag: PMT stream_identifier_
+的 的值
+descriptor component_tag ;
+此域值为后面的 域的字节长度
+● selector_length: selector ;
+用于传送表 定义的 结构
+● selector_byte: 25 object_carousel_info 。
+表25 object_carousel_info结构
+句 法 比特数 类型
+object_carousel_info(){
+carousel_type_id 2 bslbf
+reserved 6 bslbf
+transaction_id 32 uimsbf
+time_out_value_DSI 32 uimsbf
+time_out_value_DII 32 uimsbf
+reserved 2 bslbf
+leak_rate 22 uimsbf
+for(I=0;i<N1;i++){
+ISO_639_language_code 24 bslbf
+object_name_length 8 uimsbf
+for(j=0;j<N2;j++){
+object_name_char 8 uimsbf
+}
+}
+}
+23
+GB/T28430—2012
+结构的语义如下
+object_carousel_info :
+比特域 置为 标明两层的轮播
+● carousel_type_id:2 , “10”。 ;
+比特域 置为
+● reserved:6 , “111111”;
+比特域 与携带业务网关对象基准的 消息的
+● transaction_id:32 , DownloadServerInitiate transac-
+值相同 置为 向接收端指出从相关码流上接收到的任何
+tionId 。 “0xFFFFFFFF” Download-
+消息都是有效的
+ServerInitiate ;
+比特域 标明了以 为单位的推荐超时时限 接收端将它用于中断超
+● time_out_value_DSI:32 , ms ,
+时的 的获取 值 用于向接收端指出没有推荐的超时
+DownloadServerInitiate 。 0xFFFFFFFF
+时限
+;
+比特域 标明了以 为单位的推荐超时时限 接收端将它用于中断超
+● time_out_value_DII:32 , ms ,
+时的 的获取 值 用于向接收端指出没有推荐的超时
+DownloadInfoIndication 。 0xFFFFFFFF
+时限
+;
+比特域 置为
+● reserved:2 , “11”;
+比特域 标明了业务所用的解码器模型中的移出速率R 移出速率编码成一个
+● leak_rate:22 , xn。
+比特正整数 的单位为 字节 秒
+22 。leak_rate 50 / ;
+比特域 包含 的 字符语言编码 用来选择启动更高层
+● ISO_639_language_code:24 , ISO_639-2 3 ,
+协议所需的对象
+;
+比特域 标明了跟在 之后用来描述对象名称字符的
+● object_name_length:8 , object_name_length
+字节长度
+;
+比特域 字串指定了用来启动更高层协议的对象名
+● object_name_char:8 。object_name_char 。
+文本信息使用本标准的附录 描述的字符集来编码
+C 。
+4543 Deferred_association_tags_descriptor
+...
+数字电视系统中 的句法和语义见表
+deferred_association_tags_descriptor() 26。
+表26 deferred_association_tags_descriptor
+句 法 比特数 类型
+deferred_association_tags_descriptor(){
+descriptor_tag 8 uimsbf
+descriptor_length 8 uimsbf
+association_tags_loop_length 8 uimsbf
+for(i=0;i<N1;i++){
+association_tag 16 uimsbf
+}
+transport_stream_id 16 uimsbf
+program_number 16 uimsbf
+for(i=0;i<N2;i++){
+private_data_byte 8 uimsbf
+}
+}
+24
+GB/T28430—2012
+的语义如下
+deferred_association_tags_descriptor :
+比特域 置为
+● descriptor_tag:8 , 0x15;
+比特域 标明描述符的字节长度
+● descriptor_length:8 , ;
+比特域 标明了此域后面的 循环的字节长度
+● association_tags_loop_length:8 , association_tag ;
+比特域 包含的 与非数据广播业务流关联 或者与另外的数
+● association_tag:16 , association_tag ,
+字电视业务相关联
+;
+比特域 标明了列出的 所关联的业务所在的 流
+● transport_stream_id:16 , association_tag TS ;
+比特域 应置为列出的 所关联的业务的
+● program_number:16 , association_tag service_id;
+此域包含了表 定义中的 结构
+● private_data_byte: 27 defferred_service_location 。
+表27 deferred_service_location结构句法
+句 法 比特数 类型
+deferred_service_location(){
+org_network_id 16 uimsbf
+for(i=0;i<N;i++){
+private_data_byte 8 uimsbf
+}
+}
+结构的语义如下
+deferred_service_location :
+比特域 标明了生成业务的传输系统的
+● org_network_id:16 , network_id;
+比特域 在本标准中不做定义
+● private_data_byte:8 , 。
+4544 流类型
+...
+把包含轮播的码流中 的 的值置为 或用户定义的值
+PMT stream_type 0x0B 。
+46 解码器模型
+.
+解码器模型对于数据流 多协议封装 数据轮播和对象轮播规范是通用的
+、 、 。
+数据业务解码器模型是解码数据流的理论模型 解码器模块用来按时序规范比特流传输 解码器
+。 。
+模型不规定实际解码器的实现方式 不排除不遵循本模型结构和时序的实现方式
+, 。
+图 显示了单个数据流 的数据业务解码器的结构 它和在 中定义的传输
+4 n , GB/T17975.1—2010
+系统目标解码器 很相似
+(T-STD) 。
+说明
+:
+数据流 的传输缓冲区 R 数据从 中移出的速率
+Tbn——— n ; xn——— Tbn ;
+数据流 的主缓冲区 R 数据从 中移出的速率
+Bn——— n ; n——— Bn 。
+图4 数据业务解码器模型
+25
+GB/T28430—2012
+将包含数据流 的数据的完整 包送入流 的传输缓冲区 中 所有的进入 的字节以下
+n TS n Tbn 。 Tbn
+面规定的速率R 移出 将构成 包 段或者其中内容的字节传送到主缓冲区 中 其他字节不
+xn 。 PES 、 Bn 。
+送入 可能用于控制系统 复制的 包不传送到 中 所有的进入 中的字节以下面规定的速
+Bn, 。 TS Bn 。 Bn
+率R 移出
+n 。
+传输缓冲区 为 字节
+Tbn 512 。
+对一个特定的业务 传输缓冲区的移出速率R 缓冲区的大小 和移出速率R 是确定的 该业
+, xn、 Bn n 。
+务可以通过 和 来标明R 和R 的值
+maximum_bit_rate_descriptor smoothing_buffer_descriptor xn、Bn n ,
+见 如果使用这些描述符 它们应包含在业务的 或 以及 之中
+GB/T17975.1—2010。 , SDT EIT PMT 。
+的 域标明R 的值
+maximum_bit_rate_descriptor maxmum_bit_rate xn 。
+的 域包含 的值 域包含R 的值
+smoothing_buffer_descriptor sb_size Bn 。sb_leak_rate n 。
+若 和 中不包含 而包含 那么
+SI PSI maximum_bit_rate_descriptor smoothing_buffer_descriptor,
+R R
+xn=1.2 n。
+若 和 中不包含 而包含 那么双
+SI PSI smoothing_buffer_descriptor, maximum_bit_rate_descriptor,
+缓冲区模型就变成了移出速率为R 容量为 的单缓冲区模型
+xn、 Tbn 。
+若 和 中不包含任何一个描述符 那么缓冲区模型不适用 在这种情况下 比特流的传送是
+SI PSI , 。 ,
+业务特定的
+。
+5 数据广播相关业务的规定
+51 EPG信息的发送方式
+.
+对于需要使用数据广播通道来传输 业务内容的情况 使用本标准规定的数据轮播或对象轮播
+EPG ,
+规范
+。
+如果存在与音视频业务具有时间相关性 同步性的 业务内容 使用 中的同步
+/ EPG , Data-Streaming
+或从同步规范传输
+。
+对于 系统的具体数据传输方式及数据交换协议 本标准不做规定
+EPG , 。
+52 中间件业务的发送方式
+.
+对于需要使用数据广播通道传输特定中间件应用 应用数据的情况 使用本标准规定的数据轮播或
+、 ,
+对象轮播规范 并遵循相应的数据交换协议
+, 。
+对于中间件系统的具体数据传输方式 数据交换协议以及内容组织机制 本标准不做规定
+、 , 。
+6 数据广播中CA系统的规定
+关于 系统的构成机制与工作方式 见
+CA , GY/Z175—2001。
+在数字电视系统中实施数据广播时 需要对所传输的数据进行加密管理时 采用通用加扰算法对
+, ,
+流中的载荷进行加扰
+TS 。
+7 实施方法
+本标准的具体实施方法详见附录
+A。
+8 数据广播前端技术要求和测量方法
+数据广播前端的技术要求测量方法见附录 和附录
+D E。
+26
+GB/T28430—2012
+附 录 A
+规范性附录
+( )
+实施方法
+A1 操作规则
+.
+这一条款为本标准应用实施方法 本实施方法主要参照了
+。 TR101202《DigitalVideo
+Broadcasting(DVB);Implementation GuidelinesforDataBroadcasting》。
+在实际操作中 建议根据表 的对应关系来选择数据广播应用所采用的数据封装
+, A.1 。
+表A1 各种应用数据对应的数据封装
+.
+数据流
+应用数据 数据管道 多协议封装 数据轮播 对象轮播
+异步 同步 从同步
+实时动态数据流
+※ ※
+时序相关数据
+※
+双向业务数据
+※ ※
+EPG ※ ※ ※
+中间件
+※ ※
+准 静态数据文件
+( ) ※ ※ ※
+表 中的每行代表一类应用数据 每列代表一种封装类型 在行列的交叉点如果标有 说
+A.1 , 。 “※”,
+明本标准建议对该应用数据类型使用相应的数据封装格式 如果为空白 则表示本标准不建议对该应用
+; ,
+数据类型使用相应的数据封装格式
+。
+A2 简介
+.
+图 显示了数据广播标准的概况
+A.1 。
+流是本标准的基础 依据应用域 数据信息在 流中传送 这些应用域有
+TS , , TS , :
+数据管道
+● ;
+数据流
+● ;
+多协议封装
+● ;
+数据轮播
+● ;
+对象轮播
+● 。
+图 的右边所示的是注册业务 数字电视广播允许自定义方法实现数据广播业务
+A.1 , 。
+图 显示各部分标准的内容 流的标准见 结构框架见
+A.1 ,TS GB/T17975.1—2010,DSM-CC ISO/
+互联网络协议 见 本标准定义了数字电视广播中的数据管道 数
+IEC13818-6:1998, (IP) IETFRFC791, 、
+据流 多协议封装 数据轮播和对象轮播 图 封装的 协议只是一个例子 其他协议也可以被封装
+、 、 , A.1 IP ,
+进来 本附录中的表中灰色部分为本附录进行了扩展定义的内容
+。 。
+27
+GB/T28430—2012
+图A1 与其他标准关系的图例
+.
+如图 所示 本标准规定了所有应用域的不同业务层 数据管道规范对如何从 流中提取数
+A.1 , 。 TS
+据没有给出太多信息 而只是规定怎样将数据打成 流的包 与其他应用域相比 许多业务的运行需
+, TS 。 ,
+要专用的软件和硬件
+。
+数据流规范具有更多功能性规范 尤其是在时序方面 数据广播可以是异步的 同步的或从同步
+, 。 、
+的 本数据流规范是基于 定义的 包
+。 GB/T17975.1—2010 PES 。
+多协议封装 数据轮播和对象轮播的应用规范都是建立在 框架结构之上的 基于
+、 DSM-CC ,
+中定义的私有段 本标准增加了使框架结构在数字电视广播环境中工作的特定
+GB/T17975.1—2010 。
+信息 尤其是与 相关联的部分
+, GY/T230—2008 。
+在本标准中 每个应用分两部分定义 见图
+, , A.2。
+说明
+:
+控制 和
+———SI PSI;
+传输 数据广播传输规范
+——— 。
+图A2 传输和控制规范部分
+.
+28
+GB/T28430—2012
+控制规范是 的一部分 传输规范是本标准的一部分 以下子条款给出在不同应
+GY/T230—2008 , 。
+用域的实施建议
+。
+A3 选择合适的类
+.
+如图 所示 可以有几种不同方式通过数字电视广播 流来传输数据 其机制根据不同应用
+A.1 , TS 。
+有不同的特征参数 如过滤器 开销 大小等 要根据目标应用的特定要求来选择合适的机制
+, 、 、 。 。
+对于不同的类 规范的详细程度不同 例如 多协议封装和数据轮播规定得比较详细 几乎不需要
+, 。 , ,
+应用相关说明 而其他类则自由得多
+, 。
+另外 应用可以采用推荐以外的类 例如 类似数据轮播的应用也可以基于数据管道实现 广播
+, 。 , ,IP
+也可以基于数据流实现 当然这种安排是应用选择的一部分
+。 。
+任何协议的数据通常都是以包 数据报 的形式传输的 这些数据报的长度可能不同 如果数据没
+( ) , 。
+有被打包 或者打包的方法与数字电视广播传输链路无关或隐藏在其中 那么最好的传输方式是数据管
+, ,
+道 在 传输层 数据以固定长度 字节 字节的载荷 的包长来传输的 因
+。 GB/T17975.1—2010 , 188 (184 ) 。
+此 更上层的数据报在发送端被分割 在接收端重组 数据报的分割有三种可能方式 见图
+, , 。 , A.1:
+基于数据管道的自定义机制
+● ;
+打包的基本流
+● (PES);
+段
+● 。
+流提供一种传输机制 可传输最大 字节的可变长度数据报 另外还提供不同数据流之间
+PES , 64K ,
+的准确同步 例如用于视音频同步 因此数字电视广播用其来传输同步 从同步和异步的数据流
+( )。 、 。
+段可用于传输最大为 字节的可变长度数据报 这种传输是异步的 段可以通过解复用器利用
+4K , 。
+硬件滤出 从而降低对接收机软件处理能力的要求 这就是选择段来传输封装的协议和数据轮播的主
+, 。
+要原因
+。
+对于数字电视广播框架中的数据广播业务 可能出现在 表中
+,data_broadcast_id_descriptor PMT ,
+即这一描述符的使用是可选的 见
+, GY/T230—2008。
+A4 数据管道
+.
+数据管道是一种异步传输机制 它将数据直接插入到 包的载荷中
+, TS 。
+数据报的分割与重组机制没有定义 如果需要由应用定义 例如 可以用
+, 。 , payload_unit_start_indi-
+来表示数据报的开始 表示数据报的结束
+cator ,transport_priority 。
+的使用方法见 的 条
+continuity_counter GB/T17975.1—2010 2.4.3 。
+适应域的主要作用是填充 也可以有其他用途 如传输
+, , PCR。
+A5 异步/从同步/同步数据流
+.
+A51 适应域的使用
+..
+根据 的 条 每个 包总是开始于 包载荷中的第一个字节 这
+GB/T17975.1—2010 2.4.3 , PES TS 。
+就意味着与 包没有对齐的 包需要填充 对于段 允许将填充字节填充在
+TS PES 。 GB/T17975.1—2010
+包的尾部 而对于 填充只能使用适应域来完成 由于大多数解复用器都能够自动将适应域分离出
+, PES 。
+来 对解码器的性能也没有限制 也不需要额外的处理能力
+, , 。
+当把所有适应域标志
+(discontinuity_indicator、random_access_indicator、elementary_stream_
+priority_indicator、PCR_flag、OPCR_flag、splicing_point_flag、transport_private_data_flag、adaptation_
+29
+GB/T28430—2012
+设置为 并且插入所需数量的填充字节时 适应域只用来填充
+field_extension_flag) 0, , 。
+和 应该设为 因其相关特
+elementary_stream_priority_indicator adaptation_field_extension_flag 0,
+征对数据流都没意义
+。
+A52 异步数据流
+..
+在需要异步传输数据报的应用中 机制具有优势的情况下 就利用异步数据流 既然这种传
+,PES , 。
+输不需要同步 就选择 它表明不使用 包头 见
+, stream_id“private_stream_2”, PES , GB/T17975.1—
+这样 数据报紧跟在 之后
+2010。 , PES_packet_length 。
+数据报的定义是自定义实现的部分 因此本附录不作规定
+, 。
+A53 同步和从同步数据流
+..
+为了满足同步和从同步数据流的需要 本附录的应用类中定义了一个附加头
+, 。
+应该设为 允许使用 包头 特别是 使用时间标志需要访
+stream_id “private_stream_1”, PES , PTS。
+问单元的定义 这些都是与应用相关的 因此在数据广播标准中没有定义
+。 , 。
+这个头中的第一个字节包含 指明数据流类型 同步 从同步
+data_identifier, ( / )。
+在同一个 包中不允许既有同步的数据流 又有从同步的数据流 但是 两种流数据如有不同
+PES , 。 ,
+的 它们就可以存在于同一节目中
+PID 。
+可自定义
+sub_stream_id 。
+和 两个标志指示输出数据速率域和 扩展域的存
+PTS_extension_flag output_data_rate_flag PTS
+在 下面列出了这些域的用法
+。 :
+指示头长度 并允许在头部加入私有字节
+● PES_data_packet_header_length , ;
+头中的 域没有使用 而 的编码与 定义的方法相同
+● PES DTS , PTS GB/T17975.1—2010 。
+A54 同步数据流
+..
+在接收端要求输出数据速率非常准确时 就需要使用同步数据流 接收端时钟由 同步 比
+, 。 PCR ,9
+特的 要在较大数据速率范围内 从 非常准确地定位数据访问单元 根据
+PTS_extension ( kb/s~Mb/s) 。
+定义 访问单元可以是一个比特 一个或多个字节 这 比特使 时钟的精度从 扩展到
+, 、 。 9 PTS 11μs 37ns
+时钟的精度 如果要求接收同样数据业务的多个数据解码器同时以对齐的方式输出数据
+(27MHz )。 ,
+或者要求输出流在短暂信号丢失后保持同步 那么就需要准确的数据定位
+, 。
+为了规定同步数据流的输出数据率 使用 用 比特的精度 取代 头中
+, output_data_rate。 28 ( PES 22
+比特 的 分辨率 可实现与高达 的数据输出率成比例的 利用
+ES_rate 400b/s ), 27MHz(±30ppm) PLL(
+时钟下转换 覆盖很宽的数据率 传送同步数据流再生信号的比特率 将数据流的
+), 。output_data_rate 。
+比特率编码成 与应用有关 需要比特率是 倍数的应用 以 为
+output_data_rate 。 1b/s , b/s output_data_
+的单位 直接将数据流的比特率编码成 在 对
+rate , output_data_rate。 GB/T17975.1—2010 27MHz
+规定的 误差范围内 如果应用需要连续变化的比特率 要将数据流的
+system_clock_frequency 30ppm , ,
+比特率编码成 的方式 见式
+output_data_rate , (A.1):
+=比特率×
+output_data_rate M/system_clock_frequency………………(A.1)
+式 中 是一个足够大的数 应能够表示应用所需比特率精度要求的比特率范围 具有
+(A.1) ,M , 。
+的同步数据流的实际比特率范围是从 到
+27MHzsystem_clock_frequency 1b/s 27Mb/s。
+注 如果使用 不必使用本标准中描述的解码器模型
+: output_data_rate, 。
+对于 精确度足够的应用 在 中没有 的情况下
+400b/sES_rate , PESdata_packet output_data_rate ,
+可以使用 头中的 如果在一个编码流中同时出现 和 那么解码
+PES ES_rate。 ES_rate output_data_rate,
+器可以使用其中的任何一个比特率
+。
+30
+GB/T28430—2012
+从同步数据流的建议缓冲区容量为 字节 对于 典型最大多路复用抖动和高达
+4800 。 4ms 9Mb/s
+的比特率 这提供了足够的容量
+, 。
+A55 从同步数据流
+..
+当数据流要与另一个 流同步时 使用从同步数据流
+PES , 。
+A6 多协议封装
+.
+A61 概述
+..
+多协议封装为在数字电视广播网络中的 流之上传送数据网络协议提供了一个机制 多协议封
+TS 。
+装对传送 协议已进行优化 但使用 封装可以传送其他任意的网络协议 包括单播 目标
+IP , LLC/SNAP , (
+是单个接收端的数据报 多播 目标是多个接收端的数据报 和广播 目标是全部接收端的数据报
+)、 ( ) ( )。
+比特的 地址用于对接收端寻址 但不规定如何分配给接收端 地址
+48 MAC , MAC 。
+由于数字电视广播网络的广播特性 数据安全是非常重要的 通过支持包加密和动态改变
+, 。 MAC
+地址 封装保证了数据的安全传输
+, 。
+A62 数据传输
+..
+在 中传送数据报 与私有数据的 格式兼容 段格式提供了数
+datagram_sections , DSMCC_section 。
+据报到 流包映射的一种有效格式 支持使用已有硬件或软件解复用器进行基于 地址的数据报
+TS , MAC
+过滤
+。
+段格式允许将数据报分成多个段 如果数据报小于或等于 字节 包括可能的 报
+。 4080 ( LLC/SNAP
+头 数据报放在一个段里 在 和 报头忽略的情况下 应置为 字节或更少
+), 。 IP LLC/SNAP ,MTU 4080 ,
+以便数据报不被分开 在 和 报头存在的情况下 应置为 字节或更少
+。 IP LLC/SNAP ,MTU 4074 。
+地址为 个字节分成两组 其原因是字节 和 在 的
+MAC 6 。 5 6 DSMCC_section table_id_extension
+中 而字节 在 的载荷中 见图
+, 1、2、3、4 DSMCC_section , A.3。
+图A3 MAC地址字节到段的映射
+.
+一些解复用器能用硬件过滤字节 和 而用软件过滤字节 建议将 地址的最有可
+5 6, 1、2、3、4。 MAC
+能区分接收端的两个字节放在字节 这和通常情况的 地址一致 建议所有的 地
+5、6。 IEEEMAC , MAC
+址都应以这种方式构造
+。
+载荷的加扰是由 比特 控制 如果它的值是 载荷不加扰 如果
+2 payload_scrambling_control 。 “00”, 。
+载荷加扰 加扰算法和在数字电视广播中加扰方法如何传送给接收机的机制由国家 标准定义
+, CA 。
+通过动态变化 地址 地址加扰提供更高的安全性 通过周期性地改变用于加扰
+MAC ,MAC 。 MAC
+31
+GB/T28430—2012
+地址的控制字 特定的数据报的目的地不能通过观察 地址而确定 能够防止流被监视 由于很难
+, MAC , 。
+得到送到单一接收端的数据报 因此加强了安全性 数字电视广播不规定加扰 地址控制字的分
+, 。 MAC
+发机制
+。
+在段头中地址加扰是由 比特域 控制 如果它的值是 则不对
+2 address_scrambling_control 。 “00”,
+地址加扰 应注意由于作为数据报一部分的协议地址在透明传输中是可见的 因此没有载荷加
+MAC 。 ,
+扰的 地址加扰是没用的
+MAC 。
+封装提供了能够用于传送任何网络协议的多封装 包括 协议 对传送 进行了优
+LLC/SNAP , IP 。 IP
+化 允许传输没有 报头的 数据报 由段头中的 控制 如果它的值是
+, LLC/SNAP IP , LLC_SNAP_flag 。
+则载荷包含原始 数据报 如果它的值是 则载荷包含一个 封装 该封装由
+“0”, IP 。 “1”, LLC/SNAPIP ,
+的结构 组成 随后是数据报字节 传送 的优化方法能用于 和
+LLC/SNAP LLC_SNAP() , 。 IP IPv4 IPv6。
+当传送 协议时 和 都应是
+IP ,section_number last_section_number “0”。
+段可以包含数据报之后的填充 例如 当使用分组加密编码时 填充字节可以使段的载荷是分组长
+。 , ,
+度的倍数 对这些字节的值不做规定 在载荷加密的情况 不要分配给固定值 固定值将有助于破密
+。 , , , 。
+根据 的值 的结尾处有和校验或 建议使用
+section_syntax_indicator ,datagram_section CRC_32。
+因为它提供更好一点的比特误码保护 大多硬件解复用器能够对 进行硬件校验 而和
+CRC_32, , CRC_32 ,
+校验通常应用软件进行校验
+。
+A63 在SI中的信息
+..
+对于使用多协议封装的业务 在 或 中有 在 中
+, SDT EIT data_broadcast_descriptor。 selector_byte
+传送 结构
+multiprotocol_encapsulation_info 。
+用于通知接收端 的哪个字节对过滤是有效的
+MAC_address_range MAC_address 。
+地址的有效字节在 地址低位端
+MAC MAC 。
+如果依照 将多播 地址映射为 地址 则发出
+IETFRFC1112 IP MAC , MAC_IP_mapping_flag。
+值得注意的是 数字电视广播并未规定使用 定义的 地址 因此允许可能更优化的
+, IEEE MAC ,
+映射
+。
+对齐指示符指示 与 流包是 比特对齐排列还是 比特对齐 比特对齐基
+datagram_section TS 8 32 。8
+本意味着不对齐 对齐在输入 流包的实现中是有用的 并且依靠段的开始 在该段上实现 比特
+。 TS , , 32
+范围内的有效过滤比较操作
+。
+定义用于传送单个数据报的最大段数 对 来说 限定为 这定义
+max_sections_per_datagram ( IP , 1)。
+了数据报的最大长度 典型的接收端在数据报传送出去之前应将分割的数据报组合起来 因此该域定
+。 ,
+义了缓冲区的容量 缓冲区的容量是接收端为组合最大长度数据报所必需的
+。 。
+A7 数据轮播
+.
+A71 概述
+..
+数据轮播是一种传输机制 它允许服务器 应用的广播组件 通过一次或多次循环重复轮播的内容
+, ( ) ,
+为解码器 接收端运行的程序 提供一套清楚的数据模块 如果应用解码器要从数据轮播接入一个特定
+( ) 。
+的模块 它可以只是等待所要求模块数据的下一次广播时间
+, 。
+一个被广泛理解的数据轮播概念的好例子是图文电视系统 在这个系统中 一整套的图文页以在
+。 ,
+场逆程的模拟视频信号的行中循环广播 当用户想看一页信息时 他常常需要等到该页的下一次广播
+。 ,
+时间 用户所需要等待的最大时间取决于进行一次完整轮播循环所占用的时间 该时间可由轮播的大
+。 ,
+32
+GB/T28430—2012
+小和数据广播的速率来推导
+。
+在数据轮播中 数据由模块构成 如在图 中描述的 和 这可能就是一些文件内
+, , A.4 M2、M3 M8。
+容 比如这个例子中的 和 每个模块都被分割 用来构成用
+, “file1”、“file2” “file3”。 , DSM-CCDownloadD-
+句法定义的一个或多个下载数据消息的载荷 下载控制消息提供描述每个模块和逻辑分组的
+ataBlock 。
+信息 在适合的情况下定义使用 的 或
+, DSM-CC DownloadServerInitiate DownloadInfoIndication。
+在这个例子中每个下载消息都仅插入一次 并且同一模块的 依序相邻插入
+, DownloadDataBlock 。
+然而 对一个特定消息插入到轮播的一个循环的频度以及消息插入的次序和位置没有作约束 这允许
+, 。
+数据轮播可以使用任何最适合一个特定应用的方式来创建 此外 消息插入数据轮播的频度和次序不
+。 ,
+需固定并且根据需要可以动态改变
+。
+A72 数据轮播群和超群
+..
+一组数据轮播中的逻辑上一致的模块可以组合成群 消息提供群中模块
+。DownloadInfoIndication
+的描述 这里没有对模块如何关联形成群作限定 特别的 一个模块可以属于多个群
+。 , , 。
+群可以组合成超群 消息提供超群中群的描述
+。DownloadServerInitiate 。
+注 超群可以包含任意数目的群 甚至是只有一个群
+: , 。
+数据轮播的结构 在群或超群中 没有必要反映内容的结构
+( ) 。
+为了清楚阐述 具体的 消息在本标准的附录 中描述 本标准的附录 给出了关于在段
+, DSM-CC F 。 G
+中包含 消息的信息
+DSM-CC 。
+A73 使用一层数据轮播
+..
+如果数据轮播仅由单个群组成并且群的完整描述可以包含在单个的 消息
+DownloadInfoIndication
+中 也就是控制信息的一层 那么可以使用一层数据轮播 在其他所有情况中 应使用两层数据轮播
+( ), 。 , 。
+消息是数据轮播中唯一的下载控制消息并且作为最高级别的控制消息来
+DownloadInfoIndication
+使用的
+。
+注 尽管在数据轮播中只定义了一个下载控制消息 但是在该数据轮播的单一循环中 相同消息可能多次插入
+: , , 。
+一个单层轮播适用的例子是一个小的 模块 基于 应用的传输 该应用仅支持
+(10~20 ) HTML ,
+版本
+HTMLV1.0 。
+A74 使用两层数据轮播
+..
+A741 基本概念
+...
+两层数据轮播有一个或多个 消息并且只有单个
+DownloadInfoIndication DownloadServerInitiate
+消息 也就是控制信息的两层 消息是被作为最高级别的控制消息来使用的
+( )。DownloadServerInitiate 。
+两层数据轮播在下面描述的情况下使用 这是用于具体情况的指南 并且有必要时可以混合使用
+。 , 。
+A742 数据轮播由单个群组成 且该群的描述对单个的DownloadInfoIndication消息来说太大
+... ,
+在这种情况下 如果需要 就要有足够多的 消息被用来描述在这个大的群
+, , DownloadInfoIndication
+中所有的模块 这样有效地将这个大的群分割成许多小群 这些小群每个都是由它自己的
+。 , Download-
+消息来定义的 既然只能拥有一个最高级别控制消息 这就强制地规定了两层数据轮播
+InfoIndication 。 ,
+的使用 为了能够重建原始的大的群 这些新的较小的群应该连接在一起 这是通过在
+。 , 。 Download-
+消息中的每个较小的群的描述中包含 来完成的
+ServerInitiate group_link_descriptor() 。
+例如基于只支持 版本的大的 应用 个模块以上 的传输
+HTMLV1.0 HTML (500 ) 。
+33
+GB/T28430—2012
+图A4 数据轮播中信息的循环发送
+.
+A743 数据轮播只传输单个版本的应用 但支持许多不同的接收端类型
+... ,
+在这种情况下数据轮播由通过在多个群中共享通用模块的方式来支持不同的接收端类型的群构
+成 这样的例子就是一个基于支持 和 的小的 应用的传输 该数据
+。 HTMLV1.0、V2.0 V3.0 HTML 。
+轮播将由一个包含三个群的超群构成 多数的模块对所有的三个群都是通用的 例如 和 不
+。 , GIF JPEG,
+过一些模块对于某个群来说是特定的 例如一个页面的特定 版本
+, HTML 。
+每个群关联的 结构用来决定一个给定的接收端类型使用哪个群
+groupCompatability 。
+34
+GB/T28430—2012
+A744 单一的接收端类型数据轮播同时传输一个应用的多个版本
+...
+在这种情况下数据轮播应该由要被传输的应用的每一个版本的群构成 由于这里没有版本更新机
+。
+制 消息仅用来为描述最新版本的群提供关联关系 这意味着一个通过最高级
+,DownloadServerInitiate 。
+别控制消息接入数据轮播的接收端将自动使用这个版本
+。
+当仍然在传输一个应用已存在的版本时 如果要加入一个新版本 则将产生一个新的群 那么
+, , ,
+消息将被更新用来消除上一个 最新 群的所有关联关系 并且与新的 最新 群
+DownloadServerInitiate “ ” , “ ”
+关联起来 这就强制限定了如果接收端想要继续接入仍然在被广播的旧版本 接收端应本地存储相关
+。 ,
+的最高级别的控制消息
+(DownloadServerInitiate)。
+注 在 中的 能被用来直接指向 消息 该消息描述了仍
+: data_broadcast_descriptor transactionId DownloadInfoInitiate ,
+然在数据轮播中的一个较旧版本的群
+。
+例如使用接收端作为一个大容量存储器件的软件下载接口 即使相同文件的一个较新的版本正在
+,
+被广播 它还希望继续完成广播一个大文件
+, 。
+A75 transactionId值的分配和使用
+..
+在数据轮播中 的使用方式继承于它在 中定义的使用方式 这
+transactionId ISO/IEC13818-6:1998 ,
+样可能显得有些复杂 有双重作用 它提供下载控制消息 和
+。transactionId , (DownloadInfoIndication
+消息 的确认和版本更新机制 在数据轮播中 唯一标明一个下载
+DownloadServerInitiate ) 。 transactionId
+控制消息 然而当该消息的任何一个域被修改时 它应当 被增量
+, , “ ”。
+注 术语 被增量 在 中使用 指的是控制消息发生改变时 的 位的值加
+: “ ” ISO/IEC13818-6:1998 , ,transactionId 16-29
+在数据轮播的应用范围内它解释为 被改变
+1。 “ ”。
+已被切分成许多定义在表 中的子域 这反映了 的作用 上文给出
+transactionId A.2 。 transactionId (
+了大致的框架 并且数字电视制定了一些约束来减少接收端要求的过滤的最小级别 然而 为了增加互
+) 。 ,
+操作性 的分配被设计成与在目标接收端预期的过滤无关
+,transactionId 。
+表A2 transactionId子段
+.
+位 值 子段 描 述
+用户定义 更新标志 控制信息每次更新都将触发该位
+0 。
+对于顶层控制信息 所有位为
+用户定义 识别 , 0;
+1-15 非顶层控制信息 至少一位不等
+, 0。
+用户定义 版本 每次控制信息更新 版本号加
+16-29 , 1。
+位 在 中定义 如果
+30-0 出处 ISO/IEC13818-6:1998 ,
+30-31 位 非 网络分配了 其值为
+31- 0 transactionId, 0x02。
+由于 的功能 作为版本切换机制 数据轮播中任意消息的任何改变都将导致最高级
+transactionId , ,
+别的控制消息的 被增量 这些变化通过下面的数据轮播结构传输 对模块的任何变化
+transactionId 。 。
+将强制改变它的 该变化将通过 消息中的模块描述相应的域
+moudleVersion。 DownloadInfoIndication
+反映出来 该消息描述任何包含它的群 在 消息中的域被改变后 它的
+, 。 DownloadInfoIndication , trans-
+也应该改变 以标明一个消息的新版本 这些变化将再次通过描述这个超群的
+actionId , 。 Download-
+消息中对群进行描述的域反映出来 由于 消息中的域已经被改
+ServerInitiate 。 DownloadServerInitiate
+变 它的 也应该被改变 这非常有用 因为只要通过观察最高级别控制消息中的
+, transactionId 。 , transac-
+就能检测到数据轮播中任何消息的改变
+tionId, 。
+35
+GB/T28430—2012
+如果任意控制消息中的 都参考 中 中相应的域 那么它
+transactionId SI data_broadcast_descriptor ,
+要被更新以反映各种变化 这样的结果就是如果数据轮播内容发生变化 就应再去取那些被改变的
+。 , SI
+表 由于 的重复间隔可能到 这里可能会有我们不希望的 会降低动态数据反应速度的副作用
+。 SI 2s, 、 。
+为了避免这样的结果 可以把 中的 置为 以便指
+, data_broadcast_descriptor transactionId 0XFFFFFFFF,
+出任何最高级别控制消息都是有效的
+。
+在 流中下载控制消息的封装在 中定义 它规定了将 中
+TS ISO/IEC13818-6:1998 。 transactionId
+个最低有效字节拷贝到 头的 中 这意味着如果知道正在被广播
+2 DSMCC_section table_id_extension 。
+的数据轮播的 通过将段过滤器设为 下载控制消息 和
+PID, table_id=0X3B( ) table_id_extension=
+或 不用知道轮播数据的 就可以找到最高级别控制消息
+0X0000 0X0001, transctionId, 。
+表 反映了不同消息类型的段头的编码
+A.3 。
+表A3 DSM-CC段头中的各域编码
+.
+消息 last_section
+table_id table_id_extension version_number section_number
+_number
+中 的
+DSI transaction_id
+DSI 0x3B 两个最低有效字节 0x00 0x00 0x00
+中 的
+DII transaction_id
+DII 0x3B 两个最低有效字节 0x00 0x00 0x00
+section_number
+DDB 0x3C moduleId moduleVersion%32blockNumber%256 的最大值
+A76 具体的数据轮播描述符的使用
+..
+A761 说明
+...
+这一条描述的所有描述符都是可选的
+。
+A762 type_descriptor
+...
+数据轮播的群或模块的类型使用 来传输 它的使用是业务供应商专有的 按照
+type_descriptor 。 。
+媒体类型规范 由一个字符串来指定该模块的类型
+IETFRFC2045, 。
+A763 name_descriptor
+...
+数据轮播的群或模块的名称使用 传输 它的使用是业务供应商专有的
+name_descriptor 。 。
+A764 info_descriptor
+...
+数据轮播的群或模块的相关信息使用 来传输 它的使用是业务供应商专有的
+info_descriptor 。 。
+A765 module_link_descriptor
+...
+提供了关于一个群中的哪些模块应该被连接在一起的信息 这样可以从该
+module_link_descriptor ,
+数据轮播中取出完整的数据 在这个描述符的两个域 和 一起用来标明多个模块连
+。 position moudle_id
+接时 模块连接列表中的第一个模块 下一个模块号 下一个模块
+, (position=0x00,module_id= ),
+下一个模块号 以及最后一个模块
+(position=0x01,module_id= ) (position=0x02)。
+A766 CRC32_descriptor
+...
+使用 给出一个完整模块上的 的计算值 这些 数据是描述符
+CRC32_descriptor, CRC-32 。 CRC-32
+的一部分
+。
+36
+GB/T28430—2012
+A767 location_descriptor
+...
+在 消息中的 标明能找到该数据轮播群的
+DownloadServerInitiate location_descriptor PID。Down-
+消息应在该 上找到 相同的机制还可用在 消息上 用
+loadInfoIndication PID 。 DownloadInfoIndication ,
+来找到不同 上的所有模块
+PID 。
+这对于不同的用户来说是一种处理群和模块的非常有用的方法
+。
+A768 est_download_time_descriptor
+...
+为接收端提供下载模块或群的时间
+est_download_time_descriptor 。
+需要注意它的使用方式 很显然 下载时间对于传输数据轮播的可用比特率是敏感的 数据轮播
+。 , 。
+生成位置和播放位置不同可能会出现问题 例如 同一数据轮播如果在第一天以一个比特率 例如
+, , (
+而在第二天以另一个比特率 例如 播出 那么可能两天中有一天的下载时间是不准确
+1Mb/s) ( 2Mb/s) ,
+的 甚至两天都不准
+( )。
+注 基于最小播放比特率可以计算出预计下载时间的值 很明显 这种方法基于接收到的消息 向接收端指出收到
+: , , ,
+多少数据更为实用
+。
+A769 group_link_descriptor
+...
+群中模块的描述由 消息提供 被描述模块的数目由该消息的最大尺寸和
+DownloadInfoIndication 。
+每个模块描述的尺寸来决定 段的封装限制了下载控制消息的最大尺寸低于
+。GB/T17975.1—2010
+字节 一个简单模块描述的大小 例如 个字节的基本信息和名字描述符 大概是 个字节 这
+4K 。 ( 30 ) 40 。
+就意味着 消息可以描述大约 个模块 这在绝大多数情况下已经足够了 但
+DownloadInfoIndication 100 , ,
+并不能满足所有的情况
+。
+在后一种情况中 要描述一个大群中的所有模块 就应有足够多的 消息
+, , DownloadInfoIndication 。
+这就有效地把一个大群分割成许多较小的群 每个较小的群都由各自的 消息
+, DownloadInfoIndication
+来定 义 为 了 能 够 重 建 原 始 的 大 群 这 些 较 小 的 群 应 连 接 在 一 起 这 应 通 过 包 含
+。 , 。
+消息中的 每一个新的较小群的描述中的 来实现
+DownloadServerInitiate , group_link_descriptor() 。
+A7610 private_descriptor
+...
+如果一个业务供应商有 的需要 将使用 的句法
+private_descriptor , private_descriptor 。
+A7611 compressed_module_descriptor
+...
+的出现标明模块中的数据具有定义在 中的
+compressed_module_descriptor IETFRFC1951 “zlib”
+结构 结构的定义见表
+。ZLIB A.4。
+表A4 zlib结构
+.
+句 法 字 节 数
+zlibstructure
+{
+compression_method 1
+flags_check 1
+compressed_data n
+checkvalue 4
+}
+37
+GB/T28430—2012
+A77 SI和PSI中的信息
+..
+A771 说明
+...
+数据轮播的访问可以通过 或 中的描述符来完成 这就为定义业务提供了灵活性
+SI PSI 。 。
+A772 SI中的描述符
+...
+对于使用数据轮播的业务 应出现在 或 中 也就是说 这种描
+,data_broadcast_descriptor SDT EIT 。 ,
+述符的使用是强制性的
+。
+域应置为 来标明数字电视数据轮播的使用
+data_broadcast_id 0x0006 。
+通过与 中具体流的 中的 相关联
+component_tag PMT stream_identifier_descriptor component_tag
+的方式来识别传输数据轮播所使用的
+PID。
+结构在 中传输
+data_carousel_info selector_byte 。
+标明了使用了哪种数据轮播 见本标准的表
+carousel_type_id , 23。
+的使用在 条中描述
+transacion_id A.7.4 。
+和 向接收端给出标识 告知接收端在判定一个错误情况
+time_out_value_DSI time_out_value_DII ,
+之前 应等待多少时间
+, 。
+为了优化接收设备 使用了 通过给出 解码器计算是否能够解码一个业务
+, leak_rate。 leak_rate, 。
+移出速率也可以由 或 给出 在这两个描述
+smoothing_buffer_descriptor maximum_bitrate_descriptor ,
+符都出现的情况下 两个描述符给出的值应一致 但是 不推荐使用
+, 。 , maximum_bitrate_descriptor。
+使用基于 代替 访问轮播的优点在于
+SI PSI :
+使用 可以明确地标明数据轮播中的最高级别控制消息
+● transacionId ;
+通过在 包含 域 数据轮播的更新 这将导致
+● data_broadcast_descriptor transactionId , ( transac-
+的变化 可以只通过过滤 就能被检测到
+tionId ) SI ;
+注 这种方法可以通过使用特殊的 值 在 条中描述 来避免
+: transactionId (0XFFFFFFFF, A.7.4 ) 。
+描述符不占用 表 可以说是一种稀缺资源 的空间
+● PSI ( ) 。
+使用基于 代替 接入轮播的缺点在于 的重复周期可能长达 这可能会对业务首次访问
+SI PSI ,SI 2s,
+带来延迟
+。
+A773 PSI中的描述符
+...
+对于使用数据轮播的业务 可能会出现在 中 也就是说该描述
+,data_broadcast_id_descriptor PMT ,
+符的使用是可选的
+。
+域应置为 来标明数字电视数据轮播的使用
+data_broadcast_id 0x0006 。
+使用这种机制的优点在于 的最大重复周期仅为 这就能实现对业务的首次快速访问
+,PSI 0.1s, 。
+这种机制的缺点在于
+:
+没有 清楚地识别最高级别控制消息 这样只有来自单个数据轮播的下载控制消
+● transactionId 。
+息可以在被标明的 流中传输
+ES ;
+该描述符没有提供任何关于下载控制消息超时周期的信息 这些信息仍然要从 的描述符中
+● 。 SI
+获得
+;
+该描述符消耗 表的部分空间 即使很小
+● PSI ( );
+该描述符在 中仍然需要
+● SI 。
+38
+GB/T28430—2012
+A8 对象轮播
+.
+A81 概述
+..
+对象轮播使得利用目录对象 文件对象和流对象的 从广播服务器到广播接收端 客户
+DSM-CC 、 , (
+端 的对象的结构化的群的传输变得容易 实际的目录和内容 对象实现 都位于该服务器上 该服务
+) 。 ( ) 。
+器不断地将相关的对象插入到使用对象轮播协议的 数字电视相兼容的 流当中去 如图 所示
+, TS 。 A.5 ,
+对象轮播是数字电视业务的一部分 传输的目录和文件对象包含对象的内容 而传输的流对象在广播
+。 ,
+中是其他流的参考基准 该流对象可能包含在一个特定流中广播的关于 事件的信息
+。 DSM-CC 。DSM-
+事件可以通过一般流数据来广播 并且可以用来触发 应用
+CC , DSM-CC 。
+通过读取反复传输的轮播数据 多个客户端可以恢复对象实施 因此在本地对象实施中可以模仿服
+, ,
+务器的对象 轮播中的对象为客户提供了访问应用和应用内容的方式 或多或少地 好象与服务器之间
+。 , ,
+存在交互连接一样
+。
+下面内容提供了在数字电视广播网络和遵循 的交互系统中实施和使用
+ETSIEN300802 DSM-CC
+对象轮播的应用指南 其主要集中在以下几方面
+U-U 。 :
+平台无关性
+● ;
+应用在 对象轮播中的 控制结构的编码
+● U-U BIOP ;
+应用在 对象轮播中的 数据消息的编码
+● U-U BIOP ;
+下载数据轮播消息的编码
+● ;
+段的编码
+● DSM-CC ;
+对象轮播 描述符的应用
+● PSI ;
+对象轮播 描述符的应用
+● SI 。
+图A5 含有对象轮播的业务示例
+.
+图 表明了为广播和交互网络定义的协议栈 图中粗线所包围的部分说明了其涉及的范围
+A.6 , 。
+39
+GB/T28430—2012
+图A6 对象轮播协议在交互业务结构框架中的位置
+.
+A82 平台无关性
+..
+A821 概述
+...
+对象轮播规范是平台无关的 与 规范中 的规定以及 定义的
+, ISO/IEC13818-6:1998 U-U CORBA
+结构兼容 在 系统环境中 对象的结构化组被称作业务域 业务域有一个业务网
+ORB 。 DSM-CCU-U , 。
+关 该网关可以看作是对象结构化组最高一级的目录 而且这样一个业务网关可以为公布给客户端的业
+, ,
+务名称 也就是对象名称 的图表提供相互关系 业务域可以在交互网络的服务器上定位 也可以在广
+( ) 。 ,
+播网络的服务器上定位 在后面一种情况下 业务域中的对象通过对象轮播的方式广播
+, , 。
+注意 对象命名应遵照本标准的附录
+: H。
+对象轮播中一个对象的数据和特性是在单独一个消息中传输的 消息的格式由对象轮播规范指
+。
+定 称做 消息格式 消息通过 数据轮播的一个模块来广播 但是一个模块可包含
+, BIOP 。BIOP DSM-CC ,
+一个或多个 信息 依照 数据轮播规范 一个模块可以被分成一个或多个块 块在
+BIOP 。 DSM-CC , ,
+消息中传输 每个 消息大小相同 除了模块的最后一个数据
+DownloadDataBlock 。 DownloadDataBlock (
+块可能小些 并且按照 的规定在段中依次传输 消息在段中封装的规
+), DSM-CC 。DownloadDataBlock
+则是通过解复用器中常见的硬件过滤器 块能够直接从 流中得到
+, TS 。
+业务域中的对象通过使用对象基准来标识 使用 定义的 结构 对象
+。DSM-CCU-U CORBA IOR 。
+基准包含了在网络中一个或多个服务器上检索对象所需的全部信息 中包含有被存储对象的实
+。IOR
+例的位置信息的结构体 称作类型体 一个 可以包含多个类型体以指示对象的多
+, (ProfileBody)。 IOR
+个 网络 位置
+( ) 。
+对象轮播规范使用两个类型体 即 类型体和 类型体 类型体用于在同一
+, BIOP LiteOptions 。BIOP
+个对象轮播里检索对象 类型体用于在另一个对象轮播里检索对象
+,LiteOptions 。
+类型体只用来检索同一对象轮播 即业务域 中的对象 它通过使用对象轮播的标识符 广
+BIOP ( ) 。 、
+播对象的模块标识符和模块中标识对象的唯一的键值来实现对象的唯一标识 对象轮播的标识符通过
+。
+节目中 的描述符链接到数字电视业务上
+PMT 。
+类型体用于检索另一业务域 要么是交互的 要么是广播的 中的对象 它通过使用
+LiteOptions ( , ) 。
+全局唯一的 地址格式来帮助应用链接到其他业务域 对于数字电视网络中的业务域 地
+NSAP 。 ,NSAP
+址连接到一个特定的数字电视业务
+。
+40
+GB/T28430—2012
+A822 所支持的U-U对象
+...
+对象轮播规范是用来支持 的 所定义的大量接口的 本条提供了对象轮播中所
+DSM-CCU-U API 。
+支持的对象和接口的指南 接口定义见 接口所支持的对象见
+, ISO/IEC13818-6:1998。READER
+表
+A.5。
+表A5 具有READER支持接口的对象
+.
+对 象 接口所支持的对象
+READER
+DSM∷Directory Access,Directory
+DSM∷File Base,Access,File
+DSM∷Stream Base,Access,Stream
+DSM∷ServiceGateway Access,ServiceGateway
+BIOP∷StreamEvent Base,Access,Stream,Event
+应该注意的是广播网络的 句法与交互网络的 句法稍有差别 原因在于网络自身的广播特
+API API ,
+性 一个典型的例子是对于通过广播网络传输的流 其流接口的暂停 指令会让屏幕上的画面静
+。 , API
+止 但并不中止 广播 流的传输
+, ( ) 。
+本附录不提供任何关于在广播网络中精确操作 接口的指导
+DSM-CCU-U 。
+接口访问会返回缺省属性 即目标特性 如只读属性和访问时间 因为这些特性的广播
+DSM-CC ( , ),
+在 中没有定义
+BIOP(ISO/IEC13818-6:1998,GB/T17975.1—2010) 。
+本附录不提供任何关于对象轮播中访问特性的广播规范
+。
+图 用 注释法标明了 对象之间的关系
+A.7 OMT U-U 。
+图A7 对象轮播所支持的对象
+.
+41
+GB/T28430—2012
+在对象轮播中 可为每个对象传送以下信息
+, :
+目录对象数据 绑定列表 其中每个绑定都把一个名字与一个对象基准
+● (Directoryobjectdata): ,
+连接起来 另外 每一个绑定还可能包含绑定对象的一些附加特性 以支持通过目录快
+(IOR) 。 , ,
+速浏览 在当前的对象轮播规范中 这仅用于文件对象的 属性
+。 , contentSize ;
+文件对象数据 文件内容数据和 属性
+● (Fileobjectdata): contentSize ;
+流对象数据 标识符 称为 列表 指向广播网络中一个或多个流 每
+● (Streamobjectdata): ( Tap) , 。
+个 要么指向基本流 要么指向完整的节目 另外 其他的
+Tap (BiopEsTap), (BiopProgramTap)。 ,
+标识符可能会出现 以指向包含流控制信息的广播通道 例如 指向 状态 模式 事件的
+, ( : NPT、 / 、
+的 流对象数据还包括 属性
+StreamDescriptor Tap)。 StreamInfo ;
+业务网关对象数据 与目录对象相同 因为业务网关是从目录继
+● (ServiceGatewayobjectdata): ,
+承的 对于业务网关的特别之处是 它包含有业务域的根目录
+。 , ;
+流事件对象数据 类似于流对象数据 但是扩展了 属性和
+● (StreamEventobjectdata): , EventList
+列表 这些属性包括了 事件名列表以及这些事件名称与 的映射
+eventID 。 DSM-CC eventID
+关系
+。
+A823 对象传输
+...
+在对象轮播中一个 对象的数据和特性在一个消息中传输 消息格式由 规定 称做
+U-U 。 BIOP ,
+通用对象消息格式 或简称 消息格式 一个
+BIOPGenericObjectMessageformat(BIOP , BIOP )。 BIOP
+消息由一个 一个 和一个 构成 提
+MessageHeader、 MessageSubHeader MessageBody 。MessageHeader
+供了 协议版本和 消息长度 包含了关于传输对象的信息 如
+BIOP BIOP 。MessageSubHeader ,
+文件 流和目录 和 模块中的唯一标识符 依赖于
+objectType( 、 ) objectKey( )。MessageBody objectType,
+包含实际的 对象数据 一个 消息的大小是可变的
+U-U 。 BIOP 。
+消息在数据轮播的模块中广播 见 一个模块由一个或更多个链接
+BIOP , ISO/IEC13818-6:1998。
+的 消息组成 见图 因此为长度可变的 在模块中每个对象由 标识 对象可以很容
+BIOP , A.8, 。 objectKey ,
+易地通过解析 消息的 域和 消息的长度找到
+BIOP objectKey BIOP 。
+依照 数据轮播规范 每个模块被分成一个或多个通过 消息传输的数
+DSM-CC , DownloadDataBlock
+据块 每个 消息大小相同 只有模块的最后一个块可能小一些 在私有段中依次
+。 DownloadDataBlock ( ),
+传输 见 在私有段中的封装规则使得通过解复用器中常
+, ISO/IEC13818-6:1998。DownloadDataBlock
+见的硬件过滤器 能够直接从 流得到块
+, TS 。
+从广播网络中获取对象 应完整获取包含该对象的模块 这就要求了解模块的传输参数 如模块版
+, , ,
+本 模块大小 块大小 时序和广播通道 这些传输参数在 消息中传输 该消息
+、 、 、 。 DownloadInfoIndication ,
+应在获取 的模块之前从网络中得到 一个 消息能描述多个模块的传
+DSM-CC 。 DownloadInfoIndication
+输参数 因而从广播网络中检索一个对象需要两个步骤
+。 。
+在 中 一个业务域的业务网关的对象基准通过 消息传输 见
+BIOP , DownloadServerInitiate , ISO/
+通过 或者 与 一起 可以找到这个消息
+IEC13818-6:1998。 PSI PSI SI , 。
+42
+GB/T28430—2012
+图A8 BIOP消息在模块 数据块 GB/T179751—2010段中的封装和切分
+. 、 、 .
+A824 对象基准
+...
+使用了 的 可互操作的对象基准 见
+BIOP CORBA IOR-InteroperableObjectReference( ), ISO/
+对象基准为每个网络位置都保留了一个类型体 类型体的类型依赖于从服务器获
+IEC13818-6:1998。 。
+取对象所必须的协议
+。
+因为 指向同一个广播业务域中 在同一个对象轮播中 的对象 的类型体就标明了传递
+IOR ( ) ,BIOP
+对象数据和属性的 信息的位置 因此 由 和 组成 见图
+BIOP , BIOP ObjectLocation ConnBinder , A.9。
+图 说明了带有 类型体的 如何被解析成它所指向的对象 通过
+A.9 BIOP IOR 。ObjectLocation
+标识了 对象轮播中的对象
+carouselId、moduleId、objectKey U-U 。
+由 的序列组成 通过 来标识广播 消息 含有
+ConnBinder Tap 。Tap PMT DownloadInfoIndication 、
+对象模块传输参数的码流
+。
+至少要包含一个通过 指向 消息的 中的
+ConnBinder PMT DownloadInfoIndication Tap。IOR
+用于判定 消息中合适的传输参数 传输参数要依次包含至少一个指
+moduleId DownloadInfoIndication 。
+向 也通过 传送模块的 消息的 最后 来自 的 用来标识
+( PMT) DownloadDataBlock Tap。 , IOR objectKey
+模块中的对象消息
+。
+注 和模块传输参数都可能包含多于一个的 额外的 可能标识了传输同一模块 可能使用其他
+:ConnBinder Tap, Tap (
+传输参数 的其他可选码流
+) 。
+43
+GB/T28430—2012
+图A9 带有BIOP类型体的IOR如何被解析成对象
+.
+对于指向另外一个业务域的 就要使用 类型体 类型体使用全局唯
+IOR, LiteOptions 。LiteOptions
+一的 地址来标识交互的或者广播性质的业务域 对于数字电视兼容广播网络中的业务域
+NSAP 。 ,
+地址标识了一个本标准规定的具体数字电视业务 见图
+NSAP , A.10。
+图 说明了含有 类型体对象基准 如何被解析为广播业务域中的业务网关
+A.10 LiteOptions (IOR) 。
+该类型体包含了 成员 其中依次包含有 地址 通过广播对象轮播的数字电视
+ServiceLocation , NSAP 。
+业务的 和 地址标识了广播业务域 通过使
+transport_stream_id,service_id, orginal_network_id,NSAP 。
+用业务的 和 在 消息中可以找到业务网关的 该 依次包
+PAT PMT, DownloadServerInitiate IOR。 IOR
+含有指向广播业务域的业务网关对象的 类型体 类型体的解析操作与图 相同
+BIOP 。BIOP A.9 。
+44
+GB/T28430—2012
+图A10 带有LiteOptions类型体的IOR如何被解析成业务网关
+.
+A825 Tap和关联
+...
+并不通过 直接指向码流 因为再复用器可以改变 因而 定义了 见
+IOR PID , PID。 DSM-CC Tap,
+按照类似于 中 的方式使用
+ISO/IEC13818-6:1998, SI componenttag 。
+一个 由以下几部分组成
+tap :
+用户私有 不用时置
+● id: ( 0);
+该域标明 的用途
+● use: Tap ;
+该域用于把 和一个特定的 流关联起来
+● association_tag: Tap ES ;
+可选的选择器 从相关 流中选择相关数据 选择器的存在依赖于 域
+● selector: , ES 。 use 。
+下面 域的赋值在对象轮播中的使用
+use :
+类型体的 成员应包含 来标识广播
+● BIOP_DELIVERY_PARA_USE:BIOP ConnBinder Tap
+消息的联结 而在 消息中描述了传输对象
+DownloadInfoIndication() , DownloadInfoIndication()
+的模块的传输参数 见图 该 的 域包含一个 域和一个
+, A.11。 Tap selector transactionId timeout
+域 的值要设置成包含模块传输参数的 消息的
+。transactionId DownloadInfoIndication() trans-
+的值 要设定为用以判定获取 消息是否超时 以
+actionId 。timeout DownloadInfoIndication 、 μs
+为单位的超时时限
+;
+在传送模块的模块传输参数的 消息中使用
+● BIOP_OBJECT_USE: DownloadInfoIndication() ,
+表明模块在哪个 流中传输 域为空
+ES 。selector ;
+码流对象包含这些 以标明码流与对象相关 不
+● BIOP_ES_USE、BIOP_PROGRAM_USE: Tap 。
+过 指向一个基本流 指向一个完整的
+BIOP_ES_USE 、BIOP_PROGRAM_USE GB/T17975.1—
+节目 数字电视业务 两类 的 域都为空
+2010 ( )。 Tap selector ;
+● STR_STATUS_AND_EVENT_USE、STR_EVENT_USE、STR_STATUS_USE、STR_NPT_
+流对象和流事件对象可能包含这些 以标明与对象相关的子流 所有这些 的
+USE: Tap 。 Tap se-
+域均为空
+lector 。
+45
+GB/T28430—2012
+图A11 标识基本流的association_tag描述符的用法
+.
+在解析对象的过程中 客户端应把 与广播网络的链路关联起来 因此 客户端需要关联表来
+, Tap 。 ,
+完成 和广播网络链路的关联 为了支持在基于 流的广播网络中实现
+Tap 。 GB/T17975.1—2010TS
+对象轮播 定义了三个能插入 的描述符
+U-U ,ISO/IEC13818-6:1998 GB/T17975.1—2010PMT :
+用一个 标注 说明在 中出现的所有
+● carousel_identifier_descriptor carousel_id PMT, PMT asso-
+都属于 对象轮播 为 提供一个范围 见图
+ciation_tag U-U ( association_tag ), A.11;
+用 标注一个 流 把所有包含此 的 与这
+● association_tag_descriptor association_tag ES , Tap Tap
+个 流关联起来 见图 与 类似 也包含一个 域和
+ES , A.11。 Tap ,association_tag_descriptor use
+一个可选择的 域 把该 域置为 就标志着在此 流中传输了
+selector 。 use 0x0000 ES Download-
+消息 这个 包含了业务网关的
+ServerInitiate (DSI)。 DSI IOR;
+包含有一系列的 与其他节目的 流 相关联
+● Thedeferred_association_tags_descriptor , ES (PMT)
+的 或者指向其他节目的 图 说明了
+, association_tag。 A.12 deferred_association_tags_
+如何指向其他节目
+descriptor 。
+A83 BIOP控制结构
+..
+A831 基本概念
+...
+控制和数据结构在 中定义 使用了定义在 中的平台无关规
+BIOP ISO/IEC13818-6:1998 , CORBA
+范语言 编码由转化 句法到 的 编码规则来定
+OMGIDL。“bits-on-the-wire” IDL bitsonthewire CDR
+义 使用的是 编码规则 见 该规则使用了序列的最大长度和
+。BIOP CDRLite , ISO/IEC13818-6:1998,
+字节对齐 因此 相比 来说 在数据的打包上更加紧凑
+。 , CDR ,CDRLite 。
+注 这就意味着所有的串都是由一个空字符结束的 而且这个字符属于字符串长度的一部分 例如表 中的
+: , , A.12
+和 域
+objectKind_length objectKind_data 。
+46
+GB/T28430—2012
+图A12 使用deferred_association_tags_descriptor标识节目
+.
+在该段当中 控制结构使用了 的句法并且提供了和该域编码相关的指
+BIOP GB/T17975.1—2010
+导准则 那些受本附录影响的域在表中用阴影表示 在段 中 消息使用了
+。 。 0 BIOP GB/T17975.1—
+句法 在 中定义的 结构和在下面段定义的结构之间有差异的情况
+2010 。 ISO/IEC13818-6:1998 IDL
+下 将以 中的定义为准
+, ISO/IEC13818-6:1998 。
+A832 IOR
+...
+使用由 定义的 用在客户机 服务器可交互性接口的 格式 表 是
+DSM-CC OMG , - IOR 。 A.6 IOP∷
+的句法 见
+IOR , ISO/IEC13818-6:1998。
+表A6 IOP IOR句法
+. ∷
+句 法 比特数 类型 值 注 释
+IOP∷IOR{
+type_id_length 32 uimsbf N1
+for(i=0;i<N1;i++){
+见表
+type_id_byte 8 uimsbf A.7
+}
+if(N1%4≠0){ CDRalignmentrule
+for(i=0;i<(4-(N1%4));i++){
+alignment_gap 8 uimsbf 0xFF
+47
+GB/T28430—2012
+表A6 续
+. ( )
+句 法 比特数 类型 值 注 释
+}
+}
+taggedProfiles_count 32 uimsbf N2 Profilebodies
+for(n=0;n<N2;n++){
+IOP∷taggedProfile(){
+例如
+profileId_tag 32 uimsbf TAG_BIOP
+例如
+TAG_LITE_OPTIONS
+profile_data_length 32 uimsbf N3
+for(i=0;i<N3;i++){
+例如
+profile_data_byte 8 uimsbf BIOPProfileBody
+例如
+LiteOptionsProfileBody
+}
+}
+}
+}
+的 域形成一个代表对象类型的串 对于在 机制中的对象标识 串标识
+IOR type_id_byte 。 CORBA ,
+以 模块 接口 的形式使用 为了减小 的大小 定义了 个字符的别名 用在
+“< >∷< >” 。 IOR ,DSM-CC 3 。
+对象轮播中的对象 列在表 中
+type_id A.7 。
+表A7 U-U对象的type_id
+.
+全称 别名
+type_id type_id
+“DSM∷Directory” “dir”
+“DSM∷File” “fil”
+“DSM∷Stream” “str”
+“DSM∷ServiceGateway” “srg”
+“BIOP∷StreamEvent” “ste”
+只有 这个别名可用在数字电视系统中 这意味着当使用 时 服务器没有必要插入
+type_id 。 type_id ,
+对齐填充字节
+。
+指向相同 对象轮播中传输对象的 包含了 中的 的类型体
+U-U IOR taggedProfileList BIOP 。ISO/
+允许一个 包含多个类型体
+IEC13818-6:1998 IOR 。
+数字电视接收端应该至少能够处理这些类型体中的第一个 其他的类型体可被忽略
+, 。
+中至少应该包含一个用 标注的类型 对于对象轮播广播中的对象来说 第一个用 标
+IOR tag 。 , tag
+注的类型要么是一个 类型体 要么是一个
+TAG_BIOP , TAG_LITE_OPTIONS。
+A833 BIOP类型体
+...
+类型体有一个跟随在 结构后的 结构 表
+BIOP MultipleComponentProfile LiteComponetProfile 。
+说明了一个包含强制性的 组件和 组件的 类型体
+A.8 ObjectLocation ConnBinder BIOP 。
+48
+GB/T28430—2012
+表A8 BIOP类型体句法
+.
+句 法 比特数 类型 值 注 释
+BIOPProfileBody{
+profileId_tag 32 uimsbf 0x49534F06 TAG_BIOP(BIOPProfileBody)
+profile_data_length 32 uimsbf
+字节顺序
+profile_data_byte_order 8 uimsbf 0x00 bigendian
+liteComponents_count 8 uimsbf N1
+BIOP∷ObjectLocation{
+componentId_tag 32 uimsbf 0x49534F50 TAG_ObjectLocation
+component_data_length 8 uimsbf
+carouselId 32 uimsbf
+moduleId 16 uimsbf
+协议主版本
+version.major 8 uimsbf 0x01 BIOP 1
+协议副版本
+version.minor 8 uimsbf 0x00 BIOP 0
+objectKey_length 8 uimsbf N2
+for(k=0;k<N2;k++){
+objectKey_data_byte 8 uimsbf
+}
+}
+DSM∷ConnBinder{
+componentId_tag 32 uimsbf 0x49534F40 TAG_ConnBinder
+component_data_length 8 uimsbf
+taps_count 8 uimsbf N3
+BIOP∷Tap{
+用户私有
+id 16 uimsbf 0x0000
+use 16 uimsbf 0x0016 BIOP_DELIVERY_PARA_USE
+association_tag 16 uimsbf
+selector_length 8 uimsbf 0x0A
+selector_type 16 uimsbf 0x01
+transactionId 32 uimsbf
+timeout 32 uimsbf
+}
+for(m=0;m<N3-1;m++){
+BIOP∷Tap{
+用户私有
+id 16 uimsbf 0x0000
+use 16 uimsbf 0x0016 BIOP_DELIVERY_PARA_USE
+association_tag 16 uimsbf
+selector_length 8 uimsbf N4
+for(i=0;i<N4;i++){
+selector_data_byte 8 uimsbf
+}
+49
+GB/T28430—2012
+表A8 续
+. ( )
+句 法 比特数 类型 值 注 释
+}
+}
+}
+for(n=0;n<N5;n++){ N5=N1-2
+BIOP∷LiteComponent{
+componentId_tag 32 uimsbf
+component_data_length 8 uimsbf N6
+for(i=0;i<N6;i++){
+component_data_byte 8 uimsbf
+}
+}
+}
+}
+当 域值为 时表明下面的数据采用 字节排序编码
+byte_order 0x00 big-endian 。
+域为 域指明了前后关系 在广播网络中唯一标明该轮播并且允许
+carouselId moduleId 。carouselId
+该轮播的分散实现
+。
+类型体只用来指向同一轮播中的对象 也就是 的值等于传输了 的对象轮播
+BIOP 。 carouselId IOR
+的 值 为了指向其他轮播中的对象 要使用 类型体
+carouselId 。 , LiteOptions 。
+列表应该按照次序包含一个 和一个
+LiteOptionComponents BiopObjectLocation DsmConnection-
+作为头两个组件
+Binder 。
+该 标明了该轮播中传输该对象的模块
+mouduleId 。
+标明了广播 的模块的对象 该域是由服务器提供的一系列字节并且只对该
+ObjectKey ObjectKey 。
+服务器有意义
+。
+长度的值应该小于等于
+ObjectKey 0x04。
+多个 可能会共享相同的 使一个 流可用作多个目的 表 说明了定义
+Tap association_tag, ES 。 A.9
+了的 的用途
+Tap 。
+表A9 BIOP类型体中Tap允许使用的TapUse定义
+.
+域 值 中的广播内容
+TapUse PID
+模块传输参数
+BIOP_DELIVERY_PARA_USE 0x16
+模块中的 对象
+BIOP_OBJECT_USE 0x17 BIOP
+如果 出现在 组件中 那么它将是 中的第
+BIOP_DELIVERY_PARA_USE ConnBinder , ConnBinder
+一个
+Tap。
+数字电视兼容接收端将跳过 中的 类型体中的
+IOR BIOP BIOP_OBJECT_USE。
+如果不使用 域的值应被置为
+,id 0。
+的值为 的 域的语义如下
+TapUse BIOP_DELIVERY_PARA_USE Tap :
+域标明使用了该 该域的值应该为
+● use Tap, BIOP_DELIVERY_PARA_USE;
+50
+GB/T28430—2012
+标明广播 的信道 即 流
+● association_tag DownloadInfoIndication ( ES );
+该 域应包含值为 的 和 域
+● selector MESSAGE(=0x0001) selectorType、transacionId timeout 。
+域的值应置为包含该模块传输参数的 消息的
+transactionId DownloadInfoIndication() transac-
+域应该以 为单位标明超时时限 用来表示 消息
+tionId。timeout μs , DownloadInfoIndication()
+的接收超时
+。
+值为 的 域的语义
+TapUse BIOP_OBJECT_USE Tap :
+域标明使用了该 该域的值应该为
+● use Tap, BIOP_OBJECT_USE;
+标明了广播该模块的信道 即 流
+● association_tag ( ES );
+该 域的值应为 长度
+● selector 0 。
+注 值为 的 在数字电视系统中仅用于 而不用在
+:TapUse BIOP_OBJECT_USE Tap, DownloadInfoIndication()
+中
+IOR 。
+A834 LiteOptions类型体
+...
+为了指向其他业务域中的对象 的 类型体中要包含 当
+,IOR LiteOptions ServiceLocation。 DSM-
+使用者试图解析一个名字时 见 那将导致遇
+CCU-UAPI (Directory∷resolve, ISO/IEC13818-6:1998),
+到这样一个 将产生一个 异常 异常中携带有在
+IOR, SERVICE_XFR (exception)。SERVICE_XFR
+的 类型体中的 结构 使用者可通过 结构中的
+IOR LiteOptions ServiceLocation 。API ServiceLocation
+来依次连接新的业务网关 是可选的 它包含了可以让业务网关找到对象的
+serviceDomain 。PathName ,
+路径
+。
+类型体有一个跟在 结构之后的 结
+LiteOptions MultipleComponentProfile LitecomponentProfile
+构 表 给出了一个含有 组件的 类型体的句法
+。 A.10 ServiceLocation Options 。
+表A10 包含有ServiceLocation组件的Options类型体句法
+.
+句 法 比特数 类型 值 注 释
+LiteOptionsProfileBody{
+profileId_tag 32 uimsbf 0x49534F05 TAG_LITE_OPTIONS(LiteOptions
+类型体
+)
+profile_data_length 32 uimsbf
+字节顺序
+profile_data_byte_order 8 uimsbf 0x00 bigendian
+component_count 8 uimsbf N1
+DSM∷ServiceLocation{
+componentId_tag 32 uimsbf 0x49534F46 TAG_ServiceLocation
+component_data_length 32 uimsbf
+轮播 地址的长度
+serviceDomain_length 8 uimsbf 0x14 NSAP
+轮播 地址 见表
+serviceDomain_data() 160 uimsbf NSAP , A.11
+路径名称
+CosNaming∷Name(){
+nameComponents_count 32 uimsbf N2
+for(i=0;I<N2;i++){
+id_length 32 uimsbf N3 NameComponentid
+for(j=0;j<N3;j++){
+Id_data_byte 8 uimsbf
+}
+51
+GB/T28430—2012
+表A10 续
+. ( )
+句 法 比特数 类型 值 注 释
+kind_length 32 uimsbf N4 NameComponentkind
+for(j=0;j<N4;j++){
+同 见表
+kind_data_byte 8 uimsbf type_id, A.7
+}
+}
+initialContext_length 32 uimsbf N5
+for(n=0;n<N5;n++){
+InitialContext_data_byte 8 uimsbf
+}
+}
+}
+for(n=0;n<N6;n++){ N6=N1-1
+BIOP∷LiteOptionComponent{
+componentId_tag 32 uimsbf
+component_data_length 8 uimsbf N7
+for(i=0;I<N7;i++){
+component_data_byte 8 uimsbf
+}
+}
+}
+}
+组件应为该类型体的第一个组件
+ServiceLocation 。
+A835 轮播NSAP地址
+...
+每个 对象轮播的实例都代表一个业务域 每个业务域都有一个全局唯一的 用来标明具体轮
+U-U 。 ,
+播的实例 叫做轮播 地址 网络业务接入点 其句法见表
+, NSAP (NetworkServiceAccessPoint, )。 A.11。
+表A11 CarouselNSAPaddress句法
+.
+句 法 比特数 类型 值 注 释
+carouseINSAPaddress(){
+为私有使用定义的
+AFI 8 uimsbf 0x00 NSAP
+对象轮播 地址
+Type 8 uimsbf 0x00 NSAP
+carouselld 32 uimsbf
+specifierType 8 uimsbf 0x01 IEEEOUI
+数字电视的 常量
+specifierData{IEEEOUI} 24 uimsbf 0x<> OUI
+service_location(){
+transport_stream_id 16 uimsbf
+original_network_id 16 uimsbf
+service_id 16 uimsbf (=program_number)
+reserved 32 bslbf 0xFFFFFFFF
+}
+}
+52
+GB/T28430—2012
+和各域
+AFI、type、carouselId、specifierData、transport_stream_id、original_network_id、service_id
+定义在本标准正文中
+。
+A84 BIOP消息
+..
+A841 目录
+...
+结构由一个绑定关系的循环组成 绑定把对象名 也就是
+BIOP∷DirectoryMessageBody 。 ( binding-
+关联到 上去并且提供关于该对象的附加信息 当关联的对象属于该轮播时 该 应包
+Name) IOR 。 , IOR
+含 类型体
+BIOP 。
+串应以 为结束
+“0x0” 。
+目录消息是通用对象消息格式的实例 结构的句法见表
+BIOP 。BIOP∷DirectoryMessageBody
+A.12。
+表A12 BIOP DirectoryMessage句法
+. ∷
+句 法 比特数 类型 值 注 释
+BIOP∷DirectoryMessage(){
+magic 4x8 uimsbf 0x42494F50 “BIOP”
+主版本
+biop_version.major 8 uimsbf 0x01 BIOP 1
+副版本
+biop_version.minor 8 uimsbf 0x00 BIOP 0
+字节排序
+byte_order 8 uimsbf 0x00 big_endian
+message_type 8 uimsbf 0x00
+message_size 32 uimsbf
+objectKey_length 8 uimsbf N1
+for(i=0;I<N1;i++){
+objectKey_data_byte 8 uimsbf
+}
+objectKind_length 32 uimsbf 0x00000004
+别名
+objectKind_data 4x8 uimsbf 0x64697200 “dir”type_id
+objectInfo_length 16 uimsbf N2 objectInfo
+for(i=0;i<N2;i++){
+objectInfo_data_byte 8 uimsbf
+}
+serviceContextList_count 8 uimsbf N3 serviceContextList
+for(i=0;i<N3;i++){
+serviceContextList_byte 8 uimsbf
+}
+message_Body_length 32 uimsbf
+bindings_count 16 uimsbf N4
+绑定
+for(i=0;i<N4;i++){
+BIOP∷Name(){
+nameComponents_count 8 uimsbf N5
+53
+GB/T28430—2012
+表A12 续
+. ( )
+句 法 比特数 类型 值 注 释
+for(i=0;i<N5;i++){
+id_length 8 uimsbf N6 NameComponentid
+for(j=0;j<N6;j++){
+id_data_byte 8 uimsbf
+}
+kind_lenght 8 uimsbf N7 NameComponentkind
+for(j=0;j<N7;j++){
+同 见表
+kind_data_byte 8 uimsbf type_id, A.7
+}
+}
+}
+用于
+bindingType 8 uimsbf 0x01 nobject
+用于
+0x02 ncontext
+见表
+IOP∷IOR() ObjectRef, A.6
+objectInfo_length 16 uimsbf N8
+for(j=0;j<N8;j++){ uimsbf
+objectInfo_data_byte 8 uimsbf
+}
+}
+}
+的语义如下
+BIOP∷DirectoryMessageBody :
+域标明了消息要素 包括消息长度 使用的字节排序 值 表示
+● byte_order ( ) 。 FALSE(0) big-endian
+字节排序 值 表示 字节排序
+, True(1) little-endian ;
+的值为 时表示后面的数据使用 字节排序来编码
+● byte_order 0x00 big-endian ;
+域标识了消息中传输的对象 与该对象 的 组
+● objectKey ,objectkey IOR BIOP∷objectLocation
+件中出现的 相同 的值仅对广播服务器有意义 客户端不解释它 然而
+objectKey 。objectKey , 。 ,
+客户端将把它与 中的 进行逐字节地比较
+IOR objectKey ;
+长度的值应小于等于
+● objectKey 0x04;
+域标明了该消息中对象的种类 它和对象的 中的 串是一致的 见表
+● objectKind 。 IOR type_id ,
+的值定义了 和 域的的句法和语义 目录消息的
+A.7。objectKind objectInfo messageBody 。
+应该是
+objectKind “dir”;
+域含有对象一部分或全部的特性 这个域的句法和语义是依赖于 域的
+● objectInfo 。 objectKind ;
+用来传递用户私有相关数据到对象接口上去 提供与对象接口相联系的私
+● serviceContextList ,
+有数据 它的使用未在本附录中定义 数字电视兼容接收端可跳过 域
+( )。 ServiceContextList ;
+域 也就是 和 包含了对象路径详细信息 由 定义
+● BindingName ( id kind) ( CosNaming );
+该 仅含有一个 因此 被置
+● BIOP∷Name, Name NameComponent, nameComponents_count
+为
+1;
+域标明了对象绑定类型 当这个名字被绑定到一个目录或业务网关对象时 绑定
+● BindingType 。 ,
+54
+GB/T28430—2012
+的类型为 当这个名字被绑定到非目录或业务网关对象时 绑定的类型为
+“ncontext”, , “nobject”。
+对象轮播不支持 为
+U-U BindingType “composite”;
+域包含有对象的
+● ObjectRef IOR;
+域含有绑定对象的一些特性和关于该对象的用户私有信息 如果绑定对象的特性
+● ObjectInfo 。
+在这个域中 它们应是被封装在该域的第一个结构中
+, 。
+数字电视接收端可跳过 域中的信息
+● objectInfo 。
+A842 文件
+...
+含有 进制流的文件数据 其句法见表
+FileMessageBody 8 , A.13。
+表A13 BIOP FileMessage句法
+. ∷
+句 法 比特数 类型 值 注 释
+BIOP∷FileMessage(){
+Magic 4x8 uimsbf 0x42494F50 “BIOP”
+主版本
+biop_version.major 8 uimsbf 0x01 BIOP 1
+副版本
+biop_version.minor 8 uimsbf 0x00 BIOP 0
+字节排序
+byte_order 8 uimsbf 0x00 big_endian
+message_type 8 uimsbf 0x00
+message_size 32 uimsbf
+objectKey_length 8 uimsbf N1
+for(i=0;i<N1;i++){
+objectKey_data_byte 8 uimsbf
+}
+objectKind_length 32 uimsbf 0x00000004
+别名
+objectKind_data 4x8 uimsbf 0x66696C00 “fil”type_id
+objectInfo_length 16 uimsbf N2
+DSM∷File∷ContentSize 64 uimsbf objectInfo
+for(i=0;i<N2-8;i++){
+objectInfo_data_byte 8 uimsbf
+}
+serviceContextList_count 8 uimsbf N3 serviceContextList
+for(i=0;i<N3;i++){
+serviceContextList_data_byte 8 uimsbf
+}
+MessageBody_length 32 uimsbf
+Content_length 32 uimsbf N4
+for(i=0;i<N4;i++){
+实际文件内容
+Content_data_byte 8 uimsbf
+}
+}
+消息的语义和 消息的语义是相同的 除了以下原则
+BIOP∷File BIOP∷Directory , :
+域标明了在该消息中的对象种类 它和该对象的 中的 串是相同的 见
+● objectKind 。 IOR type_id ,
+表 的值定义了 域和 域的句法和语义
+A.7。objectKind objectInfo messageBody 。
+一个文件消息的 的值为
+● objectKind “fil”。
+55
+GB/T28430—2012
+A843 流
+...
+流消息的 值为
+objectKind “str”。
+由一系列与流对象相关的 构成 其句法见表
+BIOP∷StreamMessageBody Tap , A.14。
+表A14 BIOP StreamMessage句法
+. ∷
+句 法 比特数 类型 值 注 释
+BIOP∷StreamMessage(){
+Magic 4x8 uimsbf 0x42494F50 “BIOP”
+主版本
+biop_version.major 8 uimsbf 0x01 BIOP 1
+副版本
+biop_version.minor 8 uimsbf 0x00 BIOP 0
+字节排序
+byte_order 8 uimsbf 0x00 big_endian
+message_type 8 uimsbf 0x00
+message_size 32 uimsbf
+objectKey_length 8 uimsbf N1
+for(i=0;i<N1;i++){
+objectKey_data_byte 8 uimsbf
+}
+objectKind_length 32 uimsbf 0x00000004
+别名
+objectKind_data 32 uimsbf 0x73747200 “str”type_id
+objectInfo_length 16 uimsbf N6
+DSM∷Stream∷Info_T{ objectInfo
+aDescription_length 8 uimsbf N2 aDescription
+for(i=0;i<N2;i++){
+aDescription_bytes 8 uimsbf
+}
+秒
+duration.aSeconds 32 simsbf AppNPT
+微秒
+duration.aMicroSeconds 32 uimsbf AppNPT
+audio 8 uimsbf
+video 8 uimsbf
+data 8 uimsbf
+}
+for(i=0;I<N6-(N2+10);i++){
+objectInfo_byte 8 uimsbf
+}
+serviceContextList_count 8 uimsbf N3 serviceContextList
+for(i=0;I<N3;i++){
+serviceContextList_data_byte 8 uimsbf
+}
+messageBody_length 32 uimsbf
+taps_count 8 uimsbf N4
+for(i=0;I<N4;i++){
+未定义
+id 16 0x0000
+见表
+use 16 A.15
+association_tag 16
+无
+selector_length 8 0x00 selector
+}
+}
+56
+GB/T28430—2012
+该流包含一个或多个与流对象相关联的 当一个或多个 使用 的
+Tap。 Tap BIOP_ES_USE TapUse
+的值时 该流由许多 流构成 每个 流由一个 标明 当仅有一个 使用
+, ES , ES BIOP_ES_USETap ; Tap
+的 的值时 该流由一个节目构成 该节目由
+BIOP_PROGRAM_USE TapUse , , BIOP_PROGRAM_USE
+标明
+Tap 。
+指向 流的 域的语义如下
+ES Tap :
+域标明了该 的使用 此域的值为
+● use Tap , BIOP_ES_USE;
+标明了 流
+● association_tag ES ;
+域为空
+● selector 。
+指向节目的 域的语义如下
+tap :
+域标明了 的使用 该域的值为
+● use Tap , BIOP_PROGRAM_USE;
+标明了描述该广播节目的 的值应和指向该 的
+● association_tag PMT。association_tag PMT ,de-
+中的 的值相同 见 条的
+ferred_association_tags_descriptor association_tag , A.8.7.4 deferred_
+association_tags_descriptor;
+域为空
+● selector 。
+注 流中的 可能也指向 状态 事件 流
+: Tap NPT、 、 ES 。
+在 中允许使用的 定义见表
+BIOP∷StreamMessage TapUse A.15。
+表A15 在BIOP StreamMessage中允许使用的TapUse定义
+. ∷
+域 值 所在 的广播内容
+TapUse PID
+码流 描述符
+STR_NPT_USE 0x000B NPT
+同时有流模式和流事件描述符
+STR_STATUS_AND_EVENT_USE 0x000C
+流事件描述符
+STR_EVENT_USE 0x000D
+流模式描述符
+STR_STATUS_USE 0x000E
+流 音 视频
+BIOP_ES_USE 0x0018 ES ( / )
+节目基准
+BIOP_PROGRAM_USE 0x0019
+A844 业务网关
+...
+业务网关消息的句法和语义与 的句法和语义相同 除了业务网关消息的
+BIOP∷DirectoryMassage ,
+值为 的情况
+objectKind “srg” 。
+A845 StreamEvent
+...
+的句法见表
+BIOP∷StreamEventMassage A.16。
+表A16 BIOP StreamEventMessage句法
+. ∷
+句 法 比特数 类型 值 注 释
+BIOP∷StreamEventMessage(){
+magic 4x8 uimsbf 0x42494F50 “BIOP”
+主版本
+version.major 8 uimsbf 0x01 BIOP 1
+version.minor 8 uimsbf 0x00
+字节顺序
+byte_order 8 uimsbf 0x00 Big_endian
+57
+GB/T28430—2012
+表A16 续
+. ( )
+句 法 比特数 类型 值 注 释
+message_type 8 uimsbf
+message_size 32 uimsbf
+objectKey_length 8 uimsbf N1
+for(i=0;i< N1;i++){
+objectKey_data_byte 8 uimsbf
+}
+objectKind_length 32 uimsbf 0x00000004
+别名
+objectKind_data 4x8 uimsbf 0x73746500 “ste”type_id
+objectInfo_length 16 uimsbf N6
+DSM∷Stream∷Info_T{
+aDescription_length 8 uimsbf N2 aDescription
+for(i=0;i< N2;i++){
+见
+aDescription_bytes 8 uimsbf BIOP∷StreamMessage()
+}
+见
+duration.aSeconds 32 simsbf BIOP∷StreamMessage()
+见
+duration.aMicroSeconds 16 uimsbf BIOP∷StreamMessage()
+见
+audio 8 uimsbf BIOP∷StreamMessage()
+见
+video 8 uimsbf BIOP∷StreamMessage()
+见
+data 8 uimsbf BIOP∷StreamMessage()
+}
+DSM∷Event∷EventList_T{
+eventNames_count 16 uimsbf N3
+for(i=0;i< N3;i++){
+eventName_length 8 uimsbf N4
+for(j=0;j< N4;j++){
+包括零终止符
+eventName_data_byte 8 uimsbf
+}
+}
+}
+for(i=0;i=N6-(N2+10)-(2+ N3
++sum(N4));i++){
+objectInfo_byte 8 uimsbf
+}
+空的
+serviceContextList_count 8 uimsbf 0x00 serviceContextList
+for(i=0;i< N3;i++){
+serviceContextList_data_byte 8 uimsbf
+}
+messageBody_length 32 uimsbf
+taps_count 8 uimsbf N5
+for(i=0;i< N5;i++){
+未定义
+id 16 uimsbf 0x0000
+见表
+use 16 uimsbf A.15
+association_tag 16 uimsbf
+58
+GB/T28430—2012
+表A16 续
+. ( )
+句 法 比特数 类型 值 注 释
+没有
+selector_length 8 uimsbf 0x00 selector
+}
+eventIds_count 8 uimsbf N3 =eventNames_count
+for(i=0;i< N3;i++){
+eventId 16 uimsbf
+}
+}
+消息的 值为
+StreamEvent objectKind “ste”。
+包含了与 属性中公布的 相关联的 的序列
+EnventIdList EventList_t EventName eventId。EventId
+计数应该与 的序列计数一致
+EventName 。
+注 事件不与 事件对应 应该是原来的意思
+:DSM-CC SI 。 。
+A85 下载数据轮播消息
+..
+A851 DownloadInfoIndication
+...
+广播网络中模块的传输参数由 消息来传送 见
+DownloadInfoIndication() , ISO/IEC13818-6:1998。
+一条 消息可传送同一个 对象轮播的多个模块的传输参数 下面的语义
+DownloadInfoIndication() U-U 。
+规则适用于 消息的各个域
+DownloadInfoIndication() :
+域应该与封装在对象的 的 的
+● transactionId IOR BIOP_DELIVERY_PARA_USETap selector
+中的 取相同的值 这些对象在本消息所描述的模块中传送
+transactionId , ;
+如果 消息的任何域发生了变化 域将加上一个正整数成
+● DownloadInfoIndication ,transaction_id
+为一个新的唯一的值
+;
+域与 消息的 域取相同的值 这些
+● downloadId DownloadDataBlock() downloadId , DownloadD-
+消息传送 消息所描述的模块的块 因此 该域的值也应
+ataBlock() DownloadInfoIndication() 。 ,
+等于 对象轮播中的
+U-U carouselId;
+域包含所有 消息的块的大小 这些 消
+● BlockSize DownloadDataBlock() , DownloadDataBlock()
+息传送 消息所描述模块的块
+DownloadInfoIndication() ;
+和 不使用 置为零
+● windowSize、ackPeriod、tCDownloadWindow、 tCDownloadScenario , ;
+域不使用 长度为零
+● compatibilityDescriptor() , ;
+和 的语义同 的 条
+● moduleId、moduleSize moduleVersion ISO/IEC13818-6:1998 7.3.2 ;
+域为所描述的模块定义了 域的字节长度
+● moduleInfoLength moduleInfo 。
+域包含 结构 结构提供了附加的传送参
+ModuleInfoBytes BIOP∷ModuleInfo 。BIOP∷ModuleInfo
+数和用于在网络中广播这些模块的 其句法见表
+Tap。 A.17。
+表A17 BIOP ModuleinfoMessage句法
+. ∷
+句 法 比特数 类型 值 注 释
+BIOP∷ModuleInfo(){
+ModuleTimeOut 32 uimsbf
+BlockTimeOut 32 uimsbf
+59
+GB/T28430—2012
+表A17 续
+. ( )
+句 法 比特数 类型 值 注 释
+MinBlockTime 32 uimsbf
+taps_count 8 uimsbf N1
+for(j=0;j< N1;j++){
+用户私有
+Id 16 uimsbf 0x0000
+Use 16 uimsbf 0x0017 BIOP_OBJECT_USE
+association_tag 16 uimsbf
+selector_length 8 uimsbf 0x00
+}
+UserInfoLength 8 uimsbf N2
+for(j=0;j< N2;j++){
+包括零终止符
+userInfo_data_byte 8 uimsbf ( )
+}
+}
+的语义如下
+BIOP∷ModuleInfo :
+域给出了以 为单位的超时时限 可用来判断获取一个模块的全部块是否
+● ModuleTimeOut μs ,
+超时
+;
+域给出了以 为单位的超时时限 可用来判断在已经获得一个块的情况下 获
+● BlockTimeOut μs , ,
+取下一个块是否超时
+;
+域标明传送所描述的模块两个相邻块的最小时间间隔 客户端可利用该值来调
+● MinBlockTime ,
+整接收程序 以达到优化的目的
+, 。
+的 域至少包含一个 的值为 的 该
+BIOP∷ModuleInfo Tap TapUse BIOP_OBJECT_USE Tap。
+指向广播这些模块的网络连接 其各域的语义在 条中描述
+Tap 。 A.8.2.5 。
+将 的 域组织成一个描述符的循环 以便能够使用数字电视数据轮播
+BIOP∷ModuleInfo userInfo ,
+中定义的模块描述符
+。
+接收端尤其要支持 标签为 该描述符表明模块以压缩的形
+compressed_module_descriptor( 0x09),
+式传输
+。
+和 域的使用在本附录中不定义
+privateDataLength privateDataByte 。
+数字电视接收端应该能够跳过私有数据域
+。
+A852 DownloadServerInitiate
+...
+业务网关的 通过 消息进行广播
+IOR DownloadServerInitiate() 。
+下面的语义规则适用于消息 的各个域
+DownloadServerInitiate() :
+域是用 填充的 个字节 在下面定义
+● serverId 0xFF 20 。CarouselSpecifier ;
+域不使用 长度为零
+● compatibilityDescriptor() , ;
+域定义后面的 域的字节长度
+● privateDataLength privateDataByte ;
+消息的 域中的数据要包含
+● DownloadServerInitiate() privateDataByte BIOP∷ServiceGateway-
+结构 该结构的句法见表
+Info 。 A.18。
+60
+GB/T28430—2012
+表A18 ServiceGatewayInfo 句法
+. ()
+句 法 比特数 类型 值 注 释
+ServiceGatewayInfo(){
+见表
+IOP∷IOR() A.6
+软件下载
+downloadTaps_count 8 uimsbf N1 Tap
+for(i=0;i< N1;i++){
+Tap() 8 uimsbf
+}
+serviceContextList_count 8 uimsbf N2 ServiceContextList
+for(i=0;i< N2;i++){
+serviceContextList_data_byte 8 uimsbf
+}
+用户信息
+userInfoLength 16 uimsbf N3
+for(i=0;i< N3;i++){
+userInfo_data_byte 8 uimsbf
+}
+}
+的语义如下
+BIOP∷ServiceGatewayInfo :
+域包含 的
+● objectRef ServiceGateway IOR;
+域与 的语义在本附录中不定义
+● Tap serviceContextList ;
+将 域组织成一个描述符的循环 循环中的描述符要么是数字电视数据广播规范定义
+● userinfo 。
+的描述符 要么是私有描述符
+, 。
+A853 DownloadDataBlock
+...
+消息在 中定义 各域的使用在 中
+DownloadData ISO/IEC13818-6:1998 。 ISO/IEC13818-6:1998
+定义
+。
+A86 段
+..
+用 将 包重组成 信息 为 定义了附
+DSM-CC private_section TS DSM-CC ,DSM-CC private_section
+加的语义以支持 的额外需要 由此得到的 称为 其结构与
+DSM-CC 。 section DSMCC_section, private_
+的句法兼容 以便 系统解码器可用 的句法在
+section , GB/T17975.1—2010 。DSM-CC_section ISO/
+中定义
+IEC13818-6:1998 。
+和 的编码在表 中
+table_id_extension、version_number、section_number last_section_number A.19
+定义
+。
+表A19 DSMCC_section域编码
+.
+消息
+table_id table_id_extension version_number section_number last_section_number
+Download- 中
+DSI transaction_id
+ServerInitiate 0x3B 的两个 字节 0x00 0x00 0x00
+LSB
+(DSI)
+Download- 中
+DII transaction_id
+InfoIndication 0x3B 的两个 字节 0x00 0x00 0x00
+LSB
+(DII)
+61
+GB/T28430—2012
+表A19 续
+. ( )
+消息
+table_id table_id_extension version_number section_number last_section_number
+Download-
+ModuleVersion blockNumber%
+DataBlock 0x3C moduleId Max(section_number)
+%32 256
+(DDB)
+消息中 的最低两个有效字节取值范围为
+DownloadServerInitiate transaction_id 0x0000~0x0001。
+消息中 的最低两个有效字节取值范围为
+DownloadInfoIndication transaction_id 0x0002~
+0xFFFF。
+数字电视对关于 域的 规范给出了一些限制 以方便客户接收端的过滤操
+transaction_id DSM-CC ,
+作 特别的 消息的最低两个有效字节为 或 这使得接收端通过设置
+。 ,DSI 0x0000 0x0001。 table_id=
+与 或 的 过滤器 来自动
+0x3B(DownloadControlMessages) table_id_extension=0x0000 0x0001 section ,
+引导轮播 一旦 消息被获取 接收端可以设置 过滤器来监测 的最低两个有
+。 DSI , section transaction_id
+效字节的其他值 这样轮播内容一旦改变 接收端能立即被触发
+。 , 。
+A87 PSI描述符的使用
+..
+A871 PSI的使用机制
+...
+的对象轮播规范与网络无关 因此可以应用到各种广播网络中 网络独立
+ISO/IEC13818-6:1998 , 。
+性通过 概念的使用来获得 通过使用关联标签 一个 可以方便地与某个特定的网络连接关联
+Tap 。 , Tap
+起来 在对象解析的过程中 客户应将 与网络连接关联起来 因此 客户需要一个关联表 该表确
+。 , Tap 。 , ,
+定了各 与网络连接的对应关系
+Tap 。
+基于 流的广播网络中实现 对象轮播 机制有利于
+TS U-U ,PSI :
+将节目 即利用 表 和对象轮播关联起来
+● ( PMT ) ;
+将 与某个 或节目关联起来
+● Tap PID ;
+用于广播业务网关的 的 的定位
+● IOR PID ;
+一个对象轮播在多个节目上的分布式实现
+● 。
+这一条对以下 中的描述符的使用做了说明 它们提供了以上功能 见
+GB/T17975.1—2010 , , ISO/
+IEC13818-6:1998。
+A872 Carousel_Identifier_Descriptor
+...
+轮播标识符描述符建立了节目与对象轮播的关联关系 的句法见
+。Carousel_identifier_descriptor
+表 也可见
+A.20, ISO/IEC13818-6:1998。
+通过这种可选的机制 无须事先加载 和
+, DownloadServerInitiate DownloadIndicationInformation
+消息就可以获取 的
+ServiceDomain ServiceGateway。
+表A20 carousel_identifier_descriptor句法
+.
+句 法 比特数 类型 值 注 释
+carousel_identifier_descriptor(){
+descriptor_tag 8 uimsbf 0x13
+descriptor_length 8 uimsbf
+carousel_id 32 uimsbf
+62
+GB/T28430—2012
+表A20 续
+. ( )
+句 法 比特数 类型 值 注 释
+的注册的标识符
+FormatId 8 uimsbf FormatSpecifier
+FormatSpecifier(){
+见表
+FormatSpecifier_byte 8 uimsbf A.21
+字节
+N2
+}
+for(i=0;i< N1;i++){
+private_data_byte 8 uimsbf
+}
+}
+描述符应该插入到 表第二个描述符循环 中 对应
+carousel_identifier_descriptor() PMT (ES_info) ,
+传送对象轮播的 的 流 这样每个节目可包含多个对象轮播 每个轮播启动的 也相应确定
+DSI ES 。 , PID 。
+为了支持 的使用 描述符 同样是必须的 例
+carouselNSAPaddress , carousel_identifier_descriptor() ,
+如在 类型体关联的确定过程中
+LiteOptions 。
+用于标识描述符私有数据域的 的格式 其句法见表
+FormatId FormatSpecifier 。 A.21。
+表A21 描述器carousel_identifier_descriptor中的FormatSpecifier句法
+.
+值 定义 长度 比特 注 释
+FormatId FormatSpecifier ( )
+值 标明 缺少 因此
+0x00 FormatSpecifier 。 ,
+没有 的位置只可能通过 标准 的
+0x00 FormatSpecifier ServiceGateway “ ”
+方式解释 和 消息
+DSI DII 。
+此 是定位 所
+FormatSpecifier{ FormatSpecifier ServiceGateway
+必须的域的集合 在 和 消息中也可以
+, DSI DII
+ModuleVersion 8
+找到
+。
+ModuleId 16
+BlockSize 16
+所有域的类型都是
+ModuleSize 32 “uimsbf”。
+CompressionMethod 8
+0x01 OriginalSize 32
+以秒为单位的超时时限
+TimeOut 8
+ObjectKeyLength 8
+for(i=0;i< N1;i++{
+业务网关对象的
+ObjectKeyData 8 Objectkey
+}
+}
+的值从 到 为数字电视系
+为将来使用保留 formatId 0x02 0x7F
+0x02...0x7F 统将来使用保留
+的值从 到 为用户私有使
+为私有使用保留 formatId 0x80 0xFF
+0x80...0xFF 用保留
+63
+GB/T28430—2012
+为 表明 中包含了可以用来定位对象轮播的 的信
+FormatId 0x01 FormatSpecifier ServiceGateway
+息 在消息 和 中同样可找到 支持 可能会影响到广播服务器 因为这些信息应与
+( DSI DII )。 FormatID ,
+对象和传递它的模块的变化保持一致
+ServiceGateway 。
+等于 的 表明 消息与包含 的模块是用同一个
+FormatId 0x01 FormatSpecifier DSI ServiceGatway
+传送的
+PID 。
+A873 association_tag_descriptor
+...
+建立了 与 间的关联关系 见
+association_tag_descriptor association_tag PID , ISO/IEC13818-6:
+因此与 的 相似 但 使用 位的
+1998, SI stream_identifier_descriptor 。 assocation_tag_descriptor 16 asso-
+而在描述符 中使用的是 比特的 这有利于广
+cation_tag( stream_identifer_descriptor 8 component_tag),
+播 的 的识别 接收端因此能够从 表大量的 中有效地过滤出对象轮播
+ServiceGateway PID 。 PMT PID 。
+为了给 标注一个特定的 值 服务器应该向该 的描述符循环中插入
+PID association_tag , PID association
+_tag。
+的句法见表
+association_tag_descriptor A.22。
+表A22 association_tag_descriptor
+.
+句 法 比特数 类型 值 注 释
+association_tag_descriptor(){
+descriptor_tag 8 uimsbf 0x14
+descriptor_length 8 uimsbf
+association_tag 16 uimsbf
+具有 中 的
+use 16 uimsbf 0x0000 SGW IOR DSI
+数字电视系统保留
+0x0100-0x1FFF
+用户私有
+0x2000-0xFFFF
+if(use==0x0000){
+selector_length 8 uimsbf 0x08
+的
+transaction_id 32 uimsbf DSI transaction_id
+为 定义的超时时限
+timeout 32 uimsbf DSI
+}
+elseif(use==0x0001)
+selector_length 8 uimsbf 0x00
+}
+else{
+selector_length 8 uimsbf N1
+for(i=0;i< N1;i++){
+selector_byte 8 uimsbf
+}
+}
+for(i=0;i< N2;i++){
+私有数据
+private_data_byte 8 uimsbf
+}
+}
+64
+GB/T28430—2012
+域能指出 的用途 同时规范了 域的句法和语义 如果 域的值等于 则
+use PID , selector 。 use 0x0000,
+传送业务网关的 的 消息是用这个 广播的 在这种情况下
+IOR DownloadServerInitiate PID 。 ,selector_
+域的数据将包含 和 的值
+byte transaction_id timeout 。
+和 的语义如下
+transaction_id timeout :
+的值应该对应于 消息中的 该消息传送
+● transaction_id DownloadServerInitiate() transaction_id,
+对象轮播的业务网关的 例外的是当 中的
+U-U IOR。 association_tag_descriptor transaction_id
+取值为 时 这表明 消息的 目前未知 但
+0xFFFFFFFF , DownloadServerInitiate() transaction_id ,
+是所有已标识的 广播的 消息都是有效的 当
+PID DownloadServerInitiate() 。 Download-
+消息的内容允许改变 因此消息中的 改变 而没有必要更新包
+ServerInitiate() ( transaction_id ),
+含 的 表时 可取值
+association_tag_descriptor PMT ,transaction_id 0xFFFFFFFF;
+域给出以 为单位的超时时限 用来判断 消息的获取是否
+● Timeout μs , DownloadServerInitiate()
+超时 一个特殊的超时值 意味着目前尚无已知的超时的值 同上面一样 允
+。 (0xFFFFFFFF) 。 ,
+许 静态的 表
+“ ”PMT ;
+域的缺省值应为 这表明相关联的 能或不能用来广播一条 消息
+● use 0x0100。 PID DSI ;
+数字电视保留 域中从 到 的取值 以备将来使用
+● use 0x0101 0x01FF , 。
+A874 stream_identifier_descriptor
+...
+有效建立了 与 的关联 可替代 或结合
+stream_identifier_descriptor component_tag PID , ( )
+来使用 但是由于 的 域只有
+association_tag_descriptor 。 stream_identifier_descriptor component_tag
+位 因此在 和 之间进行映射是必要的
+8 , component_tags assocation_tags 。
+某个 描述符循环中的 应该与该 的
+PID stream_identifier_descriptor PID association_tag_
+相同 其 最低有效字节 域的值为
+descriptor , association_tag LSB=<component_tag>,use 0x0100。
+注 这种匹配机制为一个对象轮播在多个 上的分布实现提供了灵活性 并且在不同 表中仍然用同一个
+: ES , PMT
+值来指向这个特定的数据广播业务
+component_tag 。
+A875 deferred_association_tags_descriptor
+...
+一个对象轮播可使用多个 多个业务 甚至多个 流来广播其对象和相应的控制信息 为便
+PID、 、 TS 。
+于客户端确定该对象轮播在不同节目里使用的所有 定义了一个描述符 它可插入到实
+association_tag, ,
+现这个对象轮播的所有节目的 表的第一个描述符循环中
+PMT 。deferred_assocation_tags_descriptor
+包含了对象轮播中使用的所有与描述符本身所在 的 不相关联的 因此
+PMT PID association_tag。 ,
+包含了对节目的前向引用 该节目包含有 所链接
+deferred_assocation_tags_descriptor , association_tag
+的 如果需要 多个 可插入到一个 表中
+PID。 , deferred_assocation_tags_descriptor PMT 。
+而且由于 的存在 还可用来指
+BIOP_PROGRAM_USETap ,deferred_association_tag_descriptor
+向另一个数字电视业务 节目
+( )。
+只要一个对象轮播使用多个业务 就应使用 对每个只传送一
+, deferred_association_tag_descriptor。
+部分对象轮播内容的业务 的列表应是完全的 以避免 映射失败或
+,association_tag , association_tag
+出错
+。
+的句法和语义见表
+deferred_association_tags_descriptor() A.23:
+65
+GB/T28430—2012
+表A23 deferred_association_tags_descriptor
+.
+句 法 比特数 类型 值 注 释
+deferred_association_tags_descriptor(){
+descriptor_tag 8 uimsbf 0x15
+以字节为单位的长度
+association_tags_loop_length 8 uimsbf 2×N1
+descriptor_length 8 uimsbf
+for(n=0;n< N1;n++){
+association_tag 16 uimsbf
+}
+transport_stream_id 16 uimsbf
+program_number 16 uimsbf
+org_network_id 16 uimsbf
+for(n=0;n< N;n++){
+Private_data_byte 8 uimsbf
+}
+}
+A88 SI和PSI中的信息
+..
+A881 数据广播标识
+...
+为表明使用数字电视对象轮播 应该置为
+,data_broadcast_id 0x0007。
+注 如果对象轮播 域 是已经注册了 的规范的组成部分 这个 值 域句法正确 可
+: (use ) data_broadcast_id , id (selector )
+替代 使用
+0x0007 。
+A882 SI描述符
+...
+具有上述值的 的 可用来表明一个业务中使用数字电视对象轮播
+SI data_broadcast_descriptor 。
+这种情况下 的 域包含了对象名称的循环 使对象轮播中的应
+,data_broadcast_descriptor selector ,
+用能够自动引导 循环还包含了 域 可用来基于首选的语言启动应用
+。 ISO_639_language_code , 。
+使用的对象名称应存在于对象轮播中
+data_broadcast_descriptor 。
+A883 PSI的描述符
+...
+的使用方式与数据轮播类似 见 条
+data_broadcast_descriptor , A.7.7.1 。
+A89 transactionId值的分配与使用
+..
+对象轮播中 的使用方法是从 规范的定义继承下来的 因此显得有点复杂
+transactionId DSM-CC , 。
+具 有 双 重 功 能 它 提 供 了 控 制 消 息 即 和
+TransactionId , ( DownloadInfoIndication
+的识别和版本机制 应该唯一标识数据轮播中的下载控制消
+DownloadServerInitiate) 。TransactionId
+息 但是消息的任何字节一旦改变 它都将被 增量
+, , “ ”。
+对象轮播在数据轮播之上传送 而且可由多个数据轮播分发 对象轮播之下的数据轮播 在本附录
+, 。 ,
+中是指一系列用一个 传送的 消息以及传送该消息描述的模块的
+PID DownloadInfoIndication Down-
+消息 与 不同的是 消息可分布到其他
+loadDataBlock 。 DownloadInfoIndication ,DownloadDataBlock ES
+66
+GB/T28430—2012
+中 在对象轮播中 消息 被看作是对象轮播的最上层的一部分 与任何数据轮
+。 , DownloadServerInitiate ,
+播不发生关联
+。
+当一个模块改变 其版本号需要更新 这意味着引用该模块的 消息也需
+, 。 DownloadInfoIndication
+要更新 由于 消息更新了 也需要改变 然而
+。 DownloadInfoIndication ,transactionId 。 ,DownloadIn-
+消息的 还同时在别的消息中使用 但特别需要避免改变其他消息 由模块更
+foIndication transactionId , ,
+新带来的影响应该限制在该模块以及引用它的 消息中 因此 下面说明了使
+DownloadInfoIndication 。 ,
+用 的附加规则
+transactionId 。
+被分解成许多表 中定义的子域 这反映了 的双重功能 上文已
+TransactionId A.24 。 transactionId (
+列出 以及为减小模块更新的影响所强加的限制 但是 为增强互操作性 的分配设计成
+) 。 , ,transactionId
+与目标接收端的预期过滤无关
+。
+表A24 transactionId的子域
+.
+位数 值 子域 描 述
+用户定义 更新标志 每次控制消息更新都会触发这一比特
+0
+对于 消息 这几比特只能都为零 所有其他的
+用户定义 标识 DownloadServerInitiate , 。
+1~15 控制消息应该有一位或更多的位的非零比特
+用户定义 版本 这几个比特每当控制消息更新的时候都会增量 改变
+16~29 /
+第 比特为零 当 为网络分配时 这两比特在 中
+30 生成者 transactionId , ISO/IEC13818-6:1998
+30~31 第 比特非零 被定义为 在广播的操作中是隐含的
+31 0x02-
+由于 具有版本机制的功能 控制消息的任何变化都将导致其 增量 模
+transactionId , transactionId 。
+块发生任何变化都应增量其 域的值 这一变化将反映在描述该模块的
+moduleVersion 。 DownloadIn-
+消息的对应域上 既然 消息的域改变了 其 应该增
+foIndication 。 DownloadInfoIndication , transactionId
+量 以表示一个新版本的消息
+, 。
+同样 消息的任何改变也意味着 的增量 然而 当
+,DownloadServerInitiate transactionId 。 , transac-
+被分解成上述子域以后 消息的更新只需改变 的版本部分 而其识别部分保持
+tionId , transactionId ,
+不变
+。
+由于 也用于在其他结构中引用消息时识别消息 自然很希望这些引用的消息不要在
+transactionId ,
+控制消息每次更新时都随之更新 所以按照关联关系定位消息时应该使用这样的规则 即当根据引用
+。 ,
+消息的 定位一条消息时 只有识别部分 比特 需要匹配
+transactionId , ( 1...15) 。
+运用这一规则 更新一个模块的影响可限制在模块本身以及描述该模块的
+, DownloadInfoIndication
+消息中 同时 这意味着如果接收端只需要过滤出描述该模块的 消息并检查
+。 , DownloadInfoIndication
+其是否改变 就可判定它接收过的模块当前是否发生了变化
+, 。
+67
+GB/T28430—2012
+附 录 B
+规范性附录
+( )
+私有数据广播系统注册
+扩充包含 的值的分配 在一个复用流中 每一个数据流的
+SI data_broadcast_id 。 , data_broadcast_id
+标明了该数据广播的类型或使用的私有系统
+。
+为本标准定义的 种类型保留了 个值 见表 还留下很宽的范围
+data_broadcast_id 7 7 , B.1。 (0x0100-
+用作私有系统的注册
+0xFFFF) 。
+由于允许最小互操作性 因此建议数据广播解决方案进行注册 以帮助解码器识别所能支持的数据
+, ,
+流并且防止它们试图获得不兼容的数据流
+。
+表B1 data_broadcast_id值的分配
+.
+数据广播规范
+data_broadcast_id
+为将来使用保留
+0x0000
+数据管道
+0x0001
+异步数据流
+0x0002
+同步数据流
+0x0003
+从同步数据流
+0x0004
+多协议封装
+0x0005
+数据轮播
+0x0006
+对象轮播
+0x0007
+数字电视系统 流
+ATM 0x0008
+本标准为将来使用保留
+0x0009-0x00FF
+为注册保留
+0x0100-0xFFFE
+为将来使用保留
+0xFFFF
+注 表中阴影部分为本标准定义的 种类型
+: 7 。
+68
+GB/T28430—2012
+附 录 C
+资料性附录
+( )
+文本字符编码
+文本条款可能包含某些选择信息 用来选择较大范围的字符编码表 如下文 如果文本条款中没
+, ( )。
+有字符编码选择信息 则认为使用缺省的字符编码集 的基本多文种页结构见
+, 。GB13000—2010
+图
+C.1。
+C1 控制码
+.
+范围在 到 之间单字节控制码的分配见表
+0x80 0x9F C.1。
+表C1 单字节控制码
+.
+控 制 码 描 述
+预留使用
+0x80~0x85
+字符强调开
+0x86
+字符强调关
+0x87
+预留使用
+0x88~0x89
+0x8A CR/LF
+用户定义
+0x8B~0x9F
+对于双字节的字符表 本附录在 专用区 范围内定义的控制码
+, GB13000—2010 0xE080~0xE09F
+的分配见表
+C.2。
+表C2 双字节控制码
+.
+控 制 码 描 述
+预留使用
+0xE080~0xE085
+字符强调开
+0xE086
+字符强调关
+0xE087
+预留使用
+0xE088~0xE089
+0xE08A CR/LF
+预留使用
+0xE08B~0xE09F
+C2 字符表的选择
+.
+文本域可用非空格 不可显示的数据开始 该数据指定文本条目的剩余部分使用另外一个字符表
+、 , 。
+字符表的选择如下所述
+:
+69
+GB/T28430—2012
+如果文本域第一个字节的数值在 之间 那么文本条目的这个字节和后续的所有字
+● 0x20~0xFF ,
+节都使用默认的字符编码表 表 拉丁文 见图
+( 00— ), C.1;
+如果文本域第一个字节的数值在 之间 那么文本条目的剩余部分的编码见
+● 0x01~0x05 ,
+GB/T15273.1—1994;
+如果文本域第一个字节的数值是 那么接下来的两个字节所携带的 位数值
+● 0x10, 16 N(uimsbf)
+表示了文本条目剩余部分数据使用 定义的字符编码表进行编码
+GB/T15273.1—1994 ;
+如果文本域第一个字节的数值是 那么文本条目剩余部分的编码根据 定
+● 0x11, GB13000—2010
+义的基本多语言平面进行双编码
+;
+如果文本域第一个字节的数值是 表示文本条目中的剩余字节按照韩国字符集
+● 0x12, KSC5601
+编码
+;
+如果文本域第一个字节的数值是 表示文本条目中的剩余字节按照 及其
+● 0x13, GB2312—1980
+扩展集进行编码
+;
+对于文本条目的第一个字节 值 预留使用
+● , 0x00、0x06~0x0F、0x14~0x1F 。
+70
+GB/T28430—2012
+Row-octet
+基本拉丁文 拉丁文 补充
+00 BasicLatin Latin-1Supplement -1
+拉丁文扩充 拉丁文扩充
+01 LatinExtended-A -A LatinExtended-B -B
+拉丁文扩充 国际音标扩充 进格的修饰字符
+02 LatinExtended-B -B IPAExtensions SpacingModificrLetters
+组合用发音符 基本希腊文 希腊符号及哥普特文
+03 CombiningDiacriticalMarks BasicGreek GreekSymbolsandCoptic
+西里尔文
+04 Cyrillic
+亚美尼亚文 希伯来文 基本和扩充
+05 Armenian Hebrew(BasicandExtended) ( )
+基本阿拉伯文 阿拉伯文扩充
+06 BasicArabic ArabicExlended
+天成文书 梵文 孟加拉文
+09 Devanagari ( ) Bengali
+锡克教文 古吉拉特文
+0A Gurmukhi Gujarati
+奥利雅文 泰米尔文
+0B Oriya Tamil
+泰卢固文 卡纳达文
+0C Telugu Kannada
+德拉维族文
+0D Malayalam
+泰文 老挝文
+0E Thai Lao
+格鲁吉亚文
+10 Georgian
+朝鲜文字母
+11 HangulJamo
+拉丁文扩充增补
+1E LatinExtendedAdditional
+希腊文扩充
+1F GreekExtended
+20GeneralPuncluation广义标点 Super-/Subscripts上 /下标 CurrencySymbols货币符号 Comb.DiacritMarksforSymbols1)
+类似字母的符号 数字形式 箭头
+21 LetterlikeSymbols NumberForms Arrows
+数学运算符
+22 MathematicalOperatcrs
+零杂技术用符号
+23 MiscellaneousTechnical
+控制图符 光学字符识别 带括号的字母数字
+24 Controlpictures O.C.R EnclosedAlphanumerics
+制表符 方块元素 几何图形符
+25 BoxDrawing BlockElements GeometricShapes
+零杂符号
+26 MiscellaneousSymbols
+丁贝符 示意符等
+27 Dingbats ( )
+符号和标点 平假名 片假名
+30 CJKSymbolsandPunctuationCJK Hiragana katakana
+注音 朝鲜文兼容字母 零杂字符
+31Bopomofo HangulCompatibilityJamo CJKMiscellaneousCJK
+带括号的 字母及月份
+32 EnclosedCJKLettersandMonths CJK
+兼容字符
+33 CJKCompatibility CJK
+34 朝鲜文
+Hangul
+3D
+朝鲜文补充
+3E HangulSupplementary-A -A
+44
+朝鲜文补充
+45 HangulSupplementary-B -B
+4D
+4E 统一汉字
+CJKUnifiedIdeographs CJK
+9F
+A0
+DF
+E0 专用区
+PrivateUseArca
+F8
+F9 兼容汉字
+CJKCompatibilityIdeographs CJK
+FA
+拼音文字变形显现形式
+FB AlphabeticPresentationForms
+FC 阿拉伯文变形显现形式
+ArabicPresentationForms-A -A
+FD
+半形组合用标志 兼容形式 小写变体ArabicPresentation
+FE Comb.HalfMarks CJKCompatFomsCJK SmallFormVariants
+半形及全形字符 特殊字符
+Forms-BP
+FF HalfwidthandFullwidthForms Specials
+用于符号的组合用区分标志 留作将来标准化用
+1) 。 —
+阿拉伯文变形显现形式 非图形字符
+2) -B。 —
+图C1 GB13000—2010的基本多文种平面总貌
+.
+71
+GB/T28430—2012
+附 录 D
+规范性附录
+( )
+数据广播前端的技术要求
+D1 前端功能要求
+.
+数据广播前端功能面至少满足下述要求
+:
+系统输出码流数据封装方式应使用本规范定义的 种封装格式中的一种或多种封装格式 并
+● 5 ,
+符合第 章中的规定
+4 ;
+能够按照 和本规范的规定设置封装码流所使用的 值 并按照设置正
+● GB/T17975.1—2010 PID ,
+确封装
+;
+能够对 和 相关可编辑内容进行设置 并能够根据设置和第 章中的要求在输出码流中
+● PSI SI , 4
+正确插入 和 主要可设置内容见表
+PSI SI, D.1。
+表D1 PSI和SI中可设置内容
+.
+或 表 可设置字段 备 注
+PSI SI
+设置 的同时应在 中正确体现
+PMT_PID PMT_PID PAT
+PMT 取值应与对应业务的 一致
+program_number service_id
+service_id
+service_name
+位于 中
+SDT service_type service_descriptor
+service_provider
+位于 中
+bouquet_name bouquet_name_descriptor
+能够对播出总带宽进行设置 并根据设置控制输出带宽
+● , ;
+能够对输出码流中单个 标识的数据码流带宽进行设置 并控制该 所标识的数据码流
+● PID , PID
+的输出带宽
+。
+D2 前端数据接口要求
+.
+数据广播前端数据输出接口为 接口 应符合本规范的相关规定
+ASI , 。
+接口性能具体指标要求见表
+D.2。
+表D2 ASI接口指标要求
+.
+序号 项 目 单位 指标要求
+输出幅度
+1 mV [720,880]
+上升时间
+2 (20%~80%) ps ≤1200
+下降时间
+3 (20%~80%) ps ≤1200
+确定性抖动
+4 % ≤10
+72
+GB/T28430—2012
+附 录 E
+规范性附录
+( )
+前端测量方法
+E1 前端测量条件
+.
+温度
+:15℃~35℃;
+相对湿度
+:45%~75%RH;
+大气压
+:86kPa~106kPa;
+电源电压 交流
+:198V~242V ,50Hz±1Hz。
+E2 前端测量框图
+.
+图E1 数字电视系统中数据广播功能和性能测量框图
+.
+图E2 数字电视系统中数据广播接口测量框图
+.
+E3 前端测量设备
+.
+推荐使用表 给出的测量设备
+E.1 。
+表E1 测量设备及要求
+.
+设备名称 要 求 数量
+能够对符合 及 第 章
+GB/T17975.1-2010、GB/T28161—2011 GY/T221—2006 4
+的 流进行实时分析
+码流分析仪 TS ;
+能够对符合 及 第 1
+GB/T17975.1—2010、GB/T28161—2011 GY/T221—2006 4
+章的 流文件进行离线分析
+TS
+数字示波器
+— 1
+E4 前端测量步骤
+.
+E41 前端功能测量步骤
+..
+E411 封装功能
+...
+按照图 连接测量系统
+a) E.1 ;
+73
+GB/T28430—2012
+用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测输出码流是否符合第
+b) ,
+章中数据封装技术要求
+4 。
+E412 PID设置功能
+...
+按照图 连接测量系统
+a) E.1 ;
+检查被测前端系统是否具有 设置功能
+b) PID ;
+用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测输出 是否与被测
+c) , PID
+前端系统设置 一致
+PID ;
+更改 用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测更改后输出
+d) PID, ,
+是否与被测前端系统设置 一致
+PID PID 。
+E413 PSI和SI相关编辑设置功能
+...
+按照图 连接测量系统
+a) E.1 ;
+检查被测前端系统是否具有附录 中表 中所列项目设置功能
+b) D D.1 ;
+用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测输出码流与附录 中
+c) , D
+表 中内容是否与被测前端系统设置内容一致
+D.1 ;
+更改被测前端系统附录 中表 中各项内容 用码流分析仪的实时码流分析功能分析被测
+d) D D.1 ,
+前端系统的输出码流 检测更改后各项内容一致是否与被测前端系统设置内容一致
+, 。
+E414 输出总带宽设置功能
+...
+按照图 连接测量系统
+a) E.1 ;
+检查被测前端系统是否具输出码流总码率设置功能
+b) ;
+用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测输出码流总码率是否
+c) ,
+与被测前端系统设置码率一致
+;
+更改被测前端系统输出总码率 用码流分析仪的实时码流分析功能分析被测前端系统的输出
+d) ,
+码流 检测更改后输出总码率是否与被测前端系统设置总码率一致
+, 。
+E415 单个PID对应数据码流带宽设置功能
+...
+按照图 连接测量系统
+a) E.1 ;
+检查被测前端系统是否具输出单个 对应数据码流带宽设置功能
+b) PID ;
+用码流分析仪的实时码流分析功能分析被测前端系统的输出码流 检测输出码流单个 对
+c) , PID
+应数据码流带宽是否与被测前端系统设置带宽一致
+;
+更改被测前端系统单个 对应数据码流带宽 用码流分析仪的实时码流分析功能分析被测
+d) PID ,
+系统的输出码流 检测更改后单个 对应数据码流带宽是否与被测前端系统设置单个
+, PID PID
+对应数据码流带宽一致
+。
+E42 前端系统接口测量步骤
+..
+按照图 连接测量系统
+a) E.2 ;
+用数字示波器分析被测前端系统的输出信号 检测输出信号是否符合附录 中 的要求
+b) , D D.2 。
+74
+GB/T28430—2012
+附 录 F
+规范性附录
+( )
+数据轮播的DSM-CC消息
+本附录包含了 下载消息的句法 每个域的语义描述标明了按照本附录实现一个数据轮
+DSM-CC 。
+播时可能使用这些域的地方
+。
+F1 dsmccMessageHeader
+.
+的句法见表
+dsmccMessageHeader F.1。
+表F1 dsmccMessageHeader句法
+.
+句 法 字 节 数
+dsmccMessageHeader(){
+protocolDiscriminator 1
+dsmccType 1
+messageId 2
+transactionId 4
+reserved 1
+adaptationLength 1
+messageLength 2
+if(AdaptationLength>0){
+dsmccAdaptationHeader()
+}
+}
+的语义如下
+dsmccMessageHeader :
+域标明本消息是 消息 其值为
+● protocolDiscriminator DSM-CC , 0x11;
+域标明 消息的类型 取值 标明该消息是 下载消息
+● dsmccType DSM-CC , 0x03 U-N ;
+域标明正在传送的消息的类型 其值在 范围内定义
+● messageId , dsmccType ;
+用于对话完整性和出错处理 在一段时间内应该保持唯一性 以确保命令序列不
+● transactionId , ,
+发生冲突 只在本地有效 也就是说其值应该由广播服务器选定
+。transactionId , ;
+域由 保留 置为
+● reserved ISO/IEC13818-6:1998 , 0xFF;
+标明 的字节总长度
+● adaptationLength adaptationheader ;
+标明接下来的消息的字节总长度 这个长度包括 给出的任
+● messageLength 。 adaptationLength
+何 和 给出的消息载荷
+adaptationheader MessageId 。
+F2 dsmccDownloadDataHeader
+.
+的句法见表
+dsmccDownloadDataHeader F.2。
+75
+GB/T28430—2012
+表F2 dsmccDownloadDataHeader句法
+.
+句 法 字 节 数
+dsmccDownloadDataHeader(){
+protocalDiscriminator 1
+dsmccType 1
+messageId 2
+downloadId 4
+reserved 1
+adaptationLength 1
+messageLength 2
+if(AdaptationLength>0){
+dsmccAdaptationHeader()
+}
+}
+的语义如下
+dsmccDownloadDataHeader :
+域标明本消息是 消息 其值为
+● protocolDiscriminator DSM-CC , 0x11;
+域标明 消息的类型 取值 表明该消息是一条 下载消息
+● dsmccType DSM-CC , 0x03 U-N ;
+域给出正在传送的消息的类型 其值在 范围内定义
+● messageId , dsmccType ;
+域把下载数据消息与下载场景的一个实例的下载控制消息关联起来
+● downloadId ;
+域由 保留 置为
+● reserved ISO/IEC13818-6:1998 , 0xFF;
+标明 的字节总长度
+● adaptationLength adaptationheader ;
+标明接下来的消息的字节总长度 这个长度包括 给出的任
+● messageLength 。 adaptationLength
+何 和 给出的消息载荷
+adaptationheader MessageId 。
+F3 DownloadServerInitiate
+.
+消息的句法见表
+DownloadServerInitiate F.3。
+表F3 DownloadServerInitiate消息的句法
+.
+句 法 字 节 数
+DownloadServerInitiate(){
+dsmccMessageHeader()
+serverId 20
+compatibilityDescriptor()
+privateDataLength 2
+for(i=0;i<privateDataLength;i++){
+privateDataByte 1
+}
+}
+76
+GB/T28430—2012
+消息的语义如下
+DownloadServerInitiate :
+域置为 个字节的 也就是不使用该域
+● serverId 20 0xFF( );
+结构只包含 定义的 的
+● compatibilityDescriptor() DSM-CC compatibilityDescriptor compatibili-
+域 置为 也就是不使用该域
+tyDescriptorLength , 0x0000( );
+定义了后面的私有字节的长度
+● privateDataLength ;
+域传送本标准定义的 结构
+● privateDataByte GroupInfoIndication 。
+F4 DownloadInfoIndication
+.
+消息的句法见表
+DownloadInfoIndication F.4。
+表F4 DownloadInfoIndication消息的句法
+.
+句 法 字 节 数
+DownloadInfoIndication(){
+dsmccMessageHeader()
+downloadId 4
+blockSize 2
+windowSize 1
+ackPeriod 1
+tCDownloadWindow 4
+tCDownloadScenario 4
+compatibilityDescriptor()
+numberOfModules 2
+for(i=0;i<numberOfModules;i++){
+moduleId 2
+moduleSize 4
+moduleVersion 1
+moduleInfoLength 1
+for(i=0;i<moduleInfoLength;i++){
+moduleInfoByte 1
+}
+}
+privateDataLength 2
+for(i=0;i<privateDataLength;i++){
+privateDataByte 1
+}
+}
+消息的语义如下
+DownloadInfoIndication :
+是进程中下载操作的标识符 对于数据轮播的操作 应该在网络中唯
+● downloadId 。 ,downloadId
+一定义 对于流控制或无流控制的操作 应该在连接中唯一定义 这一标识符将在
+; ,downloadId 。
+进程中的下载操作所使用的 和
+DownloadDataBlock、DownloadDataRequest DownloadCancel
+消息中使用
+;
+77
+GB/T28430—2012
+是 消息中传输的每个块的字节长度 而每个模块的最后一个块
+● blockSize DownloadDataBlock ,
+的长度可小于
+blockSize;
+在数据轮播中不使用 置为
+● windowSize , 0;
+在数据轮播中不使用 置为
+● ackPeriod , 0;
+在数据轮播中不使用 置为
+● tCDownloadWindow , 0;
+标明进程中整个下载操作以 为单位的超时时限
+● tCDownloadScenario μs ;
+结构只包含 定义的 的
+● compatibilityDescriptor() DSM-CC compatibilityDescriptor compatibili-
+域 置为 也就是不使用该域
+tyDescriptorLength 。 0x0000( );
+是此域后面的循环中描述的模块的个数 对于流控制和无流控制的下载
+● NumberOfModules 。
+操作 该循环描述了客户端要下载的所有模块 对于数据轮播的操作 虽然循环可以描述与数
+, 。 ,
+据轮播相关的所有的模块 但它描述的只是所有模块的一个子集
+, ;
+是模块的标识 模块由域 和 描述
+● moduleId , moduleSize、moduleVersion moduleInfoByte 。
+在每个 范围内是唯一的
+moduleId downloadId ;
+是所描述模块的字节长度
+● moduleSize ;
+是所描述模块的版本
+● moduleVersion ;
+定义了所描述模块 域的字节长度
+● moduleInfoLength moduleInfo ;
+域传送描述符的列表 每个描述符定义相应模块的一个或多个属性
+● moduleInfoByte 。 ;
+注 在本标准中 不使用从 到 范围的值
+: ,moduleId 0xFFF0 0xFFFF 。
+定义后面的私有数据的字节长度
+● privateDataLength ;
+域由用户自定义
+● privateDataByte 。
+F5 DownloadDataBlock
+.
+的句法见表
+DownloadDataBlock F.5。
+表F5 DownloadDataBlock句法
+.
+句 法 字 节 数
+DownloadDataBlock(){
+dsmccDownloadDataHeader()
+moduleId 2
+moduleVersion 1
+reserved 1
+blockNumber 2
+for(i=0;i<N;i++){
+BlockDataByte 1
+}
+}
+的语义如下
+DownloadDataBlock :
+给出该块所属的模块
+● moduleId ;
+给出块所属模块的版本号
+● moduleVersion ;
+域由 保留 置为
+● reserved ISO/IEC13818-6:1998 , 0xFF;
+给出块在模块中的位置 块 为模块的第一个块
+● blockNumber 。 0 ;
+78
+GB/T28430—2012
+传送该块的数据
+● blockDataByte 。
+F6 DownloadCancel
+.
+消息的句法见表
+DownloadCancel F.6。
+表F6 DownloadCancel消息的句法
+.
+句 法 字 节 数
+DownloadCancel(){
+dsmccMessageHeader()
+downloadId 4
+moduleId 2
+blockNumber 2
+downloadCancelReason 1
+reserved 1
+privateDataLength 2
+for(i=0;i<privateDataLength;i++){
+privateDataByte 1
+}
+}
+消息的语义如下
+DownloadCancel :
+是某个正在进行的特定下载实例的标识 它将这个 消息与一个
+● downloadId 。 DownloadCancel
+正在进行的特定下载或数据轮播关联起来
+;
+和 标明取消下载时已经处理过的最后一条 消息
+● moduleId blockNumber DownloadDataBlock 。
+如果没有块被处理 这些域应该被置为
+, 0;
+包含了取消下载的原因代码
+● downloadCancelReason ;
+域由 保留 设置为
+● reserved ISO/IEC13818-6:1998 , 0xFF;
+定义后面的私有数据的字节长度
+● privateDataLength ;
+域的使用在数据轮播中不作规定 可用来传送私有信息
+● privateDataByte , 。
+79
+GB/T28430—2012
+附 录 G
+规范性附录
+( )
+将DSM-CC消息封装到GB/T179751—2010段中
+.
+本附录说明了 消息是怎样被封装到 段中的 请参考 规
+DSM-CC GB/T17975.1—2010 。 DSM-CC
+范中的准确语义
+。
+当 下载消息封装到 流时 使用 句法结构 该结构继承了
+DSM-CC TS , DSMCC_section 。
+中定义的 的所有句法 特定语义用于 头中的特
+GB/T17975.1—2010 private_section 。 DSMCC_section
+定域的编码 到 流包的映射及 的最大长度都符合
+。DSMCC_section TS DSMCC_section GB/T17975.1—
+中定义的 的语义
+2010 private_section 。
+在某些实现中 希望使用 中的 由于某些系统计算 可能有困难
+, private_sections CRC_32。 CRC_32 ,
+句法定义了一种 的替代方式 为了与 保持一致 如果
+DSMCC_section CRC_32 。 GB/T17975.1-2010 ,
+置为 应该存在并且正确 置 时 该
+section_syntax_indicator “1”,CRC_32 。section_syntax_indicator “0” ,
+段的句法与 置 时是一样的 只是 域被校验和域取代 这样句法仍
+section_syntax_indicator “1” , CRC_32 。
+然与 兼容 因为跟在 域之后的载荷会被当成私有数据看待
+GB/T17975.1-2010 , section_length 。
+由于 本身可能出错 的值应该为
+section_syntax_indicator ,private_indicator section_syntax_
+的补数 如果 为 被置为 如果不是这样 表
+indicator 。 section_syntax_indicator “0”,private_indicator “1”, ,
+明这个段出错了 类似的 如果 为 则 应为
+。 , section_syntax_indicator “1”, private_indicator “0”。
+当 为 不使用 且和校验域也设置为 时 将在不同层上提供另
+section_syntax_indicator “0”( CRC) 0 ,
+一种形式的出错检测 这种是强制性要求 以确保本文档对 传输协议的最小需求
+。 , DSMCC_section 。
+在 流中传送 也即 的有关句法和语义 请参考
+TS private_section( DSMCC_section) , GB/T17975.1—
+中 条的 其中包括对 的设置 包载荷中
+2010 2.4.4 PSI。 payload_unit_start_indicator ,TS pointer_field
+的存在 以及包填充字节的使用
+, 。
+除非特别限制 如果 解析完成的话 表 也就是一个或多个带有相同 的
+, table_id ,DSM-CC ( table_id
+可以与其他 格式的表使用相同的 封装到 包中
+DSMCC_section) private_section PID TS 。
+当在 流中传送 消息时 只有 相同的 消息
+TS DownloadDataBlock , downloadId DownloadDataBlock
+才能封装到 相同的 包 这意味着 每个 只能传送一个数据轮播的下载数据消息 但对下
+PID TS 。 , PID 。
+载控制消息不存在这种限制 允许多个数据轮播的下载控制消息在同一个 流中传送 在这些情况
+, ES 。
+下 要获得预期的效果 应使用 的 来明确标明一个特定的最高等级控制消
+, , SI data_broadcast_descriptor
+息的
+transactionId。
+段格式的句法见表
+DSM-CC G.1。
+表G1 DSM-CC段格式的句法
+.
+句 法 比特数 类型
+DSMCC_section(){
+table_id 8 uimsbf
+section_syntax_indicator 1 bslbf
+private_indicator 1 bslbf
+reserved 2 bslbf
+dsmcc_section_length 12 uimsbf
+table_id_extension 16 uimsbf
+80
+GB/T28430—2012
+表G1 续
+. ( )
+句 法 比特数 类型
+reserved 2 bslbf
+version_number 5 uimsbf
+current_next_indicator 1 bslbf
+section_number 8 uimsbf
+last_section_number 8 uimsbf
+if(table_id==0x3A){
+LLCSNAP()
+}
+elseif(table_id==0x3B){
+userNetworkMessage()
+}
+elseif(table_id==0x3C){
+downloadDataMessage()
+}
+elseif(table_id==0x3D){
+DSMCC_descriptor_list()
+}
+elseif(table_id==0x3E){
+for(i=0;i<DSMCC_section_length-9;i++){
+private_data_byte
+}
+}
+if(section_syntax_indicator==“0”){
+checksum 32 uimsbf
+}
+else{
+CRC_32 32 rpchof
+}
+}
+注1 在 类中
+:DownloadServerInitiate、DownloadInfoIndication、DownloadCancel userNetworkMessage 。
+注2 在 类中
+:DownloadDataBlock downloadMessage 。
+81
+GB/T28430—2012
+附 录 H
+规范性附录
+( )
+目录中的对象命名
+在 中 目录对象提供了树状等级目录结构 每个目录对象都可包含对其他目录 例如子
+DSM-CC , 。 (
+目录 和对象的关联关系 当对象被绑定到目录时 将有一个名称字符串分配给它 用于在该目录内唯
+) 。 , ,
+一标识该对象 业务网关对象是目录等级图的根目录 由根目录业务网关名称 经过的所有子目录名
+。 。 、
+称和最后到达的对象的名称组成的一条路径 唯一标识了一个对象轮播中的某个对象 一个对象可能
+, 。
+被绑定到多个目录 因此可有多个路径指向同一个对象
+, 。
+下面给出了分隔目录名称与对象名称的约定
+:
+用反斜杠 来分隔目录名称和对象名称
+● “/” ;
+反斜杠 不能作为名称的一部分
+● “/” 。
+注 不需要使用相对路径 因此也不必要有其他约定
+: , 。
+由于各种原因 与对象轮播使用了大量略有差别的数据结构在不同的环境中存储路径
+,DSM-CC 。
+因此 在不同的环境中 尽管存储目录可能指向同一个路径 也就是在不同数据结构中的名称字符串相
+, , ,
+同 但是它们的数据结构可能不同
+, 。
+H1 DSM-CC的U-UAPI中名称使用的数据结构
+.
+为不同环境中的目录提供了两种不同的数据结构 原因是 的目录对象是从
+U-UAPI 。 DSM-CC
+的 对象继承的 然而由于 为它增添了一些功能 为了
+CORBA CosNaming∷NamingContext 。 DSM-CC ,
+这些额外的功能 应定义独立的数据结构来传递路径信息
+, 。
+是所有名称数据结构的基础 它代表了对象完整路径名称的一部
+CosNaming∷NameComponent 。
+分 比如在子目录中的名称 结构包含两个域 和 域包含确切的名称字符
+, 。NameComponent :id kind。id
+串 域包含对象的类型
+;kind 。
+是 的序列 代表整个路径 但是 这个结构通常只表示从其所
+CosNaming∷Name NameComponet , 。 ,
+在目录开始的相对路径 当它在根目录业务网关中使用时 自然表示完整的绝对路径
+。 , 。
+在某些用途中 包含在叫做 的结构中 除了 该结构还包含一
+,Name CosNaming∷Binding 。 Name,
+个 域 的作用是为 所指对象分类
+BindingType 。BindingType Name 。
+为路径定义了另外一个数据结构 由 结构序列
+DSM-CC DSM∷PathSpec。PathSpec DSM∷Step
+构成 包含了 中使用的相同的 还有一个额外的处理标记
+。Step CosNaming∷Name NameComponent, ,
+用于在某些功能中标明该操作是否应用到这部分路径 在 中使用 时 通常还有另
+。 DSM-CC PathSpec ,
+外一个 参数 给出解释 的方式 它区分了使用 的两种不同方
+PathType 。PathType PathSpec 。 PathSpec
+式 当 为 的意义与 等同 例如它表示从当前目录沿树状图往下的
+。 PathType DEPTH,PathSpec Name ,
+相对路径 然而 当 为 中的 用来标识同一目录下
+。 , PathType BREADTH,PathSpec NameComponents
+的多个不同的对象
+。
+H2 对象轮播中名称使用的数据结构
+.
+为优化传输 对象轮播使用与 略有不同的数据结构 但是 这些数据结构被设计成与
+, U-UAPI 。 ,
+中使用的结构等同
+API 。
+与 等同 但增添了字符串的最大长度以
+BIOP∷NameComponent CosNaming∷NameComponent ,
+82
+GB/T28430—2012
+优化编码
+。
+与 等同 但定义了其中 个数的上限以优化
+BIOP∷Name CosNaming∷Name , NameComponent
+编码
+。
+对象轮播的 提供了实现目录对象的必要信息 目录信息包含
+DirectoryMessage 。 BIOP∷Binding,
+中包括了从本目录到对象的路径的名称 目录信息还包含了
+BIOP∷Binding ; IOR(InteroperableObject
+互操作对象基准 其中给出了定位一个确定对象的必要信息 不同于
+Reference ), 。BIOP∷Binding Cos-
+前者包含了对象的引用 而后者没有 这是因为 在对象轮播中可用它来传送对象
+Naming∷Binding, , 。 ,
+的位置 而在 中对象的定位属于目录对象的内部事务 在应用程序中是不可见的
+, API , 。
+H3 对象轮播中的CORBA串
+.
+在许多地方对象轮播消息中包括文本串 这些串都遵循 的 条给出的格式
+。 CORBAV2.0 12.3.2 。
+例如每个串前面都加上了一个声明串长度的 比特整数 结尾加上了一个空字符 通常 这可以从下
+32 , 。 ,
+面的句法表中明显看出来 但是 为清楚起见 表 使用的是 格式字符串
+。 , , H.1 CORBA 。
+表 H1 CORBA格式字符串的定位
+.
+字 符 串 位 置
+句法
+objectKind_data BIOP∷FileMessage
+句法
+objectKind_data,id_data,kind_data BIOP∷DirectoryMessage
+句法
+objectKind_data BIOP∷StreamMessage
+句法
+objectKind_data,eventName_data BIOP∷StreamEventMessage
+句法
+type_id_byte BIOP∷IOR
+带有 的 类型体的句法
+id_data,kind_data ServiceLocation Options
+中 华 人 民 共 和 国
+国 家 标 准
+数字电视系统数据广播技术规范
+GB/T28430—2012
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京市朝阳区和平里西街甲 号
+2 (100013)
+北京市西城区三里河北街 号
+16 (100045)
+网址
+:www.gb168.cn
+服务热线
+:010-68522006
+年 月第一版
+2012 10
+*
+书号
+:155066·1-45671
+版权专有 侵权必究
+—
+/
+2102
+03482T
+BG

@@ -1,0 +1,4100 @@
+ICS3524060
+. .
+CCSA10
+中 华 人 民 共 和 国 国 家 标 准
+GB/T176992—2024
+.
+代替GB/T15635—2014
+行政 商业和运输业电子数据交换
+、
+第 部分 复合数据元目录
+2
+:
+ElectronicdatainterchangeforadministrationcommerceandtransportEDIFACT —
+, ( )
+Part2Compositedataelementsdirectory
+:
+2024-05-28发布 2024-09-01实施
+国 家 市 场 监 督 管 理 总 局
+发 布
+国 家 标 准 化 管 理 委 员 会
+GB/T176992—2024
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+引言
+………………………………………………………………………………………………………… Ⅳ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+复合数据元描述
+4 ………………………………………………………………………………………… 2
+复合数据元结构中数据元状态
+4.1 …………………………………………………………………… 2
+复合数据元的数据类型及格式
+4.2 …………………………………………………………………… 2
+复合数据元的表示方法
+4.3 …………………………………………………………………………… 2
+复合数据元目录
+5 ………………………………………………………………………………………… 2
+批式电子数据交换复合数据元目录
+5.1 ……………………………………………………………… 2
+交互式电子数据交换复合数据元目录
+5.2 …………………………………………………………… 34
+参考文献
+…………………………………………………………………………………………………… 53
+Ⅰ
+GB/T176992—2024
+.
+前 言
+本文件按照 标准化工作导则 第 部分 标准化文件的结构和起草规则 的规定
+GB/T1.1—2020《 1 : 》
+起草
+。
+本文件是 行政 商业和运输业电子数据交换 的第 部分 已经发布了
+GB/T17699《 、 》 2 。GB/T17699
+以下部分
+:
+第 部分 数据元目录
+——— 1 : ;
+第 部分 复合数据元目录
+——— 2 : ;
+第 部分 段目录
+——— 3 : 。
+本文件代替 行政 商业和运输业电子数据交换 复合数据元目录 与
+GB/T15635—2014《 、 》,
+相比 除结构调整和编辑性改动外 主要技术变化如下
+GB/T15635—2014 , , :
+增加了数据元 成分数据元 复合数据元 复合数据元目录 批式 交互式的术语和定义 见
+——— 、 、 、 、 、 ( 3.1、
+3.2、3.3、3.4、3.5);
+更改了复合数据元的描述 见第 章 年版的第 章
+——— ( 4 ,2014 3 );
+增加了批式电子数据交换复合数据元目录的复合数据元 见
+——— C290( 5.1);
+更改了批式电子数据交换复合数据元目录的复合数据元
+——— C002、C003、C004、C008、C009、C010
+的说明 见 年版的
+( 5.1,2014 4.1);
+更改了交互式电子数据交换复合数据元目录的复合数据元 的说明
+——— E005、E006、E026、E817
+见 年版的
+( 5.2,2014 4.2)。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别专利的责任
+。 。
+本文件由全国电子业务标准化技术委员会 提出并归口
+(SAC/TC83) 。
+本文件起草单位 兴宇汽车零部件股份有限公司 中国标准化研究院 滁州喜多多食品科技有限公
+: 、 、
+司 中国网络安全审查认证和市场监管大数据中心 福建省星云大数据应用服务有限公司 成都市智慧
+、 、 、
+蓉城研究院有限公司 衢州市计量质量检验研究院 内蒙古工业大学 杭州赞象信息科技有限公司 成都
+、 、 、 、
+市标准化研究院 湖北华中电力科技开发有限责任公司 广东中采招标有限公司 北京罗格数据科技有
+、 、 、
+限公司 宁波广知电子科技有限公司 中通云仓科技有限公司 福建省标准化研究院 福建理工大学 成
+、 、 、 、 、
+都市人力资源社会保障信息中心 佛山众陶联供应链服务有限公司 福建省中科标准科技有限责任公
+、 、
+司 深圳爱司科技有限公司
+、 。
+本文件主要起草人 黄增阳 曹新九 魏颖昊 姜广君 王建敏 王志民 张荫芬 许庆纯 王淑敏
+: 、 、 、 、 、 、 、 、 、
+彭丽 王海瀛 赵立柱 李茂春 徐文峰 刘莎 周雄伟 彭雪梅 陈淑仪 赵书舒 刘飞 任德平 卢秋萍
+、 、 、 、 、 、 、 、 、 、 、 、 、
+陈桂莲 钟军 陈雯珊 曾繁仰 梁钰 王柏桦
+、 、 、 、 、 。
+本文件及其所代替文件的历次版本发布情况为
+:
+年首次发布为 年第一次修订 年第二次修订
+———1999 GB/T15635—1999,2008 ,2014 ;
+本次为第三次修订 标准编号调整为
+——— , GB/T17699.2—2024。
+Ⅲ
+GB/T176992—2024
+.
+引 言
+长期以来 电子数据交换技术 在国外得到广泛的应用 为促进和
+, (Electronicdatainterchange,EDI) ,
+保障 技术的应用 联合国贸易便利化与电子业务中心制定发布了 标准 其中
+EDI , UN/EDIFACT 。 ,
+段目录 数据元目录和 复合数据元目录组成了一套完
+UN/EDIFACT 、UN/EDIFACT UN/EDIFACT
+整的 数据标准 同时 鉴于 数据标准的重要性和日益频繁的应用 随着
+UN/EDIFACT 。 , UN/EDIFACT ,
+技术的发展 联合国贸易便利化与电子业务中心每年对 数据标准进行一次更新 保
+EDI , UN/EDIFACT ,
+证及时满足实际需要 促进经济社会的快速发展
+, 。
+近年来 我国国际合作日益频繁 进出口贸易量成倍增长 不论是从创造国际贸易伙伴条件 提高通
+, , , ,
+关效率 或是有效地参加国际商业竞争和创造巨大外贸效益考虑 的开发与应用都已成为我国经济
+, ,EDI
+贸易发展的一项基础性工作 因此 为使我国国家标准与国际标准相衔接 尽快解决标准老化问题 加
+。 , , ,
+快 标准的更新 我们及时开展对电子数据交换标准的修订 以满足我国国际贸易的电子数据交换
+EDI , ,
+需求
+。
+目前 本文件是第 次修订 本次修订依据我国对国外标准的转化规定 在参照 标准
+, 3 , , UN/ECE
+版技术内容的基础上 结合我国实际需要进行转化修订
+D.22B , 。
+行政 商业和运输业电子数据交换 段目录 行政 商业
+GB/T15634—2014《 、 》、GB/T15635—2014《 、
+和运输业电子数据交换 复合数据元目录 行政 商业和运输业电子数据交
+》、GB/T17699—2014《 、
+换 数据元目录 行政 商业和运输业电子数据交换 代码表 修订为
+》、GB/T16833—2011《 、 (EDIFACT) 》
+分部分标准 行政 商业和运输业电子数据交换 拟由四个部分构成
+GB/T17699《 、 》。GB/T17699 。
+第 部分 数据元目录 目的在于确定行政 商业 运输业电子数据交换 中使用的
+——— 1 : 。 、 、 (EDIFACT)
+数据元的标记 名称 说明 表示和适用范围
+、 、 、 。
+第 部分 复合数据元目录 目的在于确定行政 商业 运输业电子数据交换 中使
+——— 2 : 。 、 、 (EDIFACT)
+用的用户复合数据元表示的有关说明 复合数据元目录以及复合数据元集
+、 。
+第 部分 段目录 目的在于确定行政 商业 运输业电子数据交换 中使用的用户
+——— 3 : 。 、 、 (EDIFACT)
+数据段表示的有关说明 段目录和段目录集
+、 。
+第 部分 代码表 目的在于确定行政 商业 运输业电子数据交换 中代码型数据
+——— 4 : 。 、 、 (EDIFACT)
+元的代码值
+。
+Ⅳ
+GB/T176992—2024
+.
+行政 商业和运输业电子数据交换
+、
+第 部分 复合数据元目录
+2
+:
+1 范围
+本文件规定了行政 商业 运输业电子数据交换 中使用的复合数据元描述 复合数据元
+、 、 (EDIFACT) 、
+目录
+。
+本文件适用于行政 商业 运输业电子数据交换 中的标准报文的设计
+、 、 (EDIFACT) 。
+2 规范性引用文件
+下列文件中的内容通过文中的规范性引用而构成本文件必不可少的条款 其中 注日期的引用文
+。 ,
+件 仅该日期对应的版本适用于本文件 不注日期的引用文件 其最新版本 包括所有的修改单 适用于
+, ; , ( )
+本文件
+。
+行政 商业和运输业电子数据交换 应用级语法规则 第
+GB/T14805.1—2007 、 (EDIFACT) 1
+部分 公用的语法规则
+: (ISO9735-1:2002,IDT)
+3 术语和定义
+界定的以及下列术语和定义适用于本文件
+GB/T14805.1—2007 。
+31
+.
+数据元 dataelementDE
+;
+由一组属性规定其定义 标识 表示和允许值的数据单元
+、 、 。
+来源
+[ :GB/T18391.1—2009,3.1]
+32
+.
+成分数据元 componentdataelement
+在复合数据元中使用的简单数据元
+。
+来源
+[ :GB/T14805.1—2007,4.17]
+33
+.
+复合数据元 compositedataelement
+按照复合数据元规范中的说明 命名和结构化的 在功能上相互关联的成分数据元的集合
+、 , 。
+注 在传送中 复合数据元是符合复合数据元规范的一个或多个成分数据元的有序集合
+: , 。
+来源
+[ :GB/T14805.1—2007,4.19]
+34
+.
+复合数据元目录 compositedataelementdirectory
+已标识和命名的复合数据元及其规范的清单
+。
+来源
+[ :GB/T14805.1—2007,4.20]
+1
+GB/T176992—2024
+.
+35
+.
+批式EDI batchEDI
+对参与方之间使用请求和应答方式的结构化数据交换没有特殊需求的电子数据交换
+。
+来源 有修改
+[ :GB/T14805.1—2007,4.6, ]
+36
+.
+交互式EDI interactiveEDI
+为某种业务目的而在对话中进行预定义和结构化的电子数据交换
+。
+来源
+[ :GB/T14805.1—2007,4.55]
+4 复合数据元描述
+41 复合数据元结构中数据元状态
+.
+复合数据元结构中数据元状态用 和 表示 其含义是
+M C , :
+条件型
+a) C——— ;
+必备型
+b) M——— 。
+42 复合数据元的数据类型及格式
+.
+复合的数据类型及格式按照 中附录 的规定
+GB/T14805.1—2007 B 。
+43 复合数据元的表示方法
+.
+批式电子数据交换复合数据元由大写字母 加 位数字表示 如 交互式电子数据交换复
+C 3 , :C001。
+合数据元由大写字母 加 位数字表示 如
+E 3 , :E001。
+5 复合数据元目录
+51 批式电子数据交换复合数据元目录
+.
+位置标
+识符 标记 中文名称 英文名称 状态 表示
+运输工具
+C001 TRANSPORTMEANS
+说明 标识运输工具种类的代码和 或名称
+: / 。
+运输工具描述代码
+010 8179 Transportmeansdescriptioncode C an..8
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代
+030 3055 Codelistresponsibleagencycode C an..3
+运输工具描述
+040 8178 Transportmeansdescription C an..17
+单证 报文名称
+C002 / DOCUMENT/MESSAGENAME
+说明 用代码或名称表示的单证或报文类型 优先选用代码型表示
+: 。 。
+单证名称代码
+010 1001 Documentnamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+单证名称
+040 1000 Documentname C an..35
+2
+GB/T176992—2024
+.
+动力类型
+C003 POWERTYPE
+说明 说明动力的类型
+: 。
+动力类型代码
+010 7041 Powertypecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+动力类型描述
+040 7040 Powertypedescription C an..17
+事件类别
+C004 EVENTCATEGORY
+说明 说明事件的类别
+: 。
+事件类别描述代码
+010 9637 Eventcategorydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+事件类别描述
+040 9636 Eventcategorydescription C an..70
+货币金额功能细目
+C008 MONETARYAMOUNTFUNCTIONDETAIL
+说明 提供货币金额功能的细目
+: 。
+货币金额功能细目描述代码
+010 5105 Monetaryamountfunctiondetaildescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+货币金额功能细目描述
+040 5104 Monetaryamountfunctiondetaildescription C an..70
+信息种类
+C009 INFORMATIONCATEGORY
+说明 说明信息的种类
+: 。
+信息种类描述代码
+010 4149 Informationcategorydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+信息种类描述
+040 9614 Informationcategorydescription C an..70
+信息类型
+C010 INFORMATIONTYPE
+说明 说明信息的类型
+: 。
+信息类型代码
+010 4473 Informationtypecode C an..4
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+信息类型
+040 4472 Informationtype C an..35
+信息细目
+C011 INFORMATIONDETAIL
+说明 提供信息的细目
+: 。
+信息细目描述代码
+010 4151 Informationdetaildescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+信息细目描述
+040 4150 Informationdetaildescription C an..256
+处理指示符
+C012 PROCESSINGINDICATOR
+3
+GB/T176992—2024
+.
+说明 处理指示符的标识
+: 。
+处理指示符描述代码
+010 7365 Processingindicatordescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+处理指示符描述
+040 7364 Processingindicatordescription C an..35
+支付条款
+C019 PAYMENTTERMS
+说明 付款条款的信息
+:
+付款条款描述标识符
+010 4277 Paymenttermsdescriptionidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+付款条款描述
+040 4276 Paymenttermsdescription C an..35
+事件类型
+C030 EVENTTYPE
+说明 说明事件的类型
+:
+事件类型描述代码
+010 9171 Eventtypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+事件类型描述
+040 9170 Eventtypedescription C an..70
+承运人
+C040 CARRIER
+说明 用代码和 或名称表示的承运人的标识 优先选用代码型表示
+: / , 。
+承运人标识
+010 3127 Carrieridentification C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+承运人名称
+040 3126 Carriername C an..35
+国籍细目
+C042 NATIONALITYDETAILS
+说明 说明国籍的名称或代码
+: 。
+国籍名称代码
+010 3293 Nationalitynamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+国籍名称
+040 3292 Nationalityname C an..35
+票据层标识
+C045 BILLLEVELIDENTIFICATION
+说明 用于多种索引目的的复式代码序列集
+: 。
+第一层标识
+010 7436 leveloneID C an..17
+第二层标识
+020 7438 LeveltwoID C an..17
+第三层标识
+030 7440 LevelthreeID C an..17
+第四层标识
+040 7442 LevelfourID C an..17
+第五层标识
+050 7444 LevelfiveID C an..17
+第六层标识
+060 7446 LevelsixID C an..17
+4
+GB/T176992—2024
+.
+酬金类型标识
+C049 REMUNERATIONTYPEIDENTIFICATION
+说明 酬金类型的标识
+: 。
+酬金类型名称代码
+010 5315 Remunerationtypenamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+酬金类型名称
+040 5314 Remunerationtypename C an..35
+酬金类型名称
+050 5314 Remunerationtypename C an..35
+联系人细目
+C056 CONTACTDETAILS
+说明 联系人的联系代码和 或名称 优先选用代码型表示
+: / , 。
+联系人标识符
+010 3413 Contactidentifier C an..17
+联系人名称
+020 3412 Contactname C an..256
+名称和地址
+C058 NAMEANDADDRESS
+说明 非结构化的名称和地址 占 行 行
+: , 1 ~5 。
+名称和地址描述
+010 3124 Nameandaddressdescription M an..35
+名称和地址描述
+020 3124 Nameandaddressdescription C an..35
+名称和地址描述
+030 3124 Nameandaddressdescription C an..35
+名称和地址描述
+040 3124 Nameandaddressdescription C an..35
+名称和地址描述
+050 3124 Nameandaddressdescription C an..35
+街道
+C059 STREET
+说明 结构化的地址中街道地址和 或邮政信箱号码 地址占 行 行
+: / , 1 ~4 。
+街道名称和门牌号码 邮政
+010 3042 / Streetandnumber/P.O.Box M an..35
+专用信箱
+街道名称和门牌号码 邮政
+020 3042 / Streetandnumber/P.O.Box C an..35
+专用信箱
+街道名称和门牌号码 邮政
+030 3042 / Streetandnumber/P.O.Box C an..35
+专用信箱
+街道名称和门牌号码 邮政
+040 3042 / Streetandnumber/P.O.Box C an..35
+专用信箱
+事件标识
+C063 EVENTIDENTIFICATION
+说明 标识一个事件
+: 。
+事件描述代码
+010 9173 Eventdescriptioncode C an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+事件
+040 9172 Event C an..256
+通信联系
+C076 COMMUNICATIONCONTACT
+说明 特定通信信道中的部门或人员的通信号码
+: 。
+通信地址标识符
+010 3148 Communicationaddressidentifier M an..512
+通信工具类型代码
+020 3155 Communicationmeanstypecode M an..3
+5
+GB/T176992—2024
+.
+文件标识
+C077 FILEIDENTIFICATION
+说明 标识一个文件
+: 。
+文件名称
+010 1508 Filename C an..35
+项目描述
+020 7008 Itemdescription C an..35
+账户持有人标识
+C078 ACCOUNTHOLDERIDENTIFICATION
+说明 账户持有人的标识 用账户编号和 或占 行 行的账户持有人名称表示 优先选用账
+: , / 1 ~2 。
+户持有人编号
+。
+账户持有人编号
+010 3194 Accountholdernumber C an..35
+账户持有人名称
+020 3192 Accountholdername C an..35
+账户持有人名称
+030 3192 Accountholdername C an..35
+货币标识代码
+040 6345 Currencyidentificationcode C an..3
+计算机环境标识
+C079 COMPUTERENVIRONMENTIDENTIFICATION
+说明 计算机环境部分的标识
+: 。
+计算机环境名称代码
+010 1511 Computerenvironmentnamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+计算机环境名称
+040 1510 Computerenvironmentname C an..35
+版本标识符
+050 1056 Versionidentifier C an..9
+发布标识符
+060 1058 Releaseidentifier C an..9
+对象标识符
+070 7402 Objectidentifier C an..35
+参与方名称
+C080 PARTYNAME
+说明 交易参与方的标识 用名称表示 占 行 行 参与方名称可以被格式化
+: , , 1 ~5 。 。
+参与方名称
+010 3036 Partyname M an..35
+参与方名称
+020 3036 Partyname C an..35
+参与方名称
+030 3036 Partyname C an..35
+参与方名称
+040 3036 Partyname C an..35
+参与方名称
+050 3036 Partyname C an..35
+参与方名称格式代码
+060 3045 Partynameformatcode C an..3
+参与方标识细目
+C082 PARTYIDENTIFICATIONDETAILS
+说明 用代码表示的交易参与方的标识
+: 。
+参与方标识符
+010 3039 Partyidentifier M an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+婚姻状况细目
+C085 MARITALSTATUSDETAILS
+说明 说明个人的婚姻状况
+: 。
+婚姻状况描述代码
+010 3479 Maritalstatusdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+6
+GB/T176992—2024
+.
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+婚姻状况描述
+040 3478 Maritalstatusdescription C an..35
+机构标识
+C088 INSTITUTIONIDENTIFICATION
+说明 用代码 分支机构编号或名称和地点名称表示的机构的标识 优先选用代码或分支机构
+: 、 ,
+编号
+。
+机构名称代码
+010 3433 Institutionnamecode C an..11
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+分支机构标识符
+040 3434 Institutionbranchidentifier C an..17
+代码表标识代码
+050 1131 Codelistidentificationcode C an..3
+代码表负责机构代码
+060 3055 Codelistresponsibleagencycode C an..3
+机构名称
+070 3432 Institutionname C an..70
+分支机构地点名称
+080 3436 Institutionbranchlocationname C an..70
+地址细目
+C090 ADDRESSDETAILS
+说明 说明地址的细目
+:
+地址格式代码
+010 3477 Addressformatcode M an..3
+地址成分描述
+020 3286 Addresscomponentdescription M an..70
+地址成分描述
+030 3286 Addresscomponentdescription C an..70
+地址成分描述
+040 3286 Addresscomponentdescription C an..70
+地址成分描述
+050 3286 Addresscomponentdescription C an..70
+地址成分描述
+060 3286 Addresscomponentdescription C an..70
+文件细目
+C099 FILEDETAILS
+说明 定义文件相关的细目
+: 。
+文件格式名称
+010 1516 Fileformatname M an..17
+版本标识符
+020 1056 Versionidentifier C an..9
+数据格式描述代码
+030 1503 Dataformatdescriptioncode C an..3
+数据格式描述
+040 1502 Dataformatdescription C an..35
+交货或运输条款
+C100 TERMSOFDELIVERYORTRANSPORT
+说明 特定出处的交货或运输条款代码
+: 。
+交货或运输条款描述代码
+010 4053 Deliveryortransporttermsdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+交货或运输条款描述
+040 4052 Deliveryortransporttermsdescription C an..70
+交货或运输条款描述
+050 4052 Deliveryortransporttermsdescription C an..70
+宗教信仰细目
+C101 RELIGIONDETAILS
+说明 说明个人的宗教信仰
+: 。
+宗教信仰名称代码
+010 3483 Religionnamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+7
+GB/T176992—2024
+.
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+宗教信仰名称
+040 3482 Religionname C an..35
+单证 报文标识
+C106 / DOCUMENT/MESSAGEIDENTIFICATION
+说明 单证 报文的标识 用编号和最终的版本或修订号表示
+: / , 。
+单证标识符
+010 1004 Documentidentifier C an..70
+版本标识符
+020 1056 Versionidentifier C an..9
+修订标识符
+030 1060 Revisionidentifier C an..6
+文本参考
+C107 TEXTREFERENCE
+说明 标准文本及其出处的代码型参考
+: 。
+自由文本描述代码
+010 4441 Freetextdescriptioncode M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+文字文本
+C108 TEXTLITERAL
+说明 自由文本 占 至 行
+: , 1 5 。
+自由文本
+010 4440 Freetext M an..512
+自由文本
+020 4440 Freetext C an..512
+自由文本
+030 4440 Freetext C an..512
+自由文本
+040 4440 Freetext C an..512
+自由文本
+050 4440 Freetext C an..512
+费率细目
+C128 RATEDETAILS
+说明 单位费率和费率基准
+: 。
+费率类型代码限定符
+010 5419 Ratetypecodequalifier M an..3
+单价基准费率
+020 5420 Unitpricebasisrate M n..15
+单价基准数量
+030 5284 Unitpricebasisquantity C n..9
+计量单位代码
+040 6411 Measurementunitcode C an..8
+价格乘数信息
+C138 PRICEMULTIPLIERINFORMATION
+说明 价格乘数及其标识
+: 。
+价格乘数率
+010 5394 Pricemultiplierrate M n..12
+价格乘数类型代码限定符
+020 5393 Pricemultipliertypecodequalifier C an..3
+值 范围
+C174 / VALUE/RANGE
+说明 计量值和计量范围的最大和最小值
+: 。
+计量单位代码
+010 6411 Measurementunitcode M an..8
+测量
+020 6314 Measure C an..18
+最小数量范围
+030 6162 Rangeminimumquantity C n..18
+最大数量范围
+040 6152 Rangemaximumquantity C n..18
+有效位数
+050 6432 Significantdigitsquantity C n..2
+8
+GB/T176992—2024
+.
+数量细目
+C186 QUANTITYDETAILS
+说明 交易中的数量信息 用相应的限定符限定
+: , 。
+数量类型代码限定符
+010 6063 Quantitytypecodequalifier M an..3
+数量
+020 6060 Quantity M an..35
+计量单位代码
+030 6411 Measurementunitcode C an..8
+费用
+C200 CHARGE
+说明 费用的标识 用代码和 或名称表示
+: , / 。
+运费和其他费用描述标识符
+010 8023 Freightandotherchargesdescriptionidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运费和其他费用描述
+040 8022 Freightandotherchargesdescription C an..26
+付款安排代码
+050 4237 Paymentarrangementcode C an..3
+项标识符
+060 7140 Itemidentifier C an..35
+包装类型
+C202 PACKAGETYPE
+说明 包装的类型 用名称或特定出处的代码表示
+: , 。
+包装类型描述代码
+010 7065 Packagetypedescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+包装类型
+040 7064 Typeofpackages C an..35
+费率 价目等级
+C203 / RATE/TARIFFCLASS
+说明 适用的费率 价目等级的标识
+: / 。
+费率 价目等级描述代码
+010 5243 / Rateortariffclassdescriptioncode M an..9
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+费率 价目等级描述
+040 5242 / Rateortariffclassdescription C an..35
+附加费率 价目基准标识
+050 5275 / Supplementaryrate/tariffbasisidentificationC an..6
+代码表标识代码
+060 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+070 3055 Codelistresponsibleagencycode C an..3
+附加费率 价目代码
+080 5275 / Supplementaryrateortariffcode C an..6
+代码表标识代码
+090 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+100 3055 Codelistresponsibleagencycode C an..3
+危险品代码
+C205 HAZARDCODE
+说明 危险品的标识 用代码表示
+: , 。
+危险品标识代码
+010 8351 Hazardidentificationcode M an..7
+附加危险品分类标识符
+020 8078 Additionalhazardclassificationidentifier C an..7
+危险品代码版本标识符
+030 8092 Hazardcodeversionidentifier C an..10
+标识号
+C206 IDENTIFICATIONNUMBER
+说明 对象的标识
+: 。
+9
+GB/T176992—2024
+.
+对象标识符
+010 7402 Objectidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+状态描述代码
+030 4405 Statusdescriptioncode C an..3
+标识号范围
+C208 IDENTITYNUMBERRANGE
+说明 货物项目标识号 连续编号范围的起点和终点
+: , 。
+对象标识符
+010 7402 Objectidentifier M an..35
+对象标识符
+020 7402 Objectidentifier C an..35
+运输标志和标签
+C210 MARKS&LABELS
+说明 包装上的运输标志 用自由文本表示 占 至 行
+: , , 1 10 。
+运输标志描述
+010 7102 Shippingmarksdescription M an..35
+运输标志描述
+020 7102 Shippingmarksdescription C an..35
+运输标志描述
+030 7102 Shippingmarksdescription C an..35
+运输标志描述
+040 7102 Shippingmarksdescription C an..35
+运输标志描述
+050 7102 Shippingmarksdescription C an..35
+运输标志描述
+060 7102 Shippingmarksdescription C an..35
+运输标志描述
+070 7102 Shippingmarksdescription C an..35
+运输标志描述
+080 7102 Shippingmarksdescription C an..35
+运输标志描述
+090 7102 Shippingmarksdescription C an..35
+运输标志描述
+100 7102 Shippingmarksdescription C an..35
+尺码
+C211 DIMENSIONS
+说明 装运件尺码的说明
+: 。
+计量单位代码
+010 6411 Measurementunitcode M an..8
+长度
+020 6168 Lengthmeasure C n..15
+宽度
+030 6140 Widthmeasure C n..15
+高度
+040 6008 Heightmeasure C n..15
+直径
+050 6701 Diametermeasure C n..15
+项号标识
+C212 ITEMNUMBERIDENTIFICATION
+说明 特定出处的货物标识
+: 。
+项标识符
+010 7140 Itemidentifier C an..35
+项类型标识代码
+020 7143 Itemtypeidentificationcode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+件数和包装类型
+C213 NUMBERANDTYPEOFPACKAGES
+说明 一次装运的件数和包装类型
+: 。
+包装数量
+010 7224 Packagequantity C n..8
+包装类型描述代码
+020 7065 Packagetypedescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+10
+GB/T176992—2024
+.
+包装类型
+050 7064 Typeofpackages C an..35
+包装相关信息代码
+060 7233 Packagingrelatedinformationcode C an..3
+特殊服务标识
+C214 SPECIALSERVICESIDENTIFICATION
+说明 特殊服务的标识 用描述或特定出处的代码表示
+: , 。
+特殊服务描述代码
+010 7161 Specialservicedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+特殊服务描述
+040 7160 Specialservicedescription C an..35
+特殊服务描述
+050 7160 Specialservicedescription C an..35
+施封方
+C215 SEALISSUER
+说明 设备上施封方的标识 用代码或名称表示
+: , 。
+封志方名称代码
+010 9303 Sealingpartynamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+封志方名称
+040 9302 Sealingpartyname C an..35
+危险物质
+C218 HAZARDOUSMATERIAL
+说明 说明一种危险物质
+: 。
+危险物质类别名称代码
+010 7419 Hazardousmaterialcategorynamecode C an..4
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+危险物质类别名称
+040 7418 Hazardousmaterialcategoryname C an..35
+搬移类型
+C219 MOVEMENTTYPE
+说明 货物搬移服务类型的描述
+: 。
+搬移类型描述代码
+010 8335 Movementtypedescriptioncode C an..3
+搬移类型描述
+020 8334 Movementtypedescription C an..35
+运输方式
+C220 MODEOFTRANSPORT
+说明 运输方式的代码或名称 优先选用代码
+: 。 。
+运输方式名称代码
+010 8067 Transportmodenamecode C an..3
+运输方式名称
+020 8066 Transportmodename C an..17
+运输标识
+C222 TRANSPORTIDENTIFICATION
+说明 标识运输工具 用代码和 或名称表示
+: , / 。
+运输工具标识名称标识符
+010 8213 Transportmeansidentificationnameidentifier C an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运输工具标识名称
+040 8212 Transportmeansidentificationname C an..70
+运输工具的国籍代码
+050 8453 Transportmeansnationalitycode C an..3
+11
+GB/T176992—2024
+.
+危险品装运闪点
+C223 DANGEROUSGOODSSHIPMENTFLASHPOINT
+说明 根据 规定一种蒸发物可被点燃的温度
+: ISO1523/73 。
+装运闪点
+010 7106 Shipmentflashpointdegree C n3
+计量单位代码
+020 6411 Measurementunitcode C an..8
+设备规格和类型
+C224 EQUIPMENTSIZEANDTYPE
+说明 标识用于运输的设备规格和类型的代码和 或名称 优先选用代码
+: / 。 。
+设备规格和类型描述代码
+010 8155 Equipmentsizeandtypedescriptioncode C an..10
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+设备规格和类型描述
+040 8154 Equipmentsizeandtypedescription C an..35
+费用类别
+C229 CHARGECATEGORY
+说明 费用类别或范围的标识
+: 。
+费用类别代码
+010 5237 Chargecategorycode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+付款方式
+C231 METHODOFPAYMENT
+说明 标识付款方式的代码
+: 。
+运费付款方式代码
+010 4215 Transportchargespaymentmethodcode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+政府行为
+C232 GOVERNMENTACTION
+说明 指出政府行为类型的代码
+: 。
+政府机构标识代码
+010 9415 Governmentagencyidentificationcode C an..3
+政府参与代码
+020 9411 Governmentinvolvementcode C an..3
+政府行为代码
+030 9417 Governmentactioncode C an..3
+政府程序代码
+040 9353 Governmentprocedurecode C an..3
+服务
+C233 SERVICE
+说明 标识一项服务 该服务可以构成基础合同的一个附加部分
+: ( )。
+服务需求代码
+010 7273 Servicerequirementcode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+服务需求代码
+040 7273 Servicerequirementcode M an..3
+代码表标识代码
+050 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+060 3055 Codelistresponsibleagencycode C an..3
+联合国危险品 信息
+C234 (UNDG) UNDGINFORMATION
+说明 采用联合国危险品分类的危险品信息
+: 。
+联合国危险品
+010 7124 (UNDG) UNDGidentifier C n4
+12
+GB/T176992—2024
+.
+标识符
+危险品闪点描述
+020 7088 Dangerousgoodsflashpointdescription C an..8
+危险品标识
+C235 HAZARDIDENTIFICATION
+说明 要求在运输工具上显示的危险品标识牌编号
+: 。
+橙色危险品上位标识符
+010 8158 Orangehazardplacardupperpartidentifier C an..4
+橙色危险品下位标识符
+020 8186 Orangehazardplacardlowerpartidentifier C an..4
+危险品标签
+C236 DANGEROUSGOODSLABEL
+说明 标识危险品类型及类似信息的标志
+: 。
+危险品标记标识符
+010 8246 Dangerousgoodsmarkingidentifier C an..4
+危险品标记标识符
+020 8246 Dangerousgoodsmarkingidentifier C an..4
+危险品标记标识符
+030 8246 Dangerousgoodsmarkingidentifier C an..4
+危险品标记标识符
+040 8246 Dangerousgoodsmarkingidentifier C an..4
+设备标识
+C237 EQUIPMENTIDENTIFICATION
+说明 标识设备的标志 字母和 或数字
+: ( / )。
+设备标识符
+010 8260 Equipmentidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+国家 地区 标识符
+040 3207 ( ) Countryidentifier C an..3
+温度设定
+C239 TEMPERATURESETTING
+说明 储存或运输货物的温度
+: 。
+温度
+010 6246 Temperaturedegree C n..15
+计量单位代码
+020 6411 Measurementunitcode C an..8
+产品特征
+C240 PRODUCTCHARACTERISTIC
+说明 提供产品特征的描述
+: 。
+特征描述代码
+010 7037 Characteristicdescriptioncode M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+特征描述
+040 7036 Characteristicdescription C an..35
+特征描述
+050 7036 Characteristicdescription C an..35
+关税 税 费类型
+C241 / / DUTY/TAX/FEETYPE
+说明 标识关税 税 费用的代码和 或名称
+: 、 、 / 。
+关税 税 费类型名称代码
+010 5153 / / Dutyortaxorfeetypenamecode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关税 税 费类型名称
+040 5152 / / Dutyortaxorfeetypename C an..35
+过程类型和描述
+C242 PROCESSTYPEANDDESCRIPTION
+13
+GB/T176992—2024
+.
+说明 处理类型的标识和描述
+: 。
+过程类型描述代码
+010 7187 Processtypedescriptioncode M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+过程类型描述
+040 7186 Processtypedescription C an..35
+过程类型描述
+050 7186 Processtypedescription C an..35
+关税 税 费细目
+C243 / / DUTY/TAX/FEEDETAIL
+说明 适用于商品的关税 税 费率或适用于服务的税率
+: / / 。
+关税 税 费率代码
+010 5279 / / Dutyortaxorfeeratecode C an..7
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关税 税 费率
+040 5278 / / Dutyortaxorfeerate C an..17
+关税 税 费率基准代码
+050 5273 / / Dutyortaxorfeeratebasiscode C an..12
+代码表标识代码
+060 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+070 3055 Codelistresponsibleagencycode C an..3
+测试方法
+C244 TESTMETHOD
+说明 所采用测试方法的说明
+: 。
+测试方法标识符
+010 4415 Testmethodidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+测试描述
+040 4416 Testdescription C an..70
+海关标识代码
+C246 CUSTOMSIDENTITYCODES
+说明 标识海关监管货物
+: 。
+海关监管货物标识符
+010 7361 Customsgoodsidentifier M an..18
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+控制
+C270 CONTROL
+说明 检查报文或报文的某一部分的完整性的控制总计
+: 。
+控制总体类型代码限定符
+010 6069 Controltotaltypecodequalifier M an..3
+控制总数量
+020 6066 Controltotalquantity M n..18
+计量单位代码
+030 6411 Measurementunitcode C an..8
+项目特征
+C272 ITEMCHARACTERISTIC
+说明 提供所描述项目的特性
+: 。
+项目特征代码
+010 7081 Itemcharacteristiccode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+项目描述
+C273 ITEMDESCRIPTION
+14
+GB/T176992—2024
+.
+说明 关于项目的描述信息
+: 。
+项目描述代码
+010 7009 Itemdescriptioncode C an..7
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+项目描述
+040 7008 Itemdescription C an..256
+项目描述
+050 7008 Itemdescription C an..256
+语言名称代码
+060 3453 Languagenamecode C an..3
+数量差异信息
+C279 QUANTITYDIFFERENCEINFORMATION
+说明 关于数量差异的信息
+: 。
+数量差异
+010 6064 Variancequantity M n..15
+数量类型代码限定符
+020 6063 Quantitytypecodequalifier C an..3
+范围
+C280 RANGE
+说明 范围的最小和最大限制
+: 。
+计量单位代码
+010 6411 Measurementunitcode M an..8
+最小数量范围
+020 6162 Rangeminimumquantity C n..18
+最大数量范围
+030 6152 Rangemaximumquantity C n..18
+顺序信息
+C286 SEQUENCEINFORMATION
+说明 排序的顺序和来源的标识
+: 。
+顺序位置标识符
+010 1050 Sequencepositionidentifier M an..10
+顺序标识符来源代码
+020 1159 Sequenceidentifiersourcecode C an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+产品组
+C288 Productgroup
+说明 提供产品组信息
+: 。
+产品组名称代码
+010 5389 Productgroupnamecode C an..25
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+产品组名称
+040 5388 Productgroupname C an..35
+隧道限制
+C289 TUNNELRESTRICTION
+说明 说明通过隧道运输的限制
+: 。
+隧道限制代码
+010 8461 TunnelRestrictionCode C an..6
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运输服务
+C290 TRANSPORTSERVICE
+说明 运输服务的标识
+: 。
+运输服务标识代码
+010 8462 Transportserviceidentificationcode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+15
+GB/T176992—2024
+.
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运输服务名称
+040 8463 Transportservicename C an..35
+运输服务说明
+050 8464 Transportservicedescription C an..256
+方式描述
+C329 PATTERNDESCRIPTION
+说明 装运 交货或生产的间隔模式及时间安排
+: 、 。
+频度代码
+010 2013 Frequencycode C an..3
+发送方式代码
+020 2015 Despatchpatterncode C an..3
+发送方式时间代码
+030 2017 Despatchpatterntimingcode C an..3
+保险责任类型
+C330 INSURANCECOVERTYPE
+说明 提供保险责任的类型
+: 。
+保险责任类型代码
+010 4497 Insurancecovertypecode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+保险责任细目
+C331 INSURANCECOVERDETAILS
+说明 提供保险范围细目
+: 。
+保险责任描述代码
+010 4495 Insurancecoverdescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+保险责任描述
+040 4494 Insurancecoverdescription C an..35
+保险责任描述
+050 4494 Insurancecoverdescription C an..35
+销售渠道标识
+C332 SALESCHANNELIDENTIFICATION
+说明 市场数据 销售 预测 计划等销售渠道的标识
+: 、 、 、 。
+销售渠道标识符
+010 3496 Saleschannelidentifier M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+请求信息
+C333 INFORMATIONREQUEST
+说明 指定在应答消息中请求的信息
+: 。
+请求信息描述代码
+010 4511 Requestedinformationdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+请求信息描述
+040 4510 Requestedinformationdescription C an..35
+额外运输信息
+C401 EXCESSTRANSPORTATIONINFORMATION
+说明 提供非常规运输的原因和责任的详细说明
+: 。
+额外运输原因代码
+010 8457 Excesstransportationreasoncode M an..3
+额外运输责任代码
+020 8459 Excesstransportationresponsibilitycode M an..3
+客户装运授权标识符
+030 7130 Customershipmentauthorisationidentifier C an..17
+16
+GB/T176992—2024
+.
+包装类型标识
+C402 PACKAGETYPEIDENTIFICATION
+说明 描述货物外形的标识
+: 。
+描述格式代码
+010 7077 Descriptionformatcode M an..3
+包装类型
+020 7064 Typeofpackages M an..35
+项号类型标识代码
+030 7143 Itemtypeidentificationcode C an..3
+包装类型
+040 7064 Typeofpackages C an..35
+项号类型标识代码
+050 7143 Itemtypeidentificationcode C an..3
+百分比细目
+C501 PERCENTAGEDETAILS
+说明 与特定基准有关的百分比
+: 。
+百分比类型代码限定符
+010 5245 Percentagetypecodequalifier M an..3
+百分比
+020 5482 Percentage C n..8
+百分比基准标识代码
+030 5249 Percentagebasisidentificationcode C an..3
+代码表标识代码
+040 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+050 3055 Codelistresponsibleagencycode C an..3
+计量细目
+C502 MEASUREMENTDETAILS
+说明 计量类型的标识
+: 。
+计量特征代码
+010 6313 Measuredattributecode C an..3
+计量有效位数代码
+020 6321 Measurementsignificancecode C an..3
+非离散计量名称代码
+030 6155 Non-discretemeasurementnamecode C an..17
+非离散计量名称
+040 6154 Non-discretemeasurementname C an..70
+单证 报文细目
+C503 / DOCUMENT/MESSAGEDETAILS
+说明 单证 报文的标识 用编号 状态 出处和 或语言表示
+: / , 、 、 / 。
+单证标识符
+010 1004 Documentidentifier C an..35
+单证状态代码
+020 1373 Documentstatuscode C an..3
+单证出处描述
+030 1366 Documentsourcedescription C an..70
+语言名称代码
+040 3453 Languagenamecode C an..3
+版本标识符
+050 1056 Versionidentifier C an..9
+修订标识符
+060 1060 Revisionidentifier C an..6
+货币细目
+C504 CURRENCYDETAILS
+说明 有关货币的用法
+: 。
+货币应用代码限定符
+010 6347 Currencyusagecodequalifier M an..3
+货币标识代码
+020 6345 Currencyidentificationcode C an..3
+货币类型代码限定符
+030 6343 Currencytypecodequalifier C an..3
+通货汇率
+040 6348 Currencyrate C n..4
+参考
+C506 REFERENCE
+说明 参考的标识
+: 。
+参考代码限定符
+010 1153 Referencecodequalifier M an..3
+参考标识符
+020 1154 Referenceidentifier C an..70
+17
+GB/T176992—2024
+.
+单证行标识符
+030 1156 Documentlineidentifier C an..6
+版本标识符
+040 1056 Versionidentifier C an..9
+修订标识符
+050 1060 Revisionidentifier C an..6
+日期 时间 期限
+C507 / / DATE/TIME/PERIOD
+说明 与特定日期 时间 期限类型有关的日期和 或时间或期限
+: / / / 。
+日期 时间 期限功能代码
+010 2005 / / DateortimeorperiodfunctioncodequalifierM an..3
+限定符
+日期 时间 期限文本
+020 2380 / / Dateortimeorperiodtext C an..35
+日期 时间 期限格式代码
+030 2379 / / Dateortimeorperiodformatcode C an..3
+语言细目
+C508 LANGUAGEDETAILS
+说明 语言的名称标识
+: 。
+语言名称代码
+010 3453 Languagenamecode C an..3
+语言名称
+020 3452 Languagename C an..35
+价格信息
+C509 PRICEINFORMATION
+说明 价格类型 价格和有关细目的标识
+: 、 。
+价格代码限定符
+010 5125 Pricecodequalifier M an..3
+价格金额
+020 5118 Priceamount C n..15
+价格类型代码
+030 5375 Pricetypecode C an..3
+价格描述代码
+040 5387 Pricespecificationcode C an..3
+单价基准数量
+050 5284 Unitpricebasisquantity C n..9
+计量单位代码
+060 6411 Measurementunitcode C an..3
+尺寸细目
+C512 SIZEDETAILS
+说明 有关尺寸的信息
+: 。
+尺寸类型代码限定符
+010 6173 Sizetypecodequalifier C an..3
+尺寸测量
+020 6174 Sizemeasure C n..15
+取样位置细目
+C514 SAMPLELOCATIONDETAILS
+说明 取样位置的标识
+: 。
+取样位置描述代码
+010 3237 Samplelocationdescriptioncode C an..3
+取样位置描述
+020 3236 Samplelocationdescription C an..35
+测试原因
+C515 TESTREASON
+说明 标识所指的测试的原因
+: 。
+测试原因代码
+010 4425 Testreasonnamecode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+测试原因
+040 4424 Testreasonname C an..35
+货币金额
+C516 MONETARYAMOUNT
+18
+GB/T176992—2024
+.
+说明 按指定货币金额表述的商品或服务的量
+: 。
+货币金额类型代码限定符
+010 5025 Monetaryamounttypecodequalifier M an..3
+货币金额
+020 5004 Monetaryamount C n..35
+货币标识代码
+030 6345 Currencyidentificationcode C an..3
+货币类型代码限定符
+040 6343 Currencytypecodequalifier C an..3
+状态描述代码
+050 4405 Statusdescriptioncode C an..3
+地点标识
+C517 LOCATIONIDENTIFICATION
+说明 地点的标识 用代码或名称表示
+: , 。
+地点标识符
+010 3225 Locationidentifier C an..25
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+地点名称
+040 3224 Locationname C an..17
+第一相关地点标识
+C519 RELATEDLOCATIONONEIDENTIFICATION
+说明 第一相关地点的标识 用代码或名称表示
+: , 。
+第一相关地点标识符
+010 3223 Firstrelatedlocationidentifier C an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+第一相关地点名称
+040 3222 Firstrelatedlocationname C an..70
+业务功能
+C521 BUSINESSFUNCTION
+说明 说明一项业务原因
+: 。
+业务功能类型代码限定符
+010 4027 Businessfunctiontypecodequalifier M an..3
+业务功能代码
+020 4025 Businessfunctioncode M an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+业务描述
+050 4022 Businessdescription C an..70
+指示
+C522 INSTRUCTION
+说明 说明一个指示
+: 。
+指示类型代码限定符
+010 4403 Instructiontypecodequalifier M an..3
+指示描述代码
+020 4401 Instructiondescriptioncode C an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+指示描述
+050 4400 Instructiondescription C an..35
+单位数细目
+C523 NUMBEROFUNITDETAILS
+说明 单位数及用途的标识
+: 。
+单位数量
+010 6350 Unitsquantity C n..15
+单位类型代码限定符
+020 6353 Unittypecodequalifier C an..3
+装卸说明
+C524 HANDLINGINSTRUCTIONS
+19
+GB/T176992—2024
+.
+说明 货物 产品或物品在装运 存储等作业中的处理规则
+: 、 、 。
+装卸说明代码
+010 4079 Handlinginstructiondescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+装卸说明
+040 4078 Handlinginstructiondescription C an..512
+运输工具停靠目的
+C525 PURPOSEOFCONVEYANCECALL
+说明 运输工具停靠目的的描述
+: 。
+运输工具停靠目的描述代码
+010 8025 Conveyancecallpurposedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运输工具停靠目的描述
+040 8024 Conveyancecallpurposedescription C an..35
+频度细目
+C526 FREQUENCYDETAILS
+说明 对每个指定的计量单位的采样数
+: 。
+频度代码限定符
+010 6071 Frequencycodequalifier M an..3
+频率
+020 6072 Frequencyrate C n..9
+计量单位代码
+030 6411 Measurementunitcode C an..8
+统计细目
+C527 STATISTICALDETAILS
+说明 与统计计量有关的说明
+: 。
+测量
+010 6314 Measure C n..18
+计量单位代码
+020 6411 Measurementunitcode C an..8
+计量特征代码
+030 6313 Measuredattributecode C an..3
+计量有效位数代码
+040 6321 Measurementsignificancecode C an..3
+商品 费率细目
+C528 / COMMODITY/RATEDETAIL
+说明 商品 费率的标识
+: / 。
+商品标识代码
+010 7357 Commodityidentificationcode C an..18
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+包装细目
+C531 PACKAGINGDETAILS
+说明 包装层及细节 条款和条件
+: 、 。
+包装层代码
+010 7075 Packaginglevelcode C an..3
+包装相关描述代码
+020 7233 Packagingrelateddescriptioncode C an..3
+包装条款和条件代码
+030 7073 Packagingtermsandconditionscode C an..3
+可回收包装细目
+C532 RETURNABLEPACKAGEDETAILS
+说明 对可回收包装的付款责任和内装物的指示
+: 。
+可回收包装运送付款责任
+010 8395 Returnablepackagefreightpayment C an..3
+代码
+responsibilitycode
+可回收包装内装物代码
+020 8393 Returnablepackageloadcontentscode C an..3
+20
+GB/T176992—2024
+.
+关税 税 费账户细目
+C533 / / DUTY/TAX/FEEACCOUNTDETAIL
+说明 关税 税和 或费的账户参考的指示
+: / / 。
+关税 税 费账户代码
+010 5289 / / Dutyortaxorfeeaccountcode M an..6
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+付款指示细目
+C534 PAYMENTINSTRUCTIONDETAILS
+说明 指出所采用或应当采用的支付方式
+: 。
+付款条件代码
+010 4439 Paymentconditionscode C an..3
+付款担保代码
+020 4431 Paymentguaranteecode C an..3
+支付工具代码
+030 4461 Paymentmeanscode C an..3
+代码表标识代码
+040 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+050 3055 Codelistresponsibleagencycode C an..3
+付款途径代码
+060 4435 Paymentchannelcode C an..3
+合同和运输条件
+C536 CONTRACTANDCARRIAGECONDITION
+说明 标识合同和运输条件
+: 。
+合同和运输条件代码
+010 4065 Contractandcarriageconditioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+运输优先级
+C537 TRANSPORTPRIORITY
+说明 指出所要求的运输服务的优先级
+: 。
+运输服务优先级代码
+010 4219 Transportserviceprioritycode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+协议类型标识
+C543 AGREEMENTTYPEIDENTIFICATION
+说明 特定的协议类型的标识 用代码和 或名称表示
+: , / 。
+协议类型代码限定符
+010 7431 Agreementtypecodequalifier M an..3
+协议类型描述代码
+020 7433 Agreementtypedescriptioncode C an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+协议类型描述
+050 7434 Agreementtypedescription C an..70
+指标标识
+C545 INDEXIDENTIFICATION
+说明 标识一个指标
+: 。
+指标代码限定符
+010 5013 Indexcodequalifier M an..3
+指标类型标识符
+020 5027 Indextypeidentifier C an..17
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+21
+GB/T176992—2024
+.
+指标值
+C546 INDEXVALUE
+说明 标识一个指标的值
+: 。
+指标文本
+010 5030 Indextext M an..35
+指标表示代码
+020 5039 Indexrepresentationcode C an..3
+货币功能
+C549 MONETARYAMOUNTFUNCTION
+说明 标识货币金额的功能
+: 。
+货币金额功能描述代码
+010 5007 Monetaryamountfunctiondescriptioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+货币金额功能描述
+040 5006 Monetaryamountfunctiondescription C an..70
+需求 条件标识
+C550 / REQUIREMENT/CONDITIONIDENTIFICATION
+说明 标识特定的规则 条件需求
+: / 。
+需求 条件描述标识符
+010 7295 / Requirementorconditiondescriptionidentifier M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+需求 条件描述
+040 7294 / Requirementorconditiondescription C an..35
+银行业务
+C551 BANKOPERATION
+说明 银行业务的标识 用代码表示
+: , 。
+银行业务代码
+010 4383 Bankoperationcode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+折让 费用信息
+C552 / ALLOWANCE/CHARGEINFORMATION
+说明 折让 费用信息的标识 用编号和 或代码表示
+: / , / 。
+折让或费用标识符
+010 1230 Allowanceorchargeidentifier C an..35
+折让 费用标识代码
+020 5189 / Allowanceorchargeidentificationcode C an..3
+第二相关地点标识
+C553 RELATEDLOCATIONTWOIDENTIFICATION
+说明 第二相关地点的标识 用代码或名称表示
+: , 。
+第二相关地点标识符
+010 3233 Secondrelatedlocationidentifier C an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+第二相关地点名称
+040 3232 Secondrelatedlocationname C an..70
+费率 价目等级细目
+C554 / RATE/TARIFFCLASSDETAIL
+说明 标识适用的费率 价目等级
+: / 。
+费率 价目等级代码
+010 5243 / Rateortariffclassdescriptioncode C an..9
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+22
+GB/T176992—2024
+.
+状态
+C555 STATUS
+说明 规定状态的信息
+: 。
+状态描述代码
+010 9011 Statusdescriptioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+状态描述
+040 4404 Statusdescription C an..35
+状态原因
+C556 STATUSREASON
+说明 说明状态事件的原因
+: 。
+状态原因描述代码
+010 9013 Statusreasondescriptioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+状态原因描述
+040 9012 Statusreasondescription C an..256
+物理或逻辑状态信息
+C564 PHYSICALORLOGICALSTATEINFORMATION
+说明 用代码或文本格式给出物理或逻辑状态的信息
+: 。
+物理或逻辑状态描述代码
+010 7007 Physicalorlogicalstatedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+物理或逻辑状态描述
+040 7006 Physicalorlogicalstatedescription C an..70
+优先级细目
+C585 PRIORITYDETAILS
+说明 表示优先级
+: 。
+优先级描述代码
+010 4037 Prioritydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+优先级描述
+040 4036 Prioritydescription C an..35
+账户标识
+C593 ACCOUNTIDENTIFICATION
+说明 账户的标识
+: 。
+账户标识符
+010 1147 Accountidentifier M an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+账户缩略名称
+040 1148 Accountabbreviatedname C an..17
+账户名称
+050 1146 Accountname C an..35
+账户名称
+060 1146 Accountname C an..35
+货币标识代码
+070 6345 Currencyidentificationcode C an..3
+会计分类账标识
+C595 ACCOUNTINGJOURNALIDENTIFICATION
+说明 会计分类账的标识信息
+: 。
+会计分类账标识符
+010 1171 Accountingjournalidentifier M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+23
+GB/T176992—2024
+.
+会计分类账名称
+040 1170 Accountingjournalname C an..35
+会计分录类型细目
+C596 ACCOUNTINGENTRYTYPEDETAILS
+说明 标识会计分类账中的分录类型
+: 。
+会计分录类型名称代码
+010 4475 Accountingentrytypenamecode M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+会计分录类型名称
+040 4474 Accountingentrytypename C an..35
+状态类别
+C601 STATUSCATEGORY
+说明 说明状态的类别
+: 。
+状态类别代码
+010 9015 Statuscategorycode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+出错位置细目
+C701 ERRORPOINTDETAILS
+说明 报文中出错位置的指示
+: 。
+报文节代码
+010 1049 Messagesectioncode M an..3
+报文项标识符
+020 1052 Messageitemidentifier C an..35
+报文分项标识符
+030 1054 Messagesub-itemidentifier C n..6
+代码集标识
+C702 CODESETIDENTIFICATION
+说明 数据元代码集的标识信息
+: 。
+简单数据元标记标识符
+010 9150 Simpledataelementtagidentifier C an..4
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+货物性质
+C703 NATUREOFCARGO
+说明 货物类型的简易分类
+: 。
+货物类型分类代码
+010 7085 Cargotypeclassificationcode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+报文标识符
+C709 MESSAGEIDENTIFIER
+说明 报文的标识
+: 。
+报文类型代码
+010 1475 Messagetypecode M an..6
+版本标识符
+020 1056 Versionidentifier M an..9
+发布标识符
+030 1058 Releaseidentifier M an..9
+管理机构标识符
+040 1476 Controllingagencyidentifier M an..2
+报文执行标识代码
+050 1523 Messageimplementationidentificationcode C an..6
+修订标识符
+060 1060 Revisionidentifier C an..6
+单证状态代码
+070 1373 Documentstatuscode C an..3
+24
+GB/T176992—2024
+.
+数组单元细目
+C770 ARRAYCELLDETAILS
+说明 对数组中连续单元的数据进行限制
+: 。
+数组单元描述
+010 9424 Arraycelldatadescription C an..512
+位置标识
+C778 POSITIONIDENTIFICATION
+说明 标识对象在其所在结构中的位置
+: 。
+层次结构层标识符
+010 7164 Hierarchicalstructurelevelidentifier C an..35
+顺序位置标识符
+020 1050 Sequencepositionidentifier C an..10
+数组结构标识
+C779 ARRAYSTRUCTUREIDENTIFICATION
+说明 数组结构的标识
+: 。
+数组结构标识符
+010 9428 Arraystructureidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+值表标识
+C780 VALUELISTIDENTIFICATION
+说明 代码型或非代码型的量值表的标识
+: 。
+值表标识符
+010 1518 Valuelistidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+数据集标识
+C782 DATASETIDENTIFICATION
+说明 数据集的标识
+: 。
+数据集标识符
+010 1520 Datasetidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+注集标识
+C783 FOOTNOTESETIDENTIFICATION
+说明 注集的标识
+: 。
+注集标识符
+010 9430 Footnotesetidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+注标识
+C784 FOOTNOTEIDENTIFICATION
+说明 注的标识
+: 。
+注标识符
+010 9432 Footnoteidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+统计概念标识
+C785 STATISTICALCONCEPTIDENTIFICATION
+说明 统计概念的标识
+: 。
+统计概念标识符
+010 6434 Statisticalconceptidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+结构成分标识
+C786 STRUCTURECOMPONENTIDENTIFICATION
+说明 结构成分的标识
+: 。
+结构成分标识符
+010 7512 Structurecomponentidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+25
+GB/T176992—2024
+.
+问题细目
+C811 QUESTIONDETAILS
+说明 问题的说明信息
+: 。
+问题描述代码
+010 4057 Questiondescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+问题描述
+040 4056 Questiondescription C an..256
+应答细目
+C812 RESPONSEDETAILS
+说明 说明对问题的应答 用代码型或文本型
+: , 。
+应答描述代码
+010 4345 Responsedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+应答描述
+040 4344 Responsedescription C an..256
+安全节
+C814 SAFETYSECTION
+说明 标识与信息有关的安全节
+: 。
+安全节编号
+010 4046 Safetysectionnumber M n..2
+安全节名称
+020 4044 Safetysectionname C an..70
+附加安全信息
+C815 ADDITIONALSAFETYINFORMATION
+说明 标识附加的安全信息
+: 。
+附加安全信息描述代码
+010 4039 Additionalsafetyinformationdescriptioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+附加安全信息描述
+040 4038 Additionalsafetyinformationdescription C an..35
+姓名成分细目
+C816 NAMECOMPONENTDETAILS
+说明 说明一个姓名成分
+: 。
+姓名成分类型代码限定符
+010 3405 Namecomponenttypecodequalifier M an..3
+姓名成分描述
+020 3398 Namecomponentdescription C an..256
+姓名成分应用代码
+030 3401 Namecomponentusagecode C an..3
+姓名原字母代码
+040 3295 Nameoriginalalphabetcode C an..3
+地址用法
+C817 ADDRESSUSAGE
+说明 描述地址的用法
+: 。
+地址用途代码
+010 3299 Addresspurposecode C an..3
+地址类型代码
+020 3131 Addresstypecode C an..3
+地址状态代码
+030 3475 Addressstatuscode C an..3
+继承人特征细目
+C818 PERSONINHERITEDCHARACTERISTICDETAILS
+说明 说明继承人的特征
+: 。
+继承特征描述代码
+010 3311 Inheritedcharacteristicdescriptioncode C an..8
+26
+GB/T176992—2024
+.
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+继承特征描述
+040 3310 Inheritedcharacteristicdescription C an..70
+国家行政区划细目
+C819 COUNTRYSUBDIVISIONDETAILS
+说明 说明国家的一部分 如直辖市 行政区 县 管辖区
+: ( 、 、 、 )。
+国家行政区划标识符
+010 3229 Countrysubdivisionidentifier C an..9
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+国家行政区划名称
+040 3228 Countrysubdivisionname C an..70
+费用计算成分
+C820 PREMIUMCALCULATIONCOMPONENT
+说明 标识影响费用计算的成分
+: 。
+费用计算成分代码
+010 4521 Premiumcalculationcomponentidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+残损类型
+C821 TYPEOFDAMAGE
+说明 说明物体的残损类型
+: 。
+残损类型描述代码
+010 7501 Damagetypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+残损类型描述
+040 7500 Damagetypedescription C an..35
+残损部位
+C822 DAMAGEAREA
+说明 说明物体残损的位置
+: 。
+残损部位描述代码
+010 7503 Damageareadescriptioncode C an..4
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+残损部位描述
+040 7502 Damageareadescription C an..35
+单元 部件类型
+C823 / TYPEOFUNIT/COMPONENT
+说明 标识物体的单元 部件类型 如锁 门 轮胎
+: / ( 、 、 )。
+单元 部件类型描述代码
+010 7505 / Unitorcomponenttypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+单元 部件类型描述
+040 7504 / Unitorcomponenttypedescription C an..35
+部件材料
+C824 COMPONENTMATERIAL
+说明 标识部件的构成材料 如金属 塑料
+: ( 、 )。
+部件材料描述代码
+010 7507 Componentmaterialdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+27
+GB/T176992—2024
+.
+部件材料描述
+040 7506 Componentmaterialdescription C an..35
+残损程度
+C825 DAMAGESEVERITY
+说明 说明物体的残损程度
+: 。
+残损程度描述代码
+010 7509 Damageseveritydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+残损程度描述
+040 7508 Damageseveritydescription C an..35
+行为
+C826 ACTION
+说明 已经或将要采取的作用 如与某一对象有关的作用
+: ( )。
+行为代码
+010 1229 Actioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+行为描述
+040 1228 Actiondescription C an..35
+标志类型
+C827 TYPEOFMARKING
+说明 说明施加标志的类型 反映所用方法以及所遵循的公约 例如对于包装
+: , ( )。
+标志类型代码
+010 7511 Markingtypecode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+临床干预细目
+C828 CLINICALINTERVENTIONDETAILS
+说明 说明一个临床干预
+: 。
+临床干预描述代码
+010 9437 Clinicalinterventiondescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+临床干预描述
+040 9436 Clinicalinterventiondescription C an..70
+分行信息
+C829 SUB-LINEINFORMATION
+说明 用于指示一个段或段组通常存放分行或分行信息 并能可选的标识该分行
+: , 。
+分行指示符代码
+010 5495 Sub-lineindicatorcode C an..3
+行项标识符
+020 1082 Lineitemidentifier C an..6
+处理标识细目
+C830 PROCESSIDENTIFICATIONDETAILS
+说明 标识特殊处理的细目
+: 。
+处理描述代码
+010 7191 Processdescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+处理描述
+040 7190 Processdescription C an..70
+结果细目
+C831 RESULTDETAILS
+说明 结果的说明信息
+: 。
+28
+GB/T176992—2024
+.
+测量
+010 6314 Measure C an..18
+计量有效位数代码
+020 6321 Measurementsignificancecode C an..3
+非离散计量名称代码
+030 6155 Non-discretemeasurementnamecode C an..17
+代码表标识代码
+040 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+050 3055 Codelistresponsibleagencycode C an..3
+非离散计量名称
+060 6154 Non-discretemeasurementname C an..70
+临床信息细目
+C836 CLINICALINFORMATIONDETAILS
+说明 说明一项临床信息
+: 。
+临床信息描述标识符
+010 6413 Clinicalinformationdescriptionidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+临床信息描述
+040 6412 Clinicalinformationdescription C an..70
+确定性细目
+C837 CERTAINTYDETAILS
+说明 确定性的描述
+: 。
+确定性描述代码
+010 4049 Certaintydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+确定性描述
+040 4048 Certaintydescription C an..35
+剂量细目
+C838 DOSAGEDETAILS
+说明 说明一个剂量
+: 。
+剂量描述标识符
+010 6083 Dosagedescriptionidentifier C an..8
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+剂量描述
+040 6082 Dosagedescription C an..70
+出席者类别
+C839 ATTENDEECATEGORY
+说明 说明出席者的类别
+: 。
+护理员类别描述代码
+010 7459 Attendeecategorydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+出席者类别描述
+040 7458 Attendeecategorydescription C an..35
+允许出席细目
+C840 ATTENDANCEADMISSIONDETAILS
+说明 说明允许出席的类型
+: 。
+允许类型描述代码
+010 9445 Admissiontypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+允许类型描述
+040 9444 Admissiontypedescription C an..35
+出席解除细目
+C841 ATTENDANCEDISCHARGEDETAILS
+29
+GB/T176992—2024
+.
+说明 说明护理解除出席的类型
+: 。
+解除类型描述代码
+010 9447 Dischargetypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+解除类型描述
+040 9446 Dischargetypedescription C an..35
+组织分类细目
+C844 ORGANISATIONCLASSIFICATIONDETAIL
+说明 说明组织分类细目
+: 。
+组织分类名称代码
+010 3083 Organisationalclassnamecode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+组织分类名称
+040 3082 Organisationalclassname C an..70
+计量单位细目
+C848 MEASUREMENTUNITDETAILS
+说明 计量单位的说明信息
+: 。
+计量单位代码
+010 6417 Measurementunitcode C an..8
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+计量单位名称
+040 6416 Measurementunitname C an..35
+指示参与方
+C849 PARTIESTOINSTRUCTION
+说明 指示发送方和接收方的标识
+: 。
+指示制定方标识符
+010 3301 Enactingpartyidentifier M an..35
+指示接收方标识符
+020 3285 Instructionreceivingpartyidentifier C an..35
+指示状态
+C850 STATUSOFINSTRUCTION
+说明 提供指示状态的信息
+: 。
+状态描述代码
+010 4405 Statusdescriptioncode M an..3
+参与方名称
+020 3036 Partyname C an..35
+风险对象类型
+C851 RISKOBJECTTYPE
+说明 说明一个风险对象的类型
+: 。
+风险对象类型标识符
+010 7179 Riskobjecttypeidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+风险对象子类型
+C852 RISKOBJECTSUB-TYPE
+说明 提供一个风险对象子类型的标识细目
+: 。
+风险对象子类型描述标识符
+010 7177 Riskobjectsub-typedescriptionidentifier C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+风险对象子类型描述
+040 7176 Riskobjectsub-typedescription C an..70
+30
+GB/T176992—2024
+.
+出错段位置细目
+C853 ERRORSEGMENTPOINTDETAILS
+说明 指示报文中应用错误的准确段位置
+: 。
+段标记标识符
+010 9166 Segmenttagidentifier C an..3
+顺序位置标识符
+020 1050 Sequencepositionidentifier C an..10
+顺序标识符来源代码
+030 1159 Sequenceidentifiersourcecode C an..3
+费用 折让账户
+C878 / CHARGE/ALLOWANCEACCOUNT
+说明 费用或折让账户的标识
+: 。
+分支机构标识符
+010 3434 Institutionbranchidentifier M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+账户持有人标识符
+040 3194 Accountholderidentifier C an..35
+货币标识代码
+050 6345 Currencyidentificationcode C an..3
+特征值
+C889 CHARACTERISTICVALUE
+说明 提供特性的值
+: 。
+特征值描述代码
+010 7111 Characteristicvaluedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+特征值描述
+040 7110 Characteristicvaluedescription C an..35
+特征值描述
+050 7110 Characteristicvaluedescription C an..35
+应用错误细目
+C901 APPLICATIONERRORDETAIL
+说明 报文接收方为指示数据验证出错条件的代码
+: 。
+应用错误代码
+010 9321 Applicationerrorcode M an..8
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关系
+C941 RELATIONSHIP
+说明 关系的标识和 或描述
+: / 。
+关系描述代码
+010 9143 Relationshipdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关系描述
+040 9142 Relationshipdescription C an..35
+成员类别
+C942 MEMBERSHIPCATEGORY
+说明 一项或一组成员的成员类别标识和 或描述
+: / 。
+成员类别描述代码
+010 7451 Membershipcategorydescriptioncode M an..4
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+成员类别描述
+040 7450 Membershipcategorydescription C an..35
+成员状态
+C944 MEMBERSHIPSTATUS
+31
+GB/T176992—2024
+.
+说明 成员状态的代码和 或描述
+: / 。
+成员状态描述代码
+010 7453 Membershipstatusdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+成员状态描述
+040 7452 Membershipstatusdescription C an..35
+成员等级
+C945 MEMBERSHIPLEVEL
+说明 成员等级的标识
+: 。
+成员等级代码限定符
+010 7455 Membershiplevelcodequalifier M an..3
+成员等级描述代码
+020 7457 Membershipleveldescriptioncode C an..9
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+成员等级描述
+050 7456 Membershipleveldescription C an..35
+职位类别
+C948 EMPLOYMENTCATEGORY
+说明 职位类别的代码和 或描述
+: / 。
+职位类别描述代码
+010 9005 Employmentcategorydescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+职位类别描述
+040 9004 Employmentcategorydescription C an..35
+资格分类
+C950 QUALIFICATIONCLASSIFICATION
+说明 资格分类说明和 或代码 它规定了贸易 技能 专业或类似资格的类别
+: / , 、 、 。
+资格分类描述代码
+010 9007 Qualificationclassificationdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+资格分类描述
+040 9006 Qualificationclassificationdescription C an..35
+资格分类描述
+050 9006 Qualificationclassificationdescription C an..35
+职业
+C951 OCCUPATION
+说明 职业的描述
+: 。
+职业描述代码
+010 9009 Occupationdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+职业描述
+040 9008 Occupationdescription C an..35
+职业描述
+050 9008 Occupationdescription C an..35
+分摊额类型
+C953 CONTRIBUTIONTYPE
+说明 为计划或组织捐赠的类型标识
+: 。
+分摊额类型描述代码
+010 5049 Contributiontypedescriptioncode M an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+分摊额类型描述
+040 5048 Contributiontypedescription C an..35
+32
+GB/T176992—2024
+.
+属性类型
+C955 ATTRIBUTETYPE
+说明 属性类型的标识
+: 。
+属性类型描述代码
+010 9021 Attributetypedescriptioncode M an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+属性类型描述
+040 9020 Attributetypedescription C an..70
+属性细目
+C956 ATTRIBUTEDETAILS
+说明 与实体有关的属性的标识
+: 。
+属性描述代码
+010 9019 Attributedescriptioncode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+属性描述
+040 9018 Attributedescription C an..256
+变更原因
+C960 REASONFORCHANGE
+说明 变更原因的代码和 或描述
+: / 。
+变更原因描述代码
+010 4295 Changereasondescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+变更原因描述
+040 4294 Changereasondescription C an..35
+公式复杂性
+C961 FORMULACOMPLEXITY
+说明 公式复杂性的标识
+: 。
+公式复杂性代码
+010 9505 Formulacomplexitycode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+条款名称
+C970 CLAUSENAME
+说明 用代码型或文本格式给出条款的标识
+: 。
+条款名称代码
+010 4069 Clausenamecode C an..17
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+条款名称
+040 4068 Clausename C an..70
+附加条款类型
+C971 PROVISOTYPE
+说明 用代码型或文本格式给出附加条款类型的标识
+: 。
+附加条款类型描述代码
+010 4073 Provisotypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+附加条款类型描述
+040 4072 Provisotypedescription C an..35
+附加条款计算
+C972 PROVISOCALCULATION
+33
+GB/T176992—2024
+.
+说明 用代码型或文本格式给出附加条款计算的说明
+: 。
+附加条款计算描述代码
+010 4075 Provisocalculationdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+附加条款计算描述
+040 4074 Provisocalculationdescription C an..35
+适用性类型
+C973 APPLICABILITYTYPE
+说明 用代码型或文本格式给出适用性类型的说明
+: 。
+适用性类型描述代码
+010 9049 Applicabilitytypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+适用性类型描述
+040 9048 Applicabilitytypedescription C an..35
+基础类型
+C974 BASISTYPE
+说明 用代码型或文本格式给出基本类型的说明
+: 。
+基础类型描述代码
+010 9047 Basistypedescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+基础类型描述
+040 9046 Basistypedescription C an..35
+期限细目
+C977 PERIODDETAIL
+说明 用代码型或文本格式给出期限细目的说明
+: 。
+期限细目描述代码
+010 2119 Perioddetaildescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+期限细目描述
+2118 Perioddetaildescription C an..35
+52 交互式电子数据交换复合数据元目录
+.
+位置标
+识符 标记 中文名称 英文名称 状态 表示
+地址细目
+E001 ADDRESSDETAILS
+说明 说明地址的细目
+: 。
+地址格式代码
+010 3477 Addressformatcode M an..3
+地址成分描述
+020 3286 Addresscomponentdescription M an..70
+地址成分描述
+030 3286 Addresscomponentdescription C an..70
+地址成分描述
+040 3286 Addresscomponentdescription C an..70
+地址成分描述
+050 3286 Addresscomponentdescription C an..70
+地址成分描述
+060 3286 Addresscomponentdescription C an..70
+地址成分描述
+070 3286 Addresscomponentdescription C an..70
+佣金细目
+E002 COMMISSIONDETAILS
+说明 说明佣金条件 金额 货币 付款方及有关自由文本
+: 、 、 、 。
+付款条件代码
+010 4439 Paymentconditionscode M an..3
+34
+GB/T176992—2024
+.
+货币金额
+020 5004 Monetaryamount C n..35
+货币标识代码
+030 6345 Currencyidentificationcode C an..3
+参与方名称
+040 3036 Partyname C an..70
+自由文本
+050 4440 Freetext C an..512
+行为代码
+060 1229 Actioncode C an..3
+属性信息
+E003 ATTRIBUTEINFORMATION
+说明 标识属性和属性类型
+: 。
+属性类型描述代码
+010 9021 Attributetypedescriptioncode M an..17
+属性描述
+020 9018 Attributedescription C an..256
+规则细目
+E004 RULEDETAILS
+说明 指出编码规则 数值及其与规则的关系 服务开始日期 与规则相关的货币金额和与规则
+: 、 、 、
+相关的附加信息
+。
+特定条件代码
+010 4183 Specialconditioncode M an..3
+单位数量
+020 6350 Unitsquantity C n..15
+单位类型代码限定符
+030 6353 Unittypecodequalifier C an..3
+关系代码
+040 5479 Relationcode C an..3
+一周中每天的标识符
+050 2160 Daysofweeksetidentifier C an..7
+货币金额
+060 5004 Monetaryamount C n..35
+货币金额类型代码限定符
+070 5025 Monetaryamounttypecodequalifier C an..3
+货币标识代码
+080 6345 Currencyidentificationcode C an..3
+自由文本
+090 4440 Freetext C an..512
+自由文本
+100 4440 Freetext C an..512
+自由文本
+110 4440 Freetext C an..512
+自由文本
+120 4440 Freetext C an..512
+自由文本
+130 4440 Freetext C an..512
+自由文本
+140 4440 Freetext C an..512
+自由文本
+150 4440 Freetext C an..512
+自由文本
+160 4440 Freetext C an..512
+自由文本
+170 4440 Freetext C an..512
+规则文本
+E005 RULETEXT
+说明 说明文本的规则
+: 。
+注 成分数据元 自由文本 在该复合数据元中出现 次
+: 4440( ) 20 。
+特定条件代码
+010 4183 Specialconditioncode M an..3
+信息类型代码
+020 4473 Informationtypecode C an..4
+自由文本
+030 4440 Freetext C an..512
+规则状态
+E006 RULESTATUS
+说明 规定规则的状态
+: 。
+特定条件代码
+010 4183 Specialconditioncode M an..3
+处理指示符描述代码
+020 1245 Processingindicatordescriptioncode M an..3
+35
+GB/T176992—2024
+.
+交通限制细目
+E007 TRAFFICRESTRICTIONDETAILS
+说明 提供限制交通的细目
+: 。
+交通限制代码
+010 8015 Trafficrestrictioncode C an..3
+交通限制应用代码
+020 8017 Trafficrestrictionapplicationcode C an..3
+交通限制类型代码限定符
+030 8035 Trafficrestrictiontypecodequalifier C an..3
+自由文本
+040 4440 Freetext C an..512
+地理细目
+E008 GEOGRAPHICDETAILS
+说明 说明位置的类型 实际地点 方向 距离 旅行时间和去往该地的运输工具
+: 、 , 、 、 。
+地点功能代码限定符
+010 3227 Locationfunctioncodequalifier M an..3
+地点名称
+020 3224 Locationname M an..256
+关系代码
+030 5479 Relationcode C an..3
+数量
+040 6060 Quantity C n..35
+数量类型代码限定符
+050 6063 Quantitytypecodequalifier C an..3
+时间
+060 2002 Time C n4
+运输工具描述代码
+070 8179 Transportmeansdescriptioncode C an..8
+运输工具描述代码
+080 8179 Transportmeansdescriptioncode C an..8
+运输工具描述代码
+090 8179 Transportmeansdescriptioncode C an..8
+运输工具描述代码
+100 8179 Transportmeansdescriptioncode C an..8
+运输工具描述代码
+110 8179 Transportmeansdescriptioncode C an..8
+纬度
+120 6000 Latitudedegree C an..10
+经度
+130 6002 Longitudedegree C an..11
+日可获性信息
+E009 DAILYAVAILABILITYINFORMATION
+说明 说明以日为基准的可获性
+: 。
+日期
+010 2000 Date M an..14
+请求信息描述
+020 4510 Requestedinformationdescription C an..35
+选择细目信息
+E010 SELECTIONDETAILSINFORMATION
+说明 说明选择的选项及相关信息
+: 。
+选项代码
+010 4009 Optioncode M an..3
+相关信息描述
+020 4018 Relatedinformationdescription C an..35
+费率等级细目
+E011 RATECLASSDETAILS
+说明 标识费率等级及其处理方法
+: 。
+费率 价目等级描述代码
+010 5243 / Rateortariffclassdescriptioncode M an..9
+处理指示符描述代码
+020 7365 Processingindicatordescriptioncode C an..3
+名称信息
+E012 NAMEINFORMATION
+说明 标识名称的类型 实际名称或标识名称的代码 以及状态
+: , , 。
+参与方功能代码限定符
+010 3035 Partyfunctioncodequalifier M an..3
+参与方名称
+020 3036 Partyname C an..35
+36
+GB/T176992—2024
+.
+参与方标识符
+030 3039 Partyidentifier C an..35
+名称状态代码
+040 3397 Namestatuscode C an..3
+日期时间信息
+E013 DATEANDTIMEINFORMATION
+说明 说明一个日期和时间及相关文本
+: 。
+日期 时间 期限功能代码
+010 2005 / / Dateortimeorperiodfunctioncodequalifier M an..3
+限定符
+日期 时间 期限文本
+020 2380 / / Dateortimeorperiodtext M an..35
+日期 时间 期限格式代码
+030 2379 / / Dateortimeorperiodformatcode C an..3
+自由文本
+040 4440 Freetext C an..512
+时间参考细目
+E014 TIMEREFERENCEDETAILS
+说明 说明一个对通讯时间指示的参考
+: 。
+参考标识符
+010 1154 Referenceidentifier C an..70
+参考代码限定符
+020 1153 Referencecodequalifier C an..3
+产品数据信息
+E015 PRODUCTDATAINFORMATION
+说明 用代码或文本格式说明产品数据 可供数量 以及费用
+: 、 , 。
+项目描述代码
+010 7009 Itemdescriptioncode C an..17
+项目描述
+020 7008 Itemdescription C an..256
+数量
+030 6060 Quantity C an..35
+货币金额
+040 5004 Monetaryamount C n..35
+费用期限类型代码
+050 2155 Chargeperiodtypecode C an..3
+费用单位代码
+060 5261 Chargeunitcode C an..3
+货币标识代码
+070 6345 Currencyidentificationcode C an..3
+信息类型代码
+080 4473 Informationtypecode C an..4
+自由文本
+090 4440 Freetext C an..512
+保险责任需求
+E016 INSURANCECOVERREQUIREMENT
+说明 说明保险责任的类型和需求
+: 。
+保险责任类型代码
+010 4497 Insurancecovertypecode M an..3
+需求制定方代码
+020 7299 Requirementdesignatorcode C an..3
+货币金额
+E017 MONETARYAMOUNT
+说明 按指定货币金额表述的商品或服务的量
+: 。
+货币金额类型代码限定符
+010 5025 Monetaryamounttypecodequalifier C an..3
+货币金额
+020 5004 Monetaryamount C n..35
+货币标识代码
+030 6345 Currencyidentificationcode C an..3
+货币类型代码限定符
+040 6343 Currencytypecodequalifier C an..3
+状态描述代码
+050 4405 Statusdescriptioncode C an..3
+价格信息
+E018 PRICEINFORMATION
+说明 价格类型 价格和相关细目的标识
+: , 。
+37
+GB/T176992—2024
+.
+价格代码限定符
+010 5125 Pricecodequalifier M an..3
+价格金额
+020 5118 Priceamount C n..15
+价格类型代码
+030 5375 Pricetypecode C an..3
+促销细目
+E019 PROMOTIONDETAILS
+说明 说明促销的供应商 促销编号和相关文本
+: 、 。
+参与方名称
+010 3036 Partyname M an..35
+是或否指示代码
+020 9607 Yesornoindicatorcode C an..3
+参考标识符
+030 1154 Referenceidentifier C an..70
+自由文本
+040 4440 Freetext C an..512
+自由文本
+050 4440 Freetext C an..512
+自由文本
+060 4440 Freetext C an..512
+自由文本
+070 4440 Freetext C an..512
+自由文本
+080 4440 Freetext C an..512
+税细目
+E020 TAXDETAILS
+说明 说明税种 税额和税率
+: 、 。
+关税 税 费率类型名称代码
+010 5153 / / Dutyortaxorfeetypenamecode M an..3
+货币金额
+020 5004 Monetaryamount C n..35
+关税 税 费率
+030 5278 / / Dutyortaxorfeerate C an..17
+服务
+E021 SERVICE
+说明 标识一项服务及任何修改
+: 。
+产品标识符
+010 7135 Productidentifier M an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+程序修改代码
+030 9629 Proceduremodificationcode C an..3
+程序修改代码
+040 9629 Proceduremodificationcode C an..3
+程序修改代码
+050 9629 Proceduremodificationcode C an..3
+程序修改代码
+060 9629 Proceduremodificationcode C an..3
+指示信息
+E022 INSTRUCTIONINFORMATION
+说明 说明一个指示
+: 。
+指示描述代码
+010 4401 Instructiondescriptioncode M an..3
+指示类型代码限定符
+020 4403 Instructiontypecodequalifier C an..3
+参与方统计信息
+E023 PARTYDEMOGRAPHICINFORMATION
+说明 提供关于参与方的统计信息
+: 。
+关系描述代码
+010 9143 Relationshipdescriptioncode C an..3
+性别代码
+020 3499 Gendercode C an..3
+职业类别描述代码
+030 9005 Employmentcategorydescriptioncode C an..3
+婚姻状况描述代码
+040 3479 Maritalstatusdescriptioncode C an..3
+身份描述代码
+050 4405 Statusdescriptioncode C an..3
+是或否指示代码
+060 9607 Yesornoindicatorcode C an..3
+38
+GB/T176992—2024
+.
+支持证据
+E024 SUPPORTINGEVIDENCE
+说明 证据类型 唯一参考号和通信方式的标识
+: 、 。
+支持证据类型代码限定符
+010 9643 Supportingevidencetypecodequalifier M an..3
+参考标识符
+020 1154 Referenceidentifier M an..70
+通讯媒介类型代码
+030 3153 Communicationmediumtypecode C an..3
+服务信息的基础
+E025 BASISOFSERVICEINFORMATION
+说明 包括类型 日期和费用的服务基础的标识
+: 、 。
+服务基础代码限定符
+010 9641 Servicebasiscodequalifier M an..3
+产品标识符
+020 7135 Productidentifier M an..35
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+日期 时间 期限文本
+040 2380 / / Dateortimeorperiodtext C an..35
+日期 时间 期限格式代码
+050 2379 / / Dateortimeorperiodformatcode C an..3
+货币金额
+060 5004 Monetaryamount C n..35
+允许
+E026 ADMISSION
+说明 说明允许的信息
+: 。
+允许类型描述代码
+010 9445 Admissiontypedescriptioncode C an..3
+允许来源代码
+020 9627 Admissionsourcecode C an..3
+发票类型
+E027 INVOICETYPE
+说明 标识发票类型及其使用频率
+: 。
+发票类型代码
+010 9631 Invoicetypecode M an..3
+频率代码
+020 2013 Frequencycode C an..3
+相关原因
+E028 RELATEDCAUSE
+说明 相关原因 日期和位置的标识
+: 、 。
+相关原因代码
+010 9625 Relatedcausecode C an..3
+日期
+020 2000 Date C an..14
+国家行政区划标识符
+030 3229 Countrysubdivisionidentifier C an..9
+诊断
+E029 DIAGNOSIS
+说明 诊断及其类型的标识
+: 。
+产品标识符
+010 7135 Productidentifier M an..35
+诊断类型代码
+020 9623 Diagnosistypecode C an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+调整信息
+E030 ADJUSTMENTINFORMATION
+说明 标识调整类别 原因和相关货币金额
+: 、 。
+调整类别代码
+010 9619 Adjustmentcategorycode M an..3
+调整原因描述代码
+020 4465 Adjustmentreasondescriptioncode M an..3
+货币金额
+030 5004 Monetaryamount C n..35
+39
+GB/T176992—2024
+.
+报文应用产品规范
+E031 MESSAGEAPPLICATIONPRODUCTSPECIFICATION
+说明 说明一个报文功能 对话 或概要
+: , , 。
+报文功能代码
+010 1225 Messagefunctioncode C an..3
+处理描述代码
+020 7191 Processdescriptioncode C an..17
+处理描述代码
+030 7191 Processdescriptioncode C an..17
+参与方标识
+E032 PARTYIDENTIFICATION
+说明 说明参与方的标识
+: 。
+参与方标识符
+010 3039 Partyidentifier C an..35
+参与方功能代码限定符
+020 3035 Partyfunctioncodequalifier C an..3
+语言细目
+E033 LANGUAGEDETAILS
+说明 标识一种语言
+: 。
+语言名称代码
+010 3453 Languagenamecode C an..3
+语言名称
+020 3452 Languagename C an..35
+时区
+E034 TIMEZONE
+说明 说明一个时区
+: 。
+时区标识符
+010 2029 Timezoneidentifier M an..3
+时差
+020 2116 Timezonedifferencequantity C n..4
+数量细目
+E035 QUANTITYDETAILS
+说明 传送数量的信息
+: 。
+数量类型代码限定符
+010 6063 Quantitytypecodequalifier M an..3
+数量
+020 6060 Quantity M an..35
+计量单位代码
+030 6411 Measurementunitcode C an..8
+参与方名称
+E080 PARTYNAME
+说明 交易参与方的名称标识
+: 。
+参与方名称
+010 3036 Partyname M an..35
+参与方名称
+020 3036 Partyname C an..35
+参与方名称
+030 3036 Partyname C an..35
+参与方名称
+040 3036 Partyname C an..35
+参与方名称
+050 3036 Partyname C an..35
+参与方名称格式代码
+060 3045 Partynameformatcode C an..3
+参与方标识细目
+E082 PARTYIDENTIFICATIONDETAILS
+说明 交易参与方的标识 用代码表示
+: , 。
+参与方标识符
+010 3039 Partyidentifier M an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+40
+GB/T176992—2024
+.
+交货方式
+E083 DELIVERYPATTERN
+说明 说明一种交货方式 定义一定期限内 以规定交货频次的交货量
+: , , 。
+数量类型代码限定符
+010 6063 Quantitytypecodequalifier M an..3
+数量
+020 6060 Quantity C an..35
+计量单位代码
+030 6411 Measurementunitcode C an..8
+数量
+040 6060 Quantity C an..35
+期限类型代码
+050 2151 Periodtypecode C an..3
+期限数量
+060 2152 Periodcountquantity C n..3
+发送方式代码
+070 2015 Despatchpatterncode C an..3
+发送方式计时代码
+080 2017 Despatchpatterntimingcode C an..3
+计量值和细目
+E175 MEASUREMENTVALUEANDDETAILS
+说明 说明计量值及其分类标识
+: 。
+测量
+010 6314 Measure M an..18
+计量单位代码
+020 6411 Measurementunitcode C an..8
+计量特征代码
+030 6313 Measuredattributecode C an..3
+计量有效位数代码
+040 6321 Measurementsignificancecode C an..3
+对象标识
+E206 OBJECTIDENTIFICATION
+说明 一个对象的标识
+: 。
+对象标识符
+010 7402 Objectidentifier M an..35
+对象标识代码限定符
+020 7405 Objectidentificationcodequalifier C an..3
+状态描述代码
+030 4405 Statusdescriptioncode C an..3
+尺码
+E211 DIMENSIONS
+说明 单件运输货物的尺码
+: 。
+计量单位代码
+010 6411 Measurementunitcode M an..8
+长度
+020 6168 Lengthmeasure C n..15
+宽度
+030 6140 Widthmeasure C n..15
+高度
+040 6008 Heightmeasure C n..15
+项号标识
+E212 ITEMNUMBERIDENTIFICATION
+说明 特定出处的货物标识
+: 。
+项标识符
+010 7140 Itemidentifier C an..35
+项号类型标识代码
+020 7143 Itemtypeidentificationcode C an..3
+代码表标识代码
+030 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+相关时间信息
+E362 RELATEDTIMEINFORMATION
+说明 说明相关时间和其变化量的信息
+: 。
+时间
+010 2002 Time C n4
+时间
+020 2002 Time C n4
+时差
+030 2116 Timezonedifferencequantity C n..4
+41
+GB/T176992—2024
+.
+日期变化数
+040 2148 Datevariationnumber C n..5
+货币细目
+E504 CURRENCYDETAILS
+说明 与货币有关的用法
+: 。
+货币细目限定符
+010 6347 Currencydetailsqualifier M an..3
+货币代码
+020 6345 Currencycode C an..3
+货币限定符
+030 6343 Currencyqualifier C an..3
+货币率基准
+040 6348 Currencyratebase C n..4
+参考
+E506 REFERENCE
+说明 参考的标识
+: 。
+参考代码限定符
+010 1153 Referencecodequalifier M an..3
+参考标识符
+020 1154 Referenceidentifier C an..70
+单证行标识符
+030 1156 Documentlineidentifier C an..6
+版本标识符
+040 4000 Referenceversionidentifier C an..35
+参与方名称
+050 3036 Partyname C an..70
+日期 时间 期限
+E507 / / DATE/TIME/PERIOD
+说明 与特定日期 时间 期限类型有关的日期和 或时间或期限
+: / / / 。
+日期 时间 期限功能代码
+010 2005 / / Dateortimeorperiodfunctioncodequalifier M an..3
+限定符
+日期 时间 期限文本
+020 2380 / / Dateortimeorperiodtext C an..35
+日期 时间 期限格式代码
+030 2379 / / Dateortimeorperiodformatcode C an..3
+地点标识
+E517 LOCATIONIDENTIFICATION
+说明 地点的标识 用代码或名称表示
+: , 。
+地点标识符
+010 3225 Locationidentifier C an..35
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+地点名称
+040 3224 Locationname C an..256
+频度
+E520 FREQUENCY
+说明 说明频度和其所采用的时间窗口
+: 。
+频率
+010 6072 Frequencyrate M n..9
+计量单位代码
+020 6411 Measurementunitcode C an..8
+日期 时间 期限文本
+020 2380 / / Dateortimeorperiodtext C an..35
+日期 时间 期限格式代码
+030 2379 / / Dateortimeorperiodformatcode C an..3
+单位数细目
+E523 NUMBEROFUNITDETAILS
+说明 单位数及其目的的标识
+: 。
+单位数量
+010 6350 Unitsquantity C n..15
+单位类型代码限定符
+020 6353 Unittypecodequalifier C an..3
+42
+GB/T176992—2024
+.
+位置标识
+E778 POSITIONIDENTIFICATION
+说明 标识对象在其所处结构中的位置
+: 。
+层级结构层标识符
+010 7164 Hierarchicalstructurelevelidentifier C an..35
+顺序位置标识符
+020 1050 Sequencepositionidentifier C an..10
+地址用法
+E817 ADDRESSUSAGE
+说明 描述地址用法的信息
+: 。
+地址用途代码
+010 3299 Addresspurposecode C an..3
+地址类型代码
+020 3131 Addresstypecode C an..3
+地址状态代码
+030 3475 Addressstatuscode C an..3
+国家行政区划细目
+E819 COUNTRYSUBENTITYDETAILS
+说明 说明用于国家行政管理而分级划分的区域
+: 。
+国家行政区划标识符
+010 3229 Countrysubdivisionidentifier C an..9
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+国家行政区划名称
+040 3228 Countrysubdivisionname C an..70
+应用错误细目
+E901 APPLICATIONERRORDETAILS
+说明 由报文的接收方分配的代码 用于指出数据有效性出错情况
+: , 。
+应用错误代码
+010 9321 Applicationerrorcode M an..8
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关系
+E941 RELATIONSHIP
+说明 以代码或自由文本说明的关系
+: 。
+关系描述代码
+010 9143 Relationshipdescriptioncode C an..3
+代码表标识代码
+020 1131 Codelistidentificationcode C an..17
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+关系描述
+040 9142 Relationshipdescription C an..35
+确定性
+E946 CERTAINTY
+说明 以代码型或自由文本说明的确定性
+: 。
+确定性描述代码
+010 4049 Certaintydescriptioncode C an..3
+确定性描述
+020 4048 Certaintydescription C an..35
+语言名称代码
+030 3453 Languagenamecode C an..3
+代码表负责机构代码
+040 3055 Codelistresponsibleagencycode C an..3
+数量和作用细目
+E958 QUANTITYANDACTIONDETAILS
+说明 说明产品或服务所要求的数量和作用
+: 。
+数量
+010 6060 Quantity C n..15
+状态描述代码
+020 4405 Statusdescriptioncode C an..3
+43
+GB/T176992—2024
+.
+附加服务细目
+E959 ADDITIONALSERVICEDETAILS
+说明 说明附加服务细目 比如有关的预订日期 开始和结束时间以及位置信息
+: , 、 。
+特殊服务描述代码
+010 7161 Specialservicedescriptioncode M an..3
+时间
+020 2002 Time C n4
+时间
+030 2002 Time C n4
+日期
+040 2000 Date C an..14
+地点名称
+050 3224 Locationname C an..256
+地点标识符
+060 3225 Locationidentifier C an..35
+地点功能代码限定符
+070 3227 Locationfunctioncodequalifier C an..3
+特征描述代码
+080 7037 Characteristicdescriptioncode C an..17
+第一相关地点标识符
+090 3223 Firstrelatedlocationidentifier C an..35
+国家 地区 标识符
+100 3207 ( ) Countryidentifier C an..3
+特殊服务描述
+110 7160 Specialservicedescription C an..35
+特征描述
+120 7036 Characteristicdescription C an..35
+行为代码
+130 1229 Actioncode C an..3
+第二地点标识符
+140 3233 Secondrelatedlocationidentifier C an..35
+语言名称代码
+150 3453 Languagenamecode C an..3
+频率
+160 6072 Frequencyrate C n..9
+计量单位代码
+170 6411 Measurementunitcode C an..8
+数量
+180 6060 Quantity C an..35
+参与方名称
+190 3036 Partyname C an..35
+运输细目
+E961 TRANSPORTDETAILS
+说明 具体运输方法的细节描述
+: 。
+运输工具描述代码
+010 8179 Transportmeansdescriptioncode C an..8
+行程站数
+020 8216 Journeystopsquantity C n..3
+行程期间
+030 2162 Journeylegdurationquantity C an..6
+百分比
+040 5482 Percentage C n..10
+一周中每天的标识符
+050 2160 Daysofweeksetidentifier C an..7
+日期 时间 期限
+060 2380 / / Dateortimeorperiodtext C an..35
+运输工具变更指示符代码
+070 8215 Transportmeanschangeindicatorcode C an1
+地点标识符
+080 3225 Locationidentifier C an..35
+地点标识符
+090 3225 Locationidentifier C an..35
+地点标识符
+100 3225 Locationidentifier C an..35
+两端港站信息
+E962 TERMINALINFORMATION
+说明 说明离开或抵达两端港站的信息
+: 。
+通道标识符
+010 3463 Gateidentifier C an..6
+第一相关地点标识符
+020 3223 Firstrelatedlocationidentifier C an..35
+第一相关地点标识符
+030 3223 Firstrelatedlocationidentifier C an..35
+距离或时间细目
+E963 DISTANCEORTIMEDETAILS
+说明 说明有关距离或时间段的信息
+: 。
+44
+GB/T176992—2024
+.
+测量
+010 6314 Measure C an..18
+计量单位代码
+020 6411 Measurementunitcode C an..3
+时间
+030 2002 Time C n4
+旅客时间细目
+E964 TRAVELLERTIMEDETAILS
+说明 按顺序说明与旅客有关的离开通道时间 到达通道时间 登记日期和时间
+: 、 、 。
+时间
+010 2002 Time C n4
+时间
+020 2002 Time C n4
+登记时间
+030 2156 Check-intime C an..10
+特殊旅行设施
+E965 SPECIALTRAVELFACILITIES
+说明 告知关于服务设施的信息
+: 。
+设施类型代码
+010 9039 Facilitytypedescriptioncode C an..3
+设施类型描述
+020 9038 Facilitytypedescription C an..70
+产品细目类型代码限定符
+030 7133 Productdetailstypecodequalifier C an..3
+特征描述代码
+040 7037 Characteristicdescriptioncode C an..17
+联系信息
+E966 CONTACTINFORMATION
+说明 说明通信号码 号码的类型及号码的所有方
+: 、 。
+参与方功能代码限定符
+010 3035 Partyfunctioncodequalifier M an..3
+通信地址标识符
+020 3148 Communicationaddressidentifier M an..512
+通信媒介类型代码
+030 3155 Communicationmediumtypecode C an..3
+参与方名称
+040 3036 Partyname C an..70
+参考标识符
+050 1154 Referenceidentifier C an..70
+消费者参考标识
+E967 CONSUMERREFERENCEIDENTIFICATION
+说明 用类型 公司 旅客的号码和参考标识消费者
+: 、 、 。
+参考代码限定符
+010 1153 Referencecodequalifier M an..3
+参考标识符
+020 1154 Referenceidentifier C an..70
+参与方名称
+030 3036 Partyname C an..70
+旅客参考标识符
+040 1145 Travellerreferenceidentifier C an..35
+单证信息
+E968 DOCUMENTINFORMATION
+说明 用代码型名称 号码 分类和签发地点标识单证
+: 、 、 。
+单证名称代码
+010 1001 Documentnamecode M an..3
+单证标识符
+020 1004 Documentidentifier M an..35
+特征值描述代码
+030 7111 Characteristicvaluedescriptioncode C an..3
+位置标识符
+040 3225 Locationidentifier C an..35
+国家 地区 标识符
+050 3207 ( ) Countryidentifier C an..3
+国家 地区 标识符
+060 3207 ( ) Countryidentifier C an..3
+城市名称
+070 3164 Cityname C an..35
+有效日期
+E969 VALIDITYDATES
+45
+GB/T176992—2024
+.
+说明 生效日期和截止日期的标识 生效日期在前
+: , 。
+日期
+010 2000 Date M an..14
+日期
+020 2000 Date C an..14
+常旅客标识
+E970 FREQUENTTRAVELLERIDENTIFICATION
+说明 由公司对特定旅客核定的常旅客标识号
+: 。
+参与方名称
+010 3036 Partyname M an..70
+常旅客标识符
+020 3459 Frequenttravelleridentifier M an..25
+旅客参考标识符
+030 1145 Travellerreferenceidentifier C an..35
+自由文本限定
+E971 FREETEXTQUALIFICATION
+说明 指定自由文本的类型 用途 状态及语言
+: 、 、 。
+文本主题代码限定符
+010 4451 Textsubjectcodequalifier M an..3
+信息类型代码
+020 4473 Informationtypecode C an..4
+状态描述代码
+030 4405 Statusdescriptioncode C an..3
+参与方名称
+040 3036 Partyname C an..70
+语言名称代码
+050 3453 Languagenamecode C an..3
+报文处理细目
+E972 MESSAGEPROCESSINGDETAILS
+说明 指出报文处理信息
+: 。
+业务功能代码
+010 4025 Businessfunctioncode C an..3
+报文功能代码
+020 1225 Messagefunctioncode C an..3
+代码表负责机构代码
+030 3055 Codelistresponsibleagencycode C an..3
+报文功能代码
+040 1225 Messagefunctioncode C an..3
+报文功能代码
+050 1225 Messagefunctioncode C an..3
+报文功能代码
+060 1225 Messagefunctioncode C an..3
+报文功能代码
+070 1225 Messagefunctioncode C an..3
+报文功能代码
+080 1225 Messagefunctioncode C an..3
+报文功能代码
+090 1225 Messagefunctioncode C an..3
+报文功能代码
+100 1225 Messagefunctioncode C an..3
+报文功能代码
+110 1225 Messagefunctioncode C an..3
+报文功能代码
+120 1225 Messagefunctioncode C an..3
+交付系统细目
+E973 DELIVERINGSYSTEMDETAILS
+说明 说明为第三方生成或交付报文的系统及其位置
+: 。
+参与方名称
+010 3036 Partyname C an..70
+地点标识符
+020 3225 Locationidentifier C an..35
+地点名称
+030 3224 Locationname C an..256
+源发方标识细目
+E974 ORIGINATORIDENTIFICATIONDETAILS
+说明 按顺序标识分配的代理标识代码 源发系统标识 预订地点和代理名称
+: 、 、 。
+代理人标识符
+010 3197 Agentidentifier C an..9
+内部标识符
+020 3465 In-houseidentifier C an..9
+46
+GB/T176992—2024
+.
+代理人标识符
+030 3197 Agentidentifier C an..9
+参与方名称
+040 3036 Partyname C an..70
+地点
+E975 LOCATION
+说明 标识一个地点
+: 。
+地点标识符
+010 3225 Locationidentifier C an..35
+地点名称
+020 3224 Locationname C an..256
+国家 地区 标识符
+030 3207 ( ) Countryidentifier C an..3
+地点功能代码限定符
+040 3227 Locationfunctioncodequalifier C an..3
+源发方细目
+E976 ORIGINATORDETAILS
+说明 说明源发方的细目
+: 。
+国家 地区 标识符
+010 3207 ( ) Countryidentifier C an..3
+货币标识代码
+020 6345 Currencyidentificationcode C an..3
+语言名称代码
+030 3453 Languagenamecode C an..3
+付款细目
+E977 PAYMENTDETAILS
+说明 标识付款的方式 类型 金额 货币和到期日
+: 、 、 、 。
+支付方式代码
+010 4467 Paymentmethodcode C an..4
+付款目的代码
+020 4469 Paymentpurposecode C an..4
+服务类型代码
+030 5267 Servicetypecode C an..3
+货币金额
+040 5004 Monetaryamount C n..35
+货币标识代码
+050 6345 Currencyidentificationcode C an..3
+参考标识符
+060 1154 Referenceidentifier C an..70
+日期
+070 2000 Date C an..14
+位置标识符
+080 3225 Locationidentifier C an..35
+信用卡信息
+E978 CREDITCARDINFORMATION
+说明 标识信用卡的有关信息及持卡旅客
+: 。
+参与方名称
+010 3036 Partyname M an..70
+参考标识符
+020 1154 Referenceidentifier C an..70
+日期
+030 2000 Date C an..14
+银行标识符
+040 3449 Bankidentifier C an..17
+旅客参考标识符
+050 1145 Travellerreferenceidentifier C an..35
+预订控制标识
+E979 RESERVATIONCONTROLIDENTIFICATION
+说明 有关预订的信息 例如标识 日期和时间 以及变更原因
+: , 、 , 。
+参与方名称
+010 3036 Partyname C an..70
+预订标识符
+020 9040 Reservationidentifier C an..20
+预订标识符代码限定符
+030 9043 Reservationidentifiercodequalifier C an..3
+日期
+040 2000 Date C an..14
+毫秒时间
+050 2164 Millisecondtime C n9
+参考标识符
+060 1154 Referenceidentifier C an..70
+47
+GB/T176992—2024
+.
+调整原因描述代码
+070 4465 Adjustmentreasondescriptioncode C an..3
+特殊需求类型细目
+E980 SPECIALREQUIREMENTTYPEDETAILS
+说明 说明对服务的特别要求 所需数量 措施及实施地点
+: 、 、 。
+特殊需求类型标识
+010 4187 Specialrequirementtypecode M an..4
+状态描述代码
+020 4405 Statusdescriptioncode C an..3
+数量
+030 6060 Quantity C an..35
+参与方名称
+040 3036 Partyname C an..70
+处理指示符描述代码
+050 7365 Processingindicatordescriptioncode C an..3
+地点标识
+060 3225 Locationidentifier C an..35
+地点标识
+070 3225 Locationidentifier C an..35
+特征描述代码
+080 7037 Characteristicdescriptioncode C an..17
+特殊需求细目
+E981 SPECIALREQUIREMENTDETAILS
+说明 说明一项有关特别申请或要求的需求并指明旅客
+: 。
+特殊需求描述
+010 4184 Specialrequirementdescription C an..17
+计量单位代码
+020 6411 Measurementunitcode C an..8
+数量
+030 6060 Quantity C an..35
+旅客参考标识符
+040 1145 Travellerreferenceidentifier C an..35
+特征值代码
+050 7111 Characteristicvaluedescriptioncode C an..3
+特征值代码
+060 7111 Characteristicvaluedescriptioncode C an..3
+特征值代码
+070 7111 Characteristicvaluedescriptioncode C an..3
+特征值代码
+080 7111 Characteristicvaluedescriptioncode C an..3
+特征值代码
+090 7111 Characteristicvaluedescriptioncode C an..3
+价目表信息
+E982 TARIFFINFORMATION
+说明 标识费率或价目表的细目
+: 。
+费率类型标识符
+010 5263 Ratetypeidentifier C an..20
+货币金额
+020 5004 Monetaryamount C n..35
+货币标识代码
+030 6345 Currencyidentificationcode C an..3
+费率计划代码
+040 5501 Rateplancode C an..3
+货币金额类型代码限定符
+050 5025 Monetaryamounttypecodequalifier C an..3
+期限数量
+060 2152 Periodcountquantity C n..3
+价格变更类型代码
+070 5377 Pricechangetypecode C an..3
+货币总金额
+080 5160 Totalmonetaryamount C n..20
+日期
+090 2000 Date C an..14
+日期
+100 2000 Date C an..14
+特殊条件代码
+110 4183 Specialconditioncode C an..3
+数量
+120 6060 Quantity C an..35
+状态描述代码
+130 4405 Statusdescriptioncode C an..3
+费率信息
+E983 RATEINFORMATION
+说明 标识费率或价目表的种类 范围和处理信息
+: 、 。
+48
+GB/T176992—2024
+.
+费率 价目等级描述代码
+010 5243 / Rateortariffclassdescriptioncode C an..9
+最小数量范围
+020 6162 Rangeminimumquantity C n..18
+最大数量范围
+030 6152 Rangemaximumquantity C n..18
+处理指示符描述代码
+040 7365 Processingindicatordescriptioncode C an..3
+货币标识代码
+050 6345 Currencyidentificationcode C an..3
+相关费用信息
+E984 ASSOCIATEDCHARGESINFORMATION
+说明 标识一项产品或服务的附加费用
+: 。
+费用单位代码
+010 5261 Chargeunitcode C an..3
+货币金额
+020 5004 Monetaryamount C n..35
+项目描述
+030 7008 Itemdescription C an..256
+数量
+040 6060 Quantity C n..35
+费用期限类型代码
+050 2155 Chargeperiodtypecode C an..3
+货币标识代码
+060 6345 Currencyidentificationcode C an..3
+位置标识符
+070 3225 Locationidentifier C an..35
+自由文本
+080 4440 Freetext C an..512
+维护操作代码
+090 4513 Maintenanceoperationcode C an..3
+需求制定方代码
+100 7299 Requirementdesignatorcode C an..3
+年龄
+110 2018 Age C n..3
+百分比
+120 5482 Percentage C n..10
+旅客姓氏和相关信息
+E985 TRAVELLERSURNAMEANDRELATEDINFORMATION
+说明 标识旅客的姓氏 旅客的类型 同姓旅客的数目 姓氏的状态和语言
+: 、 、 、 。
+姓
+010 3500 Familyname M an..70
+参与方功能代码限定符
+020 3035 Partyfunctioncodequalifier C an..3
+数量
+030 6060 Quantity C n..35
+状态描述代码
+040 4405 Statusdescriptioncode C an..3
+语言名称代码
+050 3453 Languagenamecode C an..3
+旅客细目
+E986 TRAVELLERDETAILS
+说明 标识旅客的名字和职务 类型 语言 性别和年龄
+: 、 、 、 。
+名字
+010 3460 Givenname C an..70
+参与方功能代码限定符
+020 3035 Partyfunctioncodequalifier C an..3
+旅客参考标识符
+030 1145 Travellerreferenceidentifier C an..35
+职务描述
+040 3504 Givennametitledescription C an..9
+旅客携带婴儿指示符代码
+050 8219 Travelleraccompaniedbyinfantindicatorcode C an1
+语言名称代码
+060 3453 Languagenamecode C an..3
+性别代码
+070 3499 Gendercode C an..3
+年龄
+080 2018 Age C n..3
+产品日期和时间
+E987 PRODUCTDATEANDTIME
+说明 说明一项产品或服务的起始日期和时间以及结束日期和时间 起始日期在前
+: , 。
+日期
+010 2000 Date M an..14
+49
+GB/T176992—2024
+.
+时间
+020 2002 Time C n4
+日期
+030 2000 Date C an..14
+时间
+040 2002 Time C n4
+日期变化数
+050 2148 Datevariationnumber C n..5
+公司标识
+E988 COMPANYIDENTIFICATION
+说明 标识公司和相关的公司
+: 。
+参与方名称
+010 3036 Partyname M an..70
+参与方名称
+020 3036 Partyname M an..70
+参与方名称
+030 3036 Partyname M an..70
+产品标识细目
+E989 PRODUCTIDENTIFICATIONDETAILS
+说明 标识某一产品或服务的代码 号码或名称以及标识产品或服务等级或类型的代码
+: 、 。
+产品标识符
+010 7135 Productidentifier C an..35
+特征描述代码
+020 7037 Characteristicdescriptioncode C an..17
+产品标识特征标识代码
+030 7139 Productcharacteristicidentificationcode C an..3
+项目描述代码
+040 7009 Itemdescriptioncode C an..17
+项目描述代码
+050 7009 Itemdescriptioncode C an..17
+项目描述代码
+060 7009 Itemdescriptioncode C an..17
+产品名称
+070 9608 Productname C an..35
+顺序号细目
+E990 SEQUENCENUMBERDETAILS
+说明 说明一项产品或服务的顺序号信息
+: 。
+顺序位置标识符
+010 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+020 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+030 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+040 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+050 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+060 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+070 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+080 1050 Sequencepositionidentifier M an..10
+顺序位置标识符
+090 1050 Sequencepositionidentifier M an..10
+交通工具信息
+E991 VEHICLEINFORMATION
+说明 用构造或型号和标识号来标识一个交通工具
+: 。
+设备规格和类型描述
+010 8154 Equipmentsizeandtypedescription C an..35
+对象标识符
+020 7402 Objectidentifier C an..35
+位置
+E992 POSITION
+说明 位置的标识符
+: 。
+第一相关地点标识符
+010 3223 Firstrelatedlocationidentifier C an..35
+第二相关地点标识符
+020 3233 Secondrelatedlocationidentifier C an..35
+50
+GB/T176992—2024
+.
+旅行细目
+E993 TOURDETAILS
+说明 用代码 供应商名称 时长 停留次数 住房及房间数量来提供旅行细目
+: 、 、 、 、 。
+产品标识符
+010 7135 Productidentifier C an..35
+参与方名称
+020 3036 Partyname C an..35
+长度
+030 6168 Lengthmeasure C n..15
+行程站数
+040 8216 Journeystopsquantity C n..3
+一周中每天的标识符
+050 2160 Daysofweeksetidentifier C an..7
+单位数量
+060 6350 Unitsquantity C n..15
+数量
+070 6060 Quantity C n..35
+中途停留信息
+E994 STOPOVERINFORMATION
+说明 说明中途停留的地点和过夜天数
+: 。
+地点标识符
+010 3225 Locationidentifier C an..35
+单位数量
+020 6350 Unitsquantity C n..15
+搬移细目
+E995 MOVEMENTDETAILS
+说明 搬移的信息
+: 。
+服务需求代码
+010 7273 Servicerequirementcode C an..3
+日期
+020 2000 Date C an..14
+时间
+030 2002 Time C n4
+产品分类细目
+E996 PRODUCTCLASSDETAILS
+说明 说明一个产品分类的细目
+: 。
+特征描述代码
+010 7037 Characteristicdescriptioncode C an..17
+要求的信息描述
+020 4510 Requestedinformationdescription C an..35
+特殊服务描述代码
+030 7161 Specialservicedescriptioncode C an..3
+项目描述代码
+040 7009 Itemdescriptioncode C an..17
+项目描述代码
+050 7009 Itemdescriptioncode C an..17
+项目描述代码
+060 7009 Itemdescriptioncode C an..17
+产品特征标识代码
+070 7139 Productcharacteristicidentificationcode C an..3
+食宿安排信息
+E997 ACCOMMODATIONALLOCATIONINFORMATION
+说明 说明所安排食宿的参考 类型和特征
+: 、 。
+注 成分数据元特殊需求细目在此复合数据元中重复 次
+: 99 。
+参考标识符
+010 1154 Referenceidentifier M an..70
+关系描述代码
+020 9143 Relationshipdescriptioncode C an..3
+特殊需求类型代码
+030 4187 Specialrequirementtypecode C an..4
+特征值描述代码
+040 7111 Characteristicvaluedescriptioncode C an..3
+特殊需求描述
+050 4184 Specialrequirementdescription C an..17
+折扣信息
+E998 DISCOUNTINFORMATION
+说明 说明折扣原因 金额 公司和与折扣原因有关的一个数字
+: 、 、 。
+调整原因描述代码
+010 4465 Adjustmentreasondescriptioncode M an..3
+51
+GB/T176992—2024
+.
+百分比
+020 5482 Percentage C n..10
+参与方名称
+030 3036 Partyname C an..70
+单位数量
+040 6350 Unitsquantity C n..15
+衔接细目
+E999 CONNECTIONDETAILS
+说明 说明衔接和经停的地点 指定的供应商 相关的时间 以及旅行顺序
+: 、 、 、 。
+地点标识符
+010 3225 Locationidentifier C an..25
+参与方名称
+020 3036 Partyname C an..70
+时间
+030 2002 Time C n4
+时间
+040 2002 Time C n4
+地点名称
+050 3224 Locationname C an..256
+位置功能代码限定符
+060 3227 Locationfunctioncodequalifier C an..3
+国家 地区 标识符
+070 3207 ( ) Countryidentifier C an..3
+顺序位置标识符
+080 1050 Sequencepositionidentifier C an..10
+52
+GB/T176992—2024
+.
+参 考 文 献
+信息技术 元数据注册系统 第 部分 框架
+[1] GB/T18391.1—2009 (MDR) 1 :
+53

@@ -1,0 +1,2772 @@
+ICS1322020
+. .
+C81
+中 华 人 民 共 和 国 国 家 标 准
+GB/T268758—2015
+.
+城市消防远程监控系统
+第 部分 监控中心对外数据交换协议
+8
+:
+Remote-monitoringsystemofurbanfireprotection—
+Part8Externaldataexchangeprotocolformonitoringcenter
+:
+2015-06-02发布 2016-02-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T268758—2015
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+缩略语
+4 …………………………………………………………………………………………………… 1
+定义
+5 XMLSchema ……………………………………………………………………………………… 1
+一般要求
+6 ………………………………………………………………………………………………… 2
+数据查询接口
+7 …………………………………………………………………………………………… 2
+数据实时发布接口
+8 ……………………………………………………………………………………… 7
+附录 规范性附录 数据查询接口相关的 定义
+A( ) XMLSchema …………………………………… 10
+附录 规范性附录 数据实时发布接口相关的 定义
+B( ) XMLSchema ……………………………… 18
+附录 规范性附录 公用数据类型的 定义
+C( ) XMLSchema ………………………………………… 23
+GB/T268758—2015
+.
+前 言
+城市消防远程监控系统 分为以下八个部分
+GB26875《 》 :
+第 部分 用户信息传输装置
+——— 1 : ;
+第 部分 通信服务器软件功能要求
+——— 2 : ;
+第 部分 报警传输网络通信协议
+——— 3 : ;
+第 部分 基本数据项
+——— 4 : ;
+第 部分 受理软件功能要求
+——— 5 : ;
+第 部分 信息管理软件功能要求
+——— 6 : ;
+第 部分 消防设施维护管理软件功能要求
+——— 7 : ;
+第 部分 监控中心对外数据交换协议
+——— 8 : 。
+本部分为 的第 部分
+GB26875 8 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+本部分由中华人民共和国公安部提出
+。
+本部分由全国消防标准化技术委员会 归口
+(SAC/TC113) 。
+本部分负责起草单位 公安部沈阳消防研究所
+: 。
+本部分参加起草单位 深圳市赋安安全系统有限公司 万盛 中国 科技有限公司 海湾安全技术有
+: 、 ( ) 、
+限公司
+。
+本部分主要起草人 李志刚 王军 张迪 杨树峰 刘海霞 裴建国 齐宝金 仝瑞涛 赵海荣 张磊
+: 、 、 、 、 、 、 、 、 、 、
+杜阳 乔培玉 刘濛 隋虎林 马青波 郑春华 经纬 王海润
+、 、 、 、 、 、 、 。
+Ⅰ
+GB/T268758—2015
+.
+城市消防远程监控系统
+第8部分 监控中心对外数据交换协议
+:
+1 范围
+的本部分规定了城市消防远程监控系统监控中心对外数据交换协议的缩略语
+GB26875 、XML
+定义 一般要求 数据查询接口和数据实时发布接口
+Schema 、 、 。
+本部分适用于城市消防远程监控系统监控中心与外部系统之间的数据交换
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 中文编码字符集
+GB18030
+城市消防远程监控系统 第 部分 基本数据项
+GB/T26875.4—2011 4 :
+城市消防远程监控系统技术规范
+GB50440
+超文本传输协议
+RFC2616 (HypertextTransferProtocol—HTTP/1.1)
+超文本传输安全协议
+RFC2818 (HTTPOverTLS)
+媒体类型
+RFC3023 XML (XMLMediaTypes)
+的转换格式
+RFC3629 ISO10646 (UTF-8,atransformationformatofISO10646)
+认证框架
+RFC6749 OAuth2.0 (TheOAuth2.0AuthorizationFramework)
+3 术语和定义
+界定的术语和定义适用于本文件
+GB50440 。
+4 缩略语
+下列缩略语适用于本文件
+。
+超文本传输协议
+HTTP: (HypertextTransferProtocol)
+超文本传输安全协议
+HTTPS: (HTTPOverTLS)
+表述性状态转移
+REST: (RepresentationalStateTransfer)
+统一资源标识符
+URI: (UniformResourceIdentifier)
+可扩展标记语言
+XML: (eXtensibleMarkupLanguage)
+可扩展标记语言架构定义
+XMLSchema: (XMLSchemaDefinition)
+5 XMLSchema定义
+51 中规定的各类信息的 定义见附录
+. GB/T26875.4—2011 XMLSchema A。
+52 数据订阅请求 取消数据订阅请求 数据订阅响应及相关数据通知的 定义见附录
+. 、 、 XMLSchema B。
+1
+GB/T268758—2015
+.
+53 附录 附录 所述 中引用的公用数据类型的 定义见附录
+. A、 B XMLSchema XMLSchema C。
+6 一般要求
+61 本协议使用的字符集应满足 或 的规定
+. GB18030 RFC3629 。
+62 本协议应以 或 协议作为底层承载协议 采用 协议时 应满足
+. HTTP HTTPS 。 HTTP , RFC2616
+的规定 采用 协议时 应满足 的规定
+; HTTPS , RFC2818 。
+63 本协议宜采用 协议进行客户端验证和授权 并满足 的规定
+. OAuth2.0 , RFC6749 。
+64 监控中心如未能处理接收到的请求时 返回的 响应的状态代码 应是 实
+. , HTTP (StatusCode) 400,
+体主体 应是 中描述的媒体类型为 的错误响应 错误响应的
+(EntityBody) RFC3023 “application/xml” 。
+定义见 其中 元素为错误描述 元素为错误代码 取值范围为
+XMLSchema A.15, description ;code , 1~
+仅 用于自定义错误 错误代码的定义见表
+9999, 1000~9999 , 1。
+表1 错误代码表
+错误代码 错误含义
+未知错误
+1
+监控中心暂时停止数据交换服务
+2
+监控中心不支持的数据交换请求
+3
+客户应用的身份无法确定
+4
+客户应用被禁用
+5
+客户应用的 被禁止
+6 IP
+客户应用的请求频率超过限制
+7
+客户应用的权限不足
+8
+请求参数无效
+9
+请求参数缺失
+10
+请求无法被处理
+11
+监控中心不存在指定的数据
+100
+订阅请求无法添加
+200
+取消订阅时 不存在
+201 ,subscribe_id
+自定义
+1000~9999
+7 数据查询接口
+71 数据查询请求
+.
+711 任何查询请求应支持表 规定的通用查询参数
+.. 2 。
+2
+GB/T268758—2015
+.
+表2 通用查询参数
+参数名称 类型 是否必需 描述
+字符型 否 响应数据格式 可以为 默认值为
+format , xml, xml
+字符型 否 查询请求的编码类型 可以为 或 默认值为
+ie , UTF-8 GBK, UTF-8
+字符型 否 响应数据的编码类型 可以为 或 默认值为
+oe , UTF-8 GBK, UTF-8
+整数型 否 用于支持数据集合分页 表示第几页 默认值为
+page_no , , 1
+整数型 否 用于支持数据集合分页 表示每页返回多少条数据 默认值为
+page_size , , 20
+712 查询请求接口应支持 的 方法
+.. HTTP GET 。
+注 方法是 规定的客户端与服务器的交互方法之一 一般用于获取或查询资源信息
+:GET HTTP , 。
+713 查询请求接口应采用 风格的 接口 接口 基本格式为
+.. REST HTTP , URL http(s)://.../openapi/
+其中 应支持 规定的各类查询的 路径 可在任何 处
+v1/query/{uri}{query_string}, {uri} 7.3 {uri} ,{uri} “/”
+截止 不以 结尾 由通用查询参数和具体查询参数组合而成 在格式上 以 字符为
+, “/” ;{query_string} , , “?”
+起点 每个参数以 隔开 再以 分开参数名称与参数值 同一参数的参数值如有多个 则以 连
+, “&” , “=” , , “,”
+接参数值 如
+。 ?key1=value&key2=value21,value22&…。
+72 数据查询响应
+.
+721 查询响应数据的格式由查询请求的 参数指定
+.. format 。
+722 查询响应数据的编码类型由查询请求的 参数指定
+.. oe 。
+73 数据查询细则
+.
+731 监控中心查询
+..
+7311 为
+... {uri} jkzx_list/{jkzx_guid}。
+7312 可使用表 规定的具体查询参数
+... {query_string} 3 。
+表3 监控中心具体查询参数
+项目名称 参数名称
+中心名称
+zxmc
+所属区域
+ssqy
+中心详址
+zxxz
+中心级别
+zxjb
+上级中心名称
+sjzxmc
+7313 响应数据的 定义见
+... XMLSchema A.1。
+732 监控人员查询
+..
+7321 为
+... {uri} jkzx_list/{jkzx_guid}/jkry_list/{jkry_guid}。
+7322 除可以使用 规定的参数外 还可使用表 规定的具体查询参数
+... {query_string} 7.3.1.2 , 4 。
+3
+GB/T268758—2015
+.
+表4 监控人员具体查询参数
+项目名称 参数名称
+人员姓名
+ryxm
+人员电话
+rydh
+人员所属单位名称
+ryssdwmc
+7323 响应数据的 定义见
+... XMLSchema A.2。
+733 联网用户基本情况查询
+..
+7331 为
+... {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}。
+7332 除可以使用 规定的参数外 还可使用表 规定的具体查询参数
+... {query_string} 7.3.1.2 , 5 。
+表5 联网用户基本情况具体查询参数
+项目名称 参数名称
+单位名称
+dwmc
+组织机构代码
+zzjgdm
+单位类别
+dwlb
+所属区域
+ssqy
+单位详址
+dwxz
+联网状态
+lwzt
+邮政编码
+yzbm
+7333 响应数据的 定义见
+... XMLSchema A.3。
+734 建 构筑物基本情况查询
+.. 、
+7341 为
+... {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/jgzw_list/{jgzw_guid}。
+7342 除可以使用 规定的参数外 还可使用表 规定的具体查询
+... {query_string} 7.3.1.2、7.3.3.2 , 6
+参数
+。
+表6 建 构筑物具体查询参数
+、
+项目名称 参数名称
+建 构筑物类别
+、 jgzwlb
+使用性质
+syxz
+火灾危险性
+hzwxx
+耐火等级
+nhdj
+结构类型
+jglx
+7343 响应数据的 定义见
+... XMLSchema A.4。
+4
+GB/T268758—2015
+.
+735 消防安全重点部位基本情况查询
+..
+7351 为
+... {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/xfaqzdbw_list/{xfaqzdbw_guid}。
+7352 除可以使用 规定的参数外 还可使用表 规定的具体查询
+... {query_string} 7.3.1.2、7.3.3.2 , 7
+参数
+。
+表7 消防安全重点部位具体查询参数
+项目名称 参数名称
+耐火等级
+zdbw_nhdj
+使用性质
+zdbw_xyxz
+7353 响应数据的 定义见
+... XMLSchema A.5。
+736 消防设施查询
+..
+7361 为
+... {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/xfss_list/{xfss_guid}。
+7362 除可以使用 规定的参数外 还可使用表 规定的具体查询
+... {query_string} 7.3.1.2、7.3.3.2 , 8
+参数
+。
+表8 消防设施具体查询参数
+项目名称 参数名称
+设施名称
+ssmc
+设施服务状态
+ssfwzt
+设施状态
+sszt
+维护保养单位名称
+whbydwmc
+消防设施所属单位名称
+xfssssdwmc
+7363 响应数据的 定义见
+... XMLSchema A.6。
+737 消防设施部件查询
+..
+7371 为
+... {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/xfss_list/{xfss_guid}/xfssbj_list/{xf-
+ssbj_guid}。
+7372 除可以使用 规定的参数外 还可使用表 规定的具体查
+... {query_string} 7.3.1.2、7.3.3.2、7.3.6.2 , 9
+询参数
+。
+表9 消防设施部件具体查询参数
+项目名称 参数名称
+部件型号
+bjxh
+部件状态
+bjzt
+状态变化时间
+ztbhsj,ztbhsj_from,ztbhsj_to
+7373 响应数据的 定义见
+... XMLSchema A.7。
+5
+GB/T268758—2015
+.
+738 受理查询
+..
+7381 为
+... {uri} jkzx_list/{jkzx_guid}/sl_list/{sl_guid}jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_
+guid}/sl_list/{sl_guid}。
+7382 除可以使用 规定的参数外 还可使用表 规定的具体查询
+... {query_string} 7.3.1.2、7.3.3.2 , 10
+参数
+。
+表10 受理具体查询参数
+项目名称 参数名称
+单位名称
+sl_dwmc
+首次报警时间
+scbjsj,scbjsj_from,scbjsj_to
+受理时间
+slsj,slsj_from,slsj_to
+信息类型
+xxlx
+信息确认
+xxqr
+7383 响应数据的 定义见
+... XMLSchema A.8。
+739 查岗查询
+..
+7391 为 或
+... {uri} jkzx_list/{jkzx_guid}/cg_list/{cg_guid} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_
+guid}/cg_list/{cg_guid}。
+7392 除可以使用 规定的参数外 还可使用表 规定的具体查询
+... {query_string} 7.3.1.2、7.3.3.2 , 11
+参数
+。
+表11 查岗具体查询参数
+项目名称 参数名称
+发起时间
+fqsj,fqsj_from,fqsj_to
+查岗结果
+cgjg
+7393 响应数据的 定义见
+... XMLSchema A.9。
+7310 火灾查询
+..
+73101 为 或
+.. . {uri} jkzx_list/{jkzx_guid}/hz_list/{hz_guid} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_
+guid}/hz_list/{hz_guid}。
+73102 除可以使用 规定的参数外 还可使用表 规定的具体查询
+.. . {query_string} 7.3.1.2、7.3.3.2 , 12
+参数
+。
+表12 火灾具体查询参数
+项目名称 参数名称
+起火时间
+qhsj,qhsj_from,qhsj_to
+报警方式描述
+bjfsms
+6
+GB/T268758—2015
+.
+73103 响应数据的 定义见
+.. . XMLSchema A.10。
+7311 消防设施检查查询
+..
+73111 为
+.. . {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/xfssjc_list/{xfssjc_guid}。
+73112 除可以使用 规定的参数外 还可使用表 规定的具体查询
+.. . {query_string} 7.3.1.2、7.3.3.2 , 13
+参数
+。
+表13 消防设施检查具体查询参数
+项目名称 参数名称
+检查日期
+qhsj,qhsj_from,qhsj_to
+检查类别
+jclb
+检查结果
+jcjg
+73113 响应数据的 定义见
+.. . XMLSchema A.11。
+7312 消防设施维护保养查询
+..
+73121 为
+.. . {uri} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid}/xfsswhby_list/{xfsswhby_guid}。
+73122 除可以使用 规定的参数外 还可使用表 规定的具体查询
+.. . {query_string} 7.3.1.2、7.3.3.2 , 14
+参数
+。
+表14 消防设施维护保养具体查询参数
+项目名称 参数名称
+维护保养时间
+whbysj,whbysj_from,whbysj_to
+73123 响应数据的 定义见
+.. . XMLSchema A.12。
+7313 消防法规查询
+..
+73131 为
+.. . {uri} xffg_list/{xffg_guid}。
+73132 响应数据的 定义见
+.. . XMLSchema A.13。
+7314 消防常识查询
+..
+73141 为
+.. . {uri} xfcs_list/{xfcs_guid}。
+73142 响应数据的 定义见
+.. . XMLSchema A.14。
+8 数据实时发布接口
+81 数据订阅请求
+.
+811 订阅请求接口应支持 接口的 方法
+.. HTTP POST 。
+注 方法是 规定的客户端与服务器的交互方法之一 一般用于更新资源信息
+:POST HTTP , 。
+812 订阅请求接口应采用 风格的 接口 接口 基本格式为
+.. REST HTTP , URL http(s)://.../openapi/
+其中 应支持 规定的各类订阅地址的 路径 可在任何 处截止
+v1/realtime/{uri}, {uri} 8.4 {uri} ,{uri} “/” ,
+7
+GB/T268758—2015
+.
+不以 结尾
+“/” 。
+813 订阅请求的 元素见表 定义见
+.. XML 15,XMLSchema B.1。
+表15 订阅请求的XML元素
+是否
+项目名称 类型 描述
+必需
+字符型 否 响应数据的格式 可以为 默认值为
+format , xml, xml
+字符型 否 请求的编码类型 可以为 或 默认值为
+ie , UTF-8 GBK, UTF-8
+字符型 否 响应数据的编码类型 可以为 或 默认值为
+oe , UTF-8 GBK, UTF-8
+字符型 是 操作类型 为
+operation , subscribe
+字符型 是 回调地址
+callback_url
+字符型 否 回调数据的格式 可以为 默认值为
+callback_format , xml, xml
+字符型 否 回调数据的编码类型 可以为 或 默认值为
+callback_oe , UTF-8 GBK, UTF-8
+validity_from, 日期型 否 有效时限范围 超过该时限该订阅自动失效 如无时限范围 则始终有效
+, 。 ,
+validity_to
+字符型 是 过滤条件参数名称 见
+para_name , 8.4
+filter 字符型 是 过滤条件参数取值
+para_value
+814 取消订阅请求的 元素见表 定义见
+.. XML 16,XMLSchema B.2。
+表16 取消订阅请求的XML元素
+是否
+项目名称 类型 描述
+必需
+字符型 否 响应数据的格式 可以为 默认值为
+format , xml, xml
+字符型 否 请求的编码类型 可以为 或 默认值为
+ie , UTF-8 GBK, UTF-8
+字符型 否 响应数据的编码类型 可以为 或 默认值为
+oe , UTF-8 GBK, UTF-8
+字符型 是 操作类型 为
+operation , unsubscribe
+字符型 是 订阅编号
+subscribe_id
+815 取消所有订阅请求的 元素见表 定义见
+.. XML 17,XMLSchema B.3。
+表17 取消所有订阅请求的XML元素
+是否
+项目名称 类型 描述
+必需
+字符型 否 响应数据的格式 为 默认值为
+format , xml, xml
+字符型 否 请求的编码类型 可以为 或 默认值为
+ie , UTF-8 GBK, UTF-8
+字符型 否 响应数据的编码类型 可以为 或 默认值为
+oe , UTF-8 GBK, UTF-8
+字符型 是 操作类型 为
+operation , clear
+8
+GB/T268758—2015
+.
+82 数据订阅响应
+.
+821 订阅响应数据的格式由订阅请求的 参数指定
+.. format 。
+822 订阅响应数据的编码类型由订阅请求的 参数指定
+.. oe 。
+823 订阅响应数据的 元素见表 定义见
+.. XML 18,XMLSchema B.4。
+表18 订阅响应的XML元素
+是否
+项目名称 类型 描述
+必需
+字符型 是 监控中心返回的订阅编号 客户端注销订阅时需提供该编号
+subscribe_id ,
+validity_from, 日期型 否 有效时限范围
+validity_to
+83 数据发布通知回调
+.
+通知的接收方应在 指定的地址 采用基于 的 接口等待接收监控
+callback_url , HTTP WebService
+中心的实时数据发布通知
+。
+84 订阅请求和通知细则
+.
+消防设施部件状态变化通知的要求如下
+:
+路径为 或
+———URI jkzx_list/{jkzx_guid} jkzx_list/{jkzx_guid}/lwyh_list/{lwyh_guid};
+过滤条件参数见表
+——— 19;
+通知数据的 定义见
+——— XMLSchema B.5。
+表19 消防设施部件状态过滤条件参数
+项目名称 参数名称
+单位所属区域
+dwssqy
+单位类别
+dwlb
+部件状态
+bjzt
+9
+GB/T268758—2015
+.
+附 录 A
+规范性附录
+( )
+数据查询接口相关的XMLSchema定义
+A1 监控中心信息XMLSchema定义
+.
+监控中心信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--监控中心--
+<! >
+xselementname "jkzxlist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "jkzx"type "jkzxt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A2 监控人员信息XMLSchema定义
+.
+监控人员信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--监控人员--
+<! >
+xselementname "jkrylist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "jkry"type "jkryt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+10
+GB/T268758—2015
+.
+xselement
+</ : >
+xsschema
+</ : >
+A3 联网用户基本情况信息XMLSchema定义
+.
+联网用户基本情况信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--联网用户基本情况--
+<! >
+xselementname "lwyhjbqklist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "lwyhjbqk"type "lwyhjbqkt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A4 建 构筑物信息XMLSchema定义
+. 、
+建 构筑物信息的XMLSchema定义如下
+、 :
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--建 构筑物--
+<! 、 >
+xselementname "jgzwlist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "jgzw"type "jgzwt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+11
+GB/T268758—2015
+.
+A5 消防安全重点部位信息XMLSchema定义
+.
+消防安全重点部位信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防安全重点部位信息数据项--
+<! >
+xselementname "xfaqzdbwlist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfaqzdbw"type "xfaqzdbwt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A6 消防设施信息XMLSchema定义
+.
+消防设施信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防设施--
+<! >
+xselementname "xfsslist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfss"type "xfsst"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+12
+GB/T268758—2015
+.
+A7 消防设施部件信息XMLSchema定义
+.
+消防设施部件信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防设施部件--
+<! >
+xselementname "xfssbjlist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfssbj"type "xfssbjt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A8 受理信息XMLSchema定义
+.
+受理信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschema targetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--受理信息--
+<! >
+xselementname "sllist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "sl"type "slt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+13
+GB/T268758—2015
+.
+A9 查岗信息XMLSchema定义
+.
+查岗信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--查岗信息--
+<! >
+xselementname "cglist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "cg"type "cgt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A10 火灾信息XMLSchema定义
+.
+火灾信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--火灾信息--
+<! >
+xselementname "hzlist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "hz"type "hzt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+14
+GB/T268758—2015
+.
+A11 消防设施检查信息XMLSchema定义
+.
+消防设施检查信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防设施检查--
+<! >
+xselementname "xfssjclist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfssjc"type "xfssjct"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A12 消防设施维护保养信息XMLSchema定义
+.
+消防设施维护保养信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防设施维护保养--
+<! >
+xselementname "xfsswhbylist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfsswhby"type "xfsswhbyt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+15
+GB/T268758—2015
+.
+A13 消防法规信息XMLSchema定义
+.
+消防法规信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防法规--
+<! >
+xselementname "xffglist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xffg"type "xffgt"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+A14 消防常识XMLSchema定义
+.
+消防常识信息的XMLSchema定义如下
+:
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--消防常识--
+<! >
+xselementname "xfcslist"
+< : = _ >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "xfcs"type "xfcst"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+16
+GB/T268758—2015
+.
+A15 错误响应信息XMLSchema定义
+.
+监控中心不能处理接收到的请求时 所返回错误响应信息的XMLSchema定义如下
+, :
+xmlversion " ."encoding "utf-"
+<? = 10 = 8 ?>
+xsschematargetNamespace "http schemas.syfri.cnrmsufpv openapi"
+< : = :// / /1/
+xmlns "http schemas.syfri.cnrmsufpv openapi"
+= :// / /1/
+elementFormDefault "qualified"
+=
+attributeFormDefault "unqualified"
+=
+xmlnsxs "http www.w .org XMLSchema"
+: = :// 3 /2001/ >
+xsincludeschemaLocation "define.xsd"
+< : = />
+--错误--
+<! >
+xselementname "errors"
+< : = >
+xscomplexType
+< : >
+xssequenceminOccurs ""maxOccurs "unbounded"
+< : = 1 = >
+xselementname "error"type "errort"
+< : = = _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+17
+GB/T268758—2015
+.
+附 录 B
+规范性附录
+( )
+数据实时发布接口相关的XMLSchema定义
+B1 订阅请求的XMLSchema定义
+.
+外部系统向监控中心发出的订阅请求的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schematargetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:includeschemaLocation="define.xsd"/>
+订阅
+<!-- -->
+<xs:elementname="subscribe">
+<xs:complexType>
+<xs:sequence>
+响应数据的格式
+<!-- -->
+<xs:elementname="format"type="output_format_t"default="xml"minOccurs="0"/>
+请求的编码类型
+<!-- -->
+<xs:elementname="ie"type="encoding_t"default="UTF-8"minOccurs="0"/>
+响应数据的编码类型
+<!-- -->
+<xs:elementname="oe"type="encoding_t"default="UTF-8"minOccurs="0"/>
+操作类型
+<!-- -->
+<xs:elementname="operation"type="xs:string"fixed="subscribe"/>
+回调地址
+<!-- -->
+<xs:elementname="callback_url"type="xs:string"/>
+回调数据的格式
+<!-- -->
+<xs:elementname="callback_format"type="output_format_t"default="xml"
+minOccurs="0"/>
+回调数据的编码类型
+<!-- -->
+<xs:elementname="callback_oe"type="encoding_t"default="UTF-8"minOccurs="0"/>
+有效时限起始
+<!-- -->
+<xs:elementname="validity_from"type="xs:date"minOccurs="0"/>
+有效时限结束
+<!-- -->
+<xs:elementname="validity_to"type="xs:date"minOccurs="0"/>
+过滤条件
+<!-- -->
+<xs:elementname="filters">
+<xs:complexType>
+<xs:sequence>
+18
+GB/T268758—2015
+.
+过滤条件如有多个 则为逻辑 与 的关系
+<!-- , “ ” -->
+<xs:elementname="filter"minOccurs="1"maxOccurs="unbounded">
+<xs:complexType>
+<xs:sequence>
+参数名称
+<!-- -->
+<xs:elementname="para_name"type="xs:string"/>
+参数值
+<!-- -->
+<xs:elementname="para_value"type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+B2 取消订阅请求的XMLSchema定义
+.
+外部系统向监控中心发出的取消订阅请求的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schematargetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:includeschemaLocation="define.xsd"/>
+取消订阅
+<!-- -->
+<xs:elementname="unsubscribe">
+<xs:complexType>
+<xs:all>
+响应数据的格式
+<!-- -->
+<xs:elementname="format"type="output_format_t"default="xml"minOccurs="0"/>
+请求的编码类型
+<!-- -->
+<xs:elementname="ie"type="encoding_t"default="UTF-8"minOccurs="0"/>
+响应数据的编码类型
+<!-- -->
+<xs:elementname="oe"type="encoding_t"default="UTF-8"minOccurs="0"/>
+操作类型
+<!-- -->
+<xs:elementname="operation"type="xs:string"fixed="unsubscribe"/>
+订阅编号
+<!-- -->
+<xs:elementname="subscribe_id"type="xs:string"minOccurs="1"/>
+19
+GB/T268758—2015
+.
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+B3 取消所有订阅请求的XMLSchema定义
+.
+外部系统向监控中心发出的取消所有订阅请求的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schematargetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:includeschemaLocation="define.xsd"/>
+取消所有订阅
+<!-- -->
+<xs:elementname="clear_subscribe">
+<xs:complexType>
+<xs:all>
+响应数据的格式
+<!-- -->
+<xs:elementname="format"type="output_format_t"default="xml"minOccurs="0"/>
+请求的编码类型
+<!-- -->
+<xs:elementname="ie"type="encoding_t"default="UTF-8"minOccurs="0"/>
+响应数据的编码类型
+<!-- -->
+<xs:elementname="oe"type="encoding_t"default="UTF-8"minOccurs="0"/>
+操作类型
+<!-- -->
+<xs:elementname="operation"type="xs:string"fixed="clear_subscribe"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+B4 订阅响应的XMLSchema定义
+.
+监控中心为外部系统返回的订阅响应的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+订阅响应
+<!-- -->
+<xs:elementname="subscribe_response">
+20
+GB/T268758—2015
+.
+<xs:complexType>
+<xs:all>
+订阅编号
+<!-- -->
+<xs:elementname="subscribe_id"type="xs:string"minOccurs="1"/>
+有效时限起始
+<!-- -->
+<xs:elementname="validity_from"type="xs:date"minOccurs="0"/>
+有效时限结束
+<!-- -->
+<xs:elementname="validity_to"type="xs:date"minOccurs="0"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+B5 消防设施部件状态变化通知的XMLSchema定义
+.
+监控中心向外部系统发送的消防设施部件状态变化通知的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:includeschemaLocation="define.xsd"/>
+订阅响应
+<!-- -->
+<xs:elementname="notify_part_states">
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="notify_part_state"minOccurs="1"maxOccurs="unbounded">
+<xs:complexType>
+<xs:sequence>
+订阅编号
+<!-- -->
+<xs:elementname="subscribe_id"type="xs:string"/>
+监控中心
+<!-- -->
+<xs:elementname="jkzx"type="jkzx_t"/>
+联网用户
+<!-- -->
+<xs:elementname="lwyh"type="lwyhjbqk_t"/>
+消防设施
+<!-- -->
+<xs:elementname="xfss"type="xfss_t"/>
+消防设施部件
+<!-- -->
+<xs:elementname="xfssbj"type="xfssbj_t"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+21
+GB/T268758—2015
+.
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+22
+GB/T268758—2015
+.
+附 录 C
+规范性附录
+( )
+公用数据类型的XMLSchema定义
+公用数据类型的 定义如下
+XMLSchema :
+<?xmlversion="1.0"encoding="utf-8"?>
+<xs:schematargetNamespace="http://schemas.syfri.cn/rmsufp/v1/openapi"
+xmlns="http://schemas.syfri.cn/rmsufp/v1/openapi"
+elementFormDefault="qualified"
+attributeFormDefault="unqualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+字符型 限长
+<!-- , 18-->
+<xs:simpleTypename="string18_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="18"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 30-->
+<xs:simpleTypename="string30_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="30"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 40-->
+<xs:simpleTypename="string40_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="40"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 50-->
+<xs:simpleTypename="string50_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="50"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 70-->
+<xs:simpleType name="string70_t">
+<xs:restrictionbase="xs:string">
+23
+GB/T268758—2015
+.
+<xs:maxLengthvalue="70"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 100-->
+<xs:simpleTypename="string100_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="100"/>
+</xs:restriction>
+</xs:simpleType>
+字符型 限长
+<!-- , 200-->
+<xs:simpleTypename="string200_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="200"/>
+</xs:restriction>
+</xs:simpleType>
+数值型 限长
+<!-- , 3-->
+<xs:simpleTypename="int3_t">
+<xs:restrictionbase="xs:int">
+<xs:totalDigitsvalue="3"/>
+</xs:restriction>
+</xs:simpleType>
+数值型 限长
+<!-- , 4-->
+<xs:simpleTypename="int4_t">
+<xs:restrictionbase="xs:int">
+<xs:totalDigitsvalue="4"/>
+</xs:restriction>
+</xs:simpleType>
+数值型 限长
+<!-- , 5-->
+<xs:simpleTypename="int5_t">
+<xs:restrictionbase="xs:int">
+<xs:totalDigitsvalue="5"/>
+</xs:restriction>
+</xs:simpleType>
+数值型 限长
+<!-- , 6-->
+<xs:simpleTypename="int6_t">
+<xs:restrictionbase="xs:int">
+<xs:totalDigitsvalue="6"/>
+24
+GB/T268758—2015
+.
+</xs:restriction>
+</xs:simpleType>
+数值型 限长
+<!-- , 10-->
+<xs:simpleTypename="int10_t">
+<xs:restrictionbase="xs:int">
+<xs:totalDigitsvalue="10"/>
+</xs:restriction>
+</xs:simpleType>
+浮点数 位整数 位小数
+<!-- ,4 ,2 -->
+<xs:simpleTypename="decimal4p2_t">
+<xs:restrictionbase="xs:decimal">
+<xs:totalDigitsvalue="6"/>
+<xs:fractionDigitsvalue="2"/>
+</xs:restriction>
+</xs:simpleType>
+浮点数 位整数 位小数
+<!-- ,8 ,2 -->
+<xs:simpleTypename="decimal8p2_t">
+<xs:restrictionbase="xs:decimal">
+<xs:totalDigitsvalue="10"/>
+<xs:fractionDigitsvalue="2"/>
+</xs:restriction>
+</xs:simpleType>
+所属区域
+<!-- -->
+<xs:simpleTypename="ssqy_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="6"/>
+</xs:restriction>
+</xs:simpleType>
+公民身份号码
+<!-- -->
+<xs:simpleTypename="gmsfhm_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="18"/>
+</xs:restriction>
+</xs:simpleType>
+人员信息
+<!-- -->
+<xs:complexTypename="ryxx_t">
+<xs:sequence>
+25
+GB/T268758—2015
+.
+姓名
+<!-- -->
+<xs:elementname="xm"type="string30_t"/>
+公民身份号码
+<!-- -->
+<xs:elementname="gmsfhm"type="gmsfhm_t"/>
+联系电话
+<!-- -->
+<xs:elementname="lxdh"type="string18_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+建筑物使用性质
+<!-- -->
+<xs:simpleTypename="jzwssxz_t">
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="2"/>
+<xs:patternvalue="([1-9])|(1[0-8])|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+耐火等级
+<!-- -->
+<xs:simpleTypename="nhdj_t">
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="([1-4])"/>
+</xs:restriction>
+</xs:simpleType>
+给水管网形式
+<!-- -->
+<xs:simpleTypename="gsgwxs_t">
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[129]"/>
+</xs:restriction>
+</xs:simpleType>
+监控中心
+<!-- -->
+<xs:complexTypename="jkzx_t">
+<xs:sequence>
+中心名称
+<!-- -->
+<xs:elementname="zxmc"type="string70_t"/>
+所属区域
+<!-- -->
+<xs:elementname="ssqy"type="ssqy_t"/>
+中心祥址
+<!-- -->
+<xs:elementname="zxxz"type="string40_t"/>
+联系电话
+<!-- -->
+26
+GB/T268758—2015
+.
+<xs:elementname="lxdh"type="string18_t"/>
+中心负责人姓名
+<!-- -->
+<xs:elementname="zxfzrxm"type="string30_t"/>
+中心负责人电话
+<!-- -->
+<xs:elementname="zxfzrdh"type="string18_t"/>
+中心级别
+<!-- -->
+<xs:elementname="zxjb">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="1"/>
+<xs:patternvalue="[1,2,3,4,5,9]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+上级中心名称
+<!-- -->
+<xs:elementname="sjzxmc"type="string70_t"/>
+冗余备份中心名称
+<!-- -->
+<xs:elementname="rybfzxmc"type="string70_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+监控人员
+<!-- -->
+<xs:complexTypename="jkry_t">
+<xs:sequence>
+人员姓名
+<!-- -->
+<xs:elementname="ryxm"type="string30_t"/>
+人员电话
+<!-- -->
+<xs:elementname="rydh"type="string18_t"/>
+所属单位名称
+<!-- -->
+<xs:elementname="ssdwmc"type="string70_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+联网单位用户基本情况
+<!-- -->
+<xs:complexTypename="lwyhjbqk_t">
+<xs:sequence>
+单位名称
+<!-- -->
+<xs:elementname="dwmc"type="string70_t"/>
+组织机构代码
+<!-- -->
+27
+GB/T268758—2015
+.
+<xs:elementname="zzjgdm">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="9"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+单位类别
+<!-- -->
+<xs:elementname="dwlb">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="2"/>
+<xs:patternvalue="([1-9])|(1[0-2])|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+所属区域
+<!-- -->
+<xs:elementname="ssqy"type="ssqy_t"/>
+单位详址
+<!-- -->
+<xs:elementname="dwxz"type="string70_t"/>
+联系电话
+<!-- -->
+<xs:elementname="lxdh"type="string18_t"/>
+联网状态
+<!-- -->
+<xs:elementname="lwzt">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[0,1]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+邮政编码
+<!-- -->
+<xs:elementname="yzbm">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="6"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+消防控制室电话
+<!-- -->
+<xs:elementname="xfkzsdh"type="string18_t"/>
+消防安全责任人
+<!-- -->
+<xs:elementname="xfaqzrr"type="ryxx_t"/>
+消防安全管理人
+<!-- -->
+28
+GB/T268758—2015
+.
+<xs:elementname="xfaqglr"type="ryxx_t"/>
+专兼职消防管理人
+<!-- -->
+<xs:elementname="zjzxfglr"type="ryxx_t"/>
+法人代表
+<!-- -->
+<xs:elementname="frdb"type="ryxx_t"/>
+职工总人数
+<!-- -->
+<xs:elementname="zgzrs"type="int10_t"/>
+成立时间
+<!-- -->
+<xs:elementname="clsj"type="xs:date"/>
+上级主管单位名称
+<!-- -->
+<xs:elementname="sjzgdwmc"type="string70_t"/>
+管辖单位名称
+<!-- -->
+<xs:elementname="gxdwmc"type="string70_t"/>
+经济所有制
+<!-- -->
+<xs:elementname="jjsyz">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:pattern
+value="(1[0-7]0)|(190)|(14[1239])|(15[19])|(17[1-5])|(179)|(2[0-4]0)|(290)|(3[0-4]0)|
+(390)|(900)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+固定资产
+<!-- -->
+<xs:elementname="gdzc"type="int10_t"/>
+单位占地面积
+<!-- -->
+<xs:elementname="dwzdmj"type="int10_t"/>
+总建筑面积
+<!-- -->
+<xs:elementname="zjzmj"type="int10_t"/>
+入网日期
+<!-- -->
+<xs:elementname="rwrq"type="xs:date"/>
+监管等级
+<!-- -->
+<xs:elementname="jgdj">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[0,1,2,3]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+单位总平面图
+<!-- -->
+<xs:elementname="dwzpmt"type="xs:anyURI"/>
+单位所属中心名称
+<!-- -->
+<xs:elementname="dwsszxmc"type="string70_t"/>
+29
+GB/T268758—2015
+.
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+建 构筑物
+<!-- 、 -->
+<xs:complexType name="jgzw_t">
+<xs:sequence>
+建构筑物名称
+<!-- -->
+<xs:elementname="jgzwmc"type="string40_t"/>
+建构筑物类别
+<!-- -->
+<xs:elementname="jgzwlb">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="2"/>
+<xs:patternvalue="([1-9])|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+建造日期
+<!-- -->
+<xs:elementname="jzrq"type="xs:date"/>
+使用性质
+<!-- -->
+<xs:elementname="syxz"type="jzwssxz_t"/>
+火灾危险性
+<!-- -->
+<xs:elementname="hzwxx">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="([1-6])"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+耐火等级
+<!-- -->
+<xs:elementname="nhdj"type="nhdj_t"/>
+结构类型
+<!-- -->
+<xs:elementname="jglx">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="([1-5])|(9)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+毗邻建筑物情况
+<!-- -->
+<xs:elementname="pljzwqk"minOccurs="0">
+30
+GB/T268758—2015
+.
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="500"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+建筑立面图
+<!-- -->
+<xs:elementname="jzlmt"type="xs:anyURI"/>
+消防设施平面布置图
+<!-- -->
+<xs:elementname="xfsspmbzt"type="xs:anyURI"/>
+建筑平面图
+<!-- -->
+<xs:elementname="jzpmt"type="xs:anyURI"/>
+建筑物所属单位名称
+<!-- -->
+<xs:elementname="jzwssdwmc"type="string70_t"/>
+建筑物描述信息
+<!-- -->
+<xs:elementname="variables">
+<xs:complexType>
+<xs:sequence>
+建筑高度
+<!-- -->
+<xs:elementname="jzgd"type="decimal4p2_t"minOccurs="0"/>
+建筑面积
+<!-- -->
+<xs:elementname="jzmj"type="int10_t"minOccurs="0"/>
+占地面积
+<!-- -->
+<xs:elementname="zdmj"type="int10_t"minOccurs="0"/>
+标准层面积
+<!-- -->
+<xs:elementname="bzcmj"type="int10_t"minOccurs="0"/>
+地上层数
+<!-- -->
+<xs:elementname="dscs"type="int3_t"minOccurs="0"/>
+地上层面积
+<!-- -->
+<xs:elementname="dscmj"type="int10_t"minOccurs="0"/>
+地下层数
+<!-- -->
+<xs:elementname="dxcs"type="int3_t"minOccurs="0"/>
+地下层面积
+<!-- -->
+<xs:elementname="dxcmj"type="int10_t"minOccurs="0"/>
+隧道高度
+<!-- -->
+<xs:elementname="sdgd"type="decimal4p2_t"minOccurs="0"/>
+隧道长度
+<!-- -->
+<xs:elementname="sdcd"type="decimal8p2_t"minOccurs="0"/>
+消防控制室位置
+<!-- -->
+<xs:elementname="xfkzswz"type="string50_t"minOccurs="0"/>
+避难层数量
+<!-- -->
+<xs:elementname="bncsl"type="int3_t"minOccurs="0"/>
+避难层总面积
+<!-- -->
+31
+GB/T268758—2015
+.
+<xs:elementname="bnczmj"type="int10_t"minOccurs="0"/>
+避难层位置
+<!-- -->
+<xs:elementname="bncwz"type="string50_t"minOccurs="0"/>
+安全出口数量
+<!-- -->
+<xs:elementname="aqcksl"type="int3_t"minOccurs="0"/>
+安全出口位置
+<!-- -->
+<xs:elementname="aqckwz"type="string50_t"minOccurs="0"/>
+安全出口形式
+<!-- -->
+<xs:elementname="aqckxs"type="string50_t"minOccurs="0"/>
+消防电梯数量
+<!-- -->
+<xs:elementname="xfdtsl"type="int3_t"minOccurs="0"/>
+消防电梯容纳总重量
+<!-- -->
+<xs:elementname="xfdtrnzzl"type="int10_t"minOccurs="0"/>
+日常工作时间人数
+<!-- -->
+<xs:elementname="rcgzsjrs"type="int10_t"minOccurs="0"/>
+最大容纳人数
+<!-- -->
+<xs:elementname="zdrnrs"type="int10_t"minOccurs="0"/>
+储存物名称
+<!-- -->
+<xs:elementname="ccwmc"type="string40_t"minOccurs="0"/>
+储存物数量
+<!-- -->
+<xs:elementname="ccwsl"type="string40_t"minOccurs="0"/>
+储存物性质
+<!-- -->
+<xs:elementname="ccwxz"type="string40_t"minOccurs="0"/>
+储存物形态
+<!-- -->
+<xs:elementname="ccwxt"type="string40_t"minOccurs="0"/>
+储存容积
+<!-- -->
+<xs:elementname="ccrj"type="int10_t"minOccurs="0"/>
+主要原料
+<!-- -->
+<xs:elementname="zyyl"type="string100_t"minOccurs="0"/>
+主要产品
+<!-- -->
+<xs:elementname="zycp"type="string100_t"minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防安全重点部位
+<!-- -->
+<xs:complexTypename="xfaqzdbw_t">
+<xs:sequence>
+重点部位名称
+<!-- -->
+32
+GB/T268758—2015
+.
+<xs:elementname="zdbwmc"type="string70_t"/>
+建筑面积
+<!-- -->
+<xs:elementname="jzmj"type="int10_t"/>
+耐火等级
+<!-- -->
+<xs:elementname="nhdj"type="nhdj_t"/>
+所在位置
+<!-- -->
+<xs:elementname="szwz"type="string50_t"/>
+使用性质
+<!-- -->
+<xs:elementname="syxz"type="jzwssxz_t"/>
+消防设施情况
+<!-- -->
+<xs:elementname="xfssqk"type="string200_t"/>
+责任人
+<!-- -->
+<xs:elementname="zrr"type="ryxx_t"/>
+确立消防安全重点部位的原因
+<!-- -->
+<xs:elementname="qlxfaqzdbwdyy"type="xs:string"/>
+防火标志的设立情况
+<!-- -->
+<xs:elementname="fhbzdslqk"type="xs:string"/>
+危险源情况
+<!-- -->
+<xs:elementname="wxyqk"type="xs:string"/>
+消防安全管理措施
+<!-- -->
+<xs:elementname="xfaqglcs"type="xs:string"/>
+重点部位所属单位名称
+<!-- -->
+<xs:elementname="zdbwssdwmc"type="string70_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防设施
+<!-- -->
+<xs:complexTypename="xfss_t">
+<xs:sequence>
+设施名称
+<!-- -->
+<xs:elementname="ssmc"type="string40_t"/>
+设置部位
+<!-- -->
+<xs:elementname="szbw"type="string50_t"/>
+设施系统形式
+<!-- -->
+<xs:elementname="ssxtxs"type="string50_t"/>
+投入使用时间
+<!-- -->
+<xs:elementname="trsysj"type="xs:date"/>
+<xs:elementname="variables">
+<xs:complexType>
+<xs:sequence>
+探测器数量
+<!-- -->
+33
+GB/T268758—2015
+.
+<xs:elementname="tcqsl"type="int5_t"minOccurs="0"/>
+控制器数量
+<!-- -->
+<xs:elementname="kzqsl"type="int5_t"minOccurs="0"/>
+手动报警按钮数量
+<!-- -->
+<xs:elementname="sdbjansl"type="int5_t"minOccurs="0"/>
+消防电气控制装置数量
+<!-- -->
+<xs:elementname="xfdqkzzzsl"type="int5_t"minOccurs="0"/>
+市政给水管网形式
+<!-- -->
+<xs:elementname="szgsgwxs"type="gsgwxs_t"minOccurs="0"/>
+市政进水管数量
+<!-- -->
+<xs:elementname="szjsgsl"type="int3_t"minOccurs="0"/>
+市政进水管管径
+<!-- -->
+<xs:elementname="szjsggj"type="int5_t"minOccurs="0"/>
+消防水池容量
+<!-- -->
+<xs:elementname="xfscrl"type="int10_t"minOccurs="0"/>
+消防水池位置
+<!-- -->
+<xs:elementname="xfscwz"type="string50_t"minOccurs="0"/>
+消防水箱容量
+<!-- -->
+<xs:elementname="xfsxrl"type="int10_t"minOccurs="0"/>
+消防水箱位置
+<!-- -->
+<xs:elementname="xfsxwz"type="string50_t"minOccurs="0"/>
+其他水源供水量
+<!-- -->
+<xs:elementname="qtsygsl"type="int10_t"minOccurs="0"/>
+其他水源情况
+<!-- -->
+<xs:elementname="qtsyqk"type="string200_t"minOccurs="0"/>
+消防泵房位置
+<!-- -->
+<xs:elementname="xfbfwz"type="string50_t"minOccurs="0"/>
+消防泵数量
+<!-- -->
+<xs:elementname="xfbsl"type="int5_t"minOccurs="0"/>
+消防泵流量
+<!-- -->
+<xs:elementname="xfbll"type="int6_t"minOccurs="0"/>
+消防泵扬程
+<!-- -->
+<xs:elementname="xfbyc"type="int6_t"minOccurs="0"/>
+室外消火栓管网形式
+<!-- -->
+<xs:elementname="swxhsgwxs"type="gsgwxs_t"minOccurs="0"/>
+室外消火栓数量
+<!-- -->
+<xs:elementname="swxhsgwsl"type="int5_t"minOccurs="0"/>
+室外消火栓管径
+<!-- -->
+<xs:elementname="swxhsgwgj"type="int5_t"minOccurs="0"/>
+室内消火栓管网形式
+<!-- -->
+<xs:elementname="snxhsgwxs"type="gsgwxs_t"minOccurs="0"/>
+室内消火栓数量
+<!-- -->
+<xs:elementname="snxhssl"type="int5_t"minOccurs="0"/>
+34
+GB/T268758—2015
+.
+室内消火栓管径
+<!-- -->
+<xs:elementname="snxhsgj"type="int5_t"minOccurs="0"/>
+水泵接合器数量
+<!-- -->
+<xs:elementname="sbjhqsl"type="int5_t"minOccurs="0"/>
+水泵接合器位置
+<!-- -->
+<xs:elementname="sbjhqwz"type="string50_t"minOccurs="0"/>
+稳压泵数量
+<!-- -->
+<xs:elementname="wybsl"type="int5_t"minOccurs="0"/>
+稳压泵流量
+<!-- -->
+<xs:elementname="wybll"type="int6_t"minOccurs="0"/>
+稳压泵扬程
+<!-- -->
+<xs:elementname="wybyc"type="int6_t"minOccurs="0"/>
+气压罐容量
+<!-- -->
+<xs:elementname="qygrl"type="int10_t"minOccurs="0"/>
+消防水喉数量
+<!-- -->
+<xs:elementname="xfshsl"type="int5_t"minOccurs="0"/>
+报警阀数量
+<!-- -->
+<xs:elementname="bjfsl"type="int5_t"minOccurs="0"/>
+报警阀位置
+<!-- -->
+<xs:elementname="bjfwz"type="string50_t"minOccurs="0"/>
+水流指示器数量
+<!-- -->
+<xs:elementname="slzsqsl"type="int5_t"minOccurs="0"/>
+水流指示器位置
+<!-- -->
+<xs:elementname="slzsqwz"type="string50_t"minOccurs="0"/>
+喷头数量
+<!-- -->
+<xs:elementname="ptsl"type="int5_t"minOccurs="0"/>
+减压阀数量
+<!-- -->
+<xs:elementname="jyfsl"type="int5_t"minOccurs="0"/>
+减压阀位置
+<!-- -->
+<xs:elementname="jyfwz"type="string50_t"minOccurs="0"/>
+竖向分区数量
+<!-- -->
+<xs:elementname="sxfqsl"type="int5_t"minOccurs="0"/>
+喷淋泵数量
+<!-- -->
+<xs:elementname="plbsl"type="int5_t"minOccurs="0"/>
+喷淋泵流量
+<!-- -->
+<xs:elementname="plbll"type="int6_t"minOccurs="0"/>
+喷淋泵扬程
+<!-- -->
+<xs:elementname="plbyc"type="int6_t"minOccurs="0"/>
+喷淋泵位置
+<!-- -->
+<xs:elementname="plbwz"type="string50_t"minOccurs="0"/>
+雨淋阀数量
+<!-- -->
+<xs:elementname="ylfsl"type="int5_t"minOccurs="0"/>
+雨淋阀位置
+<!-- -->
+35
+GB/T268758—2015
+.
+<xs:elementname="ylfwz"type="string50_t"minOccurs="0"/>
+水雾喷头数量
+<!-- -->
+<xs:elementname="swptsl"type="int5_t"minOccurs="0"/>
+水雾喷头位置
+<!-- -->
+<xs:elementname="swptwz"type="string50_t"minOccurs="0"/>
+防护区数量
+<!-- -->
+<xs:elementname="fhqsl"type="int5_t"minOccurs="0"/>
+防护区容积
+<!-- -->
+<xs:elementname="fhqrj"type="int10_t"minOccurs="0"/>
+防护区部位名称
+<!-- -->
+<xs:elementname="fhqbwmc"type="string50_t"minOccurs="0"/>
+防护区位置
+<!-- -->
+<xs:elementname="fhqwz"type="string50_t"minOccurs="0"/>
+灭火剂类型
+<!-- -->
+<xs:elementname="mhjlx"type="string50_t"minOccurs="0"/>
+手动控制装置位置
+<!-- -->
+<xs:elementname="sdkzzzwz"type="string50_t"minOccurs="0"/>
+设施动作方式
+<!-- -->
+<xs:elementname="ssdzfs"type="string50_t"minOccurs="0"/>
+瓶库位置
+<!-- -->
+<xs:elementname="pkwz"type="string50_t"minOccurs="0"/>
+钢瓶数量
+<!-- -->
+<xs:elementname="gpsl"type="int5_t"minOccurs="0"/>
+单个钢瓶容量
+<!-- -->
+<xs:elementname="dggprl"type="int10_t"minOccurs="0"/>
+钢瓶间距
+<!-- -->
+<xs:elementname="gpjj"type="int6_t"minOccurs="0"/>
+泡沫泵数量
+<!-- -->
+<xs:elementname="pmbsl"type="int5_t"minOccurs="0"/>
+泡沫泵流量
+<!-- -->
+<xs:elementname="pmbll"type="int6_t"minOccurs="0"/>
+泡沫泵扬程
+<!-- -->
+<xs:elementname="pmbyc"type="int6_t"minOccurs="0"/>
+泡沫数值
+<!-- -->
+<xs:elementname="pmsz"type="int5_t"minOccurs="0"/>
+干粉储罐位置
+<!-- -->
+<xs:elementname="gfcgwz"type="string50_t"minOccurs="0"/>
+防烟分区数量
+<!-- -->
+<xs:elementname="fyfqsl"type="int5_t"minOccurs="0"/>
+防烟分区位置
+<!-- -->
+<xs:elementname="fhfqwz"type="string50_t"minOccurs="0"/>
+风机数量
+<!-- -->
+<xs:elementname="fjsl"type="int5_t"minOccurs="0"/>
+36
+GB/T268758—2015
+.
+风机安装位置
+<!-- -->
+<xs:elementname="fjazwz"type="string50_t"minOccurs="0"/>
+风机风量
+<!-- -->
+<xs:elementname="fjfl"type="int6_t"minOccurs="0"/>
+风口设置部位
+<!-- -->
+<xs:elementname="fkszbw"type="string50_t"minOccurs="0"/>
+排烟防火阀数量
+<!-- -->
+<xs:elementname="pyfhfsl"type="int5_t"minOccurs="0"/>
+排烟阀数量
+<!-- -->
+<xs:elementname="pyfsl"type="int5_t"minOccurs="0"/>
+防火阀数量
+<!-- -->
+<xs:elementname="fhfsl"type="int5_t"minOccurs="0"/>
+正压送风阀数量
+<!-- -->
+<xs:elementname="zysffsl"type="int5_t"minOccurs="0"/>
+防火门数量
+<!-- -->
+<xs:elementname="fhmsl"type="int5_t"minOccurs="0"/>
+防火卷帘数量
+<!-- -->
+<xs:elementname="fhjlsl"type="int5_t"minOccurs="0"/>
+防火门设置部位
+<!-- -->
+<xs:elementname="fhmszbw"type="string50_t"minOccurs="0"/>
+防火卷帘设置部位
+<!-- -->
+<xs:elementname="fhjlszbw"type="string50_t"minOccurs="0"/>
+扩音机功率
+<!-- -->
+<xs:elementname="kyjgl"type="int5_t"minOccurs="0"/>
+备用扩音机功率
+<!-- -->
+<xs:elementname="bykyjgl"type="int5_t"minOccurs="0"/>
+扬声器数量
+<!-- -->
+<xs:elementname="ysqsl"type="int5_t"minOccurs="0"/>
+广播分区数量
+<!-- -->
+<xs:elementname="gbfqsl"type="int5_t"minOccurs="0"/>
+广播分区设置部位
+<!-- -->
+<xs:elementname="gbfqszbw"type="string50_t"minOccurs="0"/>
+消防专用电话数量
+<!-- -->
+<xs:elementname="xfzydhsl"type="int5_t"minOccurs="0"/>
+消防专用电话位置
+<!-- -->
+<xs:elementname="xfzydhwz"type="string50_t"minOccurs="0"/>
+应急照明及疏散指示装置数量
+<!-- -->
+<xs:elementname="yjzmjsszszzsl"type="int5_t"minOccurs="0"/>
+消防电源设置部位
+<!-- -->
+<xs:elementname="xxdyszbw"type="string50_t"minOccurs="0"/>
+消防主电源是否为独立配电柜
+<!-- -->
+<xs:elementname="xfzdysfwdlpdg"minOccurs="0">
+<xs:simpleType>
+37
+GB/T268758—2015
+.
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="(1)|(2)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+备用电源形式
+<!-- -->
+<xs:elementname="bydyxs"type="string50_t"minOccurs="0"/>
+灭火器设置部位
+<!-- -->
+<xs:elementname="mhqszbw"type="string50_t"minOccurs="0"/>
+灭火器配置类型
+<!-- -->
+<xs:elementname="mhqpzlx"type="string30_t"minOccurs="0"/>
+灭火器生产日期
+<!-- -->
+<xs:elementname="mhqscrq"type="xs:date"minOccurs="0"/>
+灭火器更换药剂日期
+<!-- -->
+<xs:elementname="mhqghyjrq"type="xs:date"minOccurs="0"/>
+灭火器数量
+<!-- -->
+<xs:elementname="mhqsl"type="int5_t"minOccurs="0"/>
+火灾自动报警系统图
+<!-- -->
+<xs:elementname="hzzdbjxtt"type="xs:anyURI"minOccurs="0"/>
+消防给水系统平面布置图
+<!-- -->
+<xs:elementname="xfgsxtpmbzt"type="xs:anyURI"minOccurs="0"/>
+室外消火栓平面布置图
+<!-- -->
+<xs:elementname="swxhspmbzt"type="xs:anyURI"minOccurs="0"/>
+室内消火栓布置图
+<!-- -->
+<xs:elementname="snxhsbzt"type="xs:anyURI"minOccurs="0"/>
+自动喷水灭火系统图
+<!-- -->
+<xs:elementname="zdpsmhxtt"type="xs:anyURI"minOccurs="0"/>
+水喷雾灭火系统图
+<!-- -->
+<xs:elementname="spwmhxtt"type="xs:anyURI"minOccurs="0"/>
+气体灭火系统图
+<!-- -->
+<xs:elementname="qtmhxtt"type="xs:anyURI"minOccurs="0"/>
+泡沫灭火系统图
+<!-- -->
+<xs:elementname="pmmhxtt"type="xs:anyURI"minOccurs="0"/>
+干粉灭火系统图
+<!-- -->
+<xs:elementname="gfmhxtt"type="xs:anyURI"minOccurs="0"/>
+防烟排烟系统图
+<!-- -->
+<xs:elementname="fypyxtt"type="xs:anyURI"minOccurs="0"/>
+消防应急广播系统图
+<!-- -->
+<xs:elementname="xfyjgbxtt"type="xs:anyURI"minOccurs="0"/>
+应急照明及疏散指示系统图
+<!-- -->
+<xs:elementname="yjzmjsszsxtt"type="xs:anyURI"minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+38
+GB/T268758—2015
+.
+</xs:element>
+设施服务状态
+<!-- -->
+<xs:elementname="ssfwzt">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[0129]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+生产单位名称
+<!-- -->
+<xs:elementname="scdwmc"type="string70_t"/>
+生产单位电话
+<!-- -->
+<xs:elementname="scdwdh"type="string18_t"/>
+维修保养单位名称
+<!-- -->
+<xs:elementname="wxbydwmc"type="string70_t"/>
+维修保养单位电话
+<!-- -->
+<xs:elementname="wxbydwdh"type="string18_t"/>
+设施状态
+<!-- -->
+<xs:elementname="sszt">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="(1)|(10)|(20)|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+状态描述
+<!-- -->
+<xs:elementname="ztms"type="string100_t"/>
+状态变化时间
+<!-- -->
+<xs:elementname="ztbhsj"type="xs:dateTime"/>
+消防设施所属单位名称
+<!-- -->
+<xs:elementname="xfssssdwmc"type="string70_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防设施部件
+<!-- -->
+<xs:complexTypename="xfssbj_t">
+<xs:sequence>
+设施名称
+<!-- -->
+<xs:elementname="ssmc"type="string40_t"/>
+部件名称
+<!-- -->
+<xs:elementname="bjmc"type="string40_t"/>
+39
+GB/T268758—2015
+.
+部件型号
+<!-- -->
+<xs:elementname="bjxh"type="string40_t"/>
+部件区号
+<!-- -->
+<xs:elementname="bjqh"type="int4_t"/>
+部件回路号
+<!-- -->
+<xs:elementname="bjhlh"type="int4_t"/>
+部件位号
+<!-- -->
+<xs:elementname="bjwh"type="int4_t"/>
+安装位置
+<!-- -->
+<xs:elementname="azwz"type="string50_t"/>
+部件状态
+<!-- -->
+<xs:elementname="bjzt">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="(1)|([12]0)|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+状态描述
+<!-- -->
+<xs:elementname="ztms"type="string100_t"/>
+状态变化时间
+<!-- -->
+<xs:elementname="ztbhsj"type="xs:dateTime"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+受理
+<!-- -->
+<xs:complexTypename="sl_t">
+<xs:sequence>
+单位名称
+<!-- -->
+<xs:elementname="dwmc"type="string70_t"/>
+首次报警时间
+<!-- -->
+<xs:elementname="scbjsj"type="xs:dateTime"/>
+受理时间
+<!-- -->
+<xs:elementname="slsj"type="xs:dateTime"/>
+受理结束时间
+<!-- -->
+<xs:elementname="sljssj"type="xs:dateTime"/>
+信息类型
+<!-- -->
+<xs:elementname="xxlx">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[129]"/>
+40
+GB/T268758—2015
+.
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+信息描述
+<!-- -->
+<xs:elementname="xxms"type="string100_t"/>
+处理结果
+<!-- -->
+<xs:elementname="cljg">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:maxLengthvalue="300"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+受理员姓名
+<!-- -->
+<xs:elementname="slyxm"type="string30_t"/>
+用户联系人姓名
+<!-- -->
+<xs:elementname="yhlxrxm"type="string30_t"/>
+信息确认
+<!-- -->
+<xs:elementname="xxqr">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[129]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+向消防通信指挥中心报告时间
+<!-- -->
+<xs:elementname="xxftxzhzxbgsj"type="xs:dateTime"/>
+消防通信指挥中心反馈确认时间
+<!-- -->
+<xs:elementname="xftxzhzxqrsj"type="xs:dateTime"/>
+消防通信指挥中心受理员姓名
+<!-- -->
+<xs:elementname="xftxzhzxslyxm"type="string30_t"/>
+消防通信指挥中心接警处理情况
+<!-- -->
+<xs:elementname="xftxzhzxjjclqk"type="string200_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+查岗
+<!-- -->
+<xs:complexTypename="cg_t">
+<xs:sequence>
+查岗发起人姓名
+<!-- -->
+<xs:elementname="cgfqrxm"type="string30_t"/>
+41
+GB/T268758—2015
+.
+被查岗单位名称
+<!-- -->
+<xs:elementname="bcgdwmc"type="string70_t"/>
+发起时间
+<!-- -->
+<xs:elementname="fqsj"type="xs:dateTime"/>
+结束时间
+<!-- -->
+<xs:elementname="jssj"type="xs:dateTime"/>
+查岗结果
+<!-- -->
+<xs:elementname="cgjg"type="string100_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+火灾
+<!-- -->
+<xs:complexType name="hz_t">
+<xs:sequence>
+单位名称
+<!-- -->
+<xs:elementname="dwmc"type="string70_t"/>
+起火部位
+<!-- -->
+<xs:elementname="qhbw"type="string50_t"/>
+起火时间
+<!-- -->
+<xs:elementname="qhsj"type="xs:dateTime"/>
+起火原因
+<!-- -->
+<xs:elementname="qhyy"type="xs:string"/>
+报警方式描述
+<!-- -->
+<xs:elementname="bjfsms"type="string40_t"/>
+过火面积
+<!-- -->
+<xs:elementname="ghmj"type="int10_t"/>
+死亡人数
+<!-- -->
+<xs:elementname="swrs"type="int6_t"/>
+受伤人数
+<!-- -->
+<xs:elementname="ssrs"type="int6_t"/>
+财产损失
+<!-- -->
+<xs:elementname="ccss"type="int10_t"/>
+火灾扑救概述
+<!-- -->
+<xs:elementname="hzpjgs"type="xs:string"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防设施检查
+<!-- -->
+<xs:complexTypename="xfssjc_t">
+42
+GB/T268758—2015
+.
+<xs:sequence>
+单位名称
+<!-- -->
+<xs:elementname="dwmc"type="string70_t"/>
+检查日期
+<!-- -->
+<xs:elementname="jcrq"type="xs:date"/>
+检查人姓名
+<!-- -->
+<xs:elementname="jcrxm"type="string30_t"/>
+消防安全管理人姓名
+<!-- -->
+<xs:elementname="xfaqglrxm"type="string30_t"/>
+检查类别
+<!-- -->
+<xs:elementname="jclb">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[1239]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+检查结果
+<!-- -->
+<xs:elementname="jcjg">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:patternvalue="[129]"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+检查内容
+<!-- -->
+<xs:elementname="jcnr"type="xs:string"/>
+故障内容
+<!-- -->
+<xs:elementname="gznr"type="xs:string"/>
+处理情况
+<!-- -->
+<xs:elementname="clqk"type="xs:string"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防设施维护保养
+<!-- -->
+<xs:complexTypename="xfsswhby_t">
+<xs:sequence>
+单位名称
+<!-- -->
+<xs:elementname="dwmc"type="string70_t"/>
+维护保养日期
+<!-- -->
+<xs:elementname="whbysj"type="xs:date"/>
+43
+GB/T268758—2015
+.
+维护人员姓名
+<!-- -->
+<xs:elementname="whryxm"type="string30_t"/>
+维护保养内容
+<!-- -->
+<xs:elementname="whbynr"type="xs:string"/>
+停用系统消防安全人姓名
+<!-- -->
+<xs:elementname="tyxtxfaqrxm"type="string30_t"/>
+维护保养结果
+<!-- -->
+<xs:elementname="whbyjg"type="string200_t"/>
+消防安全管理人姓名
+<!-- -->
+<xs:elementname="xfaqglrxm"type="string30_t"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防法规
+<!-- -->
+<xs:complexTypename="xffg_t">
+<xs:sequence>
+法规名称
+<!-- -->
+<xs:elementname="fgmc"type="string50_t"/>
+法规类别
+<!-- -->
+<xs:elementname="fglb">
+<xs:simpleType>
+<xs:restrictionbase="xs:string">
+<xs:pattern
+value="(11)|(2[12])|(3[12])|(4[1-3])|(5[1-4])|(6[1-4])|(99)"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+颁布机关
+<!-- -->
+<xs:elementname="bbjg"type="string30_t"/>
+批准机关
+<!-- -->
+<xs:elementname="pzjg"type="string30_t"/>
+颁布文号
+<!-- -->
+<xs:elementname="bbwh"type="string30_t"/>
+颁布日期
+<!-- -->
+<xs:elementname="bbrq"type="xs:date"/>
+实施日期
+<!-- -->
+<xs:elementname="ssrq"type="xs:date"/>
+输入日期
+<!-- -->
+<xs:elementname="srrq"type="xs:date"/>
+输入人姓名
+<!-- -->
+<xs:elementname="srrxm"type="string30_t"/>
+44
+GB/T268758—2015
+.
+法规内容
+<!-- -->
+<xs:elementname="fgnr"type="xs:string"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+消防常识
+<!-- -->
+<xs:complexTypename="xfcs_t">
+<xs:sequence>
+名称
+<!-- -->
+<xs:elementname="mc"type="string50_t"/>
+输入人姓名
+<!-- -->
+<xs:elementname="srrxm"type="string30_t"/>
+输入日期
+<!-- -->
+<xs:elementname="srrq"type="xs:date"/>
+内容
+<!-- -->
+<xs:elementname="nr"type="xs:string"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+错误
+<!-- -->
+<xs:complexTypename="error_t">
+<xs:sequence>
+代码
+<!-- -->
+<xs:elementname="code">
+<xs:simpleType>
+<xs:restrictionbase="xs:int">
+<xs:pattern
+value="([1-9])|(10)|(11)|(100)|(200)|(201)|([1-9][0-9][0-9][0-9])"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:element>
+描述
+<!-- -->
+<xs:elementname="description"type="xs:string"/>
+扩展
+<!-- -->
+<xs:anyminOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+输出格式
+<!-- -->
+45
+GB/T268758—2015
+.
+<xs:simpleTypename="output_format_t">
+<xs:restrictionbase="xs:string">
+<xs:enumerationvalue="xml"/>
+</xs:restriction>
+</xs:simpleType>
+字符编码
+<!-- -->
+<xs:simpleTypename="encoding_t">
+<xs:restrictionbase="xs:string">
+<xs:enumerationvalue="UTF-8"/>
+<xs:enumerationvalue="GBK"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
+46

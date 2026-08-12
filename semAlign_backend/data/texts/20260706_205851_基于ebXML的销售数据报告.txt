@@ -1,0 +1,1352 @@
+ICS35040
+.
+A24
+中 华 人 民 共 和 国 国 家 标 准
+GB/T31876—2015
+基于 的销售数据报告
+ebXML
+ebXMLbasedconsumptionreport
+2015-09-11发布 2016-04-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T31876—2015
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由全国物流信息管理标准化技术委员会 提出并归口
+(SAC/TC267) 。
+本标准起草单位 河南省标准化研究院 中国物品编码中心 宁波市标准化研究院
+: 、 、 。
+本标准主要起草人 孙中仁 葛伟三 张培英 唐攀 郭敬东 廖权虹 朱琰 张鹏 赵燕 廖启明
+: 、 、 、 、 、 、 、 、 、 、
+孙小云 楼庆华 刘放 荆大勇 邵杰
+、 、 、 、 。
+Ⅰ
+GB/T31876—2015
+基于ebXML的销售数据报告
+1 范围
+本标准规定了物流运输信息交换中基于 的销售数据报告所用的 建模图 应用场景
+ebXML UML 、 、
+基本的信息与报文代码表及 报文编制规则等 并给出了报文示例
+ebXML , 。
+本标准适用于基于 的销售数据报告报文的编制与应用
+ebXML 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+商品条码 零售商品编码与条码表示
+GB12904
+商品条码 参与方位置编码与条码表示
+GB/T16828
+商品条码 物流单元编码与条码表示
+GB/T18127
+统一建模语言 第 部分 基础结构
+GB/T28174.1—2011 (UML) 1 :
+基于 的商业报文 第 部分 贸易项目
+GB/Z25114.1—2010 ebXML 1 :
+3 术语和定义 缩略语
+、
+31 术语和定义
+.
+下列术语和定义适用于本文件
+。
+311
+..
+用例图 casediagram
+描述参与者 主题 系统 用例之间关系的图
+、 ( )、 。
+定义
+[GB/T28174.1—2011, 3.1.219]
+312
+..
+类图 classdiagram
+显示一组说明性的 静态 模型元素的图 例如 这样的元素可为类 类型以及它们的内容及关系
+( ) , , 、 。
+定义
+[GB/T28174.1—2011, 3.1.37]
+32 缩略语
+.
+下列缩略语适用于本文件
+。
+电子商务可扩展置标语言
+ebXML: (ElectronicbusinessextensibleMarkupLanguage)
+1
+GB/T31876—2015
+4 报文概述
+41 用例图
+.
+用例图见图
+1。
+图1 用例图
+42 用例描述
+.
+用例描述见表
+1。
+表1 销售数据用例描述表
+用例名 销售数据报告
+用例描述 买方传达要消费的商品信息给卖方
+买方 发送消费数据报告
+角色 : 。
+卖方 接收消费数据报告
+:
+实施目标 传输销售数据报告信息
+前置条件 商品消费 按计算得出
+:
+后置条件 商品消费 已传输
+:
+商业情景 买方发送销售数据报告报文给卖方
+1. ;
+卖方接收销售数据报告报文
+2.
+5 信息描述
+本部分描述销售数据报告传输所用的基本信息 见表
+, 2。
+2
+GB/T31876—2015
+3
+!+*)(’&%$#"!!!
+#-,
++*
+)(’&
+!%$
+%$
+#"
+!
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+*>;=<;:987*654
+&’,8+9.,(&84*$.,!
+$"(#&+5:&’,8+9.,(&84*$.,!
+KJIHGFEDCB)A@?
+3210/.
+:&’,8+9.,(&84*$.,!
+4+&;&’,8+9.,(&84*$.,!
+E%$!&’,8+9.,(&84*$.,!
+.,(&84*$.,!:.,(&#(-,$$%
+.,(&#4’,6.;.,(&#-,<
+:":=
+.,(&#-,<4+&;&’,8+9.,(&84*$.,!
+.,(&#-,<4+&;&’,8+9
+DC)A3210/.
+IHE!.,(&#4’,6.;
+.,(&#4’,6.;
+IH
+:&’,8+9.,(&84*$.,!
+$&.+4+’(*>+9"#(’+&#4
+UETSRMQPON;:54
+&-#&.,!
+=::@
+$&.+4+’(*>+9"#(’+&#7
+’+..#"?
+5;RV
+ML%
+&-#&.,!:’+..#"?
+KJIHGF
+E%$!&’,8+9.,(&84*$.,!
+:&’,8+9.,(&84*$.,!
+&.+4*-,5
+=::=
+IHE!&.+4*-,5
+&.+4*-,5:+-.#&(’+A.;
+XW
+:&’,8+9.,(&84*$.,!
+&’,8+9.,(&84*$.,-
+&’,8+9.,(&84*$.,!
+.,(&#-(6(&.+0;1&(&.2
+_ZY6^EXW]F54
+.,(&#-(6(&.+0;
+1&(&.2:.,(&#-(6(&.+0;
+ZY\[
+ZY3210/.
+.,(&#-(6(&.+0;
+:’+1*B:&’,8+9.,(&84*$.,!
+.,(&#-(6(&.+0;1&’#?
+’+1*)
+=::=
+ZYE;:
+.,(&#-(6(&.+0;1&’#?
+ZY;a‘
+;:
+:’+""+/:&’,8+9.,(&84*$.,!
+.,(&#-(6(&.+0;1&’#?
+’+""+$
+=::=
+ZYE;=
+.,(&#-(6(&.+0;1&’#?
+ZY;a‘
+;=
+.,(&84*$.,!
+4+&;&’,8+9
+B)A@?*b987*>54
+4+&;&’,8+9.,(&84*$.,!
+.,(&#4’,6.;.,(&#-,<
+IH10/.EDC
+$"(#&+5:.,(&#4’,6.;.,(&#-,<
+C)A3210/.
+IHD
+书书书
+GB/T31876—2015
+4
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+4+&;&’,8+9.,(&84*$.,!
+4+&;&’,8+9.,(&84*$.,!
+&’,8+9.,(&84*$.,!
+7&%".,(&#4’,6.;.,(&#-,:
+.,(&#4’,6.;.,(&#-,:
+=!=<
+4+&;+.(:
+7"4+&;+.(:&’,8+9.,(&84*$.,!
+.,(&84*$.,!.,(&#(-,$$%
+*6543210/
+98
+4+&;+.(:&’,8+9
+4+&;&’,8+9.,(&84*$.,!
+KJ7I=HGFEDCBA@
+.,(&84*$.,!"#&,&
+=.,(&#4’,6.;.,(&#-,:
+&.*,4%(&"*7
+<==<
+>=P;?ON7+ME#0/L
+&.*,4%
+1-.+’’*->(&"*7=.,(&#(-,$$%
+;?>=<-
+"YXWVU%ST%SR$Q!
+;:0/
+&.*,4%
+4+&;&’,8+9.,(&84*$.,!
+=.,(&#4’,6.;.,(&#-,:
+.,(&#-(6(&.+0;1&’#@
+.,(&#-,:1’,&.+?.(
+‘_7DCcIb[I=^=a
+1&’#@=.,(&#-,:1’,&.+?.;
+‘_^]\
+DC[Z
+.,(&#-(6(&.+0;
+4+&;&’,8+9.,(&84*$.,!
+.,(&#-(6(&.+0;1&’#@
+,B8(A$
+<==<
+‘_DC7d7*=f^e8(A/=.,(&#4’,6.;
+.,(&#-,:
+‘_^]\
+d7*
+.,(&#-(6(&.+0;1&’#@=,B
+4+&;&’,8+9.,(&84*$.,!
+7*6hg7430/I=ji
+=.,(&#4’,6.;.,(&#-,:
+.,(&#-(6(&.+0;4+&;+0#’B
+<==<
+‘_
+4+&;+0#’B=.,(&#(-,$$%
+‘_*6hg
+.,(&#-(6(&.+0;
+7%po;?nm>=<-lk
+=&.*,4%1-.+’’*->(&"*7
+&.*,4%(&"*7
+rq>=
+$"(#&+5
+;?>=<-
+=&.*,4%1-.+’’*-(&"*7
+&.*,4%
+=!=<
+s17>=
+-(’+4*3=&.*,4%
+"s1!;?
+书书书
+GB/T31876—2015
+5
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+&’,8+9.,(&84*$.,!
+210/="<:!;:+987
++.(:&’,8+9.,(&84*$.,!
+=<<=
+4+&;+.(:
+?>
+$"(#&+5<4+&;
+6543210/
++.(:&’,8+9.,(&84*$.,!
+1&(&.#*>0+4*$.,-
+=<<=
+B1DC=A@
+<1&(&.#*>0+4*$.,!<4+&;
+B1A@
+1&(&.#*>
++.(:&’,8+9.,(&84*$.,!
+=BGFE;:GKJIH87
++A(/&+@-*?+4(&
+=<<C
+<+A(/&+@-*?+4(B<4+&;
+ML
+BGFE;:
++0,!#+A(/&+@-*?
++.(:&’,8+9.,(&84*$.,!
+&.+4*-,5’E&.+4*-,5
+<$.,(&(0.,!+$#D-’*F<4+&;
+$.,(&(0.,!+$#D-’*8
+=<<=
+?>UT=[ZYXWV
++-.+’+6+9+.(:
++.(:&.+4*-,5’E&.+4*-,5
+P)ON
+UT5RQSRQ
++-.+’+6+9
+=<<C
+%"4+&;+.(:&’,8+9.,(&84*$.,!
++.(:&’,8+9.,(&84*$.,!
+4+&;+.(:
+?>="4+&;+.(:=&
+4+&;+.(:<+-.#&+’+D.;<4+&;
+65
++.(:&’,8+9.,(&84*$.,!
+&(.H-(&$(G,:
+=4321\W0/ba‘87
+=<<C
+-(&$(G,:<.,(&#(-,$$%<4+&;
+.,(&#-(6(&.+0;
+#_^*6DC]\
+.,(&#-(6(&.+0;&(.H
+_^DC]\
+mlk=jiShgT+9fe
+&-#&.,!
+$"(#&+5<&-#&.,!
+rqpo=%n
+dc&
+.,(&#-(.*44,!
+=&%"&-#&.,!
+<.,(&#(-,$$%<&-#&.,!
+"+..#D!.,(&#-(.*44,!
+<!<C
+?>=""+..#D!
+"+..#D!.,(&#-(.*44,!
+rqpo
+书书书
+GB/T31876—2015
+6
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+&.+4&’#8+5’,.,$’+;:&-#&.,!
+&.+4&’#8+5’9.,$’+8
+BA@?>#6254=<;:
+.,(&8(’-$+5(&"*7
+=::=
++<#*<.#"(&"*7:+4#3
++4#3
+62543210/=EDC
+987-
+.,(&8(’-$+5
+62543210/
+.,(&#-(.*44,!
+%ONML$KJ3IH=GF
+:"+..#>!.,(&#-(.*44,!
+"+..#>!
+PN
+$"(#&+5
+IHGF
+:"+..#>!.,(&#-(.*44,!
+.,(&#-(.*44,-
+=::=
+IH=GFXWJSVUTS
+:"+..#>!.,(&#-(.*44,!
++0,!"+..#>!
+&@+?
+RQIHGF
+:"+..#>!.,(&#-(.*44,!
+.,(&#-(.*44,-
+=::=
+RY=_^KJGF+]\[Z
+:’+)4*3.,(&#-(.*44,!
+’+)4*3
+&@+?
+RYGF
+Wed$BAZcba‘7-A@
+.,(&8(’-$+5(&"*7
+$"(#&+5:.,(&8(’-$+5(&"*7
+kjih=RYgf%
+987-
+=Futsrqpo3nm>l
+:.,(&8(’-$+5(&"*7
+.,(&8(’-$+0
+:!:=
+KJpv
+&@+?:.,(&8(’-$+5
+98
+}|{$EDkz=yxih?>
+&.+4*-,5
+$"(#&+5:&.+4*-,5
+(cid:132)(cid:131)(cid:130)(cid:129)(cid:128)(cid:127)~$rk
+wj
+.,(&#-(6(&.+0C1&(&.2
+"
+(cid:136)(cid:135)\(cid:137)=wj
+$"(#&+5:.,(&#-(6(&.+0C1&(&.2
+"
+"
+"
+(cid:136)(cid:135)(cid:134)(cid:133)
+’,&#+’!+*D(.*
+:.,(&#-(6(&.+0C1&(&.2
+=::=
+(cid:136)(cid:135)\(cid:137)(cid:138)(cid:127)~yx
+"
+"
+.,(&#-(6(&.+0C
+"
+&@+?:.,(&#-(6(&.+0C
+(cid:136)(cid:135)(cid:138)(cid:127)~\(cid:137)
+书书书
+GB/T31876—2015
+7
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+=.,(&#-(6(&.+0<1&(&.2
+.,(&#-(6(&.+0<1&’#;
+’+.:9&.+&.,-
+>==>
+76A@?>=<;:98
+=’+.:9&.+&.,!
+!
+!
+76543
+210/
+.,(&#-(6(&.+0<1&’#;
+KJIHG76FE#DCBA@
+.,(&#-(6(&.+0<1&’#;
+!
+$"(#&+5=.,(&#-(6(&.+0<1&’#;
+!
+!
+!
+543?,+
+76543
+SRQPON")3@A!DCBML CB28[ZYXW%VU?T/
+=.,(&#-(6(&.+0<1&’#;
+dc3@A&76ba‘_^]\
+’+)4*3.,(&#-,@"#),"?
+>==>
+=.,(&#-(6(&.+0<$1’#4(’;
+!
+!
+!
+j%ihg#Df76543?e
+DCBML
+’+(6(&.+0<$3@A
+mqpon543mK?+lk
+Df76543edrA
+=.,(&#-(6(&.+0<1&’#;
+1&’#;"#.,(&(00%
+76?zNyxwv543u
+="=B
+1&’#;
+$3@A.,3="#.,(&(00%
+.,(&#-(6(&.+0<
+!
+!
+!
+|{
+.,(&#-(6(&.+0<
+76543ts
+?edrAE(cid:127)[~543r} 3@A
+E(cid:127)(cid:130)(cid:129)&(cid:128)76543
+1&’#;"#.,(&(00%
+(cid:137)r(cid:136)(cid:135)(cid:134)[(cid:133)(cid:132)#(cid:128)76?y(cid:131)=.,(&#-(6(&.+0<1&’#;$3@A.,3
+!
+!
+!
+.,(&#-(6(&.+0<
+P(cid:144)m(cid:143)(cid:142)&$(cid:136)(cid:141)?(cid:140)(cid:139)k(cid:138)
+$"(#&+5
+76543?ts
+(cid:141)?(cid:140)(cid:139)(cid:134)l(cid:131)#(cid:149)z?(cid:148)(cid:147)(cid:146)(cid:145)
+$(cid:136)
+1&’#;"#.,(&(00#
+DCBMLc(cid:133)(cid:152)Df(cid:151)GE(cid:127)=.,(&#-(6(&.+0<1&’#;$3@A.,3
++81C.,(&#-(6(&.+0<
+>==>
+!
+!
+!
+54376Df?
++0,!=+81C.,(&#-(6(&.+0<
+76543?ts
+(cid:150)"
+书书书
+GB/T31876—2015
+8
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+1&’#9"#.,(&(00#
+>.,(&#-(6(&.+0:1&’#9#3=<.,3
+A>>A
+;654321:93=<8
+!
+!
++*"#;.,(&#-(6(&.+0:
+!
+&@+?>.,(&#-(6(&.+0:
+76543210/
+65CB1*>A@
+-3:?<?
+4+&:+0#’?
+>.,(&#-(6(&.+0:4+&:+0#’?
+650/1:?3:?<+ED$;
+!
+!
+!
+.,(&#-(6(&.+0:
+$"(#&+5
+GF1;
+65*>=<
+B?M$KJ*>=<IH1+L <%7ONC1*>=<65C XWVUTCSRQ?P*>=
+>.,(&#-(6(&.+0:4+&:+0#’?
+4+&:+0#’?"#),"<
+A>>A
+a‘_$YX^VU]\[Z$Y
+>.,(&#-(6(&.+0:#1’#4(’9
+!
+!
+’+)4*3
+!
+ih?PgD$fe1,+dcb
+’+(6(&.+0:#3:?<
+KJ*>=<IH
+Wqp&o+nmlCSR1kj
+utsr
+1&%".,(&#-(6(&.+0:4+&:+0#’?>.,(&#-(6(&.+0:
+4+&:
++0#’?
++0#’?"#.,(&(00%
+>">B
+.,(&#-(6(&.+0:4+&:+0#’?"#.,(&(00%+0#’?#3:?<.,3>"#.,(&(00%
+.,(&#-(6(&.+0:4+&:
+!
+!
+!
+fe1"
+.,(&#-(6(&.+0:4+&:
+65*>=<0/
+{z1yjix[MKJwPv
+4+&:+0#’?"#.,(&(00%
+4+&:+0#’?#3:?<.,3
+ZCnm3:?<^K|*>=<
+!
+!
+!
+.,(&#-(6(&.+0:
+$"(#&+5>.,(&#-(6(&.+0:
+(cid:127)2~}1C
+65*>=<10/
+4+&:+0#’?"#.,(&(00#
+4+&:+0#’?#3:?<.,3
+51KJ*>=<IHJ(cid:130)(cid:129)M
++81?.,(&#-(6(&.+0:
+A>>A
+.,(&#-(6(&.+0:>.,(&#-(6(&.+0:
+!
+!
+!
+(cid:128)"1(cid:132)(cid:131)6
+65*>=<10/
++0,!>+81?
+(cid:128)"
+书书书
+GB/T31876—2015
+9
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+4+&:+0#’9#3:9<.,3
+4+&:+0#’9"#.,(&(00#
+"#.,(&(00%=.,(&#-(6(&.+0:
+:*432981*43265
++*"#;.,(&#-(6(&.+0:
+?==?
+.,(&#-(6(&.+0:4+&:+0#’9
+!
+!
+!
+>=:<1;
+5*43210/
+4+&:+0#’9"#.,(&(00##+*"#;
+76
+&>+9=.,(&#-(6(&.+0:
+&.+4*-,5’@&.+4*-,5
++.(A&.+4*-,5’@&.+4*-,5
+@?IHBIHC1GFED
++-.+’+6+B+.(A
+$"(#&+5=+-.+’+6+B
+AC@?BA@?
+4+&:+.(A
+N"ML1@?KJ
+$"(#&+5=4+&:+.(A
+!
+!
+!
+4C
+’+)4*.4+&:+.(A
+?==?
+APO1C65
+-(’+4*3=’+)4*3=4+&:+.(A
+!
+!
+!
+A4C
+&(.D-(&$(C,A
+1ZY981XTSRQWVU=.,(&#-(6(&.+0:&(.D
+-(&$(C,A
+!
+!
+!
+.,(&#-(6(&.+0:
+_^]RQ\[$;:65
+$"(#&+5
+65TSRQ
+=.,(&#-(6(&.+0:&(.D-(&$(C,A
+&.+48(E/"#(’+$
+1gS1bafeBcbd65
+?==?
+’+.(#&.,!C.(88(E/"#(’+/
+!
+!
++0,!’+.(#&.,!
+!
+APOZY98
+’+(6(&.+0:#!!//=+0,!
+;:cbaP‘
+=.,(&#-(6(&.+0:&(.D-(&$(C,A
+-(&$(C,A"#.,(&(00%
+/1XbafeBcbdWVU
+="=F
+"#.,(&(00%=.,(&#(-,$$%
+.,(&#-(6(&.+0:&(.D
+!
+!
+!
+650
+.,(&#-(6(&.+0:&(.D-(&$(C,A
+65TSRQ10/
+书书书
+GB/T31876—2015
+10
+"!!!!
+$.-
+,+
+*)(’
+"&%
+&%
+$#
+"
+1&(-("8(&"*7
+.,(&(.(6+5
++4#31’&.21’#.,(&-(0
+$$#"!1’#0.,-+/
+.,(&#(-,$$%
++&*)(’&&%
+$$#"!
+/BA;@?>=<;:987
+&(.;-(&$(:,9"#.,(&(00%
+&(.;-(&$(:,9"#.,(&(00%
+G21FE#"!!//DC!650
+!
+!
+!
+.,(&#-(6(&.+0<
+$"(#&+5=.,(&#-(6(&.+0<
+IH
+6543210/
+&(.;-(&$(:,9"#.,(&(00%
+&(.;-(&$(:,9
+@==@
+’JB;@?>=<;:65
+&(.;-(&$(:,9=.,(&#-(6(&.+0<
+!
+!
+.,(&#-(6(&.+0<
+!
+&?+>=.,(&#-(6(&.+0<
+654321
+.,(&#-(.*44,!
+$TSRQ#PO=NMBLK
+="+..#A!.,(&#-(.*44,!
+"+..#A!
+US
+$"(#&+5
+NMLK
+="+..#A!.,(&#-(.*44,!
+.,(&#-(.*44,-
+@==@
+NMBLK]\OX[ZYX
+="+..#A!.,(&#-(.*44,!
++0,!"+..#A!
+&?+>
+WVNMLK
+="+..#A!.,(&#-(.*44,!
+.,(&#-(.*44,-
+@==@
+W^BdcPOLK+ba‘_
+=’+)4*3.,(&#-(.*44,!
+’+)4*3
+&?+>
+W^LK
+&Ejihgffe%"!!
+&FE@D@>’CBmlkW^654321
+#!!
+&DEDG@>’CBmlkW^39B
+)!!
+&JIHE@CBmlkW^3<>B
+-!!
+书书书
+GB/T31876—2015
+6 类图
+61 销售数据报告类图
+.
+销售数据报告 类图见图
+(ConsumptionReport) 2。
+图2 销售数据报告类图
+62 文档类图
+.
+文档 类图见图
+(Document) 3。
+图3 文档类图
+11
+GB/T31876—2015
+63 实体标识类图
+.
+实体标识 类图见图
+(EntityIdentification) 4。
+图4 实体标识类图
+64 参与方标识类图
+.
+参与方标识 类图见图
+(PartyIdentification) 5。
+图5 参与方标识类图
+65 联系人类图
+.
+联系人 类图见图
+(Contact) 6。
+12
+GB/T31876—2015
+图6 联系人类图
+66 描述类图
+.
+描述 类图见图
+(Description) 7。
+图7 描述类图
+67 贸易项目标识类图
+.
+贸易项目标识 类图见图
+(TradeItemIdentification) 8。
+图8 贸易项目标识类图
+68 物流单元标识类图
+.
+物流单元标识 类图见图
+(LogisticUnitIdentification) 9。
+13
+GB/T31876—2015
+图9 物流单元标识类图
+69 数量类图
+.
+数量 类图见图
+(Amount) 10。
+图10 数量类图
+610 文档参考类图
+.
+文档参考 类图见图
+(DocumenReference) 11。
+图11 文档参考类图
+611 日期和时间类图
+.
+日期和时间 类图见图
+(DateandTime) 12。
+14
+GB/T31876—2015
+图12 日期和时间类图
+612 交易项目数据类图
+.
+交易项目数据 类图见图
+(TransactionalItemData) 13。
+图13 交易项目数据类图
+7 报文代码表
+71 附加参与方标识代码表
+.
+附加参与方标识 代码表见表
+(AdditionalPartyIdentification) 3。
+表3 附加参与方标识代码表
+代 码 代码描述
+买方为参与方指定标识符
+BUYER_ASSIGNED_IDENTIFIER_FOR_A_PARTY
+位数字的全球数据编码系统 用于企业位置标识 由邓白
+9 , ,
+DUNS 氏提出
+用于内部标识
+FOR_INTERNAL_USE_1
+用于内部标识
+FOR_INTERNAL_USE_10
+用于内部标识
+FOR_INTERNAL_USE_11
+用于内部标识
+FOR_INTERNAL_USE_12
+用于内部标识
+FOR_INTERNAL_USE_13
+15
+GB/T31876—2015
+表3 续
+( )
+代 码 代码描述
+用于内部标识
+FOR_INTERNAL_USE_14
+用于内部标识
+FOR_INTERNAL_USE_15
+用于内部标识
+FOR_INTERNAL_USE_16
+用于内部标识
+FOR_INTERNAL_USE_17
+用于内部标识
+FOR_INTERNAL_USE_18
+用于内部标识
+FOR_INTERNAL_USE_19
+用于内部标识
+FOR_INTERNAL_USE_2
+用于内部标识
+FOR_INTERNAL_USE_20
+用于内部标识
+FOR_INTERNAL_USE_3
+用于内部标识
+FOR_INTERNAL_USE_4
+用于内部标识
+FOR_INTERNAL_USE_5
+用于内部标识
+FOR_INTERNAL_USE_6
+用于内部标识
+FOR_INTERNAL_USE_7
+用于内部标识
+FOR_INTERNAL_USE_8
+用于内部标识
+FOR_INTERNAL_USE_9
+HIN_CANADIAN_HEALTHCARE_IDENTIFICATION_ 加拿大医疗标识代码
+NUMBER
+承运人标准代码
+SCAC
+卖方为参与方指定标识符
+SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY
+标识公司位置的 位数字 主要用于法国境内
+SIRET 14 ,
+美国农业部门的标识代码
+USDA_ESTABLISHMENT_NUMBER
+72 附加贸易项目标识代码表
+.
+附加贸易项目标识 代码表见表
+(AdditionalTradeItemIdentification) 4。
+表4 附加贸易项目标识代码表
+代 码 代码描述
+由买方指定的内部标识代码 用于标识来自不同贸易项目
+,
+BUYER_ASSIGNED 伙伴的贸易项目
+附加的贸易项目的标志值 由购买其他地方转售 重新分
+, /
+DISTRIBUTOR_ASSIGNED 配的货物 并且拥有货物冠名权的实体来定义和分配
+,
+用于内部标识
+FOR_INTERNAL_USE_1
+用于内部标识
+FOR_INTERNAL_USE_10
+用于内部标识
+FOR_INTERNAL_USE_11
+16
+GB/T31876—2015
+表4 续
+( )
+代 码 代码描述
+用于内部标识
+FOR_INTERNAL_USE_12
+用于内部标识
+FOR_INTERNAL_USE_13
+用于内部标识
+FOR_INTERNAL_USE_14
+用于内部标识
+FOR_INTERNAL_USE_15
+用于内部标识
+FOR_INTERNAL_USE_16
+用于内部标识
+FOR_INTERNAL_USE_17
+用于内部标识
+FOR_INTERNAL_USE_18
+用于内部标识
+FOR_INTERNAL_USE_19
+用于内部标识
+FOR_INTERNAL_USE_2
+用于内部标识
+FOR_INTERNAL_USE_20
+用于内部标识
+FOR_INTERNAL_USE_3
+用于内部标识
+FOR_INTERNAL_USE_4
+用于内部标识
+FOR_INTERNAL_USE_5
+用于内部标识
+FOR_INTERNAL_USE_6
+用于内部标识
+FOR_INTERNAL_USE_7
+用于内部标识
+FOR_INTERNAL_USE_8
+用于内部标识
+FOR_INTERNAL_USE_9
+用于内部标识
+INDUSTRY_ASSIGNED
+附加的贸易项目的标识值 由第三方服务提供商和 或制
+, /
+造商来定义和分配 或者是其他在贸易中对货物和托运拥
+SUPPLIER_ASSIGNED ,
+有支配权的实体
+73 通讯渠道代码表
+.
+通讯渠道 代码表见表
+(CommunicationChannel) 5。
+表5 通讯渠道代码表
+代 码 代码描述
+邮件
+EMAIL
+传真
+TELEFAX
+电话
+TELEPHONE
+网络
+WEBSITE
+74 需求量类型代码表
+.
+需求量类型 代码表见表
+(BucketSizeType) 6。
+17
+GB/T31876—2015
+表6 需求量类型代码表
+代 码 代码描述
+每日信息请求
+DAY
+每月信息请求
+MONTH
+每季度信息请求
+QUARTER
+每周信息请求
+WEEK
+每年信息请求
+YEAR
+8 ebXML报文的编制
+81 业务过程架构
+.
+业务过程架构见 中的
+GB/Z25114.1—2010 A.1。
+82 编写规则
+.
+编写规则见 中的
+GB/Z25114.1—2010 A.2。
+83 报告架构
+.
+报文架构见 中的
+GB/Z25114.1—2010 A.3。
+84 报文文件示例
+.
+报文文件示例见附录
+A。
+18
+GB/T31876—2015
+附 录 A
+资料性附录
+( )
+报文文件示例
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+shStandardBusinessDocumentxmlnssh="http www.unece.orgcefactnamespacesStan-
+< : : :// / / /
+dardBusinessDocumentHeader"xmlnsdeliver="urnean.uccdeliver2"
+: : : :
+xmlnseanucc="urnean.ucc2"
+: : :
+xmlnsxsi="http www.w3.org2001XMLSchema-instance"
+: :// / /
+xsischemaLocation="http www.unece.orgcefactnamespacesStandardBusinessDocument-
+: :// / / /
+Header..SchemassbdhStandardBusinessDocumentHeader.xsdurnean.ucc2 ..SchemasConsump-
+/ / / : : / /
+tionReportProxy.xsd"
+>
+shStandardBusinessDocumentHeader
+< : >
+shHeaderVersion1.0 shHeaderVersion
+< : > </ : >
+shSender
+< : >
+shIdentifierAuthority="EAN.UCC"6903148000007 shIdentifier
+< : > </ : >
+shContactInformation
+< : >
+shContactJohnDoe shContact
+< : > </ : >
+shEmailAddressJohnDoe purchasing.XYZretailer.com shEmailAddress
+< : > _ @ </ : >
+shFaxNumber +1-212-555-1213 shFaxNumber
+< : > </ : >
+shTelephoneNumber +1-212-555-2122 shTelephoneNumber
+< : > </ : >
+shContactTypeIdentifierBuyer shContactTypeIdentifier
+< : > </ : >
+shContactInformation
+</ : >
+shSender
+</ : >
+shReceiver
+< : >
+shIdentifierAuthority="EAN.UCC"2203148000007 shIdentifier
+< : > </ : >
+shContactInformation
+< : >
+shContactMarySmith shContact
+< : > </ : >
+shEmailAddressMarySmith widgets.com shEmailAddress
+< : > _ @ </ : >
+shFaxNumber +1-312-555-1214 shFaxNumber
+< : > </ : >
+shTelephoneNumber +1-312-555-2125 shTelephoneNumber
+< : > </ : >
+shContactTypeIdentifierSeller shContactTypeIdentifier
+< : > </ : >
+shContactInformation
+</ : >
+shReceiver
+</ : >
+shDocumentIdentification
+< : >
+shStandardEAN.UCC shStandard
+< : > </ : >
+shTypeVersion2.5 shTypeVersion
+< : > </ : >
+shInstanceIdentifier100002 shInstanceIdentifier
+< : > </ : >
+shTypeConsumptionReport shType
+< : > </ : >
+19
+GB/T31876—2015
+shMultipleTypefalse shMultipleType
+< : > </ : >
+shCreationDateAndTime2004-01-10T120001.000 shCreationDateAndTime
+< : > : : </ : >
+shDocumentIdentification
+</ : >
+shStandardBusinessDocumentHeader
+</ : >
+eanuccmessage
+< : >
+entityIdentification
+< >
+uniqueCreatorIdentificationMSG-123-20040110 uniqueCreatorIdentification
+< > </ >
+contentOwner
+< >
+gln0012345000359 gln
+< > </ >
+contentOwner
+</ >
+entityIdentification
+</ >
+eanucctransaction
+< : >
+entityIdentification
+< >
+uniqueCreatorIdentificationTRA-041-66573058 uniqueCreatorIdentification
+< > </ >
+contentOwner
+< >
+gln0012345000359 gln
+< > </ >
+contentOwner
+</ >
+entityIdentification
+</ >
+command
+< >
+eanuccdocumentCommand
+< : >
+documentCommandHeadertype="ADD"
+< >
+entityIdentification
+< >
+uniqueCreatorIdentificationCMD-912-54618595 uniqueCreatorIdentification
+< > </ >
+contentOwner
+< >
+gln0012345000359 gln
+< > </ >
+contentOwner
+</ >
+entityIdentification
+</ >
+documentCommandHeader
+</ >
+documentCommandOperand
+< >
+deliverconsumptionReportcreationDateTime="2005-02-09T120001.000"
+< : : :
+documentStatus="ORIGINAL"xsischemaLocation="urnean.ucc2..SchemasConsumptionReport-
+: : : / /
+Proxy.xsd"
+>
+contentVersion
+< >
+versionIdentification2.5 versionIdentification
+< > </ >
+contentVersion
+</ >
+documentStructureVersion
+< >
+versionIdentification2.5 versionIdentification
+< > </ >
+documentStructureVersion
+</ >
+consumptionReportIdentification
+< >
+uniqueCreatorIdentificationWG-000001 uniqueCreatorIdentification
+< > </ >
+20
+GB/T31876—2015
+contentOwner
+< >
+gln8712345678913 gln
+< > </ >
+contentOwner
+</ >
+consumptionReportIdentification
+</ >
+buyer
+< >
+gln8712345678913 gln
+< > </ >
+buyer
+</ >
+seller
+< >
+gln8812345678903 gln
+< > </ >
+seller
+</ >
+consumptionReportItemLocationInformation
+< >
+shipTo
+< >
+gln8712345670009 gln
+< > </ >
+shipTo
+</ >
+consumptionReportLineItemnumber="1"
+< >
+consumedQuantity
+< >
+value700 value
+< > </ >
+unitOfMeasure
+< >
+measurementUnitCodeValueEA measurementUnitCodeValue
+< > </ >
+unitOfMeasure
+</ >
+consumedQuantity
+</ >
+timeBucketSizeWEEK timeBucketSize
+< > </ >
+consumptionPeriod
+< >
+timePeriodbeginDate="2005-02-11"endDate="2005-02-17"
+< />
+consumptionPeriod
+</ >
+purchaseConditions
+< >
+documentLineReferencenumber="23"
+< >
+documentReferencecreationDateTime="2005-02-10T100000.000"
+< : : >
+uniqueCreatorIdentification200400001 uniqueCreatorIdentification
+< > </ >
+contentOwner
+< >
+gln8712345678999 gln
+< > </ >
+contentOwner
+</ >
+documentReference
+</ >
+documentLineReference
+</ >
+purchaseConditions
+</ >
+consumptionReportLineItem
+</ >
+tradeItemIdentification
+< >
+gtin08712345678906 gtin
+< > </ >
+tradeItemIdentification
+</ >
+consumptionReportItemLocationInformation
+</ >
+21
+GB/T31876—2015
+consumptionReportItemLocationInformation
+< >
+shipTo
+< >
+gln8712345678951 gln
+< > </ >
+shipTo
+</ >
+consumptionReportLineItemnumber="2"
+< >
+consumedQuantity
+< >
+value300 value
+< > </ >
+unitOfMeasure
+< >
+measurementUnitCodeValueEA measurementUnitCodeValue
+< > </ >
+unitOfMeasure
+</ >
+consumedQuantity
+</ >
+timeBucketSizeWEEK timeBucketSize
+< > </ >
+consumptionPeriod
+< >
+timePeriodbeginDate="2005-02-11"endDate="2005-02-15"
+< />
+consumptionPeriod
+</ >
+purchaseConditions
+< >
+documentLineReferencenumber="23"
+< >
+documentReferencecreationDateTime="2005-02-10T100000.000"
+< : : >
+uniqueCreatorIdentification2004000012 uniqueCreatorIdentification
+< > </ >
+contentOwner
+< >
+gln8712345678999 gln
+< > </ >
+contentOwner
+</ >
+documentReference
+</ >
+documentLineReference
+</ >
+purchaseConditions
+</ >
+consumptionReportLineItem
+</ >
+tradeItemIdentification
+< >
+gtin08712345678906 gtin
+< > </ >
+tradeItemIdentification
+</ >
+consumptionReportItemLocationInformation
+</ >
+deliverconsumptionReport
+</ : >
+documentCommandOperand
+</ >
+eanuccdocumentCommand
+</ : >
+command
+</ >
+eanucctransaction
+</ : >
+eanuccmessage
+</ : >
+shStandardBusinessDocument
+</ : >
+22

@@ -1,0 +1,26 @@
+ICS 01.100.01
+GB
+J04
+中华人民共和国国家标准
+GB/T24734.6—2009
+技术产品文件
+数字化产品定义数据通则
+第6部分：几何建模特征规范
+Technical product documentation—Digital product definition data practices
+Part 6 :Feature specification for geometrical modeling
+2009-11-30发布
+2010-09-01实施
+中华人民共和国国家质量监督检验检疫总局
+发布
+中国国家标准化管理委员会
+
+SZAC
+
+GB/T24734.6—2009
+目
+前言
+1范围
+2规范性引用文件
+3术语和定义
+4几何建模特征分类
+附录A（资料性附录）特征常用参数

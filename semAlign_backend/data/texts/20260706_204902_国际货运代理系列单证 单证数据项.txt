@@ -1,0 +1,4250 @@
+ICS0310001
+. .
+A02
+中 华 人 民 共 和 国 国 家 标 准
+GB/T28530—2012
+国际货运代理系列单证
+单证数据项
+Alignedseriesofinternationalfreightforwardingdocuments—
+Documentarydataentry
+2012-06-29发布 2012-10-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T28530—2012
+目 次
+前言 …………………………………………………………………………………………………………
+Ⅲ
+引言 …………………………………………………………………………………………………………
+Ⅳ
+范围 ………………………………………………………………………………………………………
+1 1
+规范性引用文件 …………………………………………………………………………………………
+2 1
+术语和定义 ………………………………………………………………………………………………
+3 2
+缩略语 ……………………………………………………………………………………………………
+4 3
+商业交易相关单证数据项及其数据元 …………………………………………………………………
+5 5
+付款相关单证数据项及其数据元 ………………………………………………………………………
+6 6
+运输及服务的相关单证数据项及其数据元 ……………………………………………………………
+7 9
+官方管制相关单证数据项及其数据元…………………………………………………………………
+8 38
+使用原则…………………………………………………………………………………………………
+9 44
+附录 资料性附录 商业交易相关单证示例…………………………………………………………
+A( ) 46
+附录 资料性附录 付款相关单证示例 ………………………………………………………………
+B( ) 55
+附录 资料性附录 运输及服务相关单证示例 ………………………………………………………
+C( ) 57
+附录 资料性附录 官方监管相关单证示例 …………………………………………………………
+D( ) 74
+附录 资料性附录 联合国单证设计样式指南和实例运用附件 单证名称的定义和说明 ………
+E( ) 76
+Ⅰ
+GB/T28530—2012
+前 言
+本标准起草单位 浙江双马国际货运有限公司 国富通信息技术发展有限公司 上海新景程国际物
+: 、 、
+流有限公司 深圳市联合纵横国际货运代理公司 福建金航国际货运代理有限公司厦门分公司 广州惠
+、 、 、
+尔通物流有限公司 全国国际货运代理标准化技术委员会 大连锦程物流网络技术有限公司 中国外运
+、 、 、
+长航集团有限公司 中国海运 集团 总公司 中钢国际货运有限公司 新时代保险经纪有限公司 内蒙古
+、 ( ) 、 、 、
+安快物流集团
+。
+本标准主要起草人 林忠 高爽 陈峥 冯建萍 曹玺 杨旭 刘媺珊 景洪德 张海峰 李莉丽 陈智勇
+: 、 、 、 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T28530—2012
+引 言
+本标准为国际货运代理单证系列标准之一 单证数据项
+——— 。
+与货运代理业务相关的纸质单证在业内已流传多年 虽然各地所使用的单证在用途 内容和形式上
+, 、
+并不统一 但单证上的数据项的属性基本接近相同 随着计算机技术和网络技术的发展 电子单证应用
+, 。 ,
+日益普遍 迫切需要规范这些单证数据项属性及其数据元 以实现与业务关联方间的信息共享与数据交
+, ,
+换 有效地提高单证处理效率 保证数据准确 安全 及时和有效 减少差错和降低成本
+, , 、 、 , 。
+在一段时间内 由于纸质单证在国际买卖货物的交付 运输 保险 商检 报关 结汇等中仍具有不可
+, 、 、 、 、 、
+替代的作用 将在本标准的基础上 陆续制定一些重要的 在短时间内依然需要保留纸质单证的标准以
+, , 、
+规定
+。
+Ⅳ
+GB/T28530—2012
+国际货运代理系列单证
+单证数据项
+1 范围
+本标准规定了国际货运代理以及与其业务关联的单证数据项和数据元
+。
+本标准适用于国际货运代理及其业务关联的单证缮制 复制 套印和应用电子复制 数据处理 亦
+、 、 、 ;
+可作为管理部门规范单证管理
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+国际贸易单证样式
+GB/T14392—2009
+贸易单证中代码的位置
+GB/T14393—2008
+国际贸易出口单证格式 第 部分 商业发票
+GB/T15310.1—2009 1 :
+国际贸易出口单证格式 第 部分 装箱单
+GB/T15310.2—2009 2 :
+国际贸易出口单证格式 第 部分 装运通知
+GB/T15310.3—2009 3 :
+外贸出口单证格式 中华人民共和国出口货物原产地证明书
+GB/T15310.4—1994
+国际贸易单证格式标准编制规则
+GB/T17298—2009
+国际货运代理业务数据元
+GB/T26321—2010
+关于简化和协调海关业务制度的国际公约
+《 》(InternationalConventionontheSimplificationand
+HarmonizationofCustomsProcedures)
+联合国国际货物多式联运公约
+《 》(UnitedNationsConventiononInternationalMultimodalTrans-
+portofGoods)
+国际植物保护公约
+(InternationalPlantProtectionConvention)
+国际便利海上运输公约
+(ConventiononFacilitationofInternationalMaritimeTraffic)
+第 号推荐标准 贸易单证设计样式
+UN/ECERec.1 UN/ECE 1 (UN/ECERec.1—United
+NationsLayoutKeyforTradeDocuments)
+第 号推荐标准 套合式国际贸易发票样式
+UN/ECERec.6 UN/ECE 6 - (UN/ECERec.6—
+AlignedInvoiceLayoutKeyforInternationalTrade)
+第 号推荐标准 关于危险货物运输的建议书
+UN/ECERec.11 UN/ECE 11 - (UN/ECERec.11—
+DocumentaryAspectsoftheTransportofDangerousGoods)
+第 号推荐标准 国际贸易程序简化措施
+UN/ECERec.18 UN/ECE 18 - (UN/ECERec.18—
+FacilitationMeasuresRelatedtoInternationalTradeProcedures)
+第 号推荐标准 标准委托书设计样式
+UN/ECERec.22 UN/ECE 22 - (UN/ECERec.22—Layout
+KeyforStandardConsignmentInstrucitons)
+1
+GB/T28530—2012
+3 术语和定义
+31
+.
+单证 document
+一种数据载体及其所记录的数据 通常具有永久性并可为人或机器读取
+, 。
+定义
+[GB/T14393—2008, 2.7]
+32
+.
+国际货运代理单证 internationalfreightforwardingDocuments
+指在国际货运代理业务中所应用的单据 文件 证书 用于处理货物的交付 运输 储存 搬运 包装
+、 、 , 、 、 、 、 、
+流通加工 配送 货物监管 信息处理 保险 代理报关 代理报检 支付与结算等
+、 、 、 、 、 、 、 。
+33
+.
+单证代码 documentcode
+以代码形式表示的单证标识符
+。
+定义
+[GB/T14393—2008, 2.8]
+34
+.
+单证标识符 documentidentifier
+规定了单证功能的文本或代码
+。
+定义
+[GB/T14393—2008, 2.9]
+35
+.
+单证名称 documentname
+以普通语言形式描述的单证标题
+。
+定义
+[GB/T14393—2008, 2.10]
+36
+.
+数据载体 datacarrier
+为存储 或传输数据指定的数据媒介
+/ 。
+定义
+[GB/T14393—2008, 3.10]
+37
+.
+数据项 dataentry
+数据载体中所输入的数据
+。
+定义
+[GB/T14393—2008, 2.4]
+38
+.
+数据栏 datafield
+为特定数据项指定的区域
+。
+定义
+[GB/T14393—2008, 3.5]
+39
+.
+栏目代码 fieldcode
+以代码形式表示的栏目标识符
+。
+定义
+[GB/T14392—2009, 3.17]
+310
+.
+栏目标题 fieldheading
+用普通语言以完整或缩略形式表示的栏目标识符
+。
+定义
+[GB/T14392—2009, 3.18]
+2
+GB/T28530—2012
+311
+.
+栏目标识符 fieldidentifier
+规定数据栏中数据属性的文本或代码
+。
+改写 定义
+[GB/T14392—2009, 3.18]
+312
+.
+样式 layoutkey
+一种形式文件 以集成方法为文件中展现某些表述预先定义指定空间
+, 。
+定义
+[GB/T14392—2009, 3.26]
+313
+.
+格式 form
+为传送数据项的可视化记录而指定的一种数据载体
+。
+定义
+[GB/T14393—2008, 2.14]
+314
+.
+格式设计单 formsdesignsheet
+样式表的一种应用 在含有边缘指示符和指出印刷规则位置网线的格式设计中该样式表准备用来
+,
+帮助取代这些规则和预印刷
+。
+定义
+[GB/T14392—2009, 3.21]
+315
+.
+套合式表单 alignedforms
+为使所有表单上的公共信息项在每个表单上都处在同一相对位置上而设计的一系列表单
+。
+316
+.
+自由处置区 freedisposal
+在单证设计样式中 为迎合个性化应用的特定需求而专门设置的区域 用于所需的但未能纳入指定
+, ,
+栏目的补充信息 可通过划定虚线对单项间隔进行精确的限制
+, 。
+317
+.
+主单证 master
+为制造其他单证而准备的一个单证 其他单证可通过对该单证完整或部分数据进行复制或复印而
+,
+获得
+。
+定义
+[GB/T14392—2009, 3.29]
+318
+.
+一对多复制方法 onerunmethod
+把记录在主单证上的所有或部分信息传输到构成一个或多个配套格式上进行的复制处理
+。
+定义
+[GB/T14392—2009, 3.29]
+4 缩略语
+下列缩略语适用本文件
+。
+关于货物暂准进口的 报关单证册海关公约 简称 公约
+ATAConvention 《 ATA 》, ATA (Customs
+ConventionontheATACarnetfortheTemporaryAdmissionofGoods,ATA
+Convention)
+国际航空运输协会 空运单
+AWB (IATA) (IATAAirWaybill)
+波罗的海国际航运公会
+BIMCO (TheBalticandInternationalMaritimeCouncil)
+海关合作理事会
+CCC (CustomsCo-operationCouncil
+3
+GB/T28530—2012
+海关合作理事会术语汇编
+CCCGlossary (CustomsCo-operationCouncilGlossary)
+铁路托运单 公约
+CIM (CIM )(RailConsignmentNote)(CIMConvention)
+国际铁路货物运输公约
+CIMConvention (ConventionConcerningInternationalCarriageof
+GoodsbyRail,CIM)
+国际航空运输协会 货物交换报文程序手册 手册
+CIMP (IATA) (CARGO-IMP )
+[(IATA CargoInterchangeMessageProceduresManual(CARGO-IMPmanual)]
+公路托运单 公约
+CMR (CMR )[RoadConsignmentNote(CMRConvention)]
+国 际 公 路 货 物 运 输 合 同 公 约
+CMRConvention 《 》(ConventionontheContractforthe
+InternationalCarriageofGoodsbyRoad,CMR)
+欧共体
+EC (EuropeanCommunities)
+欧洲经济委员会
+ECE (EconomicCommissionforEurope)
+欧洲自由贸易协会
+EFTA (EuropeanFreeTradeAssociation)
+国际货运代理协会联合会
+FIATA (InternationalFederationofFreightForwarders
+Associations)
+欧洲经济委员会内陆运输委员会术语汇编
+GIT (GlossaryoftheECEInlandTrans-
+portCommitteeIATA International Air Transport Association)(ME/
+TRANS/D.40)
+国际航空运输协会
+IATA (InternationalAirTransportAssociation)
+国际商会
+ICC [InternationalChamberofCommerce(ICC)]
+国际航运公会
+ICS (InternationalChamberofShipping)
+国际海事组织
+IMO (InternationalMaritimeOrganisation)
+年国际海上组织 国际海上运输便利化协定
+IMO-FALConvention 1965 - (ConventiononFacilita-
+tionofInternationalMaritimeTraffic1965)
+联合国套合式发票格式
+INV (UnitedNationsLayoutKeyforAlignedInvoices)
+京都公约 即 关于简化和协调海关业务制度的国际公约
+KyotoConvention , 《 》(InternationalCon-
+ventionontheSimplificationandHarmonizationofCustomsProcedures)
+国际海事组织 格式和国际航运公会 标准提单
+MAR (IMO) (ICS) (IMOModelforms
+andICSStandardBillofLading)
+单一管理单证 和
+SAD (EC EFTA)[SingleAdministrativeDocument(ECand
+EFTA)]
+环球银行金融电信协会
+S.W.I.F.T. (SocietyforWorldwideInterbankFinancialTelecom-
+munication)
+关于在国际公路运输手册担保下进行国际货物运输的海关公约 简称 公
+TIRcovention 《 》( TIR
+约
+)(CustomsConventionontheInternationalTransportofGoodsunder
+CoverofTIRCarnets,TIRConvention)
+联合国单证样式
+UNLK (UnitedNationsLayoutKey)
+联合国标准报文
+UNSM (UN/EDIFACT)[UnitedNationsStandardMessage(UN/
+EDIFACT)]
+世界海关组织
+WCO (WorldCustomsOrganization)
+联合国贸易和发展会议
+UNCTAD (UnitedNationsConferenceonTradeandDevelop-
+ment)
+联合国贸易数据元 标记
+UNTDEDtag (UnitedNationsTradeDataElementsDirectory)
+万国邮政联盟
+UPU (UniversalPostalUnion)
+万国邮政公约
+UniversalPostalConvention (ConventionofUniversalPostalUnion)
+4
+GB/T28530—2012
+5 商业交易相关单证数据项及其数据元
+51 相关单证
+.
+511 本章包括在国际贸易招标过程中各方所交换的所有单证 报盘方 预期卖方 和受盘方 预期买
+.. , ( ) (
+方 通过这些单证交换以达成合同
+) 。
+512 本章所认定的单证功能是按单证发起方分类分为买方和卖方 合同单证对买卖双方是一致的
+.. 。 ,
+但因合同单证常由卖方准备 多指卖方单证
+, 。
+513 相关单证的功能按采购 询价单 订单 销售 发盘 报价 订单确认 形式发票 或既采购又销售
+.. ( 、 )、 ( / 、 、 )
+合同 进行分类
+( ) 。
+514 商业发票不属于合约文件的一部分 考虑到其广泛的运用和独特的作用 列入本章作为参考
+.. , , 。
+52 单证样式
+.
+521 商业发票设计样式
+..
+商业发票设计样式 见附录
+(UN/ECERec.6) A。
+522 商业发票
+..
+商业发票 见附录
+(GB/T15310.1—2009) A。
+523 与UNLK一致的单证样式
+..
+询价单 报价申请 要约邀请
+———210 / / (Enquiry/Requestforquote/Offerinvitation);
+发盘 报价
+———310 / (Offer/Quotation);
+订单
+———220 (Order);
+发运通知
+———351 (DespatchAdvice);
+订单确认 形式发票
+———320 / (Acknowledgementoforder/Proformainvoice)。
+见附录
+A。
+53 数据项及其数据元
+.
+在上述单证中使用的数据元 按 分开标注在三列专栏内 见表
+, P、S、C , 1。
+表示采购
+“P” (purchase);
+表示销售
+“S” (sale);
+表示合同
+“C” (contracts);
+表示该数据元通常在特定类型的单证中使用 加括号表示该数据元可能被引用
+“X” , 。
+表1 商业交易相关单证数据项及其数据元
+与UNLK一致的数据项 IdenticalwiththeUNLK UNTDEDtag P S C
+单证 据 日期
+( ) Documentdate 2006/7 X X X
+收货人
+Consignee 3132/3 X X X
+交货地址
+Deliveryaddress 3144/5 (X) (X) (X)
+运输细目
+Transportdetails 8012 X X X
+买方 如与收货人不同
+( ) Buyer(ifotherthanconsignee) 3002/3 X X
+5
+GB/T28530—2012
+表1 续
+( )
+与UNLK一致的数据项 IdenticalwiththeUNLK UNTDEDtag P S C
+原产国 地区
+( ) Countryoforigin 3238/9 X X
+目的地国家 地区
+( ) Countryofdestination 3216/7 X X X
+单证签发地点
+Placeofissueofdocument 3410/1 X X X
+交货条件
+Termsofdelivery 4052/3 X X X
+付款条件
+Termsofpayment 4276/7 X X X
+鉴证
+Authentication 4426/7 X X X
+运输标记
+Shippingmarks 7102 X X X
+件数
+Numberofpackages 7224 X X
+货物描述 商品名称
+( ) Descriptionofgoods 7002 X X
+包装种类
+Typeofpackages 7064/5 X X
+承运人商品代码
+Carrier’scommoditycode 7357 (X) (X) (X)
+与UNLK同义的数据项 SynonymouswiththeUNLK UNTDEDtag P S C
+合同号
+Contractnumber 1296 (X) (X) (X)
+合同日期
+Contractdate 2326/7 (X) (X) (X)
+卖方
+Seller 3346/7 X X
+UNLK附加的数据项 AdditionaltotheUNLK UNTDEDtag P S C
+订单号
+Ordernumber 1022 X
+订单日期
+Orderdate 2010 X
+交货时间
+Timeofdelivery 2138 X
+订单金额
+Orderamount 5390 X
+单价
+Unitprice 5110 X X X
+发盘总额
+Offeramount 5210 X
+合同金额
+Contractamount 5060 X
+量
+Quantity 6060/1/3 X X X
+买方认证
+Buyer’sauthentication X X
+卖方认证
+Seller’sauthentication X X
+一般条件的陈述
+Statementsastogeneralconditions X
+6 付款相关单证数据项及其数据元
+61 相关单证
+.
+611 本章包括国际贸易各方及其银行 各银行之间为商业交易支付而进行交换的单证
+.. 、 。
+612 单证功能主要分类
+.. :
+客户给银行的有关支付款项的指令或申请书
+——— :
+6
+GB/T28530—2012
+银行转账指示
+a) (Instructionsforbanktransfer);
+银行汇票申请书
+b) (Applicationforbanker’sdraft);
+银行担保申请书
+c) (Applicationforbanker’sGuarantee);
+托收单
+d) (Collectionorder);
+跟单信用证申请书
+e) (Documentarycreditapplication);
+单证提交单
+f) (Documentspresentationform);
+银行给客户或付款受益人的通知或信息
+——— :
+托收支付通知书
+g) (Collectionpaymentadvice);
+跟单信用证支付通知
+h) (Documentarycreditpaymentadvices);
+跟单信用证承兑通知书
+i) (Documentarycreditacceptanceadvices);
+跟单信用证议付通知书
+j) (Documentarycreditnegotiationadvices);
+跟单信用证
+k) (Documentarycredit);
+银行保函
+l) (Banker’sguarantee)。
+见附录
+B。
+62 单证样式
+.
+托收单
+——— (Collectionorder)(ICC)。
+跟单信用证申请书 见附录
+——— (Documentarycreditapplication)(ICC) B。
+跟单信用证 见附录
+——— (Documentarycredit)(ICC) B。
+63 数据项及其数据元
+.
+在上述单证中使用的数据元 按 分开标注在三列专栏内 见表
+, A、C、O , 2。
+表示 跟单信用证申请书
+“A” (Documentarycreditapplication);
+表示 跟单信用证
+“C” (Documentarycredit);
+表示托收单
+“O” (CollectionOrder)。
+表2 付款相关单证数据项及其数据元
+与UNLK上相同的项目 IdenticalwiththeUNLK UNTDEDtag A C O
+单证日期
+Documentdate 2006 X
+签发地点
+Placeofissue 3410 X
+运输细目
+Transportdetails 8012 X
+与UNLK同义的项目 SynonymouswiththeUNLK UNTDEDtag A C O
+信用证号
+Letterofcreditnumber 1172 X
+通知行参考号
+Advisingbank’sreferencenumber X
+申请人 申请开证人
+/ Applicant 3132/3002 X X
+受益人
+Beneficiary 3336/3030 X X
+委托人 委托开证人
+/ Principal 3336/3030 X
+委托人参考号
+Reference,principal 1154 X
+付款人 收货人
+( ) Drawee/Consignee 3132 X
+付款人 如与收货人不同
+( ) Draweeifnotconsignee 3002 X
+7
+GB/T28530—2012
+表2 续
+( )
+与UNLK同义的项目 SynonymouswiththeUNLK UNTDEDtag A C O
+货物 无过多细节的概述
+( ) Goods(briefdesc.Withoutexcessivedetail) 7002 X
+货物 货物说明
+( ) Goods(=7002Descriptionofgoods) X
+其他条款
+FOB/C&F/CIF/otherterms 2138 X
+申请人名称 印章和授权签名 Name,stampandauthorizedsignatureofappli-
+、 4426 X
+cant
+地点 日期和委托人鉴证
+、 Place,dateandauthenticationofprincipal 3410/4426 X
+UNLK附加的数据项 AdditionaltotheUNLK UNTDEDtag A C O
+文件制作 参考 Documentationreferences UNTDEDtag A C O
+、 ,
+由受益人呈递的单证
+Documentstobepresentedbythebeneficiary X
+单证
+Documents X
+日期 Dates UNTDEDtag A C O
+申请日期
+Dateofthisapplication X
+信用证有效期和有效地点
+DateandPlaceofexpiry(ofthecredit) 2210/3212 X X
+参与方 地址 地点 Partiesaddressesplaces UNTDEDtag A C O
+、 、 , ,
+开证行名称
+Nameofissuingbank 3320 X X
+通知行
+Advisingbank 3190 X
+托收行
+Remittingbank X
+指定代收行
+Collectingbanktobeissued X
+开具以 为付款人的汇票
+… Draftsdrawnon X X
+可议付银行
+Credittobeavailable(with) X
+跟单信用证承兑行
+Creditavailablewith 3242 X
+场所
+Domicile X
+从 在 装船 发运 接管
+/ … / / Shipment/dispatch/Takinginchargefrom/at 3214 X X
+运至
+Fortransportationto 3258 X X
+条件 指示 Conditionsinstructions UNTDEDtag A C O
+、 ,
+托收指示
+Collectioninstructions X
+适于 付 款 承 兑 议 付 的 信
+/ / Creditavailableforpayment/acceptance/nego-
+用证 X X
+tiation
+适于提交单证 和你方 受益
+… / Creditavailableagainst/Presentationofdocu-
+人的汇票的信用证 X X
+ments…andyour/Beneficiary’sdrafts
+装船 发运 接管不迟于 Shipment/Dispatch/Taking in charge not
+/ / X
+laterthan
+单证由受益人呈递
+DocumentstobepresentedbytheBeneficiary X
+在 天内呈递单证
+… Documentstobepresentedwithin…days X X
+8
+GB/T28530—2012
+表2 续
+( )
+条件、指示 Conditionsinstructions UNTDEDtag A C O
+,
+附加条款
+Additionalconditions X
+附加指示
+Additionalinstructions X
+由我方安排保险
+Insurancecoveredbyus 4210 X
+数额
+Amount 5450 X X X
+其他 Other UNTDEDtag A C O
+跟单信用证附件信息 DocumentaryCreditDocumentAdditional
+4270
+Information
+跟单信用证费用说明
+DocumentaryCreditChargeInstruction 5460
+所需单证功能名称
+RequiredDocumentFunctionName 1160
+单证所需副本
+DocumentCopiesRequired 1220
+跟单信用证交单期限 DocumentaryCreditDocumentPresentation
+2060
+Duration
+跟单信用证有效截止日期
+DocumentaryCreditDocumentEffectiveEnd
+时间 2211
+DateTime
+跟单信用证签发日期时间
+DocumentaryCreditDocumentIssueDateTime 2237
+发运地点
+DespatchLocation 3150
+跟单信用证失效地点
+DocumentaryCreditDocumentExpiryLocation 3213
+运输工具目的地
+TransportMeansDestinationLocation 3259
+跟单信用证受票人
+DocumentaryCreditDrawee 3290
+跟单信用证偿付行
+DocumentaryCreditDrawee 3350
+7 运输及服务的相关单证数据项及其数据元
+71 中介服务-转运 货运代理 和装卸作业
+. ( )
+711 相关的单证
+..
+所涉及的单证用于与运输有连带关系 与贸易方和承运人衔接相关的业务环节 如与国际贸易货物
+、 ,
+运输和装卸环节有关的 包括码头 仓库和港口作业及其中介服务报酬
+, 、 。
+712 单证功能主要分类
+..
+客户给货运代理人的指令
+———
+运送指示单
+(Forwardinginstructions)
+货物收据
+———
+货运代理收货凭证
+(Forwarder’scertificateofreceipt)
+货运代理仓库收据
+(Forwarder’swarehousereceipt)
+场站收据
+(Dockreceipt)
+9
+GB/T28530—2012
+出库 货棚 收据
+( ) (Warehouse(shed)receipt)
+通知书
+———
+货运代理给进口商代理的通知
+(Forwarder’sadvicetoimportagent)
+货运代理给出口商的通知
+(Forwarder’sadvicetoexporter)
+授权书或指示单
+———
+交货单
+(Deliveryorder)
+装卸单
+(Handlingorder)
+通行证
+(Gatepass)
+管理单证
+———
+货运代理发票
+(Forwarder’sinvoice)
+港口费用单
+(Portchargesdocuments)
+注 在有些情况下 一些功能有时涵盖在联合单证集内 例如由货主或者其代理人向承运人提供的装运通知
+: , ,
+ShippingNoteGB/T15310.3。
+713 单证样式
+..
+7131 标准委托书设计样式
+... (LayoutKeyforStandardConsignmentInstructions)(UN/ECE
+见附录 转运 货运代理 和装卸作业部分的单证示例
+Rec22) C ( ) 。
+7132 运送指示单 见附录
+... (Forwardinginstructions)-FFI(FIATA) C。
+7133 货运代理收货凭证 见附录
+... (Forwarder’scertificateofreceipt)-FCR(FIATA) C。
+7134 货运代理仓库收据 见附录
+... (Forwarder’swarehousereceipt)-FWR(FIATA) C。
+7135 装运通知 见附录
+... (GB/T15310.3) C。
+7136 装箱单 见附录
+... (GB/T15310.2) C。
+714 数据项及其数据元
+..
+中介服务 转运 货运代理 和装卸作业部分的单证数据项及其数据元 见表
+- ( ) , 3。
+表3 中介服务-转运 货运代理 和装卸作业相关单证数据项及其数据元
+( )
+与UNLK相同的项目 IdenticaltotheUNLK UNTDEDtag
+发货人
+Consignor 3336
+收货人
+Consignee 3132
+通知方
+Notifyparty 3180
+原产地国 原产地 货源地 货物产地
+/ / / Countryoforigin 3238
+目的地国
+Countryofdestination 3216
+交付条件 交货条款
+/ Termsofdelivery 4052
+件数
+Numberofpackages 7224
+货物说明
+Descriptionofgoods 7002
+包装类型
+Typesofpackages 7064
+毛重
+Grossweight 6292
+净重
+Netweight 6160
+体积
+Cube 6322
+10
+GB/T28530—2012
+表3 续
+( )
+与UNLK相同的项目 IdenticaltotheUNLK UNTDEDtag
+签发地点 单证签发地
+/ Placeofissue 3410
+签发日期
+Dateofissue 2006
+鉴证 认证
+/ Authentication 4426
+与UNLK同义的项目 SynonymouswiththeUNLK UNTDEDtag
+供应商 托运人 发送人
+, , Supplier,Shipper,Sender 3336/3030/3346
+凭指示交付
+Consignedtoorderof 3132
+出口商参考号 港口账户 参考号 Exporter’sreferenceNumber/PortaccountNumber/Ref-
+/ / 1154
+erences
+单证标识 Documentidentification UNTDEDtag
+发货人参考号
+Consignor’sReferencenumber 1140
+订舱参考 订舱编号
+/ Bookingreference 1016
+单证名称
+Documentname 1000/3
+包裹附单号
+DespatchNoteNumber 1128
+报价号 招标号
+/ Quotenumber/Bidnumber 1332
+参考号
+Referencenumber 1154
+舱单号
+ManifestNumber 1037
+运输合同号
+Contractofaffreightment/Contractnumberforfreight 1274
+出口许可证号
+Exportlicencenumber 1208
+贷记单号
+CreditNoteNumber 1113
+单证号
+Documentnumber 1004
+订单号
+Ordernumber 1022
+订购单回复号
+Purchaseorderresponsenumber 1018
+发票号
+Invoicenumber 1334
+发运通知书号
+DespatchAdviceNumber 1035
+分 批 交货物托运号
+( ) Partconsignmentnumber 1310
+分提单号 分运单号
+/ Housebilloflading/Housewaybillnumber 1039
+附加单证
+AdditionalDocument 1010
+个人证件登记号
+Personaldocumentregistrationnumber 1194
+跟单信用证号
+Documentarycreditnumber 1172
+合同附件号
+Contractaddendumnumber 1318
+合同号
+Contractnumber 1296
+货运代理参考号
+Freightforwarder’sreferencenumber 1460
+交付指示号
+Deliveryinstructionnumber 1174
+11
+GB/T28530—2012
+表3 续
+( )
+单证标识 Documentidentification UNTDEDtag
+借记单号
+DebitNotenumber 1117
+进口许可证号
+Importlicencenumber 1107
+收货人装运参考号
+Consignee’sshipmentreferencenumber 1362
+收款通知书号
+Adviceofcollectionnumber 1030
+收讫号
+Receivednumber 1150
+顺序位置号
+Sequencepositionnumber 1050
+提货单号
+Deliverynotenumber 1033
+危险品申报书号
+Dangerousgoodsnotenumber 1115
+行项号
+Lineitemnumber 1082
+形式发票号
+Proformainvoicenumber 1088
+页号
+Pagenumber 1212
+佣金单号
+CommissionNoteNumber 1111
+运费号
+Freightchargenumber 1236
+运输工具抵达申报文件标识符
+ConveyanceArrivalDeclarationDocumentIdentifier 1077
+运输工具启程申报文件标识符
+ConveyanceDepartureDeclarationDocumentIdentifier 1079
+运送指示单号 托运委托书号 Freightforwardinginstructionnumber/Shippersletterof
+/ 1121
+instructionnumber
+装箱单号
+PackingListnumber 1014
+装运通知单号
+ShippingNoteNumber 1123
+装运许可证号
+CertificateOfShipmentNumber 1109
+主提单号 运单号
+/ MasterBillofLading/waybillnumber 1188
+参与方 Parties UNTDEDtag
+货棚经营人 货物入库管理员 泊位
+/ /
+经营人 码头经营人 货物搬运及装 Shedoperator/Warehousekeeper/Berthoperator/Terminal
+/ / 3022
+卸组织 港务管理局 operator/Cargohandlingorganization/Portadministration
+/
+财务结算责任方
+Partyresponsibleforfinancialsettlement 3451
+仓库用户
+Warehousedepositor 3004
+承运人 服务提供方
+/ Carrier/Serviceprovider 3126/7
+承运人代理人
+Carrier’sagent 3052/3
+代理人
+Agent 3196/7
+单证接收方
+Documentrecipient 1370
+发运方
+Despatchparty 3282/3
+费用付款方
+Chargespayer 3472/3
+个人国籍
+Personalnationality 3484/5
+个人职位
+Personaljobtitle 3480
+12
+GB/T28530—2012
+表3 续
+( )
+参与方 Parties UNTDEDtag
+跟单信用证偿付行
+DocumentaryCreditReimbursingBank 3350
+跟单信用证承兑行
+DocumentaryCreditAvailableBank 3242
+跟单信用证开证行
+DocumentaryCreditIssuingBank 3320
+跟单信用证申请人
+DocumentaryCreditApplicant 3198
+跟单信用证申请人代理银行
+DocumentaryCreditApplicantAgentBank 3234
+跟单信用证受票人
+DocumentaryCreditDrawee 3290
+跟单信用证受益人
+DocumentaryCreditBeneficiary 3260
+货运代理人 货物代理人 货物代理
+/ / Freight forwarder; Forwarder; Forwarding agent;
+人 进口商代理 3170
+/ ImportAgent
+交货方
+Deliveryparty 3144/5
+进口商
+Importer 3020/1
+联系人 联系人地址 部门或人员 Contactname/Communicationaddress/Departmentorem-
+/ / 3412/3148
+ployee
+买方
+Buyer 3002/3
+买方联系人姓名
+Buyercontactname 3202
+卖方
+Seller 3346/7
+卖方部门或人员名称
+Seller’sdepartmentoremployeeName 3468
+卖方代理人
+SellerAgent 3254/5
+人名
+Personalname 3404
+申报方
+Declarant 3140/1
+通知行
+Advisingbank 3190
+委托单位
+Entrustingparty 3036/3124
+运费付款人
+Freightpayer 3470/1
+运输工具负责人名称
+TransportMeansMasterName 3408
+运输设备经营者标识符
+TransportEquipmentOperatorIdentifier 3175
+运输设备装载方 装箱方 装载方 拼
+/ / / Loaderindicator/Stuffing party/Vanning party/Loader/
+箱方 装箱人名称 地址 3120
+/ / Packer’sName/Address
+日期 时间 DatesTime UNTDEDtag
+、 /
+报价日期
+QuotationDate 2158/9
+标准托运单签发日期
+StandardShippingNotedate 2187
+贷记单签发日期
+CreditNoteDate 2177
+单证日期
+Documentdate 2006/7
+单证有效截止日期
+DocumentEffectiveEndDate 2059
+订单确认书签发日期
+OrderAcknowledgementIssueDate 2040/1
+13
+GB/T28530—2012
+表3 续
+( )
+日期 时间 DatesTime UNTDEDtag
+、 /
+订单日期
+Orderdate 2010/1
+发票日期
+InvoiceDate 2376/7
+发运单签发日期
+DespatchNoteDate 2218/9
+发运通知书签发日期
+DespatchNoticeDate 2175
+付款到期日期
+PaymentDueDate 2480/1
+个人出生日期
+PersonalBirthDate 2490/1
+跟单信用证交单期限
+DocumentaryCreditPresentationDuration 2060
+跟单信用证开证日期
+DocumentaryCreditIssueDate 2236/7
+合同附件日期
+ContractAddendumDate 2354/5
+合同日期
+Contractdate 2326/7
+交货开始日期
+DeliveryFirstDate 2136/7
+交货期限
+DeliveryPeriod 2310/1
+交货日期
+Dateofdelivery 2138/9
+交货最后日期
+Deliverylastdate 2024/5
+接收日期
+Receivingdate 2126/7
+借记单签发日期
+DebitNoteDate 2181
+进口许可证签发日期 进口许可证
+/
+日期 ImportPermitIssueDate/ImportLicenceDate 2293
+进口许可证有效期限
+Importlicencevalidityperiod 2442
+启程日期和时间 起飞日期 开航
+/ /
+日期 Departuredateandtime/Flightdate/Sailingdate 2281
+日期 时间 期限功能代码限
+/ / Dateortimeorperiodfunctioncodequalifier 2005
+事件日期时间 委托日期
+/ EventDateTime/Dateofconsignation 2193
+收货日期
+GoodsReceiptDate 2440/1
+停留期
+Periodofstay 2350/1
+危险品申报文件签发日期
+DangerousGoodsDeclarationIssueDate 2179
+委托书有效期 有效期 单证有效截
+/ / Powerofattorneyeffectiveenddate/Periodofvalidity/
+止日期 2058/9
+DocumentEffectiveEndDate
+信用证有效期 跟单信用证到期日期 DocumentaryCreditDocumenteffectiveenddate/Docu-
+/ 2210/1
+mentarycreditexpirydate
+形式发票日期
+ProformaInvoiceDate 2404/5
+佣金单签发日期
+CommissionNoteDate 2173
+预计到达日期时间
+EstimatedArrivalDate 2348
+预计交货日期 预计交货时间
+/ EstimatedDateofDelivery/ExpectedTimeofDelivery 2109
+14
+GB/T28530—2012
+表3 续
+( )
+日期 时间 DatesTime UNTDEDtag
+、 /
+预计启程时间
+Estimatedtimeofdeparture 2195
+原产地证签发日期
+CertificateOfOriginDocumentIssueDate 2039
+运输工具登记日期时间
+TransportMeansRegistrationDateTime 2063
+运输工具抵达日期 和时间
+( ) TransportMeansArrivaldate(andtime) 2106
+运输工具抵达日期 和时间
+( ) TransportMeansArrivaldate(andtime) 2107
+运输合同日期
+TransportContractDate 2417
+运输受载期
+Transportacceptancetimelimit 2080
+制单日期
+Documentprepareddate 2000/1
+装货日期 装运日期 货物装载运输
+/ /
+工具时间 loadingdate/ShipmentDate/Consignmentloadingdate 2346/7
+装箱单签发日期
+PackingListDate 2458/9
+装箱日期
+PackingDate/Stuffingdate/Vanningdate 2045
+装载指示单签发日期
+ShippingInstructionDate 2185
+状态报告文件签发日期
+StatusReportDate 2189
+文件制作 Documentation UNTDEDtag
+总页数
+TotalNumberofPages 1046
+正本提单份数
+NumberoforiginalBillsofLading 1066/7
+副本提单份数
+NumberofCopiesBillsofLading 1069
+费用单
+ChargesNote 1070
+所需单证
+Documentrequired 1160
+装货清单份数 舱单份数
+/ Numberofloadinglists/Manifests 1166
+所需正本单证份数
+Numberoforiginalsofdocumentrequired 1218
+所需副本单证份数
+Numberofcopiesofdocumentrequired 1220
+随附单证名称 随附单证清单
+/ EnclosedDocumentName/Listofattachments 1346
+地点 LocationPlace UNTDEDtag
+/
+出生地点
+BirthLocation 3486
+船舶在港停泊地点
+LocationofshipinPort 3416
+搭乘地点
+EmbarkationLocation 3488
+地点 位置名称
+/ Place/LocationName 3224/5
+发运地点
+DespatchLocation 3150
+跟单信用证失效地点
+DocumentaryCreditDocumentExpiryLocation 3212/3
+国家行政区划
+CountrySubdivision 3228/9
+货物仓储位置 地点
+/ StorageLocationofGoods 3384/5
+基本港装货地点
+BaseportLoadingLocation 3322/3
+15
+GB/T28530—2012
+表3 续
+( )
+地点 LocationPlace UNTDEDtag
+/
+交货地
+Placeofdelivery 3246/7
+接货地点
+Placeofacceptance/Placeofreceipt 3348/9
+街道名称和门牌号码 邮政信箱
+/ Streetandnumber/P.O.Box 3042
+目的地
+Placeofdestination 3258/9
+启运地
+Placeofdeparture 3214/5
+泊位 码头 货棚 仓库
+/ / / Berth/Dock/Shed/Warehouse 3156
+前程承运人接货地点
+PlaceofReceiptByPre-carrier 3302/3
+人员登陆或着陆地点名称
+DisembarkationLocationName 3490
+收货地点名称
+GoodsReceiptLocationName 3160
+首次装货地点标识符
+OriginalLoadingLocationIdentifier 3099
+完成申报的港口位置
+DeclarationReportingPortLocation 3040
+完成申报的港口位置标识符
+DeclarationReportingPortLocationIdentifier 3041
+位置功能代码限定符
+LocationFunctionCodeQualifier 3227
+下一个停靠港口
+NextPortofCallLocation 3095
+卸货港 目的火车站
+/ Place/Portofdischarge/Destinationstation(rail) 3392/3
+邮政编码
+Postcodeidentification 3251
+运费率结合地点标识符
+RateCombinationLocationIdentifier 3369
+运输工具登记地点
+TransportMeansRegistrationLocation 3105
+转运地
+Transhipmentplace 3424/5
+装货地点 装货港
+/ Place/Portofloading 3334/5
+运输细目 Transportdetails UNTDEDtag
+国际集装箱安全公约最大重量 车辆
+/ ContainerSafety Convention Maximum Weight/Vehicle
+负荷限制 吨 6080
+( ) loadlimit(ton)
+运输设备 如集装箱或运输单元 标
+( ) Equipment(suchascontainerortransportationunit)identi-
+识号 设备标识号 8260
+/ ficationnumber
+装货索具 集装箱的标志和编号
+/ Loadingtackle/containermarksandnumbers 8030
+车辆数量 运输设备数量 集装箱数 Numberofvehicles/NumberofTransportEquipments/
+/ /
+量 集装箱数合计 Numberofcontainers/Totalnumberofcontainers/Number 8046
+/
+ofconsignmentpieces
+计费距离 公路
+( ) Tariffdistance 6110
+车辆轴数
+Vehicleaxles 8040
+车辆使用装载量
+Vehiclecapacityused 6306
+车辆满载重量
+Vehicleladenweight 6298
+车辆 船舶 类型
+( ) Vehicle(Vessel)type 8178/9
+车辆自重
+Vehicletare 6052
+16
+GB/T28530—2012
+表3 续
+( )
+运输细目 Transportdetails UNTDEDtag
+乘务人员随带物品描述
+Crew’sEffectsDescription 7410
+乘务人员总数
+Totalnumberofthecrew 6106
+船舶存储物品
+ShipsStores 8045
+船舶存储物品
+ShipsStores 8044
+船舶名称 船名 运输工具标识 车辆
+/ / / Vesselname/Ship’sName/Identificationofthemeansof
+注册号 8212/8213
+transport/Vehicleregistrationnumber
+船上存储物品项目名称
+ShipsStoresItemName 7054
+负责出具装箱证明者 检验方
+/ PartyResponsibleforproofofvanning/Surveyor 3182
+货 箱总重量 集装箱毛重
+/ / Cgo/ContTotalWT/Containergrossweight 6294
+货物 集装箱运送服务 动态类型 运
+/ / /
+输动态类型描述 运输动态类型描述 Cargo/Container movement/Movement type/Movement
+/ 8334/5
+代码 typedescription/MovementtypedescriptionCode
+积载位置 在运输工具上 货物单元
+( )/
+位置 Stowageplace(onboard)/CellLocation 8042/3
+集装箱尺寸和类型 设备规格和类型
+/ Containersizeandtype/Equipmentsizeandtype 8154/5
+集装箱项目号 运输设备序号 Containeritemnumber/TransportEquipmentSequence
+/ 1492
+number
+集装箱运输信息
+Containertransportinformation 4014
+集装箱状态 满载或空载指示符
+/ Containerstatus/FullorEmptyIndicator 8169
+运输工具标识符
+TransportMeansIdentifier 8213
+旅客人数
+NumberofPassengers 7056
+拼箱地点 装箱地点
+/ StuffinglocationVanninglocation 3268/9
+前程运输方式
+Pre-carriageTransportMode 8170/1
+施封方
+Sealingparty 9302/3
+箱型 箱类 标准代码
+/ ISO ISOCodeForContainerSize/Type 8193
+航次 行程参考号
+/ Voyagenumber/Conveyancereferencenumber 8028
+由 发运 前程运输
+… / Despatchedby/Pre-carriageby 8428/9
+由 续运
+… On-carriageby 8082/3
+运输方式
+Modeoftransport 8066/7
+运输工具附件信息
+TransportMeansAdditionalInformation 4032
+运输工具上人员总数
+Totalnumberofpersonsonboard 6104
+运输工具停靠目的描述
+Conveyancecallpurposedescription 8024/5
+集装箱经营人 运输设备经营者
+/ Containeroperator/TransportEquipmentoperator 3174/5
+运输设备种类代码限定符
+EquipmentCategoryCodeQualifier 8053
+运输设备自重 集装箱自重
+/ TransportEquipmentTareWeight/Containertareweight 6156
+17
+GB/T28530—2012
+表3 续
+( )
+运输细目 Transportdetails UNTDEDtag
+运输细目 运输消息
+/ Transportdetails/Transportinformation 8012
+装货索具种类
+Loadingtacklecategory 8021
+装箱人签名
+PackedBy 4426
+货物细目 Goodsdetails UNTDEDtag
+一票托运物 总体积托运体积
+( ) GrossVolumeConsignmentcube 6422
+证书
+ADR/IMDGR/LMDGcertification 4202
+船舶载运危险货物应急措施号
+EMSNumber 8364
+国际海运危险货物分类号 关于危险
+/
+货物道路国际运输的欧洲协议分类
+IMDG/ADR/RIDclassnumber/DangerousGoodsRegula-
+号 国际铁路运输危险货物规则分类 8351/8273
+/ tionCode
+号 危险品规则代码
+/
+号
+UNDG G(UnitedNationsDangerousGoodsIdentifier)number 7124
+包装件长度
+LengthofPackage 6096
+包装件净重
+PackageNetWeight 6026
+包装件毛重
+PackageGrossWeight 6022
+包装件总体积
+PackageGrossVolume 6028
+包装类型
+Typeofpackages 7064/5
+包装危险等级代码
+PackagingDangerLevelCode 8339
+长度 车辆长度
+/ Length/Vehiclelength 6168
+宽度
+Width 6140
+高度
+Height 6008
+承运人商品代码 海关税则编号
+/ Carrier’scommoditycode/Tariffcodenumber 7357
+纯净重 海关重量
+/ NetNetWeight/Customsweight 6048
+单证申报的毛重 单证申报总重量
+/ DocumentDeclaredGrossWeight 6092
+已订货量
+Quantityordered 6024
+分批到 发货的货物件数 分批件数
+、 / NumberofPackageSplit/Packagesplit 7226
+分批到 发货的货物项目代码
+/ SplitGoodsItemCode 4223
+分批到 发货的货物总体积 分批
+、 /
+体积 SplitGrossCube/Cubesplit 6324
+分批重量
+Weightsplit 6296
+海关商品编码
+7361
+货物项目号
+Goodsitemnumber 1496
+货物项目净重
+GoodsItemNetWeight 6016
+货物状况批注
+RemarksOnGoodsCondition 4030
+交付货量
+DeliveredQuantity 6270
+18
+GB/T28530—2012
+表3 续
+( )
+货物细目 Goodsdetails UNTDEDtag
+买方的物品号
+Buyer’sarticlenumber 7304
+卖方的物品号
+Seller’sarticlenumber 7194
+实际总重量
+GrossweightActualgrossweight 6292
+每货物项下件数
+NumberOfPackagesPerGoodsItem 7012
+批号
+Lotnumber 7338
+拼装货的货物项目总数
+TotalNumberOfGoodsItemsasoneconsolidation 6056
+拼装货的货物总数
+TotalNumberOfConsolidation 6054
+拼装货件数
+ConsolidationPackages 6094
+拼装货物净重
+ConsolidationNetWeight 6040
+拼装货物毛重
+ConsolidationGrossWeight 6036
+拼装货物装载所需长度
+ConsolidationLoadingLength 6042
+拼装货物总体积
+ConsolidationGrossVolume 6038
+商品 商品和描述
+/ Commodities/Commoditiesanddescriptions 7002
+识别号
+Identitynumber 7402
+数量
+Quantity 6061
+体积 行项
+( ) Cube(Lineitem) 6316
+总体积
+GrossMeasurementCube 6322
+托运物毛重 货物总重量
+/ Consignmentgrossweight/Totalgrossweight 6012
+托运物净重
+Consignmentnetweight 6014
+托运物装载所需长度
+ConsignmentLoadingLength 6044
+托运物状况代码
+ConsignmentStatusCode 4225
+危险品 项目 页号
+/ / Hazardsubstance/item/pagenumber 8078
+危险品 指示符
+/RID Dangerousgoods/RIDindicator 7184
+危险品标记
+DangerousGoodsLabelMarking 8246
+危险品附加信息
+Dangerousgoodsadditionalinformation 7488
+危险品技术名称 危险货物项目
+/ Dangerousgoodstechnicalname/Dangerousgoodsdetails 7254
+危险品净重
+Dangerousgoodsnetweight 6420
+危险品闪点
+Dangerousgoodsflashpoint 7088
+危险物质事故医疗急救指南
+MedicalFirstAidGuide 8410
+唯一托运物编号
+UniqueConsignmentreference 1202
+项号
+ItemNumber 7140
+项目总数
+TotalNumberofItems 7240
+行项净重
+LineItemNetWeight 6020
+行项毛重
+LineItemGrossWeight 6018
+19
+GB/T28530—2012
+表3 续
+( )
+货物细目 Goodsdetails UNTDEDtag
+行项描述
+LineItemDescription 7008
+型号
+ModelNumber/StyleNumber 7242
+性质分类
+Propertyclass 7059
+运输标志 标记及号码
+/ Shippingmarks/Marksandnumbers 7102
+装箱件数
+NumberofPackagesStuffed 7228
+装运闪点
+Shipmentflashpoint 7106
+总件数
+Totalnumberofpackages 7368/7370
+海关数据 统计 CustomsdataStatistics UNTDEDtag
+/ /
+报关单交存地点
+CustomsDeclarationDocumentLodgementLocation 3265
+报关单编号
+Goodsdeclarationnumber 1426
+出境地海关地点
+ExitCustomsOfficeLocation 3096/7
+单证 报文功能代码
+/ Document/Messagefunctioncode 1225
+第一目的地国 地区
+( ) FirstDestinationCountry 3219
+法定重量
+Legalweight 6146
+封志号
+Sealnumber 9308
+附加量
+Supplementaryquantity 6102
+国家关系代码
+CountryRelationshipCode 4443
+过境担保海关地点
+TransitGuaranteeCustomsOfficeLocation 3110/1
+过境地海关地点
+TransitCustomsOfficeLocation 3106/7
+海关价格 供海关用声明价值
+/ Customsvalue/DeclaredValueforCustoms 5032
+海关申报发票金额
+CustomsDeclarationInvoiceAmount 5072
+海关申报文件签发日期
+IssueDateofCustomsDeclarationDocument 2055
+海关手续
+Customsprocedure 9380/1
+海关信息
+CustomsInformation 4034
+海关允许扣除基准金额
+CustomsAllowableDeductionBasisAmount 5020
+会计信息
+Accountinginformation 4410
+货币
+Currency 6344/5
+货物报关单号
+Goodsdeclarationnumber 1426
+货物报关单提交日期
+GoodsDeclarationPresentationdate 2032/3
+货物价值 申报的全部托运货物的海
+/ ConsignmentValue/DeclaredCustomsvalueforentirecon-
+关完税价格 海关申报总价 5070
+/ signment/ForCustomsTotalAmount
+货物项目统计申报价格
+GoodsItemForStatisticsDeclaredValue 5218
+集装箱运输指示符
+ContainerizedIndicator 4140
+计量单位限定符
+MeasurementUnitQualifier 6411
+20
+GB/T28530—2012
+表3 续
+( )
+海关数据 统计 CustomsdataStatistics UNTDEDtag
+/ /
+计量目的代码限定符
+MeasurementPurposeCodeQualifier 6311
+计量值
+MeasurementValue 6314
+交付最后收货人地点
+FinalDeliveryLocation 3000/1
+结关地点
+Customsclearanceplace 3080/1
+跨境运营的运输工具标识 运输工具
+/ Identificationofactivemeansoftransportcrossingthebor-
+跨境标识符 8270
+der/TransportMeansAtBorderCrossingIdentifier
+贸易分类代码
+Tradeclasscode 4043
+前期海关手续
+PreviousCustomsprocedure 9032/3
+前期海关文件标识符
+PreviousCustomsDocumentIdentifier 1091
+入境地海关
+CustomsOfficeofEntry 3088/9
+税 费估价基准金额
+/ TaxOrFeeAssessmentBasisAmount 5286
+税 费估定值金额
+/ TaxOrFeeAssessedAmount 5504
+税 费类型名称
+/ TaxOrFeeTypename 5152/3
+税 费评估基准数量
+/ TaxOrFeeAssessmentBasisQuantity 6090
+税款扣除金额
+TaxDeductionAmount 5074
+税款支付号
+TaxPaymentNumber 1168
+税制类型
+Typeofdutyregime 9212/3
+托运国 地区
+( ) Countrywhenceconsigned 3220/1
+应增加的其他金额
+Otheramounttobeadded 5238
+原产国行政区划
+OriginCountrySubdivisionIdentifier 3267
+运输工具的国籍
+Nationalityofmeansoftransport 8452/3
+责任保证代码
+ObligationGuaranteeCode 4377
+支付方式代码
+PaymentMethodCode 4467
+主要责任方
+PrincipalresponsiblepartyIdentifier 3340/1
+转关地海关
+Customsofficeofdestination(transit) 3086/7
+状态描述代码
+StatusDescriptionCode 4405
+最后出口国 地区 标识符
+( ) FinalExportationCountry 3331
+运费和费用 Freightandcharges UNTDEDtag
+规定的地点
+Incoterms Incotermsplace 3018/9
+承运人应收的其他总费用金额
+TotalCollectCarrierOtherChargeAmount 5320
+代理人科目号
+Agent’saccountnumber 1142
+代理人应收其他费用金额
+AgentOtherChargeAmount 5240
+单价基准费率 单位费率
+/ UnitPriceRate/Rateperunit 5420
+21
+GB/T28530—2012
+表3 续
+( )
+运费和费用 Freightandcharges UNTDEDtag
+发货人按费率表支付费用金额
+ConsignorTariffChargeAmount 5250
+发货人按运价表应付总费用金额
+ConsignorTotalTariffChargeAmount 5372
+发货人附加费用金额
+ConsignorAdditionalChargeAmount 5008
+发货人应付区段费用金额
+ConsignorSectionAmount 5352
+发送人结转付款金额
+SenderBroughtForwardPaymentAmount 5080
+发送人应付余额
+SenderBalance 5276
+发送人支付承运人费用总金额
+TotalPaidToCarrierBySenderChargeAmount 5428
+发运申报价格 供运输用声明价值
+/ Declaredvalueforcarriage 5036
+费用描述
+Chargedescription 5252
+费用支付方式代码
+ChargePaymentMethodCode 5139
+付款安排代码 预付 到付指示符
+/ / PaymentArrangementcode/Prepaid/Collectindicator 4237
+付款安排说明
+PaymentArrangementDescription 4236
+附加费用金额
+AdditionalChargeAmount 5280
+附属费用
+Accessorialcharges(AWB/CIMP) 5253
+国际贸易术语
+IncotermsCode 4053
+货到付款金额
+Cash-on-deliveryamount 5016/7
+结转到付费用金额
+CollectCarryForwardChargeAmount 5142
+目的地费用金额
+DestinationChargeAmount/Chargesatdestination 5436
+其他 成本 费用金额
+( ) OtherCostAmount 5346
+收费基准
+Chargebasis 5099
+收货人按运价表应付费用金额
+ConsigneeTariffChargeAmount 5228
+收货人费用金额
+ConsigneeChargeAmount 5042
+收货人付款总额
+Totalamounttobecollectedfromtheconsignee 5132
+收货人附加费用金额
+ConsigneeAdditionalChargeAmount 5022
+收货人结转到付费用金额
+ConsigneeBroughtForwardCollectChargeAmount 5088
+收货人应付区段费用
+ConsigneeSectionAmount 5332
+应收从价计费金额
+CollectValuationChargeAmount 5146
+应收从重计费金额
+CollectWeightChargeAmount 5364
+应收从重计费指示符
+CollectWeightChargeIndicator 5328
+应收运费总额 收费总额 到付 Total Collect Freight Charge Amount/Total collect
+/ / 5398
+charges/Collect
+预付从重 从价计费 PrepaidWeightAndValuationChargeIndicator/Weight/
+/ 5298
+Valuationcharge,prepaid
+预付从重计费金额
+PrepaidWeightChargeAmount 5350
+22
+GB/T28530—2012
+表3 续
+( )
+运费和费用 Freightandcharges UNTDEDtag
+预付给承运人的其他总费用金额
+TotalPrepaidDueCarrierOtherChargeAmount 5270
+预付给代理人其他费用金额
+AgentPrepaidOtherChargeAmount 5336
+预付金额 预付运费总额
+/ / Prepaidamount/TotalPrepaidFreightChargeAmount 5302
+预付款说明
+Pre-paymentinstructions 4102/3
+预付已用金额
+PrepaidUtilisedAmount 5150
+运费吨
+RevenueTons/freightton/scaleton 6030
+运费费率 运费率
+/ Freightrate 5126
+运费和费用 运费与附加费
+/ Freightandcharges/FREIGHT&CHARGE 8022
+运费基准
+FreightChargeBasis 6130/1
+运费计费量
+Freightquantity 6256
+运费金额
+FreightChargeAmount 5290
+运费扣除额
+FreightChargeDeduction 5264
+运费起算地
+Freightfrom 3090/1
+运费预付确认
+Freightpre-paymentconfirmation 4106
+运费预付至地点
+FreightChargePrepaidToLocation 3032
+运费至 运费和成本应付至 运输支
+/ / Freightto/Freightchargesandcostspayableto/Freight
+付地点 3102/3
+payableat
+运价表等级代码 运价表等级说明符
+/ TariffClassCode/Tariffclassspecifier 5440
+运价表等级金额 运费项目金额
+/ TariffClassAmount/Freightitemamount 5432
+运输设备费率等级代码
+TransportEquipmentRateClassCode 5134
+支付金额 以托收货币计价的支付
+/ DisbursementAmount/Disbursementamountincurrency
+金额 5416
+ofcollection
+支付条款描述
+PaymentTermDescription 4276/7
+保险 Insurance UNTDEDtag
+承保人
+Insurer 3070
+被保险人
+Insured 3136
+保险行为说明符
+Insuranceactionspecifier 4210
+险种细目
+Insurancecoveragedetails 4264
+保险金额 字母
+( ) Valueinsured(inletters)/Amountofinsurance 5010
+保险金额 数字 保险价值
+( )/ Valueinsured(infigures)/Valueinsured 5011
+保险费
+InsuranceCost 5486
+条款 条件 指示 Clausesconditionsinstructions UNTDEDtag
+、 、 , ,
+差异性质标识符代码
+DiscrepancyNatureIdentifierCode 4221
+单证背书 签名
+/ DocumentEndorsement/Signature 4428
+23
+GB/T28530—2012
+表3 续
+( )
+条款 条件 指示 Clausesconditionsinstructions UNTDEDtag
+、 、 , ,
+发送人给承运人的指示 发送人指
+/ Sender’sinstructionstocarrier/Sender’sinstruction,for-
+示 应办理手续 所提供单证的编号
+、 、 malitiestobecompleted,numberandnatureofdocuments 4284
+和性质等
+tobesupplied,etc.
+跟单信用证费用说明
+DocumentaryCreditChargesInstructions 5460
+跟单信用证附加条件
+DocumentaryCreditAdditionalCondition 4260
+跟单信用证附加信息
+DocumentaryCreditDocumentAdditionalInformation 4270
+合同和运输条件
+Contractandcarriagecondition 4002
+合约文件类型
+ContractDocumentType 4422
+货物收据
+GoodsReceipt 4006
+声明
+Declaration 4020
+收货人信息
+Informationforconsignee 4070
+文本主题代码限定符
+TextSubjectCodeQualifier 4451
+行为代码
+Actioncode 1229
+运输合同备注
+RemarksOnTransportContract 4244
+运输 合同 条款 提单条款 接受货 TransportContractClause/BillofLadingclause/Billof
+( ) / /
+物 铁路信息 lading remark/Acceptance of goods/Information for 4180
+/
+railwaypurposes
+运输合同条款代码
+TransportContractClauseCode 4181
+运输线路 要求航线
+/ Routesrequestedrouting 3050/1
+运输优先级
+Transportpriority 4218/9
+整车 零担货载 铁路 整箱 拼箱指
+/ ( ); /
+示符 整车 零担货载指示符 专用 Wagon/partload(rail);FCL/LCLindicator;FTL/LTLin-
+; / ; / 8112
+非专用车指示符 dicator;Wagonexclusive/nonexclusiveuseindicator
+支付担保方式代码
+PaymentGuaranteeMeansCode 4431
+转运指示符 可否转船 转运
+/ ( ) Transhipmentindicator 4133
+装货授权号
+Loadingauthorizationnumber 4092
+装卸说明
+Handlinginstructions 4078/9
+装载说明
+Loadinginstructions 4080/1
+自由文本
+FreeText 4440/1
+数额 Amount UNTDEDtag
+百分比
+Percentage 5482
+单价
+UnitPrice 5110
+单项价格
+Itemprice 5116
+发票附加费金额
+InvoiceSurchargeAmount 5140
+发票扣除额
+InvoiceDeductionAmount 5180
+24
+GB/T28530—2012
+表3 续
+( )
+数额 Amount UNTDEDtag
+发票行项金额
+InvoiceLineItemAmount 5068
+发票总金额 物品项总额
+/ InvoiceTotalAmount/Articleitemstotal 5214
+付款折扣百分比数
+PaymentDiscountPercentageNumeric 5056
+附加费 扣除额
+/ Additionalcharges/deductions 5044
+跟单信用证金额
+DocumentaryCreditAmount 5450
+合并发票金额
+ConsolidatedInvoiceAmount 5444
+金额
+Amount 5082
+可用的结转余额金额
+BalanceavailablebroughtforwardAmount 5190
+可用余额
+AvailableBalance 5162
+上期结转金额
+AmountBroughtForward 5062
+拖欠利息
+Interestonarrears 5028
+应收税额
+TaxCollectAmount 5294
+预付从价计费金额
+ValuationPrepaidChargeAmount 5452
+预付税金额
+TaxPrepaidAmount 5480
+折扣金额
+DiscountAmount 5014
+总货币金额
+TotalMonetaryAmount 5160
+证明 Authentication UNTDEDtag
+重量确定
+AscertainedWeight 4240
+证书
+Certificate 4192
+承运人签署
+Carriersignature 4130
+发货人认证
+AuthenticationBySendingParty 4136
+计量单位 measuringunit UNTDEDtag
+冷冻 冷藏货物温度设定 运输温度
+/ / / Reefer/coolcargotemperaturesetting/Transporttempera-
+要求的冷冻温度 6242
+ture/ReeferTemperatureRequired
+温度类型代码限定符
+TemperatureTypeCodeQualifier 6245
+温度
+Temperature 6246
+储存温度
+Storagetemperature 6240
+72 运输相关单证数据项及其数据元
+.
+721 相关的单证
+..
+所涉及的单证用于国际贸易的货物运输 不含与短途运输 卡车运输和运输服务有关的单证
+, 、 。
+722 单证功能分类
+..
+7221 合约文件 组成或证实一份运输合同 如通用 多用 运输单证 海运单 班轮运单 海运单 河
+... , 。 ( ) 、 ( 、 、
+运单 提单 铁路和公路托运单 空运单 邮递包裹投递单 多式联运 联合运输 单证 联运提单
+)、 、 、 、 、 ( ) 、 。
+25
+GB/T28530—2012
+7222 收据凭证 确认收到托运货物收据 如大副收据 验收证明书 水路 铁路和公路托运通知书
+... , 。 、 ( )、
+副本 运输凭证
+、 。
+7223 目录单据 运输组件或运输工具上的载货清单 如货物和运费清单 公路运输货物清单 集装
+... , 。 、 、
+箱载货清单 装箱单
+( )。
+7224 行政管理和法定单证 如陆运单 卸货报告 要求交货通知 运费发票 保函
+... , 、 , 、 、 。
+7225 通知书 如订舱确认 要求交货通知 到达通知 无法交货或运输通知 提货通知书
+... , 、 、 、 、 。
+723 单证样式
+..
+7231 标准提单 见附录
+... (StandardBillofLading)(ICS) C。
+7232 标准货物和运费清单
+... (StandardCargoandFreightManifests)(ICS)。
+7233 国际铁路托运单 见附录
+... (InternationalRailConsignmentNote)(CIMConvention) C。
+7234 国际公路托运单 见附录
+... (InternationalRoadConsignmentNote)(CMRConvention) C。
+7235 通用航空运单 见附录
+... (UniversalAirWaybill)(IATA) C。
+7236 邮递包裹投递单
+... (DespatchNoteforpostparcels)(UniversalPostalConvention)。
+7237 可转让 多式联运提单
+... FIATA (NegotiableFIATA MultimodalTransportBillofLading)
+见附录
+(FIATA-FBL) C。
+7238 不可转让 多式联运运单
+... FIATA (Non-negotiableFIATA MultimodalTransportWayBill)
+见附录
+(FIATA-FWB) C。
+7239 货运代理运输凭证 见附录
+... (ForwardersCertificateofTransport)(FIATA-FCT) C。
+72310 托运人多式联运重量凭证 见附
+... (ShippersIntermodalWeightCertificate)(FIATA-SIC)
+录
+C。
+724 数据项及其数据元
+..
+在上述单证中使用的数据元 按 和 分开标注在 列专栏内 见表
+, Sea、Rail、Road、Air、Post Mult 6 , 4,
+其中
+:
+表示海上运输
+“Sea” ;
+表示铁路运输
+“Rail” ;
+表示公路运输
+“Road” ;
+表示航空运输
+“Air” ;
+表示邮递
+“Post” ;
+表示多式联运
+“Mult” 。
+表4 运输相关单证数据项及其数据元
+UNTDED
+与UNLK上相同的项目 IdenticaltotheUNLK Sea Rail Road Air Post Mult
+tag
+收货人
+Consignee 3132 X X X X X X
+通知人
+Notifyaddress 3180 X X
+运输标志 集装箱编号 Shippingmarks/Containernum-
+/ 7102 X X
+ber
+件数
+Numberofpackages 7224 X X X X X
+包装种类
+Typeofpackages 7064 X X X X X
+26
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+与UNLK上相同的项目 IdenticaltotheUNLK Sea Rail Road Air Post Mult
+tag
+货物描述 产品名称
+( ) Descriptionofgoods 7002 X X X X X X
+毛重
+Grossweight 6292 X X X X X X
+签发地
+Placeofissue 3410 X X X X X
+单证日期
+Documentdate 2416 X X X X X
+鉴证
+Authentication 4426 X X X X X
+UNTDED
+与UNLK同义的项目 SynonymouswiththeUNLK Sea Rail Road Air Post Mult
+tag
+交付指定人
+Consignedtoorderof 3132 X
+托运人 发送人
+/ Shipper/Sender 3336 X X X X X X
+发送人参考
+Sender’sref 1154 X X X X X X
+货物交付地点
+Placeofdeliveryofgoods 3246 X X
+标志与号码
+Marksandnumbers 7102 (X) X X
+搬运信息 处理事项
+/ Handlinginformation 7102 X
+尺寸 体积 容量
+/ / Measurement/Cubage/Volume 6322 X X X X
+UNTDED
+UNLK附加的项目 AdditionaltotheUNLK Sea Rail Road Air Post Mult
+tag
+UNTDED
+单证标识 Documentidentification Sea Rail Road Air Post Mult
+tag
+报文名称代码
+Messagenamecode 1003 X
+场站收据号 单证号
+/ D/RNo/Documentnumber 1004 X X X
+单证 报文名称
+/ Document/Messagename 1000 X
+单证 报文名称代码
+/ Document/Messagenamecode 1001 X X
+订舱编号
+Bookingreferencenumber 1016 X X
+货运代理提单
+Housebill/Housebilloflading 1039 X X
+提单号 主运单号 BillofLading number/Master
+/ 1188 X X
+waybillnumber
+订单号
+Ordernumber 1022 X
+费用单
+Chargesnote 1070 X
+分 批 交货物托运号
+( ) Partconsignmentnumber 1310 X
+个人证件登记号 Persondocumentregistrationnum-
+1194 X
+ber
+收讫号
+Receivednumber 1150 X
+顺序位置号
+SequencePositionNumber 1050 X X
+27
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+单证标识 Documentidentification Sea Rail Road Air Post Mult
+tag
+随附单证
+Documentenclosed 1346 X X
+所需单证份数 Numberofcopiesofdocument
+1220 X X
+required
+危险品申报书号
+DangerousGoodsNoteNumber 1115 X
+运输工具抵达申报文件标
+ConveyanceArrivalDeclaration
+识符 1077 X
+DocumentIdentifier
+运输工具启程申报文件标
+ConveyanceDepartureDeclaration
+识符 1079 X
+DocumentIdentifier
+UNTDED
+参与方 Parties Sea Rail Road Air Post Mult
+tag
+被通知方
+Notifyparty 3180 X
+泊位 码头 货棚 仓库
+/ / / Berth/Dock/Shed/Warehouse 3156 X
+承运人代理人
+Carrier’sagent 3052 X X
+承运人代理人
+Carrier’sagent 3053 X
+个人国籍
+Nationalityofperson 3484/5 X
+个人职位
+PersonJobTitle 3480 X
+货运代理人 货物代理人
+/ / Freight forwarder/Forwarder/
+进口商代理 3170/1 X
+Forwardingagent/Importagent
+交货方
+Deliveryparty 3144/5 X
+船舶 运输工具标识 Vessel/IDofthemeansoftrans-
+/ 8212/3 X X X
+port
+承运人名称
+Carriername 3126 X X X X X
+承运人标识
+Carrieridentification 3127 X X X X X
+卖方代理人
+Selleragent 3254/5 X
+人名
+Personname 3404 X
+收货人
+Consignee 3132/3 X X
+运输工具负责人名称
+Transportmeansmastername 3408 X
+运输设备经营者标识符 Transportequipmentoperator
+3175 X
+identifier
+运输设备装载方 装箱方 Loaderindicator(rail)/Stuffing
+/ 3120/1 X
+party/Vanningparty
+UNTDED
+日期 时间 Date，time Sea Rail Road Air Post Mult
+、 tag
+单证日期
+Documentdate 2006 X X
+单证日期
+Documentdate 2007 X X
+28
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+日期 时间 Datetime Sea Rail Road Air Post Mult
+、 , tag
+单证有效截止日期时间 DocumentEffectiveEndDate
+2059 X
+Time
+个人出生日期
+PersonBirthDate 2490/1 X
+接收日期
+Receivingdate 2126 X
+启程日期和时间 起飞日
+/ Departuredateandtime/Flight
+期 开航日期 2280 X
+/ date/Sailingdate
+启程日期和时间 起飞日
+/ Departuredateandtime/Flight
+期 开航日期 2281 X X
+/ date/Sailingdate
+日期 时间 期限功能代码
+/ / Dateortimeorperiodfunction
+限定符 2005 X
+codequalifier
+停留期
+Periodofstay 2350/1 X
+预计到达日期时间
+EstimatedArrivalDate 2348 X
+预计启程时间
+Estimatedtimedeparture 2195 X
+运输工具登记日期时间 Transport Means Registration
+2063 X
+DateTime
+运输 工 具 抵 达 日 期 和
+( Transport Means Arrivaldate
+时间 2106 X
+) (andtime)
+运输 工 具 抵 达 日 期 和
+( Transport Means Arrivaldate
+时间 2107 X X
+) (andtime)
+UNTDED
+地点 PlaceLocation Sea Rail Road Air Post Mult
+/ tag
+报告单制作港口
+Portwherereportismade 3040 X
+出生地点
+BirthLocation 3486 X
+船舶在港停泊地点
+LocationofshipinPort 3416 X
+搭乘地点
+EmbarkationLocation 3488 X
+单证签发地
+Placeofissueofdocument 3411 X X X
+地点 位置名称
+/ Place/LocationName 3224 X
+地点 位置名称
+/ Place/LocationName 3225 X
+货物仓储位置 地点
+/ StorageLocationofGoods 3384/5 X
+接货地点 PlaceofacceptancePlaceofre-
+3348/9 X
+ceipt
+目的地机场 抵达地 Airportofstation/Arrivalloca-
+/ 3258/9 X X X
+tion
+启运地 起运地
+/ Placeofdeparture 3214/5 X X X
+29
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+地点 PlaceLocation Sea Rail Road Air Post Mult
+/ tag
+启运机场
+Airportofdeparture 3214 X
+前程承运人接货地点
+Placeofreceiptbypre-carrier 3302 X X
+前程运输由
+Pre-carriageby 8428 X X
+人员登陆或着陆地点名称
+DisembarkationLocationName 3490 X
+收货地点名称
+GoodsReceiptLocationName 3160 X
+首次装货地点标识符 OriginalLoadingLocationIden-
+3099 X X
+tifier
+位置功能代码限定符
+LocationFunctionCodeQualifier 3227 X
+下一个停靠港口
+NextPortofCallLocation 3095 X
+卸货港 卸货地点 卸货机 Portofcharge/DischargeLocation/
+/ /
+场 泊位 码 头 集 装 箱 卸 Airportofdischarge/Berth/Dock/
+/ / /
+站 卸货码头 卸货地点 目 Containerbaseofdischarge/Pier 3392 X X X X X
+/ / /
+的站 ofdischarge/Placeofunloading/
+Destinationstation
+续运承运人交货地点
+Placeofdeliverybyon-carrier 3358 X X
+要求的运输线路
+Requestedrouting 3050 X X
+原产地国 地区
+( ) Countryoforigin 3238/9 X
+运费率结合地点标识符 RateCombinationLocationIden-
+3369 X
+tifier
+运输工具登记地点 TransportMeansRegistrationLo-
+3105 X
+cation
+转运地
+Transhipmentplace 3424/5 X
+装货港
+Portofloading 3334/5 X X
+UNTDED
+运输细目 Transportdetails Sea Rail Road Air Post Mult
+tag
+车辆轴数
+Vehicleaxles 8040 X
+车辆自重
+Vehicletare 6052 X
+乘务人员随带物品描述
+Crew’sEffectsDescription 7410 X
+乘务人员总数
+Totalnumberofthecrew 6106 X
+储存位置
+Storeplace 8044/5 X
+船旗 船舶国籍 运输工具 Flag of vessel/Nationality of
+/ /
+的国籍 ship/Nationalityofmeansof 8452/3 X
+transport
+船上存储物品项目名称
+ShipsStoresItemName 7054 X
+30
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+运输细目 Transportdetails Sea Rail Road Air Post Mult
+tag
+国际集装箱安全公约最大
+Container Safety Convention
+重量 6080 X
+MaximumWeight
+航次 行程参考号 Voyagenumber/Conveyanceref-
+/ 8028 X X
+erencenumber
+货物 集装箱运送服
+/ Cargo/Containermovement 8334/5 X
+积载位置 在运输工具 货
+( )/ Stowageplaceonboard/CellLo-
+物单元位置 8042 X
+cation
+积载位置 在运输工具 货
+( )/ Stowageplaceonboard/CellLo-
+物单元位置 8043 X X
+cation
+集装箱箱类 设备规格和类
+/ ContainerType/Equipmentsize 8154/5/
+型 箱主 X X
+/ andtype 3174
+集装箱运输信息
+Containertransportinformation 4014 X
+集装箱状态 满载或空载指
+/ Containerstatus/Fullorempty
+示符 8169 X
+indicator
+集装箱自重
+Containertareweight 6156 X
+旅客人数
+NumberofPassengers 7056 X
+铅封号
+Sealnumber 9308 X
+特种箱标记代码 集装箱种 Specialcontaineridentification
+/
+类 设备限定符 code/Containers Category/ 8053 X
+/
+Equipmentqualifier
+体积 尺寸 容积 容量 可 Cube/Measurement/Cubage/
+/ / / /
+更换设备的尺码 Volume/Exchangeable 6322 X X X X X X
+equipment,measurement
+运输工具类型 车辆类型
+/ / Typeofmeansoftransport/Ve-
+船舶类型 8178/9 X X
+hicletype/Vesseltype
+运输工具上人员总数
+Totalnumberofpersonsonboard 6104 X
+运输工具停靠目的描述 Conveyancecallpurposedescrip-
+8024/5 X
+tion
+运输设备 如集装箱或运输
+(
+单元 标识号 设备标识号 Equipmentidentificationnumber 8260 X
+) /
+运输细目 运输消息 Transportdetails/Transportin-
+/ 8012 X
+formation
+运输线路 要求航线
+/ Routes/Requestedrouting 3050/1 X
+运输优先级
+Transportpriority 4219 X
+31
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+运输细目 Transportdetails Sea Rail Road Air Post Mult
+tag
+装货索具 集装箱的标志和
+/ Loadingtackle/Containermarks
+编号 8030 X
+andnumbers
+装货索具种类
+Loadingtacklecategory 8021 X
+UNTDED
+货物细目 Goodsdetails Sea Rail Road Air Post Mult
+tag
+国际海运危险货物运输规
+8273/
+则代码 IMDGCodepagenumber X X
+8078/8351
+船舶载运危险货物应急措
+施号 EMSNumber 8364 X
+国际海运危险货分类号
+IMDGclassnumber 8351/8273 X X X
+号 UNDG(UnitedNationsDangerous
+UND 7124 X
+GoodsIdentifier)number
+包装分类代码
+Packageclassificationcode 7065 X
+包装危险等级代码
+PackagingDangerLevelCode 8339 X
+危险品 指示符
+/RID Dangerousgoods/RIDindicator 7184 X
+危险品标记
+DangerousGoodsLabelMarking 8246 X
+危险品附加信息 Dangerousgoodsadditionalin-
+7488 X
+formation
+危险品技术名称 危险货物
+/ Dangerous goods technical
+项目 7254 X
+name/Dangerousgoodsdetails
+危险品闪点
+Dangerousgoodsflashpoint 7088 X
+包装信息代码 Packagingrelatedinformation,
+7233 X
+coded
+Numberofvehicles/Numberof
+车辆数量 集装箱数量 运
+/ / containers/NumberofTransport
+输设备数量 托运物件数 8046 X X X X X
+/ equipment/Numberofconsign-
+mentpieces
+分批到 发货的货物件 分
+/ / Number of Package Split/
+批件数 7226 X
+Packagesplit
+净重
+Netweight 6160 X
+收货人信息
+Informationforconsignee 4070 X
+托运物毛重 货物总重 Consignmentgrossweight/Total
+/ 6012 X X X
+grossweight
+唯一托运物编号
+UniqueConsignmentreference 1202 X
+32
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+货物细目 Goodsdetails Sea Rail Road Air Post Mult
+tag
+装货授权号
+Loadingauthorizationnumber 4092 X
+装运闪点
+Shipmentflashpoint 7106 X
+总件数
+TotalNumberofpackages 7368/7370 X X X X X X
+件数
+Numberofpackages 7224 X X X X X X
+UNTDED
+海关数据 统计 CustomsdataStatistics Sea Rail Road Air Post Mult
+/ / tag
+报关单编号 货物报关单号
+/ Goodsdeclarationnumber 1426 X
+出境地海关
+Customsofficeofexit 3097 X
+发运申报价格 供运输用声
+/
+明价 Declaredvalueforcarriage 5036 X X X
+海关信息
+CustomsInformation 4034 X
+货物价值 向海关申报的货 Consignment value/Declared
+/
+物总价格 海关申报总价 customsvalueforentireconsign- 5070 X
+/
+ment/Forcustomstotalamount
+结关地点
+Customsclearanceplace 3080 X X
+目的地国 地区
+( ) Countryofdestination 3216/7 X X
+UNTDED
+运费和费用详细说明 Detailsoffreightandcharges Sea Rail Road Air Post Mult
+tag
+承运人应收的其他总费用
+Total Collect Carrier Other
+金额 5320 X
+ChargeAmount
+代理人科目号
+Agent’saccountnumber 1142 X
+代理人应收其他费用金额
+AgentOtherChargeAmount 5240 X
+单价基准费率 单位费率
+/ UnitPriceRate/Rateperunit 5420 X
+兑换率
+Rateofexchange 5402 X X
+发货人按费率表支付费用
+金额 ConsignorTariffChargeAmount 5250 X
+发货人按运价表应付总费
+ConsignorTotalTariffCharge
+用金额 5372 X
+Amount
+发货人附加费用金额 ConsignorAdditionalCharge
+5008 X
+Amount
+发货人应付区段费用金额
+ConsignorSectionAmount 5352 X
+发票总金额 物品项总额 InvoiceTotalAmount/Article
+/ 5214 X
+itemstotal
+发送人应付附加费
+Supplementarycharges,sender 5002 X
+33
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+运费和费用详细说明 Detailsoffreightandcharges Sea Rail Road Air Post Mult
+tag
+发送人结转付款金额 SenderBroughtForward
+5080 X
+PaymentAmount
+发送人所付运费
+Carriagecharges,sender 5176 X
+发送人应付其他费用
+Othercharges,sender 5322 X
+发送人应付余额
+SenderBalance 5276 X
+发送人运费扣除额 Deductions/Carriage
+5264 X X
+deductions,sender
+发送人支付承运人费用总
+TotalPaidToCarrierBySender
+金额 5428 X X
+ChargeAmount
+费用描述
+Chargedescription 5252 X
+费用支付方式代码
+ChargePaymentMethodCode 5139 X
+附加费 扣除
+/ Additionalcharges/deductions 5044 X
+附加费用金额
+AdditionalChargeAmount 5280 X
+附属费用
+Accessorialcharges 5253 X
+会计信息
+Accountinginformation 4410 X
+货币
+Currency 6344 X X
+货到付款金额
+Cashondeliveryamount 5017 X X
+货到付款金额
+Cashondeliveryamount 5016/7 X
+计费距离 千米
+, Tariffdistance,km 6110 X
+计费重量 千克
+, Chargeableweight,kg 6030 X X
+结转到付费用金额 CollectCarryForwardCharge
+5142 X
+Amount
+可用的结转余额金额 Balanceavailablebrought
+5190 X
+forwardAmount
+可用余额
+AvailableBalance 5162 X
+目的地费用金额 DestinationChargeAmount/
+5436 X
+Chargesatdestination
+其他费用金额
+Othercharges,amount 5208 X
+商品编码 承运人商品代码 CommodityitemNumber/
+/ 7357 X X X X X
+Carrier’scommoditycode
+上期结转金额
+AmountBroughtForward 5062 X
+收费基准
+Chargebasis 5099 X
+收货人按运价表应付费用
+金额 ConsigneeTariffChargeAmount 5228 X
+34
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+运费和费用详细说明 Detailsoffreightandcharges Sea Rail Road Air Post Mult
+tag
+收货人费用金额
+ConsigneeChargeAmount 5042 X
+收货人付款总额 Totalamountto becollected
+5132 X
+fromtheconsignee
+收货人附加费用金额 ConsigneeAdditionalCharge
+5022 X X
+Amount
+收货人结转到付费用金额 ConsigneeBroughtForward
+5088 X
+CollectChargeAmount
+收货人所付运费
+Carriagecharges,consignee 5202 X
+收货人应付附加费用
+Supplementarycharges,consignee 5120 X
+收货人应付其他费用
+Othercharges,consignee 5246 X
+收货人应付区段费用
+ConsigneeSectionAmount 5332 X
+所用运价表
+Tariffapplied 5430 X
+应收从价计费金额 CollectValuationCharge
+5146 X
+Amount
+应收从重计费金额
+CollectWeightChargeAmount 5364 X
+应收从重计费指示符
+CollectWeightChargeIndicator 5328 X
+应收运费总额 收费总额 TotalCollectFreightCharge
+/ /
+到付 Amount/Totalcollectcharges/ 5398 X
+Collect
+由 支付
+… Tobepaidby 3472 X
+预付从价计费金额 ValuationPrepaidCharge
+5452 X
+Amount
+预付从重 从价计费指示 Prepaid WeightAnd Valuation
+/
+符 预付从重 从价计费 ChargeIndicator/Weight/Valua- 5298 X
+/ /
+tioncharge,prepaid
+预付从重计费金额
+PrepaidWeightChargeAmount 5350 X
+预付给承运人的其他总费
+TotalPrepaidDueCarrierOther
+用金额 5270 X
+ChargeAmount
+预付给代理人其他费用
+AgentPrepaidOtherCharge
+金额 5336 X
+Amount
+预付金额 预付运费总额
+/ / Prepaid amount/Total Prepaid
+预付总额 5302 X X
+FreightChargeAmount
+预付其他费用
+Othercharges,prepaid 5158 X
+预付税金额
+TaxPrepaidAmount 5480 X
+35
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+运费和费用详细说明 Detailsoffreightandcharges Sea Rail Road Air Post Mult
+tag
+预付已用金额
+PrepaidUtilisedAmount 5150 X
+运费费率
+Freightrate 5126 X
+运费启算站
+Freightfrom 3090/1 X
+运费至 运费结算
+/ Freightto 3102/3 X
+运价表等级代码 运价表等
+/ TariffClassCode/Tariffclass
+级说明符 5440 X
+specifier
+运价表等级金额 运费项
+/ Tariff Class Amount/Freight
+目金 5432 X
+itemamount
+运输设备费率等级代码 Transport Equipment Rate
+5134 X
+ClassCode
+折扣金额
+DiscountAmount 5014 X
+支付承运人的指示 Instructions as to payment
+4236/7 X
+forcarriage
+支付金额 以托收货币计价 Disbursementamount/Disburse-
+/
+的支付金额 mentamountincurrencyofcol- 5416 X
+lection
+应收税额
+Tax,tocollect 5294 X
+所用运价表 代码型
+, Tariffapplied,coded 5431 X
+UNTDED
+保险 Insurance Sea Rail Road Air Post Mult
+tag
+保险金额 数字表示
+( ) Valueinsured(infigures) 5011 X
+UNTDED
+条款 条件 指示 Clausesconditionsinstructions Sea Rail Road Air Post Mult
+、 、 , , tag
+发货人给承运人的指示
+Sender’sinstructionstocarrier 4284 X X
+货物收据
+Goodsreceipt 4006 X
+货物状况批注
+RemarksOnGoodsCondition 4030 X
+进出场目的 自由文本 Purpose for inward/outward
+/ 4441 X
+containeryard/freetext
+声明
+Declaration 4020 X
+文本主题代码限定符
+TextSubjectCodeQualifier 4451 X
+行动请求 通知 代码型 行
+/ , / Actionrequest/notification,coded/
+为代码 1229 X
+Actioncode
+运输工具附件信息 TransportMeansAdditional
+4032 X
+Information
+运输合同备注
+RemarksOnTransportContract 4244
+36
+GB/T28530—2012
+表4 续
+( )
+UNTDED
+条款 条件 指示 Clausesconditionsinstructions Sea Rail Road Air Post Mult
+、 、 , , tag
+运输合同条款
+Transportcontractclause 4180/1 X X X
+装载说明
+Loadinginstructions 4080/1 X
+UNTDED
+鉴证 Authentication Sea Rail Road Air Post Mult
+tag
+承运人签署
+Carriersignature 4130 X X
+搬运方签署 发运人认证 Haulage party signature/Au-
+/ 4136 X
+thenticationbysender
+证书
+AD/IMDG ADR/LMDGcertification 4202 X
+重量确定 戳记
+( ) Weightascertained(stamp) 4240 X
+UNTDED
+计量单位 Sea Rail Road Air Post Mult
+tag
+计量目的代码限定符 MeasurementPurposeCodeQuali-
+6311 X
+fier
+计量值
+MeasurementValue 6314 X
+计量单位限定符
+Measureunitqualifier 6411 X
+73 保险相关单证数据项及其数据元
+.
+731 相关的单证
+..
+所涉及的单据用于国际贸易货物保险 包括保险费的支付
+, 。
+732 单证主要功能分类
+..
+7321 保险协议
+...
+保险合同
+——— (Insurancecontract);
+保险单
+——— (Insurancepolicy);
+保险证明书
+——— (CertificateofInsurance)。
+7322 通知书
+...
+保险通告
+——— (Noticeofinsurance);
+暂保单
+——— (Covernote)。
+7323 管理单证
+...
+保险费付费通知书
+——— (Premiumpaymentnotice);
+保险人发票
+——— (Insurer’sinvoice)。
+37
+GB/T28530—2012
+733 数据项及其数据元
+..
+保险部分的单证数据项及其数据元见表
+5。
+表5 保险部分的单证数据项及其数据元
+与UNLK上相同的数据项 IdenticalwiththeUNLK UNTDEDtag
+运输项目
+Transportdetails 8012
+运输标志
+Shippingmarks 7102
+件数
+Numberofpackages 7224
+包装类型
+Typeofpackages 7064
+货物描述 商品名称
+( ) Descriptionofgoods 7002
+毛重
+Grossweight 6292
+签发日期
+Dateofissue 2006
+签发地点
+Placeofissue 3410
+鉴证
+Authentication 4426
+与UNLK上同义的数据项 SynonymouswiththeUNLK UNTDEDtag
+被保险人
+Insured 3136
+参考
+References 1004/1154
+UNLK附加的数据项 AdditionaltotheUNLK UNTDEDtag
+承保人
+Insurer 3070
+保险金额 字母表示
+( ) Valueinsured(inletters) 5010
+保险金额 数字表示
+( ) Valueinsured(infigures) 5011
+保险条件
+Insuranceconditions 4112
+目的地保险代理人
+NameandaddressofInsurer’sAgentatdestination 3430
+目的地保险代理
+Agentatdestination 3430
+保险索赔理赔人
+InsuranceClaimsAdjuster
+海损理算人
+Averageadjuster 3360
+其他项目
+Otherparticulars
+8 官方管制相关单证数据项及其数据元
+81 相关的单证
+.
+811 本章所涉及的单证用于国际贸易活动中的进 出口国和中转国对货物基于多种目的的管制
+.. 、 。
+812 单证功能分类
+..
+8121 关税和其他税征收 税收保护
+... ,
+出口货物报关单
+——— (CustomsGoodsdeclarationsforexport);
+国内消费货物报关单
+——— (CustomsGoodsdeclarationsforhomeuseexport);
+入仓报关单
+——— (CustomsGoodsdeclarationsforwarehousing);
+38
+GB/T28530—2012
+过境货物报关单
+——— (CustomsGoodsdeclarationsfortransitexport);
+欧共体统一单证
+——— (SingleAdministrativeDocuments);
+货物报关单
+——— (CargoDeclarations);
+海关发票
+——— (Customsinvoice);
+增值附加税纳税申报单
+——— (Taxdeclarationsforvalue-addedtax);
+转运保税单
+——— (Transitbond-notes)。
+8122 进 出口数量限制
+... 、
+进 出口许口证申请表
+——— 、 (Applicationsforexportorimportlicences);
+进 出口许口证
+——— 、 (exportandimportlicences)。
+8123 汇兑调控与限制
+...
+结汇核销单
+——— (Exchangecontroldeclaration);
+外汇配额申请单
+——— (Applicationforexchangeallocation);
+调汇许可证
+——— (Foreignexchangepermit)。
+8124 卫生 兽医 植物检疫管制
+... 、 、
+植物 卫生和兽医检疫证书及其申请单
+——— 、 (Phytosanitary,SanitaryandVeterinarycertificates,
+andapplicationsforsuchcertificates)。
+8125 质量监管和产品标准
+...
+货物监管和检验证明以其申请书 applications
+——— (Goodscontrolandinspectioncertificatesand
+forsuchcertificates
+);
+地区名称证书
+——— (Regionalappellationcertificates)。
+8126 对特定原产地的物品给予特惠待遇
+...
+原产地证书及其申请书
+——— (Certificatesoforiginandapplicationsforsuchcertificates);
+普惠制原产地证明书
+——— (GSPCertificate);
+原产地声明书
+——— (Declarationsoforigin)。
+8127 保护公共安全 文化遗产等施加的限制
+... 、
+危险货物申报单
+——— (Dangerousgoodsdeclaration)。
+8128 外贸统计数据收集
+...
+进 出口统计单据
+——— 、 (Statisticaldocumentsforexportandimport)。
+领事发票在有些国家仍然被要求使用 有时亦可将其归类到上述单证总类中
+, 。
+82 单证样式
+.
+821 国内消费货物报关单
+.. (Goodsdeclarationforhomeuse)(KyotoConvention)。
+822 出口货物报关单
+.. (Goodsdeclarationforexport)(KyotoConvention)。
+823 过境货物报关单
+.. (Goodsdeclarationfortransit)(KyotoConvention)。
+824 植物检疫证书
+.. (Phytosanitarycertificate)(InternationalPlantProtectionConvention)。
+825 原产地证
+.. (Certificateoforigin)(KyotoConvention)。
+826 危险货物申报单
+.. (Dangerousgoodsdeclaration)(UN/ECERec.11)。
+827 货物申报单
+.. (Cargodeclaration)(IMO-FALConvention)。
+828 普惠制原产地证明书
+.. (GSPCertificate)(UNCTAD)。
+829 欧共体统一单证
+.. (SingleAdministrativeDocument)(SAD)。
+8210 外贸出口单证样式 中华人民共和国出口货物原产地证明书 见附录
+.. , (GB/T15310.4) D。
+83 数据项及其数据元
+.
+在上述单证中使用的数据元 按 和 分开标注在五列专栏内 见表
+, E/I、Tr、Or、GSP、FAO IMO , 6。
+39
+GB/T28530—2012
+进出口报关手续
+E/I= (Exportandimportentries);
+过境报关手续
+Tr= (Transitentries);
+原产地证书
+Or= (Certificatesoforigin);
+普惠制证书
+GSP= (GSPCertificates);
+植物检疫证明书
+FAO= (Phytosanitarycertificates);
+货物申报单
+IMO=IMO (IMOCargodeclarations)。
+表6 官方管制相关单证数据项及其数据元
+UNTDED
+与UNLK上相同的项目 IdenticaltotheUNLK EI Tr Or GSP FAO IMO
+tag /
+参考号
+ReferenceNumber 1154 X X X X X X
+发货人 出口商
+/ Consignor/Exporter 3336 X X X X X X
+收货人
+Consignee 3132 X X X
+交货地址
+Deliveryaddress 3246 X
+托运国 地区
+( ) Countrywhenceconsigned 3220 X X
+原产地国 地区
+( ) Countryoforigin 3238 X X
+目的地国 地区
+( ) Countryofdestination 3216 X X
+件数
+Numberofpackages 7224 X X X X X X
+包装类型
+Typeofpackages 7064 X X X X X X
+货物描述 商品名称
+( ) Descriptionofgoods 7002 X X X X X
+商品编码
+Commoditynumber 7357 X
+毛重
+Grossweight 6292 X X X X X
+海关价格
+Customsvalue 5032 X
+签发地
+Placeofissue 3410 X X X X X
+签发日期
+Dateofissue 2416 X X X X X
+UNTDED
+与UNLK同义的项目 SynonymouswiththeUNLK EI Tr Or GSP FAO IMO
+tag /
+进口商 货物交付给
+/ Importer/Goodsconsignedto 3132 X X
+原产地国 地区
+( ) Countryoforigin 3238 X
+标志与号码
+Marksandnumbers 7102
+识别标志
+Distinguishingmarks 7102 X
+产品名称
+Nameofproduce 7002 X
+税则目
+Tariffheading 7357 X
+货物净重 净重 数量 申报
+/ / / Netweight/Quantity/Quantity
+数量 6160 X X
+declared
+尺寸
+Measurement 6322 X
+UNTDED
+UNLK附加的项目 AdditionaltotheUNLK EI Tr Or GSP FAO IMO
+tag /
+40
+GB/T28530—2012
+表6 续
+( )
+UNTDED
+文件制作、参考 Documentationreferences EI Tr Or GSP FAO IMO
+, tag /
+随附单证
+Documentsattached 1346 X
+进口许可证号码
+Importlicencenumber 1107 X
+出口许可证号码
+Exportlicencenumber 1208 X
+舱单号码 运输单证号码 Manifestnumber/Transport
+/ 1188 X
+documentnumber
+发票日期
+Invoicedate 2376 X X
+发票号码
+Invoicenumber 1334 X X
+UNTDED
+参与方 Parties EI Tr Or GSP FAO IMO
+tag /
+申请人
+Declarant 3140 X X
+银行
+Bank X
+官方签发机构
+Officialissuingbody X
+UNTDED
+运输细目 Transportdetails EI Tr Or GSP FAO IMO
+tag /
+行程
+Itinerary 3050 X
+运输工具标识 Identificationofmeansoftrans-
+8212 X X
+port
+船舶
+Vessel 8212 X
+UNTDED
+其他 Others EI Tr Or GSP FAO IMO
+tag /
+单证 报文名称代
+/ Document/messagenamecode 1001
+单证 报文
+/ Document/messagenumber 1004
+事件序号
+EventSequenceNumber 1008
+总页数
+TotalNumberofPages 1046
+前期海关文件标识符 PreviousCustomsDocument
+1091
+Identifier
+发货人参考号
+Consignor’sReferencenumber 1140
+装货清单份数 舱单份数 Numberofloadinglists/Mani-
+/ 1166
+fests
+税款支付号
+TaxPaymentNumber 1168
+页号
+Pagenumber 1212
+单证 报文功能代码
+/ Document/Messagefunctioncode 1225
+货物申报号
+GoodsDeclarationNumber 1426
+认证日期 单证签发日期 Dateofauthentication/Dateof
+/ 2007
+issueofdocument
+41
+GB/T28530—2012
+表6 续
+( )
+UNTDED
+其他 Others EI Tr Or GSP FAO IMO
+tag /
+运输 工 具 抵 达 日 期 和
+( Transport Means Arrivaldate
+时间 2107
+) (andtime)
+交付最后收货人地点
+FinalDeliveryLocation 3001
+规定的地点
+Incoterms Incotermsplace 3018
+进口方 商
+( ) Importer 3020/1
+出口方 商
+( ) Exporter 3030/1
+转关地海关 Customs office of destination
+3086
+(transit)
+入境地海关
+CustomsOfficeofEntry 3089
+出境地海关地点
+ExitCustomsOfficeLocation 3097
+过境地海关地点
+TransitCustomsOfficeLocation 3106
+过境担保海关地点 TransitGuaranteeCustoms
+3110
+OfficeLocation
+仓库
+Warehouse 3156/7
+被通知方
+NotifyParty 3180
+代理人
+Agent 3196/7
+最终目的地国 地区
+( ) FinalDestinationCountry 3216/7
+第一目的地国 地区
+( ) FirstDestinationCountry 3219
+出口国 地区 名称
+( ) ExportationCountryName 3220/1
+报关单交存地点 CustomsDeclaration Document
+3265
+LodgementLocation
+原产国行政区划
+OriginCountrySubdivision 3267
+最后出口国 地区
+( ) FinalExportationCountry 3331
+装货地
+PlaceofLoading 3334
+托运人 发货人
+/ Shipper/ConsignorName 3336/7
+主要责任方
+Principalresponsibleparty 3340/1
+货物仓储位置
+StorageLocationofGoods 3384
+单证签发地名称
+DocumentIssueLocationName 3410
+货物转运地名称 ConsignmentTransshipment
+3424
+LocationName
+财务结算责任方 Partyresponsibleforfinancial
+3450/1
+settlement
+海关信息
+CustomsInformation 4034
+国际贸易术语代码
+IncotermsCode 4053
+42
+GB/T28530—2012
+表6 续
+( )
+UNTDED
+其他 Others EI Tr Or GSP FAO IMO
+tag /
+集装箱运输指示符
+ContainerizedIndicator 4140
+证书
+Certificate 4192
+责任保证代码
+ObligationGuaranteeCode 4377
+状态描述
+StatusDescription 4404/5
+会计信息
+AccountingInformation 4410
+交易性质
+Natureoftransaction 4422/3
+单证认证
+DocumentAuthentication 4426
+自由文本
+FreeText 4440
+国家关系代码
+CountryRelationshipCode 4443
+支付方式代码
+PaymentMethodCode 4467
+海关申报发票金额 CustomsDeclarationInvoice
+5072
+Amount
+单项价格
+Itemprice 5116
+税 费类型类型
+/ Duty/Tax/Feetype 5152/3
+货物项目统计申报价格
+GoodsItemForStatistics
+金额 5218
+DeclaredValueAmount
+应增加的其他金额
+Otheramounttobeadded 5238
+税 费估价基准金额 TaxOrFeeAssessmentBasis
+/ 5286
+Amount
+货币兑换率
+Currencyconversionrate 5402
+合并发票金额
+ConsolidatedInvoiceAmount 5444
+税 费估定值金
+/ TaxOrFeeAssessedAmount 5504
+海关重量
+Customsweight 6048
+税 费评估基准数 TaxOrFeeAssessmentBasis
+/ 6090
+Quantity
+附加量
+Supplementaryquantity 6102
+货物项目毛重
+GoodsItemGrossWeight 6292
+货币标识符
+CurrencyIdentifier 6345
+计量单位限定符
+MeasurementUnitQualifier 6411
+货物性质
+Natureofgoods 7002
+包装分类代码
+Packageclassificationcode 7065
+唛头及件号
+Marksandnumbers 7102
+项号
+ItemNumber 7140
+项目总数
+TotalNumberofItems 7240
+43
+GB/T28530—2012
+表6 续
+( )
+UNTDED
+其他 Others EI Tr Or GSP FAO IMO
+tag /
+承运人商品代码
+Carrier’scommoditycode 7357
+总件数
+Totalnumberofpackages 7370
+运输方式
+Modeoftransport 8066/7
+车辆 船舶 类型
+( ) Vehicle(Vessel)type 8178
+运输工具类型代码
+TransportMeansTypeCode 8179
+运输工具申报标识符 TransportMeansAtPresentation
+8250
+Identifier
+运输工具跨境标识符 TransportMeansAtBorder
+8270
+CrossingIdentifier
+运输工具国籍 船旗国 船 TransportMeansNationality/
+/ /
+舶国籍 Nationalityofmeansoftransport/ 8452/3
+Flagofvessel/Nationalityofship
+海关前期手续代码
+CustomsPreviousProcedureCode 9033
+税制类型代码
+TaxRegimeTypeCode 9213
+封志号
+SealNumber 9308
+海关手续
+CustomsProcedure 9380/1
+9 使用原则
+91 单证样式
+.
+911 单证格式标准编制应遵循 规定的规则
+.. GB/T17298 。
+912 单证中代码的位置应符合 的规定要求
+.. GB/T14393 。
+913 单证格式标准应能广泛适用于业务管理需要
+.. 。
+914 所设计的单证应能满足数据自动处理的需要
+.. 。
+915 样式中已有的数据项 应设计在单证的相应位置上
+.. , 。
+916 样式中没有的数据项 应设计在样式的 自由处置区
+.. , “ ”。
+917 样式中的某些数据项 如果不需要设计在单证上 可以取消 相应的位置可以空置或作为 自
+.. , , 。 “
+由处置区
+”。
+918 样式中的货物品类和自由处置区的大小 可视需要上下移动虚线进行调整
+.. , 。
+919 栏目标识符仅指数据栏中包含的信息性质 可根据各类单证运用惯例对数据栏进一步细分
+.. , 。
+如 在委托书中的发货人栏下方可能留有填写发货人代理人的位置 在运输事项栏内可细分安排各种说
+, ;
+明运输路线 方式和工具等的数据元的位置 货物描述栏的高度可按要求调高或调低点线以适应平均
+、 ;
+需要
+。
+9110 单证编号见附录
+.. E。
+44
+GB/T28530—2012
+92 数据元使用原则
+.
+921 所选择的单证数据项为目前广泛使用的单证上的数据项 其属性参照
+.. , GB/T26321。
+922 所列表的数据元并不详尽 也不是强制性的 仅为选择相关数据提供一个基础 所选择的数据
+.. , , 。
+元摘自 中与相关单证数据项有关的数据元 这些数据元大体上是以其功能进行分类 例
+GB/T26321 ; 。
+如 海关数据 出口 统计 包括许多数据元 这些数据元在一些运用中可能并无大的作用 或许仅在某
+“ ( )/ ” , ,
+特定条件下才适用 与其他的运用可能并无关系
+, 。
+923 所有金额 应与数据元 货币连用
+.. , 6344/6345 。
+924 所有测量值 应与计量单位连用 酌情参考数据元 计量单位说明符
+.. , , 6410 。
+925 数据元视需要可重复
+.. 。
+93 数据元的代码表示
+.
+对于用代码表示的数据元应采用现有的国家代码标准或国际代码标准 在填写代码时应符合
+。
+对于单证中代码标识的位置 栏目代码标识的位置以及代码型数据项的位置的要求
+GB/T14393 、 。
+45
+GB/T28530—2012
+附 录 A
+资料性附录
+( )
+商业交易相关单证示例
+A1 主单证
+.
+按照 的格式
+UN/ECERec.1 。
+46
+GB/T28530—2012
+A2 商业发票设计样式
+.
+按照 的格式
+UN/ECERec.6 。
+47
+GB/T28530—2012
+A3 商业发票
+.
+按照国际贸易出口单证格式第 部分商业发票 见
+1 , GB/T15310.1—2009。
+商业发票
+CommercialInvoice
+出口商 发票日期和发票号
+1 Exporter 4 InvoiceDateandNo.
+合同号 信用证号
+5 ContractNo. 6 L/CNo.
+进口商 原产地国
+2 Importer 7 Country/regionoforigin
+贸易方式
+8 Trademode
+运输事项 交货和付款条款
+3 Transportdetails 9 Termsofdeliveryandpayment
+运输标志和集装箱号 包装类型及件数 商品编码 商品描述 数量 单价 金额
+10 11 ; ; 12 13 14
+Shippingmarks;ContainerNo. Numberandkindofpackages;CommodityNo.; Quantity Unitprice Amount
+Commoditydescription
+自由处置区
+Freedisposal
+总值 用数字和文字表示
+15 ( ) Totalamount(infigureandword)
+出口商签章
+16
+自由处置区 Exporterstampandsignature
+Freedisposal
+48
+GB/T28530—2012
+A4 国际贸易单证样式
+.
+按照国际贸易单证样式 见
+, GB/T14392—2009。
+国际贸易单证样式
+LAYOUTKEYFORTRADEDOCUMENTS
+发货人 出口商 日期和参考号等
+( )
+Consignor(Exporter) Date,ReferenceNo.,etc
+收货人 买方 其他收货人 或其他地址
+( )
+Consignee Buyer(ifotherthanconsignee)orotheraddress
+通知方地址或交货地址 出口国
+Notifyordeliveryaddress Countrywhenceconsigned
+原产地国 目的地国
+Countryoforigin Countryofdestination
+运输事项 交货和付款条款
+Transportdetails Termsofdeliveryandpayment
+运输标志和集装箱号码 包装类型和件数 货物描述 商品编码 毛重 体积
+、
+Shippingmarks;ContainerNo. Numberandkindofpackages; CommodityNo. Grossweight Cube
+Goodsdescription ┈┈净┈数┈量┈┈┈┈┈价┈值┈┈
+Netquantity Value
+自由处置区
+Freedisposal
+认证 签署
+( )
+Placeanddateofissue,Authentication
+49
+GB/T28530—2012
+A5 询价单/报价申请/要约邀请 Enquiry/Requestforquote/Offerinvitation
+. ( )
+按照 的格式
+UN/ECERec.1 。
+50
+GB/T28530—2012
+A6 发盘/报价 Offer/Quotation
+. ( )
+按照 的格式
+UN/ECERec.1 。
+51
+GB/T28530—2012
+A7 发运通知DespatchAdvise
+.
+按照 的格式
+UN/ECERec.1 。
+52
+GB/T28530—2012
+A8 订单 Order
+. ( )
+按照 的格式
+UN/ECERec.1 。
+53
+GB/T28530—2012
+A9 订单确认/形式发票 Acknowledgementoforder/Proformainvoice
+. ( )
+按照 的格式
+UN/ECERec.1 。
+54
+GB/T28530—2012
+附 录 B
+资料性附录
+( )
+付款相关单证示例
+B1 不可撤销跟单信用证申请书 Documentarycreditapplication
+. ( )
+按照 的格式
+UN/ECERec.1 。
+55
+GB/T28530—2012
+B2 不可撤销跟单信用证DocumentarycreditICC
+. ( )
+按照 的格式
+UN/ECERec.1 。
+56
+GB/T28530—2012
+附 录 C
+资料性附录
+( )
+运输及服务相关单证示例
+C1 中介服务-转运 货运代理 和装卸作业相关单证示例
+. ( )
+C11 标准委托书单设计样式 LayoutKeyforStandardConsignmentInstructions
+.. ( )
+按照 的格式
+UN/ECERec.22 。
+57
+GB/T28530—2012
+C12 运送指示单 Forwardinginstructions-FFI FIATA
+.. ( ) ( )
+按照 的格式
+UN/ECERec.1 。
+58
+GB/T28530—2012
+C13 货运代理收货凭证 Forwarderscertificateofreceipt-FCR FIATA
+.. ( ’ ) ( )
+按照 的格式
+UN/ECERec.1 。
+59
+GB/T28530—2012
+C14 货运代理仓库收据 Forwarderswarehousereceipt-FWR FIATA
+.. ( ’ ) ( )
+按照 的格式
+UN/ECERec.1 。
+60
+GB/T28530—2012
+61
+GB/T28530—2012
+C15 装运通知 ShippingNote
+..
+按照国际贸易出口单证格式第 部分 装运通知 见
+3 : , GB/T15310.1—2009。
+装运通知
+Shippingnote
+出口商 发票号
+1 Exporter 4 InvoiceNo.
+合同号 信用证号
+5 ContractNo. 6 L/CNo.
+进口商 运输单证号
+2 Importer 7 TransportdocumentNo.
+价值
+8 Value
+运输事项 装运口岸和日期
+3 Transportdetails 9 Shippingportanddate
+运输标志和集装箱号 包装类型及件数 商品编码 商品描述
+10 11 ; ;
+Shippingmarks;ContainerNo. Numberandkindofpackages;CommodityNo.;Commoditydescription
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+自由处置区
+Freedisposal
+出口商签章
+12
+Exporterstampandsignature
+62
+GB/T28530—2012
+C16 装箱单
+..
+按照国际贸易出口单证格式第 部分 装箱单 见 的格式
+2 : , GB/T15310.2 。
+装箱单
+Packinglist
+出口商 装箱单日期
+1 Exporter 3 Packinglistdate
+进口商 合同号 信用证号
+2 Importer 4 ContractNo.5 L/CNo.
+发票日期和发票号
+6 InvoiceDateandNo.
+运输标志和集装箱号 包装类型及件数 商品编码 商品描述 毛重 净重 体积
+7 8 ; ; 9 kg 10 kg 11 m3
+Shippingmarks; Numberandkindofpackages;CommodityGrossweight Netweight Cube
+ContainerNo. No.;Commoditydescription
+┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+自由处置区
+Freedisposal
+出口商签章
+12
+Exporterstampandsignature
+63
+GB/T28530—2012
+C2 运输相关单证示例
+.
+C21 标准提单 StandardBillofLading ICS
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+64
+GB/T28530—2012
+C22 国际铁路托运单 InternationalRailConsignmentNote CIMConvention
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+65
+GB/T28530—2012
+66
+GB/T28530—2012
+C23 国际公路托运单 InternationalRoadConsignmentNote CMRConvention
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+67
+GB/T28530—2012
+C24 通用航空运单 UniversalAirWaybill IATA
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+68
+GB/T28530—2012
+69
+GB/T28530—2012
+C25 可转让 FIATA 多式联运提单 NegotiableFIATA MultimodalTransportBillofLading
+.. ( )
+FIATA-FBL
+( )
+按照 的格式
+UN/ECERec.1 。
+70
+GB/T28530—2012
+C26 不可转让 FIATA 多式联运运单 Non-negotiableFIATA MultimodalTransportWayBill
+.. ( )
+FIATA-FWB
+( )
+按照 的格式
+UN/ECERec.1 。
+71
+GB/T28530—2012
+C27 货运代理运输凭证 ForwardersCertificateofTransport FIATA-FCT
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+72
+GB/T28530—2012
+C28 托运人多式联运重量凭证 ShippersIntermodalWeightCertificate FIATA-SIC
+.. ( )( )
+按照 的格式
+UN/ECERec.1 。
+73
+GB/T28530—2012
+附 录 D
+资料性附录
+( )
+官方监管相关单证示例
+D1 中华人民共和国出口货物原产地证明书
+.
+按照外贸出口单证格式 即中华人民共和国出口货物原产地证明书格式 见
+, , GB/T15310.4。
+74
+GB/T28530—2012
+75
+GB/T28530—2012
+附 录 E
+资料性附录
+( )
+联合国单证设计样式指南和实例运用附件 单证名称的定义和说明
+E1 简介
+.
+年 联合国欧洲经济委员会国际贸易流程简化工作组采用了一份带有数字标识和功能说明的
+1982 ,
+贸易单证名录 以下简称为 名录 该名录曾刊登在由 和 联合发行的系列贸易
+( “ ”)。 UN/ECE UNCTAD
+便利化信息的文件中
+—TRADE/WP.4/INF.84。
+该名录的背景要追溯到 年 其时作为 欧洲经济委员会对外贸易单证简化和标准化指南 的一
+1966 , “ ”
+部分首次发行 名录于 年重新修订并于 年最终正式采用
+。 1981 1982 。
+该名录收编的原则是这些单证正在国际贸易中使用 用于货物贸易而非服务贸易 并且与单票托运
+, ,
+物的单证有关而不涉及涵盖运输工具的全部货物或货载的集定单证
+。
+另外一个原则是采用通用性的而非特定的名称来表示单证功能 而不采用以特定名称说明功能的
+,
+单证 除非这些特定单证名称具有全球性或有着非常广泛的应用 入选名录理由充足
+, , 。TRADE/
+文件中给出更详细的解释
+WP.4/INF 。
+名录中的单证分成以下九个应用领域
+:
+生产 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - A );
+采购 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - A );
+销售 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - A );
+付款 银行业务 第 号推荐标准 国际贸易程序简化措施中的 组
+——— - (UN/ECE 18 - B );
+保险 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - C );
+中介服务 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - C );
+运输 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - C );
+出口管理规则 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - AD );
+进口和过境管理规则 第 号推荐标准 国际贸易程序简化措施中的 组
+——— (UN/ECE 18 - D )。
+单证涉及不同的领域 只考虑其签发地点或时间或有效性 而不考虑其使用或应用的地点和场合
+, , 。
+名录中每个单证按其功能被赋予以三位数的数字代码 标记 第一位数字表示该单证所属的归类
+( ),
+组别 对适用于特定制度的单证 加注予以说明 如 为 国际铁路货物运输公约 规定的铁路
+。 , , 720-CIM 《 》
+托运单 单证功能的说明是经联合国欧洲经济委员会工作组同意的 或取自其他来源 其注明引用于相
+。 , ,
+关公约 或类似 或来源说明 如标注 表明该说明已经被欧洲经济委员会便利化机构
+( ) 。 “UN/ECE/FAL”
+正式采用
+。
+E2 单证的名称和说明
+.
+下述单证说明适用于本指南中所涉及的表单
+。
+E21 生产 Production
+.. ( )
+采购订单
+105 (Purchaseorder)
+企业为了生产或制造将销售或供应给客户的货物而开始采购物品或材料 并由此在其内部所签发
+,
+76
+GB/T28530—2012
+的单证
+。(UN/ECE/FAL)
+制造说明
+110 (Manufacturinginstructions)
+企业为了开始制造将销售或供应给客户的货物 在其内部所签发的单证
+, 。(UN/ECE/FAL)
+领料申请单
+120 (storesrequisition)
+企业为了预约取出客户订购的存货 在其内部所签发的单证
+, 。(UN/ECE/FAL)
+商品售价单
+130 (Invoicingdatasheet)
+企业内部签发的单证 单证包含已销售货物的数据 用于制作商业发票
+, , 。(UN/ECE/FAL)
+包装说明
+140 (Packinginstructions)
+企业内部用于指示货物包装而签发的单证
+。(UN/ECE/FAL)
+装箱单
+141 (Packinglist)
+说明单个包装件内物品分发详情的单证
+。(UN/ECE/FAL)
+内部运输单
+150 (Internaltransportorder)
+企业内部用于指示货物运输的单证
+。(UN/ECE/FAL)
+统计及其他管理用内部单证
+190 (Statisticalandotheradministrativeinternaldocuments)
+企业内部为了收集生产和其他内部统计数据 或是为了其他管理目的而签发的单证
+, 。(UN/ECE/
+FAL)
+E22 采购 Purchase
+.. ( )
+询价单
+210 (Enquiry)
+以期取得报价 有意于采购的一方签发给预期供应商的单证 单证中对采购的货物予以详细说明
+, , ,
+并表明有关货物交付等细节和合适的条件
+。(UN/ECE/FAL)
+意向书
+215 (Letterofintent)
+买方发给卖方的文书 借此通知卖方原则上接受卖方的报盘 并有意进行签署合同谈判
+, , 。(UN/
+ECE/FAL)
+订单
+220 (Order)
+买方发给卖方的文书 买方借此根据报盘中设定或周知于买方的条件 向卖方发起指定货物供应的
+, ,
+交易
+。(UN/ECE/FAL)
+交货说明
+240 (Deliveryinstructions)
+买方签发的单证 就已订货物的交付细节给予说明
+, 。
+发货通知
+245 (Deliveryrelease)
+接到卖方发运就绪通知后 买方允许货物发运而签发的单证
+, 。(UN/ECE/FAL)
+E23 销售 Sale
+.. ( )
+发盘 报价
+310 / (Offer/Quotation)
+陈述订立合同所需的货物报价条款的单证
+。(UN/ECE/FAL)
+合同
+315 (Contract)
+证实买 卖双方达成货物供应协议的单证 其与订单之后的订单确认等效
+、 , 。(UN/ECE/FAL)
+订单确认
+320 (Acknowledgementoforder)
+承诺履行订单并确认或接受条款的单证
+。(UN/ECE/FAL)
+形式发票
+325 (Proformainvoice)
+起到预先发票作用的单证 总体上包含与最终发票相同的信息 但实际不作为索要付款的单证
+, , 。
+(UN/ECE/FAL)
+交货说明请求
+330 (Requestfordeliveryinstructions)
+77
+GB/T28530—2012
+供应商签发的单证 就所订购货物的交付细节请求买方指示
+, 。(UN/ECE/FAL)
+订舱申请
+335 (Bookingrequest)
+供应商签发给承运人的单证 要求为特定托运物保留舱位 指明适货的运输工具和发运时间等
+, , 。
+(UN/ECE/FAL)
+装运说明
+340 (Shippinginstructions)
+用于告知货物细节以及专家提出的对货物运输要求的单证
+。(UN/ECE/FAL)
+短途货运单 短途运输
+343 ( )(Cartageorder)(localtransport)
+给予短途货物运输指令的单证 如从某一企业的经营场地到某一承接随后货物运输的承运人的经
+,
+营场地
+。(UN/ECE/FAL)
+待运通知
+345 (Readyfordespatchadvice)
+由供应商签发的单证 通知买方所订购货物已备妥等待发运
+, 。(UN/ECE/FAL)
+发运单
+350 (Despatchorder)
+供应商开始发运货物给买方 收货人 而签发的单证
+( ) 。(UN/ECE/FAL)
+发运通知
+351 (Despatchadvice)
+卖方或发货人凭此通知收货人有关货物发运的单证
+。(UN/ECE/FAL)
+单证分发通知
+370 (Adviceofdistributionofdocuments)
+由负责签发整套贸易单证的一方签发的单证 凭此指定了这些单证的正本或副本的接受者 并指明
+, ,
+每个单证接收者所分配的单证副本的数量
+。(UN/ECE/FAL)
+商业发票
+380 (Commercialinvoice)
+要求支付按照买 卖双方约定条件所提供货物的款项的凭证
+、 。(UN/ECE/FAL)
+E24 银行付款
+..
+银行转账指示
+409 (Instructionsforbanktransfer)
+客户用于指示其开户行按指定的方式 如电讯或航空邮件方式传递 或由银行自行决定的方式支付
+( )
+给所指定的国外当事人一定数额的指定货币的单证
+。(UN/ECE/FAL)
+托收委托书
+447 (Collectionorder)
+指示或要求银行处理金融单据和 或商业单据以便取得承兑或付款 或按照其他条款和条件交付单
+/ ,
+据的单证
+。(ICCUniformRulesforCollections)
+付款单
+450 (Paymentorder)
+包含发起付款所需信息的单证 它可能涉及一笔或多笔商业贸易交易的财务结算 付款单是指示
+。 。
+约定的银行安排一定数额的款项给受益人的一种指令
+。(UN/ECE/FAL)
+跟单信用证申请书
+460 (Documentarycreditapplication)
+请求银行签发跟单信用证的单证
+。(UN/ECE/FAL)
+跟单信用证
+465 (Documentarycredit)
+银行据此说明跟单信用证已经签发 在符合一定的条款和条件并出示各种规定的单证以及指定的
+,
+汇票 受益人可凭其获得付款 承兑或议付的单证 信用证有可能被其他的银行认可 也有可能不被认
+, 、 。 ,
+可
+。(UN/ECE/FAL)
+E25 保险
+..
+保险凭证
+520 (Insurancecertificate)
+签发给投保人的证明文件 用于证明保险已生效 保险单已签发 此证明主要适用于不确定的或预
+, , 。
+约保险方式投保的货物 在投保人的要求下 保险凭证可更换为保险单
+。 , 。(UN/ECE/FAL)
+保险单
+530 (Insurancepolicy)
+由保险人签发的单证 是按约定条件承保的合同证明 保险人据此向被保险人承担因发生合同中规
+, ,
+78
+GB/T28530—2012
+定的风险与事故而引起损失的赔偿
+。(UN/ECE/FAL)
+保险发票
+575 (Insurer’sinvoice)
+由保险人签发的凭证 已交付的保险费用并依此提出索赔付款的详细说明
+, 。(UN/ECE/FAL)
+暂保单
+580 (Covernote)
+由保险人 保险经纪人 代理人等 签发的单证 用于通知被保险人保险合同已成立
+( , ) , 。(UN/ECE/
+FAL)
+E26 中介服务 Intermediaryservices
+.. ( )
+运送指示单
+610 (Forwardinginstructions)(FIATA-FFI)
+发货人签发给货运代理的单证 指示货运代理运送其中所指货物时应采取的行动
+, 。(UN/ECE/
+FAL)
+货运代理对进口代理的通知
+621 (FreightForwarder’sadvicetoimportagent)
+由出口国家的货运代理签发的单证 用于通知其在进口国家的代理有关其中所指的货物运输事项
+, 。
+(UN/ECE/FAL)
+货运代理对出口商的通知
+622 (FreightForwarder’sadvicetoexporter)
+由货运代理签发的单证 用于通知出口商应采取行动以履行已收到的指示
+, 。(UN/ECE/FAL)
+货运代理发票
+623 (FreightForwarder’sinvoice)
+由货运代理开具的发票 对提供的服务 发生的费用以及相关付款要求的详细说明
+, 、 。(UN/ECE/
+FAL)
+货运代理收货凭证
+624 (Forwarder’scertificateofreceipt)(FIATA-FCR)
+由货运代理签发的不可转让的凭证 证明其已取得对某一特定托运物的掌控权 按照不可撤销的指
+, ,
+令将货物运送给凭证中所指定的收货人或由其掌控货物
+。(UN/ECE/FAL)
+装运通知
+630 (Shippingnote)
+由托运人或其代理提供给承运人 多式联运经营人 码头及其他的接收方的通知 提供出口待运托
+、 、 ,
+运物的信息 必要收据和责任声明 具有多用途功能的货物作业单证有时也满足单证 和
+、 ( 632,633,640
+的功能要求
+655 )。(UN/ECE/FAL)
+货运代理仓库收据
+631 (Forwarder’swarehousereceipt)(FIATA-FWR)
+由作为仓库管理员的货运代理签发的单证 确认收到储入仓库内的货物 同时列明货物入库和出库
+, ,
+条款 该收据包含有关背书持有人权利和货物所有权转移等详细条款
+。 。(UN/ECE/FAL)
+货物收据
+632 (Goodsreceipt)
+由港口 仓库 货棚或码头经营者签发的单证 确认收到其中所述状况的货物
+、 、 , 。(UN/ECE/FAL)
+港口费用单
+633 (Portchargesdocuments)
+对所提供的服务 存储操作费 滞期费以及与其所指的货物所有人有关的其他费用进行详细说明的
+、 、
+单证
+。(UN/ECE/FAL)
+提货单
+640 (Deliveryorder)
+有资格授权将其所指货物放行给指定的收货人或由货物监管人保存的一方签发的单证
+。(UN/
+ECE/FAL)
+装卸单
+650 (Handlingorder)
+货物装卸单位 港口管理局 码头经营者 为搬运或装卸由其照料下的货物而签发的单证
+( , ) 。(UN/
+ECE/FAL)
+通行证
+655 (Gatepass)
+允许将其中所指定的货物带出港口或码头区域的单证
+。(UN/ECE/FAL)
+79
+GB/T28530—2012
+E27 运输
+..
+通用 多用 运输单证
+701 ( ) (Universal(multipurpose)transportdocument)
+用于证明运输合同的单证 包含任何运输模式或联运模式下进行的国内以及国际货物运输 并适用
+, ,
+于任何国际公约或国内法律以及在任何承运人或运输经营者承担或安排其中所指的运输条件
+。(UN/
+ECE/FAL)
+货物运输收据
+702 (Goodsreceipt,carriage)
+由承运人或承运人代理人签发的单证 确认收到其中所述状况的货物 据以承运人签发运输单证
+, , 。
+(UN/ECE/FAL)
+海运单
+710 (Seawaybill)
+用于证明海上货物运输合同和货物已经由承运人接收以及承运人保证据以交付货物给其中指定的
+收货人的不可转让单证
+。
+注 与某些国家如加拿大和美国所使用的 记名 或 不可转让 提单同义
+: “ ” “ ” 。
+河运单
+710 (Riverwaybill)
+由承运人签发给河运货物托运人的单证 用以证明已接收货物 并约束承运人将货物交付给目的港
+, ,
+收货人
+。(UN/ECE/FAL)
+提单
+711 (BillofLading)
+用以证明海上货物运输合同和货物已经由承运人接收或者装船 以及承运人保证据以交付货物的
+,
+单证 提单中载明的向记名人交付货物 或者按照指示人的指示交付货物 或者向提单持有人交付货物
+。 , ,
+的条款 构成承运人据以交付货物的保证 联合国海上运输公约
+, 。( )
+注 在某些国家如加拿大和美国 术语 提单 习惯指 可转让提单
+: , “ ” “ ”。
+内河航运提单
+711 (InlandwaterwaysBilloflading)
+凭记名人或者指示人或持有人提货的可转让的运输单证 承运人接受货物后签发并交给发送人
+, 。
+(UN/ECE/FAL)
+大副收据
+713 (Mate’sreceipt)
+由大副签发的单证 确认特定的托运物已装船 货物外表状况良好 据以承运人签发提单
+, , ; 。(UN/
+ECE/FAL)
+铁路托运单 通用条款
+720 ( )(Railconsignmentnote)(genericterm)
+构成发送人和承运人 铁路 之间的货物运输合同的运输单证
+( ) 。
+注 作为国际铁路运输单证 它必须符合国际铁路货物运输公约所规定的样式 如 公约 公约
+: , , CIM 、SMGS (GIT)。
+公路托运单
+730 (Roadconsignmentnote)
+证明承运人和发送人之间的道路货物运输合同的运输单证 通用条款
+。( )
+注 作为国际道路运输单证 它至少必须包含国际道路货物运输合同公约中规定的内容
+: , (CMR)。
+空运单
+740 (Airwaybill)
+托运人或受托运人委托填写的单证 证明托运人为在承运人的航班上运输货物与承运人订立运输
+,
+合同 单证上应标识签发单证的航空公司代码及序列号
+。 。(IATA)
+邮递包裹投递单
+750 (Despatchnote)(postparcels)
+根据 万国邮政公约 的 邮政包裹协定 第 条规定 是指随附于邮政包裹的单证
+《 》 《 》 106 , (UPU)。
+多式联运 联合运输单证 通用
+760 / ( )(Multimodal/combinedtransportdocument)(generic)
+用于一种运输方式以上的货物运输的单证 其既是运输合同又是多式联运货物的收据 并表明在联
+, ,
+运中负责运输的公司对货物承担责任的起始和终止地点 以及所涉及的运输工具
+, 。(UN/ECE/FAL)
+多式联运单证
+760-MTD (Multimodaltransportdocument)
+证明多式联运合同以及证明多式联运人接管货物并负责按照合同条款交付货物的单据 国际货
+。(
+80
+GB/T28530—2012
+物多式联运公约 尚未生效
+, )
+多式联运提单
+760-BIMCO (BIMCOMultimodalTransportBillofLading)(MULTIDOC95)
+证明履行或实现履行多式联运合同以及证明多式联运经营人接管货物并负责按照合同条款交付货
+物的可转让单证 该单证是由波罗的海国际海事委员会根据联合国贸易和发展会议 国际商会多式联
+。 /
+运单证规则而发布的
+。(ICCPublicationNo481)
+可转让多式联运提单
+760-FBLFIATA (FBLNegotiableFIATA MultimodalTransportBillof
+Lading)(FIATA-FBL)
+证明多式联运合同以及多式联运经营人接管货物并负责按照合同条款进行货物交付的单证 该单
+。
+证也适用于单一运输方式的港到港海上运输
+。
+该单证是由 根据联合国贸易和发展会议 国际商会多式联运单证规则 国际商会出版物第
+FIATA / (
+号 而发布的
+481 ) 。(FIATA)
+不可转让多式联运运单
+760-FWBFIATA (FWBNon-negotiableFIATA MultimodalTransport
+WayBill)(FIATA-FWB)
+证明多式联运合同以及多式联运经营人接管货物 并负责按照合同条款进行货物交付的单证 该
+, 。
+单证是由 根据联合国贸易和发展会议 国际商会多式联运单证规则 国际商会出版物第
+FIATA / ( 481
+号 而发布的
+) 。(FIATA)
+联运提单
+761 (Throughbilloflading)
+证明从一处到另一处分段进行的运输合同的提单 其中至少一段是海运 签发单证的承运人据此承
+, ,
+担在联运提单中规定的运输责任
+。(UN/ECE/FAL)
+货运代理运输凭证
+763 (Forwarder’scertificateoftransport)(FIATA-FCT)
+由货运代理签发的单证 用于证明其已接管某一特定的托运物并按照单证中所指的托运人指示发
+,
+运并交付货物 以及用于证明其承担通过所指定的交付代理人将货物交付给单证持有人的责任 如该
+, 。
+运输凭证标明 凭指示 则是可转让的单证
+“ ”, 。(FIATA)
+订舱确认
+770 (Bookingconfirmation)
+由承运人签发的用于证实运输工具上的舱位已预留给所托运的货物的单证
+。(UN/ECE/FAL)
+要求交货通知
+775 (Callingforwardnotice)
+要求放行货物或交付货物的指令
+。(UN/ECE/FAL)
+运费发票
+780 (Freightinvoice)
+由运输营运方出具的凭证 用于说明运输成本和运输费用以及列明付款条件
+, (UN/ECE/FAL)。
+货物到达通知
+781 (Arrivalnotice)(goods)
+承运人通过书面 电话或其他方式 快递 口信 电报等 传递给收货人的通知 告知托付给他的货物
+、 ( 、 、 ) ,
+正准备或不久后将在目的地所规定的地点交由其处置
+。(GIT)
+无法交货通知
+782 (Noticeofcircumstancespreventingdelivery)(goods)
+当交付受阻而且在运输单证中并没有表明托运人要求运回货物时 由承运人缮制发给发送人或视
+,
+情况发给收货人对货物进行处置的指示的请求书
+。(GIT)
+无法运货通知
+783 (Noticeofcircumstancespreventingtransport)(goods)
+承运人接收到货物后 在出运前或运输途中遇到阻碍不能进行运输时 由承运人缮制发给发送人或
+, ,
+视情况发给收货人对货物进行处置的指示的请求书
+(GIT)。
+交货通知
+784 (Deliverynotice)(goods)
+由承运人签发给托运人的书面通知 按其要求告知其具体的交货日期
+, (GIT)。
+载货清单
+785 (Cargomanifest)
+运输工具或运输单元上所载货物的清单 载货清单列明了货物的商业细节 如运输单据数量 托运
+。 , 、
+人 收货人 装运标记 编号 包装件数与种类以及货物的品名与质量
+、 、 、 、 (CCCGlossary)。
+81
+GB/T28530—2012
+运费清单
+786 (Freightmanifest)
+包含与载货清单相同的信息 并附加运费额 费用等补充信息的单证
+, 、 (UN/ECE/FAL)。
+公路运输货物清单
+787 (Bordereau)
+用于公路运输的单证 列明公路车辆上所载的货物的清单 常作为公路托运单的附单
+, , 。(UN/
+ECE/FAL)
+集装箱载货清单
+788 (Containermanifest)(unitpackinglist))
+由负责装箱或装载运输单元的一方缮制的 详细说明特定货物集装箱或其他运输单元装载内容的
+,
+单证
+。(UN/ECE/FAL)
+托运人联运重量证明书
+789 (ShippersIntermodalWeightCertification(FIATA-SIC))
+托运人开具给货运代理的单证 证明货物的总重量符合某些国家限重的规定 如 年美国联运
+, ( 1992
+安全集装箱法案中的规定
+)。(FIATA)
+E28 出口管制
+..
+出口许可证申请表
+810 (Exportlicenceapplication)
+申请许可出口具有特定价值的特定货物到特定的目的地的许可
+。(UN/ECE/FAL)
+出口许可证
+811 (Exportlicence)
+准许在特定的时间内出口所述货物的单证
+。(UN/ECE/FAL)
+出口结汇核销单
+812 (Exchangecontroldeclaration,export)
+由出口商 卖方填写的单证 主管机构凭此作为一种监管手段 对按现行支付条件和外汇管理规定
+/ 。 ,
+汇回的贸易外汇数量进行监管
+。(UN/ECE/FAL)
+出口货物报关单
+830 (Goodsdeclarationforexportation)
+凭依进行货物出口清关申报的单证 该单证符合京都公约附件 中的附录 所规定的单证样式
+, C.1 I
+(CCC)。
+货物申报单
+833 (Cargodeclaration)
+专业术语 有时又称作货运申报单 用于提供海关要求的与商业运输工具所载货物有关的细节
+, , 。
+(CCCGlossary)
+货物申报单
+833-IMO (IMOCargodeclaration)
+国际便利海上运输公约 年伦敦 中规定的特定货物申报单 是主管机构要求船舶抵离港时提
+(1965 ) ,
+供货物相关信息的基础单证
+。(IMO-FAL)
+货物监管证书申请表
+840 (Applicationforgoodscontrolcertificate)
+有关当事人呈交给主管机构的单证 请求依据国家或国际标准或进口国的法律法规或按合同中所
+,
+规定的要求签发货物监管证书
+。(UN/ECE/FAL)
+货物监管证书
+841 (Goodscontrolcertificate)
+由主管机构签发的单证 证明其中所述的货物质量与国家或国际标准一致 或满足进口国的法规
+, , ,
+或合同所规定的要求
+(UN/ECE/FAL)。
+植物检疫申请表
+850 (Applicationforphytosanitarycertificate)
+由请求签发植物检疫证书的一方呈交给主管机构的单证
+。(UN/ECE/FAL)
+植物检疫证书
+851 (Phytosanitarycertificate)
+由出口国主管机构签发的单证 证明出口的植物 水果或蔬菜未受病害影响 适合食用 并对可能已
+, 、 , ,
+经熏蒸或其他处理细节予以详细说明
+。(UN/ECE/FAL)
+卫生检疫证书
+852 (Sanitarycertificate)
+由出口国主管机构签发的单证 证明食品和动物制品 包括死动物在内 适合人类食用 并对检查细
+, ( ) ,
+节予以详细说明
+。(UN/ECE/FAL)
+82
+GB/T28530—2012
+动物检疫证书
+853 (Veterinarycertificate)
+由出口国的主管机构签发的单证 证明出口的鲜活动物或禽鸟未侵染或感染疾病 同时提供它们的
+, ,
+原产地 接种疫苗或经其他处理的细节
+、 。(UN/ECE/FAL)
+商品检验申请表
+855 (Applicationforinspectioncertificate)
+有关当事人呈交给主管机构的单证 请求依据国家或国际标准或进口国的法律法规或按合同中所
+,
+规定的要求签发商品检验证书
+。(UN/ECE/FAL)
+商品检验证书
+856 (Inspectioncertificate)
+由主管机构签发的单证 证明其中所描述的货物已依据国家或国际标准和国家的法律法规或合同
+,
+中所规定的要求进行检验
+。(UN/ECE/FAL)
+原产地证书申请表
+860 (Certificateoforigin,applicationfor)
+有关当事人呈交给主管机构的单证 请求其根据相关标准和货物原产地的证据签发原产地证书
+, 。
+(UN/ECE/FAL)
+原产地证书 通用条款
+861 ( )(Certificateoforigin)(genericterm)
+由主管当局或授权机构签发的证明货物产地的特定单证 证明其中所述的货物源产自某特定的国
+,
+家 国家 一词可能包括一组国家 某一个地区或某一个国家中的地区 证书中也可能包括制造商 生
+。“ ” , 。 ,
+产商 供应商 出口商或其他相关当事人的声明
+、 、 (CCCGlossary)
+原产地证书
+861-CCC (CCCCertificateoforigin)
+京都公约附件 有关原产地证明文件 中规定的特殊格式的原产地证书
+D.2( ) 。(CCCGlossary)
+普惠制原产地证明书 联合国贸易与发展大会
+861 ( )(GSPCertificate)(UNCTAD)
+享有普惠制优惠待遇的货物的原产地证书的特殊格式 原产地证明书格式 是原产地声明和证书
+( A
+合二为一的联合证明
+)。
+原产地申明
+862 (Declarationoforigin)
+制造商 生产商 供应商 出口商 或商业发票中或与货物有关的任何其他单证中的相关人员做出的
+、 、 、 ,
+有关出口货物的原产地的恰当陈述 京都公约附件
+。(CCC、 D.2)
+地区名称证书
+863 (Regionalappellationcertificate)
+根据当局或授权机构的规定所制定的证书 证明其所描述的货物符合冠以特定地区名称的条件 如
+, (
+香槟酒 葡萄酒 帕玛森乳酪
+、 、 )。(UN/ECE/FAL)
+领事发票
+870 (Consularinvoice)
+由出口商所在国编制并交由进口国外交代表背书之后 由其中所指的进口货物有关的进口商呈递
+,
+的单证
+。(UN/ECE/FAL)
+危险货物申报单
+890 (Dangerousgoodsdeclaration)
+由发货人开具的符合适用公约或规则的单证 描述适运危险货物或材料 并声明包装和标识符合相
+, ,
+关公约或规则的规定
+。(UN/ECE/FAL)
+出口统计报表
+895 (Statisticaldocument,export)
+按照负责国际贸易统计信息采集的机构要求 由出口商提供的有关出口货物信息的单证
+, 。(UN/
+ECE/FAL)
+E29 入境和过境规定
+..
+进口许可证申请表
+910 (Importlicence,applicationfor)
+相关方据以向主管机构申请允许进口限量限制进口的物品 或在一定的期限内进口无限量进口该
+,
+种物品 并列明了物品的种类 产地及价值等的单证
+, 、 。(UN/ECE/FAL)
+进口许可证
+911 (Importlicence)
+主管机构依照现行的进口规定和单证而签发的单证 据此授权给所指定的一方 在一定期限内和在
+, ,
+83
+GB/T28530—2012
+单证所规定的条件下 进口限量指定的物品 或无限量进口该种物品
+, , 。(UN/ECE/FAL)
+调汇申请
+925 (Applicationforexchangeallocation)
+进口商 买方据以向主管机构申请调配一定数额外汇给出口商 卖方以偿还货款
+/ / 。(UN/ECE/
+FAL)
+调汇许可
+926 (Foreignexchangepermit)
+由主管机构签发的批准进口商 买方转付一定数额外汇给出口商 卖方以偿还货款的单证
+/ / 。(UN/
+ECE/FAL)
+进口结汇核销单
+927 (Exchangecontroldeclaration)(import))
+进口商 买方填写的单证 主管机构凭此作为一种监管手段 对已划拨外汇的贸易交易的完成情况
+/ , , ,
+以及按现行支付条件和外汇管理规定转付外汇资金的情况进行监管
+。(UN/ECE/FAL)
+内销货物报关单
+930 (Goodsdeclarationforhomeuse)
+根据 京都公约 附录 有关国内消费货物进口清关 凭付进行货物进口清关申报的单证
+《 》 B.1( ), 。
+(CCC)
+海关即刻放行报关单
+931 (Customsimmediatereleasedeclaration)
+由进口商出具的单证 用于通知海关在海关批准立即放行下的货物已从进口的交通工具上转移到
+,
+进口商的场地 或用于请求即刻放行货物的授权
+; 。(UN/ECE/FAL)
+海关放行通知
+932 (Customsdeliverynote)
+海关凭依放行其监管的货物 置于由相关方处置的单证 同义词 海关放行单
+, 。 : 。(UN/ECE/FAL)
+到港货物申报单
+933 (Cargodeclaration)(arrival)
+通用条款 有时也被称为 运输申报单 提供海关要求的商业运输工具运载的货物的细节的单证
+, “ ”, 。
+(CCCGlossary)
+到港货物报关单
+933-IMO (IMOCargodeclaration)(arrival)
+国际便利海上运输公约 伦敦 规定的特定货物申报单 作为船舶抵离港时提供政府当局要
+《 》( 1965) ,
+求的货物相关信息的基本单证
+。(IMO-FAL)
+货物价值申报清单
+934 (Valuedeclaration)
+申报者 进口商 在其中列明发票价格或其他价格 如售价 同种货物的价格 详细说明运输 保险
+( ) ( , ), 、
+和包装等成本 交货和支付条件以及与贸易伙伴的关系等 以确定进口货物的海关价值的单证
+、 , 。(UN/
+ECE/FAL)
+海关发票
+935 (Customsinvoice)
+进口国海关要求提供的单证 其中出口商列明发票价格或其他价格 如售价 同种货物的价格 详
+, ( , ),
+细说明运输 保险和包装等成本以及交货和支付条件 与贸易伙伴的关系等 以确定进口货物在进口所
+、 、 ,
+在国的海关价值
+。(UN/ECE/FAL)
+邮政包裹报关单
+936 (Customsdeclaration)(postparcels)
+根据 万国邮政公约 的 包裹细则 第 条规定 随附于邮政包裹并在其中列明包裹内容细节的
+《 》 《 》 106 ,
+单证
+。(UPU)
+增值税申报单
+937 (Taxdeclaration)(valueaddedtax)
+进口商在其中列明由主管机构要求的相关信息以评估增值税的单证
+。(UN/ECE/FAL)
+海关过境货物报关单
+950-CCC (-CCCGoodsdeclarationforCustomstransit)
+根据 京都公约 附件 有关海关转运制度 的规定 发送人凭依进行过境货物海关申报的单证
+《 》 E.1( ) ,
+(CCC)。
+单证册
+950TIR (TIRcarnet)
+经由海关批准的担保团体颁发的国际海关单证 国际公路运输 在其担保下的货物大多数情况下
+( ),
+施加海关封志 由符合在国际公路运输手册担保下进行国际货物运输的海关公约要求的公路运输车辆
+,
+84
+GB/T28530—2012
+和 或集装箱运载 其一般包含评估所需的进口关税 税收的详细信息 如适用
+/ 。 、 ( )。
+单证册
+955ATA (ATAcarnet)
+根据 年 关于货物暂准进口的 报关单证册海关公约 规定而签发的国际海关单证 临时
+1961 《 ATA 》 (
+免税进口 暂准进口 其包含国际有效担保并替代国家海关单证和进口税担保 可用于担保暂准进口货
+/ ), ,
+物和过境货物 如适用 如果临时出口和重复进口的货物已接受监管 国际担保将不适用
+( )。 , 。(CCC
+Glossary)
+转运保税单
+955 (Transitbond-note)
+国家海关单证 授权在未提前缴付进口关税和税款 但已提交担保的情况下 货物可以在海关监管
+, , ,
+并保持海关封志完整的情况下转运至目的地海关 其一般包含评估所需的进口关税 税收的详细信息
+。 、
+如适用
+( )。(CCCGlossary)
+进口统计报表
+955 (Statisticaldocument,import)
+按照负责国际贸易统计信息采集的机构的要求 由进口商提供的有关进口货物信息的单证
+, 。
+(UN/ECE/FAL)
+中 华 人 民 共 和 国
+国 家 标 准
+国际货运代理系列单证
+单证数据项
+GB/T28530—2012
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京市朝阳区和平里西街甲 号
+2 (100013)
+北京市西城区三里河北街 号
+16 (100045)
+网址
+:www.gb168.cn
+服务热线
+:010-68522006
+年 月第一版
+2012 12
+*
+书号
+:155066·1-45410
+版权专有 侵权必究
+—
+/
+2102
+03582T
+BG

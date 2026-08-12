@@ -1,0 +1,5290 @@
+ICS35240
+.
+L74
+中 华 人 民 共 和 国 国 家 标 准
+GB/T321802—2015
+.
+财经信息技术 企业资源计划软件
+数据接口 第 部分 采购
+2
+:
+Financialinformationtechnology—
+Datainterfaceofenterpriseresourceplanningsoftware—
+Part2Purchase
+:
+2015-10-22发布 2016-06-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T321802—2015
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+引言
+………………………………………………………………………………………………………… Ⅱ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+数据元素
+4 ………………………………………………………………………………………………… 2
+数据元素的描述规则
+4.1 ……………………………………………………………………………… 2
+数据元素细目
+4.2 ……………………………………………………………………………………… 2
+接口文件的输出
+5 ………………………………………………………………………………………… 6
+输出文件的格式
+5.1 …………………………………………………………………………………… 6
+输出文件的数据结构
+5.2 ……………………………………………………………………………… 6
+输出文件的输出说明
+5.3 ……………………………………………………………………………… 10
+输出文件的时间要求
+5.4 ……………………………………………………………………………… 10
+符合性评价
+6 ……………………………………………………………………………………………… 10
+概述
+6.1 ………………………………………………………………………………………………… 10
+输出文件的功能
+6.2 …………………………………………………………………………………… 11
+输出的 文件要求
+6.3 XML …………………………………………………………………………… 11
+附录 资料性附录 企业资源计划软件数据接口的 大纲
+A( ) XML (Schema) ……………………… 12
+附录 资料性附录 企业资源计划软件数据接口的 实例
+B( ) XML …………………………………… 46
+参考文献
+…………………………………………………………………………………………………… 63
+GB/T321802—2015
+.
+前 言
+财经信息技术 企业资源计划软件数据接口 分为六个部分
+GB/T32180《 》 :
+第 部分 公共基础数据
+——— 1 : ;
+第 部分 采购
+——— 2 : ;
+第 部分 库存
+——— 3 : ;
+第 部分 销售
+——— 4 : ;
+第 部分 预算
+——— 5 : ;
+第 部分 资金
+——— 6 : 。
+本部分为 的第 部分
+GB/T32180 2 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+本部分由中华人民共和国审计署提出
+。
+本部分由全国审计信息化标准化技术委员会 归口
+(SAC/TC341) 。
+本部分起草单位 中华人民共和国审计署计算机技术中心 金蝶软件 中国 有限公司 思爱普 北
+: 、 ( ) 、 (
+京 软件系统有限公司 浪潮集团山东通用软件有限公司 用友软件股份有限公司 甲骨文 中国 软件系
+) 、 、 、 ( )
+统有限公司 南京审计学院 中华人民共和国审计署驻成都特派员办事处 中国电子技术标准化研究院
+、 、 、 。
+本部分主要起草人 杨蕴毅 孙中和 彭涛 吕天阳 杨政 戴宝纯 张小平 赵延 焦学瑞 金冬梅
+: 、 、 、 、 、 、 、 、 、 、
+金纪文 宋红茹
+、 。
+Ⅰ
+GB/T321802—2015
+.
+引 言
+随着企业资源计划 管理思想和理论的普及发展 企业资源计划软件在国内外得到了广泛的
+(ERP) ,
+应用 已形成产业化规模 本标准针对企业资源计划软件 制定了软件数据接口规范 在财经信息技术
+, 。 , ,
+领域进一步促进 深化财经数据的标准化应用
+、 。
+企业资源计划软件经过多年的发展 已经在企业中得到广泛应用 但是 由于各个企业资源计划软
+, , ,
+件来源于不同的软件供应商 软件设计方案上各成体系 在数据库平台和数据库结构上存在相当大的差
+, ,
+异性 使得政府监管部门 企业内部管理决策部门等企业经营管理信息使用者无法快速 全面地获取企
+, 、 、
+业经营管理业务数据
+。
+以典型 供应链主要业务模块为核心 兼顾资金结算和预算管理业务 规范企业
+GB/T32180 ERP , ,
+资源计划软件通用的数据元素和输出文件结构信息
+。
+能够为财政 金融 税务 工商 审计等政府行业主管部门和监管部门 以及企业内审
+GB/T32180 、 、 、 、 ,
+部门 管理决策部门获取企业经营管理业务数据 加强监督 提高管理决策效率提供数据支持服务
+、 , 、 。
+本部分为 的第 部分 采购
+GB/T32180 2 : 。
+本部分需与 结合起来使用 凡是涉及会计核算数据的输出 可依据
+GB/T32180.1—2015 。 ,
+财经信息技术 会计核算软件数据接口 第 部分 企业 的规定执行
+GB/T24589.1—2010《 1 : 》 。
+Ⅱ
+GB/T321802—2015
+.
+财经信息技术 企业资源计划软件
+数据接口 第2部分 采购
+:
+1 范围
+的本部分规定了企业资源计划软件数据接口中采购业务的数据格式要求 包括采购
+GB/T32180 ,
+业务数据元素 数据接口输出文件的内容和格式的要求
+、 。
+本部分适用于企事业单位所使用的企业资源计划软件采购业务数据接口的设计 研制 管理 购销
+、 、 、
+和应用
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+数据元和交换格式 信息交换 日期和时间表示法
+GB/T7408—2005 (ISO8601:2000,IDT)
+信息技术 数据元素值格式记法
+GB/T18142—2000 (ISO/IEC14957:1996,IDT)
+财经信息技术 企业资源计划软件数据接口 第 部分 公共基础数据
+GB/T32180.1—2015 1 :
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+企业资源计划软件 enterpriseresourceplanningsoftware
+将财务 库存 制造等业务功能集成于一体的应用软件系统
+、 、 。
+32
+.
+数据接口 datainterface
+计算机软件系统之间传送数据 交换信息的接口 以电子文件的形式实现
+、 , 。
+33
+.
+XML文件 extensiblemarkuplanguagefile
+用具有数据描述功能 高度结构性及可验证性的可扩展置标语言描述的数据文件
+、 。
+34
+.
+数据文件 datafile
+用于企业资源计划软件数据交换或处理的文件
+。
+35
+.
+数据元素 dataelement
+用一组属性描述定义 标识 表示和允许值的数据单元
+、 、 。
+注 在本部分中数据元素是企业资源计划软件的数据接口所输出数据的不可分割的基本单位
+: 。
+1
+GB/T321802—2015
+.
+36
+.
+数据结构 datastructure
+企业资源计划软件数据接口所输出数据的内部构成 包含有若干个不同的数据元素
+, 。
+4 数据元素
+41 数据元素的描述规则
+.
+数据元素的描述格式如下
+:
+数据元素的标识符 在本标准中 它是各个数据元素的唯一标识 采用四位数字来标记 其中第
+a) : , , ;
+位表示为数据元素分类号 后三位为流水号 每一部分的第 位按如下规则定义
+1 , ; 1 :
+通用数据
+: 1
+公共基础数据
+: 2
+采购部分
+: 3
+库存部分
+: 4
+销售部分
+: 5
+预算部分
+: 6
+资金部分
+: 7
+如果本部分中出现了本标准之前已经编号的元素则不重复编号
+。
+数据元素的名称 数据元素的中文名称
+b) : ;
+数据元素的说明 数据元素的含义描述
+c) : ;
+数据元素的表示 数据元素值的类型及长度的表示形式 按照 的要求 具
+d) : , GB/T18142—2000 ,
+体表示如下
+:
+表示数字 字母 汉字及其他字符等
+———C 、 、 ;
+n 表示n位字符的固定长度
+———C ;
+n 表示最多为n位字符的可变长度
+———C.. ;
+n 表示最多为n位的整数可计算形式
+———I.. ;
+wd. 表示十进制小数可计算形式 w表示包含小数点前后字符位在内的整个字段最
+———D ,
+多字符位数d表示小数点后的最多字符位数
+, 。
+数据元素的注释 与该数据元素相关的其他说明
+e) : 。
+42 数据元素细目
+.
+标识符
+:3001
+名 称 申请单
+: ID
+说 明 物料采购申请单的唯一标识码
+:
+表 示
+:C..60
+注 释 一般由计算机自动生成 用于系统内部进行数据关联
+: ,
+标识符
+:3002
+名 称 申请单号
+:
+说 明 物料采购申请单的编号
+:
+表 示
+:C..80
+2
+GB/T321802—2015
+.
+注 释 一张申请单使用一个编号 不能重复
+: ,
+标识符
+:3003
+名 称 申请单行
+: ID
+说 明 物料采购申请单行的唯一标识码
+:
+表 示
+:C..60
+注 释 一张申请单可以申请采购多个物料 每一种物料用申请单的一个行信息来描述
+: ,
+标识符
+:3004
+名 称 需求日期
+:
+说 明 采购申请中 申请采购物料要求的到货日期
+: ,
+表 示
+:C8
+注 释 按照 的规定 表示为
+: GB/T7408—2005 , “CCYYMMDD”
+标识符
+:3005
+名 称 申请数量
+:
+说 明 申请采购物料的数量
+:
+表 示
+:D30.10
+注 释
+:
+标识符
+:3006
+名 称 批准数量
+:
+说 明 申请采购物料通过审批后的确认数量
+:
+表 示
+:D30.10
+注 释
+:
+标识符
+:3007
+名 称 申请组织编码
+:
+说 明 对提出物料采购申请的组织单元进行标识的编码
+:
+表 示
+:C..80
+注 释 申请组织可以是一个业务组织 也可以是一个行政组织
+: 、
+标识符
+:3008
+名 称 采购合同
+: ID
+说 明 采购合同的唯一标识码
+:
+表 示
+:C..60
+注 释 一般由计算机自动生成 用于系统内部进行数据关联
+: ,
+标识符
+:3009
+名 称 采购合同号
+:
+说 明 物料采购合同的编号
+:
+3
+GB/T321802—2015
+.
+表 示
+:C..80
+注 释 一张采购合同使用一个编号 不能重复
+: ,
+标识符
+:3010
+名 称 采购合同行
+: ID
+说 明 采购合同行的唯一标识码
+:
+表 示
+:C..60
+注 释 一张采购合同可以采购多个物料 每一种物料用合同的一个行信息来描述
+: ,
+标识符
+:3011
+名 称 采购订单
+: ID
+说 明 采购订单的唯一标识码
+:
+表 示
+:C..60
+注 释 一般由计算机自动生成 用于系统内部进行数据关联
+: ,
+标识符
+:3012
+名 称 采购订单号
+:
+说 明 采购货物合同或单据的编号
+:
+表 示
+:C..80
+注 释 一张采购订单使用一个编号 不能重复
+: ,
+标识符
+:3013
+名 称 采购订单行
+: ID
+说 明 采购订单行的唯一标识码
+:
+表 示
+:C..60
+注 释 一张采购订单可以采购多个物料 每一种物料用订单的一个行信息来描述
+: ,
+标识符
+:3014
+名 称 收货业务组织编码
+:
+说 明 对采购物料接收的业务组织进行标识的唯一编码
+:
+表 示
+:C..80
+注 释 收货业务组织可以是一个库存组织 也可以是一个行政组织
+: ,
+标识符
+:3015
+名 称 结算财务组织编码
+:
+说 明 对负责采购物料资金结算的财务组织进行标识的唯一编码
+:
+表 示
+:C..80
+注 释 结算财务组织可以是采购组织所在的财务组织 也可以是收货业务组织所在的财务组织
+: ,
+标识符
+:3016
+名 称 应付单据
+: ID
+4
+GB/T321802—2015
+.
+说 明 应付单据的唯一标识码
+:
+表 示
+:C..60
+注 释 一般由计算机自动生成 用于系统内部进行数据关联
+: ,
+标识符
+:3017
+名 称 应付单据号
+:
+说 明 应付单据的编号
+:
+表 示
+:C..80
+注 释 一张应付单据使用一个编号 不能重复
+: ,
+标识符
+:3018
+名 称 应付单据类型
+:
+说 明 按应付单据属性分类类型的名称
+:
+表 示
+:C..80
+注 释 例如 采购单 采购费用单 应付借贷项调整单 其他应付单 等
+: :“ ”、“ ”、“ ”、“ ”
+标识符
+:3019
+名 称 应付单据行
+: ID
+说 明 应付单据行的唯一标识码
+:
+表 示
+:C..60
+注 释 一张应付单据可以结算多笔费用 每一笔费用用一个行信息来描述
+: ,
+标识符
+:3020
+名 称 核销日期
+:
+说 明 应付单据与具体收货业务进行核销的日期
+:
+表 示
+:C8
+注 释 按照 的规定 表示为
+: GB/T7408—2005 , “CCYYMMDD”
+标识符
+:3021
+名 称 核销数量
+:
+说 明 依据基本计量单位 对应付单据和入库单中的相同物料进行核销的数量
+: ,
+表 示
+:D30.10
+注 释
+:
+标识符
+:3022
+名 称 本币无税核销金额
+:
+说 明 应付费用分配给入库物料上的本币无税金额
+:
+表 示
+:D30.10
+注 释 例如 运费成本的分摊
+: :
+5
+GB/T321802—2015
+.
+5 接口文件的输出
+51 输出文件的格式
+.
+输出的接口文件应采用 格式 具体格式参见附录 实例参见附录
+XML , A, B。
+52 输出文件的数据结构
+.
+521 概述
+..
+本部分要求输出文件的数据结构按照以下各表格中的规定输出 其中 数据元素标识符 栏中的编
+, “ ”
+号对应本部分及 中 所描述的数据元素标识符
+GB/T32180.1—2015 4.2 。
+522 采购申请信息数据结构
+..
+采购申请信息数据结构见表
+1。
+表1 采购申请信息数据结构
+编号 数据表名 数据元素标识符 数据元素名
+申请单
+3001 ID
+申请单号
+3002
+业务日期
+采购申请单 1018
+01 制单日期
+1019
+状态
+1020
+备注
+1021
+申请单
+3001 ID
+申请单行
+3003 ID
+行号
+1022
+物料
+1001 ID
+采购计量单位
+1007 ID
+需求日期
+3004
+采购申请单明细 申请数量
+02 3005
+批准数量
+3006
+项目
+1016 ID
+供应商
+1009 ID
+采购组织编码
+1004
+申请组织编码
+3007
+行状态
+1023
+523 采购合同信息数据结构
+..
+采购合同信息数据结构见表
+2。
+6
+GB/T321802—2015
+.
+表2 采购合同信息数据结构
+编号 数据表名 数据元素标识符 数据元素名
+采购合同
+3008 ID
+采购合同号
+3009
+合同类型
+1039
+供应商
+1009 ID
+合同开始日期
+1024
+合同结束日期
+1025
+制单日期
+采购合同 1019
+01 采购组织编码
+1004
+业务员
+1010
+币种编码
+1015
+付款条件编码
+1017
+结算方式编码
+1012
+状态
+1020
+备注
+1021
+采购合同
+3008 ID
+采购合同行
+3010 ID
+行号
+1022
+物料
+1001 ID
+物料类别
+2011 ID
+采购计量单位
+1007 ID
+合同数量
+采购合同明细 1026
+02 交货日期
+1035
+不含税单价
+1027
+含税单价
+1028
+税率
+1029
+不含税金额
+1030
+含税金额
+1031
+行状态
+1023
+524 采购订单信息数据结构
+..
+采购订单信息数据结构见表
+3。
+7
+GB/T321802—2015
+.
+表3 采购订单信息数据结构
+编号 数据表名 数据元素标识符 数据元素名
+采购订单
+3011 ID
+采购订单号
+3012
+订单类型
+1038
+业务日期
+1018
+制单日期
+1019
+供应商
+1009 ID
+采购组织编码
+1004
+业务员
+1010
+币种编码
+1015
+汇率
+1037
+付款条件编码
+1017
+结算方式编码
+1012
+状态
+1020
+备注
+1021
+采购订单
+3011 ID
+采购订单行
+3013 ID
+行号
+1022
+物料
+1001 ID
+采购计量单位
+采购订单 1007 ID
+01 订单数量
+1040
+基本单位数量
+1034
+交货日期
+1035
+不含税单价
+1027
+含税单价
+1028
+税率
+1029
+不含税金额
+1030
+含税金额
+1031
+本币不含税金额
+1032
+本币含税金额
+1033
+收货业务组织编码
+3014
+结算财务组织编码
+3015
+项目
+1016 ID
+销售订单号
+1042
+行状态
+1023
+采购合同
+3008 ID
+采购合同行
+3010 ID
+申请单
+3001 ID
+申请单行
+3003 ID
+8
+GB/T321802—2015
+.
+525 应付单据信息数据结构
+..
+应付单据信息数据结构见表
+4。
+表4 应付单据信息数据结构
+编号 数据表名 数据元素标识符 数据元素名
+应付单据
+3016 ID
+应付单据号
+3017
+应付单据类型
+3018
+业务日期
+1018
+制单日期
+1019
+发票号
+1041
+应付单据 供应商
+01 1009 ID
+币种编码
+1015
+汇率
+1037
+付款条件编码
+1017
+结算方式编码
+1012
+状态
+1020
+备注
+1021
+应付单据
+3016 ID
+应付单据行
+3019 ID
+行号
+1022
+物料
+1001 ID
+采购计量单位
+1007 ID
+发票记录数量
+1036
+基本单位数量
+1034
+不含税单价
+应付单据明细 1027
+02 含税单价
+1028
+税率
+1029
+不含税金额
+1030
+含税金额
+1031
+本币不含税金额
+1032
+本币含税金额
+1033
+采购订单
+3011 ID
+采购订单行
+3013 ID
+9
+GB/T321802—2015
+.
+526 应付核销明细信息数据结构
+..
+应付核销明细信息数据结构见表
+5。
+表5 应付核销明细信息数据结构
+编号 数据表名 数据元素标识符 数据元素名
+核销日期
+3020
+物料
+1001 ID
+核销数量
+3021
+本币无税核销金额
+应付核销明细 3022
+01 入库单
+1043 ID
+入库单行
+1044 ID
+应付单据
+3016 ID
+应付单据行
+3019 ID
+53 输出文件的输出说明
+.
+本部分应根据 的数据结构 按照实际存在和要求的数据内容来确定数据文件的输出内容
+5.2 , 。
+54 输出文件的时间要求
+.
+本部分规定的数据文件输出时间要求见表
+6。
+表6 输出文件的时间要求
+分类代码 分类名称 序号 数据表名 数据类型 输出时间要求
+采购申请单 业务信息 按月输出
+采购申请信息 01
+01 采购申请单明细 业务信息 按月输出
+02
+采购合同 业务信息 按月输出
+采购合同信息 03
+02 采购合同明细 业务信息 按月输出
+04
+采购订单 业务信息 按月输出
+采购订单信息 05
+03 采购订单明细 业务信息 按月输出
+06
+应付单据 业务信息 按月输出
+应付单据信息 07
+04 应付单据明细 业务信息 按月输出
+08
+应付核销明细信息 应付核销明细 业务信息 按月输出
+05 09
+6 符合性评价
+61 概述
+.
+声称符合本部分的产品应符合第 章 数据元素 和第 章 接口文件的输出 的要求 均需获得指
+4 “ ” 5 “ ” ,
+定机构的标准符合性证明
+。
+10
+GB/T321802—2015
+.
+62 输出文件的功能
+.
+企业资源计划软件应提供按标准要求输出 数据文件的软件功能 软件功能名称可采用国家
+XML ,
+标准发布号命名
+。
+63 输出的XML文件要求
+.
+企业资源计划软件输出的 文件应符合 语法定义 数据元素应全部符合标准的要求
+XML XML , 。
+11
+GB/T321802—2015
+.
+附 录 A
+资料性附录
+( )
+企业资源计划软件数据接口的XML大纲 Schema
+( )
+A1 采购数据标准元素类型XML大纲 Schema
+. ( )
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+xsschemaxmlnsxs="http www.w3.org2001XMLSchema"xmlns 企业="http sxbw.audit.gov.
+< : : :// / / : ://
+cnAppsDataInterfaceStandard2014EnterpriseXMLSchema"xmlns="http sxbw.audit.gov.cn
+/ / / / :// /
+AppsDataInterfaceStandard2014EnterpriseXMLSchema"targetNamespace="http sxbw.audit.gov.cn
+/ / / :// /
+AppsDataInterfaceStandard2014EnterpriseXMLSchema"elementFormDefault="qualified"attribute-
+/ / /
+FormDefault="unqualified"
+>
+xssimpleTypename="申请单ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="申请单号元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="申请单行ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="需求日期元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xslengthvalue="8"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="申请数量元素类型"
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xstotalDigitsvalue="30"
+< : />
+xsfractionDigitsvalue="10"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="批准数量元素类型"
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xstotalDigitsvalue="30"
+< : />
+12
+GB/T321802—2015
+.
+xsfractionDigitsvalue="10"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="申请组织编码元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购合同ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购合同号元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购合同行ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购订单ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购订单号元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="采购订单行ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="收货业务组织编码元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+13
+GB/T321802—2015
+.
+xssimpleTypename="结算财务组织编码元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="应付单据ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="应付单据号元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="应付单据类型元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="80"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="应付单据行ID元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsmaxLengthvalue="60"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="核销日期元素类型"
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xslengthvalue="8"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="核销数量元素类型"
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xstotalDigitsvalue="30"
+< : />
+xsfractionDigitsvalue="10"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xssimpleTypename="本币无税核销金额元素类型"
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xstotalDigitsvalue="30"
+< : />
+xsfractionDigitsvalue="10"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xsschema
+</ : >
+14
+GB/T321802—2015
+.
+A2 采购数据XML大纲 Schema
+. ( )
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+xsschemaxmlnsxs="http www.w3.org2001XMLSchema"xmlns 企业="http sxbw.audit.gov.
+< : : :// / / : ://
+cnAppsDataInterfaceStandard2014EnterpriseXMLSchema"xmlns="http sxbw.audit.gov.cnAppsDa-
+/ / / / :// /
+taInterfaceStandard2014EnterpriseXMLSchema"targetNamespace="http sxbw.audit.gov.cnAppsDa-
+/ / / :// /
+taInterfaceStandard2014EnterpriseXMLSchema"elementFormDefault="qualified"attributeFormDe-
+/ / /
+fault="unqualified"
+>
+xsincludeschemaLocation="通用数据标准元素类型.xsd"
+< : />
+xsincludeschemaLocation="采购数据标准元素类型.xsd"
+< : />
+xsincludeschemaLocation="公共基础数据标准元素类型.xsd"
+< : />
+xselementname="采购"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购申请信息"minOccurs="0"
+< : />
+xselementref="采购合同信息"minOccurs="0"
+< : />
+xselementref="采购订单信息"
+< : />
+xselementref="应付单据信息"
+< : />
+xselementref="应付核销明细信息"minOccurs="0"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购申请信息"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购申请单档案"minOccurs="0"
+< : />
+xselementref="采购申请单明细档案"minOccurs="0"
+< : />
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="S01"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购申请单档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购申请单"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购申请单明细档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购申请单明细"maxOccurs="unbounded"
+< : />
+15
+GB/T321802—2015
+.
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同信息"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购合同档案"minOccurs="0"
+< : />
+xselementref="采购合同明细档案"minOccurs="0"
+< : />
+xssequence
+</ : >
+xsattributename="locID"use="optional"fixed="S02"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购合同"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同明细档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购合同明细"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单信息"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购订单档案"
+< : />
+xselementref="采购订单明细档案"
+< : />
+xssequence
+</ : >
+xsattributename="locID"use="optional"fixed="S03"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购订单"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单明细档案"
+< : >
+16
+GB/T321802—2015
+.
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="采购订单明细"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据信息"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="应付单据档案"
+< : />
+xselementref="应付单据明细档案"
+< : />
+xssequence
+</ : >
+xsattributename="locID"use="optional"fixed="S04"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="应付单据"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据明细档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="应付单据明细"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付核销明细信息"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="应付核销明细档案"minOccurs="0"
+< : />
+xssequence
+</ : >
+xsattributename="locID"use="optional"fixed="S05"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付核销明细档案"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementref="应付核销明细"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xscomplexType
+</ : >
+17
+GB/T321802—2015
+.
+xselement
+</ : >
+xselementname="采购申请单"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="申请单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="申请单号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3002"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="业务日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="业务日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1018"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="制单日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="制单日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1019"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+18
+GB/T321802—2015
+.
+xsextensionbase="状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1020"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="备注"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="备注元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1021"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T01"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购申请单明细"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="申请单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="申请单行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3003"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+19
+GB/T321802—2015
+.
+xsextensionbase="行号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1022"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购计量单位ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购计量单位ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1007"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="需求日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="需求日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3004"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="申请数量"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3005"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="批准数量"minOccurs="0"
+< : >
+20
+GB/T321802—2015
+.
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="批准数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3006"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="项目ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="项目ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1016"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="供应商ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="供应商ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1009"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购组织编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1004"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="申请组织编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3007"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+21
+GB/T321802—2015
+.
+xselement
+</ : >
+xselementname="行状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1023"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T02"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="采购合同ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3008"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3009"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="合同类型"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="合同类型元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1039"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+22
+GB/T321802—2015
+.
+xselement
+</ : >
+xselementname="供应商ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="供应商ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1009"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="合同开始日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="合同开始日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1024"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="合同结束日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="合同结束日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1025"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="制单日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="制单日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1019"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购组织编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1004"
+< : />
+xsextension
+</ : >
+23
+GB/T321802—2015
+.
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="业务员"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="业务员元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1010"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="币种编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="币种编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1015"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="付款条件编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="付款条件编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1017"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="结算方式编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="结算方式编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1012"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="状态元素类型"
+< : >
+24
+GB/T321802—2015
+.
+xsattributeref="locID"use="optional"fixed="1020"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="备注"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="备注元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1021"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T03"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同明细"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="采购合同ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3008"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3010"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行号元素类型"
+< : >
+25
+GB/T321802—2015
+.
+xsattributeref="locID"use="optional"fixed="1022"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料类别ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料类别ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="2011"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购计量单位ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购计量单位ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1007"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="合同数量"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="合同数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1026"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="交货日期"minOccurs="0"
+< : >
+xscomplexType
+< : >
+26
+GB/T321802—2015
+.
+xssimpleContent
+< : >
+xsextensionbase="交货日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1035"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="不含税单价"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1027"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="含税单价"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1028"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="税率"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="税率元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1029"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="不含税金额"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1030"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+27
+GB/T321802—2015
+.
+xselementname="含税金额"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1031"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1023"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T04"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="采购订单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3011"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3012"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+28
+GB/T321802—2015
+.
+xselementname="订单类型"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="订单类型元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1038"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="业务日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="业务日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1018"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="制单日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="制单日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1019"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="供应商ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="供应商ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1009"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购组织编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1004"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+29
+GB/T321802—2015
+.
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="业务员"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="业务员元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1010"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="币种编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="币种编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1015"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="汇率"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="汇率元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1037"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="付款条件编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="付款条件编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1017"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="结算方式编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="结算方式编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1012"
+< : />
+30
+GB/T321802—2015
+.
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1020"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="备注"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="备注元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1021"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T05"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单明细"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="采购订单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3011"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3013"
+< : />
+31
+GB/T321802—2015
+.
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1022"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购计量单位ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购计量单位ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1007"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="订单数量"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="订单数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1040"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="基本单位数量"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+32
+GB/T321802—2015
+.
+xsextensionbase="基本单位数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1034"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="交货日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="交货日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1035"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="不含税单价"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1027"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="含税单价"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1028"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="税率"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="税率元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1029"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="不含税金额"
+< : >
+33
+GB/T321802—2015
+.
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1030"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1031"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="本币不含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="本币不含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1032"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="本币含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="本币含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1033"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采收货业务组织编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="收货业务组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3014"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+34
+GB/T321802—2015
+.
+xselement
+</ : >
+xselementname="结算财务组织编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="结算财务组织编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3015"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="项目ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="项目ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1016"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="销售订单号"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="销售订单号元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1042"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1023"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3008"
+< : />
+xsextension
+</ : >
+35
+GB/T321802—2015
+.
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购合同行ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购合同行ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3010"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementref="采购申请单行关联"minOccurs="0"maxOccurs="unbounded"
+< : />
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T06"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购申请单行关联"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="申请单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="申请单行ID"maxOccurs="unbounded"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="申请单行ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3003"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据"
+< : >
+xscomplexType
+< : >
+36
+GB/T321802—2015
+.
+xssequence
+< : >
+xselementname="应付单据ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3016"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3017"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据类型"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据类型元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3018"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="业务日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="业务日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1018"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="制单日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="制单日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1019"
+< : />
+xsextension
+</ : >
+37
+GB/T321802—2015
+.
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="发票号"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="发票号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1041"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="供应商ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="供应商ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1009"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="币种编码"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="币种编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1015"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="汇率"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="汇率元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1037"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="付款条件编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="付款条件编码元素类型"
+< : >
+38
+GB/T321802—2015
+.
+xsattributeref="locID"use="optional"fixed="1017"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="结算方式编码"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="结算方式编码元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1012"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="状态"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="状态元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1020"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="备注"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="备注元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="1021"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T07"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据明细"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="应付单据ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据ID元素类型"
+< : >
+39
+GB/T321802—2015
+.
+xsattributeref="locID"use="optional"fixed="3016"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3019"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="行号"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="行号元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1022"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购计量单位ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购计量单位ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1007"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="发票记录数量"minOccurs="0"
+< : >
+xscomplexType
+< : >
+40
+GB/T321802—2015
+.
+xssimpleContent
+< : >
+xsextensionbase="发票记录数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1036"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="基本单位数量"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="基本单位数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1034"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="不含税单价"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1027"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="含税单价"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税单价元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1028"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="税率"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="税率元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1029"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+41
+GB/T321802—2015
+.
+xselementname="不含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="不含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1030"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1031"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="本币不含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="本币不含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1032"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="本币含税金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="本币含税金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1033"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3011"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+42
+GB/T321802—2015
+.
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="采购订单行ID"minOccurs="0"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="采购订单行ID元素类型"
+< : >
+xsattributename="locID"use="optional"fixed="3013"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T08"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付核销明细"
+< : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="核销日期"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="核销日期元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3020"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="物料ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="物料ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1001"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="核销数量"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="核销数量元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3021"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+43
+GB/T321802—2015
+.
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="本币无税核销金额"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="本币无税核销金额元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3022"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="入库单ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="入库单ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1043"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="入库单行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="入库单行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="1044"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3016"
+< : />
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="应付单据行ID"
+< : >
+xscomplexType
+< : >
+xssimpleContent
+< : >
+xsextensionbase="应付单据行ID元素类型"
+< : >
+xsattributeref="locID"use="optional"fixed="3019"
+< : />
+44
+GB/T321802—2015
+.
+xsextension
+</ : >
+xssimpleContent
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributeref="locID"use="optional"fixed="T09"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+45
+GB/T321802—2015
+.
+附 录 B
+资料性附录
+( )
+企业资源计划软件数据接口的XML实例
+采购数据 实例如下
+XML :
+xmlversion="1.0"encoding="UTF-8"
+<? ?>
+采购 xsischemaLocation="http sxbw.audit.gov.cnAppsDataInterfaceStandard2014Enter-
+< : :// / / /
+priseXMLSchema采购数据.xsd"xmlns 企业="http sxbw.audit.gov.cnAppsDataInterfaceStan-
+/ : :// /
+dard2014EnterpriseXMLSchema"xmlns="http sxbw.audit.gov.cnAppsDataInterfaceStandard
+/ / / :// / /
+2014EnterpriseXMLSchema"xmlnsxsi="http www.w3.org2001XMLSchema-instance"
+/ / : :// / / >
+采购申请信息
+< >
+采购申请单档案
+< >
+采购申请单
+< >
+申请单IDSQ-20130601-093040-001 申请单ID
+< > </ >
+申请单号 SQ-20130601-0920-000001 申请单号
+< > </ >
+业务日期 20130601 业务日期
+< > </ >
+制单日期 20130601 制单日期
+< > </ >
+状态 审核 状态
+< > </ >
+备注 重要 备注
+< > </ >
+采购申请单
+</ >
+采购申请单
+< >
+申请单IDSQ-20130601-093040-002 申请单ID
+< > </ >
+申请单号 SQ-20130601-0920-000002 申请单号
+< > </ >
+业务日期 20130602 业务日期
+< > </ >
+制单日期 20130602 制单日期
+< > </ >
+状态 提交 状态
+< > </ >
+备注 需要审批 备注
+< > </ >
+采购申请单
+</ >
+采购申请单
+< >
+申请单IDSQ-20130601-093040-003 申请单ID
+< > </ >
+申请单号 SQ-20130601-0920-000003 申请单号
+< > </ >
+业务日期 20130604 业务日期
+< > </ >
+制单日期 20130604 制单日期
+< > </ >
+状态 审核 状态
+< > </ >
+备注
+< />
+采购申请单
+</ >
+采购申请单
+< >
+申请单IDSQ-20130601-093040-004 申请单ID
+< > </ >
+申请单号 SQ-20130601-0920-000004 申请单号
+< > </ >
+业务日期 20130605 业务日期
+< > </ >
+制单日期 20130605 制单日期
+< > </ >
+状态 审核 状态
+< > </ >
+46
+GB/T321802—2015
+.
+备注
+< />
+采购申请单
+</ >
+采购申请单档案
+</ >
+采购申请单明细档案
+< >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-001 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-001-H001 申请单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+需求日期 20130605 需求日期
+< > </ >
+申请数量 20000 申请数量
+< > </ >
+批准数量 20000 批准数量
+< > </ >
+项目IDITEM-20120502-0001 项目ID
+< > </ >
+供应商IDM01-PP-00001 供应商ID
+< > </ >
+采购组织编码 P01-A0001 采购组织编码
+< > </ >
+申请组织编码 S02-B0001 申请组织编码
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-001 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-001-H002 申请单行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+需求日期 20130605 需求日期
+< > </ >
+申请数量 30000 申请数量
+< > </ >
+批准数量 30000 批准数量
+< > </ >
+项目IDITEM-20120502-0001 项目ID
+< > </ >
+供应商IDM01-PP-00001 供应商ID
+< > </ >
+采购组织编码 P01-A0001 采购组织编码
+< > </ >
+申请组织编码 S02-B0001 申请组织编码
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-001 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-001-H003 申请单行ID
+< > </ >
+行号 003 行号
+< > </ >
+物料IDSW-YCL-BC-A000003 物料ID
+< > </ >
+采购计量单位ID300-20000 采购计量单位ID
+< > </ >
+需求日期 20130801 需求日期
+< > </ >
+申请数量 140 申请数量
+< > </ >
+批准数量 140 批准数量
+< > </ >
+47
+GB/T321802—2015
+.
+项目IDITEM-20120502-0001 项目ID
+< > </ >
+供应商IDM01-PP-00001 供应商ID
+< > </ >
+采购组织编码 P01-A0001 采购组织编码
+< > </ >
+申请组织编码 S02-B0001 申请组织编码
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-002 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-W001 申请单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-WJ-A000013 物料ID
+< > </ >
+采购计量单位ID400-50011 采购计量单位ID
+< > </ >
+需求日期 20130701 需求日期
+< > </ >
+申请数量 349000 申请数量
+< > </ >
+批准数量 349000 批准数量
+< > </ >
+项目ID 项目ID
+< ></ >
+供应商IDM01-PP-00002 供应商ID
+< > </ >
+采购组织编码 P01-A0005 采购组织编码
+< > </ >
+申请组织编码 S02-B0001 申请组织编码
+< > </ >
+行状态 提交 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-002 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-W002 申请单行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-WJ-A000015 物料ID
+< > </ >
+采购计量单位ID400-50012 采购计量单位ID
+< > </ >
+需求日期 20130701 需求日期
+< > </ >
+申请数量 1500 申请数量
+< > </ >
+批准数量 1500 批准数量
+< > </ >
+项目ID 项目ID
+< ></ >
+供应商IDM01-PP-00002 供应商ID
+< > </ >
+采购组织编码 P01-C1002 采购组织编码
+< > </ >
+申请组织编码 S02-B0001 申请组织编码
+< > </ >
+行状态 提交 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-003 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-003-001 申请单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-01-A000010 物料ID
+< > </ >
+采购计量单位ID400-50010 采购计量单位ID
+< > </ >
+需求日期 20130620 需求日期
+< > </ >
+48
+GB/T321802—2015
+.
+申请数量 2.0005 申请数量
+< > </ >
+批准数量 2.0005 批准数量
+< > </ >
+项目ID 项目ID
+< ></ >
+供应商IDM01-P0-00001 供应商ID
+< > </ >
+采购组织编码 P01-A0005 采购组织编码
+< > </ >
+申请组织编码 S02-B0010 申请组织编码
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细
+< >
+申请单IDSQ-20130601-093040-004 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-004-001 申请单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-02-A000018 物料ID
+< > </ >
+采购计量单位ID400-50019 采购计量单位ID
+< > </ >
+需求日期 20130625 需求日期
+< > </ >
+申请数量 212.0005 申请数量
+< > </ >
+批准数量 212.0005 批准数量
+< > </ >
+项目ID 项目ID
+< ></ >
+供应商IDM01-L0-00001 供应商ID
+< > </ >
+采购组织编码 P01-B0003 采购组织编码
+< > </ >
+申请组织编码 S02-B0019 申请组织编码
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购申请单明细
+</ >
+采购申请单明细档案
+</ >
+采购申请信息
+</ >
+采购合同信息
+< >
+采购合同档案
+< >
+采购合同
+< >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同号 HT-20130602-P-00001 采购合同号
+< > </ >
+合同类型 普通合同 合同类型
+< > </ >
+供应商IDP-20130520-0001 供应商ID
+< > </ >
+合同开始日期 20121102 合同开始日期
+< > </ >
+合同结束日期 20130520 合同结束日期
+< > </ >
+制单日期 20121103 制单日期
+< > </ >
+采购组织编码 C01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 按时交货 备注
+< > </ >
+采购合同
+</ >
+49
+GB/T321802—2015
+.
+采购合同
+< >
+采购合同IDHT-20130602-000002 采购合同ID
+< > </ >
+采购合同号 HT-20130602-P-00002 采购合同号
+< > </ >
+合同类型 普通合同 合同类型
+< > </ >
+供应商IDP-20130520-0001 供应商ID
+< > </ >
+合同开始日期 20131102 合同开始日期
+< > </ >
+合同结束日期 20130510 合同结束日期
+< > </ >
+制单日期 20131103 制单日期
+< > </ >
+采购组织编码 C01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 按时交货 备注
+< > </ >
+采购合同
+</ >
+采购合同
+< >
+采购合同IDHT-20130603-000001 采购合同ID
+< > </ >
+采购合同号 HT-20130603-P-00001 采购合同号
+< > </ >
+合同类型 协议合同 合同类型
+< > </ >
+供应商IDP-20130520-0002 供应商ID
+< > </ >
+合同开始日期 20121104 合同开始日期
+< > </ >
+合同结束日期 20130320 合同结束日期
+< > </ >
+制单日期 20121103 制单日期
+< > </ >
+采购组织编码 C01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 USD 币种编码
+< > </ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 按时交货 备注
+< > </ >
+采购合同
+</ >
+采购合同档案
+</ >
+采购合同明细档案
+< >
+采购合同明细
+< >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000001-001 采购合同行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+合同数量 12000 合同数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 10.12 不含税单价
+< > </ >
+50
+GB/T321802—2015
+.
+含税单价 10.56 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 123400 不含税金额
+< > </ >
+含税金额 124500 含税金额
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同明细
+</ >
+采购合同明细
+< >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000001-002 采购合同行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+合同数量 12000 合同数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 100 不含税单价
+< > </ >
+含税单价 117 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1200000 不含税金额
+< > </ >
+含税金额 1201170 含税金额
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同明细
+</ >
+采购合同明细
+< >
+采购合同IDHT-20130602-000002 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000002-001 采购合同行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+合同数量 12000 合同数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 100 不含税单价
+< > </ >
+含税单价 117 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1200000 不含税金额
+< > </ >
+含税金额 1201170 含税金额
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同明细
+</ >
+采购合同明细
+< >
+采购合同IDHT-20130603-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130603-000001-001 采购合同行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000005 物料ID
+< > </ >
+采购计量单位ID100-10012 采购计量单位ID
+< > </ >
+合同数量 1200 合同数量
+< > </ >
+51
+GB/T321802—2015
+.
+交货日期 20130203 交货日期
+< > </ >
+不含税单价 100 不含税单价
+< > </ >
+含税单价 117 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 120000 不含税金额
+< > </ >
+含税金额 120117 含税金额
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同明细
+</ >
+采购合同明细档案
+</ >
+采购合同信息
+</ >
+采购订单信息
+< >
+采购订单档案
+< >
+采购订单
+< >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单号 DD-20130602-D-000001 采购订单号
+< > </ >
+订单类型 普通采购 订单类型
+< > </ >
+业务日期 20130601 业务日期
+< > </ >
+制单日期 20130601 制单日期
+< > </ >
+供应商IDP-20130520-0001 供应商ID
+< > </ >
+采购组织编码 C01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 USD 币种编码
+< > </ >
+汇率 10 汇率
+< > </ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 按时交货 备注
+< > </ >
+采购订单
+</ >
+采购订单
+< >
+采购订单IDDD-20130602-000002 采购订单ID
+< > </ >
+采购订单号 DD-20130602-D-000002 采购订单号
+< > </ >
+订单类型 直运采购 订单类型
+< > </ >
+业务日期 20130601 业务日期
+< > </ >
+制单日期 20130601 制单日期
+< > </ >
+供应商IDP-20130520-0001 供应商ID
+< > </ >
+采购组织编码 C01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+汇率 1 汇率
+< ></ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 关闭 状态
+< > </ >
+备注 该订单已经执行完毕 备注
+< > 。</ >
+52
+GB/T321802—2015
+.
+采购订单
+</ >
+采购订单
+< >
+采购订单IDDD-20130602-000003 采购订单ID
+< > </ >
+采购订单号 DD-20130602-D-000003 采购订单号
+< > </ >
+订单类型 普通委外 订单类型
+< > </ >
+业务日期 20130601 业务日期
+< > </ >
+制单日期 20130601 制单日期
+< > </ >
+供应商IDP-20130520-0001 供应商ID
+< > </ >
+采购组织编码 B01-00001 采购组织编码
+< > </ >
+业务员 某某 业务员
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+汇率 1 汇率
+< ></ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 冻结 状态
+< > </ >
+备注 供应商供应物料的质量原因 从20130606日开始执行冻结 等待质量改造
+< > , , 。
+依据改造情况进行后续处理 备注
+。</ >
+采购订单
+</ >
+采购订单档案
+</ >
+采购订单明细档案
+< >
+采购订单明细
+< >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+订单数量 30000000 订单数量
+< > </ >
+基本单位数量 3000000 基本单位数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 100 不含税单价
+< > </ >
+含税单价 117 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 3000000000 不含税金额
+< > </ >
+含税金额 3510000000 含税金额
+< > </ >
+本币不含税金额 30000000000 本币不含税金额
+< > </ >
+本币含税金额 35100000000 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00001 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00001 结算财务组织编码
+< > </ >
+项目ID 项目ID
+< ></ >
+销售订单号 20120301-001 销售订单号
+< > </ >
+行状态 关闭 行状态
+< > </ >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000001-001 采购合同行ID
+< > </ >
+53
+GB/T321802—2015
+.
+采购申请单行关联
+< >
+申请单ID 申请单ID
+< ></ >
+申请单行ID 申请单行ID
+< ></ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细
+< >
+采购订单IDDD-20130602-000002 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000002-001 采购订单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10002 采购计量单位ID
+< > </ >
+订单数量 7009000 订单数量
+< > </ >
+基本单位数量 7009000 基本单位数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 134.3448900034 不含税单价
+< > </ >
+含税单价 157.1835213 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 941624408.792951 不含税金额
+< > </ >
+含税金额 1101700558.28775 含税金额
+< > </ >
+本币不含税金额 941624408.792951 本币不含税金额
+< > </ >
+本币含税金额 1101700558.28775 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00001 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00001 结算财务组织编码
+< > </ >
+项目ID 项目ID
+< ></ >
+销售订单号 20120301-001 销售订单号
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000001-001 采购合同行ID
+< > </ >
+采购申请单行关联
+< >
+申请单ID 申请单ID
+< ></ >
+申请单行ID 申请单行ID
+< >></ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细
+< >
+采购订单IDDD-20130602-000002 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000002-002 采购订单行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10003 采购计量单位ID
+< > </ >
+订单数量 70000 订单数量
+< > </ >
+基本单位数量 300 基本单位数量
+< > </ >
+交货日期 20130103 交货日期
+< > </ >
+不含税单价 1500.3448900034 不含税单价
+< > </ >
+54
+GB/T321802—2015
+.
+含税单价 1755.403521 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 105024142.300238 不含税金额
+< > </ >
+含税金额 122878246.491278 含税金额
+< > </ >
+本币不含税金额 105024142.300238 本币不含税金额
+< > </ >
+本币含税金额 122878246.491278 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00001 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00001 结算财务组织编码
+< > </ >
+项目ID 项目ID
+< ></ >
+销售订单号 20120301-001 销售订单号
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同IDHT-20130602-000001 采购合同ID
+< > </ >
+采购合同行IDHT-20130602-000001-001 采购合同行ID
+< > </ >
+采购申请单行关联
+< >
+申请单ID 申请单ID
+< ></ >
+申请单行ID 申请单行ID
+< ></ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细
+< >
+采购订单IDDD-20130602-000003 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000003-001 采购订单行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10003 采购计量单位ID
+< > </ >
+订单数量 130 订单数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+交货日期 20130203 交货日期
+< > </ >
+不含税单价 334.3448900034 不含税单价
+< > </ >
+含税单价 384.3448906777 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 33434.49 不含税金额
+< > </ >
+含税金额 43434.49 含税金额
+< > </ >
+本币不含税金额 33434.49 本币不含税金额
+< > </ >
+本币含税金额 43434.49 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00001 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00001 结算财务组织编码
+< > </ >
+项目ID 项目ID
+< ></ >
+销售订单号 20120301-001 销售订单号
+< > </ >
+行状态 冻结 行状态
+< > </ >
+采购合同ID 采购合同ID
+< ></ >
+采购合同行ID 采购合同行ID
+< ></ >
+采购申请单行关联
+< >
+申请单IDSQ-20130601-093040-001 申请单ID
+< > </ >
+55
+GB/T321802—2015
+.
+申请单行IDSQ-20130601-093040-001-H001 申请单行ID
+< > </ >
+申请单行IDSQ-20130601-093040-001-H002 申请单行ID
+< > </ >
+采购申请单行关联
+</ >
+采购申请单行关联
+< >
+申请单IDSQ-20130601-093040-002 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-H001 申请单行ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-H002 申请单行ID
+< > </ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细
+< >
+采购订单IDDD-20130602-000003 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000003-002 采购订单行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000005 物料ID
+< > </ >
+采购计量单位ID100-10002 采购计量单位ID
+< > </ >
+订单数量 1000 订单数量
+< > </ >
+基本单位数量 1000 基本单位数量
+< > </ >
+交货日期 20130104 交货日期
+< > </ >
+不含税单价 120.1003421288 不含税单价
+< > </ >
+含税单价 134.3448900034 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 120100.34 不含税金额
+< > </ >
+含税金额 117000.45 含税金额
+< > </ >
+本币不含税金额 120100.34 本币不含税金额
+< > </ >
+本币含税金额 117000.45 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00002 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00002 结算财务组织编码
+< > </ >
+项目ID P01-20130502-001 项目ID
+< > </ >
+销售订单号 20120301-002 销售订单号
+< > </ >
+行状态 提交 行状态
+< > </ >
+采购合同ID 采购合同ID
+< ></ >
+采购合同行ID 采购合同行ID
+< ></ >
+采购申请单行关联
+< >
+申请单IDSQ-20130601-093040-002 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-W001 申请单行ID
+< > </ >
+申请单行IDSQ-20130601-093040-002-W002 申请单行ID
+< > </ >
+采购申请单行关联
+</ >
+采购申请单行关联
+< >
+申请单IDSQ-20130601-093040-003 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-003-W001 申请单行ID
+< > </ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细
+< >
+56
+GB/T321802—2015
+.
+采购订单IDDD-20130602-000003 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000003-003 采购订单行ID
+< > </ >
+行号 003 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10001 采购计量单位ID
+< > </ >
+订单数量 1000 订单数量
+< > </ >
+基本单位数量 1000 基本单位数量
+< > </ >
+交货日期 20130104 交货日期
+< > </ >
+不含税单价 100.2004778 不含税单价
+< > </ >
+含税单价 117.3450078 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 100200.48 不含税金额
+< > </ >
+含税金额 117000.76 含税金额
+< > </ >
+本币不含税金额 100200.48 本币不含税金额
+< > </ >
+本币含税金额 117000.76 本币含税金额
+< > </ >
+采收货业务组织编码 C01-00002 采收货业务组织编码
+< > </ >
+结算财务组织编码 C01-00002 结算财务组织编码
+< > </ >
+项目ID P01-20130102-102 项目ID
+< > </ >
+销售订单号 20120301-002 销售订单号
+< > </ >
+行状态 审核 行状态
+< > </ >
+采购合同ID 采购合同ID
+< ></ >
+采购合同行ID 采购合同行ID
+< ></ >
+采购申请单行关联
+< >
+申请单IDSQ-20130601-093040-003 申请单ID
+< > </ >
+申请单行IDSQ-20130601-093040-003-001 申请单行ID
+< > </ >
+采购申请单行关联
+</ >
+采购订单明细
+</ >
+采购订单明细档案
+</ >
+采购订单信息
+</ >
+应付单据信息
+< >
+应付单据档案
+< >
+应付单据
+< >
+应付单据IDYFDJU-20130402-00001 应付单据ID
+< > </ >
+应付单据号 YFDJU-20130402-00001-001 应付单据号
+< > </ >
+应付单据类型 采购费用单 应付单据类型
+< > </ >
+业务日期 20130103 业务日期
+< > </ >
+制单日期 20130103 制单日期
+< > </ >
+发票号 223477893003 发票号
+< > </ >
+供应商IDP-20130520-0002 供应商ID
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+汇率 1 汇率
+< ></ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+57
+GB/T321802—2015
+.
+状态 审核 状态
+< > </ >
+备注 发生的采购运输费用 需要按照重量在物料之间进行费用的分摊 分摊差额在
+< > , ,
+最后一个物料上进行平衡 备注
+。</ >
+应付单据
+</ >
+应付单据
+< >
+应付单据IDYFDJU-20130402-00002 应付单据ID
+< > </ >
+应付单据号 YFDJU-20130402-00002-001 应付单据号
+< > </ >
+应付单据类型 应付借贷项调整单 应付单据类型
+< > </ >
+业务日期 20130103 业务日期
+< > </ >
+制单日期 20130103 制单日期
+< > </ >
+发票号 223444569002 发票号
+< > </ >
+供应商IDP-20130520-0002 供应商ID
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+汇率 1 汇率
+< ></ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 备注
+< ></ >
+应付单据
+</ >
+应付单据
+< >
+应付单据IDYFDJU-20130402-00003 应付单据ID
+< > </ >
+应付单据号 YFDJU-20130402-00002-001 应付单据号
+< > </ >
+应付单据类型 采购正式发票 应付单据类型
+< > </ >
+业务日期 20130103 业务日期
+< > </ >
+制单日期 20130103 制单日期
+< > </ >
+发票号 223444569002 发票号
+< > </ >
+供应商IDP-20130520-0002 供应商ID
+< > </ >
+币种编码 RMB 币种编码
+< > </ >
+汇率 1 汇率
+< ></ >
+付款条件编码 F-001 付款条件编码
+< > </ >
+结算方式编码 J-001 结算方式编码
+< > </ >
+状态 审核 状态
+< > </ >
+备注 该发票中的物料和金额来自于多张入库单 需要对多张入库单进行核销
+< > 。 。
+备注
+</ >
+应付单据
+</ >
+应付单据档案
+</ >
+应付单据明细档案
+< >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00001 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00001-001 应付单据行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+58
+GB/T321802—2015
+.
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00001 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00001-002 应付单据行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00001 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00001-002 应付单据行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+59
+GB/T321802—2015
+.
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00002 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00002-001 应付单据行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000003 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00002 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00002-002 应付单据行ID
+< > </ >
+行号 002 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细
+< >
+应付单据IDYFDJU-20130402-00003 应付单据ID
+< > </ >
+60
+GB/T321802—2015
+.
+应付单据行IDYFDJU-20130402-00003-001 应付单据行ID
+< > </ >
+行号 001 行号
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+采购计量单位ID100-10000 采购计量单位ID
+< > </ >
+发票记录数量 100 发票记录数量
+< > </ >
+基本单位数量 100 基本单位数量
+< > </ >
+不含税单价 10 不含税单价
+< > </ >
+含税单价 11.7 含税单价
+< > </ >
+税率 0.17 税率
+< > </ >
+不含税金额 1000 不含税金额
+< > </ >
+含税金额 1170 含税金额
+< > </ >
+本币不含税金额 1000 本币不含税金额
+< > </ >
+本币含税金额 1170 本币含税金额
+< > </ >
+采购订单IDDD-20130602-000001 采购订单ID
+< > </ >
+采购订单行IDDD-20130602-000001-001 采购订单行ID
+< > </ >
+应付单据明细
+</ >
+应付单据明细档案
+</ >
+应付单据信息
+</ >
+应付核销明细信息
+< >
+应付核销明细档案
+< >
+应付核销明细
+< >
+核销日期 20130504 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000001 物料ID
+< > </ >
+核销数量 30 核销数量
+< > </ >
+本币无税核销金额 3000 本币无税核销金额
+< > </ >
+入库单IDRK-000001 入库单ID
+< > </ >
+入库单行IDRK-000001-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00001 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00001-001 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细
+< >
+核销日期 20130504 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000002 物料ID
+< > </ >
+核销数量 30.1234 核销数量
+< > </ >
+本币无税核销金额 301234.45 本币无税核销金额
+< > </ >
+入库单IDRK-000002 入库单ID
+< > </ >
+入库单行IDRK-000002-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00002 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00002-001 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细
+< >
+核销日期 20130505 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000003 物料ID
+< > </ >
+61
+GB/T321802—2015
+.
+核销数量 30.123456 核销数量
+< > </ >
+本币无税核销金额 3012899.45 本币无税核销金额
+< > </ >
+入库单IDRK-000003 入库单ID
+< > </ >
+入库单行IDRK-000003-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00003 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00003-002 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细
+< >
+核销日期 20130505 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000003 物料ID
+< > </ >
+核销数量 1200 核销数量
+< > </ >
+本币无税核销金额 120000.24 本币无税核销金额
+< > </ >
+入库单IDRK-000004 入库单ID
+< > </ >
+入库单行IDRK-000004-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00004 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00004-002 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细
+< >
+核销日期 20130510 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000004 物料ID
+< > </ >
+核销数量 210 核销数量
+< > </ >
+本币无税核销金额 2100 本币无税核销金额
+< > </ >
+入库单IDRK-000005 入库单ID
+< > </ >
+入库单行IDRK-000005-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00005 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00005-001 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细
+< >
+核销日期 20130510 核销日期
+< > </ >
+物料IDSW-YCL-BC-A000004 物料ID
+< > </ >
+核销数量 210 核销数量
+< > </ >
+本币无税核销金额 2100 本币无税核销金额
+< > </ >
+入库单IDRK-000005 入库单ID
+< > </ >
+入库单行IDRK-000005-0001 入库单行ID
+< > </ >
+应付单据IDYFDJU-20130402-00005 应付单据ID
+< > </ >
+应付单据行IDYFDJU-20130402-00005-002 应付单据行ID
+< > </ >
+应付核销明细
+</ >
+应付核销明细档案
+</ >
+应付核销明细信息
+</ >
+采购
+</ >
+62
+GB/T321802—2015
+.
+参 考 文 献
+财经信息技术 会计核算软件数据接口 第 部分 企业
+[1] GB/T24589.1—2010 1 :
+企业资源计划 第 部分 术语
+[2] GB/T25109.1—2010 1 :ERP
+企业资源计划 第 部分 基础数据
+[3] GB/T25109.2—2010 2 :ERP
+企业资源计划 第 部分 功能构件规范
+[4] GB/T25109.3—2010 3 :ERP
+企业会计准则 年 月 日中华人民共和国财政部令第 号
+[5] (2006 2 15 33 )
+企业财务通则 年 月 日中华人民共和国财政部令第 号
+[6] (2006 12 4 41 )
+企业会计准则 基本准则 年 月 日根据 财政部关于修改 企业会计准则 基
+[7] ——— (2014 7 23 《 < ———
+本准则 的决定 修改
+> 》 )
+环境下的财务收支审计指南 编写组 环境下的财务收支审计指南 上 下 北京
+[8] ERP .ERP ( / ). :
+中国时代经济出版社 年 月 日
+,2013 11 1 .

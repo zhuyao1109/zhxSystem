@@ -1,0 +1,4415 @@
+ICS3524060
+. .
+CCSA10
+中 华 人 民 共 和 国 国 家 标 准
+GB/T176991—2024
+.
+代替GB/T17699—2014
+行政 商业和运输业电子数据交换
+、
+第 部分 数据元目录
+1
+:
+ElectronicdatainterchangeforadministrationcommerceandtransportEDIFACT —
+, ( )
+Part1Dataelementdirectory
+:
+2024-05-28发布 2024-09-01实施
+国 家 市 场 监 督 管 理 总 局
+发 布
+国 家 标 准 化 管 理 委 员 会
+GB/T176991—2024
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+引言
+………………………………………………………………………………………………………… Ⅳ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+数据元描述
+4 ……………………………………………………………………………………………… 1
+数据元的适用范围
+4.1 ………………………………………………………………………………… 1
+数据元描述属性
+4.2 …………………………………………………………………………………… 2
+数据元标识符
+4.3 ……………………………………………………………………………………… 2
+数据元目录
+5 ……………………………………………………………………………………………… 2
+参考文献
+…………………………………………………………………………………………………… 64
+Ⅰ
+GB/T176991—2024
+.
+前 言
+本文件按照 标准化工作导则 第 部分 标准化文件的结构和起草规则 的规定
+GB/T1.1—2020《 1 : 》
+起草
+。
+本文件是 行政 商业和运输业电子数据交换 的第 部分 已经发布了
+GB/T17699《 、 》 1 。GB/T17699
+以下部分
+:
+第 部分 数据元目录
+——— 1 : ;
+第 部分 复合数据元目录
+——— 2 : ;
+第 部分 段目录
+——— 3 : 。
+本文件代替 行政 商业和运输业电子数据交换 数据元目录 与
+GB/T17699—2014《 、 》, GB/T17699—
+相比 除结构调整和编辑性改动外 主要技术变化如下
+2014 , , :
+增加了数据元 批式 交互式的术语和定义 见
+——— 、 、 ( 3.1、3.2、3.3);
+增加了数据元的描述属性 见
+——— ( 4.2);
+增加了数据元 见第 章
+——— 4148、4149、4150、4151、4153、8462、8463、8464( 5 );
+删除了数据元 见第 章 年版的第 章
+——— 7519、9352、9416( 5 ,2014 4 );
+更改了数据元 的说明 见第 章 年版的第 章
+——— 1000、1004、1056、1058、1060、1073、2659 ( 5 ,2014 4 )。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别专利的责任
+。 。
+本文件由全国电子业务标准化技术委员会 提出并归口
+(SAC/TC83) 。
+本文件起草单位 浙江象睿机电设备有限公司 深圳市欣茂鑫实业有限公司 滁州喜多多新食材科
+: 、 、
+技有限公司 中国标准化研究院 福建省政务门户网站运营管理有限公司 中国网络安全审查认证和市
+、 、 、
+场监管大数据中心 成都市智慧蓉城研究院有限公司 浙江安厨大数据技术有限公司 湖北华中电力科
+、 、 、
+技开发有限责任公司 浙江正联网络科技有限公司 中通云仓科技有限公司 贵州大学 成都市标准化研
+、 、 、 、
+究院 福建省中科标准科技有限责任公司 福建省标准化研究院 河南省标准化和质量研究院 福建理工
+、 、 、 、
+大学 深圳爱司科技有限公司
+、 。
+本文件主要起草人 曾燕平 曹新九 储志强 文芳 王淑敏 邵杰 王志民 张荫芬 郭飞 许书翰
+: 、 、 、 、 、 、 、 、 、 、
+李晖 黄东 刘莎 王政伟 陈莉娟 任德平 孙黎明 吴国算 曾小凡 谢美娟 刘秋华 张振 钟军 刘欣华
+、 、 、 、 、 、 、 、 、 、 、 、 、 、
+何桂东 曾繁仰 王强
+、 、 。
+本文件及其所代替文件的历次版本发布情况为
+:
+年首次发布为 年第一次修订 年第二次修订
+———1999 GB/T17699—1999,2008 ,2014 ;
+本次为第三次修订 标准编号调整为
+——— , GB/T17699.1—2024。
+Ⅲ
+GB/T176991—2024
+.
+引 言
+长期以来 电子数据交换技术 在国外得到广泛的应用 为促进和
+, (Electronicdatainterchange,EDI) ,
+保障 技术的应用 联合国贸易便利化与电子业务中心制定发布了 标准 其中
+EDI , UN/EDIFACT 。 :
+段目录 数据元目录和 复合数据元目录组成了一套完
+UN/EDIFACT 、UN/EDIFACT UN/EDIFACT
+整的 数据标准 同时 鉴于 数据标准的重要性和日益频繁的应用 随着
+UN/EDIFACT 。 , UN/EDIFACT ,
+技术的发展 联合国贸易便利化与电子业务中心每年对 数据标准进行一次更新 保
+EDI , UN/EDIFACT ,
+证及时满足实际需要 促进经济社会的快速发展
+, 。
+近年来 我国国际合作日益频繁 进出口贸易量成倍增长 不论是从创造国际贸易伙伴条件 提高通
+, , , ,
+关效率 或是有效地参加国际商业竞争和创造巨大外贸效益考虑 的开发与应用都已成为我国经济
+, ,EDI
+贸易发展的一项基础性工作 因此 为使我国的国家标准与国际标准相衔接 尽快解决标准老化问
+。 , ,
+题 加快 标准的更新 我们及时开展了对电子数据交换标准的修订 以满足我国国际贸易的电子数
+, EDI , ,
+据交换需求
+。
+目前 本文件是第 次修订 本次修订依据我国对国外先进标准的转化规定 在参照 标准
+, 3 , , UN/ECE
+版技术内容的基础上 结合我国实际需要进行转化修订
+D.22B , 。
+行政 商业和运输业电子数据交换 段目录 行政 商业
+GB/T15634—2014《 、 》、GB/T15635—2014《 、
+和运输业电子数据交换 复合数据元目录 行政 商业和运输业电子数据交
+》、GB/T17699—2014《 、
+换 数据元目录 行政 商业和运输业电子数据交换 代码表 修订为
+》、GB/T16833—2011《 、 (EDIFACT) 》
+分部分标准 行政 商业和运输业电子数据交换 拟由四个部分构成
+GB/T17699《 、 》。GB/T17699 。
+第 部分 数据元目录 目的在于确定行政 商业 运输业电子数据交换 中使用的
+——— 1 : 。 、 、 (EDIFACT)
+数据元的标记 名称 说明 表示和适用范围
+、 、 、 。
+第 部分 复合数据元目录 目的在于确定行政 商业 运输业电子数据交换 中使
+——— 2 。 、 、 (EDIFACT)
+用的用户复合数据元表示的有关说明 复合数据元目录以及复合数据元集
+、 。
+第 部分 段目录 目的在于确定行政 商业 运输业电子数据交换 中使用的用户
+——— 3 : 。 、 、 (EDIFACT)
+数据段表示的有关说明 段目录和段目录集
+、 。
+第 部分 代码表 目的在于确定行政 商业 运输业电子数据交换 中代码型数据
+——— 4 : 。 、 、 (EDIFACT)
+元的代码值
+。
+Ⅳ
+GB/T176991—2024
+.
+行政 商业和运输业电子数据交换
+、
+第 部分 数据元目录
+1
+:
+1 范围
+本文件规定了行政 商业 运输业电子数据交换 中使用数据元的描述和数据元目录
+、 、 (EDIFACT) 。
+本文件适用于行政 商业 运输业电子数据交换 中的数据传输
+、 、 (EDIFACT) 。
+2 规范性引用文件
+下列文件中的内容通过文中的规范性引用而构成本文件必不可少的条款 其中 注日期的引用文
+。 ,
+件 仅该日期对应的版本适用于本文件 不注日期的引用文件 其最新版本 包括所有的修改单 适用于
+, ; , ( )
+本文件
+。
+世界各国和地区及其行政区划名称代码 第 部分 国家和地区代码
+GB/T2659.1—2022 1 :
+电子政务数据元 第 部分 设计和管理规范
+GB/T19488.1 1 :
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+数据元 dataelementDE
+;
+由一组属性规定其定义 标识 表示和允许值的数据单元
+、 、 。
+来源
+[ :GB/T18391.1—2009,3.3.8]
+32
+.
+批式EDI batchEDI
+对参与方之间使用请求和应答方式的结构化数据交换没有特殊需求的电子数据交换
+。
+来源
+[ :GB/T14805.1—2007,4.6]
+33
+.
+交互式EDI interactiveEDI
+为某种业务目的而在对话中进行预定义和结构化的电子数据交换
+。
+来源 有修改
+[ :GB/T14805.1—2007,4.55, ]
+4 数据元描述
+41 数据元的适用范围
+.
+本文件使用下列指示符说明数据元的适用范围
+:
+仅用于批式报文
+[B]= ;
+仅用于交互式报文
+[I]= ;
+适用于批式报文和交互式报文
+[C]= 。
+1
+GB/T176991—2024
+.
+42 数据元描述属性
+.
+本文件通过下列属性来描述每一个数据元
+:
+标识符 数据元的唯一标识
+a) : ;
+中文名称 数据元的中文名称
+b) : ;
+英文名称 数据元的英文名称
+c) : ;
+说明 对数据元含义的简要描述
+d) : ;
+数据类型及格式 数据元允许值的类型及长度的表示格式 具体规定见
+e) : , GB/T19488.1。
+43 数据元标识符
+.
+数据元标识符由 位数字表示
+4 。
+5 数据元目录
+单证名称
+1000 Documentname [B]
+说明 单据 文件 证书等单证的名称
+: 、 、 。
+数据类型及格式
+:an..35
+单证名称代码
+1001 Documentnamecode [C]
+说明 规定单证名称的代码
+: 。
+数据类型及格式
+:an..3
+报文类型代码
+1003 Messagetypecode [B]
+说明 规定报文类型的代码
+: 。
+数据类型及格式
+:an..6
+单证标识符
+1004 Documentidentifier [C]
+说明 用于标识一个单证
+: 。
+数据类型及格式
+:an..70
+报文节代码
+1049 Messagesectioncode [B]
+说明 规定报文节的代码
+: 。
+数据类型及格式
+:an..3
+顺序位置标识符
+1050 Sequencepositionidentifier [C]
+说明 顺序指示位置的标识
+: 。
+数据类型及格式
+:an..10
+报文项标识符
+1052 Messageitemidentifier [B]
+说明 报文中的项的标识
+: 。
+数据类型及格式
+:an..35
+2
+GB/T176991—2024
+.
+报文分项标识符
+1054 Messagesub-itemidentifier [B]
+说明 报文中的分项的标识
+: 。
+数据类型及格式
+:n..6
+版本标识符
+1056 Versionidentifier [B]
+说明 数据元版本的标识
+: 。
+数据类型及格式
+:an..9
+发布标识符
+1058 Releaseidentifier [B]
+说明 数据元发布的标识
+: 。
+数据类型及格式
+:an..9
+修订标识符
+1060 Revisionidentifier [B]
+说明 数据元修订的标识
+: 。
+数据类型及格式
+:an..6
+单证行行为代码
+1073 Documentlineactioncode [B]
+说明 指示与单证行相关行为的代码
+: 。
+数据类型及格式
+:an..3
+行项标识符
+1082 Lineitemidentifier [C]
+说明 行项的标识
+: 。
+数据类型及格式
+:an..6
+代码表标识代码
+1131 Codelistidentificationcode [C]
+说明 标识用户或代码表维护机构的代码
+: 。
+数据类型及格式
+:an..17
+注 数据元 中定义的代码表负责机构所提供的该条数据元代码
+: 3055 。
+旅客参考标识符
+1145 Travellerreferenceidentifier [I]
+说明 旅客参考的标识
+: 。
+数据类型及格式
+:an..35
+账户名称
+1146 Accountname [B]
+说明 账户的名称
+: 。
+数据类型及格式
+:an..35
+账户标识符
+1147 Accountidentifier [B]
+说明 账户的标识
+: 。
+数据类型及格式
+:an..35
+账户缩略名称
+1148 Accountabbreviatedname [B]
+说明 账户的缩略名称
+: 。
+3
+GB/T176991—2024
+.
+数据类型及格式
+:an..17
+参考代码限定符
+1153 Referencecodequalifier [C]
+说明 限定一个参考的代码
+: 。
+数据类型及格式
+:an..3
+参考标识符
+1154 Referenceidentifier [C]
+说明 参考的标识
+: 。
+数据类型及格式
+:an..70
+单证行标识符
+1156 Documentlineidentifier [C]
+说明 单证行的标识
+: 。
+数据类型及格式
+:an..6
+顺序标识符来源代码
+1159 Sequenceidentifiersourcecode [B]
+说明 说明顺序标识符来源的代码
+: 。
+数据类型及格式
+:an..3
+会计日记账名称
+1170 Accountingjournalname [B]
+说明 会计每日记账的名称
+: 。
+数据类型及格式
+:an..35
+会计日记账标识符
+1171 Accountingjournalidentifier [B]
+说明 会计每日记账的标识
+: 。
+数据类型及格式
+:an..17
+所需正本单证的份数
+1218 Documentoriginalsrequiredquantity [B]
+说明 所需单证正本份数
+: 。
+数据类型及格式
+:n..2
+所需副本单证的份数
+1220 Documentcopiesrequiredquantity [B]
+说明 所需单证副本份数
+: 。
+数据类型及格式
+:n..2
+配置等级号
+1222 Configurationlevelnumber [B]
+说明 说明配置等级的编号
+: 。
+数据类型及格式
+:n..2
+报文功能代码
+1225 Messagefunctioncode [C]
+说明 指示报文功能的代码
+: 。
+数据类型及格式
+:an..3
+计算顺序代码
+1227 Calculationsequencecode [B]
+4
+GB/T176991—2024
+.
+说明 说明计算顺序的代码
+: 。
+数据类型及格式
+:an..3
+行为描述
+1228 Actiondescription [B]
+说明 行所行为的自由格式描述
+: 。
+数据类型及格式
+:an..35
+行动代码
+1229 Actioncode [C]
+说明 规定已经或将要采取的行动的代码
+: 。
+数据类型及格式
+:an..3
+折让或费用标识符
+1230 Allowanceorchargeidentifier [B]
+说明 折让或费用的标识
+: 。
+数据类型及格式
+:an..35
+托运物装载顺序标识符
+1312 Consignmentloadsequenceidentifier [B]
+说明 托运物装载顺序或托运的标识
+: 。
+数据类型及格式
+:n..4
+单证出处描述
+1366 Documentsourcedescription [B]
+说明 单证出处的自由格式描述
+: 。
+数据类型及格式
+:an..70
+单证状态代码
+1373 Documentstatuscode [B]
+说明 说明单证状态的代码
+: 。
+数据类型及格式
+:an..3
+管理机构标识符
+1476 Controllingagencyidentifier [B]
+说明 管理机构的标识
+: 。
+数据类型及格式
+:an..2
+拼装货物项号
+1490 Consolidationitemnumber [B]
+说明 说明拼装货物中的序号
+: 。
+数据类型及格式
+:n..5
+货物项号
+1496 Goodsitemnumber [B]
+说明 说明托运物中货物的序号
+: 。
+数据类型及格式
+:n..6
+计算机环境细目代码限定符
+1501 Computerenvironmentdetailscodequalifier [B]
+说明 限定计算机环境细目的代码
+: 。
+数据类型及格式
+:an..3
+5
+GB/T176991—2024
+.
+数据格式描述
+1502 Dataformatdescription [B]
+说明 数据格式的自由格式描述
+: 。
+数据类型及格式
+:an..35
+数据格式描述代码
+1503 Dataformatdescriptioncode [C]
+说明 说明数据格式的代码
+: 。
+数据类型及格式
+:an..3
+值列表类型代码
+1505 Valuelisttypecode [B]
+说明 说明值列表类型的代码
+: 。
+数据类型及格式
+:an..3
+指示符分类代码
+1507 Designatedclasscode [B]
+说明 说明一个指定分类的代码
+: 。
+数据类型及格式
+:an..3
+文件名称
+1508 Filename [B]
+说明 文件的名称
+: 。
+数据类型及格式
+:an..35
+计算机环境名称
+1510 Computerenvironmentname [B]
+说明 计算机环境的名称
+: 。
+数据类型及格式
+:an..35
+计算机环境名称代码
+1511 Computerenvironmentnamecode [C]
+说明 说明计算机环境的代码
+: 。
+数据类型及格式
+:an..3
+值表名称
+1514 Valuelistname [B]
+说明 代码型或非代码型值表的名称
+: 。
+数据类型及格式
+:an..70
+文件格式名称
+1516 Fileformatname [B]
+说明 文件格式的名称
+: 。
+数据类型及格式
+:an..17
+值表标识符
+1518 Valuelistidentifier [B]
+说明 代码型或非代码型值列表的标识符
+: 。
+数据类型及格式
+:an..35
+数据集标识符
+1520 Datasetidentifier [B]
+说明 标识一个数据集
+: 。
+数据类型及格式
+:an..35
+6
+GB/T176991—2024
+.
+报文实施标识代码
+1523 Messageimplementationidentificationcode [B]
+说明 标识报文实施的代码
+: 。
+数据类型及格式
+:an..6
+日期
+2000 Date [I]
+说明 说明一个日期
+: 。
+数据类型及格式
+;an..14
+时间
+2002 Time [I]
+说明 说明一个时间
+: 。
+数据类型及格式
+:n4
+日期 时间 期限功能代码限定符
+2005 / / Dateortimeorperiodfunctioncodequalifier [C]
+说明 限定日期 时间或期限功能的代码
+: 、 。
+数据类型及格式
+:an..3
+条款时间关系代码
+2009 Termstimerelationcode [B]
+说明 条款与引用日期 时间或期限关联的代码
+: 、 。
+数据类型及格式
+:an..3
+频率代码
+2013 Frequencycode [C]
+说明 说明发生的频率的代码
+: 。
+数据类型及格式
+:an..3
+发送方式代码
+2015 Despatchpatterncode [C]
+说明 说明发送方式的代码
+: 。
+数据类型及格式
+:an..3
+发送方式时间代码
+2017 Despatchpatterntimingcode [C]
+说明 说明发送方式中日期 时间集的代码
+: / 。
+数据类型及格式
+:an..3
+年龄
+2018 Age [I]
+说明 说明人或事物的生命或生存的时间长度
+: 。
+数据类型及格式
+:n..3
+期限类型代码限定符
+2023 Periodtypecodequalifier [B]
+说明 限定期限类型的代码
+: 。
+数据类型及格式
+:an..3
+时区标识符
+2029 Timezoneidentifier [I]
+说明 时区的标识
+: 。
+7
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+时间变化量
+2031 Timevariationquantity [I]
+说明 说明时间的变化
+: 。
+数据类型及格式
+:n..3
+时差
+2116 Timezonedifferencequantity [I]
+说明 两个已定义的时区之间的差异
+: 。
+数据类型及格式
+:n..4
+期限细目描述
+2118 Perioddetaildescription [B]
+说明 期限细目的自由格式描述
+: 。
+数据类型及格式
+:an..35
+期限细目描述代码
+2119 Perioddetaildescriptioncode [B]
+说明 说明期限细目的代码
+: 。
+数据类型及格式
+:an..3
+日期变化数
+2148 Datevariationnumber [I]
+说明 指示两个日期之间变化数
+: 。
+数据类型及格式
+:n..5
+期限类型代码
+2151 Periodtypecode [C]
+说明 说明期限类型的代码
+: 。
+数据类型及格式
+:an..3
+期限数量
+2152 Periodcountquantity [C]
+说明 期限数量的计算值
+: 。
+数据类型及格式
+:n..3
+费用期限类型代码
+2155 Chargeperiodtypecode [I]
+说明 说明计算费用期限的类型的代码
+: 。
+数据类型及格式
+:an..3
+登记时间
+2156 Check-intime [I]
+说明 说明登记的日期和时间
+: 。
+数据类型及格式
+:an..10
+一周中每天的标识符
+2160 Daysofweeksetidentifier [I]
+说明 用数字串数据类型及格式表示一周中的星期几 星期一用 表示
+: ( 1 )。
+数据类型及格式
+:an..7
+行程期间
+2162 Journeylegdurationquantity [I]
+8
+GB/T176991—2024
+.
+说明 从行程开始至抵达所用的时间
+: 。
+数据类型及格式
+:an..6
+毫秒时间
+2164 Millisecondtime [I]
+说明 说明包括毫秒的时间值
+: 。
+数据类型及格式
+:n9
+日期 时间 期限格式代码
+2379 / / Dateortimeorperiodformatcode [C]
+说明 日期 时间 期限数据类型及格式说明的代码
+: 、 、 。
+数据类型及格式
+:an..3
+日期 时间 期限文本
+2380 / / Dateortimeorperiodtext [C]
+说明 以特定数据类型及格式法说明日期 日期和时间 时间或期限的值
+: 、 、 。
+数据类型及格式
+:an..35
+事件时间参考代码
+2475 Eventtimereferencecode [B]
+说明 说明参考可能或也发生的事件时间的代码
+: 。
+数据类型及格式
+:an..3
+维护操作方代码
+3005 Maintenanceoperationoperatorcode [B]
+说明 标识对维护操作负责的操作方类型的代码
+: 。
+数据类型及格式
+:an..3
+维护操作支付方代码
+3009 Maintenanceoperationpayercode [B]
+说明 标识维护操作支付方的代码
+: 。
+数据类型及格式
+:an..3
+注 见数据元 的代码表
+: 3035 。
+参与方功能代码限定符
+3035 Partyfunctioncodequalifier [C]
+说明 给参与方特定含义的代码
+: 。
+数据类型及格式
+:an..3
+参与方名称
+3036 Partyname [C]
+说明 交参与方的名称
+: 。
+数据类型及格式
+:an..35
+参与方标识符
+3039 Partyidentifier [C]
+说明 说明参与方身份的代码
+: 。
+数据类型及格式
+:an..35
+街道名称和门牌号码 邮政信箱标识符
+3042 / Streetandnumber/P.O.Boxidentifier [C]
+说明 街道名称和门牌号码 邮政信箱的标识
+: / 。
+数据类型及格式
+:an..35
+9
+GB/T176991—2024
+.
+参与方名称格式代码
+3045 Partynameformatcode [C]
+说明 规定参与方名称数据类型及格式的代码
+: 。
+数据类型及格式
+:an..3
+代码表负责机构代码
+3055 Codelistresponsibleagencycode [C]
+说明 规定代码表维护机构的代码
+: 。
+数据类型及格式
+:an..3
+测试媒体代码
+3077 Testmediumcode [B]
+说明 规定在测试中已使用或将要使用媒体的代码
+: 。
+数据类型及格式
+:an..3
+组织分类代码
+3079 Organisationclassificationcode [B]
+说明 规定组织分类的代码
+: 。
+数据类型及格式
+:an..3
+组织类别名称
+3082 Organisationalclassname [B]
+说明 规定组织的类别名称
+: 。
+数据类型及格式
+:an..70
+组织类别名称代码
+3083 Organisationalclassnamecode [B]
+说明 规定组织类别名称的代码
+: 。
+数据类型及格式
+:an..17
+名称和地址描述
+3124 Nameandaddressdescription [C]
+说明 名称和地址的自由格式描述
+: 。
+数据类型及格式
+:an..35
+承运人名称
+3126 Carriername [B]
+说明 承运人的名称
+: 。
+数据类型及格式
+:an..35
+承运人标识符
+3127 Carrieridentifier [B]
+说明 承运人的标识
+: 。
+数据类型及格式
+:an..17
+地址类型代码
+3131 Addresstypecode [C]
+说明 规定地址类型的代码
+: 。
+数据类型及格式
+:an..3
+联系功能代码
+3139 Contactfunctioncode [B]
+说明 规定联系 如部门或人员 的功能的代码
+: ( ) 。
+10
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+通信地址标识符
+3148 Communicationaddressidentifier [C]
+说明 通信地址的标识
+: 。
+数据类型及格式
+:an..512
+通信媒体类型代码
+3153 Communicationmediumtypecode [C]
+说明 规定所用通信媒体类型的代码
+: 。
+数据类型及格式
+:an..3
+通信方式类型代码
+3155 Communicationmeanstypecode [B]
+说明 规定所用通信工具类型的代码
+: 。
+数据类型及格式
+:an..3
+城市名称
+3164 Cityname [C]
+说明 城市的名称
+: 。
+数据类型及格式
+:an..35
+账户持有人名称
+3192 Accountholdername [B]
+说明 账户持有人的名称
+: 。
+数据类型及格式
+:an..35
+账户持有人标识符
+3194 Accountholderidentifier [B]
+说明 账户持有人的标识
+: 。
+数据类型及格式
+:an..35
+代理人标识符
+3197 Agentidentifier [I]
+说明 代理人的标识
+: 。
+数据类型及格式
+:an..9
+国家 地区 标识符
+3207 ( ) Countryidentifier [C]
+说明 国家或地区的名称的标识 采用 二字母国家代码
+: , GB/T2659.1 。
+数据类型及格式
+:an..3
+第一相关地点名称
+3222 Firstrelatedlocationname [B]
+说明 第一相关地点的名称
+: 。
+数据类型及格式
+:an..70
+第一相关地点标识符
+3223 Firstrelatedlocationidentifier [C]
+说明 第一相关地点的标识
+: 。
+数据类型及格式
+:an..35
+注 使用 规定的代码 如不适用 则使用 联用的相应代码集
+: GB/T15514 。 , 1131/3055 。
+11
+GB/T176991—2024
+.
+地点名称
+3224 Locationname [C]
+说明 地点的名称
+: 。
+数据类型及格式
+:an..256
+地点标识符
+3225 Locationidentifier [C]
+说明 地点的标识
+: 。
+数据类型及格式
+:an..35
+注 采用 规定的代码 如不适用 则使用 联用的相应代码集
+: GB/T15514 。 , 1131/3055 。
+地点功能代码限定符
+3227 Locationfunctioncodequalifier [C]
+说明 标识地点功能的代码
+: 。
+数据类型及格式
+:an..3
+国家行政区划名称
+3228 Countrysubdivisionname [C]
+说明 国家行政区划的名称 如国家 省 县 镇
+: , 、 、 、 。
+数据类型及格式
+:an..70
+国家行政区划标识符
+3229 Countrysubdivisionidentifier [C]
+说明 国家行政区划的标识 如国家 省 县 镇
+: , 、 、 、 。
+数据类型及格式
+:an..9
+注 采用 规定的代码 如不适用 则采用由相应的国家机构规定的代码
+: GB/T2659.2 。 , 。
+第二相关地点名称
+3232 Secondrelatedlocationname [B]
+说明 第二相关地点的名称
+: 。
+数据类型及格式
+:an..70
+第二相关地点标识符
+3233 Secondrelatedlocationidentifier [C]
+说明 第二相关地点的标识
+: 。
+数据类型及格式
+:an..35
+注 采用 规定的代码 如不适用 则采用 联用的相应代码集
+: GB/T15514 。 , 1131/3055 。
+取样位置描述
+3236 Samplelocationdescription [B]
+说明 取样位置的自由格式描述
+: 。
+数据类型及格式
+:an..35
+取样位置描述代码
+3237 Samplelocationdescriptioncode [B]
+说明 规定在样本中采样位置的代码
+: 。
+数据类型及格式
+:an..3
+原产地国 地区 标识符
+3239 ( ) Countryoforiginidentifier [B]
+说明 根据税则标准 数量限制标准或任何其他与贸易有关措施 生产或制造货物的国家 地区 的标
+: 、 , ( )
+识 采用 中的二字母国家代码 代码表
+。 GB/T2659.1—2022 ( 3207)。
+数据类型及格式
+:an..3
+12
+GB/T176991—2024
+.
+邮政标识代码
+3251 Postalidentificationcode [C]
+说明 规定邮政区域或地址的代码
+: 。
+数据类型及格式
+:an..17
+注 采用由相应国家机构定义的代码
+: 。
+地理区域代码
+3279 Geographicareacode [B]
+说明 规定地理区域的代码
+: 。
+数据类型及格式
+:an..3
+指示接收方标识符
+3285 Instructionreceivingpartyidentifier [B]
+说明 规定接收指示一方的代码
+; 。
+数据类型及格式
+:an..35
+地址成分描述
+3286 Addresscomponentdescription [C]
+说明 地址成分的自由格式说明
+: 。
+数据类型及格式
+:an..70
+个人特征代码限定符
+3289 Personcharacteristiccodequalifier [B]
+说明 限定个人的特征类型的代码
+: 。
+数据类型及格式
+:an..3
+国籍名称
+3292 Nationalityname [B]
+说明 国籍的名称
+: 。
+数据类型及格式
+:an..35
+国籍名称代码
+3293 Nationalitynamecode [B]
+说明 规定国籍名称的代码
+: 。
+数据类型及格式
+:an..3
+姓名原字母代码
+3295 Nameoriginalalphabetcode [B]
+说明 规定用于数据类型及格式姓名的原字母的代码
+: 。
+数据类型及格式
+:an..3
+地址用途代码
+3299 Addresspurposecode [C]
+说明 规定地址用途的代码
+: 。
+数据类型及格式
+:an..3
+指示制定方标识符
+3301 Enactingpartyidentifier [B]
+说明 负责制定指示的一方的标识
+: 。
+数据类型及格式
+:an..35
+继承人特征描述
+3310 Inheritedcharacteristicdescription [B]
+13
+GB/T176991—2024
+.
+说明 继承人特征的自由文本描述
+: 。
+数据类型及格式
+:an..70
+继承人特征描述代码
+3311 Inheritedcharacteristicdescriptioncode [B]
+说明 规定继承人特征的代码
+: 。
+数据类型及格式
+:an..8
+姓名状态代码
+3397 Namestatuscode [C]
+说明 规定姓名的状态的代码
+: 。
+数据类型及格式
+:an..3
+姓名成分描述
+3398 Namecomponentdescription [B]
+说明 名称成分的自由格式描述
+: 。
+数据类型及格式
+:an..256
+姓名成分用法代码
+3401 Namecomponentusagecode [B]
+说明 规定姓名成分用法的代码
+: 。
+数据类型及格式
+:an..3
+姓名类型代码
+3403 Nametypecode [B]
+说明 规定姓名类型的代码
+: 。
+数据类型及格式
+:an..3
+姓名成分类型代码限定符
+3405 Namecomponenttypecodequalifier [B]
+说明 限定姓名成分类型的代码
+: 。
+数据类型及格式
+:an..3
+联系人名称
+3412 Contactname [B]
+说明 联系人的名称 如部门或雇员
+: , 。
+数据类型及格式
+:an..256
+联系人标识符
+#3413 Contactidentifier [C]
+说明 联系人的标识 如部门或雇员
+: , 。
+数据类型及格式
+:an..17
+机构名称
+3432 Institutionname [B]
+说明 机构的名称
+: 。
+数据类型及格式
+:an..70
+机构名称代码
+3433 Institutionnamecode [B]
+说明 规定机构名称的代码
+: 。
+数据类型及格式
+:an..11
+14
+GB/T176991—2024
+.
+分支机构标识符
+3434 Institutionbranchidentifier [B]
+说明 分支机构的标识
+: 。
+数据类型及格式
+:an..17
+分支机构地点名称
+3436 Institutionbranchlocationname [B]
+说明 分支机构所在地的名称
+: 。
+数据类型及格式
+:an..70
+参与方税收标识符
+3446 Partytaxidentifier [B]
+说明 税务管理机构为参与方指定的编号标识
+: 。
+数据类型及格式
+:an..20
+银行标识符
+3449 Bankidentifier [I]
+说明 标识一个银行
+: 。
+数据类型及格式
+:an..17
+语言名称
+3452 Languagename [C]
+说明 语言的名称
+: 。
+数据类型及格式
+:an..35
+语言名称代码
+3453 Languagenamecode [C]
+说明 说明语言名称的代码
+: 。
+数据类型及格式
+:an..3
+注 采用 中的代码
+: GB/T4880.1、GB/T4880.3 。
+语言代码限定符
+3455 Languagecodequalifier [C]
+说明 限定语言的代码
+: 。
+数据类型及格式
+:an..3
+发起方类型代码
+3457 Originatortypecode [I]
+说明 规定发起方类型的代码
+: 。
+数据类型及格式
+:an..3
+常旅客标识符
+3459 Frequenttravelleridentifier [I]
+说明 经常旅行者的标识
+: 。
+数据类型及格式
+:an..25
+名字
+3460 Givenname [I]
+说明 个人的名字
+: 。
+数据类型及格式
+:an..70
+通道标识符
+3463 Gateidentifier [I]
+说明 通道的标识
+: 。
+15
+GB/T176991—2024
+.
+数据类型及格式
+:an..6
+内部标识符
+3465 In-houseidentifier [I]
+说明 本地分配的唯一标识
+: 。
+数据类型及格式
+:an..9
+地址状态代码
+3475 Addressstatuscode [C]
+说明 规定地址状态的代码
+: 。
+数据类型及格式
+:an..3
+地址格式代码
+3477 Addressformatcode [C]
+说明 说明地址格式的代码
+: 。
+数据类型及格式
+:an..3
+婚姻状况描述
+3478 Maritalstatusdescription [B]
+说明 个人婚姻状况的自由格式描述
+: 。
+数据类型及格式
+:an..35
+婚姻状况描述代码
+3479 Maritalstatusdescriptioncode [C]
+说明 规定个人婚姻状况的代码
+: 。
+数据类型及格式
+:an..3
+个人职位
+3480 Personjobtitle [B]
+说明 职位的名称 如工作人员的级别 等级等
+: : 、 。
+数据类型及格式
+:an..35
+宗教信仰名称
+3482 Religionname [B]
+说明 宗教信仰的名称
+: 。
+数据类型及格式
+:an..35
+宗教信仰名称代码
+3483 Religionnamecode [B]
+说明 规定宗教信仰的代码
+: 。
+数据类型及格式
+:an..3
+国籍代码限定符
+3493 Nationalitycodequalifier [B]
+说明 限定国籍的代码
+: 。
+数据类型及格式
+:an..3
+销售渠道标识符
+3496 Saleschannelidentifier [B]
+说明 销售渠道的标识
+: 。
+数据类型及格式
+:an..17
+性别代码
+3499 Gendercode [C]
+16
+GB/T176991—2024
+.
+说明 给出人﹑动物或植物性别的代码
+: 。
+数据类型及格式
+:an..3
+注 使用 数据类型及格式人的性别
+: GB/T2261.1 。
+姓
+3500 Familyname [I]
+说明 家族的名称 同义词
+: 。( surname)
+数据类型及格式
+:an..70
+访问授权标识符
+3503 Accessauthorisationidentifier [I]
+说明 访问授权的标识
+: 。
+数据类型及格式
+:an..9
+职务描述
+3504 Givennametitledescription [I]
+说明 职务的自由格式描述
+: 。
+数据类型及格式
+:an..9
+保险金受益人组成代码
+3507 Benefitcoverageconstituentscode [I]
+说明 用来标识保险金受益人的代码
+: 。
+数据类型及格式
+:an..3
+选项代码
+4009 Optioncode [I]
+说明 规定选项的代码
+: 。
+数据类型及格式
+:an..3
+交货计划执行等级代码
+4017 Deliveryplancommitmentlevelcode [B]
+说明 规定交货计划执行等级的代码
+: 。
+数据类型及格式
+:an..3
+相关信息描述
+4018 Relatedinformationdescription [I]
+说明 相关信息的自由格式描述
+: 。
+数据类型及格式
+:an..35
+业务描述
+4022 Businessdescription [B]
+说明 业务的自由格式描述
+: 。
+数据类型及格式
+:an..70
+业务功能代码
+4025 Businessfunctioncode [C]
+说明 描述特定业务功能的代码
+: 。
+数据类型及格式
+:an..3
+业务功能类型代码限定符
+4027 Businessfunctiontypecodequalifier [B]
+说明 限定业务功能类型的代码
+: 。
+数据类型及格式
+:an..3
+17
+GB/T176991—2024
+.
+优先级类型代码限定符
+4035 Prioritytypecodequalifier [B]
+说明 限定优先级类型的代码
+: 。
+数据类型及格式
+:an..3
+优先级描述
+4036 Prioritydescription [B]
+说明 优先级的自由格式描述
+: 。
+数据类型及格式
+:an..35
+优先级描述代码
+4037 Prioritydescriptioncode [B]
+说明 规定优先级的代码
+: 。
+数据类型及格式
+:an..3
+附加安全信息描述
+4038 Additionalsafetyinformationdescription [B]
+说明 与附加安全相关信息的自由文本描述
+: 。
+数据类型及格式
+:an..35
+附加安全信息描述代码
+4039 Additionalsafetyinformationdescriptioncode [B]
+说明 规定附加安全信息的代码
+: 。
+数据类型及格式
+:an..3
+贸易分类代码
+4043 Tradeclasscode [B]
+说明 标识贸易分类的代码
+: 。
+数据类型及格式
+:an..3
+安全节名称
+4044 Safetysectionname [B]
+说明 标识安全节的名称
+: 。
+数据类型及格式
+:an..70
+安全节编号
+4046 Safetysectionnumber [B]
+说明 标识安全节的编号
+: 。
+数据类型及格式
+:n..2
+确定性描述
+4048 Certaintydescription [C]
+说明 确定性的自由格式描述
+: 。
+数据类型及格式
+:an..35
+确定性描述代码
+4049 Certaintydescriptioncode [C]
+说明 规定确定性的代码
+: 。
+数据类型及格式
+:an..3
+特征关系代码
+4051 Characteristicrelevancecode [B]
+说明 规定特征关系的代码
+: 。
+18
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+交货或运输条款描述
+4052 Deliveryortransporttermsdescription [B]
+说明 交货或运输条款的自由格式描述
+: 。
+数据类型及格式
+:an..70
+交货或运输条款描述代码
+4053 Deliveryortransporttermsdescriptioncode [B]
+说明 规定交货或运输条款描述的代码
+: 。
+数据类型及格式
+:an..3
+注 采用 规定的代码 当与 联用时 采用适当的代码集
+: GB/T29193 。 1131/3055 , 。
+交货或运输条款的功能代码
+4055 Deliveryortransporttermsfunctioncode [B]
+说明 规定交货或运输条款的功能的代码
+: 。
+数据类型及格式
+:an..3
+问题描述
+4056 Questiondescription [B]
+说明 问题的自由格式描述
+: 。
+数据类型及格式
+:an..256
+问题描述代码
+4057 Questiondescriptioncode [B]
+说明 说明问题的代码
+: 。
+数据类型及格式
+:an..3
+条款代码限定符
+4059 Clausecodequalifier [B]
+说明 限定条款种类的代码
+: 。
+数据类型及格式
+:an..3
+合同和运输条件代码
+4065 Contractandcarriageconditioncode [B]
+说明 标识合同及运输条件的代码
+: 。
+数据类型及格式
+:an..3
+条款名称
+4068 Clausename [B]
+说明 条款的名称
+: 。
+数据类型及格式
+:an..70
+条款名称代码
+4069 Clausenamecode [B]
+说明 标识条款的代码
+: 。
+数据类型及格式
+:an..17
+附加条款代码限定符
+4071 Provisocodequalifier [B]
+说明 限定附加条款的代码
+: 。
+数据类型及格式
+:an..3
+19
+GB/T176991—2024
+.
+附加条款类型描述
+4072 Provisotypedescription [B]
+说明 附加条款类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+附加条款类型描述代码
+4073 Provisotypedescriptioncode [B]
+说明 规定附加条款类型的代码
+: 。
+数据类型及格式
+:an..3
+附加条款计算描述
+4074 Provisocalculationdescription [B]
+说明 附加条款计算的自由格式描述
+: 。
+数据类型及格式
+:an..35
+附加条款计算描述代码
+4075 Provisocalculationdescriptioncode [B]
+说明 规定附加条款计算的代码
+: 。
+数据类型及格式
+:an..3
+装卸说明描述
+4078 Handlinginstructiondescription [B]
+说明 装卸说明的自由格式描述
+: 。
+数据类型及格式
+:an..512
+装卸说明描述代码
+4079 Handlinginstructiondescriptioncode [B]
+说明 规定装卸说明的代码
+: 。
+数据类型及格式
+:an..3
+信息类别描述
+4148 Informationcategorydescription [C]
+说明 信息类别的自由格式描述
+: 。
+数据类型及格式
+:an..70
+信息类别描述代码
+4149 Informationcategorydescriptioncode [I]
+说明 规定信息类别说明的代码
+: 。
+数据类型及格式
+:an..3
+信息详细描述
+4150 Informationdetaildescription [I]
+说明 信息详细的自由格式描述
+: 。
+数据类型及格式
+:an..256
+信息详细描述代码
+4151 Informationdetaildescriptioncode [B]
+说明 规定信息详细描述的代码
+: 。
+数据类型及格式
+:an..17
+信息详细代码限制符
+4153 Informationdetailscodequalifier [B]
+说明 限制信息详细描述的代码
+: 。
+数据类型及格式
+:an..3
+20
+GB/T176991—2024
+.
+特定条件代码
+4183 Specialconditioncode [C]
+说明 规定特定条件的代码
+: 。
+数据类型及格式
+:an..3
+特殊需求描述
+4184 Specialrequirementdescription [I]
+说明 特殊需求的自由格式描述
+: 。
+数据类型及格式
+:an..17
+特殊需求类型代码
+4187 Specialrequirementtypecode [I]
+说明 规定特殊服务需求类型的代码
+: 。
+数据类型及格式
+:an..4
+运费支付方式代码
+4215 Transportchargespaymentmethodcode [B]
+说明 规定运输费用支付方式的代码
+: 。
+数据类型及格式
+:an..3
+运输服务优先级代码
+4219 Transportserviceprioritycode [B]
+说明 规定运输服务优先级的代码
+: 。
+数据类型及格式
+:an..3
+单货不符自然标识代码
+4221 Discrepancynatureidentificationcode [B]
+说明 规定交易或分项中订货量与发票量不符或装货量与发票量不符的代码
+: 。
+数据类型及格式
+:an..3
+标志说明代码
+4233 Markinginstructionscode [B]
+说明 规定标志说明的代码
+: 。
+数据类型及格式
+:an..3
+付款安排代码
+4237 Paymentarrangementcode [B]
+说明 规定付款安排的代码
+: 。
+数据类型及格式
+:an..3
+付款条款描述
+4276 Paymenttermsdescription [B]
+说明 交易双方的付款条件的自由格式描述
+: 。
+数据类型及格式
+:an..35
+付款条款描述标识符
+4277 Paymenttermsdescriptionidentifier [B]
+说明 交易双方的付款条款 通用术语 的标识
+: ( ) 。
+数据类型及格式
+:an..17
+注 采用 中规定的缩略语
+: GB/T18126 。
+付款条款类型代码限定符
+4279 Paymenttermstypecodequalifier [B]
+21
+GB/T176991—2024
+.
+说明 限定付款条款类型的代码
+: 。
+数据类型及格式
+:an..3
+变更原因描述
+4294 Changereasondescription [B]
+说明 变更原因的自由格式描述
+: 。
+数据类型及格式
+:an..35
+变更原因描述代码
+4295 Changereasondescriptioncode [B]
+说明 规定变更原因的代码
+: 。
+数据类型及格式
+:an..3
+应答类型代码
+4343 Responsetypecode [C]
+说明 规定所请求或传输的确认类型的代码
+: 。
+数据类型及格式
+:an..3
+应答描述
+4344 Responsedescription [B]
+说明 应答自由格式的描述
+: 。
+数据类型及格式
+:an..256
+应答描述代码
+4345 Responsedescriptioncode [B]
+说明 规定应答的代码
+: 。
+数据类型及格式
+:an..3
+产品标识代码限定符
+4347 Productidentifiercodequalifier [B]
+说明 限定产品标识符的代码
+: 。
+数据类型及格式
+:an..3
+银行业务代码
+4383 Bankoperationcode [B]
+说明 规定银行业务的代码
+: 。
+数据类型及格式
+:an..3
+指示描述
+4400 Instructiondescription [B]
+说明 指示的自由格式描述
+: 。
+数据类型及格式
+:an..35
+指示描述代码
+4401 Instructiondescriptioncode [C]
+说明 规定指示的代码
+: 。
+数据类型及格式
+:an..3
+指示类型代码限定符
+4403 Instructiontypecodequalifier [C]
+说明 限定指示类型的代码
+: 。
+数据类型及格式
+:an..3
+22
+GB/T176991—2024
+.
+状态描述
+4404 Statusdescription [B]
+说明 状态的自由格式描述
+: 。
+数据类型及格式
+:an..35
+状态描述代码
+4405 Statusdescriptioncode [C]
+说明 规定状态的代码
+: 。
+数据类型及格式
+:an..3
+注 采用 规定的代码
+: GB/T29623 。
+样本处理步骤代码
+4407 Sampleprocessstepcode [B]
+说明 规定样本处理步骤的代码
+: 。
+数据类型及格式
+:an..3
+测试方式标识符
+4415 Testmethodidentifier [B]
+说明 测试方式的标识
+: 。
+数据类型及格式
+:an..17
+测试描述
+4416 Testdescription [B]
+说明 测试的自由格式描述
+: 。
+数据类型及格式
+:an..70
+测试执行方式代码
+4419 Testadministrationmethodcode [B]
+说明 规定测试执行方式的代码
+: 。
+数据类型及格式
+:an..3
+测试原因名称
+4424 Testreasonname [B]
+说明 执行一个测试原因的名称
+: 。
+数据类型及格式
+:an..35
+测试原因名称代码
+4425 Testreasonnamecode [B]
+说明 规定执行测试原因名称的代码
+: 。
+数据类型及格式
+:an..17
+付款担保工具代码
+4431 Paymentguaranteemeanscode [B]
+说明 规定担保工具的代码
+: 。
+数据类型及格式
+:an..3
+付款途径代码
+4435 Paymentchannelcode [B]
+说明 规定付款途径的代码
+: 。
+数据类型及格式
+:an..3
+账户类型代码限定符
+4437 Accounttypecodequalifier [B]
+说明 限定账户类型的代码
+: 。
+23
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+付款条件代码
+4439 Paymentconditionscode [C]
+说明 规定付款条件的代码
+: 。
+数据类型及格式
+:an..3
+自由文本
+4440 Freetext [C]
+说明 自由格式的文本
+: 。
+数据类型及格式
+:an..512
+自由文本描述代码
+4441 Freetextdescriptioncode [B]
+说明 规定自由格式文本的代码
+: 。
+数据类型及格式
+:an..17
+自由文本格式代码
+4447 Freetextformatcode [B]
+说明 规定自由文本格式的代码
+: 。
+数据类型及格式
+:an..3
+文本主题代码限定符
+4451 Textsubjectcodequalifier [C]
+说明 限定自由文本主题的代码
+: 。
+数据类型及格式
+:an..3
+自由文本功能代码
+4453 Freetextfunctioncode [B]
+说明 规定自由文本功能的代码
+: 。
+数据类型及格式
+:an..3
+延期交货安排类型代码
+4455 Backorderarrangementtypecode [B]
+说明 规定延期交货协议的代码
+: 。
+数据类型及格式
+:an..3
+替代条件代码
+4457 Substitutionconditioncode [B]
+说明 规定替代发生条件的代码
+: 。
+数据类型及格式
+:an..3
+支付工具代码
+4461 Paymentmeanscode [B]
+说明 标识支付工具的代码
+: 。
+数据类型及格式
+:an..3
+公司内部付款指示代码
+4463 Intra-companypaymentindicatorcode [B]
+说明 指示公司内部付款的代码
+: 。
+数据类型及格式
+:an..3
+调整原因描述代码
+4465 Adjustmentreasondescriptioncode [C]
+24
+GB/T176991—2024
+.
+说明 规定调整原因的代码
+: 。
+数据类型及格式
+:an..3
+支付方式代码
+4467 Paymentmethodcode [I]
+说明 规定支付方式的代码
+: 。
+数据类型及格式
+:an..4
+付款用途代码
+4469 Paymentpurposecode [I]
+说明 规定付款用途的代码
+: 。
+数据类型及格式
+:an..4
+结算方式代码
+4471 Settlementmeanscode [B]
+说明 规定结算方式的代码
+: 。
+数据类型及格式
+:an..3
+信息类型
+4472 Informationtype [B]
+说明 信息类型的文本表达
+: 。
+数据类型及格式
+:an..35
+信息类型代码
+4473 Informationtypecode [C]
+说明 规定信息类型的代码
+: 。
+数据类型及格式
+:an..4
+会计分录类型名称
+4474 Accountingentrytypename [B]
+说明 会计分录类型的名称
+: 。
+数据类型及格式
+:an..35
+会计分录类型名称代码
+4475 Accountingentrytypenamecode [B]
+说明 规定会计分录类型的代码
+: 。
+数据类型及格式
+:an..17
+金融交易类型代码
+4487 Financialtransactiontypecode [B]
+说明 规定金融交易类型的代码
+: 。
+数据类型及格式
+:an..3
+交货指示代码
+4493 Deliveryinstructioncode [B]
+说明 规定交货指示的代码
+: 。
+数据类型及格式
+:an..3
+保险责任描述
+4494 Insurancecoverdescription [B]
+说明 保险责任的自由格式描述
+: 。
+数据类型及格式
+:an..35
+25
+GB/T176991—2024
+.
+保险责任描述代码
+4495 Insurancecoverdescriptioncode [B]
+说明 规定保险责任的代码
+: 。
+数据类型及格式
+:an..17
+保险责任类型代码
+4497 Insurancecovertypecode [C]
+说明 规定保险责任含义的代码
+: 。
+数据类型及格式
+:an..3
+库存动态原因代码
+4499 Inventorymovementreasoncode [B]
+说明 规定库存动态原因的代码
+: 。
+数据类型及格式
+:an..3
+库存动态说明代码
+4501 Inventorymovementdirectioncode [B]
+说明 规定库存动态说明的代码
+: 。
+数据类型及格式
+:an..3
+库存平衡方法代码
+4503 Inventorybalancemethodcode [B]
+说明 规定用于建立库存平衡的方法的代码
+: 。
+数据类型及格式
+:an..3
+保证金请求类型代码
+4505 Creditcoverrequesttypecode [B]
+说明 规定请求保证金的类型的代码
+: 。
+数据类型及格式
+:an..3
+保证金回复类型代码
+4507 Creditcoverresponsetypecode [B]
+说明 规定对保证金请求的回复的类型的代码
+: 。
+数据类型及格式
+:an..3
+保证金回复原因代码
+4509 Creditcoverresponsereasoncode [B]
+说明 规定对保证金请求回复的原因的代码
+: 。
+数据类型及格式
+:an..3
+请求信息描述
+4510 Requestedinformationdescription [C]
+说明 规定所请求应答信息的自由格式描述
+: 。
+数据类型及格式
+:an..35
+请求信息描述代码
+4511 Requestedinformationdescriptioncode [B]
+说明 规定所请求应答信息的代码
+: 。
+数据类型及格式
+:an..3
+维护操作代码
+4513 Maintenanceoperationcode [C]
+说明 规定操作维护的代码
+: 。
+数据类型及格式
+:an..3
+26
+GB/T176991—2024
+.
+加封条件代码
+4517 Sealconditioncode [B]
+说明 规定加封条件的代码
+: 。
+数据类型及格式
+:an..3
+定义标识符
+4519 Definitionidentifier [B]
+说明 定义的标识
+: 。
+数据类型及格式
+:an..35
+保费计算成分标识符
+4521 Premiumcalculationcomponentidentifier [B]
+说明 保费计算的组成部分的标识
+: 。
+数据类型及格式
+:an..17
+保费计算成分值种类标识符
+4522 Premiumcalculationcomponentvaluecategoryidentifier [B]
+说明 保费计算成分值种类的标识
+: 。
+数据类型及格式
+:an..35
+封装类型代码
+4525 Sealtypecode [B]
+说明 说明封装类型
+: 。
+数据类型及格式
+:an..3
+货币金额
+5004 Monetaryamount [C]
+说明 规定货币的金额
+: 。
+数据类型及格式
+:n..35
+货币金额功能描述
+5006 Monetaryamountfunctiondescription [B]
+说明 货币金额功能的自由格式描述
+: 。
+数据类型及格式
+:an..70
+货币金额功能代码
+5007 Monetaryamountfunctiondescriptioncode [B]
+说明 规定相关货币金额的功能的代码
+: 。
+数据类型及格式
+:an..3
+指标代码限定符
+5013 Indexcodequalifier [B]
+说明 限定指标的代码
+: 。
+数据类型及格式
+:an..3
+货币金额类型代码限定符
+5025 Monetaryamounttypecodequalifier [C]
+说明 限定货币金额类型的代码
+: 。
+数据类型及格式
+:an..3
+指标类型标识符
+5027 Indextypeidentifier [B]
+说明 指标类型的标识
+: 。
+27
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+指标文本
+5030 Indextext [C]
+说明 规定指标的值
+: 。
+数据类型及格式
+:an..35
+指标数据类型及格式代码
+5039 Indexrepresentationcode [B]
+说明 规定指标值数据类型及格式的代码
+: 。
+数据类型及格式
+:an..3
+分配额代码限定符
+5047 Contributioncodequalifier [B]
+说明 限定分配额的代码
+: 。
+数据类型及格式
+:an..3
+分配额类型描述
+5048 Contributiontypedescription [B]
+说明 分配额方案类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+分配额类型描述代码
+5049 Contributiontypedescriptioncode [B]
+说明 规定分配额方案类型的代码
+: 。
+数据类型及格式
+:an..3
+货币金额功能细目描述
+5104 Monetaryamountfunctiondetaildescription [B]
+说明 货币金额功能细目的自由格式描述
+: 。
+数据类型及格式
+:an..70
+货币金额功能细目描述代码
+5105 Monetaryamountfunctiondetaildescriptioncode [B]
+说明 规定货币金额功能细目描述的代码
+: 。
+数据类型及格式
+:an..17
+价格
+5118 Priceamount [C]
+说明 价格说明
+: 。
+数据类型及格式
+:n..15
+价格代码限定符
+5125 Pricecodequalifier [C]
+说明 限定价格的代码
+: 。
+数据类型及格式
+:an..3
+关税 税 费类型名称
+5152 / / Dutyortaxorfeetypename [B]
+说明 关税 税 费类型的名称
+: / / 。
+数据类型及格式
+:an..35
+关税 税 费类型名称代码
+5153 / / Dutyortaxorfeetypenamecode [C]
+28
+GB/T176991—2024
+.
+说明 规定关税 税 费类型名称的代码
+: / / 。
+数据类型及格式
+:an..3
+货币总金额
+5160 Totalmonetaryamount [I]
+说明 货币总金额的说明
+: 。
+数据类型及格式
+:n..20
+折让 费用标识代码
+5189 / Allowanceorchargeidentificationcode [B]
+说明 规定折让或费用标识的代码
+: 。
+数据类型及格式
+:an..3
+分行项价格变更操作代码
+5213 Sub-lineitempricechangeoperationcode [C]
+说明 规定分行项价格变更操作的代码
+: 。
+数据类型及格式
+:an..3
+费用类别代码
+5237 Chargecategorycode [B]
+说明 规定费用类别的代码
+: 。
+数据类型及格式
+:an..3
+费率 价目等级描述
+5242 / Rateortariffclassdescription [B]
+说明 费率 价目表等级的自由格式描述
+: / 。
+数据类型及格式
+:an..35
+费率 价目等级描述代码
+5243 / Rateortariffclassdescriptioncode [C]
+说明 规定费率 价目等级的代码
+: / 。
+数据类型及格式
+:an..9
+百分比类型代码限定符
+5245 Percentagetypecodequalifier [B]
+说明 限定百分比类型的代码
+: 。
+数据类型及格式
+:an..3
+百分比基准标识代码
+5249 Percentagebasisidentificationcode [B]
+说明 规定计算百分比的基准的代码
+: 。
+数据类型及格式
+:an..3
+费用单位代码
+5261 Chargeunitcode [I]
+说明 规定费用单位的代码
+: 。
+数据类型及格式
+:an..3
+费率类型标识符
+5263 Ratetypeidentifier [I]
+说明 费率类型的标识
+: 。
+数据类型及格式
+:an..20
+29
+GB/T176991—2024
+.
+服务类型代码
+5267 Servicetypecode [I]
+说明 规定服务类型的代码
+: 。
+数据类型及格式
+:an..3
+关税 税 费率基准代码
+5273 / / Dutyortaxorfeeratebasiscode [B]
+说明 规定关税 税 费率基准的代码
+: / / 。
+数据类型及格式
+:an..12
+附加费率 价目代码
+5275 / Supplementaryrateortariffcode [B]
+说明 规定附加费率 价目的代码
+: / 。
+数据类型及格式
+:an..6
+关税 税 费率
+5278 / / Dutyortaxorfeerate [C]
+说明 关税 税 费的税率
+: / / 。
+数据类型及格式
+:an..17
+关税 税 费率代码
+5279 / / Dutyortaxorfeeratecode [B]
+说明 规定税 税 费的税率的代码
+: / / 。
+数据类型及格式
+:an..7
+关税 税 费功能代码限定符
+5283 / / Dutyortaxorfeefunctioncodequalifier [B]
+说明 限定关税 税 费功能的代码
+: / / 。
+数据类型及格式
+:an..3
+单价基准量
+5284 Unitpricebasisquantity [B]
+说明 规定单价的基准
+: 。
+数据类型及格式
+:n..9
+关税 税 费估算基准量
+5286 / / Dutyortaxorfeeassessmentbasisquantity [B]
+说明 规定估算关税 税 费的价值或量
+: / / 。
+数据类型及格式
+:an..15
+关税 税 费账户代码
+5289 / / Dutyortaxorfeeaccountcode [B]
+说明 规定关税 税或费账户的代码
+: 、 。
+数据类型及格式
+:an..6
+关税 税 费类别代码
+5305 / / Dutyortaxorfeecategorycode [B]
+说明 标识关税 税 费类别的代码
+: / / 。
+数据类型及格式
+:an..3
+关税 税 费到期支付代码
+5307 / / Dutyortaxorfeeduedatecode [B]
+说明 标识关税 税 费何时到期的代码
+: / / 。
+数据类型及格式
+:an..3
+30
+GB/T176991—2024
+.
+酬金类型名称
+5314 Remunerationtypename [B]
+说明 酬金类型的名称
+: 。
+数据类型及格式
+:an..35
+酬金类型名称代码
+5315 Remunerationtypenamecode [B]
+说明 规定酬金类型名称的代码
+: 。
+数据类型及格式
+:an..3
+价格类型代码
+5375 Pricetypecode [C]
+说明 规定价格类型的代码
+: 。
+数据类型及格式
+:an..3
+价格变更类型代码
+5377 Pricechangetypecode [I]
+说明 规定价格变更类型的代码
+: 。
+数据类型及格式
+:an..3
+产品组类型代码
+5379 Productgrouptypecode [B]
+说明 规定产品组的类型的代码
+: 。
+数据类型及格式
+:an..3
+价格类型限定符
+5387 Pricetypequalifier [B]
+说明 标识价格类型的代码
+: 。
+数据类型及格式
+:an..3
+产品组名称
+5388 Procductgroupname [B]
+说明 产品代码的名称
+: 。
+数据类型及格式
+:an..35
+产品组名称代码
+5389 Productgroupnamecode [C]
+说明 规定产品组名称的代码
+: 。
+数据类型及格式
+:an..3
+价格乘数类型代码限定符
+5393 Pricemultipliertypecodequalifier [B]
+说明 限定价格乘数类型的代码
+: 。
+数据类型及格式
+:an..3
+价格乘数率
+5394 Pricemultiplierrate [B]
+说明 规定乘以价格的费率
+: 。
+数据类型及格式
+:n..12
+汇率
+5402 Currencyexchangerate [C]
+说明 规定以一种指定货币数据类型及格式另一种指定货币的兑换率
+: 。
+31
+GB/T176991—2024
+.
+数据类型及格式
+:n..12
+费率类型代码限定符
+5419 Ratetypecodequalifier [B]
+说明 限定费率类型的代码
+: 。
+数据类型及格式
+:an..3
+单位基准费率
+5420 Unitpricebasisrate [B]
+说明 以单位价格基准来说明每个规定的单位
+: 。
+数据类型及格式
+:n..15
+折让或费用代码限定符
+5463 Allowanceorchargecodequalifier [B]
+说明 限定折让或费用的代码
+: 。
+数据类型及格式
+:an..3
+关系代码
+5479 Relationcode [C]
+说明 规定一个关系的代码
+: 。
+数据类型及格式
+:an..3
+百分比
+5482 Percentage [C]
+说明 规定一个百分比
+: 。
+数据类型及格式
+:n..10
+分行指示符代码
+5495 Sub-lineindicatorcode [B]
+说明 指示分行项的代码
+: 。
+数据类型及格式
+:an..3
+费率计划代码
+5501 Rateplancode [I]
+说明 规定费率计划的代码
+: 。
+数据类型及格式
+:an..3
+纬度
+6000 Latitudedegree [C]
+说明 以角度来度量和用度 分 秒来数据类型及格式的赤道南半球或北半球的距离
+: 、 、 。
+数据类型及格式
+:an..10
+经度
+6002 Longitudedegree [C]
+说明 以角度来度量和用度 分 秒来数据类型及格式的地球东 西半球的地球表面坐标值 角度指的
+: 、 、 、 ,
+是经线平面与本初子午线平面间的夹角
+。
+数据类型及格式
+:an..11
+高度
+6008 Heightmeasure [C]
+说明 规定高度的值
+: 。
+数据类型及格式
+:n..15
+32
+GB/T176991—2024
+.
+地理位置代码限定符
+6029 Geographicalpositioncodequalifier [B]
+说明 标识地理位置类型的代码
+: 。
+数据类型及格式
+:an..3
+数量
+6060 Quantity [C]
+说明 数量的字母数字数据类型及格式
+: 。
+数据类型及格式
+:n..15
+数量类型代码限定符
+6063 Quantitytypecodequalifier [C]
+说明 限定数量类型的代码
+: 。
+数据类型及格式
+:an..3
+变化量
+6064 Variancequantity [B]
+说明 规定数量差异的值
+: 。
+数据类型及格式
+:n..15
+控制总数量
+6066 Controltotalquantity [B]
+说明 规定控制总数量的值
+: 。
+数据类型及格式
+:n..18
+控制总数量类型代码限定符
+6069 Controltotaltypecodequalifier [B]
+说明 规定控制总数量类型的代码
+: 。
+数据类型及格式
+:an..3
+频度代码限定符
+6071 Frequencycodequalifier [B]
+说明 限定频度的代码
+: 。
+数据类型及格式
+:an..3
+频率
+6072 Frequencyrate [C]
+说明 在给定时间内重复出现的数量
+: 。
+数据类型及格式
+:n..9
+置信百分比
+6074 Confidencepercent [B]
+说明 描述实际值落在特定置信区间内的置信度的百分比值
+: 。
+数据类型及格式
+:n..6
+结果数据类型及格式代码
+6077 Resultrepresentationcode [B]
+说明 规定结果数据类型及格式的代码
+: 。
+数据类型及格式
+:an..3
+结果正常代码
+6079 Resultnormalcycode [B]
+说明 规定与标准值的一致程度的代码
+: 。
+数据类型及格式
+:an..3
+33
+GB/T176991—2024
+.
+剂量描述
+6082 Dosagedescription [B]
+说明 剂量的自由格式描述
+: 。
+数据类型及格式
+:an..70
+剂量描述标识符
+6083 Dosagedescriptionidentifier [B]
+说明 标识剂量的代码
+: 。
+数据类型及格式
+:an..8
+剂量管理代码限定符
+6085 Dosageadministrationcodequalifier [B]
+说明 限定剂量管理的代码
+: 。
+数据类型及格式
+:an..3
+结果值类型代码限定符
+6087 Resultvaluetypecodequalifier [B]
+说明 限定结果值的类型的代码
+: 。
+数据类型及格式
+:an..3
+海拔
+6096 Altitude [B]
+说明 物体距离地球海平面的高度
+: 。
+数据类型及格式
+:n..18
+长度类型代码
+6113 Lengthtypecode [B]
+说明 规定长度类型的代码
+: 。
+数据类型及格式
+:n..3
+宽度
+6140 Widthmeasure [C]
+说明 规定宽度的值
+: 。
+数据类型及格式
+:n..15
+尺码类型代码限定符
+6145 Dimensiontypecodequalifier [B]
+说明 限定尺码类型的代码
+: 。
+数据类型及格式
+:an..3
+最大数量范围
+6152 Rangemaximumquantity [C]
+说明 范围的最大值的说明
+: 。
+数据类型及格式
+:n..18
+非离散计量名称
+6154 Non-discretemeasurementname [B]
+说明 规定非离散的计量名称
+: 。
+数据类型及格式
+:an..70
+非离散计量名称代码
+6155 Non-discretemeasurementnamecode [B]
+说明 规定非离散的计量名称的代码
+: 。
+34
+GB/T176991—2024
+.
+数据类型及格式
+:an..17
+最小数量范围
+6162 Rangeminimumquantity [C]
+说明 范围的最小值的说明
+: 。
+数据类型及格式
+:n..18
+范围类型代码限定符
+6167 Rangetypecodequalifier [B]
+说明 限定范围类型的代码
+: 。
+数据类型及格式
+:an..3
+长度
+6168 Lengthmeasure [C]
+说明 长度值的说明
+: 。
+数据类型及格式
+:n..15
+尺寸类型代码限定符
+6173 Sizetypecodequalifier [B]
+说明 限定尺寸类型的代码
+: 。
+数据类型及格式
+:an..3
+尺寸测量
+6174 Sizemeasure [B]
+说明 说明尺寸的量
+: 。
+数据类型及格式
+:n..15
+最大出现次数
+6176 Occurrencesmaximumnumber [B]
+说明 规定最大出现次数
+: 。
+数据类型及格式
+:n..7
+编辑域长度
+6178 Editfieldlengthmeasure [B]
+说明 规定可编辑域的长度
+: 。
+数据类型及格式
+:n..3
+直径尺寸
+6182 Diametermeasure [B]
+说明 规定直径尺寸的值
+: 。
+数据类型及格式
+:n..15
+温度类型代码限定符
+6245 Temperaturetypecodequalifier [B]
+说明 限定温度类型的代码
+: 。
+数据类型及格式
+:an..3
+温度
+6246 Temperaturedegree [B]
+说明 温度值的说明
+: 。
+数据类型及格式
+:n..15
+计量目的代码限定符
+6311 Measurementpurposecodequalifier [B]
+35
+GB/T176991—2024
+.
+说明 限定计量目的的代码
+: 。
+数据类型及格式
+:an..3
+计量性质代码
+6313 Measuredattributecode [C]
+说明 规定计量性质的代码
+: 。
+数据类型及格式
+:an..3
+测量
+6314 Measure [C]
+说明 规定计量的值
+: 。
+数据类型及格式
+:n..18
+计量意义代码
+6321 Measurementsignificancecode [C]
+说明 规定计量意义的代码
+: 。
+数据类型及格式
+:an..3
+统计类型代码限定符
+6331 Statistictypecodequalifier [B]
+说明 限定统计类型的代码
+: 。
+数据类型及格式
+:an..3
+外汇交易市场限定符
+6341 Exchangeratecurrencymarketidentifier [C]
+说明 标识汇率所基于的市场
+: 。
+数据类型及格式
+:an..3
+货币类型代码限定符
+6343 Currencytypecodequalifier [C]
+说明 限定货币类型的代码
+: 。
+数据类型及格式
+:an..3
+货币标识代码
+6345 Currencyidentificationcode [C]
+说明 规定货币单位的代码
+: 。
+数据类型及格式
+:an..3
+注 使用 中的三字母代码
+: GB/T12406—2022 。
+货币使用代码限定符
+6347 Currencyusagecodequalifier [C]
+说明 规定货币使用的代码
+: 。
+数据类型及格式
+:an..3
+通货汇率
+6348 Currencyrate [C]
+说明 用一种货币数据类型及格式另一种货币的价格乘数
+: 。
+数据类型及格式
+:n..4
+单位数量
+6350 Unitsquantity [C]
+说明 某种单位的数目
+: 。
+数据类型及格式
+:n..15
+36
+GB/T176991—2024
+.
+单位类型代码限定符
+6353 Unittypecodequalifier [C]
+说明 规定单位类型的代码
+: 。
+数据类型及格式
+:an..3
+计量单位名称
+6410 Measurementunitname [B]
+说明 一种计量单位的名称
+: 。
+数据类型及格式
+:an..35
+计量单位代码
+6411 Measurementunitcode [C]
+说明 规定计量单位的代码
+: 。
+数据类型及格式
+:an..3
+注 使用 规定的代码
+: GB/T17295 。
+临床信息描述
+6412 Clinicalinformationdescription [B]
+说明 临床信息的自由格式描述
+: 。
+数据类型及格式
+:an..70
+临床信息描述标识符
+6413 Clinicalinformationdescriptionidentifier [B]
+说明 标识临床信息项的代码
+: 。
+数据类型及格式
+:an..17
+临床信息类型代码限定符
+6415 Clinicalinformationtypecodequalifier [B]
+说明 限定临床信息类型的代码
+: 。
+数据类型及格式
+:an..3
+过程阶段数量
+6426 Processstagesquantity [B]
+说明 过程阶段的数量计算
+: 。
+数据类型及格式
+:n..2
+过程阶段实际数量
+6428 Processstagesactualquantity [B]
+说明 过程阶段中实际数目的计算
+: 。
+数据类型及格式
+:n..2
+有效位数
+6432 Significantdigitsquantity [B]
+说明 规定有效数字的计算
+: 。
+数据类型及格式
+:n..2
+统计概念标识符
+6434 Statisticalconceptidentifier [B]
+说明 统计概念的自由格式标识
+: 。
+数据类型及格式
+:an..35
+直径测量
+6701 Diametermeasurer [B]
+37
+GB/T176991—2024
+.
+说明 说明直径的值
+: 。
+数据类型及格式
+:an..15
+物理或逻辑状态类型代码限定符
+7001 Physicalorlogicalstatetypecodequalifier [B]
+说明 限定物理或逻辑状态类型的代码
+: 。
+数据类型及格式
+:an..3
+物理或逻辑状态描述
+7006 Physicalorlogicalstatedescription [B]
+说明 物理或逻辑状态的自由格式描述
+: 。
+数据类型及格式
+:an..70
+物理或逻辑状态描述代码
+7007 Physicalorlogicalstatedescriptioncode [B]
+说明 规定物理或逻辑状态的代码
+: 。
+数据类型及格式
+:an..3
+项目描述
+7008 Itemdescription [C]
+说明 项目的自由格式描述
+: 。
+数据类型及格式
+:an..256
+项目描述标识
+7009 Itemdescriptioncode [C]
+说明 说明一个项目的代码
+: 。
+数据类型及格式
+:an..17
+物品可用性代码
+7011 Itemavailabilitycode [B]
+说明 规定物品可用性的代码
+: 。
+数据类型及格式
+:an..3
+特征描述
+7036 Characteristicdescription [C]
+说明 特征的自由格式描述
+: 。
+数据类型及格式
+:an..35
+特征描述代码
+7037 Characteristicdescriptioncode [C]
+说明 规定特征的代码
+: 。
+数据类型及格式
+:an..17
+取样方式代码
+7039 Sampleselectionmethodcode [B]
+说明 规定选择测试样品方式的代码
+: 。
+数据类型及格式
+:an..3
+动力类型描述
+7040 Powertypedescription [B]
+说明 动力类型描述
+: 。
+数据类型及格式
+:an..17
+38
+GB/T176991—2024
+.
+动力类型代码
+7041 Powertypecode [B]
+说明 说明动力类型的代码
+: 。
+数据类型及格式
+:an..3
+样品状态代码
+7045 Samplestatecode [B]
+说明 规定样品状态的代码
+: 。
+数据类型及格式
+:an..3
+取样方位代码
+7047 Sampledirectioncode [B]
+说明 规定取样方位的代码
+: 。
+数据类型及格式
+:an..3
+类型代码
+7059 Classtypecode [B]
+说明 规定类型的代码
+: 。
+数据类型及格式
+:an..3
+包装类型
+7064 Typeofpackages [B]
+说明 货物所呈现的外观形式的描述
+: 。
+数据类型及格式
+:an..35
+包装类型描述代码
+7065 Packagetypedescriptioncode [B]
+说明 规定包装类型的代码
+: 。
+数据类型及格式
+:an..17
+注 使用 规定的代码 与 联用
+: GB/T16472 。 1131/3055 。
+包装条款和条件代码
+7073 Packagingtermsandconditionscode [B]
+说明 规定包装条款和条件的代码
+: 。
+数据类型及格式
+:an..3
+包装等级代码
+7075 Packaginglevelcode [B]
+说明 规定包装等级的代码
+: 。
+数据类型及格式
+:an..3
+描述格式代码
+7077 Descriptionformatcode [B]
+说明 规定描述格式的代码
+: 。
+数据类型及格式
+:an..3
+项目特征代码
+7081 Itemcharacteristiccode [B]
+说明 规定项目特征的代码
+: 。
+数据类型及格式
+:an..3
+配置操作代码
+7083 Configurationoperationcode [B]
+说明 规定配置操作的代码
+: 。
+39
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+货物类型分类代码
+7085 Cargotypeclassificationcode [B]
+说明 规定货物类型分类的代码
+: 。
+数据类型及格式
+:an..3
+危险品闪点描述
+7088 Dangerousgoodsflashpointdescription [B]
+说明 描述危险品的闪点
+: 。
+数据类型及格式
+:an..8
+运输标志描述
+7102 Shippingmarksdescription [B]
+说明 运输标志的自由格式描述
+: 。
+数据类型及格式
+:an..35
+装运闪点
+7106 Shipmentflashpointdegree [B]
+说明 规定装运闪点的值
+: 。
+数据类型及格式
+:n3
+特征值描述
+7110 Characteristicvaluedescription [B]
+说明 特征值的自由格式描述
+: 。
+数据类型及格式
+:an..35
+特征值描述代码
+7111 Characteristicvaluedescriptioncode [C]
+说明 规定特征值的代码
+: 。
+数据类型及格式
+:an..3
+联合国危险品 标识符
+7124 (UNDG) UNDGidentifier [B]
+说明 联合国对运输中常见危险货物清单中所列物质和物品指定的唯一的序号
+: 。
+数据类型及格式
+:n4
+客户装运授权标识符
+7130 Customershipmentauthorisationidentifier [B]
+说明 客户所授权运输的标识
+: 。
+数据类型及格式
+:an..17
+产品细目类型代码限定符
+7133 Productdetailstypecodequalifier [I]
+说明 限定产品细目类型的代码
+: 。
+数据类型及格式
+:an..3
+产品名称
+7134 Productname [I]
+说明 标识一个产品的名称
+: 。
+数据类型及格式
+:an..3
+产品标识符
+7135 Productidentifier [I]
+40
+GB/T176991—2024
+.
+说明 标识一个产品
+: 。
+数据类型及格式
+:an..35
+产品特征标识代码
+7139 Productcharacteristicidentificationcode [I]
+说明 规定产品特征标识的代码
+: 。
+数据类型及格式
+:an..3
+项标识符
+7140 Itemidentifier [C]
+说明 标识一个项
+: 。
+数据类型及格式
+:an..35
+项类型标识代码
+7143 Itemtypeidentificationcode [C]
+说明 标识项类型的代码
+: 。
+数据类型及格式
+:an..3
+特殊服务描述
+7160 Specialservicedescription [C]
+说明 特殊服务的自由格式描述
+: 。
+数据类型及格式
+:an..35
+特殊服务描述代码
+7161 Specialservicedescriptioncode [C]
+说明 规定特殊服务的代码
+: 。
+数据类型及格式
+:an..3
+层次结构层标识符
+7164 Hierarchicalstructurelevelidentifier [C]
+说明 标识层次结构中的一个层
+: 。
+数据类型及格式
+:an..35
+层次结构父标识符
+7166 Hierarchicalstructureparentidentifier [B]
+说明 在层次结构中标识较高的层
+: 。
+数据类型及格式
+:an..12
+层号
+7168 Levelnumber [B]
+说明 标识一个层的号
+: 。
+数据类型及格式
+:n1
+层次结构关系代码
+7171 Hierarchicalstructurerelationshipcode [B]
+说明 规定层次对象和标识对象之间的关系的代码
+: 。
+数据类型及格式
+:an..3
+层次中对象代码限定符
+7173 Hierarchyobjectcodequalifier [B]
+说明 限定给定层次中对象的代码
+: 。
+数据类型及格式
+:an..3
+41
+GB/T176991—2024
+.
+规则部分标识符
+7175 Rulepartidentifier [B]
+说明 规则特定部分的标识
+: 。
+数据类型及格式
+:an..7
+风险对象子类描述
+7176 Riskobjectsub-typedescription [B]
+说明 风险对象子类的自由格式描述
+: 。
+数据类型及格式
+:an..70
+风险对象子类描述限定符
+7177 Riskobjectsub-typedescriptionidentifier [B]
+说明 标识风险对象子类的代码
+: 。
+数据类型及格式
+:an..17
+风险对象类型标识符
+7179 Riskobjecttypeidentifier [B]
+说明 标识风险对象类型的代码
+: 。
+数据类型及格式
+:an..17
+过程类型描述
+7186 Processtypedescription [B]
+说明 过程的自由格式描述
+: 。
+数据类型及格式
+:an..35
+过程类型描述代码
+7187 Processtypedescriptioncode [B]
+说明 规定过程类型的代码
+: 。
+数据类型及格式
+:an..17
+测试方式修订标识符
+7188 Testmethodrevisionidentifier [B]
+说明 对测试方式修订的标识
+: 。
+数据类型及格式
+:an..30
+过程描述
+7190 Processdescription [B]
+说明 过程的自由格式描述
+: 。
+数据类型及格式
+:an..70
+过程描述代码
+7191 Processdescriptioncode [C]
+说明 规定过程的代码
+: 。
+数据类型及格式
+:an..17
+包装数量
+7224 Packagequantity [B]
+说明 规定包装的件数
+: 。
+数据类型及格式
+:n..8
+与包装相关的描述代码
+7233 Packagingrelateddescriptioncode [B]
+说明 规定与包装有关信息的代码
+: 。
+数据类型及格式
+:an..3
+42
+GB/T176991—2024
+.
+项目总数量
+7240 Itemtotalquantity [B]
+说明 项的总数计算
+: 。
+数据类型及格式
+:n..15
+服务需求代码
+7273 Servicerequirementcode [C]
+说明 规定服务需求的代码
+: 。
+数据类型及格式
+:an..3
+行业标识代码限定符
+7293 Sectorareaidentificationcodequalifier [B]
+说明 限定主领域的标识代码
+: 。
+数据类型及格式
+:an..3
+需求 条件描述
+7294 / Requirementorconditiondescription [B]
+说明 需求或条件的自然格式描述
+: 。
+数据类型及格式
+:an..35
+需求 条件描述标识符
+7295 / Requirementorconditiondescriptionidentifier [B]
+说明 规定需求或条件的代码
+: 。
+数据类型及格式
+:an..17
+放置类型代码限定符
+7297 Settypecodequalifier [B]
+说明 限定放置类型的代码
+: 。
+数据类型及格式
+:an..3
+需求制定方代码
+7299 Requirementdesignatorcode [C]
+说明 规定需求制定方的代码
+: 。
+数据类型及格式
+:an..3
+商品标识代码
+7357 Commodityidentificationcode [B]
+说明 标识海关 运输或统计货物的代码 通用术语
+: 、 ( )。
+数据类型及格式
+:an..18
+海关监管货物标识符
+7361 Customsgoodsidentifier [B]
+说明 标识海关监管的货物的代码
+: 。
+数据类型及格式
+:an..18
+处理指示符描述
+7364 Processingindicatordescription [B]
+说明 处理指示符的自由格式描述
+: 。
+数据类型及格式
+:an..35
+处理指示符描述代码
+7365 Processingindicatordescriptioncode [C]
+说明 规定处理指示符的代码
+: 。
+43
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+表面 内层代码
+7383 / Surfaceorlayercode [B]
+说明 规定对象的表面或内层的代码
+: 。
+数据类型及格式
+:an..3
+对象标识符
+7402 Objectidentifier [C]
+说明 规定对象的唯一标识的代码
+: 。
+数据类型及格式
+:an..35
+对象标识代码限定符
+7405 Objectidentificationcodequalifier [C]
+说明 限定对象标识的代码
+: 。
+数据类型及格式
+:an..3
+危险物质种类名称
+7418 Hazardousmaterialcategoryname [B]
+说明 一种危险物质的种类名称
+: 。
+数据类型及格式
+:an..35
+危险物质种类名称代码
+7419 Hazardousmaterialcategorynamecode [B]
+说明 规定物质危险类别的代码
+: 。
+数据类型及格式
+:an..4
+索引结构代码限定符
+7429 Indexingstructurecodequalifier [B]
+说明 限定索引结构的代码
+: 。
+数据类型及格式
+:an..3
+协议类型代码限定符
+7431 Agreementtypecodequalifier [B]
+说明 限定协议的类型的代码
+: 。
+数据类型及格式
+:an..3
+协议类型描述代码
+7433 Agreementtypedescriptioncode [B]
+说明 规定协议的类型的代码
+: 。
+数据类型及格式
+:an..3
+协议类型描述
+7434 Agreementtypedescription [B]
+说明 协议类型的自由格式描述
+: 。
+数据类型及格式
+:an..70
+第一层标识
+7436 Leveloneid. [B]
+说明 用于确定项目在索引结构中的位置的顺序机制的第一部分
+: 。
+数据类型及格式
+:an..17
+第二层标识
+7438 Leveltwoid. [B]
+44
+GB/T176991—2024
+.
+说明 用于确定项目在索引结构中的位置的顺序机制的第二部分
+: 。
+数据类型及格式
+:an..17
+第三层标识
+7440 Levelthreeid. [B]
+说明 用于确定项目在索引结构中的位置的顺序机制的第三部分
+: 。
+数据类型及格式
+:an..17
+第四层标识
+7442 Levelfourid. [B]
+说明 用于确定项目在索引结构中的位置的顺序机制的第四部分
+: 。
+数据类型及格式
+:an..17
+第五层标识
+7444 Levelfiveid. [B]
+说明 用于确定项目在索引结构中的位置的顺序机制的第五部分
+: 。
+数据类型及格式
+:an..17
+第六层标识
+7446 Levelsixid. [B]
+说明 用于确定项目在索引结构中的位置的顺序机制的第六部分
+: 。
+数据类型及格式
+:an..17
+成员类型代码限定符
+7449 Membershiptypecodequalifier [B]
+说明 限定成员类型的代码
+: 。
+数据类型及格式
+:an..3
+成员类别描述
+7450 Membershipcategorydescription [B]
+说明 成员类别的自由格式描述
+: 。
+数据类型及格式
+:an..35
+成员类别描述代码
+7451 Membershipcategorydescriptioncode [B]
+说明 规定成员类别的代码
+: 。
+数据类型及格式
+:an..4
+成员状况描述
+7452 Membershipstatusdescription [B]
+说明 成员状况的自由格式描述
+: 。
+数据类型及格式
+:an..35
+成员状况描述代码
+7453 Membershipstatusdescriptioncode [B]
+说明 规定成员状况的代码
+: 。
+数据类型及格式
+:an..3
+成员等级代码限定符
+7455 Membershiplevelcodequalifier [B]
+说明 限定成员等级的代码
+: 。
+数据类型及格式
+:an..3
+45
+GB/T176991—2024
+.
+成员等级描述
+7456 Membershipleveldescription [B]
+说明 成员等级的自由格式描述
+: 。
+数据类型及格式
+:an..35
+成员等级描述代码
+7457 Membershipleveldescriptioncode [B]
+说明 规定成员等级的代码
+: 。
+数据类型及格式
+:an..9
+护理员类别描述
+7458 Attendeecategorydescription [B]
+说明 护理员类别的自由格式描述
+: 。
+数据类型及格式
+:an..35
+护理员类别描述代码
+7459 Attendeecategorydescriptioncode [B]
+说明 规定护理员类别的代码
+: 。
+数据类型及格式
+:an..3
+库存类型代码
+7491 Inventorytypecode [B]
+说明 规定库存类型的代码
+: 。
+数据类型及格式
+:an..3
+残损细目代码限定符
+7493 Damagedetailscodequalifier [B]
+说明 限定残损细目的代码
+: 。
+数据类型及格式
+:an..3
+对象类型代码限定符
+7495 Objecttypecodequalifier [B]
+说明 限定对象类型的代码
+: 。
+数据类型及格式
+:an..3
+结构成分功能代码限定符
+7497 Structurecomponentfunctioncodequalifier [B]
+说明 限定结构成分功能的代码
+: 。
+数据类型及格式
+:an..3
+残损类型描述
+7500 Damagetypedescription [B]
+说明 对象残损类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+残损类型描述代码
+7501 Damagetypedescriptioncode [B]
+说明 规定对象残损类型的代码
+: 。
+数据类型及格式
+:an..3
+残损部位描述
+7502 Damageareadescription [B]
+说明 对象残损部位的自由格式描述
+: 。
+数据类型及格式
+:an..35
+46
+GB/T176991—2024
+.
+残损部位描述代码
+7503 Damageareadescriptioncode [B]
+说明 规定对象残损部位的代码
+: 。
+数据类型及格式
+:an..4
+单元 部件类型描述
+7504 / Unitorcomponenttypedescription [B]
+说明 单元 部件类型的自由格式描述
+: / 。
+数据类型及格式
+:an..35
+单元 部件类型描述代码
+7505 / Unitorcomponenttypedescriptioncode [B]
+说明 规定单元 部件类型的代码
+: / 。
+数据类型及格式
+:an..3
+部件材料描述
+7506 Componentmaterialdescription [B]
+说明 部件材料的自由格式描述
+: 。
+数据类型及格式
+:an..35
+部件材料描述代码
+7507 Componentmaterialdescriptioncode [B]
+说明 规定部件材料的代码
+: 。
+数据类型及格式
+:an..3
+残损程度描述
+7508 Damageseveritydescription [B]
+说明 残损程度的自由格式描述
+: 。
+数据类型及格式
+:an..35
+残损程度描述代码
+7509 Damageseveritydescriptioncode [B]
+说明 规定残损程度的代码
+: 。
+数据类型及格式
+:an..3
+标志类型代码
+7511 Markingtypecode [B]
+说明 规定标志类型的代码
+: 。
+数据类型及格式
+:an..3
+结构成分标识符
+7512 Structurecomponentidentifier [B]
+说明 结构成分的标识
+: 。
+数据类型及格式
+:an..35
+结构类型代码
+7515 Structuretypecode [B]
+说明 规定结构类型的代码
+: 。
+数据类型及格式
+:an..3
+保险费和保险项目代码
+7517 Benefitandcoveragecode [I]
+说明 标识保险费和保险项目的代码
+: 。
+47
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+交通限制代码
+8015 Trafficrestrictioncode [I]
+说明 规定交通限制的代码
+: 。
+数据类型及格式
+:an..3
+交通限制应用代码
+8017 Trafficrestrictionapplicationcode [I]
+说明 规定交通限制应用的代码
+: 。
+数据类型及格式
+:an..3
+运费和其他费用描述
+8022 Freightandotherchargesdescription [B]
+说明 运费和其他费用的自由格式描述
+: 。
+数据类型及格式
+:an..26
+运费和其他费用描述标识符
+8023 Freightandotherchargesdescriptionidentifier [B]
+说明 标识运费和其他费用的代码
+: 。
+数据类型及格式
+:an..17
+注 见 如果不适用 则使用 联用的相应代码
+: GB/T17152。 , 1131/3055 。
+运输工具停靠目的描述
+8024 Conveyancecallpurposedescription [B]
+说明 运输工具停靠目的的自由格式描述
+: 。
+数据类型及格式
+:an..35
+运输工具停靠目的描述代码
+8025 Conveyancecallpurposedescriptioncode [B]
+说明 规定运输工具停靠目的的代码
+: 。
+数据类型及格式
+:an..3
+运输工具行程标识符
+8028 Meansoftransportjourneyidentifier [B]
+说明 标识运输工具的行程
+: 。
+数据类型及格式
+:an..17
+交通限制类型代码限定符
+8035 Trafficrestrictiontypecodequalifier [I]
+说明 限定交通限制类型的代码
+: 。
+数据类型及格式
+:an..3
+运输阶段代码限定符
+8051 Transportstagecodequalifier [B]
+说明 限定特定的运输阶段的代码
+: 。
+数据类型及格式
+:an..3
+设备类型代码限定符
+8053 Equipmenttypecodequalifier [C]
+说明 限定设备类型的代码
+: 。
+数据类型及格式
+:an..3
+48
+GB/T176991—2024
+.
+运输方式名称
+8066 Transportmodename [B]
+说明 运输方式的名称
+: 。
+数据类型及格式
+:an..17
+运输方式名称代码
+8067 Transportmodenamecode [B]
+说明 规定运输方式名称的代码
+: 。
+数据类型及格式
+:an..3
+注 使用 规定的代码
+: GB/T6512 。
+设备提供方代码
+8077 Equipmentsuppliercode [B]
+说明 规定设备提供方的代码
+: 。
+数据类型及格式
+:an..3
+附加危险品分类标识符
+8078 Additionalhazardclassificationidentifier [B]
+说明 附加危险品分类的标识
+: 。
+数据类型及格式
+:an..7
+危险品代码版本标识符
+8092 Hazardcodeversionidentifier [B]
+说明 标识危险品代码的版本号
+: 。
+数据类型及格式
+:an..10
+运送方向指示符代码
+8101 Transitdirectionindicatorcode [B]
+说明 规定运输方向的代码
+: 。
+数据类型及格式
+:an..3
+运输紧急卡标识符
+8126 Transportemergencycardidentifier [B]
+说明 运输紧急卡的标识
+: 。
+数据类型及格式
+:an..10
+设备规格和类型描述
+8154 Equipmentsizeandtypedescription [C]
+说明 设备规格和类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+设备规格和类型描述代码
+8155 Equipmentsizeandtypedescriptioncode [B]
+说明 规定设备规格和类型的代码
+: 。
+数据类型及格式
+:an..4
+注 用户或协会定义的代码 与 联用 或采用 规定的代码
+: 。 1131/3055 。 GB/T1836 。
+橙色危险品上位标识符
+8158 Orangehazardplacardupperpartidentifier [B]
+说明 要求以橙色醒目标识在运输工具偏上部位的标识号
+: 。
+数据类型及格式
+:an..4
+满 空指示符代码
+8169 / Fulloremptyindicatorcode [B]
+49
+GB/T176991—2024
+.
+说明 指示设备满或空的程度的代码
+: 。
+数据类型及格式
+:an..3
+运输工具描述
+8178 Transportmeansdescription [B]
+说明 运输工具的自由格式描述
+: 。
+数据类型及格式
+:an..17
+运输工具描述代码
+8179 Transportmeansdescriptioncode [C]
+说明 规定运输工具的代码
+: 。
+数据类型及格式
+:an..8
+注 使用 规定的代码
+: GB/T18804 。
+橙色危险品下位标识符
+8186 Orangehazardplacardlowerpartidentifier [B]
+说明 要求以橙色醒目标识在运输工具偏下部位的标识号
+: 。
+数据类型及格式
+:an4
+危险品运输许可代码
+8211 Hazardouscargotransportauthorisationcode [B]
+说明 规定危险品运输许可的代码
+: 。
+数据类型及格式
+:an..3
+运输工具标识名称
+8212 Transportmeansidentificationname [B]
+说明 运输工具名称的标识
+: 。
+数据类型及格式
+:an..70
+运输工具标识名称标识符
+8213 Transportmeansidentificationnameidentifier [B]
+说明 运输工具名称的标识
+: 。
+数据类型及格式
+:an..35
+运输工具变更指示符代码
+8215 Transportmeanschangeindicatorcode [I]
+说明 指示运输工具变更的代码
+: 。
+数据类型及格式
+:an1
+行程站数
+8216 Journeystopsquantity [I]
+说明 规定行程中的站数
+: 。
+数据类型及格式
+:n..3
+旅客携带婴儿指示符代码
+8219 Travelleraccompaniedbyinfantindicatorcode [I]
+说明 指示旅客是否携带婴儿的代码
+: 。
+数据类型及格式
+:an1
+危险品标记标识符
+8246 Dangerousgoodsmarkingidentifier [B]
+说明 危险品标记的标识
+: 。
+数据类型及格式
+:an..4
+50
+GB/T176991—2024
+.
+设备状况代码
+8249 Equipmentstatuscode [B]
+说明 规定设备状况的代码
+: 。
+数据类型及格式
+:an..3
+包装说明类型代码
+8255 Packinginstructiontypecode [B]
+说明 规定包装说明类型的代码
+: 。
+数据类型及格式
+:an..3
+设备标识符
+8260 Equipmentidentifier [B]
+说明 设备的标识
+: 。
+数据类型及格式
+:an..17
+危险品规则代码
+8273 Dangerousgoodsregulationscode [B]
+说明 规定危险品规则的代码
+: 。
+数据类型及格式
+:an..3
+集装箱 包装内容指示符代码
+8275 / Containerorpackagecontentsindicatorcode [B]
+说明 指示集装箱或包装内容的代码
+: 。
+数据类型及格式
+:an..3
+运输工具所有权指示符代码
+8281 Transportmeansownershipindicatorcode [B]
+说明 指示运输所有权的代码
+: 。
+数据类型及格式
+:an..3
+运输动态代码
+8323 Transportmovementcode [B]
+说明 规定运输动态的代码
+: 。
+数据类型及格式
+:an..3
+设备计划描述
+8332 Equipmentplandescription [B]
+说明 设备计划的自由格式描述
+: 。
+数据类型及格式
+:an..26
+搬移类型描述
+8334 Movementtypedescription [B]
+说明 搬移类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+搬移类型描述代码
+8335 Movementtypedescriptioncode [B]
+说明 规定搬移类型的代码
+: 。
+数据类型及格式
+:an..3
+包装危险等级代码
+8339 Packagingdangerlevelcode [B]
+说明 规定包装危险等级的代码
+: 。
+51
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+搬运安排代码
+8341 Haulagearrangementscode [B]
+说明 规定设备搬运安排的代码
+: 。
+数据类型及格式
+:an..3
+危险品标识代码
+8351 Hazardidentificationcode [B]
+说明 标识危险品的代码
+: 。
+数据类型及格式
+:an..7
+船舶载运危险货物应急措施 标识符
+8364 (EMS) EMSidentifier [B]
+说明 为运送危险品的船舶而定的应急措施
+: 。
+同义词 号
+:EMS
+数据类型及格式
+:an..6
+可退换包装内装物代码
+8393 Returnablepackageloadcontentscode [B]
+说明 规定装在可退换包装内货物的代码
+: 。
+数据类型及格式
+:an..3
+可退换包装运送付款责任代码
+8395 Returnablepackagefreightpaymentresponsibilitycode[B]
+说明 规定可退换包装的退回运费付款责任的代码
+: 。
+数据类型及格式
+:an..3
+危险货物事故医疗急救指南标识符
+8410 (MFAG)MFAGidentifier [B]
+说明 标识立即医疗援助指南
+: 。
+数据类型及格式
+:an..4
+运输工具国籍代码
+8453 Transportmeansnationalitycode [B]
+说明 规定运输工具登记国的国家 地区 名称的代码
+: ( ) 。
+数据类型及格式
+:an..3
+注 使用 二字母国家代码
+: GB/T2659.1 。
+额外运输原因代码
+8457 Excesstransportationreasoncode [B]
+说明 规定额外运输原因的代码
+: 。
+数据类型及格式
+:an..3
+额外运输责任代码
+8459 Excesstransportationresponsibilitycode [B]
+说明 规定额外运输责任的代码
+: 。
+数据类型及格式
+:an..3
+隧道限制代码
+8461 Tunnelrestrictioncode [B]
+说明 指明通过隧道运输的代码
+: 。
+数据类型及格式
+:an..3
+52
+GB/T176991—2024
+.
+运输业务标识代码
+8462 Transportserviceidentificationcode [B]
+说明 标识传输服务的代码
+: 。
+数据类型及格式
+:an..17
+运输服务名称
+8463 Transportservicename [B]
+说明 运输服务的名称
+: 。
+数据类型及格式
+:an..256
+运输服务描述
+8464 Transportservicedescription [B]
+说明 对运输服务的自由格式描述
+: 。
+数据类型及格式
+:an..3
+雇员细目代码限定符
+9003 Employmentdetailscodequalifier [B]
+说明 规定雇员细目的代码
+: 。
+数据类型及格式
+:an..3
+雇员类别描述
+9004 Employmentcategorydescription [B]
+说明 雇员类别的自由格式描述
+: 。
+数据类型及格式
+:an..35
+雇员类别描述代码
+9005 Employmentcategorydescriptioncode [C]
+说明 规定雇员类别的代码
+: 。
+数据类型及格式
+:an..3
+资格分类描述
+9006 Qualificationclassificationdescription [B]
+说明 资格分类的自由格式描述
+: 。
+数据类型及格式
+;an..35
+资格分类描述代码
+9007 Qualificationclassificationdescriptioncode [B]
+说明 规定资格分类的代码
+: 。
+数据类型及格式
+:an..3
+职业描述
+9008 Occupationdescription [B]
+说明 一种职业的自由格式描述
+: 。
+数据类型及格式
+:an...35
+职业描述代码
+9009 Occupationdescriptioncode [B]
+说明 规定一种职业的代码
+: 。
+数据类型及格式
+:an..3
+状态原因描述
+9012 Statusreasondescription [B]
+说明 状态原因的自由格式描述
+: 。
+53
+GB/T176991—2024
+.
+数据类型及格式
+:an..256
+状态原因描述代码
+9013 Statusreasondescriptioncode [C]
+说明 规定状态原因的代码
+: 。
+数据类型及格式
+:an..3
+状态类别代码
+9015 Statuscategorycode [B]
+说明 规定状态类别的代码
+: 。
+数据类型及格式
+:an..3
+属性功能代码限定符
+9017 Attributefunctioncodequalifier [C]
+说明 限定属性功能的代码
+: 。
+数据类型及格式
+:an..3
+属性描述
+9018 Attributedescription [C]
+说明 实体属性的自由格式描述
+: 。
+数据类型及格式
+:an..256
+属性描述代码
+9019 Attributedescriptioncode [B]
+说明 规定一个属性的代码
+: 。
+数据类型及格式
+:an..3
+属性类型描述
+9020 Attributetypedescription [B]
+说明 属性类型的自由格式描述
+: 。
+数据类型及格式
+:an..70
+属性类型描述代码
+9021 Attributetypedescriptioncode [C]
+说明 规定一个属性类型的代码
+: 。
+数据类型及格式
+:an..3
+定义功能代码
+9023 Definitionfunctioncode [B]
+说明 规定定义功能的代码
+: 。
+数据类型及格式
+:an..3
+定义范围代码
+9025 Definitionextentcode [B]
+说明 规定定义范围的代码
+: 。
+数据类型及格式
+:an..3
+编辑掩码格式标识符
+9026 Editmaskformatidentifier [B]
+说明 编辑掩码格式的标识
+: 。
+数据类型及格式
+:an..35
+值定义代码限定符
+9029 Valuedefinitioncodequalifier [B]
+54
+GB/T176991—2024
+.
+说明 限定值定义的代码
+: 。
+数据类型及格式
+:an..3
+编辑掩码数据类型及格式代码
+9031 Editmaskrepresentationcode [B]
+说明 规定编辑掩码数据类型及格式的代码
+: 。
+数据类型及格式
+:an..3
+资格应用领域代码
+9035 Qualificationapplicationareacode [B]
+说明 规定资格应用领域的代码
+: 。
+数据类型及格式
+:an..3
+资格类型代码限定符
+9037 Qualificationtypecodequalifier [B]
+说明 限定资格类型的代码
+: 。
+数据类型及格式
+:an..3
+设施类型描述
+9038 Facilitytypedescription [I]
+说明 设施类型的自由格式描述
+: 。
+数据类型及格式
+:an..70
+设施类型描述代码
+9039 Facilitytypedescriptioncode [I]
+说明 规定设施类型的代码
+: 。
+数据类型及格式
+:an..3
+预订标识符
+9040 Reservationidentifier [I]
+说明 预订的标识
+: 。
+数据类型及格式
+:an..20
+预订标识符代码限定符
+9043 Reservationidentifiercodequalifier [I]
+说明 给预订控制号特定含义的代码
+: 。
+数据类型及格式
+:an..3
+基础代码限定符
+9045 Basiscodequalifier [B]
+说明 限定基础的代码
+: 。
+数据类型及格式
+:an..3
+基础类型描述
+9046 Basistypedescription [B]
+说明 基础类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+基础类型描述代码
+9047 Basistypedescriptioncode [B]
+说明 规定基础类型的代码
+: 。
+数据类型及格式
+:an..3
+55
+GB/T176991—2024
+.
+适应性类型描述
+9048 Applicabilitytypedescription [B]
+说明 适应性类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+适应性类型描述代码
+9049 Applicabilitytypedescriptioncode [B]
+说明 规定适应性类型的代码
+: 。
+数据类型及格式
+:an..3
+适应性代码限定符
+9051 Applicabilitycodequalifier [B]
+说明 限定适应性的代码
+: 。
+数据类型及格式
+:an..3
+关系类型代码限定符
+9141 Relationshiptypecodequalifier [B]
+说明 限定关系类型的代码
+: 。
+数据类型及格式
+:an..3
+关系描述
+9142 Relationshipdescription [C]
+说明 关系的自由格式描述
+: 。
+数据类型及格式
+:an..35
+关系描述代码
+9143 Relationshipdescriptioncode [C]
+说明 规定关系的代码
+: 。
+数据类型及格式
+:an..3
+复合数据元标记标识符
+9146 Compositedataelementtagidentifier [B]
+说明 复合数据元标记的标识
+: 。
+数据类型及格式
+:an..4
+目录状态标识符
+9148 Directorystatusidentifier [B]
+说明 目录集状态的标识
+: 。
+数据类型及格式
+:an..3
+简单数据元标记标识符
+9150 Simpledataelementtagidentifier [B]
+说明 简单数据元标记的标识
+: 。
+数据类型及格式
+:an..4
+简单数据元字符数据类型及格式代码
+9153 Simpledataelementcharacterrepresentationcode [B]
+说明 规定简单数据元字符数据类型及格式的代码
+: 。
+数据类型及格式
+:an..3
+简单数据元最大长度
+9156 Simpledataelementmaximumlengthmeasure [B]
+说明 规定简单数据元最大长度值的代码
+: 。
+数据类型及格式
+:n..3
+56
+GB/T176991—2024
+.
+简单数据元最小长度
+9158 Simpledataelementminimumlengthmeasure [B]
+说明 规定简单数据元的最小长度值
+: 。
+数据类型及格式
+:n..3
+代码集指示符代码
+9161 Codesetindicatorcode [B]
+说明 指示数据元是否有相关代码集的代码
+: 。
+数据类型及格式
+:an..3
+数据元标记标识符
+9162 Dataelementtagidentifier [B]
+说明 数据元标记的标识
+: 。
+数据类型及格式
+:an..4
+组标识符
+9164 Groupidentifier [B]
+说明 组的标识
+: 。
+数据类型及格式
+:an..4
+段标记标识符
+9166 Segmenttagidentifier [B]
+说明 标识段的标记
+: 。
+数据类型及格式
+:an..3
+数据数据类型及格式类型代码
+9169 Datarepresentationtypecode [B]
+说明 规定一个数据数据类型及格式类型的代码
+: 。
+数据类型及格式
+:an..3
+事件类型描述
+9170 Eventtypedescription [B]
+说明 事件类型的自由格式描述
+: 。
+数据类型及格式
+:an..70
+事件类型描述代码
+9171 Eventtypedescriptioncode [B]
+说明 规定事件类型的代码
+: 。
+数据类型及格式
+:an..3
+事件
+9172 Event [B]
+说明 事件的自由格式描述
+: 。
+数据类型及格式
+:an..256
+事件描述代码
+9173 Eventdescriptioncode [B]
+说明 规定事件的代码
+: 。
+数据类型及格式
+:an..35
+数据元应用类型代码
+9175 Dataelementusagetypecode [B]
+说明 规定一个数据元应用类型的代码
+: 。
+57
+GB/T176991—2024
+.
+数据类型及格式
+:an..3
+税制类型代码
+9213 Dutyregimetypecode [B]
+说明 规定税制类型的代码
+: 。
+数据类型及格式
+:an..3
+验证结果文本
+9280 Validationresulttext [B]
+说明 规定验证结果的值
+: 。
+数据类型及格式
+:an..35
+验证密钥标识符
+9282 Validationkeyidentifier [B]
+说明 标识用于计算验证结果的加密密钥
+: 。
+数据类型及格式
+:an..35
+验证规则代码
+9285 Validationcriteriacode [B]
+说明 规定将要验证规则应用的代码
+: 。
+数据类型及格式
+:an..3
+封志方名称
+9302 Sealingpartyname [B]
+说明 封志方的名称
+: 。
+数据类型及格式
+:an..35
+封志方名称代码
+9303 Sealingpartynamecode [B]
+说明 规定封志方名称的代码
+: 。
+数据类型及格式
+:an..3
+运输单元封志标识符
+9308 Transportunitsealidentifier [B]
+说明 标识附加在运输单元上的封志号
+: 。
+数据类型及格式
+:an..35
+应用错误代码
+9321 Applicationerrorcode [C]
+说明 规定一个应用错误的代码
+: 。
+数据类型及格式
+:an..8
+政府手续代码
+9353 Governmentprocedurecode [B]
+说明 规定政府手续的代码
+: 。
+数据类型及格式
+:an..3
+政府参与代码
+9411 Governmentinvolvementcode [B]
+说明 指示政府参与需要和状态的代码
+: 。
+数据类型及格式
+:an..3
+政府机构标识代码
+9415 Governmentagencyidentificationcode [B]
+58
+GB/T176991—2024
+.
+说明 标识政府机构的代码
+: 。
+数据类型及格式
+:an..3
+政府行为代码
+9417 Governmentactioncode [B]
+说明 规定政府行为类型的代码 如检查 扣留 消毒 保护
+: , 、 、 、 。
+数据类型及格式
+:an..3
+服务层代码
+9419 Servicelayercode [B]
+说明 说明服务层的代码
+: 。
+数据类型及格式
+:an..3
+过程阶段代码限定符
+9421 Processstagecodequalifier [B]
+说明 限定过程中阶段的代码
+: 。
+数据类型及格式
+:an..3
+文本值
+9422 Valuetext [B]
+说明 规定一个值
+: 。
+数据类型及格式
+:an..512
+数组单元数据描述
+9424 Arraycelldatadescription [B]
+说明 数组中单元数据的自由格式描述
+:
+数据类型及格式
+:an..35
+代码值文本
+9426 Codevaluetext [B]
+说明 规定代码的值
+: 。
+数据类型及格式
+:an..35
+数组结构标识符
+9428 Arraycellstructureidentifier [B]
+说明 数组结构的标识
+: 。
+数据类型及格式
+:an..35
+注释集标识符
+9430 Footnotesetidentifier [B]
+说明 注释集的标识
+: 。
+数据类型及格式
+:an..35
+注释标识符
+9432 Footnoteidentifier [B]
+说明 注释的标识
+: 。
+数据类型及格式
+:an..35
+代码名称
+9434 Codename [B]
+说明 代码的名称
+: 。
+数据类型及格式
+:an..70
+59
+GB/T176991—2024
+.
+临床干预描述
+9436 Clinicalinterventiondescription [B]
+说明 临床干预的自由格式说明
+: 。
+数据类型及格式
+:an..70
+临床干预描述代码
+9437 Clinicalinterventiondescriptioncode [B]
+说明 规定临床干预的代码
+: 。
+数据类型及格式
+:an..17
+临床干预类型代码限定符
+9441 Clinicalinterventiontypecodequalifier [B]
+说明 限定临床干预类型的代码
+: 。
+数据类型及格式
+:an..3
+护理类型代码限定符
+9443 Attendancetypecodequalifier [B]
+说明 限定护理类型的代码
+: 。
+数据类型及格式
+:an..3
+允许类型描述
+9444 Admissiontypedescription [B]
+说明 允许类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+允许类型描述代码
+9445 Admissiontypedescriptioncode [C]
+说明 规定允许类型的代码
+: 。
+数据类型及格式
+:an..3
+解除类型描述
+9446 Dischargetypedescription [B]
+说明 解除类型的自由格式描述
+: 。
+数据类型及格式
+:an..35
+解除类型描述代码
+9447 Dischargetypedescriptioncode [C]
+说明 规定解除类型的代码
+: 。
+数据类型及格式
+:an..3
+文件生成命令名称
+9448 Filegenerationcommandname [B]
+说明 文件生成命令的名称
+: 。
+数据类型及格式
+:an..35
+文件压缩技术名称
+9450 Filecompressiontechniquename [B]
+说明 一种文件压缩技术的名称
+: 。
+数据类型及格式
+:an..35
+代码值来源代码
+9453 Codevaluesourcecode [B]
+说明 规定代码值来源的代码
+: 。
+数据类型及格式
+:an..3
+60
+GB/T176991—2024
+.
+公式类型代码限定符
+9501 Formulatypecodequalifier [B]
+说明 限定公式类型的代码
+: 。
+数据类型及格式
+:an..3
+公式名称
+9502 Formulaname [B]
+说明 标识公式的名称
+: 。
+数据类型及格式
+:an..35
+公式复杂性代码
+9505 Formulacomplexitycode [B]
+说明 规定公式复杂性的代码
+: 。
+数据类型及格式
+:an..3
+公式顺序代码限定符
+9507 Formulasequencecodequalifier [B]
+说明 给公式序列特定含义的代码
+: 。
+数据类型及格式
+:an..3
+公式顺序操作代码
+9509 Formulasequenceoperandcode [B]
+说明 在公式序列内 说明操作特定类型的代码
+: , 。
+数据类型及格式
+:an..17
+公式顺序名称
+9510 Formulasequencename [B]
+说明 标识公式序列的名称
+: 。
+数据类型及格式
+:an..35
+信息种类代码
+9601 Informationcategorycode [I]
+说明 规定信息种类的代码
+: 。
+数据类型及格式
+:an..3
+数据代码限定符
+9605 Datacodequalifier [I]
+说明 限定数据的代码
+: 。
+数据类型及格式
+:an..3
+是或否指示符代码
+9607 Yesornoindicatorcode [I]
+说明 规定是或否的代码
+: 。
+数据类型及格式
+:an..3
+调整种类代码
+9619 Adjustmentcategorycode [I]
+说明 规定调整种类的代码
+: 。
+数据类型及格式
+:an..3
+政策限制标识符
+9620 Policylimitationidentifier [I]
+说明 规定政策限制的代码
+: 。
+61
+GB/T176991—2024
+.
+数据类型及格式
+:an..10
+诊断类型代码
+9623 Diagnosistypecode [I]
+说明 规定诊断类型的代码
+: 。
+数据类型及格式
+:an..3
+相关原因代码
+9625 Relatedcausecode [I]
+说明 规定相关原因的代码
+: 。
+数据类型及格式
+:an..3
+许可源代码
+9627 Admissionsourcecode [I]
+说明 规定许可源的代码
+: 。
+数据类型及格式
+:an..3
+程序修改代码
+9629 Proceduremodificationcode [I]
+说明 规定程序修改的代码
+: 。
+数据类型及格式
+:an..3
+发票类型代码
+9631 Invoicetypecode [I]
+说明 规定发票类型的代码
+: 。
+数据类型及格式
+:an..3
+事件细目代码限定符
+9635 Eventdetailscodequalifier [B]
+说明 限定事件细目的代码
+: 。
+数据类型及格式
+:an..3
+事件类别描述
+9636 Eventcategorydescription [B]
+说明 事件类别的自由格式描述
+: 。
+数据类型及格式
+:an..70
+事件类别描述代码
+9637 Eventcategorydescriptioncode [B]
+说明 规定事件类别的代码
+: 。
+数据类型及格式
+:an..3
+诊断类别代码
+9639 Diagnosiscategorycode [I]
+说明 规定诊断类别的代码
+: 。
+数据类型及格式
+:an..3
+服务基础代码限定符
+9641 Servicebasiscodequalifier [I]
+说明 限定服务执行基础的代码
+: 。
+数据类型及格式
+:an..3
+支持证据类型代码限定符
+9643 Supportingevidencetypecodequalifier [I]
+62
+GB/T176991—2024
+.
+说明 限定支持证据类型的代码
+: 。
+数据类型及格式
+:an..3
+支付方责任等级代码
+9645 Payerresponsibilitylevelcode [I]
+说明 规定支付方责任等级的代码
+: 。
+数据类型及格式
+:an..3
+腔区代码
+9647 Cavityzonecode [I]
+说明 规定腔区的代码
+: 。
+数据类型及格式
+:an..3
+处理信息代码限定符
+9649 Processinginformationcodequalifier [B]
+说明 限定处理信息的代码
+: 。
+数据类型及格式
+:an..3
+63
+GB/T176991—2024
+.
+参 考 文 献
+集装箱 代码 识别和标记
+[1] GB/T1836 、
+个人基本信息分类与代码 第 部分 人的性别代码
+[2] GB/T2261.1 1 :
+世界各国和地区及其行政区划名称代码 第 部分 行政区划代码
+[3] GB/T2659.2 2 :
+语种名称代码 第 部分 字母代码
+[4] GB/T4880.1 1 :2
+语种名称代码 第 部分 所有语种的 字母代码
+[5] GB/T4880.3 3 : 3
+运输方式代码
+[6] GB/T6512
+表示货币的代码
+[7] GB/T12406—2022
+行政 商业和运输业电子数据交换 应用级语法规则
+[8] GB/T14805.1—2007 、 (EDIFACT)
+第 部分 公用的语法规则
+1 :
+贸易数据元目录 数据元
+[9] GB/T15191—2010
+中华人民共和国口岸及相关地点代码
+[10] GB/T15514
+乘客及货物类型 包装类型和包装材料类型代码
+[11] GB/T16472 、
+运费代码 运费和其他费用的统一描述
+[12] GB/T17152—2008 (FCC)
+国际贸易计量单位代码
+[13] GB/T17295
+国际贸易付款条款的缩略语
+[14] GB/T18126 (PAYTERMS)
+信息技术 元数据注册系统 第 部分 框架
+[15] GB/T18391.1—2009 (MDR) 1 :
+运输工具类型代码
+[16] GB/T18804
+国际贸易术语解释通则缩写代码
+[17] GB/T29193
+贸易与运输状态代码
+[18] GB/T29623
+第 号建议书 口岸及有关地点代码
+[19] UN/CEFACT 16 (UNLOCODE)
+64

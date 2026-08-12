@@ -1,0 +1,817 @@
+ICS35020
+.
+CCSL67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T44368—2024
+进口冷链食品追溯 追溯系统数据交换
+应用规范
+Importedcold-chainfoodtraceability—Specificationfordatainterchange
+applicationoftraceabilitysystem
+2024-08-23发布 2025-03-01实施
+国 家 市 场 监 督 管 理 总 局
+发 布
+国 家 标 准 化 管 理 委 员 会
+GB/T44368—2024
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+数据交换一般原则
+4 ……………………………………………………………………………………… 1
+数据模型
+5 ………………………………………………………………………………………………… 1
+涉及环节
+5.1 …………………………………………………………………………………………… 1
+境内通关环节追溯数据模型
+5.2 ……………………………………………………………………… 2
+境内生产加工环节追溯数据模型
+5.3 ………………………………………………………………… 3
+物流环节追溯数据模型
+5.4 …………………………………………………………………………… 4
+流通销售环节追溯数据模型
+5.5 ……………………………………………………………………… 5
+数据元要求
+5.6 ………………………………………………………………………………………… 5
+数据交换接口要求
+6 ……………………………………………………………………………………… 5
+测试与验证方法
+7 ………………………………………………………………………………………… 5
+附录 资料性 数据交换接口方式
+A( ) …………………………………………………………………… 6
+服务接口方式
+A.1 ……………………………………………………………………………………… 6
+文件接口方式
+A.2 …………………………………………………………………………………… 14
+参考文献
+…………………………………………………………………………………………………… 16
+Ⅰ
+GB/T44368—2024
+前 言
+本文件按照 标准化工作导则 第 部分 标准化文件的结构和起草规则 的规定
+GB/T1.1—2020《 1 : 》
+起草
+。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别专利的责任
+。 。
+本文件由全国物流信息管理标准化技术委员会 提出
+(SAC/TC267) 。
+本文件由全国物流信息管理标准化技术委员会 和全国物流标准化技术委员会
+(SAC/TC267)
+共同归口
+(SAC/TC269) 。
+本文件起草单位 中国标准化研究院 中国物流与采购联合会 国投中标质量基础设施研究院有限
+: 、 、
+公司 河北雄安新区管理委员会 中国物品编码中心 北京工商大学 北京交通大学 顺丰冷链物流有限
+、 、 、 、 、
+公司 鲜生活冷链物流有限公司 北京五环顺通供应链管理有限公司 鑫荣懋果业科技集团股份有限公
+、 、 、
+司 北京永杰友信科技有限公司 大连港毅都冷链有限公司 上海文景信息技术有限公司 山东港口陆海
+、 、 、 、
+国际物流集团有限公司 河北冰峰供应链管理有限公司 万科物流发展有限公司 江苏汇鸿冷链物流有
+、 、 、
+限公司 誉农智汇 成都 农业科技发展集团有限公司 河北农业大学 保定市畜牧工作站 山东商业职业
+、 ( ) 、 、 、
+技术学院 宁波市标准化研究院 中远海运集装箱运输有限公司 上海海联智通信息科技有限公司 盐城
+、 、 、 、
+工学院 深圳市鸿泰信智慧物流科技有限公司
+、 。
+本文件主要起草人 刘鹏 李强 秦玉鸣 韦波 袁姗姗 李昀飞 李素彩 左敏 张铎 孙小云 王晓晓
+: 、 、 、 、 、 、 、 、 、 、 、
+年益莹 张青川 戴岳 段敏 张秋霞 张甜翠 王昉 宋微 欧阳时锋 何萌 孙长胜 吴俊峰 王玮 王磊
+、 、 、 、 、 、 、 、 、 、 、 、 、 、
+周卓 殷镇 吴园 白雪洁 许利军 张长峰 楼庆华 郭健飞 郝杨杨 郭风军 李辉 孟海涛
+、 、 、 、 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T44368—2024
+进口冷链食品追溯 追溯系统数据交换
+应用规范
+1 范围
+本文件规定了进口冷链食品追溯系统数据交换的一般原则 数据模型 数据交换接口要求 测试与
+、 、 、
+验证方法
+。
+本文件适用于进口冷链食品追溯系统的数据交换和应用
+。
+2 规范性引用文件
+下列文件中的内容通过文中的规范性引用而构成本文件必不可少的条款 其中 注日期的引用文
+。 ,
+件 仅该日期对应的版本适用于本文件 不注日期的引用文件 其最新版本 包括所有的修改单 适用于
+, ; , ( )
+本文件
+。
+信息技术 软件测量 功能规模测量 第 部分 功能规模测量方法的验证
+GB/T18491.3—2010 3 :
+信息安全技术 信息系统安全管理平台技术要求和测试评价方法
+GB/T34990—2017
+信息安全技术 个人信息安全规范
+GB/T35273
+进口冷链食品追溯 追溯系统数据元
+GB/T43265—2023
+进口冷链食品追溯 追溯体系通则
+GB/T43268—2023
+3 术语和定义
+界定的以及下列术语和定义适用于本文件
+GB/T43268—2023 。
+31
+.
+数据交换 datainterchange
+各类实体之间相互提供数据的过程
+。
+来源
+[ :GB/T36107—2018,3.1]
+4 数据交换一般原则
+41 各信息系统进行数据交换时遵循统一的数据模型
+. 。
+42 交换的数据要真实 准确 及时 完整
+. 、 、 、 。
+43 按照规范格式确定数据交换的内容和格式
+. 。
+44 在进行数据交换时 宜考虑接入身份认证 数据加密 数据传输 消息状态回执以及日志记录的安全性
+. , 、 、 、 。
+5 数据模型
+51 涉及环节
+.
+进口冷链食品追溯系统间的数据交换主要包括境内通关 境内生产加工 物流和流通销售 个环节
+、 、 4
+等数据
+。
+1
+GB/T44368—2024
+2
+,+*)(’&%$#"!!"!!
+!0/".-,+*)(’&%$#"!
+,+*)(’&%$#!.!#-
+书书书
+GB/T44368—2024
+3
+.-,+*)(’&%$#"!!"!!
+!21"0/.-,+*)(’&%$#"!
+.-,+*)(’&%$#"!!#/
+书书书
+GB/T44368—2024
+4
+*)(’&%$#"!!"!!
+!.-",+*)(’&%$#"!
+*)(’&%$#"!!#+
+书书书
+GB/T44368—2024
+55 流通销售环节追溯数据模型
+.
+流通销售环节追溯数据模型如图 所示
+4 。
+图4 流通销售环节追溯数据模型
+56 数据元要求
+.
+数据元应符合 的要求
+GB/T43265—2023 。
+6 数据交换接口要求
+61 数据交换接口方式分为服务接口方式和文件接口方式 示例参见附录
+. ( A)。
+62 在进行数据交换时 应进行用户身份认证 并验证相应请求权限
+. , , 。
+63 在数据交换过程中 涉及个人信息的 应符合 的要求
+. , , GB/T35273 。
+64 在进行数据交换时 应返回包含处理结果的消息状态回执 当出现同一条数据重复传输时 以最
+. , 。 ,
+后一条数据为准
+。
+65 应对数据接口调用请求进行记录及异常警告 对日志记录进行保护 日志记录保护期限不少于
+. , ,
+个月
+6 。
+7 测试与验证方法
+71 数据交换测试主要指数据接口测试
+. 。
+72 数据接口测试应符合 中 的要求
+. GB/T34990—2017 7.2.6 。
+73 数据接口功能规模验证应符合 中第 章的要求
+. GB/T18491.3—2010 4 。
+5
+GB/T44368—2024
+附 录 A
+资料性
+( )
+数据交换接口方式
+A1 服务接口方式
+.
+A11 概述
+..
+服务接口方式通常用于实时数据交换
+。
+A12 技术约定
+..
+数据交换双方在交换前对技术细节做出约定 如
+, :
+字符编码集
+a) :UTF-8;
+摘要算法
+b) :SHA-256;
+图片编码格式 编码
+c) :BASE64 。
+A13 境内通关环节追溯信息接口示例
+..
+A131 接口地址
+... :http://www.cnic.cn/cold-chain-tracing/certification.register。
+A132 接口名称 境内通关环节追溯信息接口
+... : 。
+A133 接口说明 根据请求 境内通关环节追溯接口信息
+... : , 。
+A134 接口方式
+... :webservice。
+A135 请求格式
+... :
+a) method:post;
+b) content-Type:application/json;
+境内通关环节追溯信息报送参数见表 和表
+c) A.1 A.2;
+表A1 境内通关环节追溯信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+追溯码 是 字符串型
+TraceabilityCode (string) 255
+海关货物名称 是 字符串型
+GoodsName (string) 50
+海关编码 是 字符串型
+CustomsCode (string) 20
+起运港 地 是 字符串型
+( ) PortOfDeparture (string) 255
+货柜号 是 字符串型
+ContainerNo (string) 20
+申报数量 是 字符串型
+DeclaredQuantity (string) 255
+申报地关区代码 是 字符串型
+DeclaredCode (string) 20
+运输方式代码 是 字符串型
+TransportCode (string) 21
+入境口岸代码 是 字符串型
+PortOfEntry (string) 9
+入境日期 是 日期型
+DateOfEntry (date) —
+报关单位 是 字符串型
+CustomsUnit (string) 255
+境内收货人 是 字符串型
+Consignee (string) 10
+6
+GB/T44368—2024
+表A1 境内通关环节追溯信息报送参数示例 续
+. ( )
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+消费使用单位 否 字符串型
+ConsumerUnit (string) 255
+报关单号 是 字符串型
+CustomsDeclaration (string) 255
+提运单号 是 字符串型
+DeliveryNumbers (string) 255
+毛重 是 字符串型
+GrossWeight (string) 255
+净重 是 字符串型
+NetWeight (string) 255
+计量单位 是 字符串型
+UnitofMeasurement (string) 255
+卫生证书 是 二进制
+Certificate (Image) —
+原产地证明 是 二进制
+CertificateOfOrigin (Image) —
+其他 否 字符串型
+Others (string) 255
+表A2 食品信息上报参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+食品名称 是 字符串型
+FoodName (string) 255
+食品类型 是 字符串型
+FoodType (string) 10
+包装种类 是 字符串型
+PackingType (string) 255
+重量 是 数值型
+Weight (number) —
+计量单位 是 字符串型
+UnitofMeasurement (string) 255
+品牌 否 数值型
+Brand (number) 255
+批次号 是 字符串型
+BatchNo (string) 255
+系列号 否 字符串型
+SerialNumber (string) 255
+生产日期 是 日期型
+SateOfManufacture (date) —
+保质期 是 字符串型
+Quality (string) 255
+商品条码 否 字符串型
+BarCode (string) 20
+储存条件 是 字符串型
+StorageConditions (string) 255
+原产国 地 是 字符串型
+( ) CountryOfOrigin (string) 255
+其他 否 字符串型
+Others (string) 255
+请求输入见表
+d) A.3。
+7
+GB/T44368—2024
+表A3 请求输入示例
+.
+[{
+"batchInfoList":[
+{
+冷冻牛肉
+"FoodName":" ",
+畜产品
+"FoodType":" ",
+其他包装
+"PackingType":" ",
+"Weight":"64308",
+"UnitofMeasurement":"kg",
+中粮
+"Brand":" ",
+"BatchNo":"A20172637373",
+"SerialNumber":"A20172637373",
+"SateOfManufacture":"2024-01-24",
+个月
+"Quality":"6 ",
+"BarCode":"6942129200234",
+冷冻
+"StorageConditions":" ",
+"CountryOfOrigin":"USA",
+"Others":""
+}
+],
+"TraceabilityCode":"(01)06923957001064(10)20240124(97)1001",
+冷冻牛肉
+"GoodsName":" ",
+"CustomsCode":"120001",
+美国港
+"PortOfDeparture":" ",
+"ContainerNo":"B2024558",
+"DeclaredQuantity":"64308kg",
+"DeclaredCode":"102521",
+"TransportCode":"021",
+"PortOfEntry":"120001",
+"DateOfEntry":"2024-01-12",
+北京 有限公司
+"CustomsUnit":" ×× ",
+冷链物流有限公司
+"Consignee":"×× ",
+"CustomsDeclaration":"426820211000001598001",
+"GrossWeight":"64308kg",
+"NetWeight":"64200kg",
+"Certificate":"",
+"CertificateOfOrigin":"",
+无
+"Others":" "
+}]
+A136 返回格式见表
+... A.16。
+A14 境内生产加工环节
+..
+A141 接口地址
+... :http://www.cnic.cn/cold-chain-tracing/certification.register。
+A142 接口名称 境内生产加工环节信息接口
+... : 。
+8
+GB/T44368—2024
+A143 接口说明 根据请求 调用境内生产加工环节信息接口
+... : , 。
+A144 接口方式
+... :webservice。
+A145 请求格式
+... :
+a) method:post;
+b) content-Type:application/json;
+境内生产加工信息报送参数见表
+c) A.4;
+表A4 境内生产加工环节报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+追溯码 是 字符串型
+TraceabilityCode (string) 255
+产品名称 是 字符串型
+ProductName (string) 255
+境内生产加工商 是 字符串型
+Producer (string) 255
+生产场所位置 是 字符串型
+ProductionSite (string) 255
+生产场所位置编码 是 字符串型
+ProductionCode (string) 255
+生产车间编号 是 字符串型
+WorkshopCode (string) 255
+生产设备编号 是 字符串型
+Production (string) 255
+生产作业人员 是 字符串型
+Operatives (string) 255
+其他 否 字符串型
+Others (string) 255
+请求输入见表
+d) A.5。
+表A5 请求输入示例
+.
+[{
+"TraceabilityCode":"(01)06923957001064(10)20240124(97)1001",
+冷冻牛肉
+"ProductName":" ",
+北京 有限公司
+"Producer":" ×× ",
+北京市海淀区 路 号院 号楼
+"ProductionSite":" ×× 1 2 B-602",
+"ProductionCode":"B20240252",
+"WorkshopCode":"A02",
+"Production":"B03",
+张三 李四
+"Operatives":" 、 ",
+无
+"Others":" "
+}]
+A146 返回格式见表
+... A.16。
+A15 物流环节信息接口
+..
+A151 接口地址
+... :http://www.cnic.cn/cold-chain-tracing/certification.register。
+A152 接口名称 物流环节信息接口
+... : 。
+A153 接口说明 根据请求 调用物流环节信息接口
+... : , 。
+A154 接口方式
+... :webservice。
+A155 请求格式
+... :
+9
+GB/T44368—2024
+a) method:post;
+b) content-Type:application/json;
+物流环节信息报送参数见表 表
+c) A.6~ A.8;
+表A6 冷库存储信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+追溯码 是 字符串型
+TraceabilityCode (string) 255
+储运货物名称 是 字符串型
+GoodsName (string) 255
+储运包装商品编码 是 字符串型
+ProductCode (string) 255
+货主 是 字符串型
+Owner (string) 255
+冷库名称 是 字符串型
+ColdStorageName (string) 255
+冷库编号 是 字符串型
+ColdStorageNumber (string) 255
+冷库类型 是 字符串型
+TypeOfColdStorage (string) 255
+冷库位置 是 字符串型
+ColdStorageLocation (string) 255
+冷库位置编码 是 字符串型
+ColdStorageLocationCode (string) 255
+冷库存储企业 是 字符串型
+ColdStorageStorageEnterprises (string) 255
+冷库资质证书 是 二进制
+Qualifications (Image) —
+仓储位置 是 字符串型
+StorageLocation (string) 255
+入库时间 是 日期型
+InboundTime (date) —
+入库数量 是 字符串型
+InboundQuantity (string) 255
+出库时间 是 日期型
+OutboundTime (date) —
+出库数量 是 字符串型
+OutboundQuantity (string) 255
+冷库操作人员 是 字符串型
+ColdStorageOperators (string) 255
+其他 否 字符串型
+Others (string) 255
+表A7 冷链运输信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+追溯码 是 字符串型
+TraceabilityCode (string) 255
+货运单号 是 字符串型
+TrackingNumber (string) 255
+运输货物名称 是 字符串型
+NameOfTheGoods (string) 255
+物流单元编码 是 字符串型
+LogisticsUnitCode (string) 255
+运输数量 是 数值型
+QuantityShipped (number) —
+运输方式代码 是 字符串型
+ShippingMethodCode (string) 255
+运输工具 是 字符串型
+MeansOfTransport (string) 255
+运输工具标识 是 字符串型
+ToolIdentification (string) 255
+运输发货方 是 字符串型
+ShippingShippers (string) 255
+运输收货方 是 字符串型
+ShippingConsignee (string) 255
+10
+GB/T44368—2024
+表A7 冷链运输信息报送参数示例 续
+. ( )
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+承运人 是 字符串型
+Carrier (string) 255
+运输人员 是 字符串型
+TransportOfPersonnel (string) 255
+起运地位置 是 字符串型
+OriginLocation (string) 255
+起运地位置编码 是 数值型
+OriginLocationCode (number) —
+运输目的地位置 是 字符串型
+DestinationLocation (string) 255
+运输目的地位置编码 是 数值型
+DestinationLocationCode (number) —
+起运时间 是 日期型
+DepartureTime (date) —
+抵达时间 是 日期型
+TimeOfArrival (date) —
+其他 否 字符串型
+others (string) 255
+表A8 配送信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+追溯码 是 字符串型
+TraceabilityCode (string) 255
+配送单号 是 字符串型
+TrackingNumber (string) 255
+配送货物名称 是 字符串型
+NameOfTheGoods (string) 255
+配送数量 是 数值型
+QuantityShipped (number) —
+配送发货方 是 字符串型
+ShippingShipper (string) 255
+配送人员 是 字符串型
+DeliveryPersonnel (string) 255
+配送时间 是 日期型
+DeliveryTime (date) —
+配送收货方 是 字符串型
+Consignee (string) 255
+交付时间 是 日期型
+DeliveryTime (date) —
+其他 否 字符串型
+Others (string) 255
+请求输入见表 表
+d) A.9~ A.11。
+表A9 冷库存储信息请求输入示例
+.
+[{
+"TraceabilityCode":"(01)06923957001064(10)20240124(97)1001",
+冻北极贝
+"GoodsName":" ",
+"ProductCode":"0304830000",
+北京 有限公司
+"Owner":" ×× ",
+冷链物流有限公司
+"ColdStorageName":"×× ",
+"ColdStorageNumber":"A54",
+大型冷库
+"TypeOfColdStorage":" ",
+天津 路 号贸易中心南区
+"ColdStorageLocation":" ×× 123 1-1",
+"ColdStorageLocationCode":"120116",
+11
+GB/T44368—2024
+表A9 冷库存储信息请求输入示例 续
+. ( )
+冷链物流有限公司
+"ColdStorageStorageEnterprises":"×× ",
+"Qualifications":"adcfdreckdierneruikd1243",
+冷链物流有限公司 号库东北角 号笼
+"StorageLocation":"×× A1 7 ",
+"InboundTime":"2024-01-12",
+"InboundQuantity":"8000",
+"OutboundTime":"2024-01-21",
+"OutboundQuantity":"6000",
+张益达
+"ColdStorageOperators":" ",
+无
+"Others":" "
+}]
+表A10 冷链运输信息请求输入示例
+.
+[{
+"TraceabilityCode":"(01)06923957001064(10)20240124(97)1001",
+"TrackingNumber":"SF1419780528960",
+冻北极贝
+"NameOfTheGoods":" ",
+"LogisticsUnitCode":"695487158964",
+"QuantityShipped":"800",
+"ShippingMethodCode":"452895",
+货车
+"MeansOfTransport":" ",
+"ToolIdentification":"558263",
+冷链物流有限公司
+"ShippingShippers":"×× ",
+南京 食品有限公司
+"ShippingConsignee":" ×× ",
+天津市 物流有限公司
+"Carrier":" ×× ",
+张小明
+"TransportOfPersonnel":" ",
+天津市滨海新区
+"OriginLocation":" ",
+"OriginLocationCode":"120116",
+南京市 街道 号 市场
+"DestinationLocation":" ×× 168 ×× ",
+"DestinationLocationCode":"425621",
+"DepartureTime":"2023-12-15",
+"TimeOfArrival":"2023-12-17",
+无
+"Others":" "
+}]
+12
+GB/T44368—2024
+表A11 配送信息请求输入示例
+.
+[{
+"TraceabilityCode":"(01)06923957001064(10)20240124(97)1001",
+"TrackingNumber":"SF1419780528960",
+冻北极贝
+"NameOfTheGoods":" ",
+"QuantityShipped":"900",
+冷链物流有限公司
+"ShippingShipper":"×× ",
+张小明
+"DeliveryPersonnel":" ",
+"DeliveryTime":"2024-01-20",
+南京 食品有限公司
+"Consignee":" ×× ",
+"DeliveryTime":"2021-01-22",
+无
+"Others":" "
+}]
+A156 返回格式见表
+... A.16。
+A16 流通销售环节信息接口
+..
+A161 接口地址
+... :http://www.cnic.cn/cold-chain-tracing/certification.register。
+A162 接口名称 流通销售环节信息接口
+... : 。
+A163 接口说明 根据请求 流通销售环节接口信息
+... : , 。
+A164 接口方式
+... :webservice。
+A165 请求格式
+... :
+a) method:post;
+b) content-Type:application/json;
+流通销售环节信息报送参数见表
+c) A.12;
+表A12 流通销售环节信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+商品名称 是 字符串型
+ProductName (string) 255
+订单编号 是 字符串型
+OrderNumber (string) 255
+卖方 是 字符串型
+Seller (string) 255
+买方 是 字符串型
+Buyer (string) 255
+电商平台 是 字符串型
+EcommercePlatforms (string) 255
+交易市场 是 字符串型
+TradingMarkets (string) 255
+交易类型 是 字符串型
+TransactionType (string) 255
+交易数量 是 数值型
+NumberTransactions (number) —
+交易时间 是 日期型
+NumberOfTransactions (date) —
+交易地点 是 字符串型
+TradingLocation (string) 255
+售后信息 否 字符串型
+AfterSalesInformation (string) 255
+其他 否 字符串型
+Others (string) 255
+13
+GB/T44368—2024
+请求输入见表
+d) A.13。
+表A13 请求输入示例
+.
+[{
+冷冻牛肉
+"ProductName":" ",
+"OrderNumber":"410060112106240118140627178885",
+北京 有限公司
+"Seller":" ×× ",
+济南 有限公司
+"Buyer":" ×× ",
+无
+"EcommercePlatforms":" ",
+农产品批发市场
+"TradingMarkets":"×× ",
+电子交易
+"TransactionType":" ",
+"NumberTransactions":"3000.00",
+"NumberOfTransactions":"2024-01-12",
+"DateOfEntry":"2024-01-12",
+农产品批发市场
+"TradingLocation":"×× ",
+无
+"AfterSalesInformation":" "
+无
+"Others":" "
+}]
+A166 返回格式见表
+... A.16。
+A2 文件接口方式
+.
+A21 概述
+..
+文件接口方式通常用于非实时数据交换
+。
+A22 文件类型
+..
+可分为
+:
+非结构化数据文件 如图像 视频 文档等文件
+a) : 、 、 ;
+结构化数据文件 如 等后缀格式文件
+b) : txt、csv、xls、xlsx 。
+A23 消杀证明文件接口
+..
+A231 接口地址
+... :http://www.cnic.cn/cold-chain-tracing/certification.register。
+A232 接口名称 消杀证明文件接口
+... : 。
+A233 接口说明 根据请求 调用货物消杀证明文件接口
+... : , 。
+A234 接口方式
+... :webservice。
+A235 请求格式
+... :
+a) method:post;
+b) content-Type:application/json;
+货物消杀文件信息报送参数见表
+c) A.14;
+14
+GB/T44368—2024
+表A14 货物消杀文件信息报送参数示例
+.
+参数中文名称 必填 参数英文名称 数据类型 数据长度
+检验检疫单号 是 字符串型
+orderNo (string) 20
+消杀证明编号 是 字符串型
+disinfectNo (string) 255
+消杀证明名称 是 字符串型
+disinfectName (string) 255
+消杀证明内容 是 二进制
+disinfectContent (Image) —
+消杀证明文件大小 是 字符串型
+disinfectSize (string) 255
+文件扩展名 是 字符串型
+disinfectExtense (string) 255
+上传日期 是 日期型
+UpdateDate (Data) 255
+请求输入见表
+d) A.15。
+表A15 请求输入示例
+.
+[{
+"orderNo":"120000008393352001",
+"disinfectNo":"022620201000010594",
+猪后腿肉消毒证明
+"disinfectName":" ",
+"disinfectContent":"adcfdreckdierneruikd1243",
+"disinfectSize":"2045kb",
+"disinfectExtense":"j.pg",
+"UpdateDate":"2024-01-12"
+}]
+A236 返回格式见表
+... A.16。
+表A16 返回参数示例
+.
+状态码 说明
+200 OK
+201 Created
+401 Unauthorized
+403 Forbidden
+404 NotFound
+900 Other
+15
+GB/T44368—2024
+参 考 文 献
+信息技术 会计核算软件数据接口
+[1] GB/T19581—2004
+食品冷链物流追溯管理要求
+[2] GB/T28843—2012
+法人和其他组织统一社会信用代码数据交换接口
+[3] GB/T36107—2018
+国务院关于积极推进 互联网 行动的指导意见 国发 号
+[4] “ +” ( 〔2015〕40 )
+关于发布食品生产经营企业建立食品安全追溯体系若干规定的公告 国家食品药品监管总局
+[5] (
+公告 年第 号
+2017 39 )
+市场监管总局关于加强冷藏冷冻食品质量安全管理的公告 国家市场监督管理总局公告
+[6] (
+年第 号
+2020 10 )
+16

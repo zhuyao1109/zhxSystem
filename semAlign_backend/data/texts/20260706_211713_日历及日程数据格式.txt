@@ -1,0 +1,1394 @@
+ICS35040
+.
+L63
+中 华 人 民 共 和 国 国 家 标 准
+GB/T32656—2016
+日历及日程数据格式
+Dataformatofthecalendarandschedule
+2016-04-25发布 2016-11-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T32656—2016
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义 缩略语
+3 、 ……………………………………………………………………………………… 1
+日历及日程安排结构
+4 …………………………………………………………………………………… 1
+元素的属性类型
+5 ………………………………………………………………………………………… 2
+日历及日程安排的预定义元素
+6 ………………………………………………………………………… 4
+目标预定义元素
+7 ………………………………………………………………………………………… 10
+活动模板预定义元素
+8 …………………………………………………………………………………… 11
+附录 规范性附录 日历及日程安排文件结构划分及元素分类
+A( ) …………………………………… 13
+附录 资料性附录 示例文件
+B( ) ………………………………………………………………………… 14
+附录 规范性附录 重复规则定义
+C( ) …………………………………………………………………… 19
+参考文献
+…………………………………………………………………………………………………… 21
+Ⅰ
+GB/T32656—2016
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本标准由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本标准起草单位 镇江金钛软件有限公司 中国电子技术标准化研究院 江苏中通洋软件服务有限
+: 、 、
+公司 句容智恒安全设备有限公司 江苏达嘉软件科技有限公司 南京欢迎科技产品有限公司 东莞市爱
+、 、 、 、
+微马信息科技有限公司 华南理工大学
+、 。
+本标准主要起草人 丁力 葛加苗 黄木龙 杜春辉 高健 赖汉明 徐浩 张宇 郭炜强
+: 、 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T32656—2016
+日历及日程数据格式
+1 范围
+本标准规定了日历及日程信息结构数据格式
+。
+本标准适用于进行日历及日程安排和管理的相关信息系统
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 信息交换用七位编码字符集
+GB/T1988
+信息处理 支持设施 公共文本拥有者标识符的登记规程
+GB/T15537 SGML
+信息技术 开放系统互连 目录 第 部分 选定的属性类型
+GB/T16264.6 6 :
+信息技术 中文编码字符集
+GB18030
+3 术语和定义 缩略语
+、
+下列术语 定义和缩略语适用于本文件
+、 。
+31 术语和定义
+.
+311
+..
+日历及日程安排 thecalendarandschedule
+工作安排的一种电子格式 符合本标准的工作安排称为
+。 gCalendar。
+32 缩略语
+.
+统一资源定位地址
+URL: (UniformResourceLocater)
+可扩展置标语言
+XML: (ExtensibleMarkupLanguage)
+唯一标识符
+UID: (UniqueIdentifier)
+全球唯一标识符
+GUID: (GloballyUniqueIdentifier)
+时区
+TZ: (TimeZone)
+4 日历及日程安排结构
+41 概述
+.
+本标准定义的日历及日程安排结构由头信息 体信息和子文件信息三部分组成 见附录
+、 。 A。
+体信息可以是日程安排 也可以是已完成的活动
+(GTODO), (GDONE)。
+子文件信息可以是有头文件的工作安排文件 也可以是没有头文件的工作安排文件
+, 。
+目标 活动模板的定义都可以放在日历及日程安排文件里
+、 。
+从逻辑上说 每个 对象是单个或多个元素的集合 每个元素具有唯一的元素名 该元素
+, gCalendar , ,
+1
+GB/T32656—2016
+名有一个或多个取值 还可能含有属性值
+, 。
+示例
+:<DTCREATE>2012-3-12T15:00:00</DTCREATE>
+约会 同学聚餐
+<CATEGORIESName=" "> </CATEGORIES>
+完整示例文件参见附录
+B。
+42 命名空间
+.
+命名空间采用
+XML :http://www.cesi.cn
+43 字符集
+.
+字符集在 文件的前导说明部分的字符集元素值中给出 对于日历及日程安排 应支持的字
+XML 。 ,
+符集包括 至少支持强制部分 等
+GB1988、GB18030( ) 。
+5 元素的属性类型
+日历及日程安排包含的元素见表
+1。
+表1 日历及日程安排包含的元素
+元素 说明
+唯一标识
+UID
+版本号
+VERSION
+更新源
+SOURCE
+时段
+DTPERIOD
+时区
+TZ
+地理位置信息
+GEO
+参与者
+PARTICIPANT
+最近修改时间
+REV
+标题
+TITLE
+详细说明
+DESCRIPTION
+目标
+TARGET
+主执行人
+MEXECUTOR
+分类
+CATEGORIES
+模板
+TEMPLATE
+工作地点
+ADR
+重复规则
+RRULE
+状态
+STATUS
+提醒方式
+LARM
+重要度
+ESSENTIALITY
+对应活动
+REACTIVITY
+密级
+INTENSIVE
+2
+GB/T32656—2016
+表1 续
+( )
+元素 说明
+对应日程
+REAGENDA
+附件
+ATTACHMENT
+创建时间
+DTCREATE
+扩展元素
+EXT
+子项
+SUBKEY
+自定义属性集
+PROPERTIES
+日历及日程安排的各元素所含的属性见表
+2。
+表2 日历及日程安排的各元素所含的属性
+类型 说明
+用于元素 表示开始时间
+DTSTART DTPERIOD,
+用于元素 表示结束时间
+DTEND DTPERIOD,
+协调世界时 又称世界统一时间 世界标准时间 国际协调时间
+UTC , , ,
+称谓
+APPELLATION
+联系电话
+TEL
+电子名片信息
+GCARD
+对象唯一标识
+UID
+统一资源定位地址
+URL
+名称
+NAME
+排除的时间
+EXDATE
+用于元素 表示提醒次数
+TIMES LARM,
+用于元素 表示提醒时间
+STIME LARM,
+用于元素 表示自定义属性类型 包含
+TYPE FIELD, , int、double、text、datetime、bool
+用于元素 表示是否必填
+ESSENTIAL FIELD,
+用于元素 表示单位
+DUNIT FIELD,
+重复规则定义缩写见表
+3。
+表3 日历及日程重复规划定义缩写
+缩写 说明
+按日规则
+D
+按周规则
+W
+按月规则
+MP,MD
+按年规则
+YM,YD
+按具体日期规则
+TD
+3
+GB/T32656—2016
+6 日历及日程安排的预定义元素
+61 头部分
+.
+611 唯一标识
+..
+标签
+:UID
+用途 指定一个标识该 相关资源的
+: gCalendar GUID
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:GUID
+说明 生成方法见
+: GB/T15537
+示例
+:<UID>3EFE43ED-7CC9-4CAE-99F8-F525C6790F32</UID>
+612 版本号
+..
+标签
+:VERSION
+用途 指定一个标识该 文件的版本号
+: gCalendar
+出现次数
+:<=1
+元素属性 无
+:
+取值 值
+:TEXT
+示例
+:<VERSION>1.0</VERSION>
+613 更新源
+..
+标签
+:SOURCE
+用途 如果包含 类型 它的值提供一些关于如何找到 源的信息
+: SOURCE , gCalendar
+出现次数 不限
+:
+元素属性 无
+:
+取值 值
+:URL
+示例
+:<SOURCE>http://www.nits.gov.cn/sample.XML</SOURCE>
+614 时段
+..
+标签
+:DTPERIOD
+用途 指定所属日历及日程安排的时间段
+:
+出现次数
+:<=1
+元素属性
+:DTSTART、DTEND
+取值 时长值 单位为秒 比如开始时间为 结束时间为
+: , , 2012-3-18 07:30:00, 2012-3-18 09:00:00,
+那么时长值为
+5400
+示例
+:<DTPERIODDTSTART="2012-3-18T07:30:00"DTEND="2012-3-18T09:00:00">5400</DTPERIOD>
+615 默认时区
+..
+标签
+:TZ
+用途 表示时区信息
+:
+出现次数
+:<=1
+4
+GB/T32656—2016
+元素属性 无
+:
+取值 值 分为东 西时区 东时区为 西时区为
+:UTC , 、 , +, -
+示例
+:<TZ>+08:00</TZ>
+616 默认地理位置
+..
+标签
+:GEO
+用途 表示地理位置信息
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 经纬度值
+:
+示例
+:<GEO>37.386013;-122.082932</GEO>
+617 参与者
+..
+标签
+:PARTICIPANT
+用途 用于表示日历及日程安排的所有执行人集合
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 子标签 为 值 元素属性有
+: PERSON, TEXT , APPELLATION、TEL、GCARD
+示例
+:
+<PARTICIPANT>
+总经理
+<PERSONAPPELLATION=" "TEL="12200000000"
+张三
+GCARD="http://www.nits.gov.cn/sample-1.xml"> </PERSON>
+助理 李四
+<PERSONAPPELLATION=" "TEL="12300000000"> </PERSON>
+</PARTICIPANT>
+618 最近修改时间
+..
+标签
+:REV
+用途 指定所属日历及日程安排文件的最近修改时间
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 时间值
+:
+示例1
+:<REV>2010-07-21T09:30:00</REV>
+示例2
+:<REV>2010-07-21T07:30:00</REV>
+62 体部分
+.
+621 唯一标识
+..
+标签
+:UID
+用途 指定一个标识该日程或活动的
+: GUID
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:GUID
+适用 日程 活动
+: (GTODO)、 (GDONE)
+说明 生成方法见
+: GB/T15537
+示例
+:<UID>3EFE43ED-7CC9-4CAE-99F8-F525C6790F32</UID>
+5
+GB/T32656—2016
+622 标题
+..
+标签
+:TITLE
+用途 对象的名称 该元素遵循 公共名元素的语义
+:gCalendar 。 GB/T16264.6
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 陪朋友喝下午茶
+:<TITLE> </TITLE>
+623 详细说明
+..
+标签
+:DESCRIPTION
+用途 指定日程或活动的详细说明
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 向董事长汇报本季度销售报告
+:<DESCRIPTION> </DESCRIPTION>
+624 时段
+..
+标签
+:DTPERIOD
+用途 指定日程或活动执行的时间段
+:
+出现次数
+:=1
+元素属性
+:DTSTART、DTEND、TZ
+取值 时长值 单位为秒 比如开始时间为 结束时间为
+: , , 2012-3-18 07:30:00, 2012-3-18 09:00:00,
+那么时长值为
+5400
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例
+:<DTPERIODDTSTART="2012-3-12T14:30:00"DTEND="2012-3-12T16:00:00"TZ="-05:00">
+5400</DTPERIOD>
+625 目标
+..
+标签
+:TARGET
+用途 工作关联目标
+:
+出现次数 不限
+:
+元素属性
+:UID、URL
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 运行上市
+:<TARGETUID="F4660FE1-5C3C-41B5-99B1-01E80674A34"URL="www.gv.cn/taps.xml">
+</TARGET>
+626 主执行人
+..
+标签
+:MEXECUTOR
+用途 指定工作执行人
+:
+6
+GB/T32656—2016
+出现次数
+:=1
+元素属性
+:APPELLATION、TEL、GCARD
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 总经理
+:<MEXECUTORAPPELLATION=" "TEL="12200000000"
+张三
+GCARD="http://www.nits.gov.cn/sample-1.xml"> </MEXECUTOR>
+627 分类
+..
+标签
+:CATEGORIES
+用途 指定工作类型
+:
+出现次数
+:<=1
+元素属性
+:Name
+取值 值 取值于 约会 出差 会议 纪念日 休息日 休假 节日 其他
+:TEXT ,Name : 、 、 、 、 、 、 、
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 会议 周例会
+:<CATEGORIESName=" "> </CATEGORIES>
+628 模板
+..
+标签
+:TEMPLATE
+用途 指定自定义模板
+:
+出现次数 不限
+:
+元素属性
+:Name、UID
+取值 中无值 中为子标签 值
+:GTODO ,GDONE VALUE
+示例1适用于日程
+: (GTODO)
+测血压
+<TEMPLATEName=" "UID="E6F0EC2A-F4CF-4e2f-8577-21F62AEEA898"></TEMPLATE>
+示例2适用于活动
+: (GDONE)
+测血压
+<TEMPLATEName=" "UID="E6F0EC2A-F4CF-4e2f-8577-21F62AEEA898">
+高压
+<VALUENAME=" ">150</Value>
+低压
+<VALUENAME=" ">86</Value>
+</TEMPLATE>
+629 工作地点
+..
+标签
+:ADR
+用途 工作执行所在地
+:
+出现次数 不限
+:
+元素属性
+:GEO
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 某省某市
+:<ADRGEO="37.386013;-122.082932"> </ADR>
+6210 重复规则
+..
+标签
+:RRULE
+用途 指定重复日程安排设置规则
+:
+出现次数 不限
+:
+元素属性
+:EXDATE
+7
+GB/T32656—2016
+取值 值
+:TEXT
+适用 日程
+: (GTODO)
+说明 重复规则定义见附录
+: C
+示例1 表示每年 月 日 时
+:<RRULE>Y1M2D8T09:00</RRULE> 2 8 9
+示例2 表示除了 年的父亲节
+:<RRULEEXDATE="2008-6-15;2016-6-19">Y1M6P3+SU</RRULE> 2008、2016
+6211 状态
+..
+标签
+:STATUS
+用途 表示日程安排状态
+:
+出现次数
+:=1
+元素属性 无
+:
+取值 表示制定中 表示待执行 表示执行中 表示完成 表示暂停 表示取消 表示过期
+:0 、1 、2 、3 、4 、5 、6
+适用 日程
+: (GTODO)
+示例
+:<STATUS>1</STATUS>
+6212 提醒方式
+..
+标签
+:LARM
+用途 表示日程安排提醒设置
+:
+出现次数 不限
+:
+元素属性
+:NAME、TIMES、STIME
+取值 值或 值
+:URL TEXT
+说明 音频提醒 邮件提醒 程序提醒 短信提醒
+: (AALARM)、 (MALARM)、 (PALARM)、 (TELARM)
+适用 日程
+: (GTODO)
+示例1
+:<LARMNAME="AALARM"TIMES="2"STIME="T09:00:00">www.gov.cn/taps.wav</LARM>
+示例2
+:<LARMNAME="MALARM"TIMES="1"STIME="T07:00:00">Rose@163.com</LARM>
+示例3
+:<LARMNAME="PALARM"TIMES="1"STIME="T09:00:00">www.gov.cn/pats.exe</LARM>
+示例4
+:<LARMNAME="TELARM"TIMES="1"STIME="T08:00:00">12200000000</LARM>
+6213 重要度
+..
+标签
+:ESSENTIALITY
+用途 指定工作的重要度级别
+: 。
+出现次数
+:<=1
+元素属性 无
+:
+取值 表示不重要 表示一般 表示重要 表示最重要
+:0 、1 、2 、3
+适用 日程
+: (GTODO)
+示例
+:<ESSENTIALITY>2</ESSENTIALITY>
+6214 对应活动
+..
+标签
+:REACTIVITY
+用途 指定日程安排对应实现的具体活动
+:
+出现次数 不限
+:
+元素属性
+:UID、URL
+取值 值
+:TEXT
+适用 日程
+: (GTODO)
+8
+GB/T32656—2016
+示例
+:<REACTIVITYUID="F4660FE1-5C3C-41B5-99B1-01E80674A34B"
+汇报本季度销售工作
+URL="http://www.nits.gov.cn/sample-1.xml"> </REACTIVITY>
+6215 密级
+..
+标签
+:INTENSIVE
+用途 指定日程安排公开程度
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 表示私人 表示公开 表示私密
+:0 、1 、2
+适用 日程
+: (GTODO)
+示例
+:<INTENSIVE>0</INTENSIVE>
+6216 对应日程
+..
+标签
+:REAGENDA
+用途 指定活动对应的日程安排
+:
+出现次数 不限
+:
+元素属性
+:UID、URL
+取值 值
+:TEXT
+适用 活动
+: (GDONE)
+示例
+:<REAGENDAUID="F4660FE1-5C3C-41B5-99B1-01E80674A34B"
+URL="http://www.nits.gov.cn/sample-1.xml"></REAGENDA>
+6217 附件
+..
+标签
+:ATTACHMENT
+用途 指定与所属日历及日程安排对象相关的文件
+:
+出现次数 不限
+:
+元素属性
+:URL
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 太阳能营销方案
+:<ATTACHMENTURL="http://www.gov.cn/taps.ppt"> .ppt</ATTACHMENT>
+6218 创建时间
+..
+标签
+:DTCREATE
+用途 指定工作安排创建的时间
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 时间值
+:
+示例
+:<DTCREATE>2012-3-10T08:30:00</DTCREATE>
+6219 扩展元素
+..
+标签
+:EXT
+用途 指定所属日历及日程安排对象的扩展元素
+:
+出现次数 不限
+:
+9
+GB/T32656—2016
+元素属性 必填
+:NAME( )
+取值 值
+:TEXT
+示例 配合部门 市场推广部
+:<EXTNAME=" "> </EXT>
+63 子文件部分
+.
+631 子项
+..
+标签
+:SUBKEY
+用途 指定包含的子文件工作安排的信息
+:
+出现次数 不限
+:
+元素属性
+:UID、URL
+取值 值
+:TEXT
+示例
+:<SUBKEYUID="C8E57CF6-9047-49ab-AB8B-2B7ECD7A8EAF"
+出差参加研讨会
+URL="www.gv.cn/t2.xml"> </SUBKEY>
+7 目标预定义元素
+71 唯一标识
+.
+标签
+:UID
+用途 指定一个标识该目标的
+: GUID
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:GUID
+说明 生成方法见
+: GB/T15537
+示例
+:<UID>3EFE43ED-7CC9-4CAE-99F8-F525C6790F32</UID>
+72 标题
+.
+标签
+:TITLE
+用途 目标对象的名称
+:
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:TEXT
+示例 陪朋友喝下午茶
+:<TITLE> </TITLE>
+73 时段
+.
+标签
+:DTPERIOD
+用途 指定日程或活动执行的时间段
+:
+出现次数
+:=1
+元素属性
+:DTSTART、DTEND、TZ
+取值 时长值 单位为秒 比如开始时间为 结束时间为
+: , , 2012-3-18 07:30:00, 2012-3-18 09:00:00,
+那么时长值为
+5400
+示例
+:<DTPERIODDTSTART="2012-3-12T14:30:00"DTEND="2012-3-12T16:00:00"
+TZ="-05:00">5400</DTPERIOD>
+10
+GB/T32656—2016
+74 详细说明
+.
+标签
+:DESCRIPTION
+用途 指定目标的详细说明
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 值
+:TEXT
+适用 日程 活动
+: (GTODO)、 (GDONE)
+示例 向董事长汇报本季度销售报告
+:<DESCRIPTION> </DESCRIPTION>
+75 创建时间
+.
+标签
+:DTCREATE
+用途 指定目标创建的时间
+:
+出现次数
+:<=1
+元素属性 无
+:
+取值 时间值
+:
+示例
+:<DTCREATE>2012-3-10T08:30:00</DTCREATE>
+76 扩展元素
+.
+标签
+:EXT
+用途 指定所属目标对象的扩展元素
+:
+出现次数 不限
+:
+元素属性 必填
+:NAME( )
+取值 值
+:TEXT
+示例 配合部门 市场推广部
+:<EXTNAME=" "> </EXT>
+8 活动模板预定义元素
+81 唯一标识
+.
+标签
+:UID
+用途 指定一个标识该活动模板的
+: GUID
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:GUID
+说明 生成方法见
+: GB/T15537
+示例
+:<UID>3EFE43ED-7CC9-4CAE-99F8-F525C6790F32</UID>
+82 标题
+.
+标签
+:TITLE
+用途 用来表示活动模板对象的名称
+:
+出现次数
+:=1
+元素属性 无
+:
+取值 值
+:TEXT
+示例 测血压
+:<TITLE> </TITLE>
+11
+GB/T32656—2016
+83 自定义属性集
+.
+类型
+TYPE: 〔int、double、text、datetime、bool〕
+单位 可没有值
+DUNIT: 〔 〕
+是否必填
+ESSENTIAL:
+示例
+:
+<PROPERTIES>
+高压
+<FIELDTYPE="int"ESSENTIAL=1DUNIT="mmHg"> </BP>
+低压
+<FIELDTYPE="int"ESSENTIAL=1DUNIT="mmHg"> </BP>
+</PROPERTIES>
+12
+GB/T32656—2016
+附 录 A
+规范性附录
+( )
+日历及日程安排文件结构划分及元素分类
+A1 日历及日程安排结构
+.
+A11 日历及日程安排结构划分
+..
+以 形式保存的日历及日程安排文件 文件 从结构上分为头部分 体部分和子文件
+XML (gCalendar ) 、
+部分
+。
+A12 头部分
+..
+头部分元素包括 唯一标识 版本号 更新源 时段 默认时区 默认地理位置 参与者 最近修改
+: 、 、 、 、 、 、 、
+时间
+。
+A13 体部分
+..
+体部分元素包括 唯一标识 标题 详细说明 时段 目标 主执行人 分类 模板 工作地点 重复规
+: 、 、 、 、 、 、 、 、 、
+则 状态 提醒方式 重要度 对应活动 密级 对应日程 附件 创建时间 扩展元素
+、 、 、 、 、 、 、 、 、 。
+A14 子文件部分
+..
+子文件部分元素包括 子项
+: 。
+A2 日历及日程安排元素分类
+.
+A21 实义元素
+..
+具有实际意义并需要被显示出来的元素 包括 标题 详细说明 时段 目标 主执行人 分类 模板
+。 : 、 、 、 、 、 、 、
+工作地点 重复规则 状态 提醒方式 重要度 对应活动 密级 对应日程 附件 创建时间 扩展元素 子
+、 、 、 、 、 、 、 、 、 、 、
+文件
+。
+A22 功能元素
+..
+用于表现信息的元数据 不需要显示出来 包括 唯一标识 版本号 更新源 时段 默认时区 默认
+, 。 : 、 、 、 、 、
+地理位置 参与者 最近修改时间
+、 、 。
+A23 修饰元素
+..
+没有实际意义 仅用于显示
+, 。
+13
+GB/T32656—2016
+附 录 B
+资料性附录
+( )
+示 例 文 件
+B1 gCalendar示例文件
+.
+GCALENDARxmlns="http www.cesi.cngcalendarschema"
+< :// / / >
+HEAD
+< >
+UIDF4660FE1-5C3C-41B5-99B1-01E80674A34B UID
+< > </ >
+VERSION1.0 VERSION
+< > </ >
+SOURCEhttp www.nits.gov.cnsample-1.xml SOURCE
+< > :// / </ >
+TZ-0500 TZ
+< > : </ >
+GEO37.386013-122.082932 GEO
+< > ; </ >
+DTPERIODDTSTART="2012-2-20"DTEND="2012-3-20"2505600 DTPERIOD
+< > </ >
+PARTICIPANT
+< >
+PERSONAPPELLATION="总经理"TEL="12200000000"GCARD="http www.nits.gov.cn
+< :// /
+sample-1.xml" 张三 PERSON
+> </ >
+PERSONAPPELLATION="助理"TEL="12300000000" 李四 PERSON
+< > </ >
+PARTICIPANT
+</ >
+REV2012-3-11T152000 REV
+< > : : </ >
+HEAD
+</ >
+GTEMPLATE
+< >
+UIDE6F0EC2A-F4CF-4e2f-8577-21F62AEEA898 UID
+< > </ >
+TITLEOIL TITLE
+< > </ >
+PROPERTIES
+< >
+FIELDTYPE="double"ESSENTIAL="1"DUNIT="元" 金额 FIELD
+< > </ >
+FIELDTYPE="double"ESSENTIAL="1"DUNIT="升" 当前油量 FIELD
+< > </ >
+FIELDTYPE="text"ESSENTIAL="1" 加油站 FIELD
+< > </ >
+PROPERTIES
+</ >
+GTEMPLATE
+</ >
+GDONE
+< >
+TITLE 汽车加油 TITLE
+< > </ >
+DTPERIODDTSTART="2012-3-12T143000"DTEND="2012-3-12T160000"TZ=
+< : : : :
+"-0500"5400 DTPERIOD
+: > </ >
+DESCRIPTION 在某加油站加了300元的 93油 DESCRIPTION
+< > # </ >
+TARGETUID="5A55B8F3-8635-4289-B4A1-5185841D67E4"URL="http www.gv.cntaps.
+< :// /
+xml" 给汽车加油 TARGET
+> </ >
+MEXECUTORAPPELLATION="助理"TEL="12300000000" 李四 MEXECUTOR
+< > </ >
+CATEGORIESName="其他" 汽车维护 CATEGORIES
+< > </ >
+TEMPLATEName="OIL"UID="E6F0EC2A-F4CF-4e2f-8577-21F62AEEA898"
+< >
+ValueNAME="金额"150 Value
+< > </ >
+14
+GB/T32656—2016
+ValueNAME="当前油量"300 Value
+< > </ >
+ValueNAME="加油站"86 Value
+< > </ >
+TEMPLATE
+</ >
+ADR 江苏镇江 ADR
+< > </ >
+REAGENDAUID="ACA11E3B-4F68-4E72-87ED-3AFBDC385885"URL="http www.nits.gov.cn
+< :// /
+sample-1.xml" REAGENDA
+></ >
+ATTACHMENT ATTACHMENT
+< ></ >
+DTCREATE2012-3-12T150000 DTCREATE
+< > : : </ >
+EXTNAME="证明人" 王五 EXT
+< > </ >
+GDONE
+</ >
+GTODO
+< >
+TITLE 陪朋友喝下午茶 TITLE
+< > </ >
+DTPERIODDTSTART="2012-3-15T143000"DTEND="2012-3-15T160000"TZ=
+< : : : :
+"-0500"5400 DTPERIOD
+: > </ >
+DESCRIPTION 陪大学同学喝下午茶 DESCRIPTION
+< > </ >
+TARGET TARGET
+< ></ >
+MEXECUTORAPPELLATION="总经理"TEL="12200000000"GCARD="http www.nits.gov.cn
+< :// /
+sample-1.xml" 张三 MEXECUTOR
+> </ >
+CATEGORIESName="约会" 同学聚餐 CATEGORIES
+< > </ >
+TEMPLATE TEMPLATE
+< ></ >
+ADR 江苏镇江 ADR
+< > </ >
+RRULE RRULE
+< ></ >
+STATUS1 STATUS
+< ></ >
+LARMTYPE="AALARM"TIMES="2"STIME="T090000" http www.gov.cntaps.wav LARM
+< : : > :// / </ >
+ESSENTIALITY2 ESSENTIALITY
+< ></ >
+REACTIVITY REACTIVITY
+< ></ >
+INTENSIVE0 INTENSIVE
+< ></ >
+ATTACHMENT ATTACHMENT
+< ></ >
+DTCREATE2012-3-13T093000 DTCREATE
+< > : : </ >
+EXTNAME="餐厅" 某市口某餐厅 EXT
+< > </ >
+GTODO
+</ >
+CONTAINSSET
+< >
+SUBKEYUID="FA05C63F-D1BF-4D4F-BFDB-C5F1DCA9F7E1"URL="2012022011年度销售汇报.
+< /
+xml"2011年度销售汇报 SUBKEY
+> </ >
+SUBKEYUID="D25D450F-7E34-41a5-BA4C-1764BD140583"URL="http www.nits.gov.cns1.
+< :// /
+xml" 与爸妈吃生日餐 SUBKEY
+> </ >
+SUBKEYUID="C8E57CF6-9047-49ab-AB8B-2B7ECD7A8EAF"URL="201203 子项示例文件-出差参
+< /
+加研讨会.xml" 出差参加研讨会 SUBKEY
+> </ >
+CONTAINSSET
+</ >
+GCALENDAR
+</ >
+15
+GB/T32656—2016
+B2 子文件示例文件
+.
+B21 示例文件1
+..
+GCALENDARxmlns="http www.cesi.cngcalendarschema3"
+< :// / / >
+HEAD
+< >
+UIDD25D450F-7E34-41a5-BA4C-1764BD140583 UID
+< > </ >
+VERSION1.0 VERSION
+< > </ >
+SOURCEhttp www.nits.gov.cns1.xml SOURCE
+< > :// / </ >
+TZ-0500 TZ
+< > : </ >
+GEO37.386013-122.082932 GEO
+< > ; </ >
+DTPERIODDTSTART="2000-3-15"DTEND="2020-3-15"630720000 DTPERIOD
+< > </ >
+PARTICIPANT
+< >
+PERSONAPPELLATION="助理"TEL="12300000000" 李四 PERSON
+< > </ >
+PARTICIPANT
+</ >
+REV2000-3-13T142000 REV
+< > : : </ >
+HEAD
+</ >
+GTODO
+< >
+TITLE 与爸妈吃生日餐 TITLE
+< > </ >
+DTPERIODDTSTART=""DTEND=""TZ="" DTPERIOD
+< ></ >
+DESCRIPTION 陪爸妈过妈妈生日 DESCRIPTION
+< > </ >
+TARGET TARGET
+< ></ >
+MEXECUTORAPPELLATION="助理"TEL="12300000000" 李四 MEXECUTOR
+< > </ >
+CATEGORIESName="纪念日" 妈妈生日 CATEGORIES
+< > </ >
+TEMPLATE TEMPLATE
+< ></ >
+ADR 江苏镇江 ADR
+< > </ >
+RRULEEXDATE="2004-3-15"Y1M3D15 RRULE
+< > </ >
+STATUS1 STATUS
+< ></ >
+LARMTYPE="AALARM"TIMES="2"STIME="T090000"http www.gov.cntaps.wav LARM
+< : : > :// / </ >
+ESSENTIALITY2 ESSENTIALITY
+< ></ >
+REACTIVITY REACTIVITY
+< ></ >
+INTENSIVE0 INTENSIVE
+< ></ >
+ATTACHMENT ATTACHMENT
+< ></ >
+DTCREATE2000-3-13T142000 DTCREATE
+< > : : </ >
+EXTNAME="餐厅" 张三酒店 EXT
+< > </ >
+GTODO
+</ >
+GCALENDAR
+</ >
+B22 示例文件2
+..
+GCALENDARxmlns="http www.cesi.cngcalendarschema4"
+< :// / / >
+GTODO
+< >
+UIDC8E57CF6-9047-49ab-AB8B-2B7ECD7A8EAF UID
+< > </ >
+TITLE 出差参加研讨会 TITLE
+< > </ >
+16
+GB/T32656—2016
+DTPERIODDTSTART="2012-3-18T073000"DTEND="2012-3-20T160000"TZ="-0800"203400
+< : : : : : >
+DTPERIOD
+</ >
+DESCRIPTION 出差北京参加中国科技发展研讨会 DESCRIPTION
+< > </ >
+TARGET TARGET
+< ></ >
+MEXECUTORAPPELLATION="总经理"TEL="12200000000"GCARD="http www.nits.gov.cn
+< :// /
+sample-1.xml" 张三 MEXECUTOR
+> </ >
+CATEGORIESName="会议" 研讨会 CATEGORIES
+< > </ >
+TEMPLATE TEMPLATE
+< ></ >
+ADR 北京 ADR
+< > </ >
+RRULE RRULE
+< ></ >
+STATUS1 STATUS
+< ></ >
+LARMNAME="TELARM"TIMES="1"STIME="2012-3-17T100000"12200000000 LARM
+< : : > </ >
+ESSENTIALITY2 ESSENTIALITY
+< ></ >
+REACTIVITY REACTIVITY
+< ></ >
+INTENSIVE0 INTENSIVE
+< ></ >
+ATTACHMENTURL="www.gov.cntaps.ppt" 中国科技发展方案.ppt ATTACHMENT
+< / > </ >
+DTCREATE2000-3-15T152000 DTCREATE
+< > : : </ >
+GTODO
+</ >
+GCALENDAR
+</ >
+B23 示例文件3
+..
+GCALENDARxmlns="http www.cesi.cngcalendarschema5"
+< :// / / >
+GDONE
+< >
+UIDFA05C63F-D1BF-4D4F-BFDB-C5F1DCA9F7E1 UID
+< > </ >
+TITLE2011年度销售汇报 TITLE
+< > </ >
+DTPERIODDTSTART="2012-2-20T09 30 00"DTEND="2012-2-20T11 30 00"TZ="-08 00" 7200
+< : : : : : >
+DTPERIOD
+</ >
+DESCRIPTION 向董事会汇报2011年度销售情况 DESCRIPTION
+< > </ >
+TARGET TARGET
+< ></ >
+MEXECUTORAPPELLATION="总经理"TEL="12200000000"GCARD="http www.nits.gov.cn
+< :// /
+sample-1.xml" 张三 MEXECUTOR
+> </ >
+CATEGORIESName="会议" 董事会 CATEGORIES
+< > </ >
+TEMPLATE TEMPLATE
+< ></ >
+ADR 江苏南京 ADR
+< > </ >
+REAGENDA REAGENDA
+< ></ >
+ATTACHMENTURL="www.gov.cntaps2.ppt"2011年度销售情况.ppt ATTACHMENT
+< / > </ >
+DTCREATE2000-2-22T152000 DTCREATE
+< > : : </ >
+GDONE
+</ >
+GCALENDAR
+</ >
+B3 模板示例文件
+.
+GCALENDARxmlns="http www.cesi.cngcalendarschema4"
+< :// / / >
+17
+GB/T32656—2016
+GTEMPLATE
+< >
+UIDE6F0EC2A-F4CF-4e2f-8577-21F62AEEA898 UID
+< > </ >
+TITLEOIL TITLE
+< > </ >
+PROPERTIES
+< >
+FIELDTYPE="double"ESSENTIAL="1"DUNIT="元" 金额 FIELD
+< > </ >
+FIELDTYPE="double"ESSENTIAL="1"DUNIT="升" 当前油量 FIELD
+< > </ >
+FIELDTYPE="text"ESSENTIAL="1" 加油站 FIELD
+< > </ >
+PROPERTIES
+</ >
+GTEMPLATE
+</ >
+GCALENDAR
+< >
+B4 目标示例文件
+.
+GCALENDARxmlns="http www.cesi.ac.cngcalendarschema4"
+< :// / / >
+GTARGET
+< >
+UID5A55B8F3-8635-4289-B4A1-5185841D67E4 UID
+< > </ >
+TITLE 给汽车加油 TITLE
+< > </ >
+DTPERIODDTSTART="2009-3-12T08 30 00"DTEND="2015-3-12T08 30 00" 189216000
+< : : : : >
+DTPERIOD
+</ >
+DESCRIPTION 维护公司所有车辆的加油事宜 DESCRIPTION
+< > </ >
+GTARGET
+</ >
+GCALENDAR
+< >
+18
+GB/T32656—2016
+附 录 C
+规范性附录
+( )
+重复规则定义
+C1 重复规则简介
+.
+用于定义重复或循环的日程安排
+。
+C2 重复规则定义
+.
+C21 按日规则
+..
+以 开头
+"D"
+每天重复一次 直到
+, 2025-12-24 D12025-12-24T00:00:00Z
+每隔一天 一直重复
+, D2#0
+每隔 天 重复 次
+10 , 5 D10#5
+C22 按周规则
+..
+以 开头 与按日规则类似
+"W" ,
+每周重复一次 直到
+, 2025-12-24 W12025-12-24T00:00:00Z
+每周二 四重复 重复 周
+、 , 5 W1TU,TH #5
+每隔一周的一 五重复 直到 为止
+、 , 1994-12-24 W2MO,FR1994-12-24T00:00:00Z
+C23 按月规则
+..
+按月重复有两种类型 一种是 一种是
+, "MP", "MD"
+描述了本月中工作日发生的位置 有两种表示方法
+"MP", , :
+本月中第一次 第二次 第五次 发生
++ + +
+1 ,2 ,…5 , 、 、、、、
+本月中最后一次 倒数第二次 倒数第五次 发生
+- - -
+1 ,2 ,…5 、 、、、、、
+表示最后一天
+"LD" 。
+例如 表示本月第二个星期五和星期六
+:2+FR,SA
+本月最后一个周一
+1-MO
+每月第一个周五重复 直到 结束
+, 1994-12-24 M1P1+FR1994-12-24Z
+每六个月一次 该月的第二个周一 二重复 重复 次
+, 、 , 10 M6P2+MO,TU #10
+每个月的第一天和最后一天重复 重复 次
+, 10 M1D1,LD#10orM1D1,1-#10
+每隔 个月重复一次 该月第 到 天重复 重复 次
+18 , 10 15 , 10 M 18D10,11,12,13,14,15#10
+C24 按年规则
+..
+按年重复有两种类型 一种是 一种是
+, "YM", "YD"
+每年 月重复 重复 次
+6、7 , 10 Y1M6,7#10
+三年一次 该年第 天重复 重复 次
+, 1、100、200 , 10 Y3D1,100,200#10
+每年六月第三个星期日 即父亲节
+, Y1M6P3+SU
+19
+GB/T32656—2016
+C25 按具体日期规则
+..
+以 开头
+"TD"
+与 重复当前日程安排
+2010-4-2 2014-8-10 TD2010-4-2,2014-8-10T09:00:00
+20
+GB/T32656—2016
+参 考 文 献
+信息交换用汉字编码字符集 基本集
+[1] GB2312
+世界各国和地区名称代码
+[2] GB/T2659
+语种名称代码 第 部分 所有语种的 字母代码
+[3] GB/T4880.3 3 : 3
+数据元和交换格式 信息交换 日期和时间表示法
+[4] GB/T7408
+信息技术 通用多八位编码字符集 第 部分 体系结构与基本多文种
+[5] GB13000.1 (UCS) 1 :
+平面
+信息技术可扩展置标语言
+[6] GB/T18793 (XML)1.0
+电子名片交换格式通用规范
+[7] GB/T28822—2012
+[8] RFC5545 InternetCalendaringandSchedulingCoreObjectSpecification(iCalendar)

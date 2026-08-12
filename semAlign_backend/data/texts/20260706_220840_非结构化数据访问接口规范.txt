@@ -1,0 +1,3271 @@
+ICS3524070
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T32908—2016
+非结构化数据访问接口规范
+Unstructureddataaccessinterfacespecification
+2016-08-29发布 2017-03-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T32908—2016
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+术语和定义
+2 ……………………………………………………………………………………………… 1
+缩略语
+3 …………………………………………………………………………………………………… 1
+查询语言访问接口
+4 ……………………………………………………………………………………… 1
+概述
+4.1 ………………………………………………………………………………………………… 1
+基本格式
+4.2 …………………………………………………………………………………………… 1
+数据库连接接口
+4.3 …………………………………………………………………………………… 2
+执行查询语句接口
+4.4 ………………………………………………………………………………… 3
+批量执行查询语句接口
+4.5 …………………………………………………………………………… 4
+结果集接口
+4.6 ………………………………………………………………………………………… 7
+应用程序访问接口
+5 ……………………………………………………………………………………… 10
+概述
+5.1 ………………………………………………………………………………………………… 10
+基本格式
+5.2 …………………………………………………………………………………………… 10
+集群配置管理接口模块
+5.3 …………………………………………………………………………… 10
+概述
+5.3.1 …………………………………………………………………………………………… 10
+集群管理接口
+5.3.2 ………………………………………………………………………………… 10
+单个节点管理接口
+5.3.3 …………………………………………………………………………… 11
+集群监控接口
+5.3.4 ………………………………………………………………………………… 12
+数据空间管理接口
+5.3.5 …………………………………………………………………………… 13
+任务管理接口模块
+5.4 ………………………………………………………………………………… 17
+概述
+5.4.1 …………………………………………………………………………………………… 17
+任务状态
+5.4.2 ……………………………………………………………………………………… 17
+任务接口
+5.4.3 ……………………………………………………………………………………… 17
+一致性控制接口
+5.4.4 ……………………………………………………………………………… 19
+存储接口模块
+5.5 ……………………………………………………………………………………… 20
+概述
+5.5.1 …………………………………………………………………………………………… 20
+底层存储对象类型
+5.5.2 …………………………………………………………………………… 20
+存储对象定义接口
+5.5.3 …………………………………………………………………………… 21
+存储对象访问接口
+5.5.4 …………………………………………………………………………… 22
+非结构化数据访问接口
+5.5.5 ……………………………………………………………………… 24
+分析接口模块
+5.6 ……………………………………………………………………………………… 33
+概述
+5.6.1 …………………………………………………………………………………………… 33
+基本数据分析接口
+5.6.2 …………………………………………………………………………… 33
+时间单位
+5.6.3 ……………………………………………………………………………………… 34
+时序数据分析接口
+5.6.4 …………………………………………………………………………… 35
+索引接口模块
+5.7 ……………………………………………………………………………………… 35
+Ⅰ
+GB/T32908—2016
+概述
+5.7.1 …………………………………………………………………………………………… 35
+通用向量接口
+5.7.2 ………………………………………………………………………………… 35
+特征抽取接口
+5.7.3 ………………………………………………………………………………… 36
+通用索引接口
+5.7.4 ………………………………………………………………………………… 39
+搜索接口模块
+5.8 ……………………………………………………………………………………… 42
+概述
+5.8.1 …………………………………………………………………………………………… 42
+媒体数据类型
+5.8.2 ………………………………………………………………………………… 42
+高维数据查询接口
+5.8.3 …………………………………………………………………………… 43
+关键字查询接口
+5.8.4 ……………………………………………………………………………… 43
+服务访问接口
+6 Web …………………………………………………………………………………… 44
+概述
+6.1 ………………………………………………………………………………………………… 44
+基本格式
+6.2 …………………………………………………………………………………………… 44
+请求格式
+6.3 HTTP …………………………………………………………………………………… 44
+状态码
+6.4 HTTP ……………………………………………………………………………………… 45
+服务接口描述
+6.5 ……………………………………………………………………………………… 45
+数据增加接口
+6.5.1 ………………………………………………………………………………… 45
+数据删除接口
+6.5.2 ………………………………………………………………………………… 46
+数据更新接口
+6.5.3 ………………………………………………………………………………… 46
+数据查询接口
+6.5.4 ………………………………………………………………………………… 48
+Ⅱ
+GB/T32908—2016
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本标准由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本标准起草单位 清华大学 中国电子技术标准化研究院 浙江大学 北京航空航天大学 中国人民
+: 、 、 、 、
+大学
+。
+本标准主要起草人 王朝坤 王建民 陈俊 高林 吴新松 刘贤刚 卫凤林 李莹 庄越挺 陈岭 邵健
+: 、 、 、 、 、 、 、 、 、 、 、
+孙建伶 马殿富 郎波 杜小勇 陈晋川
+、 、 、 、 。
+Ⅲ
+GB/T32908—2016
+非结构化数据访问接口规范
+1 范围
+本标准规定非结构化数据管理系统的访问接口要求 包括查询语言访问接口 应用程序访问接口和
+, 、
+服务访问接口
+Web 。
+本标准适用于非结构化数据管理系统产品的研制 开发和测试
+、 。
+2 术语和定义
+下列术语和定义适用于本文件
+。
+21
+.
+非结构化数据 unstructureddata
+没有明确结构约束的数据 如文本 图像 音频 视频等
+, 、 、 、 。
+22
+.
+非结构化数据管理系统 unstructureddatamanagementsystem
+对非结构化数据进行管理 操作的大型基础软件 提供非结构化数据存储 特征抽取 索引和查询等
+、 , 、 、
+管理功能
+。
+3 缩略语
+下列缩略语适用于本文件
+。
+超文本传输协议
+HTTP: (hypertexttransferprotocol)
+对象标记
+JSON:JavaScript (javascriptobjectnotation)
+可扩展置标语言
+XML: (extensiblemarkupLanguage)
+4 查询语言访问接口
+41 概述
+.
+本章描述查询语言访问接口 包括数据库连接接口 执行查询语句接口 批量执行查询语句接口和
+, 、 、
+结果集接口
+。
+42 基本格式
+.
+查询语言访问接口包含以下 种元素
+5 :
+接口名 接口的名称
+a) : ;
+说明 对接口内容的描述
+b) : ;
+继承 指明了该接口的父接口
+c) : ;
+属性 该接口全部的属性变量
+d) : ;
+方法 该接口提供的所有函数的声明
+e) : 。
+1
+GB/T32908—2016
+43 数据库连接接口
+.
+接口名
+:Connection
+说明 数据库连接的接口
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+StatementcreateStatement()
+说明 创建一个 对象
+: Statement 。
+参数 无
+:
+返回 对象
+:Statement
+PreparedStatementprepareStatement(inStringql)
+说明 根据声明语句 创建一个 对象
+: ql PreparedStatement 。
+参数 为查询语句声明 其中允许含多个 占位符
+:ql , “?”
+返回
+:PreparedStatement
+voidcommit()
+说明 将自上次提交或回滚之后的更新数据提交 并释放当前连接占用的资源
+: , 。
+参数 无
+:
+返回 无
+:
+voidrollback()
+说明 撤销自上次提交或回滚之后的更新操作 并释放当前连接占用的资源
+: , 。
+参数 无
+:
+返回 无
+:
+voidrollback(inSavepointsp)
+说明 撤销自保存点 之后的更新操作 并释放当前连接占用的资源
+: sp , 。
+参数 为保存点实例对象
+:sp
+返回 无
+:
+boolisAutoCommit()
+说明 获取当前连接是否为自动提交
+: 。
+参数 无
+:
+返回 是否自动提交
+:
+voidsetAutoCommit(inboolauto)
+说明 设置当前连接的自动提交属性
+: 。
+参数 为是否自动提交
+:auto
+返回 无
+:
+2
+GB/T32908—2016
+SavepointsetSavepoint()
+说明 设置当前时刻的一个保存点 并获取它
+: , 。
+参数 无
+:
+返回 当前时刻的保存点
+:
+voidreleaseSavepoint(inSavepointsp)
+说明 释放保存点 占用的资源
+: sp 。
+参数 为保存点实例对象
+:sp
+返回 无
+:
+voidclose()
+说明 关闭当前连接
+: 。
+参数 无
+:
+返回 无
+:
+boolisClosed()
+说明 当前连接是否已关闭
+: 。
+参数 无
+:
+返回 是否关闭
+:
+44 执行查询语句接口
+.
+接口名
+:Statement
+说明 执行查询语句的接口
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+ResultSetexecuteQuery(inStringql)
+说明 执行数据查询语句
+: 。
+参数 为数据查询语句
+:ql
+返回 查询结果对象
+: ResultSet
+intexecuteUpdate(inStringql)
+说明 执行数据更新语句 如插入 删除 更新等
+: , 、 、 。
+参数 为数据更新语句
+:ql
+返回 此次操作影响的行数
+:
+boolexecute(inStringql)
+说明 执行语句
+: ql。
+参数 为待执行的语句
+:ql
+返回 执行是否成功
+:
+3
+GB/T32908—2016
+ConnectiongetConnection()
+说明 获取当前的数据库连接
+: 。
+参数 无
+:
+返回 数据库连接
+:
+ResultSetgetResultSet()
+说明 获取结果集对象 通常在 方法执行后执行此方法
+: ResultSet, execute 。
+参数 无
+:
+返回 结果集对象
+:
+intgetFetchSize()
+说明 获取从查询结果中提取的缓存的行数
+: 。
+参数 无
+:
+返回 缓存行数
+:
+voidsetFetchSize(inintrows)
+说明 设置查询结果缓存行数
+: 。
+参数 为缓存行数
+:rows
+返回 无
+:
+voidclose()
+说明 关闭当前 对象
+: Statement 。
+参数 无
+:
+返回 无
+:
+boolisClosed()
+说明 获取当前 是否已关闭
+: Statement 。
+参数 无
+:
+返回 是否已关闭
+:
+45 批量执行查询语句接口
+.
+接口名
+:PreparedStatement
+说明 执行查询语句的接口 支持批量查询
+: , 。
+继承
+:Statement
+属性 无
+:
+方法
+:
+voidclearParameters()
+说明 清空所有 的参数值
+: PreparedStatement 。
+参数 无
+:
+返回 无
+:
+4
+GB/T32908—2016
+voidsetBinaryStream(inintindex,inIStreamis)
+说明 设置语句中第 个占位符的值为输入流
+: index is。
+参数 为占位符的位置 为输入流 引用 指针等
+:index ,is ( 、 )
+返回 无
+:
+voidsetBlob(inintindex,inBlobblob)
+说明 设置语句中第 个占位符的值为大对象
+: index blob。
+参数 为占位符的位置 为大对象
+:index ,blob
+返回 无
+:
+voidsetByteArray(inintindex,inByteArrayba)
+说明 设置语句中第 个占位符的值为字节数组
+: index ba。
+参数 为占位符的位置 为字节数组
+:index ,ba
+返回 无
+:
+voidsetBool(inintindex,inboolb)
+说明 设置语句中第 个占位符的值为布尔值
+: index b。
+参数 为占位符的位置 为布尔值
+:index ,b
+返回 无
+:
+voidsetByte(inintindex,inbyteb)
+说明 设置语句中第 个占位符的值为单字节数
+: index b。
+参数 为占位符的位置 为单字节数
+:index ,b
+返回 无
+:
+voidsetDateTime(inintindex,inDateTimedatetime)
+说明 设置语句中第 个占位符的值为时间
+: index datetime。
+参数 为占位符的位置 为时间
+:index ,datetime
+返回 无
+:
+voidsetDate(inintindex,inDatedate)
+说明 设置语句中第 个占位符的值为日期
+: index date。
+参数 为占位符的位置 为日期
+:index ,date
+返回 无
+:
+voidsetDecimal(inintindex,inDecimaldec)
+说明 设置语句中第 个占位符的值为 数据
+: index Decimal 。
+参数 为占位符的位置 为 数据
+:index ,dec Decimal
+返回 无
+:
+voidsetDouble(inintindex,indoubled)
+说明 设置语句中第 个占位符的值为双精度浮点数
+: index d。
+参数 为占位符的位置 为双精度浮点数
+:index ,d
+返回 无
+:
+5
+GB/T32908—2016
+voidsetFloat(inintindex,infloatf)
+说明 设置语句中第 个占位符的值为单精度浮点数
+: index f。
+参数 为占位符的位置 为单精度浮点数
+:index ,f
+返回 无
+:
+voidsetInt(inintindex,ininti)
+说明 设置语句中第 个占位符的值为整型数
+: index i。
+参数 为占位符的位置 为整型数
+:index ,i
+返回 无
+:
+voidsetLong(inintindex,inlongl)
+说明 设置语句中第 个占位符的值为长整型数
+: index l。
+参数 为占位符的位置 为长整型数
+:index ,l
+返回 无
+:
+voidsetString(inintindex,inStringstr)
+说明 设置语句中第 个占位符的值为字符串
+: index str。
+参数 为占位符的位置 为字符串
+:index ,str
+返回 无
+:
+voidsetURI(inintindex,inURIuri)
+说明 设置语句中第 个占位符的值为 类型数据
+: index URI 。
+参数 为占位符的位置 为 类型数据
+:index ,uri URI
+返回 无
+:
+voidsetVector(inintindex,inIVectorObjectvec)
+说明 设置语句中第 个占位符的值为向量类型数据
+: index 。
+参数 为占位符的位置 为向量类型数据
+:index ,vec
+返回 无
+:
+ResultSetexecuteQuery()
+说明 执行 对象包含的 查询语句 此处的 执行
+: PreparedStatement ql , PreparedStatement
+的是查询操作 不涉及数据的更改
+, 。
+参数 无
+:
+返回 数据查询执行结果的 对象
+: ResultSet
+intexecuteUpdate()
+说明 执行 对象包含的 数据更新语句 此处的
+: PreparedStatement ql , PreparedStatement
+执行的是数据的更新操作
+。
+参数 无
+:
+返回 此次操作关联的行数
+:
+6
+GB/T32908—2016
+46 结果集接口
+.
+接口名
+:ResultSet
+说明 查询结果集接口 是查询方法返回的结果的统一表示
+: , 。
+继承 无
+:
+属性 无
+:
+方法
+:
+boolabsolute(inintrows)
+说明 将指针移到第 行 从第 行开始读取数据
+: rows , rows 。
+参数 为开始读取的行序号
+:rows
+返回 指针移动是否成功
+:
+boolbeforeFirst()
+说明 将指针移到第 行数据之前 即 数据最起始的地方
+: 1 , ResultSet 。
+参数 无
+:
+返回 指针移动是否成功
+:
+boolafterLast()
+说明 将指针移到第末行数据之后 即 数据最末尾的地方
+: , ResultSet 。
+参数 无
+:
+返回 指针移动是否成功
+:
+boolnext()
+说明 移动指针到当前行的下一行
+: 。
+参数 无
+:
+返回 移动是否成功
+:
+boolprevious()
+说明 移动指针到当前行的前一行
+: 。
+参数 无
+:
+返回 移动是否成功
+:
+IStreamgetBinaryStream(inStringkey)
+说明 从 对应的位置获取输入流对象
+: key 。
+参数 为属性的键
+:key
+返回 输入流对象 引用 指针等
+: ( 、 )
+BlobgetBlob(inStringkey)
+说明 从 对应的位置获取大对象
+: key 。
+参数 为属性的键
+:key
+返回 大对象
+:
+7
+GB/T32908—2016
+ByteArraygetByteArray(inStringkey)
+说明 从 对应的位置获取字节数组
+: key 。
+参数 为属性的键
+:key
+返回 字节数组
+:
+boolgetBool(inStringkey)
+说明 从 对应的位置获取布尔值
+: key 。
+参数 为属性的键
+:key
+返回 布尔值
+:
+bytegetByte(inStringkey)
+说明 从 对应的位置获取单字节值
+: key 。
+参数 为属性的键
+:key
+返回 单字节值
+:
+DateTimegetDateTime(inStringkey)
+说明 从 对应的位置获取时间数据
+: key 。
+参数 为属性的键
+:key
+返回 时间数据
+:
+DategetDate(inStringkey)
+说明 从 对应的位置获取日期数据
+: key 。
+参数 为属性的键
+:key
+返回 日期数据
+:
+DecimalgetDecimal(inStringkey)
+说明 从 对应的位置获取 数据
+: key Decimal 。
+参数 为属性的键
+:key
+返回 数据
+:Decimal
+doublegetDouble(inStringkey)
+说明 从 对应的位置获取双精度浮点数值
+: key 。
+参数 为属性的键
+:key
+返回 双精度浮点数值
+:
+floatgetFloat(inStringkey)
+说明 从 对应的位置获取单精度浮点数值
+: key 。
+参数 为属性的键
+:key
+返回 单精度浮点数值
+:
+intgetInt(inStringkey)
+说明 从 对应的位置获取整型数值
+: key 。
+参数 为属性的键
+:key
+返回 整型数值
+:
+8
+GB/T32908—2016
+longgetLong(inStringkey)
+说明 从 对应的位置获取长整型值
+: key 。
+参数 为属性的键
+:key
+返回 长整型值
+:
+StringgetString(inStringkey)
+说明 从 对应的位置获取字符串
+: key 。
+参数 为属性的键
+:key
+返回 字符串
+:
+URIgetURI(inStringkey)
+说明 从 对应的位置获取 对象
+: key URI 。
+参数 为属性的键
+:key
+返回 对象
+:URI
+IVectorObjectgetVector(inStringkey)
+说明 从 对应的位置获取向量对象
+: key 。
+参数 为属性的键
+:key
+返回 向量对象
+:
+intgetFetchSize()
+说明 获取从查询结果中提取的缓存的行数
+: 。
+参数 无
+:
+返回 缓存行数
+:
+voidsetFetchSize(inintrows)
+说明 设置查询结果缓存行数
+: 。
+参数 为缓存行数
+:rows
+返回 无
+:
+StatementgetStatement()
+说明 获取当前 对象对应的 对象
+: ResultSet Statement 。
+参数 无
+:
+返回 对象
+:Statement
+voidclose()
+说明 释放当前 对象的资源
+: ResultSet 。
+参数 无
+:
+返回 无
+:
+9
+GB/T32908—2016
+boolisClose()
+说明 查看当前 对象的资源是否已经释放
+: ResultSet 。
+参数 无
+:
+返回 资源是否已释放
+:
+5 应用程序访问接口
+51 概述
+.
+本章描述非结构化数据管理系统各个模块中的访问接口 本章包含集群配置管理接口模块 任务管
+, 、
+理接口模块 存储接口模块 分析接口模块 索引接口模块和搜索接口模块
+、 、 、 。
+52 基本格式
+.
+应用程序访问接口包含了以下 种元素
+5 :
+接口名 接口的名称 符号 之前的为模块名 模块名是按功能类型对接口进行分组后的
+a) : , “::” ,
+组名
+;
+说明 对接口内容的描述
+b) : ;
+继承 指明了该接口的父接口
+c) : ;
+属性 包含了该接口全部的属性变量
+d) : ;
+方法 包含了该接口提供的全部功能函数的声明 是接口的核心内容
+e) : , 。
+53 集群配置管理接口模块
+.
+531 概述
+..
+模块名
+:udms_management
+说明 与集群配置管理相关的模块 包括了访问 控制集群 及其配置信息的所有接口 该模块的使
+: , 、 , 。
+用对象为分布式非结构化数据访问系统 而对集中式系统而言 无需考虑该模块
+, , 。
+532 集群管理接口
+..
+接口名
+:udms_management::IClustersManagement
+说明 控制整个集群的接口 包括集群的启动 关闭 查看等
+: , 、 、 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidload()
+说明 导入集群节点信息 节点信息存储在缺省的路径下
+: , 。
+参数 无
+:
+返回 无
+:
+voidstartup()
+说明 启动集群 开始工作
+: , 。
+参数 无
+:
+10
+GB/T32908—2016
+返回 无
+:
+voidshutdown()
+说明 关闭集群 停止服务
+: , 。
+参数 无
+:
+返回 无
+:
+MapListgetClustersInfo()
+说明 查看集群各节点的信息
+: 。
+参数 无
+:
+返回 集群节点信息列表
+:
+MapgetNodeInfo(inintnodeId)
+说明 查看单个节点信息
+: 。
+参数 为节点的
+:nodeId id
+返回 节点信息列表
+:
+intaddNode(inNodenode)
+说明 向集群中动态添加新的节点
+: 。
+参数 为待添加的节点对象
+:node
+返回 新添加节点在集群中的
+: id
+boolremoveNode(inintnodeId)
+说明 删除集群中的某个节点
+: 。
+参数 指定待删除的节点
+:nodeId
+返回 节点删除是否成功
+:
+boolpingAlive(inStringhostaddr)
+说明 查看某节点是否在正常工作
+: 。
+参数 为待检测的节点的地址
+:hostaddr
+返回 节点是否工作正常
+:
+533 单个节点管理接口
+..
+接口名
+:udms_management∷INodeManagement
+说明 控制集群中单个节点的接口 如单个节点的启动 关闭 修复等
+: , 、 、 。
+继承 无
+:
+属性
+:
+名称
+:node
+定义
+:publicNodenode
+说明 当前节点的对象
+: 。
+方法
+:
+boolcommission()
+11
+GB/T32908—2016
+说明 启动或重新启动当前节点的对外服务
+: 。
+参数 无
+:
+返回 是否成功
+:
+booldecommission()
+说明 解除当前节点的对外服务
+: 。
+参数 无
+:
+返回 是否成功
+:
+boolshutdown()
+说明 关闭当前节点
+: 。
+参数 无
+:
+返回 是否成功
+:
+boolrepair()
+说明 对节点上备份的数据进行错误恢复 保证节点持有最新版本的数据 以确保一致性
+: , , 。
+参数 无
+:
+返回 是否成功
+:
+boolflush()
+说明 停止接受写操作 将全部缓存的数据写入磁盘
+: , 。
+参数 无
+:
+返回 是否成功
+:
+534 集群监控接口
+..
+接口名
+:udms_management::IClustersMonitor
+说明 监控集群运行情况的接口
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+JSONmonitorHardwareRes()
+说明 监控集群的硬件资源的使用情况
+: 。
+参数 无
+:
+返回 以 封装的集群硬件资源信息
+: JSON
+JSONmonitorClustersConditions()
+说明 监控集群的运行时参数
+: 。
+参数 无
+:
+返回 以 封装的集群运行时参数的信息
+: JSON
+voidwriteToLog()
+说明 将监控数据写入日志
+: 。
+12
+GB/T32908—2016
+参数 无
+:
+返回 无
+:
+voidcleanup()
+说明 清理监控数据日志
+: 。
+参数 无
+:
+返回 无
+:
+535 数据空间管理接口
+..
+5351 表空间管理接口
+...
+接口名
+:udms_management::IKeyspaceManagement
+说明 管理表空间的接口 此处的表空间对应于关系型数据库中的数据库实例
+: 。 。
+继承 无
+:
+属性 无
+:
+方法
+:
+ListgetKeyspaceNameList()
+说明 获取表空间的名称列表
+: 。
+参数 无
+:
+返回 表空间的名称列表
+:
+MapgetKeyspaceProperties(inStringksName)
+说明 获取表空间的配置参数和运行参数
+: 。
+参数 为表空间的名称
+:ksName
+返回 表空间的配置参数和运行参数
+:
+boolcreateKeyspace(inStringksName,inintbackup,inBackupStrategybks,inStringop-
+tions)
+说明 创建新的表空间
+: 。
+参数 为新的表空间的名称 为数据备份数 为数据备份的策略
+:ksName ,backup ,bks ,
+为备份选项
+options
+返回 新的表空间是否创建成功
+:
+booldropKeyspace(inStringksName)
+说明 删除已有的表空间
+: 。
+参数 为待删除的表空间的名称
+:ksName
+返回 表空间是否删除成功
+:
+boolupdateKeyspace(inStringksName,inintbackup,inBackupStrategybks,inStringop-
+tions)
+说明 更新表空间的信息
+: 。
+参数 为表空间的名称 为数据备份数 为数据备份的策略
+:ksName ,backup ,bks ,options
+13
+GB/T32908—2016
+为备份选项
+返回 表空间是否更新成功
+:
+booluseKeyspace(inStringksName)
+说明 使用指定的表空间
+: 。
+参数 为待使用的表空间的名称
+:ksName
+返回 表空间是否使用成功
+:
+5352 表管理接口
+...
+接口名
+:udms_management::ITableManagement
+说明 管理表各项操作的接口 如创建 更新 删除 查询表等
+: , 、 、 、 。
+继承 无
+:
+属性 无
+:
+名称
+:kspace
+定义
+:publicKeySpacekspace
+说明 当前所处的表空间的名称
+: 。
+方法
+:
+ListgetTableNameList()
+说明 获取当前表空间内所有表的名称列表
+: 。
+参数 无
+:
+返回 表的名称列表
+:
+MapgetTableProperties(inStringtableName)
+说明 获取表的配置参数 运行参数和索引信息
+: 、 。
+参数 为表的名称
+:tableName
+返回 表的配置参数 运行参数和索引信息
+: 、
+boolcreateTable(inStringtableName,optionalinTableTypettype,
+optionalinComparatorTypectype,
+optionalinfloatrowCache,
+optionalinintrowTTL,
+optionalinfloatkeyCache,
+optionalinintkeyTTL,
+optionalinfloatreadRepairFreq,
+optionalinintrecycleFreq,
+optionalinComparatorTypevtype,
+optionalinintminCompactTime,
+optionalinintmaxCompactTime)
+说明 创建新的表
+: 。
+参数 为新的表的名称 其他可选参数包括
+:tableName , :
+为表的类型
+TableTypettype ;
+为比较器类型
+ComparatorTypectype ;
+14
+GB/T32908—2016
+为行缓存大小
+floatrowCache ;
+为行缓存保存时间
+introwTTL ;
+为关键字缓存大小
+floatkeyCache ;
+为关键字缓存保存时间
+intkeyTTL ;
+为读修复几率
+floatreadRepairFreq ;
+为垃圾收集频率
+intrecycleFreq ;
+为验证器类型
+ComparatorTypevtype ;
+为最小压缩时间
+intminCompactTime ;
+为最大压缩时间
+intmaxCompactTime
+返回 新的表是否创建成功
+:
+boolupdateTable(inStringtableName,optionalinTableTypettype,
+optionalinComparatorTypectype,
+optionalinfloatrowCache,
+optionalinintrowTTL,
+optionalinfloatkeyCache,
+optionalinintkeyTTL,
+optionalinfloatreadRepairFreq,
+optionalinintrecycleFreq,
+optionalinComparatorTypevtype,
+optionalinintminCompactTime,
+optionalinintmaxCompactTime)
+说明 更新表参数
+: 。
+参数 为表的名称 其他可选参数包括
+:tableName , :
+为表的类型
+TableTypettype ;
+为比较器类型
+ComparatorTypectype ;
+为行缓存大小
+floatrowCache ;
+为行缓存保存时间
+introwTTL ;
+为关键字缓存大小
+floatkeyCache ;
+为关键字缓存保存时间
+intkeyTTL ;
+为读修复几率
+floatreadRepairFreq ;
+为垃圾收集频率
+intrecycleFreq ;
+为验证器类型
+ComparatorTypevtype ;
+为最小压缩时间
+intminCompactTime ;
+为最大压缩时间
+intmaxCompactTime
+返回 表是否更新成功
+:
+booldropTable(inStringtableName)
+说明 删除已有的表
+: 。
+参数 为待删除的表的名称
+:tableName
+返回 表是否删除成功
+:
+15
+GB/T32908—2016
+boolemptyTable(inStringtableName)
+说明 清空指定的表
+: 。
+参数 为待清空的表的名称
+:tableName
+返回 表是否清空成功
+:
+5353 列管理接口
+...
+接口名
+:udms_management::IColumnManagement
+说明 管理列各项操作的接口 如增加 更新 删除 查询等
+: , 、 、 、 。
+继承 无
+:
+属性
+:
+名称
+:table
+定义
+:publicTabletable
+说明 当前列所在的表的对象
+: 。
+方法
+:
+ListgetColumnNameList()
+说明 获取当前表内所有列的名称列表
+: 。
+参数 无
+:
+返回 列的名称列表
+:
+MapgetColumnProperties(inStringcolName)
+说明 获取列的信息
+: 。
+参数 为列的名称
+:colName
+返回 列的信息
+:
+boolcreateColumn(inStringcolName,inComparatorTypectype)
+说明 添加新的列
+: 。
+参数 为新的列的名称 为比较器类型
+:colName ,ctype
+返回 新的列是否添加成功
+:
+booldropColumn(inStringcolName)
+说明 删除一个列
+: 。
+参数 为待删除的列的名称
+:colName
+返回 列是否删除成功
+:
+boolupdateColumn(inStringcolName,inComparatorTypectype)
+说明 更新列
+: 。
+参数 为待更新的列的名称 为比较器类型
+:colName ,ctype
+返回 是否更新成功
+:
+16
+GB/T32908—2016
+54 任务管理接口模块
+.
+541 概述
+..
+模块名
+:udms_tasks
+说明 定义任务管理基本要素及操作的模块
+: 。
+542 任务状态
+..
+任务状态名
+:udms_tasks::TaskStatus
+类型 枚举类型 取值可为
+: , :
+任务准备中 尚不能被执行
+Preparing, , ;
+任务准备完毕 待执行
+Prepared, , ;
+正在执行中的任务
+InAction, ;
+任务已执行完毕
+Completed, ;
+任务被终止
+Aborted, 。
+543 任务接口
+..
+接口名
+:udms_tasks::ITask
+说明 任务在系统中的统一表示
+: 。
+继承 无
+:
+属性
+:
+名称
+:tid
+定义
+:publicStringtid
+说明 任务的标示符
+: 。
+名称
+:title
+定义
+:publicStringtitle
+说明 任务的名称
+: 。
+名称
+:desc
+定义
+:publicStringdesc
+说明 任务的描述信息
+: 。
+名称
+:timestamp
+定义
+:publiclongtimestamp
+说明 任务最近一次被更新的时间戳
+: 。
+名称
+:status
+定义
+:publicTaskStatusstatus
+说明 任务的状态
+: 。
+名称
+:priority
+定义
+:publicintpriority
+17
+GB/T32908—2016
+说明 任务的优先级
+: 。
+名称
+:parent
+定义
+:publicITaskparent
+说明 当前任务的父级任务
+: 。
+名称
+:children
+定义
+:protectedITaskListchildren
+说明 当前任务的子级任务列表
+: 。
+方法
+:
+voidschedule()
+说明 调度该任务 并递归调度其子任务
+: , 。
+参数 无
+:
+返回 无
+:
+voidexecute()
+说明 执行当前任务 并递归执行其子任务
+: , 。
+参数 无
+:
+返回 无
+:
+voidabort()
+说明 终止并放弃当前任务
+: 。
+参数 无
+:
+返回 无
+:
+voidcleanup()
+说明 清空子任务列表中所有状态为 的子任务
+: Completed 。
+参数 无
+:
+返回 无
+:
+voidaddChild(inITaskchild)
+说明 添加一个子任务
+: 。
+参数 为子任务
+:child
+返回 无
+:
+voidaddChild(inITaskchild,intposition)
+说明 在指定位置添加一个子任务
+: 。
+参数 为子任务 为待添加的任务在子任务列表中的位置
+:child ,position
+返回 无
+:
+voidremoveChild(inITaskchild)
+说明 删除一个子任务
+: 。
+18
+GB/T32908—2016
+参数 为子任务
+:child
+返回 无
+:
+voidremoveChild(intposition)
+说明 删除指定位置的一个子任务
+: 。
+参数 为待删除的任务在子任务列表中的位置
+:position
+返回 无
+:
+544 一致性控制接口
+..
+5441 协调器接口
+...
+接口名
+:udms_tasks::ICoordination
+说明 提供统一的对数据和日志的读写操作
+: 。
+继承 无
+:
+属性
+:
+名称
+:controller
+定义
+:publicIVersionControlcontroller
+说明 版本控制器对象
+: 。
+方法
+:
+boolwrite(inIStorageIDid,inanydata)
+说明 对指定的对象执行写操作
+: 。
+参数 为存储对象的唯一标示符 为待写入的数据
+:id ,data
+返回 写操作是否成功
+:
+anyread(inIStorageIDid)
+说明 对指定的对象执行读操作
+: 。
+参数 为存储对象的唯一标示符
+:id
+返回 最新版本的数据
+:
+ListgetLogNodeList(inIStorageIDid)
+说明 根据数据备份规则计算出给定标示符对应的数据的多个日志存储器
+: 。
+参数 为存储对象的唯一标示符
+:id
+返回 日志存储器列表
+:
+ListgetDataNodeList(inIStorageIDid)
+说明 根据数据备份规则计算出给定标示符对应的数据的多个数据存储器
+: 。
+参数 为存储对象的唯一标示符
+:id
+返回 数据存储器列表
+:
+voidwriteToLogNode(inIStorageIDid,inanydata,inListnodelist)
+说明 将日志和数据写入多个日志存储器中
+: 。
+19
+GB/T32908—2016
+参数 为存储对象的唯一标示符 为待写入的数据 为日志存储器列表
+:id ,data ,nodelist
+返回 无
+:
+voidwriteToDataNode(inIStorageIDid,inanydata,inListnodelist,
+inLogPositionlp)
+说明 将数据和日志位置写入到 指定的多个数据存储器中
+: nodelist 。
+参数 为存储对象的唯一标示符 为待写入的数据 为数据存储器列表
+:id ,data ,nodelist ,lp
+为日志写入位置
+返回 无
+:
+5442 版本控制器接口
+...
+接口名
+:udms_tasks::IVersionControl
+说明 版本控制器接口主要负责读写数据的版本 以位置 表示数据的版本 越高
+: , Position ,Position
+表示版本越新 的实现策略不限
+,Position 。
+继承 无
+:
+属性 无
+:
+方法
+:
+Positionget(inIStorageIDid)
+说明 获取指定对象的最新的日志位置
+: 。
+参数 为存储对象的唯一标示符
+:id
+返回 最新的日志位置
+:
+voidupdate(inIStorageIDid,Positionpos)
+说明 更新指定的日志写入位置
+: 。
+参数 为存储对象的唯一标示符 为用以更新的日志位置
+:id ,pos
+返回 无
+:
+55 存储接口模块
+.
+551 概述
+..
+模块名
+:udms_store
+说明 定义存储对象类型及存储操作的模块
+: 。
+552 底层存储对象类型
+..
+对象名
+:udms_store::StorageType
+类型 枚举类型 取值可为
+: , :
+唯一标识存储系统中的一个文件对象
+FileID, ;
+唯一标识存储系统中的一个文件夹对象
+FolderID, ;
+唯一标识存储系统中得一个表对象
+TableID, ;
+唯一标识存储系统中表的一行
+RowID, ;
+唯一标识存储系统中表的一列
+ColumnID, 。
+20
+GB/T32908—2016
+553 存储对象定义接口
+..
+接口名
+:udms_store::IStorageID
+说明 存储对象在系统中的统一表示
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+IStorageIDconstructFileID(inStringpath)
+说明 定义一个 对象
+: FileID 。
+参数 为文件的存储路径
+:path
+返回 底层存储对象
+: ID
+IStorageIDconstructFolderID(inStringpath)
+说明 定义一个 对象
+: FolderID 。
+参数 为文件夹的存储路径
+:path
+返回 底层存储对象
+: ID
+IStorageIDconstructTableID(inStringtableName,inStringkeySpace)
+说明 定义一个 对象 标识一个表
+: TableID , 。
+参数 为表的名称 表示表空间名称
+:tableName ,keySpace
+返回 底层存储对象
+: ID
+IStorageIDconstructRowID(inStringrowKey,inStringkeySpace)
+说明 定义一个 对象 标识表的一行
+: RowID , 。
+参数 为行键 为表空间的名称
+:rowKey ,keySpace
+返回 底层存储对象
+: ID
+IStorageIDconstructColumnID(inStringcolName,inStringkeySpace,inStringrowKey)
+说明 构造一个 对象 标识表空间中的一列
+: ColumnID , 。
+参数 为列的名称 为表空间的名称 为行键
+:colName ,keySpace ,rowKey
+返回 底层存储对象
+: ID
+StorageTypegetIDType()
+说明 获得当前 的类型
+: IStorageID 。
+参数 无
+:
+返回 底层存储对象的类型
+:
+StringgetFilePath()
+说明 获得文件路径 只有 类型的 才能够访问 其他类型的
+: , FileID IStorageID , IStorageID
+访问会抛出异常
+。
+参数 无
+:
+返回 文件路径
+:
+21
+GB/T32908—2016
+StringgetFolderPath()
+说明 获得文件夹路径 只有 类型的 才能够访问 其他类型的
+: , FolderID IStorageID , IStor-
+访问会抛出异常
+ageID 。
+参数 无
+:
+返回 文件夹路径
+:
+StringgetTableName()
+说明 返回表的名称 只有 类型的
+: , TableID,ColumnFamilyID,RowID,ColumnID IStor-
+才能够访问 其他类型的 访问会抛出异常
+ageID , IStorageID 。
+参数 无
+:
+返回 表名称
+:
+StringgetColumnName()
+说明 返回列的名称 只有 类型的 才能够访问 其他类型的
+: , ColumnID IStorageID , IStor-
+访问会抛出异常
+ageID 。
+参数 无
+:
+返回 列名称
+:
+StringgetRowKey()
+说明 返回一个行的 只有 类型的 才
+: ID, ColumnFamilyID,ColumnID,RowID IStorageID
+能够访问 其他类型的 访问会抛出异常
+, IStorageID 。
+参数 无
+:
+返回 行
+: ID
+554 存储对象访问接口
+..
+接口名
+:udms_store::IStorageAccess
+说明 定义了访问存储对象的基本操作
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+boolcreate(inIStorageIDid)
+说明 创建一个存储对象 该方法仅支持对文件夹 和表 的创建
+: , FolderID TableID 。
+参数 为存储对象定义的
+:id ID
+返回 创建是否成功
+:
+boolremove(inIStorageIDid)
+说明 删除一个存储对象
+: 。
+参数 为存储对象定义的
+:id ID
+返回 删除是否成功
+:
+boolremove(inIStorageIDListidList)
+说明 批量删除文件
+: 。
+22
+GB/T32908—2016
+参数 表示存储对象的列表
+:idList
+返回 无
+:
+voidput(inIStorageIDid,inStringlocalpath)
+说明 上传本地文件或文件夹
+: 。
+参数 为本地文件或文件夹的路径 为存储对象
+:localpath ,id
+返回 无
+:
+voidput(inIStorageIDid,inByteArrayvalues,inboolappend)
+说明 使用字节数组上传文件或列 如果 表示上传的列 则应保证其对应的
+: , id , keySpace、
+存在 否则会抛出 异常 上传数据大小不能超过
+ColumnFamily , StorageException ,
+文件块的上限 文件块大小在配置文件中指定
+, 。
+参数 为上传的列的内容 或文件内容 为使用 包装的远程文件系统的
+:value , ,id StorageID
+路径 为布尔类型 当 为 时 数据添加在已有的列或文件的末
+,append , append true ,
+尾 不删除已有的列或文件的数据 当 为 时 添加的数据将覆盖已有的
+, ; append false ,
+列或文件
+返回 无
+:
+voidput(inIStorageIDListidList,inByteArrayListlist,inboolappend)
+说明 批量使用字节数组上传文件或列 如果 表示上传的列的列表 则应保证其各
+: , idList ,
+自对应的 存在 否则会抛出 异常 上传
+keySpace,ColumnFamily , StorageException ,
+数据大小不能超过文件块的上限 文件块大小在配置文件中指定
+, 。
+参数 表示远程文件系统对应的对象的列表 为文件字节数组列表 为
+:idList ,list ,append
+布尔类型 当 为 时 数据添加在已有的列或文件的末尾 不删除已有的
+, append true , ,
+列或文件的数据 当 为 时 添加的数据将覆盖已有的列或文件
+; append false ,
+返回 无
+:
+voidget(inIStorageIDid,inStrniglocalpath)
+说明 下载文件或文件夹到本地
+: 。
+参数 表示文件或文件夹的存储对象 表示本地路径
+:id ,localpath
+返回 无
+:
+ByteArrayget(inIStorageIDid)
+说明 获取列内容的字节数组
+: 。
+参数 表示列的存储对象
+:id
+返回 列的字节数组
+:
+ByteArrayListget(inIStorageIDListidList)
+说明 批量获取列内容的字节数组
+: 。
+参数 表示列存储对象的列表
+:idList
+返回 含多个列对象字节数组的列表
+:
+23
+GB/T32908—2016
+UploadStreamputStream(inIStorageIDid,inboolappend)
+说明 以数据流的方式上传列或文件 是数据输出流的子类 提供以流的形
+: ,UploadStream ,
+式上传列和文件的方法 如果 为列对象 则调用该方法时 需保证 对应的
+。 id , , id
+和 存在 否则会抛出 异常 文件或列
+keySpace ColumnFamily , StorageException 。
+在上传结束后续执行 方法将本地缓冲中的数据发送到服务器 如果上传的文
+flush ,
+件占用的内存比较大 在上传结束后需执行 方法 释放占用的内存资源
+, close , 。
+参数 为待上传的列或文件对象 为布尔类型 当 为 时 数据添加在
+:id ,append , append true ,
+已有的列或文件的末尾 不删除已有的列或文件的数据 当 为 时 添加
+, ; append false ,
+的数据将覆盖已有的列或文件
+返回 上传的输出流对象
+:
+DownloadStreamgetStream(inIStorageIDid)
+说明 以流的方式下载列或文件 若下载的是列数据 则需保证 对应的
+: , , id keySpace,
+存在 否则会抛出 异常 为数
+ColumnFamily , StorageException 。DownloadStream
+据输入流的子类 提供以流的形式下载列和文件的方法
+, 。
+参数 表示待下载的列或文件对象
+:id
+返回 下载的输入流对象
+:
+555 非结构化数据访问接口
+..
+5551 图像存储与访问接口
+...
+接口名
+:udms_store::IImageAccess
+说明 存储及访问图像的接口 在系统中 图像对应于 类
+: 。 , Image 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inImageimg)
+说明 上传图像数据
+: 。
+参数 表示图像的存储对象 为图像的实例对象
+:id ,img
+返回 无
+:
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传图像的元数据
+: 。
+参数 表示图像的存储对象 为与 关联的图像的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传图像的特征数据
+: 。
+参数 表示图像的存储对象 为与 关联的图像的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+24
+GB/T32908—2016
+Imageget(inIStorageIDid)
+说明 获取指定的图像的实例对象
+: 。
+参数 表示图像的存储对象
+:id
+返回 图像实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的图像的属性值
+: 。
+参数 表示图像的存储对象 为与 关联的图像的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的图像的特征数据
+: 。
+参数 表示图像的存储对象 为与 关联的图像的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的图像数据
+: 。
+参数 表示图像的存储对象
+:id
+返回 是否成功
+:
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的图像的属性
+: 。
+参数 表示图像的存储对象 为与 关联的图像的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的图像的特征
+: 。
+参数 表示图像的存储对象 为与 关联的图像的特征的键
+:id ,key id
+返回 是否成功
+:
+5552 视频存储与访问接口
+...
+接口名
+:udms_store::IVideoAccess
+说明 存储及访问视频的接口 在系统中 视频对应于 类
+: 。 , Video 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inVideovdo)
+说明 上传视频数据
+: 。
+参数 表示视频的存储对象 为视频的实例对象
+:id ,vdo
+返回 无
+:
+25
+GB/T32908—2016
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传视频的元数据
+: 。
+参数 表示视频的存储对象 为与 关联的视频的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传视频的特征数据
+: 。
+参数 表示视频的存储对象 为与 关联的视频的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+Videoget(inIStorageIDid)
+说明 获取指定的视频的实例对象
+: 。
+参数 表示视频的存储对象
+:id
+返回 视频实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的视频的属性值
+: 。
+参数 表示视频的存储对象 为与 关联的视频的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的视频的特征数据
+: 。
+参数 表示视频的存储对象 为与 关联的视频的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的视频数据
+: 。
+参数 表示视频的存储对象
+:id
+返回 是否成功
+:
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的视频的属性
+: 。
+参数 表示视频的存储对象 为与 关联的视频的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的视频的特征
+: 。
+参数 表示视频的存储对象 为与 关联的视频的特征的键
+:id ,key id
+返回 是否成功
+:
+26
+GB/T32908—2016
+5553 音频存储与访问接口
+...
+接口名
+:udms_store::IAudioAccess
+说明 存储及访问音频的接口 在系统中 音频对应于 类
+: 。 , Audio 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inAudioado)
+说明 上传音频数据
+: 。
+参数 表示音频的存储对象 为音频的实例对象
+:id ,ado
+返回 无
+:
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传音频的元数据
+: 。
+参数 表示音频的存储对象 为与 关联的音频的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传音频的特征数据
+: 。
+参数 表示音频的存储对象 为与 关联的音频的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+Audioget(inIStorageIDid)
+说明 获取指定的音频的实例对象
+: 。
+参数 表示音频的存储对象
+:id
+返回 音频实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的音频的属性值
+: 。
+参数 表示音频的存储对象 为与 关联的音频的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的音频的特征数据
+: 。
+参数 表示音频的存储对象 为与 关联的音频的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的音频数据
+: 。
+参数 表示音频的存储对象
+:id
+返回 是否成功
+:
+27
+GB/T32908—2016
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的音频的属性
+: 。
+参数 表示音频的存储对象 为与 关联的音频的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的音频的特征
+: 。
+参数 表示音频的存储对象 为与 关联的音频的特征的键
+:id ,key id
+返回 是否成功
+:
+5554 文本存储与访问接口
+...
+接口名
+:udms_store::IDocumentAccess
+说明 存储及访问文本的接口 在系统中 文本对应于 类
+: 。 , Document 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inDocumentdoc)
+说明 上传文本数据
+: 。
+参数 表示文本的存储对象 为文本的实例对象
+:id ,doc
+返回 无
+:
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传文本的元数据
+: 。
+参数 表示文本的存储对象 为与 关联的文本的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传文本的特征数据
+: 。
+参数 表示文本的存储对象 为与 关联的文本的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+Documentget(inIStorageIDid)
+说明 获取指定的文本的实例对象
+: 。
+参数 表示文本的存储对象
+:id
+返回 文本实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的文本的属性值
+: 。
+参数 表示文本的存储对象 为与 关联的文本的属性键
+:id ,key id
+返回 属性值
+:
+28
+GB/T32908—2016
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的文本的特征数据
+: 。
+参数 表示文本的存储对象 为与 关联的文本的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的文本数据
+: 。
+参数 表示文本的存储对象
+:id
+返回 是否成功
+:
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的文本的属性
+: 。
+参数 表示文本的存储对象 为与 关联的文本的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的文本的特征
+: 。
+参数 表示文本的存储对象 为与 关联的文本的特征的键
+:id ,key id
+返回 是否成功
+:
+5555 图数据存储与访问接口
+...
+接口名
+:udms_store::IGraphAccess
+说明 存储及访问图数据的接口 在系统中 图对应于 类
+: 。 , Graph 。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inGraphgraph)
+说明 上传图数据
+: 。
+参数 表示图的存储对象 为图的实例对象
+:id ,graph
+返回 无
+:
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传图数据元数据
+: 。
+参数 表示图的存储对象 为与 关联的图的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传图数据特征数据
+: 。
+参数 表示图的存储对象 为与 关联的图的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+29
+GB/T32908—2016
+Graphget(inIStorageIDid)
+说明 获取指定的图的实例对象
+: 。
+参数 表示图的存储对象
+:id
+返回 图实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的图的属性值
+: 。
+参数 表示图的存储对象 为与 关联的图的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的图的特征数据
+: 。
+参数 表示图的存储对象 为与 关联的图的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的图数据
+: 。
+参数 表示图的存储对象
+:id
+返回 是否成功
+:
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的图的属性
+: 。
+参数 表示图的存储对象 为与 关联的图的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的图的特征
+: 。
+参数 表示图的存储对象 为与 关联的图的特征的键
+:id ,key id
+返回 是否成功
+:
+5556 过程数据存储与访问接口
+...
+接口名
+:udms_store::IWorkflowAccess
+说明 存储及访问过程数据的接口 在系统中 过程对应于 类 过程的存储格式通常
+: 。 , Workflow ,
+为
+XML。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inWorkflowwf)
+说明 上传过程数据
+: 。
+参数 表示过程的存储对象 为过程的实例对象
+:id ,wf
+返回 无
+:
+30
+GB/T32908—2016
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传过程的元数据
+: 。
+参数 表示过程的存储对象 为与 关联的过程的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传过程的特征数据
+: 。
+参数 表示过程的存储对象 为与 关联的过程的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+Workflowget(inIStorageIDid)
+说明 获取指定的过程的实例对象
+: 。
+参数 表示过程的存储对象
+:id
+返回 过程实例
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的过程的属性值
+: 。
+参数 表示过程的存储对象 为与 关联的过程的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的过程的特征数据
+: 。
+参数 表示过程的存储对象 为与 关联的过程的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的过程数据
+: 。
+参数 表示过程的存储对象
+:id
+返回 是否成功
+:
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的过程的属性
+: 。
+参数 表示过程的存储对象 为与 关联的过程的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的过程的特征
+: 。
+参数 表示过程的存储对象 为与 关联的过程的特征的键
+:id ,key id
+返回 是否成功
+:
+31
+GB/T32908—2016
+5557 复杂类型数据存储与访问接口
+...
+接口名
+:udms_store::IObjectAccess
+说明 本接口定义了除以上数据类型以外其他非结构化数据的访问接口 后文中所有其他的非结构
+: ,
+化数据将统称为 复杂类型数据
+“ ”。
+继承 无
+:
+属性 无
+:
+方法
+:
+voidput(inIStorageIDid,inObjectobj)
+说明 上传复杂类型数据
+: 。
+参数 表示复杂类型数据的存储对象 为复杂类型数据的实例对象
+:id ,obj
+返回 无
+:
+voidputAttribute(inIStorageIDid,inStringkey,inanydata)
+说明 上传复杂类型数据的属性信息
+: 。
+参数 表示复杂类型数据存储对象 为与 关联的属性键 为属性值
+:id ,key id ,data
+返回 无
+:
+voidputFeature(inIStorageIDid,inStringkey,inanydata)
+说明 上传复杂类型数据的特征数据
+: 。
+参数 表示复杂类型数据的存储对象 为与 关联的特征的键 为特征数据
+:id ,key id ,data
+返回 无
+:
+Objectget(inIStorageIDid)
+说明 获取指定的复杂类型数据的实例对象
+: 。
+参数 表示复杂类型数据的存储对象
+:id
+返回 实例对象
+:
+anygetAttribute(inIStorageIDid,inStringkey)
+说明 获取指定的复杂类型数据的属性值
+: 。
+参数 表示复杂类型数据的存储对象 为与 关联的复杂类型数据的属性键
+:id ,key id
+返回 属性值
+:
+anygetFeature(inIStorageIDid,inStringkey)
+说明 获取指定的复杂类型数据的特征数据
+: 。
+参数 表示复杂类型数据的存储对象 为与 关联的复杂类型数据的特征的键
+:id ,key id
+返回 特征数据
+:
+boolremove(inIStorageIDid)
+说明 删除指定的复杂类型数据
+: 。
+参数 表示复杂类型数据的存储对象
+:id
+返回 是否成功
+:
+32
+GB/T32908—2016
+boolremoveAttribute(inIStorageIDid,inStringkey)
+说明 删除指定的过程的属性
+: 。
+参数 表示过程的存储对象 为与 关联的过程的属性键
+:id ,key id
+返回 是否成功
+:
+boolremoveFeature(inIStorageIDid,inStringkey)
+说明 删除指定的复杂类型数据的特征
+: 。
+参数 表示复杂类型数据的存储对象 为与 关联的复杂类型数据的特征的键
+:id ,key id
+返回 是否成功
+:
+56 分析接口模块
+.
+561 概述
+..
+模块名
+:udms_analysis
+说明 数据分析类型及操作定义的模块
+: 。
+562 基本数据分析接口
+..
+接口名
+:udms_analysis::IBasicMetrics
+说明 提供基本的数据分析操作
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+intcount(inListdataList,optionalinFilterListfilters)
+说明 计数函数 可通过 过滤器过滤掉不需要考虑的对象
+: , filters 。
+参数 为待计数的数据列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为可选项
+,filters
+返回 元素个数
+:
+intcountUnique(inListdataList,optionalinFilterListfilters)
+说明 无重复的元素的计数函数 可通过 过滤器过滤掉不需要考虑的对象
+: , filters 。
+参数 为待计数的数据列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为可选项
+,filters
+返回 无重复的元素个数
+:
+anyminimum(inListdataList,optionalinFilterListfilters,optionalinSortsortable)
+说明 获取列表中的最小值 可通过 过滤器过滤掉不需要考虑的对象 也可通过
+: , filters ,
+指定排序函数
+sortable 。
+参数 为待考虑的对象列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为排序函数 指定了元素之间的大小关系 和 为可
+,sortable , ,filters sortable
+选项
+返回 列表中的最小值
+:
+33
+GB/T32908—2016
+anymaximum(inListdataList,optionalinFilterListfilters,optionalinSortsortable)
+说明 获取列表中的最大值 可通过 过滤器过滤掉不需要考虑的对象 也可通过
+: , filters ,
+指定排序函数
+sortable 。
+参数 为待考虑的对象列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为排序函数 指定了元素之间的大小关系 和 为可
+,sortable , ,filters sortable
+选项
+返回 列表中的最大值
+:
+anyaverage(inListdataList,optionalinFilterListfilters)
+说明 获取列表中元素的平均值 可通过 过滤器过滤掉不需要考虑的对象
+: , filters 。
+参数 为待考虑的对象列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为可选项
+,filters
+返回 列表中元素的平均值
+:
+anyvariance(inListdataList,optionalinFilterListfilters)
+说明 获取列表中元素的方差 可通过 过滤器过滤掉不需要考虑的对象
+: , filters 。
+参数 为待考虑的对象列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为可选项
+,filters
+返回 列表中元素的方差
+:
+anyquantile(inListdataList,infloatquantile,optionalinFilterListfilters,optionalSort
+sortable)
+说明 获取列表中元素的 分位数 可通过 过滤器过滤掉不需要考虑的对
+: quantile , filters
+象 也可通过 指定排序函数 若 为 则返回值为列表的中位数
+, sortable , quantile 0.5, 。
+参数 为待考虑的对象列表 为分位数值 为过滤器列表 每个过
+:dataList ,quantile ,filters ,
+滤器单独作用于数据列表 为排序函数 指定了元素之间的大小关系
+,sortable , ,
+和 为可选项
+filters sortable
+返回 列表中元素的 分位数值
+: quantile
+anysum(inListdataList,optionalinFilterListfilters)
+说明 获取列表中所有元素值的和 可通过 过滤器过滤掉不需要考虑的对象
+: , filters 。
+参数 为待考虑的对象列表 为过滤器列表 每个过滤器单独作用于数据
+:dataList ,filters ,
+列表 为可选项
+,filters
+返回 列表中元素值的和
+:
+563 时间单位
+..
+时间单位名
+:PeriodType
+类型 枚举类型 取值可为
+: , :
+每分钟
+Minutely, ;
+每小时
+Hourly, ;
+每天
+Daily, ;
+每星期
+Weekly, ;
+34
+GB/T32908—2016
+每月
+Monthly, ;
+每季度
+Quarterly, ;
+每年
+Yearly, 。
+564 时序数据分析接口
+..
+接口名
+:udms_analysis::ISeries
+说明 提供获取时序数据的基本操作
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+ListgetSeries(inIStorageIDid,inPeriodTypetype,inlongstartTSP,inintspan)
+说明 获取 指定的数据项上 从 时间开始 跨度为 个时间单位为 的
+: id , startTSP , span type
+区间的序列数据
+。
+参数 为数据存储的对象 为时间单位 为起始时间的时间戳 为时
+:id ,type ,startTSP ,span
+间跨度 其单位为
+, type
+返回 指定时间段内的数据序列
+:
+ListgetSeries(inListlist,inPeriodTypetype,inlongstartTSP,inintspan)
+说明 获取数据列表 上 从 时间开始 跨度为 个时间单位为 的区
+: list , startTSP , span type
+间的序列数据
+。
+参数 为待筛选的数据列表 为时间单位 为起始时间的时间戳
+:list ,type ,startTSP ,span
+为时间跨度 其单位为
+, type
+返回 指定时间段内的数据序列
+:
+57 索引接口模块
+.
+571 概述
+..
+模块名
+:udms_index
+说明 索引类型及操作定义的模块
+: 。
+572 通用向量接口
+..
+接口名
+:udms_index::IVectorObject
+说明 向量在系统中的统一表示
+: 。
+继承 无
+:
+属性
+:
+名称
+:id
+定义
+:publicIStorageIDid
+说明 向量代表的对象的
+: ID。
+名称
+:data
+定义
+:publicFloatArraydata
+说明 向量表示的浮点数数组
+: 。
+35
+GB/T32908—2016
+方法
+:
+floatgetDistance(inIVectorObjectvec)
+说明 计算向量之间的距离
+: 。
+参数 为比较的向量
+:vec
+返回 向量之间的距离
+:
+FloatArraygetData()
+说明 获取向量的浮点数数组
+: 。
+参数 无
+:
+返回 浮点数数组
+:
+573 特征抽取接口
+..
+5731 特征抽取基本接口
+...
+接口名
+:udms_index::IFeatureExtraction
+说明 提供特征抽取的基本方法
+: 。
+继承 无
+:
+属性 无
+:
+说明 未直接在本标准中说明的其他非结构化数据类型的特征抽取 可继承或实现本接口以扩展
+: , 。
+方法
+:
+anyextract()
+说明 特征抽取通用接口
+: 。
+参数 无
+:
+返回 特征数据
+:
+5732 图像特征抽取接口
+...
+接口名
+:IImageFExtraction
+说明 提供图像特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractColorFeature(inImageimg)
+说明 抽取图像的颜色特征 颜色特征种类任意
+: , 。
+参数 为图像的实例对象 参数可以替换为图像的字节数组 输入流
+:img ,img ByteArray、
+或文件存储地址 等
+IStream String
+返回 图像的颜色特征
+:
+anyextracTextureFeature(inImageimg)
+说明 抽取图像的纹理特征 纹理特征种类任意
+: , 。
+参数 为图像的实例对象 参数可以替换为图像的字节数组 输入流
+:img ,img ByteArray、
+或文件存储地址 等
+IStream String
+返回 图像的纹理特征
+:
+36
+GB/T32908—2016
+anyextracShapeFeature(inImageimg)
+说明 抽取图像的形状特征 形状特征种类任意
+: , 。
+参数 为图像的实例对象 参数可以替换为图像的字节数组 输入流
+:img ,img ByteArray、
+或文件存储地址 等
+IStream String
+返回 图像的形状特征
+:
+anyextracLocalFeature(inImageimg)
+说明 抽取图像的局部特征 局部特征种类任意
+: , 。
+参数 为图像的实例对象 参数可以替换为图像的字节数组 输入流
+:img ,img ByteArray、
+或文件存储地址 等
+IStream String
+返回 图像的局部特征
+:
+5733 视频特征抽取接口
+...
+接口名
+:IVideoFExtraction
+说明 提供视频特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractTimeFeature(inVideovdo)
+说明 抽取视频的时间域特征 特征种类任意
+: , 。
+参数 为视频的实例对象 参数可以替换为视频的字节数组 输入流
+:vdo ,vdo ByteArray、
+或文件存储地址 等
+IStream String
+返回 视频的时间域特征
+:
+anyextractMotionFeature(inVideovdo)
+说明 抽取视频的运动特征 特征种类任意
+: , 。
+参数 为视频的实例对象 参数可以替换为视频的字节数组 输入流
+:vdo ,vdo ByteArray、
+或文件存储地址 等
+IStream String
+返回 视频的运动特征
+:
+anyextractLocalFeature(inVideovdo,inintwinSize,ininthopSize)
+说明 抽取视频局部特征 特征种类任意
+: , 。
+参数 为视频的实例对象 参数可以替换为视频的字节数组 输入流
+:vdo ,vdo ByteArray、
+或文件存储地址 等
+IStream String
+返回 视频局部特征
+:
+5734 音频特征抽取接口
+...
+接口名
+:IAudioFExtraction
+说明 提供音频特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+37
+GB/T32908—2016
+方法
+:
+anyextractTemporalFeature(inAudioado)
+说明 抽取音频的时序特征
+: 。
+参数 为音频的实例对象 参数可以替换为音频的字节数组 输入流
+:ado ,ado ByteArray、
+或文件存储地址 等
+IStream String
+返回 音频的时序特征
+:
+anyextractFrequencyFeature(inAudioado)
+说明 抽取音频的频率特征
+: 。
+参数 为音频的实例对象 参数可以替换为音频的字节数组 输入流
+:ado ,ado ByteArray、
+或文件存储地址 等
+IStream String
+返回 音频的频率特征
+:
+anyextractPerceptualFeature(inAudioado)
+说明 抽取音频的感知特征
+: 。
+参数 为音频的实例对象 参数可以替换为音频的字节数组 输入流
+:ado ,ado ByteArray、
+或文件存储地址 等
+IStream String
+返回 音频的感知特征
+:
+anyextractCepstralFeature(inAudioado)
+说明 抽取音频的倒谱特征
+: 。
+参数 为音频的实例对象 参数可以替换为音频的字节数组 输入流
+:ado ,ado ByteArray、
+或文件存储地址 等
+IStream String
+返回 音频的倒谱特征
+:
+anyextractLocalFeature(inAudioado,inintwinSize,ininthopSize)
+说明 抽取音频局部特征 局部特征种类任意
+: , 。
+参数 为音频的实例对象 参数可以替换为音频的字节数组 输入流
+:ado ,ado ByteArray、
+或文件存储地址 等
+IStream String
+返回 音频局部特征
+:
+5735 文本特征抽取接口
+...
+接口名
+:IDocumentFExtraction
+说明 提供文本特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractFrequencyFeature(inStringdoc)
+说明 抽取文本词频相关的特征 特征种类任意
+: , 。
+参数 待抽取特征的文本字符串
+: doc
+返回 词频特征
+:
+38
+GB/T32908—2016
+5736 图数据特征抽取接口
+...
+接口名
+:IGraphFExtraction
+说明 提供图结构数据特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractLocal(inGraphgraph,optionalinNodeListseeds)
+说明 抽取子图特征
+: 。
+参数 为原图的实例对象 为种子顶点 参数为可选项
+:graph ,seeds ,seeds
+返回 子图的特征
+:
+5737 过程数据特征抽取接口
+...
+接口名
+:IWorkflowFExtraction
+说明 提供过程数据特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractLocal(inWorkflowwf,optionalinNodeListseeds)
+说明 抽取过程子网特征
+: 。
+参数 为原过程网的实例对象 为由库所和变迁组成的种子顶点 参数为可
+:wf ,seeds ,seeds
+选项
+返回 过程子网的特征
+:
+5738 复杂类型数据的特征抽取接口
+...
+接口名
+:IObjectFExtraction
+说明 提供复杂类型数据特征提取的基本方法
+: 。
+继承
+:udms_index:IFeatureExtraction
+属性 无
+:
+方法
+:
+anyextractLocal(inObjectobj)
+说明 抽取复杂类型数据的局部特征
+: 。
+参数 为复杂类型数据的实例对象 或字节数组 或输入流 或存储地址
+:obj , , ,
+返回 局部特征
+:
+574 通用索引接口
+..
+5741 通用索引基本接口
+...
+接口名
+:udms_index::IBaseIndex
+说明 提供基本的索引方法
+: 。
+39
+GB/T32908—2016
+继承 无
+:
+属性
+:
+名称
+:type
+定义
+:publicIndexTypetype
+说明 索引的类型
+:
+方法
+:
+voidcreate(inIndexTypetype)
+说明 创建新索引
+: 。
+参数 为索引类型
+:type
+返回 无
+:
+voiddrop()
+说明 删除全部索引记录
+: 。
+参数 无
+:
+返回 无
+:
+boolexist(inanyindexable)
+说明 查看指定的索引是否存在
+: 。
+参数 为索引
+:indexable
+返回 索引是否存在
+:
+boolmerge(inIBaseIndexanotherindex)
+说明 合并现有的索引
+: 。
+参数 为待合并的索引
+:anotherindex
+返回 索引合并是否成功
+:
+voidindex(inanyindexable)
+说明 在当前索引中添加一个索引项
+: 。
+参数 为待索引的对象
+:indexable
+返回 无
+:
+voidremove(inanyindexable)
+说明 在当前索引中删除一个索引项
+: 。
+参数 为待删除的对象
+:indexable
+返回 无
+:
+Listlist()
+说明 按索引顺序获取所有的索引对象的列表
+: 。
+参数 无
+:
+返回 索引对象的列表
+:
+40
+GB/T32908—2016
+5742 通用高维索引接口
+...
+接口名
+:udms_index::IHDIndex
+说明 提供高维索引的基本操作
+: 。
+继承
+:udms_index::IBaseIndex
+属性 无
+:
+方法
+:
+voidindex(IVectorObjectvec)
+说明 将单个向量添加到索引中
+: 。
+参数 为待添加的向量
+:vec
+返回 无
+:
+voidindex(IVectorListveclist)
+说明 将 向量列表中的每个向量添加到索引中
+: veclist 。
+参数 为待添加的向量列表
+:veclist
+返回 无
+:
+IVectorObjectgetNearest(IVectorObjectvec)
+说明 获取向量 的最近邻的向量
+: vec 。
+参数 为待查询的向量
+:vec
+返回 最近邻的向量
+:
+IVectorListgetKNearest(IVectorObjectvec,intk)
+说明 获取向量 的 近邻向量
+: vec k 。
+参数 为待查询的向量 为将要获取的近邻个数
+:vec ,k
+返回 近邻的向量列表
+:k
+5743 文本索引接口
+...
+接口名
+:udms_index::ITextIndex
+说明 提供文本索引的基本操作
+: 。
+继承
+:udms_index::IBaseIndex
+属性 无
+:
+方法
+:
+IStorageIDindex(IStorageIDinputId)
+说明 索引单个文本文件
+: 。
+参数 为待索引文件的存储对象
+:inputId
+返回 索引存储的对象
+:
+IStorageIDListindex(IStorageIDListinputIdList)
+说明 批量索引文本文件
+: 。
+参数 为待索引的多个文件的存储对象列表
+:inputIdList
+返回 多个索引的对象的列表
+:
+41
+GB/T32908—2016
+5744 通用键值索引接口
+...
+接口名
+:udms_index::IKVIndex
+说明 提供键值索引的基本操作
+: 。
+继承
+:udms_index::IBaseIndex
+属性 无
+:
+方法
+:
+IStorageIDListlist()
+说明 按索引顺序获取对象列表
+: 。
+参数 无
+:
+返回 对象列表
+:
+voidindex(inanykey,IStorageIDid)
+说明 将 代表的对象按键 添加到索引中
+: id key 。
+参数 为待索引的对象 为该对象的键
+:id ,key
+返回 无
+:
+IStorageIDget(inanykey)
+说明 查询键为 的索引对象 若有多个对象 则返回第一个
+: key , , 。
+参数 为待查询的键
+:key
+返回 键为 的第一个索引的对象
+: key
+IStorageIDListgetAll(inanykey,optionalinintlimit)
+说明 查询键为 的所有索引对象 若设置 的值 则最多返回 条记录
+: key , limit , limit 。
+参数 为待查询的键 为最多返回的记录数 可选
+:key ,limit ( )
+返回 键为 的所有索引的对象
+: key
+IStorageIDListbetween(inanykeyLower,inanykeyUpper)
+说明 查询键介于 和 之间的所有索引对象
+: keyLower keyUpper 。
+参数 为待查范围的键的下界 为待查范围的键的上界
+:keyLower ,keyUpper
+返回 范围内的所有索引对象列表
+:
+58 搜索接口模块
+.
+581 概述
+..
+模块名
+:udms_search
+说明 搜索类型及操作定义的模块
+: 。
+582 媒体数据类型
+..
+媒体数据类型名
+:MediaType
+类型 枚举类型 取值可为
+: , :
+文本类型
+MDocument, ;
+图像类型
+MImage, ;
+视频类型
+MVideo, ;
+42
+GB/T32908—2016
+音频类型
+MAudio, ;
+图类型
+MGraph, ;
+过程类型
+MWorkflow, ;
+任意类型
+MAny, 。
+583 高维数据查询接口
+..
+接口名
+:udms_search::IHDSearch
+说明 提供基本高维数据查询操作的接口
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+IVectorListsearch(inIVectorObjectvec,inintk,inMediaTypemedia)
+说明 查询指定类型的高维向量的 近邻
+: k 。
+参数 为待查询的高维向量 为近邻个数 为指定的媒体数据类型
+:vec ,k ,media
+返回 近邻的向量列表
+:k
+IVectorListsearch(inIVectorObjectvec,inintk,inSortablesort,inMediaTypemedia)
+说明 根据给定的排序方法 查询指定类型的高维向量的 近邻
+: sort, k 。
+参数 为待查询的高维向量 为近邻个数 为指定的媒体数据类型
+:vec ,k ,media
+返回 近邻的向量列表
+:k
+IVectorListsearch(inIStorageIDid,inintk,inMediaTypemedia)
+说明 查询指定类型的存储对象的 近邻
+: k 。
+参数 为待查询的对象 为近邻个数
+:id ,k
+返回 近邻的向量列表
+:k
+IVectorListsearch(inIStorageIDid,inintk,inSortablesort,inMediaTypemedia)
+说明 根据给定的排序方法 查询指定类型的存储对象的 近邻
+: sort, k 。
+参数 为待查询的对象 为近邻个数 为指定的媒体数据类型
+:id ,k ,media
+返回 近邻的向量列表
+:k
+584 关键字查询接口
+..
+接口名
+:udms_search::IKeywordSearch
+说明 提供基本关键字查询操作的接口
+: 。
+继承 无
+:
+属性 无
+:
+方法
+:
+IStorageIDListsearch(inStringterm,inintn,inMediaTypemedia)
+说明 查询指定类型的 与关键词 最相关的 个对象
+: , term n 。
+参数 为待查询的关键词 为返回结果的数量 为指定的媒体数据类型
+:term ,n ,media
+返回 相关性最高的 个对象的列表
+: n
+43
+GB/T32908—2016
+IStorageIDListsearch(inStringterm,inintn,inSortablesort,inMediaTypemedia)
+说明 根据给定的排序方法 查询指定类型的 与关键词 最相关的 个对象
+: sort, , term n 。
+参数 为待查询的关键词 为返回结果的数量 为排序函数 为指定的媒
+:term ,n ,sort ,media
+体数据类型
+返回 相关性最高的 个对象的列表
+: n
+IStorageIDListsearch(inStringListtermlist,inintn,inMediaTypemedia)
+说明 查询指定类型的 与关键词列表 中每个词的综合相关性最高的 个对象
+: , termlist n 。
+参数 为待查询的关键词列表 为返回结果的数量 为指定的媒体数据
+:termlist ,n ,media
+类型
+返回 相关性最高的 个对象的列表
+: n
+IStorageIDListsearch(inStringListtermlist,inintn,intSortablesor,inMediaTypemedia)
+说明 根据给定的排序方法 查询指定类型的 与关键词列表 中每个词的综
+: sort, , termlist
+合相关性最高的 个对象
+n 。
+参数 为待查询的关键词列表 为返回结果的数量 为排序函数 为
+:termlist ,n ,sort ,media
+指定的媒体数据类型
+返回 相关性最高的 个对象的列表
+: n
+6 Web服务访问接口
+61 概述
+.
+本章描述 服务访问接口 包括 请求格式 状态码和服务接口描述
+Web , HTTP 、HTTP 。
+62 基本格式
+.
+服务访问接口包含了以下 种元素
+Web 5 :
+接口名 接口的名称
+a) : ;
+说明 对接口内容的描述
+b) : ;
+调用格式 调用 服务时的语法格式
+c) : Web ;
+语义 对调用格式的解释
+d) : ;
+调用结果 服务调用结果 包括成功状态和失败状态下的响应信息
+e) :Web , 。
+63 HTTP请求格式
+.
+服务的调用由 请求发起 请求具有如下的基本格式
+HTTP ,HTTP :
+WebService::=<METHOD><ENTRY>[<PARAM>][<HEADER>][<STREAM>]
+在上述基本调用格式中 各个字段的含义如表 所示 请求的返回结果包含两部分
+, 1 。HTTP ,
+一部分为 消息的状态码 表示响应的状态 另一部分为 请求的消息体 消
+HTTP (StatusCode), , HTTP ,
+息体默认采用 格式进行封装 可通过参数设置返回 格式的消息
+JSON , XML 。
+44
+GB/T32908—2016
+表1 Web服务接口的字段含义
+字 段 含 义
+请求的方法头 本接口中使用到的该字段取值有 和 各取值的含义请参
+HTTP , POST,PUT DELETE,
+<METHOD> 考 协议
+HTTP
+服务接口的入口地址
+<ENTRY> Web
+可选参数 用以传递少量的参数信息
+<PARAM> ,
+请求的消息头部
+<HEADER> HTTP
+可选的附加流信息 用以传递大量的参数信息
+<STREAM> ,
+64 HTTP状态码
+.
+状态码及其含义如表 所示
+HTTP 2 。
+表2 HTTP状态码的表示及含义
+状态码编号 状态码名称 含 义
+请求已成功
+200 OK
+对象或资源已成功创建
+201 CREATED
+操作已被成功接受
+202 ACCEPTED
+请求的内容丢失或不合法
+400 BADREQUEST
+请求的内容不存在
+404 NOTFOUND
+访问冲突 访问资源已被上锁或可能导致服务器内部状态出错
+409 CONFLICT ,
+服务器出现内部错误 无法正确响应请求
+500 INTERNEL_ERROR ,
+65 服务接口描述
+.
+651 数据增加接口
+..
+接口名
+:Create
+说明 提供增加数据的功能 包括源数据 元数据和特征数据等
+: , 、 。
+调用格式
+:
+PUT/create[id,class,type,subtype1[,subtype2,...]]<STREAM>
+语义
+:
+上传数据到指定的 位置 若未指定 则系统自动生成 参数 指定待增加的数据的
+id , id, id; class
+类型 例如图片 视频 音频 文本等 参数 指定待增加的数据的基本类别 例如源数据 元数据
+, 、 、 、 ; type , 、
+或特征数据 参数 指定待增加的数据的子类别 可含多级子类别 例如图片特征中的颜色
+; subtype , ,
+特征或纹理特征 又如颜色特征中的 特征或 特征等 上述调用格式中 为
+, RGB HSV 。 ,<STREAM>
+上传的数据流
+。
+调用结果
+:
+45
+GB/T32908—2016
+成功状态
+:
+返回的 状态码为 若未指定 则返回新生成的文件的 格式为 如
+HTTP 201。 id, id, JSON, :
+{“id”:“123456789”}。
+失败状态
+:
+若 格式错误 则返回的 状态码为 若 已经存在 发生冲突 返回的
+id , HTTP 400; id ( ),
+状态码为 其他内部错误 返回的 状态码为
+HTTP 409; , HTTP 500。
+652 数据删除接口
+..
+接口名
+:Delete
+说明 提供删除数据的功能 包括源数据 元数据和特征数据等
+: , 、 。
+调用格式
+:
+DELETE/delete[id,class,type,subtype1[,subtype2,...]]
+语义
+:
+删除 指定的数据 参数 指定待删除的数据的类型 例如图片 视频 音频 文本等 参数
+id ; class , 、 、 、 ;
+指定待删除的数据的基本类别 例如源数据 元数据或特征数据 参数 指定删除的数据的
+type , 、 ; subtype
+子类别 可含多级子类别 若不指定 和 则删除与 关联的所有数据
+, ; class type, id 。
+调用结果
+:
+成功状态
+:
+返回的 状态码为
+HTTP 202。
+失败状态
+:
+若 格式错误 返回的 状态码为 若 不存在 返回的 状态码为
+id , HTTP 400; id , HTTP 404;
+其他内部错误 返回的 状态码为
+, HTTP 500。
+653 数据更新接口
+..
+接口名
+:Update
+说明 提供数据的更新功能 包括源数据 元数据 特征数据等
+: , 、 、 。
+调用格式
+:
+POST/update[id]<STREAM>
+语义
+:
+更新 指定的数据 的附加流指定结构化的子句信息 例如需要更新的数据的类
+id ;<STREAM> ,
+型 基本类别 属性值等 的结构由具体的实现方案而定 附加流 支持 和
+、 、 ;<STREAM> 。 <STREAM> XML
+格式 需在 请求的 中指定
+JSON , HTTP Content-Type 。
+示例
+:
+一个合法的 格式的请求如下
+XML :
+<properties>
+<property>
+<class>image</class>
+<type>feature</type>
+46
+GB/T32908—2016
+<subtype>
+<name>SURF</name>
+<value>[1,2,3,4,5]</value>
+</subtype>
+<subtype>
+<name>GIST</name>
+<value>[2,3,5,6,8]</value>
+</subtype>
+</property>
+<property>
+<class>image</class>
+<type>meta</type>
+<subtype>
+<name>title</name>
+<value>a_new_title</value>
+</subtype>
+<subtype>
+<name>location</name>
+<value>Beijing</value>
+</subtype>
+</property>
+</properties>
+与此对应的 格式的示例如下
+JSON :
+{
+“properties”:
+[
+{“class”:“image”,
+“type”:“feature”,
+“subtype”:
+[{“name”:“SURF”,“value”:“[1,2,3,4,5]”},
+{“name”:“GIST”,“value”:“[2,3,5,6,8]”}]},
+{“class”:“image”,
+“type”:“meta”,
+“subtype”:
+[{“name”:“title”,“value”:“a_new_title”},
+{“name”:“location”,“value”:“Beijing”}]}
+]
+}
+调用结果
+:
+成功状态
+:
+返回的 状态码为
+HTTP 202。
+失败状态
+:
+若 格式错误 返回的 状态码为 若 不存在 返回的 状态码为
+id , HTTP 400; id , HTTP 404;
+若结构化子句格式不正确 返回的 状态码为 其他内部错误 返回的 状态码
+, HTTP 400; , HTTP
+为
+500。
+47
+GB/T32908—2016
+654 数据查询接口
+..
+接口名
+:Select
+说明 按条件查询特定的数据
+: 。
+调用格式
+:
+POST/select<STREAM>
+语义
+:
+获取满足查询条件的数据 的附加流指定结构化的子句信息 例如选择的属性以
+;<STREAM> ,
+及需要满足的查询条件 子句 的结构由具体的实现方案而定 附加流
+(where );<STREAM> ;
+支持 和 格式 需在 请求的 中指定
+<STREAM> XML JSON , HTTP Content-Type 。
+示例1
+:
+一个合法的 格式的请求如下
+XML :
+<select>
+<properties>
+<field>*</field>
+</properties>
+<where-clause>
+Feature1=2andfeature2>feature3orfeature8LIKE‘%abc%’
+</where-clause>
+<top>5</top>
+</select>
+与此对应的 格式如下
+JSON :
+{
+“properties”:{“field”:”*”},
+“where-clause”:“Feature1=2andfeature2>feature3orfeature8LIKE‘%abc%’”,
+“top”:“5”
+}
+调用结果
+:
+成功状态
+:
+返回的 状态码为 返回的结果用 或 封装
+HTTP 202, XML JSON 。
+示例2
+:
+一个合法的 格式的响应示例如下
+XML ,
+<Results>
+<Result>
+<id>1234567</id>
+<values>
+<field>
+<name>*</name>
+<value>123</value>
+</field>
+</values>
+<Result>
+<Result>
+48
+GB/T32908—2016
+<id>2345678</id>
+<values>
+<field>
+<name>*</name>
+<value>99</value>
+</field>
+</values>
+<Result>
+</Results>
+与此对应的 格式的示例如下
+JSON :
+{
+“Results”:[
+{“id”:“1234567”,
+“values”:[
+{“field”:{
+“name”:“*”,
+“value”:“123”}
+}
+]},
+{“id”:“2345678”,
+“values”:[
+{“field”:{
+“name”:“*”,
+“value”:“99”}
+}
+]},
+]
+}
+调用结果
+:
+失败状态
+:
+若结构化子句格式不正确 返回的 状态码为 其他内部错误 返回的 状态码
+, HTTP 400; , HTTP
+为
+500。

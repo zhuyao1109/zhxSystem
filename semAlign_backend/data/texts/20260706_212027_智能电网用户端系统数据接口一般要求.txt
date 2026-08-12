@@ -1,0 +1,4094 @@
+ICS29020
+.
+K00
+中 华人民共和国国家标准化指导性技术文件
+GB/Z32500—2016
+智能电网用户端系统数据接口一般要求
+Generalrequirementsofdatainterfaceforusersidesystemofsmartgrid
+2016-02-24发布 2016-09-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/Z32500—2016
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+接口数据模型及服务规范
+4 ……………………………………………………………………………… 2
+调试内容与要求
+5 ………………………………………………………………………………………… 14
+附录 规范性附录 主站基础数据结构
+A( ) ……………………………………………………………… 18
+附录 规范性附录 数据分类统一编码
+B( ) ……………………………………………………………… 29
+附录 资料性附录 数据表字段索引
+C( ) ………………………………………………………………… 42
+附录 资料性附录 用例简析
+D( ) ………………………………………………………………………… 52
+附录 资料性附录 参考资料及数据表说明
+E( ) ………………………………………………………… 55
+参考文献
+…………………………………………………………………………………………………… 59
+GB/Z32500—2016
+前 言
+智能电网的核心内容是用户端与供电侧的双向互动以及分布式能源在用户端的充分开发利用 国
+,
+际和国内对实现用户端设备和系统之间互联互通的通信系统研究越来越多 有很多示范性应用 但还没
+, ,
+有形成统一的国际标准 本指导性技术文件定义了智能电网用户端系统各类数据的名称 格式 统一编
+。 、 、
+码 数据传输模型
+、 。
+本指导性技术文件仅供参考 有关对本指导性技术文件的建议和意见 向国务院标准化行政主管
+。 ,
+部门反映
+。
+本指导性技术文件由中国电器工业协会提出
+。
+本指导性技术文件由全国电器设备网络通信接口标准化技术委员会 归口
+(SAC/TC411) 。
+本指导性技术文件主要起草单位 上海电器科学研究院 烟台东方威思顿电气股份有限公司
+: 、 。
+本指导性技术文件参加起草单位 中国电力科学研究院 上海电力学院 上海安科瑞电气股份有限
+: 、 、
+公司
+。
+本指导性技术文件主要起草人 吴小东 蔡忠勇 谭伟 奚培锋 田世明 姜龙 张卫红 李昌 阮於东
+: 、 、 、 、 、 、 、 、 、
+李文娟 高春雷 张杭 李辉 谢若冰 严兰 单明
+、 、 、 、 、 、 。
+Ⅰ
+GB/Z32500—2016
+智能电网用户端系统数据接口一般要求
+1 范围
+本指导性技术文件规定了智能电网用户端主站与子系统 子用户之间通信接口数据模型 接口服务
+、 、
+规范 调试内容和要求 以及能源管理相关的数据格式 数据分类统一编码
+、 , 、 。
+本指导性技术文件适用于工业企业 商业楼宇 公共建筑 居民住宅等各种用户端系统的能源管理
+、 、 、 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+智能电网用户端通信系统一般要求
+GB/Z32501
+中华人民共和国行政区划代码
+GB/T2260
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+需量 demand
+规定时间内的平均功率
+。
+32
+.
+最大需量 maximumdemand
+在规定的时间段内记录的需量的最大值
+。
+33
+.
+需量周期 demandinterval
+测量平均功率的连续相等的时间间隔
+。
+34
+.
+冻结 freeze
+存储特定时刻重要数据的操作
+。
+35
+.
+时段 timeconsumption
+将一天中的 划分成的若干时间段 一般分为尖 峰 平 谷时段
+24h : 、 、 、 。
+36
+.
+费率 tariff
+与电能消耗时段相对应的计算电费的价格体系称为费率
+。
+37
+.
+RDF格式 ResourceDescriptionFramework
+一种用于描述 资源的标记语言 是一个处理元数据的 应用
+Web , XML 。
+1
+GB/Z32500—2016
+4 接口数据模型及服务规范
+本指导性技术文件中的接口规范以 的形式给出一些示例 实际应用应根据具体情况进一步
+XML ,
+细化 接口所在的位置 以及其在整个通信系统中的作用遵照 的规定
+。 , GB/Z32501 。
+41 模型标识
+.
+模型标识见表
+1。
+表1 模型标识
+分类 对象类型标识 对象类型名称 备注
+用户信息
+CPPSP_INFO_USER
+子用户信息
+YHD_INFO_SUBUSER
+子系统档案
+YHD_INFO_SUBSYSTEM
+设备档案
+档案模型
+YHD_INFO_DEVICE
+监控点档案
+YHD_INFO_MONITOR
+虚拟监控点对应物理监控点
+YHD_MR_PHYSICAL
+分时电价类别
+YHD_TOU_TARIFF
+分时电价类别明细
+YHD_TOU_PRICE
+电力数据
+YHD_DATA_POWER
+电量示数数据
+YHD_DATA_ENERGY
+谐波数据
+YHD_DATA_HARMONIC
+其他监测数据
+YHD_DATA_OTHER
+数据模型 最值
+YHD_DATA_Most
+分时电量历史数据
+YHD_TOU_HIS
+控制数据
+YHD_REF_CONTROL
+事件报告
+YHD_EVENT_REPORT
+子用户电费数据
+YHD_DATA_COLLECT
+42 模型定义
+.
+421 档案模型
+..
+档案模型见表
+2。
+表2 模型档案
+对象类型 属性标识 属性名称 值类型 备注
+用户信息 用户编码 不为空 有编码
+UserID String ,
+功率因数标准
+(CPPSP_INFO_USER)
+PowerFactorStandard String
+2
+GB/Z32500—2016
+表2 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+用户简介
+UserDescription String
+电压等级
+VoltageClass String
+合同容量
+ContractCapacity String
+运行容量
+OperationCapacity String
+电价种类
+ElectricityPriceType String
+用户地址
+Address String
+用户户号
+UserNo String
+用户名称
+用户信息 UserName String
+见表
+用户所属行业分类 B.2,
+(CPPSP_INFO_USER)
+IndustryType String
+IndustryCode
+用户所属地市 按 要求
+City String GB/T2260
+用户 标志
+Logo LOGO String
+是否超标
+IsOverCriteria String
+用户面积
+Area String
+用户人数
+EmployeesNumber String
+产品
+Products String
+建筑功能类别编码 见表
+BuildingTypeCode String B.7
+子用户 不为空 有编码
+SubUserID ID String ,
+子用户名称
+SubUserName String
+子用户功率因数标准
+SubUserPowerFactorStandards String
+子用户用户简介
+SubUserDesp String
+子用户电压等级
+SubUserVoltageClass String V
+子用户合同容量
+SubUserContractCapacity String kW/(kV·A)
+子用户运行容量
+SubUserOperationCapacity String kW/(kV·A)
+子用户电价种类
+SubUserElectricityPriceType String
+子用户信息 子用户位置
+SubUserAddress String
+(YHD_INFO_SUBUSER) 子用户户号
+SubUserNo String
+见表
+子用户所属行业分类 B.2
+SubUserIndustryType String
+IndustryCode
+子用户所属地市 按 要求
+SubUserCity String GB/T2260
+子用户 标志
+SubUserLogo LOGO String
+子用户是否超标
+SubUserIsOverCtriteria String
+子用户面积
+2
+SubUserArea String m
+子用户人数 人
+SubUserEmployeesNumber String
+子用户产品
+SubUserProducts String
+3
+GB/Z32500—2016
+表2 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+账号
+SubUserAccount String
+账号余额
+SubUserAccountBalance String
+上次充值时间
+LastRechargeTime String
+子用户信息 上次充值金额
+LastRechargeAmount String
+上次扣费时间
+(YHD_INFO_SUBUSER)
+LastDeductionTime String
+上次扣费金额
+lastDeductionAmount String
+备注
+Res1 1 String
+备注
+Res2 2 String
+子系统 不为空 有编码
+SubSysID ID String ,
+子系统编号 不为空 有编码
+SubSysNO String ,
+子系统名称
+SubSysName String
+子系统类别号 见表
+SubSysType String B.1,IndexCode
+所属子用户 见表
+SubUserID ID String A.2
+子系统档案 子系统所在位置
+SubSysPosition String
+子系统投运日期
+(YHD_INFO_SUBSYSTEM)
+SubSysOnDutyDate String
+子系统供应商
+SubSysProvider String
+子系统简介
+SubSysDescription String
+子系统负荷总量
+TotalLoad String kW
+可削减电力总量
+TotalDRLoad String kW
+可提供电力总量
+TotalSupplyPower String kW
+设备 不为空 有编码
+DeviceID ID String ,
+设备编号 不为空 有编码
+DeviceNo String ,
+子用户 见表
+SubUserID ID String A.2
+子系统 见表
+SubSysID ID String A.3
+设备名称
+DeviceName String
+见表
+设备类型 B.5,
+DeviceType String
+DeviceCode
+设备档案
+设备额定功率
+DeviceRatedPower String
+(YHD_INFO_DEVICE) 设备额定电压
+DeviceRatedVoltage String
+设备备注
+DeviceDescription String
+主设备
+用电特性 1
+LoadType String 辅助设备
+2
+生产厂商
+Manufacturer String
+设备型号
+DeviceModel String
+设备安装地址
+DeviceInstallPosition String
+4
+GB/Z32500—2016
+表2 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+生产日期 YYYYMMDDHH24
+ManufacturingDate String
+MMSS
+投运日期 YYYYMMDDHH24
+DeviceOnDutyDate String
+设备档案 MMSS
+正常 维修中
+设备状态 1 2
+(YHD_INFO_DEVICE)
+DeviceStatus String 备用 报废
+3 4
+设备图片路径
+PicturePath String
+监控点编号
+MonitorNo String
+监测仪 不为空 有编码
+MonitorID ID String ,
+所属子用户 见表
+SubUserID ID String A.2
+所属子系统 见表
+SubSysID ID String A.3
+监控点编号
+MonitorNo String
+监控点名称
+MonitorName String
+上级监控点编号
+UpstreamMonitorNo String
+是否虚拟监控点 否 是
+IsVirtuaMonitor String 0 1
+变比
+CTRatio CT String
+是否启用 启用 关闭
+CTOnDuty CT String 1 0
+变比
+PTRatio PT String
+是否启用 启用 关闭
+PTOnDuty PT String 1 0
+监测仪额定功率
+MonitorRatedPower String
+监测仪额定电压
+MonitorRetedVoltage String
+监控点档案
+配变类型 配网 变压器 线路
+TransType String 1 2 3
+(YHD_INFO_MONITOR)
+见表
+能源分类编码 B.3,
+EnertyTypeCode String
+EnergyClassCode
+见表
+用能分项编码 B.4,
+EnertyItemCode String
+EnergyItemCode
+偏差是否启用
+IsBias String
+监控仪类型
+MonitorType String
+排序号
+OrderNo String
+一次接线图
+ElectricalWiringDiagram String
+监测仪安装地址
+MonitorInstallPosition String
+监控点备注
+MonitorDescription String
+在线时间 YYYYMMDDHH24
+OnDutyTime String
+MMSS
+表底
+TableBottom String
+电价类别 见表
+PriceType String A.14
+5
+GB/Z32500—2016
+表2 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+虚拟监控点 不为空 有编码
+虚拟监控点对应 VirtualMonitorID ID String ,
+物理监控点 物理监控点 不为空 有编码
+PhiscalMonitorID ID String ,
+(YHD_MR_PHYSICAL) 序号
+Order String
+电价类别 不为空 有编码
+TariffID ID String ,
+分时电价类别表
+电价类别名称
+TariffName String
+(YHD_TOU_TARIFF)
+分时电价备注
+TariffDescription String
+电价明细 不为空 有编码
+TariffDetailID ID String ,
+电价类别
+TariffID ID String
+见表
+电价类别 B.6,
+PriceType String
+TimeOfUseTypeCode
+电价时段开始日期和
+YYYYMMDDHH24
+PriceStartTime 时间 String
+分时电价类别明细表
+MMSS
+电价时段结束日期和
+YYYYMMDDHH24
+(YHD_TOU_PRICE)
+PriceEndTime 时间 String
+MMSS
+电价 元
+Price String $
+PriceBecomingEffec- 生效日期时间 YYYYMMDDHH24
+String
+tiveTime MMSS
+失效日期时间 YYYYMMDDHH24
+PriceBecomingInvalidTime String
+MMSS
+422 数据模型
+..
+数据模型见表
+3。
+表3 数据模型
+对象类型 属性标识 属性名称 值类型 备注
+监测仪 不为空 有编码
+MonitorID ID String ,
+电力数据采集日期
+PowerDate String YYYYMMDD
+电力数据 电力数据采集时间
+PowerTime String HH24MMSS
+电力数据类型 详见
+(YHD_DATA_POWER) PowerType String 201,IndexCode
+电力数值
+PowerValue String kW/kVA
+电力数据入库时间
+PowerSaveDbTime String HH24MMSS
+监测仪 不为空 有编码
+MonitorID ID String ,
+电量采集日期
+EnergyDate String YYYYMMDD
+电量采集时间
+电量示数数据 EnergyTime String HH24MMSS
+电量类型 见表
+(YHD_DATA_ENERGY) EnergyType String B.1
+电量数值 示数
+EnergyValue String ,kW·h
+电量数据入库时间 YYYYMMDDHH24
+EnergySaveDbTime String
+MMSS
+6
+GB/Z32500—2016
+表3 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+监测仪 不为空 有编码
+MonitorID ID String ,
+谐波发生日期
+HarmonicDate String YYYYMMDD
+谐波发生时间
+HarmonicTime String HH24MMSS
+谐波参数值类型 电流 电压
+HarmonicReferenceType String 1 2
+谐波类型 见表
+HarmonicType String B.1
+次谐波含有率
+THD3 3 String
+次谐波含有率
+THD5 5 String
+次谐波含有率
+THD7 7 String
+次谐波含有率
+THD9 9 String
+次谐波含有率
+THD11 11 String
+谐波数据
+次谐波含有率
+THD13 13 String
+(YHD_DATA_HARMONIC)
+次谐波含有率
+THD15 15 String
+次谐波含有率
+THD17 17 String
+次谐波含有率
+THD19 19 String
+次谐波含有率
+THD21 21 String
+次谐波含有率
+THD23 23 String
+次谐波含有率
+THD25 25 String
+次谐波含有率
+THD27 27 String
+次谐波含有率
+THD29 29 String
+次谐波含有率
+THD31 31 String
+总谐波含有率
+THD String
+监测仪 不为空 有编码
+MonitorID ID String ,
+其他数据采集日期
+OtherDataDate String YYYYMMDD
+其他监测数据
+其他数据采集时间
+OtherDataTime String HH24MMSS
+(YHD_DATA_OTHER)
+其他数据类型 见表
+OtherDataType String B.1,IndexCode
+其他数值
+OtherDataValue String
+监测仪 不为空 有编码
+MonitorID ID String ,
+不为空 有编码
+采集日期 ,
+MostValueDate String
+YYYYMMDD
+最值类型类型 见表
+MostValueType String B.1,IndexCode
+最值
+最大值
+MaxValue String
+(YHD_DATA_Most) 最大值发生时间
+MaxValueTime String HH24MMSS
+最小值
+MinValue String
+最小值发生时间
+MinValueTime String HH24MMSS
+平均值
+AverageValue String
+7
+GB/Z32500—2016
+表3 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+见表 不为空
+子用户 A.2, ,
+SubUserID ID String 有编码
+见表 不为空
+监测仪 A.5, ,
+MonitorID ID String 有编码
+见表
+用电时段类型编码 B.6,
+TimeOfUseTypeCode String
+TimeOfUseTypeCode
+分时电价日期
+TimeOfUseTariffDate String YYYYMMDD
+分时电量历史数据表
+分时电价时间
+TimeOfUseTariffTime String HH24MMSS
+(YHD_TOU_HIS)
+峰电量
+PeakAmount String
+谷电量
+OffPeakAmount String
+平电量
+ShoulderPower String
+尖峰电量
+CriticalPeakPower String
+分时 电 价 历 史 数 据
+TimeOfDayTariffDescrip-
+备注 String
+tion
+控制类别 不为空 有编码
+ControlID ID String ,
+控制起始时间 YYYYMMDDHH24
+ControlStartTime String
+MMSS
+控制结束时间 YYYYMMDDHH24
+ControlEndTime String
+控制数据 MMSS
+对象子系统 见表
+SubSysID ID String A.3,SID
+(YHD_REF_CONTROL)
+子用户 见表
+SubUserID ID String A.2,SubUserID
+控制类别代号 见表
+ControlType String B.1,IndexCode
+削减用电负荷
+LoadToReduce String kW
+电价类别 见表
+PriceType String A.14,PriceType
+见表
+监测仪 A.5,MonitorID
+MonitorID ID String 不为空 有编码
+,
+事件发生日期 YYYYMMDD
+EventDate String 不为空 有编码
+,
+事件报告
+事件发生时间 HH24MMSS
+(YHD_EVENT_REPORT)EventTime String 不为空 有编码
+,
+事件类型 见表
+EventType String B.1,IndexCode
+事件状态
+EventStatus String
+时间内容
+EventContent String
+子用户账单 不为空 有编码
+SubUserBillID ID String ,
+子用户账单编号
+SubUserBillNo String
+子用户电费数据表
+见表 不为空
+子用户 A.2, ,
+(YHD_DATA_BILL) SubUserID ID String 有编码
+见表 不为空
+监测仪 A.5, ,
+MonitorID ID String 有编码
+8
+GB/Z32500—2016
+表3 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+年度 不为空 有编码
+BillYear String YYYY ,
+月份
+BillMonth String MM
+抄表时间
+BillTime String HH24MMSS
+契约限额
+ContractDemand String
+标准最大限额
+StandardMaxCapacity String
+装接总容量
+Capacity String
+本月读数 总
+CurrentMonthReading_Tolal _ String
+本月读数 峰
+CurrentMonthReading_Peak _ String
+CurrentMonthReading_Shoul- 本月读数 平
+_ 1 String
+der1
+CurrentMonthReading_Shoul- 本月读数 平
+_ 2 String
+der2
+CurrentMonthReading_Off- 本月读数 谷
+_ String
+Peak
+CurrentMonthReading_Re- 本月读数 无
+_ 1 String
+activePower1
+CurrentMonthReading_Re- 本月读数 无
+_ 2 String
+activePower2
+CurrentMonthReading 本月读数 峰
+子用户电费数据表 _PeakMD _ MD String
+(YHD_DATA_BILL)
+CurrentMonthReading_Shoul- 本月读数 _平
+1MD String
+der1MD
+CurrentMonthReading_Shoul- 本月读数 平
+_ 2MD String
+der2MD
+CurrentMonthReading_Off- 本月读数 低谷
+_ MD String
+PeakMD
+上月读数 总
+LastMonthReading_Tolal _ String
+上月读数 峰
+LastMonthReading_Peak _ String
+上月读数 平
+LastMonthReading_Shoulder1 _ 1 String
+上月读数 平
+LastMonthReading_Shoulder2 _ 2 String
+上月读数 谷
+LastMonthReading_OffPeak _ String
+LastMonthReading_Reactive- 上月读数 无
+_ 1 String
+Power1
+LastMonthReading_Reactive- 上月读数 无
+_ 2 String
+Power2
+用量 总
+ConsumedAmount_Total _ String
+用量 峰
+ConsumedAmount_Peak _ String
+用量 平
+ConsumedAmount_Shoulder1 _ 1 String
+用量 平
+ConsumedAmount_Shoulder2 _ 2 String
+用量 谷
+ConsumedAmount_OffPeak _ String
+9
+GB/Z32500—2016
+表3 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+ConsumedAmount_ Reac- 用量 无
+_ 1 String
+tivePower1
+ConsumedAmount_ Reac- 用量 无
+_ 2 String
+tivePower2
+用量 峰
+ConsumedAmount_PeakMd _ MD String
+ConsumedAmount_Shoul- 用量 平
+_ 1MD String
+der1MD
+ConsumedAmount_Shoul- 用量 平
+_ 2MD String
+der2MD
+ConsumedAmount _ Off- 用量 低谷
+_ MD String
+PeakMD
+无功
+ReactivePower String
+有功
+ActivePower String
+无功 有功
+ReactivePower/ActivePower / String
+功率因数
+PowerFactor String
+标准功率因数
+StandardPowerFactor String
+功率因数调整
+PowerFactorAdjust String
+基本电费 量
+CapacityCharge_Amount _ String
+基本电费 单价
+CapacityCharge_Price _ String
+子用户电费数据表
+基本电费 金额
+CapacityCharge_Money _ String
+(YHD_DATA_BILL) 基本电费 量
+CapacityCharge2_Amount 2_ String
+基本电费 单价
+CapacityCharge2_Price 2_ String
+基本电费 金额
+CapacityCharge2_Money 2_ String
+峰 量
+PeakTimeCharge_Amount _ String
+峰 单价
+PeakTimeCharge_Price _ String
+峰 金额
+PeakTimeCharge_Money _ String
+ShoulderTimeCharge _ A- 平 量
+_ String
+mount
+平 单价
+ShoulderTimeCharge_Price _ String
+平 金额
+ShoulderTimeCharge_Money _ String
+OffPeakTimeCharge _ A- 谷 量
+_ String
+mount
+谷 单价
+OffPeakTimeCharge_Price _ String
+谷 金额
+OffPeakTimeCharge_Money _ String
+小计
+Sum String
+代征费用
+ProxyCollection String
+力率调整率
+PowerFactorAdjustingRate String
+力率调整金额
+PowerFactorAdjustingMoney String
+10
+GB/Z32500—2016
+表3 续
+( )
+对象类型 属性标识 属性名称 值类型 备注
+市政附加捐
+GovSurcharge1 1 String
+子用户电费数据表
+市政附加捐
+GovSurcharge2 2 String
+(YHD_DATA_BILL)
+本月应付账款
+CurrentMonthCharge String
+43 接口服务规范
+.
+431 通信约定
+..
+接口服务通信约定如下
+:
+主站与子站通过 方式实现即时通信 子站提供服务端功能 接收主站的命令 主
+a) WebService , , ,
+站作为客户端可发送命令 主站建立 服务器 子站通过 方式实现数据文件上传
+。 FTP , FTP ,
+命令参照国际 标准 支持断点续传
+FTP RFC , 。
+根据系统各种数据的特点采用不同的通信方式
+b) :
+文件方式 模型 数据
+FTP/XML : 、 ;
+方式 实时召测 收到召测命令后即时生成并传输 相关信息的 文
+WebService : 。 (FTP) XML
+件
+)。
+主站与子站交换数据组织方式采用统一采用 文件方式 版本 编码格式
+c) XML ( 1.0, :UTF-8),
+文件格式中的字段标签或属性统一为大写 具体见通信模型定义
+XML , 。
+文件头约定
+d) XML :
+<? xmlversion="1.0"encoding="UTF-8"?>
+传输数据组织成 格式 同一时间传输的各项数据 片段 拼接成一个 文件
+e) XML 。 (XML ) XML
+例如每小时需要上传电量 功率 电流等数据 则将各类数据组织成一个 文件
+( 、 、 , XML )。
+上传文件目录
+f) :
+根目录
+FTP :/
+模型
+:/BASE
+数据
+:/DATA
+432 数据交换策略
+..
+数据交换策略包括数据传输方式和数据交换方式
+:
+数据传输方式
+a)
+随机方式
+1)
+主站可人工手动通过 方式随机召唤子站系统数据
+WebService 。
+通知方式
+2)
+子站系统档案模型增量通过即时通知方式上传
+。
+子站系统数据增量通过定时通知方式上传
+。
+数据交换方式
+b)
+增量交换策略
+1)
+档案模型 子站系统在稳定运行后首次上传全模型 以后即时上传档案变化
+: , 。
+业务数据 子站系统定时完成前一周期 根据实际情况约定 数据增量上传
+: ( ) 。
+上传失败重传策略
+2)
+11
+GB/Z32500—2016
+子站系统上传档案模型增量或数据增量失败时 需保持时序重传直至成功 重传时间间隔及重
+, ,
+传次数可配置
+。
+433 文件命名规则
+..
+子站系统上传文件命名规则如下
+:
+子站系统类型编码 文件类型 生成时间 顺序号
+_ _ _ .xml
+子站系统类型编码 位 具体见子系统定义
+a) 2 , 。
+文件类型如下
+b) :
+序号 文件类型 文件类型代码 备注
+档案模型
+1 BaseInfo
+数据模型
+单个文件小于
+2 数据文件 DataInfo 1M
+生成时间格式 表示年 月 日 时 分 秒 如
+c) YYYYMMDDHH24MMSS, + + + + + , 20140515181533
+年 月 日 时 分 秒
+(2014 5 15 18 15 33 )。
+顺序号为接口文件生成顺序编号 位
+d) ,3 。
+434 交换格式定义
+..
+4341 用户信息
+...
+CPPSPINFOUSERROWS "" rows表示行号标识
+< _ _ = 1 >//
+USERID USERID
+< ></ >
+POWERFACTORSTANDARD POWERFACTORSTANDARD
+< ></ >
+USERDESCRIPTION USERDESCRIPTION
+< ></ >
+ContractCapacity ContractCapacity
+< ></ >
+OperationCapacity OperationCapacity
+< ></ >
+ElectricityPriceType ElectricityPriceType
+< ></ >
+Address Address
+< ></ >
+UserNo UserNo
+< ></ >
+UserName UserName
+< ></ >
+SubUserIndustryType SubUserIndustryType
+< ></ >
+Area Area
+< ></ >
+EmployeesNumber EmployeesNumber
+< ></ >
+Product Product
+< ></ >
+CPPSPINFOUSER
+</ _ _ >
+4342 子用户信息
+...
+YHDINFOSUBUSERROWS "" rows表示行号标识
+< _ _ = 1 >//
+SubUserID SubUserID
+< ></ >
+SubUserName SubUserName
+< ></ >
+SubUserPowerFactorStandard SubUserPowerFactorStandard
+< ></ >
+SubUserDescription SubUserDescription
+< ></ >
+SubUserVoltageClass SubUserVoltageClass
+< ></ >
+12
+GB/Z32500—2016
+SubUserContractCapacity SubUserContractCapacity
+< ></ >
+SubUserOperationCapacity SubUserOperationCapacity
+< ></ >
+SubUserElectricityPriceType SubUserElectricityPriceType
+< ></ >
+SubUserAddress SubUserAddress
+< ></ >
+SubUserIndustryType SubUserIndustryType
+< ></ >
+SubUserNo SubUserNo
+< ></ >
+SubUserCity SubUserCity
+< ></ >
+SubUserLogo SubUserLogo
+< ></ >
+SubUserIsOverCtriteria SubUserIsOverCtriteria
+< ></ >
+SubUserArea SubUserArea
+< ></ >
+SubUserEmployeesNumber SubUserEmployeesNumber
+< ></ >
+SubUserProducts SubUserProducts
+< ></ >
+SubUserAccount SubUserAccount
+< ></ >
+SubUserAccountBalance SubUserAccountBalance
+< ></ >
+LastRechargeTime LastRechargeTime
+< ></ >
+LastRechargeAmount LastRechargeAmount
+< ></ >
+LastDeductionTime LastDeductionTime
+< ></ >
+LastDeductionAmount LastDeductionAmount
+< ></ >
+Res Res
+< 1></ 1>
+Res Res
+< 2></ 2>
+YHDINFOSUBUSER
+</ _ _ >
+其他模型类似处理
+。
+4343 数据召唤
+...
+数据召唤格式定义如下
+:
+召唤电力数据
+CALLDATA
+< >
+MonitorID MonitorID
+< ></ >
+PowerType PowerType
+< ></ >
+StartTime StartTime
+< >< >
+EndTime EndTime
+< ></ >
+CALLDATA
+</ >
+其他数据召唤类似处理
+。
+435 手动召测方案
+..
+手动召测方案如下
+:
+主站系统是 服务器 为主站系统的客户端提供接口技术方案定义的档案模型 数
+a) WebService , 、
+据模型召测服务方法访问
+。
+召唤 随机查询服务名称
+b) / :userendService
+服务名称
+userendService(Stringuserid,Stringcalldata)
+服务描述 调用此操作获取指定共享数据
+方法提供者 子系统
+13
+GB/Z32500—2016
+方法请求者 主站系统
+用户凭据 统一认证服务提供的用户身份令牌 类型
+输入参数 SubUserID- ,PKI String
+为符合各主题描述的 格式字符串 类型为 参数格式见 交换格式定义
+calldata- XML String, “ ”
+是否成功 成功 失败
+输出参数 (0 1 )
+查询结果仍然按照自动发送方式 将 文件发送到 服务器
+, XML FTP
+主站系统 客户端通过 通道向指定的子站系统发送召唤命令 子站系统
+c) WebService HTTP ,
+服务器接收到召唤命令后 将数据内容按接口技术方案定义的格式组装成
+WebService , XML
+文件 传输并存放于主站系统 服务器中 文件存放目录见前面内容描述 主站系统定时
+, FTP ( ),
+读取生成的文件
+。
+传输内容组织成 格式 字符编码格式采用
+d) XML , UTF-8。
+由于 协议是基于 协议的 在网络上传输数据会存在非法访问 被截取 被篡改
+e) SOAP HTTP , 、 、
+的风险 由于主站系统运行在内部网络上 所以截取和篡改的风险就不用考虑 而对于非法
+。 , 。
+访问 本接口规定在访问时需出示认证码 只有验证之后才提供数据 因此避免了非法
+, userid, ,
+访问 对于已经接入统一 认证中心的单位 认证码可以采用 统一认证服务提供的用
+。 CA , PKI
+户身份令牌 对入没有接入统一 认证中心的单位 验证码参数目前约定为
+。 CA ,SubUserID
+作为以后预留字段 如果以后接入 认证时再适当调整
+“USERR2018”, , CA 。
+5 调试内容与要求
+51 主站与子系统信息交互
+.
+用户端主站系统向子系统发出数据采集请求 应能获得子系统及时响应
+, 。
+511 数据传输
+..
+5111 静态数据
+... :
+子系统档案信息
+a) ;
+子系统所属子用户信息
+b) ;
+子系统内部设备信息
+c) ;
+子系统内部监控点档案信息
+d) 。
+5112 动态数据
+... :
+子系统内各监控点带时标的电力数据
+a) ;
+子系统内各监控点带时标的电量数据
+b) ;
+子系统内各监控点带时标的各次谐波数据
+c) ;
+子系统内各监控点带时标的功率因数数据
+d) 。
+5113 需求响应控制
+... :
+主站向子系统发出负荷控制要求 包括控制开始时间 控制结束时间 削减负荷数量 控制时段
+a) , 、 、 、
+电价
+;
+子系统接收控制指令 向主站确认收到控制指令
+b) , ;
+子系统根据主站负荷控制要求 执行负荷控制指令
+c) , 。
+512 功能调试
+..
+功能调试包括
+:
+14
+GB/Z32500—2016
+子站系统与主站系统连通性测试
+a) ;
+子站系统上传数据格式准确性功能测试
+b) ;
+主站系统下发命令 子站接受 识别命令并正确执行命令测试
+c) , 、 ;
+档案或数据变化即时上传功能测试
+d) ;
+因通信 设备 软件等故障 子站系统断点续传文件功能测试
+e) 、 、 , 。
+513 性能调试
+..
+性能调试包括
+:
+档案或数据变化即时上传性能测试
+a) ;
+批量数据即时上传性能测试
+b) ;
+子站与主站通信连续稳定运行性测试
+c) 。
+52 主站系统与子用户信息交互
+.
+521 数据传输
+..
+5211 静态数据
+... :
+子用户档案信息
+a) ;
+子用户所属子系统档案信息
+b) ;
+子用户所属设备档案信息
+c) ;
+子用户监控点档案信息
+d) 。
+5212 动态数据
+... :
+子用户需量越限预警
+a) ;
+子用户用电信息查询
+b) ;
+子用户所属各监控点带时标的电力数据
+c) ;
+子系统所属各监控点带时标的电量数据
+d) ;
+子系统所属各监控点带时标的各次谐波数据
+e) ;
+子系统所属各监控点带时标的功率因数数据
+f) ;
+子用户电力总负荷
+g) ;
+子用户总用电量
+h) ;
+子用户电费账单
+i) 。
+5213 需求响应控制
+... :
+主站向子用户发出负荷控制要求 包括控制开始时间 控制结束时间 削减负荷数量 控制时段
+a) , 、 、 、
+电价
+;
+子用户接收控制指令 向主站确认收到控制指令
+b) , ;
+子用户根据主站负荷控制要求 执行负荷控制指令
+c) , 。
+5214 数据处理
+... :
+子用户需量申请
+a) ;
+子用户电费账单
+b) 。
+522 功能调试
+..
+功能调试包括
+:
+主站与子用户静态数据交互功能调试
+a) ;
+主站与子用户动态数据交互功能调试
+b) ;
+15
+GB/Z32500—2016
+主站与子用户需求相应功能调试
+c) 。
+523 性能调试
+..
+性能调试包括
+:
+主站与子用户静态数据交互可靠性性能调试
+a) ;
+主站与子用户动态数据交互可靠性性能调试
+b) ;
+主站与子用户需求相应准确性性能调试
+c) 。
+53 主站与外部平台信息交互
+.
+这部分可能主要根据外部平台要求
+。
+531 数据传输
+..
+5311 静态数据
+... :
+外部平台接口数据表数据准确性
+a) ;
+外部平台要求上传的静态数据
+b) 。
+5312 动态数据
+... :
+事件记录
+a) ;
+外部平台要求上传的动态数据
+b) 。
+5313 需求响应控制
+... :
+外部平台向用户端主站发送负荷削减控制要求 包括控制开始时间 控制结束时间 削减负荷
+a) , 、 、
+数量 控制时段电价
+、 ;
+用户端主站接收到控制指令 向外部平台确认收到控制指令
+b) , ;
+按 需求响应控制要求执行控制
+c) 5.4.1.4 。
+532 功能调试
+..
+功能调试包括
+:
+主站与外部平台数据共享功能调试
+a) ;
+主站与外部平台指令下方功能调试
+b) 。
+533 性能调试
+..
+性能调试包括
+:
+主站与外部平台数据共享性能调试
+a) ;
+主站与外部平台数据共享安全性调试
+b) 。
+54 用户端能源管理系统综合调试
+.
+541 数据传输与处理
+..
+5411 静态数据
+... :
+主站系统采集全部子用户档案信息
+a) ;
+主站系统采集全部子系统档案信息
+b) ;
+主站系统采集全部设备档案信息
+c) ;
+主站系统采集全部监测点档案信息
+d) 。
+5412 动态数据
+... :
+16
+GB/Z32500—2016
+主站系统采集全部监控点带时标的电力数据
+a) ;
+主站系统采集全部监控点带时标的电量数据
+b) ;
+主站系统采集全部监控点带时标的各次谐波数据
+c) ;
+主站系统采集全部监控点带时标的功率因数数据
+d) 。
+5413 最大需量控制
+... :
+主站持续监测用户端用能负荷 一旦实际需量达到或接近设定需量时即发出预警 以采取措施限制
+, ,
+某些负荷
+。
+5414 需求响应控制
+... :
+用户端主站对外部平台要求削减的负荷数量按照预定方案进行分解 将分解后的削减负荷 控
+a) , 、
+制开始时间 控制结束时间 控制时段电价发送到各子用户和子系统 并确认各子用户和子系
+、 、 ,
+统收到
+;
+子用户和子系统接收控制指令 向主站确认收到控制指令
+b) , ;
+子用户和子系统根据主站负荷控制要求 执行负荷控制指令
+c) , ;
+主站持续监测子用户和子系统实际负荷情况 一旦实际负荷与目标最大负荷接近即发出预警
+d) , ;
+主站持续监测用户端能负荷 一旦实际总负荷与目标最大负荷接近即发出预警 或限制某些超
+e) , ,
+标负荷
+。
+5415 数据处理
+... :
+子用户月度用电冻结处理
+a) ;
+子用户月度用电最值处理
+b) ;
+子用户月度用电峰平谷尖用电量统计
+c) ;
+子用户月度用电功率因数越限处理
+d) ;
+子用户月度用电谐波越限处理
+e) ;
+子用户电费账单生成
+f) 。
+542 功能调试
+..
+功能调试包括
+:
+数据采集通信参数 档案参数等设置功能调试
+a) 、 ;
+用电量 峰谷总量 节能量 电力负荷等数据统计计算功能调试
+b) 、 、 、 ;
+控制指令下发功能调试
+c) ;
+与其他子系统数据共享功能调试
+d) 。
+543 性能调试
+..
+性能调试包括
+:
+用电数据采集连续稳定性调试
+a) ;
+控制指令连续下发性能调试
+b) ;
+与其他子系统共享性能调试
+c) 。
+17
+GB/Z32500—2016
+附 录 A
+规范性附录
+( )
+主站基础数据结构
+表A1 用户信息表 CPPSP_INFO_USER
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+用户编码 字符串
+1 UserID 64
+功率因数标准 双精度浮点数
+2 PowerFactorStandard 64
+用户简介 字符串
+3 UserDescription 2048
+电压等级 双精度浮点数
+4 VoltageClass 64
+合同容量 双精度浮点数
+5 ContractCapacity 64
+运行容量 双精度浮点数
+6 OperationCapacity 64
+电价种类 字符串
+7 ElectricityPriceType 64
+用户地址 字符串
+8 Address 64
+用户户号 字符串
+9 UserNo 64
+用户名称 字符串
+10 UserName 100
+见表
+用户所属行业分类 字符串 B.2,
+11 IndustryType 16
+IndustryCode
+用户所属地市 字符串 按 要求
+12 City 20 GB/T2260
+用户 标志 字符串
+13 Logo LOGO 50
+是否超标 字符
+14 IsOverCriteria 1
+用户面积 双精度浮点数
+15 Area 20,4
+用户人数 整型
+16 EmployeesNumber 20,4
+产品 字符串
+17 Products 100
+建筑功能类别编码 字符串 见表
+18 BuildingTypeCode 1 B.7
+表A2 子用户信息表 YHD_INFO_SUBUSER
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+子用户 整型
+1 SubUserID ID
+子用户名称 字符串
+2 SubUserName 100
+子用户功率因数标准 双精度浮点型
+3 SubUserPowerFactorStandard 5,2
+子用户用户简介 字符串
+4 SubUserDescription 1000
+子用户电压等级 双精度浮点型
+5 SubUserVoltageClass 5 V
+子用户合同容量 双精度浮点型
+6 SubUserContractCapacity 7,2 kW/(kV·A)
+子用户运行容量 双精度浮点型
+7 SubUserOperationCapacity 7,2 kW/(kV·A)
+18
+GB/Z32500—2016
+表A2 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注
+子用户电价种类 字符串
+8 SubUserElectricityPriceType 10
+子用户位置 字符串
+9 SubUserAddress 64
+子用户户号 字符串
+10 SubUserNo 10
+见表
+子用户所属行业分类 字符串 B.2,
+11 SubUserIndustryType 4
+IndustryCode
+子用户所属地市 字符串 按 要求
+12 SubUserCity 20 GB/T2260
+子用户 标志 字符串
+13 SubUserLogo LOGO 20
+子用户是否超标 字符
+14 SubUserIsOverCtriteria 1
+子用户面积 双精度浮点型
+2
+15 SubUserArea 8 m
+子用户人数 整型 人
+16 SubUserEmployeesNumber 5
+子用户产品 字符串
+17 SubUserProducts 100
+账号 字符串
+18 SubUserAccount 50
+账号余额 双精度浮点型
+19 SubUserAccountBalance 12,2
+上次充值时间 时间
+20 LastRechargeTime
+上次充值金额 双精度浮点型
+21 LastRechargeAmount 12,2
+上次扣费时间 时间
+22 LastDeductionTime
+上次扣费金额 双精度浮点型
+23 lastDeductionAmount 12,2
+备注 字符串
+24 Res1 1 50
+备注 字符串
+25 Res2 2 50
+表A3 子系统档案表 YHD_INFO_SUBSYSTEM
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+子系统 整型
+1 SubSysID ID
+子系统编号 整型
+2 SubSysNO 5
+子系统名称 字符串
+3 SubSysName 30
+见表
+子系统类别号 整型 B.1,
+4 SubSysType 2
+IndexCode
+所属子用户 整型 见表
+5 SubUserID ID A.2
+子系统所在位置 字符串
+6 SubSysPosition 30
+子系统投运日期 字符串
+7 SubSysOnDutyDate 8
+子系统供应商 字符串
+8 SubSysProvider 100
+子系统简介 字符串
+9 SubSysDescription 200
+子系统负荷总量 双精度浮点型
+10 TotalLoad kW
+可削减电力总量 双精度浮点型
+11 TotalDRLoad kW
+可提供电力总量 双精度浮点型
+12 TotalSupplyPower kW
+19
+GB/Z32500—2016
+表A4 设备档案表 YHD_INFO_DEVICE
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+设备 整型
+1 DeviceID ID
+设备编号 字符串
+2 DeviceNo 12
+子用户 整数 见表
+3 SubUserID ID A.2
+子系统 整数 见表
+4 SubSysID ID 4 A.3
+设备名称 字符串
+5 DeviceName 64
+见表
+设备类型 整型 B.5,
+6 DeviceType
+DeviceCODE
+设备额定功率 双精度浮点型
+7 DeviceRatedPower 8
+设备额定电压 双精度浮点型
+8 DeviceRatedVoltage 8
+设备备注 字符串
+9 DeviceDescription 500
+主设备
+用电特性 字符串 1
+10 LoadType 8 辅助设备
+2
+生产厂商 字符串
+11 Manufacturer 100
+设备型号 字符串
+12 DeviceModel 30
+设备安装地址 字符串
+13 DeviceInstallPosition 64
+生产日期 日期
+14 ManufacturingDate 8
+投运日期 日期
+15 DeviceOnDutyDate 8
+正常 维修中
+设备状态 整型 1 2
+16 DeviceStatus 备用 报废
+3 4
+设备图片路径 字符串
+17 PicturePath 200
+监控点编号 整型 见表
+18 MonitorNo 5 A.5
+表A5 监控点档案表 YHD_INFO_MONITOR
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+所属子用户 整型 见表
+2 SubUserID ID 3 A.2
+所属子系统 整型 见表
+3 SubSysID ID 3 A.3
+监控点编号 整型 见表
+4 MonitorNo 5 A.4
+监控点名称 字符串
+5 MonitorName 20
+上级监控点编号 整型
+6 UpstreamMonitorNo 5
+是否虚拟监控点 字符 否 是
+7 IsVirtuaMonitor 1 0 1
+变比 字符串
+8 CTRatio CT 10
+是否启用 字符 启用 关闭
+9 CTOnDuty CT 1 1 0
+变比 字符串
+10 PTRatio PT 10
+是否启用 字符 启用 关闭
+11 PTOnDuty PT 1 1 0
+20
+GB/Z32500—2016
+表A5 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪额定功率 双精度浮点型
+12 MonitorRatedPower 10,2
+监测仪额定电压 双精度浮点型
+13 MonitorRetedVoltage 10,2
+配网
+配变类型 整型 1
+14 TransType 1 变压器 线路
+2 3
+见表
+能源分类编码 字符串 B.3,
+15 EnertyTypeCode 2
+SourceCODE
+见表
+用能分项编码 字符串 B.4,
+16 EnertyItemCode 3
+ItemCODE
+偏差是否启用 字符
+17 IsBias 1
+监控仪类型 整型
+18 MonitorType 8
+排序号 整型
+19 OrderNo 8
+一次接线图 字符串
+20 ElectricalWiringDiagram 64
+监测仪安装地址 字符串
+21 MonitorInstallPosition 64
+监控点备注 字符串
+22 MonitorDescription 500
+在线时间 整型
+23 OnDutyTime s
+表底 双精度浮点型
+24 TableBottom 32
+电价类别 字符串 见表
+25 PriceType 4 A.14
+表A6 虚拟监控点对应物理监控点表 YHD_MR_PHYSICAL
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+虚拟监控点 整型
+1 VirtualMonitorID ID
+物理监控点 整型
+2 PhiscalMonitorID ID
+序号 整型
+3 Order
+表A7 电力数据表 YHD_DATA_POWER
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+电力数据采集日期 日期
+2 PowerDate 8 YYYYMMDD
+电力数据采集时间 时间
+3 PowerTime 8 HH24MMSS
+详见表
+电力数据类型 字符串 B.1,
+4 PowerType 4
+IndexCode
+电力数值 双精度浮点型
+5 PowerValue kW/(kV·A)
+电力数据入库时间 时间
+6 PowerSaveDbTime 16
+21
+GB/Z32500—2016
+表A8 电量示数数据表 YHD_DATA_ENERGY
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+电量采集日期 日期
+2 EnergyDate 8
+电量采集时间 时间
+3 EnergyTime 8
+电量类型 字符串 详见表
+4 EnergyType 4 B.1
+电量数值 双精度浮点型 示数
+5 EnergyValue 10,2 ,kWh
+电量数据入库时间 时间
+6 EnergySaveDbTime 32
+采集周期
+PS: 1h。
+表A9 谐波数据表 YHD_DATA_HARMONIC
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+谐波发生日期 日期
+2 HarmonicDate 8
+谐波发生时间 时间
+3 HarmonicTime 8
+谐波参数值类型 整型 为电流 为电压
+4 HarmonicReferenceType 1 2
+谐波类型 字符串 见表
+5 HarmonicType 4 B.1
+次谐波含有率 双精度浮点型
+6 THD3 3 6,3
+次谐波含有率 双精度浮点型
+7 THD5 5 6,3
+次谐波含有率 双精度浮点型
+8 THD7 7 6,3
+次谐波含有率 双精度浮点型
+9 THD9 9 6,3
+次谐波含有率 双精度浮点型
+10 THD11 11 6,3
+次谐波含有率 双精度浮点型
+11 THD13 13 6,3
+次谐波含有率 双精度浮点型
+12 THD15 15 6,3
+次谐波含有率 双精度浮点型
+13 THD17 17 6,3
+次谐波含有率 双精度浮点型
+14 THD19 19 6,3
+次谐波含有率 双精度浮点型
+15 THD21 21 6,3
+次谐波含有率 双精度浮点型
+16 THD23 23 6,3
+次谐波含有率 双精度浮点型
+17 THD25 25 6,3
+次谐波含有率 双精度浮点型
+18 THD27 27 6,3
+次谐波含有率 双精度浮点型
+19 THD29 29 6,3
+次谐波含有率 双精度浮点型
+20 THD31 31 6,3
+总谐波含有率 双精度浮点型
+21 THD 6,3
+22
+GB/Z32500—2016
+表A10 其他监测数据表 YHD_DATA_OTHER
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+其他数据采集日期 日期
+2 OtherDataDate 8
+其他数据采集时间 时间
+3 OtherDataTime 8
+见表
+其他数据类型 字符串 B.1,
+4 OtherDataType 4
+IndexCode
+其他数值 双精度浮点型
+5 OtherDataValue
+表A11 最值表 YHD_DATA_Most
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+监测仪 整型
+1 MonitorID ID
+采集日期 日期
+2 MostValueDate 8 YYYYMMDD
+见表
+最值类型类型 字符串 B.1,
+3 MostValueType 4
+IndexCode
+最大值 双精度浮点型
+4 MaxValue 10,2
+最大值发生时间 时间
+5 MaxValueTime 8 HH24MMSS
+最小值 双精度浮点型
+6 MinValue 10,2
+最小值发生时间 时间
+7 MinValueTime 8 HH24MMSS
+平均值 双精度浮点型
+8 AverageValue 10,2
+表A12 分时电量历史数据表 YHD_TOU_HIS
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+子用户 整型 见表
+1 SubUserID ID A.2
+监测仪 整型 见表
+2 MonitorID ID A.5
+见表
+B.6,
+用电时段类型编码 字符串
+3 TimeOfUseTypeCode 4 TimeOfUse
+TypeCode
+分时电价日期 字符串
+4 TimeOfUseTariffDate 8 YYYYMMDD
+分时电价时间 字符串
+5 TimeOfUseTariffTime 8 HH24MMSS
+峰电量 双精度浮点型
+6 PeakAmount 10,2 kW
+谷电量 双精度浮点型
+7 OffPeakAmount 10,2 kW
+平电量 双精度浮点型
+8 ShoulderAmount 10,2 kW
+尖峰电量 双精度浮点型
+9 CriticalPeakAmount 10,2 kW
+分时电价历史数据备注 字符串
+10 TimeOfDayTariffDescription 32
+23
+GB/Z32500—2016
+表A13 分时电价类别表 YHD_TOU_TARIFF
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+电价类别 整型
+1 TariffID ID
+电价类别名称 字符串
+2 TariffName 16
+分时电价备注 字符串
+3 TariffDescription 32
+表A14 分时电价类别明细表 YHD_TOU_PRICE
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+电价明细 整型
+1 TariffDetailID ID
+电价类别 整型
+2 TariffID ID
+见表
+B.6,
+电价类别 字符串
+3 PriceType 4 TimeOfUse
+TypeCode
+电价时段开始 日 期 和
+时间 YYYYMMDD
+4 PriceStartTime 时间 16
+HH24MMSS
+电价时段结束 日 期 和
+时间 YYYYMMDD
+5 PriceEndTime 时间 16
+HH24MMSS
+电价 双精度浮点型
+6 Price 20,4
+方案开始
+生效日期时间 时间
+7 PriceBecomingEffectiveTime 16 生效时间
+失效日期时间 时间 方案失效时间
+8 PriceBecomingInvalidTime 16
+表A15 控制数据表 YHD_REF_CONTROL
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+控制类别 整型
+1 ControlID ID
+控制起始时间 时间
+2 ControlStartTime 16
+控制结束时间 时间
+3 ControlEndTime 16
+对象子系统 整型 见表
+4 SubSysID ID A.3,SID
+见表
+子用户 整型 A.2,
+5 SubUserID ID
+SubUserID
+见表
+控制类别代号 字符串 B.1,
+6 ControlType 4
+IndexCode
+削减用电负荷 双精度浮点型
+7 LoadToReduce 5 kW
+见表
+电价类别 字符串 A.14,
+8 PriceType 4
+PTYPE
+24
+GB/Z32500—2016
+表A16 事件报告 YHD_EVENT_REPORT
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+见表
+监测仪 整型 A.5,
+1 MonitorID ID
+MonitorID
+事件发生日期 日期
+2 EventDate 8
+事件发生时间 时间
+3 EventTime 8
+见表
+事件类型 字符串 B.1,
+4 EventType 4
+IndexCode
+事件状态 字符串
+5 EventStatus 32
+时间内容 字符串
+6 EventContent 100
+表A17 子用户电费数据表 YHD_DATA_BILL
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+子用户账单 整形
+1 SubUserBillID ID
+子用户账单编号 字符串
+2 SubUserBillNo 16
+子用户 整型 见表
+3 SubUserID ID A.2
+监测仪 整型 见表
+4 MonitorID ID A.5
+年度 字符串
+5 BillYear 4
+月份 字符串
+6 BillMonth 16
+抄表时间 字符串
+7 BillTime 16
+契约限额 整型
+8 ContractDemand 8 kW/(kV·A)
+标准最大限额 整型
+9 StandardMaxCapacity 8 kW/(kV·A)
+装接总容量 整型
+10 InstalledCapacity 8 kW/(kV·A)
+本月读数 总 双精度浮点型
+11 CurrentMonthReading_Tolal _ 10,2
+本月读数 峰 双精度浮点型
+12 CurrentMonthReading_Peak _ 10,2
+本月读数 平 双精度浮点型
+13 CurrentMonthReading_Shoulder1 _ 1 10,2
+本月读数 平 双精度浮点型
+14 CurrentMonthReading_Shoulder2 _ 2 10,2
+本月读数 谷 双精度浮点型
+15 CurrentMonthReading_OffPeak _ 10,2
+CurrentMonthReading_Reac- 本月读数 无 双精度浮点型
+16 _ 1 10,2
+tivePower1
+CurrentMonthReading_Reac- 本月读数 无 双精度浮点型
+17 _ 2 10,2
+tivePower2
+本月读数 峰 双精度浮点型
+18 CurrentMonthReading_PeakMD _ MD 10,2
+CurrentMonthReading_Shoul- 本月读数 平 双精度浮点型
+19 _ 1MD 10,2
+der1MD
+CurrentMonthReading_Shoul- 本月读数 平 双精度浮点型
+20 _ 2MD 10,2
+der2MD
+CurrentMonthReading _ Off- 本月读数 低谷 双精度浮点型
+21 _ MD 10,2
+PeakMD
+25
+GB/Z32500—2016
+表A17 续
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+上月读数 总 双精度浮点型
+22 LastMonthReading_Tolal _ 10,2
+上月读数 峰 双精度浮点型
+23 LastMonthReading_Peak _ 10,2
+上月读数 平 双精度浮点型
+24 LastMonthReading_Shoulder1 _ 1 10,2
+上月读数 平 双精度浮点型
+25 LastMonthReading_Shoulder2 _ 2 10,2
+上月读数 谷 双精度浮点型
+26 LastMonthReading_OffPeak _ 10,2
+LastMonthReading_Reactive- 上月读数 无 双精度浮点型
+27 _ 1 10,2
+Power1
+LastMonthReading_Reactive- 上月读数 无 双精度浮点型
+28 _ 2 10,2
+Power2
+用量 总 整型
+29 ConsumedAmount_Total _ 8 kWh
+用量 峰 整型
+30 ConsumedAmount_Peak _ 8 kWh
+用量 平 整型
+31 ConsumedAmount_Shoulder1 _ 1 8 kWh
+用量 平 整型
+32 ConsumedAmount_Shoulder2 _ 2 8 kWh
+用量 谷 整型
+33 ConsumedAmount_OffPeak _ 8 kWh
+ConsumedAmount_Reactive- 用量 无 整型
+34 _ 1 8 kWh
+Power1
+ConsumedAmount_Reactive- 用量 无 整型
+35 _ 2 8 kWh
+Power2
+用量 峰 整型
+36 ConsumedAmount_PeakMd _ MD 8 kWh
+ConsumedAmount _ Shoul- 用量 平 整型
+37 _ 1MD 8 kWh
+der1MD
+ConsumedAmount _ Shoul- 用量 平 整型
+38 _ 2MD 8 kWh
+der2MD
+ConsumedAmount_ OffPeak- 用量 低谷 整型
+39 _ MD 8 kWh
+MD
+无功 整型
+40 ReactivePower 8 kvar
+有功 整型
+41 ActivePower 8 kW
+无功 有功 双精度浮点型
+42 ReactivePower/ActivePower / 3,2
+功率因数 双精度浮点型
+43 PowerFactor 3,2
+标准功率因数 双精度浮点型
+44 StandardPowerFactor 3,2
+功率因数调整 双精度浮点型
+45 PowerFactorAdjust 3,2
+基本电费 量 整型
+46 BasicCharge_Amount _ 8 kWh
+基本电费 单价 双精度浮点型 元
+47 BasicCharge_Price _ 10,2
+基本电费 金额 双精度浮点型 元
+48 BasicCharge_Money _ 10,2
+基本电费 量 整型
+49 BasicCharge2_Amount 2_ 8 kWh
+基本电费 单价 双精度浮点型 元
+50 BasicCharge2_Price 2_ 10,2
+基本电费 金额 双精度浮点型 元
+51 BasicCharge2_Money 2_ 10,2
+26
+GB/Z32500—2016
+表A17 续
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+峰 量 整型
+52 PeakTimeCharge_Amount _ 8 kWh
+峰 单价 双精度浮点型 元
+53 PeakTimeCharge_Price _ 10,2
+峰 金额 双精度浮点型 元
+54 PeakTimeCharge_Money _ 10,2
+平 量 整型
+55 ShoulderTimeCharge_Amount _ 8 kWh
+平 单价 双精度浮点型 元
+56 ShoulderTimeCharge_Price _ 10,2
+平 金额 双精度浮点型 元
+57 ShoulderTimeCharge_Money _ 10,2
+谷 量 整型
+58 OffPeakTimeCharge_Amount _ 8 kWh
+谷 单价 双精度浮点型 元
+59 OffPeakTimeCharge_Price _ 10,2
+谷 金额 双精度浮点型 元
+60 OffPeakTimeCharge_Money _ 10,2
+小计 双精度浮点型 元
+61 Sum 10,2
+代征费用 双精度浮点型 元
+62 ProxyCollection 10,2
+力率调整率 双精度浮点型
+63 PowerFactorAdjustingRate 3,2 %
+力率调整金额 双精度浮点型 元
+64 PowerFactorAdjustingMoney 10,2
+市政附加捐 双精度浮点型 元
+65 GovSurcharge1 1 10,2
+市政附加捐 双精度浮点型 元
+66 GovSurcharge2 2 10,2
+本月应付账款 双精度浮点型 元
+67 CurrentMonthCharge 10,2
+表A18 外部平台接口数据表 YHD_EXT_INTERFACE
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+对外接口数据 整型
+1 InterfacetoPlatformID ID
+平台代号 整型 见表
+2 PlatformCode 4 B.1,IndexCode
+平台数据代号 字符串
+3 PlatformDataCode 20
+平台数据名称 字符串
+4 PlatformDataName 30
+用户端数据代号 字符串
+5 UserSideDataCode 20
+用户端数据名称 字符串
+6 UserSideDataName 30
+注 此数据表用于用户端内部字段名称与外部第三方系统字段对接和名称翻译
+: 。
+表A19 对外事件数据表 YHD_EXT_EVENT
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+对外事件 整型
+1 EventToPlatformID ID
+见表
+对外事件类别代号 字符串 B.1,
+2 EventToPlatformCode 4
+IndexCode
+对外事件起始时间 字符串
+3 EventToPlatformStartTime 16
+对外事件结束时间 字符串
+4 EventToPlatformEndTime 16
+27
+GB/Z32500—2016
+表A19 续
+. ( )
+序号 字段 字段说明 数据类型 长度 备注
+EventToPlatformLoadToRe- 控制削减负荷 双精度浮点型
+5 5 kW
+duce
+对外事件描述 字符串
+6 EventToPlatformDescription 150
+对外事件记录时间 字符串
+7 EventToPlatformTime 16
+28
+GB/Z32500—2016
+附 录 B
+规范性附录
+( )
+数据分类统一编码
+表B1 指标分类统一编码表 YHD_INDEX_CODE
+. ( )
+指标分类代号 指标分类 指标编码 指标名称 指标单位
+IndexLetter IndexType IndexCode IndexName IndexUnit
+相电流
+L001 A A
+相电流
+L002 B A
+相电流
+L003 C A
+相电压
+L004 A V
+相电压
+L005 B V
+相电压
+L006 C V
+相负荷
+L007 A kW
+相负荷
+L008 B kW
+相负荷
+L009 C kW
+相功率因数
+L010 A
+相功率因数
+L011 B
+相功率因数
+L012 C
+相无功功率
+L013 A kvar
+相无功功率
+L014 B kvar
+电力指标 相无功功率
+L L015 C kvar
+零序电流
+L016 A
+总负荷 有功功率
+L017 ( ) kW
+总功率因数
+L018
+总无功功率
+L019 kvar
+频率
+L020 Hz
+线电压
+L021 Ab V
+线电压
+L022 Bc V
+线电压
+L023 Ca V
+相电压相角
+L024 A (°)
+相电压相角
+L025 B (°)
+相电压相角
+L026 C (°)
+相电流相角
+L027 A (°)
+相电流相角
+L028 B (°)
+相电流相角
+L029 C (°)
+负荷率
+L030 %
+29
+GB/Z32500—2016
+表B1 续
+.( )
+指标分类代号 指标分类 指标编码 指标名称 指标单位
+IndexLetter IndexType IndexCode IndexName IndexUnit
+正相有功电度
+E001 kWh
+正相无功电度
+电量指标 E002 kWh
+E 反相有功电度
+E003 kWh
+反相无功电度
+E004 kWh
+相谐波电流畸变率
+H001 A %
+相谐波电压畸变率
+H002 A %
+相谐波电流畸变率
+谐波指标 H003 B %
+H 相谐波电压畸变率
+H004 B %
+相谐波电流畸变率
+H005 C %
+相谐波电压畸变率
+H006 C %
+三相电流不平衡度
+O001 %
+三相电压不平衡度
+O002 %
+频率偏差
+O003 Hz
+温度
+O004 °C
+湿度
+O005 %
+其他指标 相电压偏差
+O O006 A V
+相电压偏差
+O007 B V
+相电压偏差
+O008 C V
+线电压偏差
+O009 ab V
+线电压偏差
+O010 bc V
+线电压偏差
+O011 ca V
+内部分类分项数据采集
+A001
+内部有序用电控制
+A002
+内部需量控制
+A003
+子用户月度抄表
+A099
+外部平台数据采集
+事件类型 A101
+A 外部平台有序用电控制请求
+A102
+外部平台需求响应控制请求
+A103
+外部平台数据采集上报
+A201
+外部平台有序用电控制应答
+A202
+外部平台需求响应控制应答
+A203
+30
+GB/Z32500—2016
+表B1 续
+.( )
+指标分类代号 指标分类 指标编码 指标名称 指标单位
+IndexLetter IndexType IndexCode IndexName IndexUnit
+日期
+W001
+天气
+W002
+环境信息 最高温度
+W W003 ℃
+最低温度
+W004 ℃
+平均湿度
+W005 %
+抄表系统
+S001
+电力配电监控系统
+S002
+建筑设备控制系统
+S003
+生产自动化系统
+S004
+子系统类型 智能家居系统
+S S005
+电动汽车充电系统
+S006
+光伏发电系统
+S007
+风力发电系统
+S008
+微电网系统
+S009
+需量控制
+K001
+控制类型 有序控制
+K K002
+需求响应控制
+K003
+需求侧管理
+Y001
+分类分项计量
+外部数据平台 Y002
+Y 有序用电
+Y003
+需求响应
+Y004
+表B2 企业所属行业统一编码 YHD_PROF_CODE
+. ( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+谷物磨制
+1310
+饲料加工
+1320
+植物油加工
+1330
+制糖
+1340
+屠宰及肉类加工
+1350
+水产品加工
+1360
+蔬菜 水果和坚果加工
+1370 、
+31
+GB/Z32500—2016
+表B2 续
+.( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+其他农副食品加工
+1390
+焙烤食品制造
+1410
+糖果 巧克力及蜜饯制造
+1420 、
+方便食品制造
+1430
+液体乳及乳制品制造
+1440
+罐头制造
+1450
+调味品 发酵制品制造
+1460 、
+其他食品制造
+1490
+酒精制造
+1510
+酒的制造
+1520
+软饮料制造
+1530
+精制茶加工
+1540
+烟叶复烤
+1610
+卷烟制造
+1620
+其他烟草制品加工
+1690
+棉 化纤纺织及印染精加工
+1710 、
+毛纺织和染整精加工
+1720
+麻纺织
+1730
+丝绢纺织及精加工
+1740
+纺织制成品制造
+1750
+针织品 编织品及其制品制造
+1760 、
+纺织服装制造
+1810
+纺织面料鞋的制造
+1820
+制帽
+1830
+皮革 毛皮鞣制及制品加工制造
+1910 、
+羽毛 绒 加工及制品制造
+1940 ( )
+锯材 木片加工
+2010 、
+人造板制造
+2020
+木制品制造
+2030
+竹 藤 棕 草制品制造 轻
+2040 、 、 、 ( )
+木质家具制造
+2110
+竹 藤家具制造
+2120 、
+32
+GB/Z32500—2016
+表B2 续
+.( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+金属家具制造
+2130
+塑料家具制造
+2140
+其他家具制造
+2190
+纸浆制造
+2210
+造纸
+2220
+纸制品制造
+2230
+印刷
+2310
+装订及其他印刷服务活动
+2320
+记录媒介的复制
+2330
+文化用品制造
+2410
+体育用品制造
+2420
+乐器制造
+2430
+玩具制造
+2440
+游艺器材及娱乐用品制造
+2450
+精炼石油产品的制造
+2510
+炼焦
+2520
+核燃料加工
+2530
+基础化学原料制造
+2610
+肥料制造
+2620
+农药制造
+2630
+涂料 油墨 颜料及类似产品制造 轻
+2640 、 、 ( )
+合成材料制造
+2650
+专用化学产品制造
+2660
+日用化学产品制造 轻
+2670 ( )
+氯碱
+2690
+电石
+26a0
+黄磷
+26b0
+化学药品原药制造
+2710
+化学药品制剂制造
+2720
+中药饮片加工
+2730
+中成药制造
+2740
+兽用药品制造
+2750
+33
+GB/Z32500—2016
+表B2 续
+.( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+生物 生化制品的制造
+2760 、
+卫生材料及医药用品制造
+2770
+纤维素纤维原料及纤维制造
+2810
+合成纤维制造
+2820
+轮胎制造
+2910
+橡胶板 管 带的制造
+2920 、 、
+橡胶零件制造
+2930
+再生橡胶制造
+2940
+日用及医用橡胶制品制造
+2950
+橡胶靴鞋制造
+2960
+其他橡胶制品制造
+2990
+塑料薄膜制造
+3010
+塑料板 管 型材的制造
+3020 、 、
+塑料丝 绳及编织品的制造
+3030 、
+泡沫塑料制造
+3040
+塑料人造革 合成革制造
+3050 、
+塑料包装箱及容器制造 轻
+3060 ( )
+塑料零件制造
+3070
+日用塑料制造 轻
+3080 ( )
+其他塑料制品制造 轻
+3090 ( )
+水泥 石灰和石膏的制造
+3110 、
+水泥及石膏制品制造
+3120
+砖瓦 石材及其他建筑材料制造
+3130 、
+玻璃及玻璃制品制造
+3140
+陶瓷制品制造
+3150
+耐火材料制品制造
+3160
+石墨及其他非金属矿物制品制造
+3190
+钢铁冶炼及钢压延加工
+3230
+铁合金冶炼
+3240
+常用有色金属冶炼及压延加工业
+3310
+贵金属冶炼及压延加工业
+3320
+稀有稀土金属冶炼及压延加工业
+3330
+34
+GB/Z32500—2016
+表B2 续
+.( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+有色金属合金制造和压延加工
+3340
+结构性金属制品制造
+3410
+金属工具制造
+3420
+集装箱及金属包装容器制造
+3430
+金属丝绳及其制品的制造
+3440
+建筑 安全用金属制品制造
+3450 、
+金属表面处理及热处理加工
+3460
+搪瓷制品制造
+3470
+不锈钢及类似日用金属制品制造 轻
+3480 ( )
+其他金属制品制造
+3490
+锅炉及原动机制造
+3510
+金属加工机械制造
+3520
+起重运输设备制造
+3530
+泵 阀门 压缩机及类似机械的制造
+3540 、 、
+轴承 齿轮 传动和驱动部件的制造
+3550 、 、
+烘炉 熔炉及电炉制造
+3560 、
+风机 衡器 包装设备等通用设备制造
+3570 、 、
+通用零部件制造及机械修理
+3580
+金属铸 锻加工
+3590 、
+矿山 冶金 建筑专用设备制造
+3610 、 、
+化工 木材 非金属加工专用设备制造
+3620 、 、
+食品 饮料 烟草及饲料生产专用设备制造
+3630 、 、
+印刷 制药 日化生产专用设备制造
+3640 、 、
+纺织 服装和皮革工业专用设备制造
+3650 、
+电子和电工机械专用设备制造
+3660
+农 林 牧 渔专用机械制造
+3670 、 、 、
+医疗仪器设备及器械制造 轻
+3680 ( )
+环保 社会公共安全及其他专用设备制造
+3690 、
+铁路运输设备制造
+3710
+汽车制造
+3720
+摩托车制造 轻
+3730 ( )
+自行车制造 轻
+3740 ( )
+35
+GB/Z32500—2016
+表B2 续
+.( )
+行业编码 行业名称
+IndustryCode IndustyName
+字符串 字符串
+,4 ,20
+船舶及浮动装置制造
+3750
+航空航天器制造
+3760
+交通器材及其他交通运输设备制造
+3790
+电机制造
+3910
+输配电及控制设备制造
+3920
+电线 电缆 光缆及电工器材制造
+3930 、 、
+电池制造 轻
+3940 ( )
+家用电力器具制造 轻
+3950 ( )
+非电力家用器具制造 轻
+3960 ( )
+照明器具制造 轻
+3970 ( )
+其他电气机械及器材制造
+3990
+通信设备制造
+4010
+雷达及配套设备制造
+4020
+广播电视设备制造
+4030
+电子计算机制造
+4040
+电子器件制造
+4050
+电子组件制造
+4060
+家用视听设备制造 轻
+4070 ( )
+其他电子设备制造
+4090
+通用仪器仪表制造
+4110
+专用仪器仪表制造
+4120
+钟表与计时仪器制造 轻
+4130 ( )
+光学仪器及眼镜制造
+4140
+文化 办公用机械制造 轻
+4150 、 ( )
+其他仪器仪表的制造及修理
+4190
+工艺美术品制造
+4210
+日用杂品制造
+4220
+煤制品制造
+4230
+核辐射加工
+4240
+其他未列明的制造业
+4290
+36
+GB/Z32500—2016
+表B3 能源分类统一编码 YHD_SOURCE_CODE
+. ( )
+能源分类代码 能源分类名称
+EnergyClassifcationCode EnergyClassificationName
+字符串 字符串
+,2 ,20
+电
+01
+水
+02
+燃气
+03
+集中供热量
+04
+集中供冷量
+05
+可再生能源
+06
+煤
+07
+燃油
+08
+其他能源
+09
+表B4 用电分项统一编码 YHD_ITEM_CODE
+. ( )
+分类代码 分项代码 分项名称 子项代码 子项名称 换算千克标煤
+数值单位
+EnergyClassi Energy EnergyItem EnergySub EnergySub KilogramsOf
+Unit
+fcationCode ItemCode Name ItemCode ItemName StandardCoal
+照明插座用电
+00 kWh 0.1229
+照明与插座
+10 kWh 0.1229
+照明插座
+走廊与应急
+A 用电 20 kWh 0.1229
+室外景观照明
+30 kWh 0.1229
+其他
+40 kWh 0.1229
+空调用电
+00 kWh 0.1229
+冷冻泵
+1A kWh 0.1229
+冷却泵
+1B kWh 0.1229
+冷机
+1C kWh 0.1229
+01 冷塔
+1D kWh 0.1229
+热水循环泵
+1E kWh 0.1229
+空调用电 电锅炉
+B 1F kWh 0.1229
+全空气机组
+2A kWh 0.1229
+新风机组
+2B kWh 0.1229
+排风机组
+2C kWh 0.1229
+风机盘管
+2D kWh 0.1229
+分体式空调器
+2E kWh 0.1229
+其他
+30 kWh 0.1229
+37
+GB/Z32500—2016
+表B4 续
+.( )
+分类代码 分项代码 分项名称 子项代码 子项名称 换算千克标煤
+数值单位
+EnergyClassi Energy EnergyItem EnergySub EnergySub KilogramsOf
+Unit
+fcationCode ItemCode Name ItemCode ItemName StandardCoal
+动力用电
+00 kWh 0.1229
+电梯
+10 kWh 0.1229
+动力用电 水泵
+C 20 kWh 0.1229
+通风机
+30 kWh 0.1229
+其他
+40 kWh 0.1229
+特殊用电
+00 kWh 0.1229
+01 信息中心
+10 kWh 0.1229
+洗衣房
+20 kWh 0.1229
+特殊用电 厨房餐厅
+D 30 kWh 0.1229
+游泳池
+40 kWh 0.1229
+健身房
+50 kWh 0.1229
+其他
+60 kWh 0.1229
+饮用水
+A kgce/t 0.0857
+生活用水
+B kgce/t 0.0857
+02 生产用水
+C kgce/t 0.0857
+其他用水
+D kgce/t 0.0857
+天然气
+A
+kgce/m3
+1.2143~1.330
+煤气
+B
+kgce/m3
+0.5~0.6143
+液化石油气
+03 C kgce/kg 1.7143
+高炉煤气
+D
+kgce/m3
+0.1286
+其他煤气
+E
+kgce/m3
+0.357
+集中供热量
+04 A kgce/kJ 1.229
+集中供冷量
+05 A
+风能
+A
+太阳能
+B
+地热能
+C
+06 水能
+D
+生物质
+E
+其他
+F
+38
+GB/Z32500—2016
+表B4 续
+.( )
+分类代码 分项代码 分项名称 子项代码 子项名称 换算千克标煤
+数值单位
+EnergyClassi Energy EnergyItem EnergySub EnergySub KilogramsOf
+Unit
+fcationCode ItemCode Name ItemCode ItemName StandardCoal
+原煤
+A kgce/kg 0.7143
+洗精煤
+B kgce/kg 0.9
+洗中煤
+07 C kgce/kg 0.2857
+煤泥
+D kgce/kg 0.2857~0.4286
+焦炭
+E kgce/kg 0.9714
+汽油
+A kgce/kg 1.4714
+煤油
+B kgce/kg 1.4714
+柴油
+C kgce/kg 1.4571
+原油
+08 D kgce/kg 1.4286
+燃料油
+E kgce/kg 1.4286
+煤焦油
+F kgce/kg 1.1429
+渣油
+G kgce/kg 1.4286
+其他能源
+09 A
+能源数据表 和表 分类分项编码结果示意图
+B.3 B.4 :
+编码实例 照明插座中的室外景观照明
+:01A30 ;
+燃油中的渣油
+08G00 。
+注 编码依次由分类 分项 子项组成
+: 、 、 ;
+分类编码由 位代码表示 分项编码由 位代码表示 子项编码由 位代码表示
+2 、 1 、 2 。
+第 位为数字 表示分类能耗编码
+1-2 , 。
+第 位为英文大写字母 表示分项能耗编码
+3 , 。
+第 位为数字 表示子项编码
+4-5 , 。
+表B5 设备类型统一编码 YHD_DEVICE_CODE
+. ( )
+设备大类 设备类型编码 设备类型名称 设备编码备注
+DeviceCategory DeviceTypeCode DeviceTypeName DeviceTypeMemo
+供配电设备 变压器 配电屏 发电设备等
+1001 、 、
+建筑电气 照明设备 灯具等
+1002
+动力设备 吊车 搅拌机 水泵 风机等
+1003 、 、 、
+39
+GB/Z32500—2016
+表B5 续
+.( )
+设备大类 设备类型编码 设备类型名称 设备编码备注
+DeviceCategory DeviceTypeCode DeviceTypeName DeviceTypeMemo
+弱电设备 电话 电视 音响 网络 报警设备等
+1004 、 、 、 、
+空调与通风 制冷热 防排烟 温湿度控制装置等
+1005 、 、
+建筑电气 运输设备 电梯 扶梯
+1006 、
+厨房设备 油烟机 厨具等
+1007 、
+安防设备 照明 送排风
+1008 、
+起重设备 升降机 电动搬运车 塔吊 施工电梯 升降平台
+2001 、 、 、 、
+冲压设备 机械压力机 液压机 数控冲床 整平机等
+2002 、 、 、
+电动泵 压力泵
+2003 、
+工业生产设备 辅助设备 照明 空调 音像 广告
+2004 、 、 、
+变配电 变压器 电容器 变频器等
+2005 、 、
+安防设备 照明 送排风
+2006 、
+其他设备 生活 娱乐等
+2007 、
+照明
+3001
+动力类
+农业用电设备 3002
+辅助设备 照明 空调 音像
+3003 、 、
+其他设备
+3004
+生物质发电机
+4001
+燃油发电机
+4002
+光伏设备
+4003
+分布式能源设备 风能设备
+4004
+水能设备
+4005
+充电桩
+4006
+燃气发电设备
+4007
+表B6 用电时段类型统一编码 YHD_TOU_CODE
+. ( )
+用电时段类型编码 用电时段类型名称
+TimeOfUseTypeCode TimeOfUseTypeName
+字符串 字符串
+,4 ,10
+峰时段
+1001
+谷时段
+1002
+平时段
+1003
+尖时段
+1004
+一级需求响应时段
+2104
+二级需求响应时段
+2204
+三级需求响应时段
+2304
+40
+GB/Z32500—2016
+表B7 建筑功能类别统一编码 YHD_BUILDING_CODE
+. ( )
+建筑类型编码 建筑类型名称
+BuildingTypeCode BuildingTypeName
+办公建筑
+A
+商场建筑
+B
+宾馆饭店建筑
+C
+文化教育建筑
+D
+医疗卫生建筑
+E
+体育建筑
+F
+综合建筑
+G
+其他建筑
+H
+41
+GB/Z32500—2016
+附 录 C
+资料性附录
+( )
+数据表字段索引
+表C1 数据表字段索引表
+.
+序号 字段 字段说明 数据类型 长度 备注 数据表
+有功 整型
+1 ActivePower 8 kW A.17
+用户地址 字符串
+2 Address 64 A.1
+用户面积 双精度浮点数
+3 Area 20,4 A.1
+平均值 双精度浮点型
+4 AverageValue 10,2 A.11
+基本电费 量 整型
+5 BasicCharge_Amount _ 8 kWh A.17
+基本电费 金额 双精度浮点型 元
+6 BasicCharge_Money _ 10,2 A.17
+基本电费 单价 双精度浮点型 元
+7 BasicCharge_Price _ 10,2 A.17
+基本电费 量 整型
+8 BasicCharge2_Amount 2_ 8 kWh A.17
+基本电费 金额 双精度浮点型 元
+9 BasicCharge2_Money 2_ 10,2 A.17
+基本电费 单价 双精度浮点型 元
+10 BasicCharge2_Price 2_ 10,2 A.17
+月份 字符串
+11 BillMonth 16 A.17
+抄表时间 字符串
+12 BillTime 16 A.17
+年度 字符串
+13 BillYear 4 A.17
+建筑功能类别编码 字符串 见表
+14 BuildingTypeCode 1 B.7 A.1
+建筑类型编码 字符串
+15 BuildingTypeCode 2 B.7
+建筑类型名称 字符串
+16 BuildingTypeName 10 B.7
+用户所属地市 字符串
+17 City 20 A.1
+ConsumedAmount_ Off- 用量 谷 整型
+18 _ 8 kWh A.17
+Peak
+ConsumedAmount_ Off- 用量 低谷 整型
+19 _ MD 8 kWh A.17
+PeakMD
+用量 峰 整型
+20 ConsumedAmount_Peak _ 8 kWh A.17
+ConsumedAmount_Peak- 用量 峰 整型
+21 _ MD 8 kWh A.17
+Md
+ConsumedAmount_Reac- 用量 无 整型
+22 _ 1 8 kWh A.17
+tivePower1
+ConsumedAmount_Reac- 用量 无 整型
+23 _ 2 8 kWh A.17
+tivePower2
+ConsumedAmount _ 用量 平 整型
+24 _ 1 8 kWh A.17
+Shoulder1
+ConsumedAmount _ 用量 平 整型
+25 _ 1MD 8 kWh A.17
+Shoulder1MD
+42
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+ConsumedAmount_Shoul- 用量 平 整型
+26 _ 2 8 kWh A.17
+der2
+ConsumedAmount_Shoul- 用量 平 整型
+27 _ 2MD 8 kWh A.17
+der2MD
+用量 总 整型
+28 ConsumedAmount_Total _ 8 kWh A.17
+合同容量 双精度浮点数
+29 ContractCapacity 64 A.1
+契约限额 整型
+30 ContractDemand 8 kW/(kV·A) A.17
+控制结束时间 时间
+31 ControlEndTime 16 A.15
+控制类别 整型
+32 ControlID ID A.15
+控制起始时间 时间
+33 ControlStartTime 16 A.15
+见表
+控制类别代号 字符串 B.1,
+34 ControlType 4 A.15
+IndexCode
+尖峰电量 双精度浮点型
+35 CriticalPeakAmount 10,2 kW A.12
+是否启用 字符 启用 关闭
+36 CTOnDuty CT 1 1 0 A.5
+变比 字符串
+37 CTRatio CT 10 A.5
+本月应付账款 双精度浮点型 元
+38 CurrentMonthCharge 10,2 A.17
+CurrentMonthReading 本月读数 谷 双精度浮点型
+39 _ 10,2 A.17
+_OffPeak
+CurrentMonthReading 本月读数 低谷 双精度浮点型
+40 _ MD 10,2 A.17
+_OffPeakMD
+CurrentMonthReading 本月读数 峰 双精度浮点型
+41 _ 10,2 A.17
+_Peak
+CurrentMonthReading 本月读数 峰 双精度浮点型
+42 _ MD 10,2 A.17
+_PeakMD
+CurrentMonthReading_Re- 本月读数 无 双精度浮点型
+43 _ 1 10,2 A.17
+activePower1
+CurrentMonthReading_Re- 本月读数 无 双精度浮点型
+44 _ 2 10,2 A.17
+activePower2
+CurrentMonthReading _ 本月读数 平 双精度浮点型
+45 _ 1 10,2 A.17
+Shoulder1
+CurrentMonthReading_Sho 本月读数 平 双精度浮点型
+46 _ 1MD 10,2 A.17
+ulder1MD
+CurrentMonthReading_Sho 本月读数 平 双精度浮点型
+47 _ 2 10,2 A.17
+ulder2
+CurrentMonthReading_Sho 本月读数 平 双精度浮点型
+48 _ 2MD 10,2 A.17
+ulder2MD
+CurrentMonthReading_To- 本月读数 总 双精度浮点型
+49 _ 10,2 A.17
+lal
+设备类型编码 字符串
+50 DeviceCategory 20 B.5
+设备备注 字符串
+51 DeviceDescription 500 A.4
+设备 整型
+52 DeviceID ID A.4
+43
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+设备安装地址 字符串
+53 DeviceInstallPosition 64 A.4
+设备型号 字符串
+54 DeviceModel 30 A.4
+设备名称 字符串
+55 DeviceName 64 A.4
+设备编号 字符串
+56 DeviceNo 12 A.4
+投运日期 日期
+57 DeviceOnDutyDate 8 A.4
+设备额定功率 双精度浮点型
+58 DeviceRatedPower 8 A.4
+设备额定电压 双精度浮点型
+59 DeviceRatedVoltage 8 A.4
+正常 维修
+1 2
+设备状态 整型 中 备 用
+60 DeviceStatus 3 4 A.4
+报废
+见表
+设备类型 整型 B.5,
+61 DeviceType A.4
+DeviceCODE
+设备类型编码 字符串
+62 DeviceTypeCode 4 B.5
+设备编码备注 字符串
+63 DeviceTypeMemo 20 B.5
+设备类型名称 字符串
+64 DeviceTypeName 20 B.5
+一次接线图 字符串
+65 ElectricalWiringDiagram 64 A.5
+电价种类 字符串
+66 ElectricityPriceType 64 A.1
+用户人数 整型
+67 EmployeesNumber 20,4 A.1
+能源分类代码 字符串
+68 EnergyClassifcationCode 2 B.3
+EnergyClassification- 能源分类名称 字符串
+69 20 B.3
+Name
+电量采集日期 日期
+70 EnergyDate 8 A.8
+分项代码 字符串
+71 EnergyItemCode 2 B.4
+分项名称 字符串
+72 EnergyItemName 20 B.4
+电量数据入库时间 时间
+73 EnergySaveDbTime 32 A.8
+子项代码 字符串
+74 EnergySubItemCode 2 B.4
+子项名称 字符串
+75 EnergySubItemName 20 B.4
+电量采集时间 时间
+76 EnergyTime 8 A.8
+电量类型 字符串 见表
+77 EnergyType 4 B.1 A.8
+电量数值 双精度浮点型 示数
+78 EnergyValue 10,2 ,kWh A.8
+见表
+用能分项编码 字符串 B.4,
+79 EnertyItemCode 3 A.5
+ItemCODE
+见表
+能源分类编码 字符串 B.3,
+80 EnertyTypeCode 2 A.5
+SourceCODE
+时间内容 字符串
+81 EventContent 100 A.16
+事件发生日期 日期
+82 EventDate 8 A.16
+44
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+事件状态 字符串
+83 EventStatus 32 A.16
+事件发生时间 时间
+84 EventTime 8 A.16
+见表
+对外事件类别代号 字符串 B.1,
+85 EventToPlatformCode 4 A.19
+IndexCode
+EventToPlatformDescrip- 对外事件描述 字符串
+86 150 A.19
+tion
+EventToPlatformEnd- 对外事件结束时间 字符串
+87 16 A.19
+Time
+对外事件 整型
+88 EventToPlatformID ID A.19
+EventToPlatformLoad- 控制削减负荷 双精度浮点型
+89 5 kW A.19
+ToReduce
+EventToPlatformStart- 对外事件起始时间 字符串
+90 16 A.19
+Time
+对外事件记录时间 字符串
+91 EventToPlatformTime 16 A.19
+见表
+事件类型 字符串 B.1,
+92 EventType 4 A.16
+IndexCode
+市政附加捐 双精度浮点型 元
+93 GovSurcharge1 1 10,2 A.17
+市政附加捐 双精度浮点型 元
+94 GovSurcharge2 2 10,2 A.17
+谐波发生日期 日期
+95 HarmonicDate 8 A.9
+为电流 为
+谐波参数值类型 整型 1 2
+96 HarmonicReferenceType 电压 A.9
+谐波发生时间 时间
+97 HarmonicTime 8 A.9
+谐波类型 字符串 见表
+98 HarmonicType 4 B.1 A.9
+指标编码 字符串
+99 IndexCode 4 B.1
+指标分类代号 字符串
+100 IndexLetter 4 B.1
+指标名称 字符串
+101 IndexName 20 B.1
+指标分类 字符串
+102 IndexType 4 B.1
+指标单位 字符串
+103 IndexUnit 10 B.1
+行业编码 字符串
+104 IndustrialCode 4 B.2
+行业名称 字符串
+105 IndustrialName 20 B.2
+见表
+用户所属行业分类 字符串 B.2,
+106 IndustryType 16 A.1
+IndustryCode
+装接总容量 整型
+107 InstalledCapacity 8 kW/(kV·A) A.17
+对外接口数据 整型
+108 InterfacetoPlatformID ID A.18
+偏差是否启用 字符
+109 IsBias 1 A.5
+是否超标 字符
+110 IsOverCriteria 1 A.1
+是否虚拟监控点 字符 否 是
+111 IsVirtuaMonitor 1 0 1 A.5
+45
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+KilogramsOfStandard- 换算千克标煤 字符串
+112 10 B.4
+Coal
+上次扣费金额 双精度浮点型
+113 lastDeductionAmount 12,2 A.2
+上次扣费时间 时间
+114 LastDeductionTime A.2
+LastMonthReading_Off- 上月读数 谷 双精度浮点型
+115 _ 10,2 A.17
+Peak
+上月读数 峰 双精度浮点型
+116 LastMonthReading_Peak _ 10,2 A.17
+LastMonthReading_Reac- 上月读数 无 双精度浮点型
+117 _ 1 10,2 A.17
+tivePower1
+LastMonthReading_Reac- 上月读数 无 双精度浮点型
+118 _ 2 10,2 A.17
+tivePower2
+LastMonthReading_Shoul- 上月读数 平 双精度浮点型
+119 _ 1 10,2 A.17
+der1
+LastMonthReading_Shoul- 上月读数 平 双精度浮点型
+120 _ 2 10,2 A.17
+der2
+上月读数 总 双精度浮点型
+121 LastMonthReading_Tolal _ 10,2 A.17
+上次充值金额 双精度浮点型
+122 LastRechargeAmount 12,2 A.2
+上次充值时间 时间
+123 LastRechargeTime A.2
+削减用电负荷 双精度浮点型
+124 LoadToReduce 5 kW A.15
+主设备 辅
+用电特性 字符串 1 2
+125 LoadType 8 助设备 A.4
+用户 标志 字符串
+126 Logo LOGO 50 A.1
+生产厂商 字符串
+127 Manufacturer 100 A.4
+生产日期 日期
+128 ManufacturingDate 8 A.4
+最大值 双精度浮点型
+129 MaxValue 10,2 A.11
+最大值发生时间 时间
+130 MaxValueTime 8 HH24MMSS A.11
+最小值 双精度浮点型
+131 MinValue 10,2 A.11
+最小值发生时间 时间
+132 MinValueTime 8 HH24MMSS A.11
+监控点备注 字符串
+133 MonitorDescription 500 A.5
+监测仪 整型 见表
+134 MonitorID ID A.5 A.17
+监测仪 整型 见表
+135 MonitorID ID A.5 A.12
+监测仪 整型
+136 MonitorID ID A.5
+监测仪 整型
+137 MonitorID ID A.7
+监测仪 整型
+138 MonitorID ID A.8
+监测仪 整型
+139 MonitorID ID A.9
+监测仪 整型
+140 MonitorID ID A.10
+监测仪 整型
+141 MonitorID ID A.11
+46
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+见表
+监测仪 整型 A.5,
+142 MonitorID ID A.16
+MonitorID
+监测仪安装地址 字符串
+143 MonitorInstallPosition 64 A.5
+监控点名称 字符串
+144 MonitorName 20 A.5
+监控点编号 整型 见表
+145 MonitorNo 5 A.5 A.4
+监控点编号 整型 见表
+146 MonitorNo 5 A.4 A.5
+监测仪额定功率 双精度浮点型
+147 MonitorRatedPower 10,2 A.5
+监测仪额定电压 双精度浮点型
+148 MonitorRetedVoltage 10,2 A.5
+监控仪类型 整型
+149 MonitorType 8 A.5
+采集日期 日期
+150 MostValueDate 8 YYYYMMDD A.11
+见表
+最值类型 字符串 B.1,
+151 MostValueType 4 A.11
+IndexCode
+谷电量 双精度浮点型
+152 OffPeakAmount 10,2 kW A.12
+OffPeakTimeCharge_A- 谷 量 整型
+153 _ 8 kWh A.17
+mount
+OffPeakTimeCharge 谷 金额 双精度浮点型 元
+154 _ 10,2 A.17
+_Money
+OffPeakTimeCharge 谷 单价 双精度浮点型 元
+155 _ 10,2 A.17
+_Price
+在线时间 整型
+156 OnDutyTime s A.5
+运行容量 双精度浮点数
+157 OperationCapacity 64 A.1
+序号 整型
+158 Order A.6
+排序号 整型
+159 OrderNo 8 A.5
+其他数据采集日期 日期
+160 OtherDataDate 8 A.10
+其他数据采集时间 时间
+161 OtherDataTime 8 A.10
+见表
+其他数据类型 字符串 B.1,
+162 OtherDataType 4 A.10
+IndexCode
+其他数值 双精度浮点型
+163 OtherDataValue A.10
+峰电量 双精度浮点型
+164 PeakAmount 10,2 kW A.12
+PeakTimeCharge _ A- 峰 量 整型
+165 _ 8 kWh A.17
+mount
+峰 金额 双精度浮点型 元
+166 PeakTimeCharge_Money _ 10,2 A.17
+峰 单价 双精度浮点型 元
+167 PeakTimeCharge_Price _ 10,2 A.17
+物理监控点 整型
+168 PhiscalMonitorID ID A.6
+设备图片路径 字符串
+169 PicturePath 200 A.4
+见表
+平台代号 整型 B.1,
+170 PlatformCode 4 A.18
+IndexCode
+平台数据代号 字符串
+171 PlatformDataCode 20 A.18
+47
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+平台数据名称 字符串
+172 PlatformDataName 30 A.18
+电力数据采集日期 日期
+173 PowerDate 8 YYYYMMDD A.7
+功率因数 双精度浮点型
+174 PowerFactor 3,2 A.17
+功率因数调整 双精度浮点型
+175 PowerFactorAdjust 3,2 A.17
+PowerFactorAdjusting- 力率调整金额 双精度浮点型 元
+176 10,2 A.17
+Money
+PowerFactorAdjustin- 力率调整率 双精度浮点型
+177 3,2 % A.17
+gRate
+功率因数标准 双精度浮点数
+178 PowerFactorStandard 64 A.1
+电力数据入库时间 时间
+179 PowerSaveDbTime 16 A.7
+电力数据采集时间 时间
+180 PowerTime 8 HH24MMSS A.7
+见表
+电力数据类型 字符串 B.1,
+181 PowerType 4 A.7
+IndexCode
+电力数值 双精度浮点型
+182 PowerValue kW/(kV·A) A.7
+电价 双精度浮点型
+183 Price 20,4 A.14
+方案开始生
+PriceBecomingEffec- 生效日期时间 时间
+184 16 效时间 A.14
+tiveTime
+方 案 失 效
+PriceBecomingInvalid- 失效日期时间 时间
+185 16 时间 A.14
+Time
+电价时段结束日期和
+时间 YYYYMMDD
+186 PriceEndTime 时间 16 A.14
+HH24MMSS
+电价时段开始日期和
+时间 YYYYMMDD
+187 PriceStartTime 时间 16 A.14
+HH24MMSS
+电价类别 字符串 见表
+188 PriceType 4 A.14 A.5
+见表
+电价类别 字符串 A.14,
+189 PriceType 4 A.15
+PTYPE
+见表
+B.6,
+电价类别 字符串
+190 PriceType 4 TimeOfUse- A.14
+TypeCode
+产品 字符串
+191 Products 100 A.1
+代征费用 双精度浮点型 元
+192 ProxyCollection 10,2 A.17
+是否启用 字符 启用 关闭
+193 PTOnDuty PT 1 1 0 A.5
+变比 字符串
+194 PTRatio PT 10 A.5
+无功 整型
+195 ReactivePower 8 kvar A.17
+ReactivePower/Active- 无功 有功 双精度浮点型
+196 / 3,2 A.17
+Power
+备注 字符串
+197 Res1 1 50 A.2
+备注 字符串
+198 Res2 2 50 A.2
+平电量 双精度浮点型
+199 ShoulderAmount 10,2 kW A.12
+48
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+ShoulderTimeCharge_A- 平 量 整型
+200 _ 8 kWh A.17
+mount
+ShoulderTimeCharge 平 金额 双精度浮点型 元
+201 _ 10,2 A.17
+_Money
+ShoulderTimeCharge 平 单价 双精度浮点型 元
+202 _ 10,2 A.17
+_Price
+标准最大限额 整型
+203 StandardMaxCapacity 8 kW/(kV·A) A.17
+标准功率因数 双精度浮点型
+204 StandardPowerFactor 3,2 A.17
+子系统简介 字符串
+205 SubSysDescription 200 A.3
+子系统 整数 见表
+206 SubSysID ID 4 A.3 A.4
+对象子系统 整型 见表
+207 SubSysID ID A.3,SID A.15
+所属子系统 整型 见表
+208 SubSysID ID 3 A.3 A.5
+子系统 整型
+209 SubSysID ID A.3
+子系统名称 字符串
+210 SubSysName 30 A.3
+子系统编号 整型
+211 SubSysNO 5 A.3
+子系统投运日期 字符串
+212 SubSysOnDutyDate 8 A.3
+子系统所在位置 字符串
+213 SubSysPosition 30 A.3
+子系统供应商 字符串
+214 SubSysProvider 100 A.3
+见表
+子系统类别号 整型 B.1,
+215 SubSysType 2 A.3
+IndexCode
+账号 字符串
+216 SubUserAccount 50 A.2
+账号余额 双精度浮点型
+217 SubUserAccountBalance 12,2 A.2
+子用户位置 字符串
+218 SubUserAddress 64 A.2
+子用户面积 双精度浮点型
+2
+219 SubUserArea 8 m A.2
+子用户账单 整形
+220 SubUserBillID ID A.17
+子用户账单编号 字符串
+221 SubUserBillNo 16 A.17
+不需要 暂时
+子用户所属地市 字符串 ,
+222 SubUserCity 20 保留 A.2
+子用户合同容量 双精度浮点型
+223 SubUserContractCapacity 7,2 kW/(kV·A) A.2
+子用户用户简介 字符串
+224 SubUserDescription 1000 A.2
+SubUserElectricityPrice- 子用户电价种类 字符串
+225 10 A.2
+Type
+SubUserEmployeesNum- 子用户人数 整型 人
+226 5 A.2
+ber
+所属子用户 整型 见表
+227 SubUserID ID A.2 A.3
+见表
+子用户 整型 A.2,
+228 SubUserID ID A.15
+SubUserID
+子用户 整数 见表
+229 SubUserID ID A.2 A.4
+子用户 整型 见表
+230 SubUserID ID A.2 A.17
+49
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+所属子用户 整型 见表
+231 SubUserID ID 3 A.2 A.5
+子用户 整型
+232 SubUserID ID A.2
+子用户 整型 见表
+233 SubUserID ID A.2 A.12
+见表
+子用户所属行业分类 字符串 B.2,
+234 SubUserIndustryType 4 A.2
+IndustryCode
+子用户是否超标 字符
+235 SubUserIsOverCtriteria 1 A.2
+子用户 标志 字符串
+236 SubUserLogo LOGO 20 A.2
+子用户名称 字符串
+237 SubUserName 100 A.2
+子用户户号 字符串
+238 SubUserNo 10 A.2
+SubUserOperationCapaci- 子用户运行容量 双精度浮点型
+239 7,2 kW/(kV·A) A.2
+ty
+SubUserPowerFac- 子用户功率因数标准 双精度浮点型
+240 5,2 A.2
+torStandard
+子用户产品 字符串
+241 SubUserProducts 100 A.2
+子用户电压等级 双精度浮点型
+242 SubUserVoltageClass 5 V A.2
+小计 双精度浮点型 元
+243 Sum 10,2 A.17
+表底 双精度浮点型
+244 TableBottom 32 A.5
+分时电价备注 字符串
+245 TariffDescription 32 A.13
+电价明细 整型
+246 TariffDetailID ID A.14
+电价类别 整型
+247 TariffID ID A.14
+电价类别 整型
+248 TariffID ID A.13
+电价类别名称 字符串
+249 TariffName 16 A.13
+总谐波含有率 双精度浮点型
+250 THD 6,3 A.9
+次谐波含有率 双精度浮点型
+251 THD11 11 6,3 A.9
+次谐波含有率 双精度浮点型
+252 THD13 13 6,3 A.9
+次谐波含有率 双精度浮点型
+253 THD15 15 6,3 A.9
+次谐波含有率 双精度浮点型
+254 THD17 17 6,3 A.9
+次谐波含有率 双精度浮点型
+255 THD19 19 6,3 A.9
+次谐波含有率 双精度浮点型
+256 THD21 21 6,3 A.9
+次谐波含有率 双精度浮点型
+257 THD23 23 6,3 A.9
+次谐波含有率 双精度浮点型
+258 THD25 25 6,3 A.9
+次谐波含有率 双精度浮点型
+259 THD27 27 6,3 A.9
+次谐波含有率 双精度浮点型
+260 THD29 29 6,3 A.9
+次谐波含有率 双精度浮点型
+261 THD3 3 6,3 A.9
+次谐波含有率 双精度浮点型
+262 THD31 31 6,3 A.9
+50
+GB/Z32500—2016
+表C1 续
+.( )
+序号 字段 字段说明 数据类型 长度 备注 数据表
+次谐波含有率 双精度浮点型
+263 THD5 5 6,3 A.9
+次谐波含有率 双精度浮点型
+264 THD7 7 6,3 A.9
+次谐波含有率 双精度浮点型
+265 THD9 9 6,3 A.9
+分时 电 价 历 史 数 据
+TimeOfDayTariffDe- 字符串
+266 备注 32 A.12
+scription
+分时电价日期 字符串
+267 TimeOfUseTariffDate 8 YYYYMMDD A.12
+分时电价时间 字符串
+268 TimeOfUseTariffTime 8 HH24MMSS A.12
+见表
+B.6,
+用电时段类型编码 字符串
+269 TimeOfUseTypeCode 4 TimeOfUse- A.12
+TypeCode
+用电时段类型编码 字符串
+270 TimeOfUseTypeCode 4 B.6
+用电时段类型名称 字符串
+271 TimeOfUseTypeName 20 B.6
+可削减电力总量 双精度浮点型
+272 TotalDRLoad kW A.3
+子系统负荷总量 双精度浮点型
+273 TotalLoad kW A.3
+可提供电力总量 双精度浮点型
+274 TotalSupplyPower kW A.3
+配网 变压
+配变类型 整型 1 2
+275 TransType 1 器 线路 A.5
+3
+数值单位 字符串
+276 Unit 10 B.4
+上级监控点编号 整型
+277 UpstreamMonitorNo 5 A.5
+用户简介 字符串
+278 UserDescription 2048 A.1
+用户编码 字符串
+279 UserID 64 A.1
+用户名称 字符串
+280 UserName 100 A.1
+用户户号 字符串
+281 UserNo 64 A.1
+用户端数据代号 字符串
+282 UserSideDataCode 20 A.18
+用户端数据名称 字符串
+283 UserSideDataName 30 A.18
+虚拟监控点 整型
+284 VirtualMonitorID ID A.6
+电压等级 双精度浮点数
+285 VoltageClass 64 A.1
+51
+GB/Z32500—2016
+附 录 D
+资料性附录
+( )
+用例简析
+本附录通过对用例的分析来理解附录 和附录 数据表之间的联系
+A B 。
+D1 子用户电费数据采集
+.
+D11 数据采集
+..
+根据采集定时设定 用户端系统自动采集每个监测点用电量信息 标注采集时间 存放到表
+, , , A.7;
+D12 峰平谷用电量
+..
+每天用户端系统对采集到的数据 表 按峰谷平尖时间段 表 表 表 进行分类汇
+( A.7) ( A.12、 A.13、 B.5)
+总 汇总数据存放到 峰平谷尖电量历史数据表 表
+, “ ( A.12)”。
+D13 月度峰谷平尖电费和总电费
+..
+每月物业管理系统对表 中数据按监测点编号和峰谷平尖用电量汇总 并基于电力价格费率
+A.11 ,
+表 表 表 表 计算得出每个监测点月度峰谷平尖电费和总电费
+( A.12、 A.13、 B.14、 B.5), 。
+D2 当前负荷监测与需量控制
+.
+D21 峰谷平尖用电量
+..
+根据采集定时设定 用户端系统自动采集每个监测点负荷功率信息 标注采集日期 时间 存放到
+, , 、 ,
+表
+A.6。
+D22 用户端需量控制
+..
+将总的负荷 当前负荷之和 与用户端申请需量 表 用户信息表 中的 合同容量 数据
+( ) ( A.1“ ” HTRL )
+比较 当两者之差值或两者之差百分比达到某个阈值时 系统发出预警 必要时按照预先设定的程序
+, , 。 ,
+发出负荷控制指令
+。
+D23 子用户需量预警
+..
+若子用户有需量控制协议并有最大需量限值时 监测子用户用电需量之和 并将子用户当前需量之
+, ,
+和与子用户契约需量 表 子用户信息表 中 子用户合同容量 进行比较
+( A.2“ ” SubUserContractCapacity ) ,
+当两者之差值或两者之差百分比达到某个阈值时 系统向子用户发出预警
+, 。
+D24 子系统需量控制
+..
+当子用户负荷值与需量负荷之比达到一定必要阈值时 按照预先设定的程序 用户端系统向子用户
+, ,
+所属的子系统 例如可控制空调 水泵的建筑设备控制系统 发出负荷控制指令 控制指令格式应按照
+( 、 ) 。
+数据表 控制数据表 数据格式 包括控制起始时间 控制结束时间 子系统 控制类别代号 削
+A.15“ ” , 、 、 ID、 、
+减负荷数量 电价类型等 子系统在接到负荷控制指令后 依照负荷重要性分级 自动切除部分负荷
+、 。 , , 。
+52
+GB/Z32500—2016
+D3 最值数据采集
+.
+D31 数据采集
+..
+每日对表 电力数据表 数据统计分析 筛选出每个监测点当日的最大 最小负荷量及其发生时
+A.7“ ” , 、
+间 并计算出当日的平均负荷量 存入到表 最值表
+, , A.11“ ”。
+D32 数据处理
+..
+每月在表 最值表 中 筛选出当月每个监测点的最大 最小负荷量及其发生时间 并计算出当
+A.11“ ” , 、 ,
+月平均负荷量
+。
+D33 数据合并
+..
+每月对应每个监控点的最值与表 子用户电费数据表 的子用户表 子用户信息表 数据
+A.17“ ” A.2“ ”
+合并
+。
+D4 分类计量
+.
+D41 分类数据采集与汇总
+..
+对各监控点采集的数据表 电量示数数据表 按表 监控点档案表 中 字 段
+A.8“ ” A.5“ ”
+能源分类编码 进行分类统计 可以得到表 能源分类统一编码 中各类能源的统
+“EnertyTypeCode ” , B.3“ ”
+计汇总 还可按照表 指标分类统一编码表 对指标分类进一步细分
+。 B.1“ ” 。
+D42 时 日 月 年数据汇总
+.. 、 、 、
+对表 电量示数数据表 中数据 可按时 日 月 年等汇总
+A.8“ ” , 、 、 、 。
+D43 向分类计量平台上报
+..
+根据分类计量平台要求 在规定时间间隔或应分类计量平台请求 用户端系统将表 电量示数
+, , A.8“
+数据表 按分类要求汇总后上报分类计量平台 上报前系统按表 外部平台接口数据表 将数据字
+” 。 A.18“ ”
+段代号和名称转换成分类计量平台统一的字段代号和名称
+。
+D44 上报事件记录
+..
+当数据分类计量平台有临时要求上报数据情况时 用户端系统接到信号时把有关要求作为事件 记
+, ,
+录在表 对外事件数据表 同时 完成数据上报时也记录下上报完成事件
+A.19“ ”。 , 。
+D5 需求响应
+.
+D51 需求响应事件
+..
+D511 需求响应管理平台发出需求响应事件到用户端 用户端系统将事件记录在表 外部平台
+... , A.18“
+接口数据表
+”。
+需求响应事件指令应符合表 控制数据表 中的控制内容要求 其内容包括 起始时间
+A.15“ ” , DR 、DR
+结束时间 价格 要求削减的负荷等
+、DR 、 。
+D512 为简便 可以设定不同的需求响应级别 如表 用电时段类型统一编码 所示 不同的需求
+... , , B.6“ ” 。
+53
+GB/Z32500—2016
+响应级别对应不同的负荷削减额度和 或需求响应时段电价
+/ 。
+D52 用户端响应
+..
+用户端系统根据事先设定好的优先顺序 根据事先与子用户的约定 将需要削减的负荷分解到子系
+, ,
+统和子用户 发送到子用户的需求响应指令也应符合表 控制数据表 中的控制内容要求
+。 A.15“ ” 。
+D53 子系统控制
+..
+子系统接到需求响应指令后 根据事先设定的负荷类别 在需求响应时间段内切除某些用电设备
+, , 。
+用户端系统向子系统发送需求响应事件 包括 时段 价格 子系统应该削减的负荷信息 但不直接对
+, DR 、 、 ,
+子系统设备进行控制操作 设备的投切操作由子系统自行决定和实施
+。 。
+D54 子用户控制
+..
+子用户在接收到需求响应指令后 在需求响应时间段内削减用电负荷 用户端系统仅向子用户发
+, 。
+送需求响应事件 包括 时段 价格 子系统应该削减的负荷信息 但不直接对子用户用电行为进行干
+, DR 、 、 ,
+预 子用户的负荷控制由子用户自行决定和实施
+。 。
+D55 需求响应监测
+..
+D551
+...
+需求响应平台可直接监测用户端 时段的负荷削减情况 其数据应记录于表 电力数据表
+DR , A.7“ ”。
+D552
+...
+用户端系统监测子系统和子用户 时段的负荷削减情况 所采集数据也应记录于表 电力数
+DR , A.7“
+据表
+”。
+D56 需求响应时段电价
+..
+时段的费率按表 分时电价类别表 表 分时电价类别明细表 表 峰谷平尖类
+DR A.13“ ”、 A.14“ ”、 B.6“
+型统一编码 中确定的电价计费
+” 。
+54
+GB/Z32500—2016
+附 录 E
+资料性附录
+( )
+参考资料及数据表说明
+E1 参考资料
+.
+本指导性技术文件参考了下列资料
+:
+资料 国家发展改革委办公厅 发改办运行 号 关于做好国家电力需求侧管理平台建
+1: ( [2014]734 )《
+设和应用工作的通知 附件 电力需求侧管理平台技术规范 试行 附录 主站基础模型数据结构
+》, 1《 ( )》, A《
+与统一编码
+》。
+资料 住房和城乡建设部 颁布 国家机关办公建筑和大型公共建筑能耗监测系统分项能耗
+2: 2008 《
+数据采集技术导则
+》。
+资料 上海市电力公司大工业用电电费账单 年 月
+3: (2013 12 )。
+材料 年工程机械 机械 仪表设备统一分类及编号目录
+4:1988 《 / 》。
+E2 参考内容
+.
+本指导性技术文件附录 和附录 中的部分数据表来源如表
+A B E.1。
+表E1 本指导性技术文件数据表来源
+.
+本指导性技术文件数据库 参考自 对应数据表 备注 注
+( )
+用户信息表 资料 用户信息表 基本直接沿用
+A.1 1 A.1.1
+子用户信息表 资料 用户信息表 基本直接沿用
+A.2 1 A.1.1
+子系统档案表 新增
+A.3
+设备档案表 资料 配用电设备档案表 扩大到所有设备
+A.4 1 A.1.2
+监控点档案表 资料 监控点档案表 直接沿用
+A.5 1 A.1.3
+虚拟监控点对应物理监控点表 资料 虚拟监控点对应物理监控点表 直接沿用
+A.6 1 A.1.4
+电力数据表 资料 电力数据表 直接沿用
+A.7 1 A.1.5
+电量示数数据表 资料 电量示数数据表 直接沿用
+A.8 1 A.1.6
+谐波数据表 资料 谐波数据表 直接沿用
+A.9 1 A.1.7
+其他监测数据表 资料 其他监测数据表 直接沿用
+A.10 1 A.1.8
+最值表 资料 最值表 直接沿用
+A.11 1 A.1.9
+分时电量历史数据表 资料 峰谷平电量历史数据表 直接沿用
+A.12 1 A.1.10
+分时电价类别表 资料 峰谷平尖电价类别表 直接沿用
+A.13 1 A.1.11
+分时电价类别明细表 资料 峰谷平尖电价类别明细表 直接沿用
+A.14 1 A.1.12
+控制数据表 新增
+A.15
+事件报告 资料 事件上报 直接沿用
+A.16 1 A.1.13
+55
+GB/Z32500—2016
+表E1 续
+.( )
+本指导性技术文件数据库 参考自 对应数据表 备注 注
+( )
+子用户电费数据表 资料 账单表格 直接摘录
+A.17 2
+对外事件数据表 资料 新增
+A.18 1
+指标分类统一编码表 资料 指标分类统一编码表 重新分类并丰富内容
+B.1 1 A.2.1
+企业所属行业统一编码 资料 企业所属行业统一编码 直接沿用
+B.2 1 A.2.2
+分类增加燃油 去掉
+能源分类统一编码 资料 、
+B.3 2 9.2.4 汽油 煤油 柴油
+、 、
+用电分项统一编码 资料 分项加入水 气等分项
+B.4 2 9.2.5、9.2.6、9.2.7、9.2.8 、
+直接沿用用电设备
+,
+去掉非用电设备
+设备类型统一编码 资料 ,
+B.5 4 增加了建筑
+、
+分布式能源设备类型
+峰谷平尖类型统一编码 资料 峰谷平尖类型统一编码 增加了需求响应
+B.6 1 A.2.5
+建筑功能类别统一编码 资料 建筑功能类别统一编码 直接沿用
+B.7 1 A.2.6
+注 直接沿用 数据表内容没有改变 但字段名称按照国际通用规则进行了改变
+: : , ;
+基本直接沿用 在原数据表基础上增加或删减部分字段
+: ;
+增加了内容 在原数据表数据内容基础上 根据用户端能源管理需求增加了部分数据
+: , ;
+新增 根据用户端能源管理系统实际需求增加的数据表
+: 。
+E3 数据表说明
+.
+表 用户信息表 沿用发改委需求侧管理平台的用户信息表 反映一个电力用户的基本情况
+A.1“ ”: , 。
+其中 表示用户编码 表示用户名称 表示用户户号
+UserID ,UserName ,UserNo 。
+表 子用户信息表 与表 用户信息表 基本相同 只是用 表示子用户 反映子用
+A.2“ ” A.2“ ” , “SubUser” ,
+户的基本情况 其中 表示子用户编码 数值为 表示用户端中央设备 不属于
+。 SubUserID ,SubUserID “0” ,
+任何子用户 表示子用户名称 表示子用户户号
+。SubUserName ,SubUserNo 。
+表 子系统档案表 反映子系统的基本情况 其中 表示子系统在数据库中的流水号
+A.3“ ” 。 SubSysID 。
+表示子系统编号 由系统集成者按照一定的规则编写 表示子系统名称
+SybSysNo , 。SubSysName ,Sub-
+表示子系统类别 子系统类别由 位字符串代码表示 对应表 中子系统类型
+SysType 。 4 , B.1 。
+表示子系统所属的子用户 表示子系统负荷总量 表示子系统参
+SubUserID 。TotalLoad ,TotalDRLoad
+与需求响应时可削减的负荷总量 表示分布式电源或储能装置可提供的电力总量
+。TotalSupplyPower 。
+表 设备档案表 反映设备的基本情况 其中 表示设备在数据库中的流水号
+A.4“ ” , DeviceID 。
+表示设备编号 由系统集成者按照一定的规则编写 表示子系统名称
+DeviceNo , 。DeviceName ,
+表示子系统类别 设备类别由 位字符串代码表示 对应表 中设备类型
+DeviceType 。 4 , B.1 。SubUserID
+表示子设备所属的子用户 表示设备对应的监控点编号
+。MonitorNo 。
+表 监控点档案表 反映监控点的基本情况 其中 表示设备在数据库中的流水号
+A.5“ ” , MonitorID ,
+表示监控点属于哪个子用户 表示监控点属于哪个子系统 表示设备
+SubUserID ,SubSysID 。MonitorID
+编号 由系统集成者按照一定的规则编号 表示监控点名称 表示能
+, 。MonitorName 。EnergyTypeCode
+源分类编码 用 位字符串表示 对应表 中的能源分类编码 用于能源按类统计的标识
+, 2 , B.3 , 。Energy-
+56
+GB/Z32500—2016
+表示用能分项编码 用 位字符串表示 对应表 中用能分项编码 表示电价类
+ItemCode , 3 , B.4 。PriceType
+别 用 位字符串表示 对应表
+, 4 , A.14。
+表 虚拟监控点对应物理监控点表 反映虚拟监控点与物理监控点的对应关系
+A.6“ ” 。
+表 电力数据表 记录和反映监控点实时负荷情况 表示监测仪表 和
+A.7“ ” 。MonitorID ,PowerDate
+分别表示数据采集日期和时间 以 位字符串表示负荷类型 表示
+PowerTime ,PowerType 4 ,PowerValue
+负荷值 表示数据录入到数据库的时间 电力数据按照一定的时间间隔采集一次
+,PowerSaveDbTime 。 ,
+比如间隔时间为
+1min。
+表 电量示数数据表 记录和反映监控点的电量情况 表示监测仪表
+A.8“ ” 。MonitorID ,EnergyDate
+和 表示数据采集日期和时间 以 位字符串表示能源类型 表
+EnergyTime ,EnergyType 4 ,EnergyValue
+示电量值 表示数据录入到数据库的时间
+,EnergySaveDbTime 。
+表 谐波数据表 记录和反映监控点的谐波情况 表示监测仪表 和
+A.9“ ” 。MonitorID ,HarmonicDate
+表示数据采集日期和时间 以 位数字表示电压和电流 其中
+HarmonicTime ,HarmonicReferenceType 1 ,
+表示电流 表示电压 以 位字符串表示谐波类型 对应于表 中的谐波指标
+1 ,2 。HarmonicType 4 , B.1 。
+分别表示 次 次谐波含有率 以此类推 表示总的谐波含有率
+THD3、THD5 3 、5 , 。THD 。
+表 其他监测数据表 记录和反映监控点的其他情况 表示监测仪表
+A.10“ ” 。MonitorID ,ODataDate
+和 表示数据采集日期和时间 以 位字符串表示电压电流不平衡度
+OtherDataTime ,OtherDataType 4 、
+频率偏差 相电压和线电压偏差 温湿度等信息 表示采集到的数值
+、 、 。OtherDataValue 。
+表 最值表 记录和反映监控点每日电力负荷最大值 最小值及其发生时间 以及电力负荷平
+A.11“ ” 、 ,
+均值 最值数据基于对表 电力负荷数据表 进行处理后得到
+。 A.7“ ” 。
+表 分时电量历史数据表 数据来自于对表 电量示数数据表 数据的处理结果 该表记
+A.12“ ” A.8“ ” 。
+录和反映子用户不同费率时间段用电量情况 其中 表示子用户 表示监测仪
+。 ,SubUserID ,MonitorID
+器 一个子用户可以有一个或多个计费检测仪器 是时段类型编码 用 为字
+。 。TimeOfUseTypeCode , 4
+符串表示 对应表 中的用电时段类型编码 和 分别
+, B.6 。TimeOfUseTariffDate TimeOfUseTariffTime
+表示分时电价时段的日期和时间
+,PeakAmount、OffPeakAmount、ShoulderAmount、CriticalPeakPow-
+分别代表分 谷 平和尖峰时段的用电量
+erAmount 、 、 。
+表 分时电价类别表 反映电价类别和名称
+A.13“ ” 。
+表 分时电价类别明细表 反映各时段具体的电价 表示电价类别流水号
+A.14“ ” 。TariffID ,PriceType
+以 位字符串表示电价类别 和 分别表示某一电价开始和结束的日期
+4 。PriceStartTime PriceEndTime
+时间 表示具体电价值 和 分别表示某
+。Price 。PriceBecomingEffectiveTime PriceBecomingInvalidTime
+一电价生效和失效日期和时间
+。
+表 控制数据表 反映用户端能源管理系统要求某个子系统在某个时间段内削减负荷数量
+A.15“ ” 。
+其中 表示控制流水号 和 分别表示要求子系统削减用
+,ControlID ,ControlStartTime ControlEndTimee
+电负荷的开始和结束时间 表示子系 统 其 代 号 对 应 表 中 的 值
+。SubSysID , A.3 SubSysID 。
+以 位字符串表示控制类型 对应表 中的控制类型 表示用户端系统
+ControlType 4 , B.1 。LoadToReduce
+要求子系统削减的负荷 子系统在接到削减负荷控制指令后根据预先设定的负荷重要性分类 切除次要
+, ,
+负荷 表示在削减负荷时间段内的电价
+。PriceTypeE 。
+表 事件报告 记录和反映监测点发生的事件 其中 和 表示事件发生
+A.16“ ” 。 EventDate EventTime
+的日期和时间 以 为字符串表示事件类型 对应表 中的事件类型 描述
+,EventType 4 , B.1 。EventStatus
+事件状态
+。
+表 子用户电费数据表 反映子用户电费账单 其数据来自于对以上数据的综合处理
+A.17“ ” , 。
+平时段的电表读数 时 时 时 时 时 时 分为平 和平 平 专门计量其中的
+(6 -8 、11 -18 、21 -22 ) 1 2, 2
+时 时 夏季的此时段计费为尖时段 平 平 低谷 是指平 平 低谷 时段的最
+13 -15 , ; 1MD( 2MD、 MD) 1( 2、 )
+大需量 如不超契约限额则不计费 超则有 基本电费
+, , “ 2”。
+57
+GB/Z32500—2016
+表 外部平台接口数据表 反映用户端能源管理系统与外部公共管理服务平台之间数据对应
+A.18“ ”
+翻译表 其中 表示某个数据名称的 号 以 位字符串表示外
+。 ,InterfacetoPlatformID ID ,PlatformCode 4
+部平台编号 表示外部平台某个数据名称对应的编号 表示外部
+,PlatformDataCode ,PlatformDataName
+平台 某 个 数 据 名 称 表 示 用 户 端 系 统 内 某 个 数 据 名 称 对 应 的 编 号
+;UserSideDataCode ,
+表示用户端系统内某个数据名称
+UserSideDataName 。
+外部平台向用户端系统采集数据时 用户端系统识别外部平台类型 确定外部平台代码 将外部平
+, , ;
+台要求的数据代号 转换成用户端系统内部编号 然后由内部编号
+PlatformDataCode UserSideDataCode,
+找 到 需 要 的 数 据 再 将 找 到 的 数 据 值 同 对 应 的
+UserSideDataCode , UserSideDataCode
+编号发送给外部平台
+PlatformDataCode 。
+表 对外事件数据表 记录和反映用户端能源管理系统与外部公共管理服务平台之间发生数
+A.19“ ”
+据往来的事件 其中 表示对外事件的 号 以 位字符
+。 ,EventToPlatformID ID ,EventToPlatformCode 4
+串表示对外部平台编号发生的事件类型 对应表 事件类型编号 和
+, B.1 ,EventToPlatformStartTime
+分别表示事件发生和结束的时间 表示外
+EventToPlatformEndTime ,EventToPlatformLoadToReduce
+部平台要求用户端系统削减的用电负荷 表示对外事件记录时间
+。EventToPlatformTime 。
+表 指标分类统一编码表 规定了电力 电量 谐波 其他等电参数名称和统一编码 以及事件类
+B.1“ ” 、 、 、 ,
+型 环境信息 子系统类型 控制类型 外部数据平台类型的名称和统一编码 便于信息传输和交互过程
+、 、 、 、 ,
+中采用一致的编码 提高网络传输效率
+, 。
+表 企业所属行业统一编码 直接沿用发改委需求侧管理相同的数据表 可对子用户进行所属
+B.2“ ” ,
+行业归类
+。
+表 能源分类统一编码 定义了不同能源形式采用的不同分类代码 能源分类代码用 位字符
+B.3“ ” 。 2
+串表示
+。
+表 用电分项统一编码 定义了各种能耗的分项代码 单位 换算千克标煤 分项能耗代码用
+B.4“ ” 、 、 。
+位字符串表示
+3 。
+表 设备类型统一编码 定义了各种设备的统一编码 便于设备的管理和电力 电量的统计分
+B.5“ ” , 、
+析 设备类型编码用 位字符串表示
+。 4 。
+表 用电时段类型统一编码 定义了不同用电时段特征的统一编码 峰时段 谷时段 平时段
+B.6“ ” 。 、 、 、
+尖时段是目前经济发达城市在用的时段分类 需求响应是目前国际国内都在研究试点的需求侧管理方
+。
+法 鉴于需求响应可以是基于电价激励的方法 即在特定时段采用特定的电价 所以在 用电时段类型
+。 , , 《
+统一编码 中增加了需求响应 需求响应可根据不同情况如气温 供电事故等设定多个级别 这里暂设
+》 。 、 。
+为 个级别
+3 。
+表 建筑功能类别统一编码 规定了不同类型建筑的统一编码 编码用 位英文大写字母
+B.7“ ” 。 1
+表示
+。
+58
+GB/Z32500—2016
+参 考 文 献
+标准化工作导则 第 部分 标准的结构和编写规则
+[1] GB/T1.1—2009 1 :
+国家发展改革委办公厅 发改办运行 号 关于做好国家电力需求侧管理平台建设
+[2] ( [2014]734 )《
+和应用工作的通知 附件 电力需求侧管理平台技术规范 试行 附录 主站基础模型数据结构与
+》, 1《 ( )》, A《
+统一编码
+》
+住房和城乡建设部 颁布 国家机关办公建筑和大型公共建筑能耗监测系统分项能耗数
+[3] 2008 《
+据采集技术导则
+》
+年工程机械 机械 仪表设备统一分类及编号目录
+[4] 1988 《 / 》
+模式 第 部分 简介
+[5] W3CXMLSchemaPart0:PrimerXML 0 :
+模式 第 部分 结构
+[6] W3CXMLSchemaPart1:StructuresXML 1 :
+模式 第 部分 数据类型
+[7] W3CXMLSchemaPart2:DatatypesXML 2 :
+雍俊海 程序设计 第二版 北京 清华大学出版社 年 月第 版
+[8] .Java ( )[M]. : .2007 8 2

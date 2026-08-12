@@ -1,0 +1,626 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { StandardFilter } from './components/StandardFilter';
+import { StandardTable } from './components/StandardTable';
+import { useStandards } from './hooks/useStandards';
+import { standardsService } from './standards.service';
+import { downloadStandardFile } from './standardDownload';
+import { Pagination } from '@/components/ui';
+import { PageLoading } from '@/components/ui';
+import api from '@/api/axios';
+import { Endpoints } from '@/api/endpoints';
+import { getApiErrorMessage } from '@/utils/apiError';
+import type { Standard } from '@/types';
+
+interface TermConflictRow {
+  id: number;
+  term_name: string;
+  standard_no_1: string;
+  standard_no_2: string;
+  conflict_type: string;
+  conflict_desc: string;
+  source_file: string;
+}
+
+interface TermConflictOverviewData {
+  total_conflicts: number;
+  total_terms: number;
+  total_types: number;
+  latest_batch_status: string | null;
+  latest_batch_rows: number;
+  rows: TermConflictRow[];
+}
+
+interface VectorSourceRow {
+  source: string;
+  saved_as: string | null;
+  chunk_count: number;
+}
+
+interface VectorStoreOverviewData {
+  available: boolean;
+  db_path: string;
+  collection_name: string | null;
+  dimension: number | null;
+  total_chunks: number;
+  total_sources: number;
+  rows: VectorSourceRow[];
+}
+
+interface ConflictDialogueRow {
+  id: number;
+  dialogue_id: string;
+  original_conflict_id: string;
+  question: string;
+  conflict_type: string;
+  source_document: string;
+  cluster: string;
+}
+
+interface ConflictDialogueTermConflictRow {
+  id: number;
+  term_name: string;
+  standard_no_1: string;
+  standard_no_2: string;
+  conflict_type: string;
+  conflict_desc: string;
+  source_file: string;
+}
+
+interface ConflictDialogueOverviewData {
+  total_dialogues: number;
+  total_conflict_groups: number;
+  total_mappings: number;
+  mapped_conflict_groups: number;
+  total_term_conflicts: number;
+  rows: ConflictDialogueRow[];
+  term_conflict_rows: ConflictDialogueTermConflictRow[];
+}
+
+interface StandardFilterOptionsData {
+  statuses: string[];
+  departments: string[];
+  categories: string[];
+}
+
+export const Standards: React.FC = () => {
+  const navigate = useNavigate();
+  const { standards, pagination, loading, search, filter, setPage, refetch } = useStandards();
+  const [overviewLoading, setOverviewLoading] = useState(false);
+  const [overviewError, setOverviewError] = useState<string | null>(null);
+  const [overview, setOverview] = useState<TermConflictOverviewData | null>(null);
+  const [vectorLoading, setVectorLoading] = useState(false);
+  const [vectorError, setVectorError] = useState<string | null>(null);
+  const [vectorOverview, setVectorOverview] = useState<VectorStoreOverviewData | null>(null);
+  const [dialogueLoading, setDialogueLoading] = useState(false);
+  const [dialogueError, setDialogueError] = useState<string | null>(null);
+  const [dialogueOverview, setDialogueOverview] = useState<ConflictDialogueOverviewData | null>(null);
+  const [statusOptions, setStatusOptions] = useState<string[]>([]);
+  const [departmentOptions, setDepartmentOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchFilterOptions = async (): Promise<void> => {
+      try {
+        const response: {
+          code: number;
+          message: string;
+          data: StandardFilterOptionsData;
+        } = await api.get(Endpoints.STANDARD_FILTER_OPTIONS);
+        if (!mounted || response.code !== 200 || !response.data) {
+          return;
+        }
+        setStatusOptions(response.data.statuses ?? []);
+        setDepartmentOptions(response.data.departments ?? []);
+      } catch {
+        // 筛选项加载失败时回退到 StandardFilter 组件内置默认选项
+      }
+    };
+    void fetchFilterOptions();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchOverview = async (): Promise<void> => {
+      setOverviewLoading(true);
+      setOverviewError(null);
+      try {
+        const response: {
+          code: number;
+          message: string;
+          data: TermConflictOverviewData;
+        } = await api.get(Endpoints.TERM_CONFLICT_OVERVIEW, {
+          params: { page: 1, size: 20 },
+        });
+
+        if (!mounted) {
+          return;
+        }
+
+        if (response.code !== 200 || !response.data) {
+          setOverviewError(response.message || '术语冲突数据加载失败');
+          setOverview(null);
+          return;
+        }
+        setOverview(response.data);
+      } catch (err: unknown) {
+        if (!mounted) {
+          return;
+        }
+        setOverviewError(getApiErrorMessage(err, '术语冲突数据加载失败'));
+        setOverview(null);
+      } finally {
+        if (mounted) {
+          setOverviewLoading(false);
+        }
+      }
+    };
+    void fetchOverview();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchDialogueOverview = async (): Promise<void> => {
+      setDialogueLoading(true);
+      setDialogueError(null);
+      try {
+        const response: {
+          code: number;
+          message: string;
+          data: ConflictDialogueOverviewData;
+        } = await api.get(Endpoints.CONFLICT_DIALOGUE_OVERVIEW, {
+          params: { page: 1, size: 20 },
+        });
+
+        if (!mounted) {
+          return;
+        }
+
+        if (response.code !== 200 || !response.data) {
+          setDialogueError(response.message || '冲突对数据加载失败');
+          setDialogueOverview(null);
+          return;
+        }
+
+        setDialogueOverview(response.data);
+      } catch (err: unknown) {
+        if (!mounted) {
+          return;
+        }
+        setDialogueError(getApiErrorMessage(err, '冲突对数据加载失败'));
+        setDialogueOverview(null);
+      } finally {
+        if (mounted) {
+          setDialogueLoading(false);
+        }
+      }
+    };
+
+    void fetchDialogueOverview();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchVectorOverview = async (): Promise<void> => {
+      setVectorLoading(true);
+      setVectorError(null);
+      try {
+        const response: {
+          code: number;
+          message: string;
+          data: VectorStoreOverviewData;
+        } = await api.get(Endpoints.VECTOR_STORE_OVERVIEW);
+
+        if (!mounted) {
+          return;
+        }
+
+        if (response.code !== 200 || !response.data) {
+          setVectorError(response.message || '向量数据库数据加载失败');
+          setVectorOverview(null);
+          return;
+        }
+
+        setVectorOverview(response.data);
+      } catch (err: unknown) {
+        if (!mounted) {
+          return;
+        }
+        setVectorError(getApiErrorMessage(err, '向量数据库数据加载失败'));
+        setVectorOverview(null);
+      } finally {
+        if (mounted) {
+          setVectorLoading(false);
+        }
+      }
+    };
+
+    void fetchVectorOverview();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const handleCreate = async (): Promise<void> => {
+    const code = window.prompt('请输入标准编号（如 GB/T 12345-2020）')?.trim();
+    if (!code) {
+      return;
+    }
+    const name = window.prompt('请输入标准名称')?.trim();
+    if (!name) {
+      return;
+    }
+    const version = window.prompt('请输入版本号（如 V1.0）', 'V1.0')?.trim() || 'V1.0';
+    const department = window.prompt('请输入主管部门（可选）', '')?.trim() || '';
+    const category = window.prompt('请输入分类（可选）', '未分类')?.trim() || '未分类';
+    const description = window.prompt('请输入标准描述（可选）', '')?.trim() || '';
+
+    try {
+      await standardsService.create({
+        code,
+        name,
+        version,
+        status: 'active',
+        department,
+        date: new Date().toISOString().slice(0, 10),
+        category,
+        description,
+      });
+      await refetch();
+      alert('新增成功');
+    } catch (err: unknown) {
+      alert(getApiErrorMessage(err, '新增失败'));
+    }
+  };
+
+  const handleEdit = async (s: Standard): Promise<void> => {
+    const name = window.prompt('修改标准名称', s.name)?.trim();
+    if (!name) {
+      return;
+    }
+    const version = window.prompt('修改版本号', s.version)?.trim() || s.version;
+    const department = window.prompt('修改主管部门', s.department || '')?.trim() || '';
+    const category = window.prompt('修改分类', s.category || '')?.trim() || '';
+    const description = window.prompt('修改描述', s.description || '')?.trim() || '';
+
+    try {
+      await standardsService.update(s.id, {
+        name,
+        version,
+        department,
+        category,
+        description,
+      });
+      await refetch();
+      alert('更新成功');
+    } catch (err: unknown) {
+      alert(getApiErrorMessage(err, '更新失败'));
+    }
+  };
+
+  const handleDelete = async (s: Standard): Promise<void> => {
+    const confirmed = window.confirm(`确认删除标准「${s.name}」吗？`);
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      await standardsService.delete(s.id);
+      await refetch();
+      alert('删除成功');
+    } catch (err: unknown) {
+      alert(getApiErrorMessage(err, '删除失败'));
+    }
+  };
+
+  const handleView = (s: Standard): void => {
+    navigate(`/database/${encodeURIComponent(s.id)}`);
+  };
+
+  const handleDownload = async (s: Standard): Promise<void> => {
+    try {
+      await downloadStandardFile(s.id, 'original', `${s.code}.pdf`);
+    } catch {
+      try {
+        await downloadStandardFile(s.id, 'text', `${s.code}.txt`);
+      } catch (err: unknown) {
+        alert(getApiErrorMessage(err, '下载失败：未找到可下载文件'));
+      }
+    }
+  };
+
+  if (loading && !standards.length) {
+    return <PageLoading />;
+  }
+
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold text-slate-900">标准库</h1>
+      
+      <StandardFilter
+        onSearch={search}
+        onFilter={filter}
+        onCreate={() => void handleCreate()}
+        loading={loading}
+        statusOptions={statusOptions}
+        departmentOptions={departmentOptions}
+      />
+
+      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+        <StandardTable
+          standards={standards}
+          loading={loading}
+          onView={handleView}
+          onDownload={(s) => void handleDownload(s)}
+          onEdit={(s) => void handleEdit(s)}
+          onDelete={(s) => void handleDelete(s)}
+        />
+
+        {pagination && (
+          <div className="p-4 border-t border-slate-200">
+            <Pagination
+              current={pagination.current}
+              pageSize={pagination.pageSize}
+              total={pagination.total}
+              onChange={setPage}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+        <div className="p-4 border-b border-slate-200">
+          <h2 className="text-lg font-semibold text-slate-900">术语冲突数据（临时展示）</h2>
+          <p className="text-sm text-slate-500 mt-1">展示术语冲突数据库中的统计信息与最近 20 条记录</p>
+        </div>
+
+        {overviewLoading ? (
+          <div className="animate-pulse space-y-3 p-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-10 bg-slate-200 rounded" />
+            ))}
+          </div>
+        ) : overviewError ? (
+          <div className="p-4 text-sm text-red-600">{overviewError}</div>
+        ) : !overview ? (
+          <div className="p-4 text-sm text-slate-500">暂无术语冲突数据</div>
+        ) : (
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 p-4 border-b border-slate-200 bg-slate-50">
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">冲突总数</div>
+                <div className="text-xl font-bold text-slate-900">{overview.total_conflicts}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">术语总数</div>
+                <div className="text-xl font-bold text-slate-900">{overview.total_terms}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">冲突类型数</div>
+                <div className="text-xl font-bold text-slate-900">{overview.total_types}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">最新批次状态</div>
+                <div className="text-sm font-semibold text-slate-900">{overview.latest_batch_status || '-'}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">最新批次入库行数</div>
+                <div className="text-xl font-bold text-slate-900">{overview.latest_batch_rows}</div>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">术语名</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">冲突类型</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">定义1来源标准</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">定义2来源标准</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">冲突描述</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {overview.rows.map((row) => (
+                    <tr key={row.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.term_name}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_1}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_2}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.conflict_desc}>
+                        {row.conflict_desc}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+        <div className="p-4 border-b border-slate-200">
+          <h2 className="text-lg font-semibold text-slate-900">标准文件向量数据（临时展示）</h2>
+          <p className="text-sm text-slate-500 mt-1">展示后端向量数据库中已入库标准文件的 collection、chunk 数量与文件来源</p>
+        </div>
+
+        {vectorLoading ? (
+          <div className="animate-pulse space-y-3 p-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-10 bg-slate-200 rounded" />
+            ))}
+          </div>
+        ) : vectorError ? (
+          <div className="p-4 text-sm text-red-600">{vectorError}</div>
+        ) : !vectorOverview ? (
+          <div className="p-4 text-sm text-slate-500">暂无向量数据库数据</div>
+        ) : !vectorOverview.available ? (
+          <div className="p-4 text-sm text-slate-500">
+            当前未检测到可用的向量数据库。路径：{vectorOverview.db_path}
+          </div>
+        ) : (
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 p-4 border-b border-slate-200 bg-slate-50">
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">Collection</div>
+                <div className="text-base font-bold text-slate-900">{vectorOverview.collection_name || '-'}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">向量维度</div>
+                <div className="text-xl font-bold text-slate-900">{vectorOverview.dimension ?? '-'}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">Chunk 总数</div>
+                <div className="text-xl font-bold text-slate-900">{vectorOverview.total_chunks}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">文件来源数</div>
+                <div className="text-xl font-bold text-slate-900">{vectorOverview.total_sources}</div>
+              </div>
+            </div>
+
+            <div className="px-4 py-3 text-xs text-slate-500 border-b border-slate-200 bg-slate-50">
+              数据库路径：{vectorOverview.db_path}
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">原始文件名</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">保存文件名</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">Chunk 数</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {vectorOverview.rows.map((row) => (
+                    <tr key={`${row.source}-${row.saved_as || ''}`} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.source}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.saved_as || '-'}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.chunk_count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+        <div className="p-4 border-b border-slate-200">
+          <h2 className="text-lg font-semibold text-slate-900">冲突对数据（问答，临时展示）</h2>
+          <p className="text-sm text-slate-500 mt-1">展示冲突问答入库数量、映射数量与最近 20 条问答记录</p>
+        </div>
+
+        {dialogueLoading ? (
+          <div className="animate-pulse space-y-3 p-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="h-10 bg-slate-200 rounded" />
+            ))}
+          </div>
+        ) : dialogueError ? (
+          <div className="p-4 text-sm text-red-600">{dialogueError}</div>
+        ) : !dialogueOverview ? (
+          <div className="p-4 text-sm text-slate-500">暂无冲突对数据</div>
+        ) : (
+          <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-4 border-b border-slate-200 bg-slate-50">
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">问答总数</div>
+                <div className="text-xl font-bold text-slate-900">{dialogueOverview.total_dialogues}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">冲突组数</div>
+                <div className="text-xl font-bold text-slate-900">{dialogueOverview.total_conflict_groups}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">映射总数</div>
+                <div className="text-xl font-bold text-slate-900">{dialogueOverview.total_mappings}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">已映射冲突组</div>
+                <div className="text-xl font-bold text-slate-900">{dialogueOverview.mapped_conflict_groups}</div>
+              </div>
+              <div className="rounded border border-slate-200 bg-white p-3">
+                <div className="text-xs text-slate-500">术语冲突总数</div>
+                <div className="text-xl font-bold text-slate-900">{dialogueOverview.total_term_conflicts}</div>
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">问答ID</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">原始冲突ID</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">冲突类型</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">来源文档</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">问题</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {dialogueOverview.rows.map((row) => (
+                    <tr key={row.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.dialogue_id}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.original_conflict_id}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700 max-w-md truncate" title={row.source_document}>
+                        {row.source_document}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.question}>
+                        {row.question}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="px-4 py-3 text-sm font-semibold text-slate-800 border-t border-slate-200 bg-slate-50">
+              术语冲突内容预览
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-slate-50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">术语名</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">冲突类型</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">定义1来源标准</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">定义2来源标准</th>
+                    <th className="px-4 py-3 text-left text-sm font-medium text-slate-600">冲突描述</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {dialogueOverview.term_conflict_rows.map((row) => (
+                    <tr key={`dialogue-term-${row.id}`} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.term_name}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_1}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_2}</td>
+                      <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.conflict_desc}>
+                        {row.conflict_desc}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Standards;

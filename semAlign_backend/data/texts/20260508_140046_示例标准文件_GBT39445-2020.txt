@@ -1,0 +1,15 @@
+StandardNo:GB/T39445-2020
+Title: Information Security Technology - Data Security Capability Requirements
+Version:2020
+1Scope
+This document specifies baseline requirements for data security capability.
+2NormativeReferences
+GB/T 22239-2019 Information security technology - Baseline for classified protection.
+ISO/lEC27001:2022Informationsecuritymanagementsystems.
+3 Terms and Definitions
+3.1DataAsset:A resource indigital formwithbusinessvalue.
+3.2 Security Control: A measure designed to reduce security risk.
+4 Requirements
+4.1 Identification and classification of data assets shall be established.
+4.2 Access control and audit logging shall be implemented.
+4.3 Backup and recovery mechanisms shall be periodically verified.

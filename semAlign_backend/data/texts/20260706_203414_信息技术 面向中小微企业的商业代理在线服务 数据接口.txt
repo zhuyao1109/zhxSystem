@@ -1,0 +1,654 @@
+ICS 35.240.01
+CCS L 67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T 44274—2024
+信息技术 面向中小微企业的商业
+代理在线服务 数据接口
+Information technology—Business agency online service for micro
+，
+medium and small enterprise—Data interface
+2024⁃08⁃23 发布 2025⁃03⁃01 实施
+国 家 市 场 监 督 管 理 总 局
+发 布
+国 家 标 准 化 管 理 委 员 会
+GB/T 44274—2024
+目 次
+前言··························································································································Ⅲ
+1 范围·······················································································································1
+2 规范性引用文件········································································································1
+3 术语和定义··············································································································1
+4 数据接口·················································································································1
+4.1 概述·················································································································1
+4.2 服务商入驻流程··································································································2
+4.3 代理平台服务流程·······························································································2
+4.4 下载和检索········································································································3
+4.5 服务商入驻········································································································4
+4.6 代理平台服务·····································································································6
+4.7 下载服务接口（Download）····················································································18
+4.8 检索服务接口（Search）·························································································19
+参考文献····················································································································20
+Ⅰ
+GB/T 44274—2024
+前 言
+本文件按照 GB/T 1.1—2020《标准化工作导则 第 1 部分：标准化文件的结构和起草规则》的规
+定起草。
+请注意本文件的某些内容可能涉及专利。本文件的发布机构不承担识别专利的责任。
+本文件由全国信息技术标准化技术委员会（SAC/TC 28）提出并归口。
+本文件起草单位：东北大学、深圳赛西信息技术有限公司、汉唐信通（北京）咨询股份有限公司、中
+国电子技术标准化研究院、山东省计算中心（国家超级计算济南中心）、北京邮电大学、浙江工业大学。
+本文件主要起草人：杨金柱、刘莹、张程、舒明雷、于浩、吴刚、李丽、张盟、王尚广、叶蕾、刘照阳、
+柴颖、欧阳文涛。
+Ⅲ
+GB/T 44274—2024
+信息技术 面向中小微企业的商业
+代理在线服务 数据接口
+1 范围
+本文件规定了面向中小微企业的商业代理在线服务的数据接口。
+本文件适用于中小微企业、商业代理服务商基于商业代理在线服务平台开展商业代理活动。
+2 规范性引用文件
+本文件没有规范性引用文件。
+3 术语和定义
+下列术语和定义适用于本文件。
+3.1
+中小微企业 small， medium and micro enterprises
+在中华人民共和国境内依法设立的，人员规模、经营规模相对较小的企业。
+3.2
+商业代理服务商 business service agency
+通过网络平台提供商业代理服务的机构。
+注： 本文件中将商业代理服务商简称为“服务商”。
+3.3
+商业代理服务 business agency services
+服务商受中小微企业的委托，在一定的代理权限下，以企业的名义代替企业行使指定经济行为的
+服务。
+注： 本文件中将企业称为“用户”。
+3.4
+服务代理平台 service agency platform
+通过网络连接用户、服务商及其相关活动，能够根据用户提出的服务需求筛选出合格的服务商为
+其提供服务，并且为了保障双方权益，在一定权限下，进行服务商资格审查与产品上架审查的系统（包
+括电子商务系统和事务处理系统等）。
+注： 简称“代理平台”。
+4 数据接口
+4.1 概述
+数据接口是代理服务过程中在用户、代理平台、服务商之间传递数据的接口。商业代理类服务的
+业务流程包含三个对象：用户、服务商、代理平台。用户是通过代理平台获取所需服务产品的群体；服
+务商是服务的提供者；代理平台是服务商和用户之间的中介，是第三方管理的信息系统。代理服务过
+1
+GB/T 44274—2024
+程中，所需要的数据分别经由“用户—代理平台”和“代理平台—服务商”之间的数据接口交换。
+4.2 服务商入驻流程
+服务商入驻代理平台的申请流程见图 1。服务商向代理平台发送入驻申请，代理平台进行审核，
+确认后获得入驻资格，服务商在代理平台上架自己的产品。
+图 1 服务商入驻流程
+4.3 代理平台服务流程
+代理服务的业务流程见图 2。包括用户需求提交、输出方案、签订协议、提交材料、服务支付和服
+务质量评价六个阶段。前四个阶段均应执行相应的确认判断，确认成功后继续推进到下一个阶段；如
+果确认失败，则返回该阶段重新执行，或结束整个服务流程。第六阶段执行后，该次代理服务完成。
+2
+GB/T 44274—2024
+图 2 代理平台服务流程
+4.4 下载和检索
+用户通过代理平台提供的服务进行相关信息的下载和检索。
+3
+GB/T 44274—2024
+4.5 服务商入驻
+4.5.1 服务商入驻申请服务接口（SPApply）
+4.5.1.1 概述
+服务商入驻申请服务接口是服务商向代理平台传递申请入驻信息的接口，接口请求信息 iSPAInfo
+主要包括：服务商名称、服务商地址、联系人姓名、联系人电话号码、统一社会信用代码等真实信息，代
+理平台通过资质审批认证确认后， 向服务商返回确认信息 iSPAReturnInfo。
+4.5.1.2 接口数据项
+接口数据项见表 1。
+表 1 服务商入驻申请服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spname String 服务商名称
+2 Address String 服务商地址
+3 Contacts String 联系人姓名
+4 Phone String 联系人电话号码
+5 Identifier String 统一社会信用代码
+6 Spno String 服务商编号
+7 Result String 审核结果
+8 Memo String 备用字段
+4.5.1.3 接口请求
+服务商入驻申请服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iSPAInfo>
+<SPNAME>服务商名称</ SPNAME >
+<ADDRESS >服务商地址</ ADDRESS >
+<CONTACTS>联系人姓名</ CONTACTS>
+<PHONE>联系电话号码</ PHONE >
+<IDENTIFIER>统一社会信用代码</IDENTIFIER>
+<MEMO>备用字段</MEMO>
+</iSPAInfo>
+4.5.1.4 接口返回
+服务商入驻申请服务接口返回参数如下。
+4
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8" ?>
+<iSPAReturnInfo>
+<SPNO>服务商编号</ SPNO >
+<RESULT>审核结果</ RESULT >
+<MEMO>备用字段</MEMO>
+</iSPAReturnInfo>
+4.5.2 签署入驻协议服务接口（SPAgreementSubmit）
+4.5.2.1 概述
+签署入驻协议服务接口是代理平台对服务商进行审核、双方确认审核结果后签订协议的服务接
+口，确立双方权责，双方在线上签订的协议具有法律效力。接口请求的信息 iSPRInfo 主要包括：服务
+商编号、协议文件链接，接口返回的信息为 iSPRReturnInfo。
+4.5.2.2 接口数据项
+签署入驻协议服务接口数据项见表 2。
+表 2 签署入驻协议服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spno String 服务商编号
+2 Agreement Url 协议文件链接
+3 Signedagreement Url 签名协议文件链接
+4 Memo String 备用字段
+4.5.2.3 接口请求
+签署入驻协议服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iSPRInfo>
+<SPNO>服务商编号</ SPNO >
+<AGREEMENT>协议文件链接</AGREEMENT>
+</iSPRInfo>
+4.5.2.4 接口返回
+签署入驻协议服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iSPRReturnInfo >
+<SPNO>服务商编号</ SPNO >
+<SIGNEDAGREEMENT>签名协议文件链接</SIGNEDAGREEMENT>
+<MEMO>备用字段</MEMO>
+</iSPRReturnInfo >
+5
+GB/T 44274—2024
+4.5.3 产品上架服务接口（ProductionSupply）
+4.5.3.1 概述
+产品上架服务接口是服务商向代理平台提供商业代理服务产品及信息的接口，接口请求信息
+iPRSInfo 主要包括： 服务商编号、产品名称、产品类别、产品描述、产品价格等信息。
+4.5.3.2 接口数据项
+产品上架服务接口数据项见表 3。
+表 3 产品上架服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spno String 服务商编号
+2 Productname String 产品名称
+3 Productcategory String 产品类别
+4 Productdescription String 产品描述
+5 Productprice Decimal 产品价格
+6 Memo String 备用字段
+4.5.3.3 接口请求
+产品上架服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iPRSInfo>
+<SPNO>服务商编号</SPNO>
+<PRODUCTNAME>产品名称</ PRODUCTNAME>
+<PRODUCTCATEGORY>产品类别</ PRODUCTCATEGORY>
+<PRODUCTDESCRIPTION>产品描述</ PRODUCTDESCRIPTION>
+<PRODUCTPRICE>产品价格</ PRODUCTPRICE >
+<MEMO>备用字段</MEMO>
+</iPRSInfo>
+4.6 代理平台服务
+4.6.1 用户需求提交服务接口（UserDemandSubmit）
+4.6.1.1 概述
+用户需求提交服务接口用于用户向代理平台提交所需要的服务申请，用户提交的服务需求请求信
+息 iCRInfo 主要包括需求内容、客户姓名、创建时间等能够辨识服务的信息，接口返回信息为 iCRRe⁃
+turnInfo。
+4.6.1.2 接口数据项
+用户需求提交服务接口数据项见表 4。
+6
+GB/T 44274—2024
+表 4 用户需求提交服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Demand String 需求内容
+2 Name String 客户姓名
+3 Creattime Datetime 创建时间
+4 Status String 请求状态
+5 Demandno String 需求编号
+6 Submittime Datetime 提交时间
+7 Memo String 备用字段
+4.6.1.3 接口请求
+用户需求提交服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iCRInfo>
+<DEMAND>需求内容</DEMAND>
+<NAME>客户姓名</NAME>
+<CREATTIME>创建时间</CREATTIME>
+<MEMO>备用字段</MEMO>
+</iCRInfo>
+4.6.1.4 接口返回
+用户需求提交服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iCRReturnInfo>
+<STATUS>请求状态</STATUS>
+<DEMANDNO>需求编号</DEMANDNO>
+<SUBMITTIME>提交时间</SUBMITTIME>
+<MEMO>备用字段</MEMO>
+</iCRReturnInfo>
+4.6.2 输出方案服务接口
+4.6.2.1 服务商输出方案服务接口（SPSchemeOutput）
+4.6.2.1.1 概述
+服务商输出方案接口用于代理平台与服务商之间进行方案收集的接口，接口请求 iPLInfo 内容包
+括用户提交的需求，接口返回内容 iPLReturnInfo 主要是服务商编号、需求编号、方案编号、方案文件、
+方案价格、方案完成时间。
+7
+GB/T 44274—2024
+4.6.2.1.2 接口数据项
+服务商输出方案服务接口数据项见表 5。
+表 5 服务商输出方案服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Demandno String 需求编号
+2 Demand String 服务需求内容
+3 Submittime Datetime 提交时间
+4 Spno String 服务商编号
+5 Schemeno String 方案编号
+6 Scheme Url 方案文件链接
+7 Price Decimal 方案价格
+8 Schemetime Datetime 方案完成时间
+9 Memo String 备用字段
+4.6.2.1.3 接口请求
+服务商输出方案服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iPLInfo>
+<DEMANDNO>需求编号</DEMANDNO>
+<DEMAND>服务需求内容</DEMAND>
+<SUBMITTIME>提交时间</SUBMITTIME>
+<MEMO>备用字段</MEMO>
+</iPLInfo>
+4.6.2.1.4 接口返回
+服务商输出方案服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iPLReturnInfo>
+<SPNO>服务商编号</SPNO>
+<DEMANDNO>需求编号</DEMANDNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<SCHEME>方案文件</SCHEME>
+<PRICE>方案价格</PRICE>
+<SCHEMETIME>方案完成时间</SCHEMETIME>
+<MEMO>备用字段</MEMO>
+</iPLReturnInfo>
+8
+GB/T 44274—2024
+4.6.2.2 用户输出方案服务接口（UserSchemeOutput）
+4.6.2.2.1 概述
+用户输出方案服务接口用于代理平台与用户之间进行方案输出的接口，接口请求的内容 iUPLInfo
+主要包括：用户编号、需求编号、方案编号、方案文件链接、方案价格、方案完成时间等，接口返回的内容
+iUPLReturnInfo 包括用户方案确认信息。
+4.6.2.2.2 接口数据项
+用户输出方案服务接口数据项见表 6。
+表 6 用户输出方案服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Userno String 用户编号
+2 Demandno String 需求编号
+3 Schemeno Datetime 方案编号
+4 Scheme Url 方案文件链接
+5 Price Decimal 方案价格
+6 Schemetime Datetime 方案完成时间
+7 Schemeconfirm String 方案确认信息
+8 Memo String 备用字段
+4.6.2.2.3 接口请求
+用户输出方案服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iUPLInfo>
+<USERNO>用户编号</USERNO>
+<DEMANDNO>需求编号</DEMANDNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<SCHEME>方案文件链接</SCHEME>
+<PRICE>方案价格</PRICE>
+<SCHEMETIME>方案完成时间</SCHEMETIME>
+<MEMO>备用字段</MEMO>
+</iUPLInfo>
+4.6.2.2.4 接口返回
+用户输出方案服务接口返回参数如下。
+9
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8" ?>
+<iUPLReturnInfo>
+<USERNO>用户编号</USERNO>
+<DEMANDNO>需求编号</DEMANDNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<SCHEMECONFIRM>方案确认信息</ SCHEMECONFIRM >
+<MEMO>备用字段</MEMO>
+</iUPLReturnInfo>
+4.6.3 签订协议服务接口
+4.6.3.1 用户签订协议服务接口（UserAgreementSubmit）
+4.6.3.1.1 概述
+用户签订协议服务接口由代理平台向用户发出签订协议的服务请求，明确用户实现服务需求应支
+付的金额和方式，确立双方权责。接口请求的信息 iAPInfo 主要包括：用户编号、方案编号、协议编号、
+协议文件链接、提交时间，接口返回的信息为 iAPReturnInfo。
+4.6.3.1.2 接口数据项
+用户签订协议服务接口数据项见表 7。
+表 7 用户签订协议服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Userno String 用户编号
+2 Schemeno Datetime 方案编号
+3 Agreementno String 协议编号
+4 Agreement Url 协议文件链接
+5 Submittime Datetime 提交时间
+6 Signedagreement Url 带签名的协议文件链接
+7 Memo String 备用字段
+4.6.3.1.3 接口请求
+用户签订协议服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iAPInfo >
+<USERNO>用户编号</USERNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<AGREEMENTNO>协议编号</AGREEMENTNO>
+<AGREEMENT>协议文件</AGREEMENT>
+<SUBMITTIME>提交时间</SUBMITTIME>
+<MEMO>备用字段</MEMO>
+</iAPInfo >
+10
+GB/T 44274—2024
+4.6.3.1.4 接口返回
+用户签订协议服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iAPReturnInfo>
+<USERNO>用户编号</USERNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<AGREEMENTNO>协议编号</AGREEMENTNO>
+<SIGNEDAGREEMENT>带签名的协议文件链接</SIGNEDAGREEMENT>
+<MEMO>备用字段</MEMO>
+</iAPReturnInfo>
+4.6.3.2 服务商签订协议服务接口（SPAgreementSubmit）
+4.6.3.2.1 概述
+服务商签订协议服务接口由代理平台向服务商发出签订协议的服务请求，明确服务商实现服务需
+求应获得的费用和方式，确立双方权责。接口请求的信息 iSPAPInfo 主要包括： 服务商编号、方案编
+号、协议编号、协议文件链接、提交时间等，接口返回的信息为 iSPAPReturnInfo。
+4.6.3.2.2 接口数据项
+服务商签订协议服务接口数据项见表 8。
+表 8 服务商签订协议服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spno String 服务商编号
+2 Schemeno String 方案编号
+3 Agreementno String 协议编号
+4 Agreement Url 协议文件链接
+5 Submittime Datetime 提交时间
+6 Signedgreement Url 带签名的协议文件链接
+7 Memo String 备用字段
+4.6.3.2.3 接口请求
+服务商签订协议服务接口请求参数如下。
+11
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8"?>
+<iSPAPInfo>
+<SPNO>服务商编号</SPNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<AGREEMENTNO>协议编号</AGREEMENTNO>
+<AGREEMENT>协议文件链接</AGREEMENT>
+<SUBMITTIME>提交时间</SUBMITTIME>
+<MEMO>备用字段</MEMO>
+</iSPAPInfo>
+4.6.3.2.4 接口返回
+服务商协议签订服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iSPAPReturnInfo>
+<SPNO>服务商编号</SPNO>
+<SCHEMENO>方案编号</SCHEMENO>
+<AGREEMENTNO>协议编号</AGREEMENTNO>
+<SIGNEDAGREEMENT>带签名的协议文件链接</SIGNEDAGREEMENT>
+<MEMO>备用字段</MEMO>
+</iSPAPReturnInfo>
+4.6.4 提交材料服务接口
+4.6.4.1 用户提交材料服务接口（UserMaterialSubmit）
+4.6.4.1.1 概述
+用户提交材料接口是代理平台向用户发出请求提交相关材料的接口。代理平台向用户发出提交
+材料请求，用户完成材料收集后向代理平台返回相关信息，接口请求信息为 iMInfo，返回信息 iMRe⁃
+turnInfo 包括：用户编号、订单编号和材料文件链接等。
+4.6.4.1.2 接口数据项
+用户提交材料服务接口数据项见表 9。
+表 9 用户提交材料服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Userno String 用户编号
+2 Orderno String 订单编号
+3 Materiallist XML Element 材料清单
+4 Marterial Url 材料文件链接
+5 Memo Datetime 备用字段
+12
+GB/T 44274—2024
+4.6.4.1.3 接口请求
+用户提交材料服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+< iMInfo >
+<USERNO>用户编号</USERNO>
+<ORDERNO>订单编号</ORDERNO>
+<MATERIALLIST>
+<Marterial Type=′专利申请服务′>
+<APPLICATION FORM>申请书</APPLICATION FORM>
+<SPECIFICATION>说明书</SPECIFICATION>
+<ABSTRACT>摘要<ABSTRACT>
+<WRITTEN DESCRIPTION>权利要求书<WRITTEN DESCRIPTION>
+<DRAWINGS>说明书附图<DRAWINGS>
+</Marterial>
+</MATERIALLIST>
+<MEMO>备用字段</MEMO>
+</ iMInfo >
+4.6.4.1.4 接口返回
+用户提交材料服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iMReturnInfo>
+<USERNO>用户编号</USERNO>
+<ORDERNO>订单编号</ORDERNO>
+<MATERIAL>材料文件链接</MATERIAL>
+<MEMO>备用字段</MEMO>
+</iMReturnInfo>
+4.6.4.2 服务商提交材料服务接口（SPMaterialSubmit）
+4.6.4.2.1 概述
+服务商提交材料接口是代理平台向服务商发出接受相关材料的接口。代理平台向服务商发出对
+应需求下的材料文件，服务商收到后向代理平台返回确认信息，接口请求信息为 iSPMInfo，返回的确
+认信息 iSPMReturnInfo 包括：服务商编号、订单编号和材料确认信息。
+4.6.4.2.2 接口数据项
+服务商提交材料服务接口数据项见表 10。
+表 10 服务商提交材料服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spno String 服务商编号
+2 Orderno String 订单编号
+13
+GB/T 44274—2024
+表 10 服务商提交材料服务接口数据项 （续）
+序号 数据项名称 数据项类型 数据项描述
+3 Material Url 材料文件链接
+4 Materialconfirm String 材料确认信息
+5 Memo String 备用字段
+4.6.4.2.3 接口请求
+服务商提交材料服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iSPMInfo>
+<SPNO>服务商编号</SPNO>
+<ORDERNO>订单编号</ORDERNO>
+<MATERIAL>材料文件链接</MATERIAL>
+<MEMO>备用字段</MEMO>
+</iSPMInfo>
+4.6.4.2.4 接口返回
+服务商提交材料服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8" ?>
+<iSPMReturnInfo>
+<SPNO>服务商编号</SPNO>
+<ORDERNO>订单编号</ORDERNO>
+<MATERIALCONFIRM>材料确认信息</ MATERIALCONFIRM >
+<MEMO>备用字段</MEMO>
+</iSPMReturnInfo>
+4.6.5 服务交付接口
+4.6.5.1 服务商服务交付接口（SPDeliverySubmit）
+4.6.5.1.1 概述
+服务商服务交付接口是服务商向代理平台交付服务的接口，接口信息 iDLInfo 主要包括服务商编
+号、订单编号、交付文件链接、交付完成时间等信息。
+4.6.5.1.2 接口数据项
+服务商服务交付接口数据项见表 11。
+14
+GB/T 44274—2024
+表 11 服务商服务交付接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Spno String 服务商编号
+2 Orderno String 订单编号
+3 Delivery Url 交付文件链接
+4 Deliverytime Datetime 交付完成时间
+5 Memo String 备用字段
+4.6.5.1.3 接口请求
+服务商服务交付接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iDLInfo>
+<SPNO>服务商编号</SPNO>
+<ORDERNO>订单编号</ORDERNO>
+<DELIVERY>交付文件链接</DELIVERY>
+<DELIVERYTIME>交付完成时间</DELIVERYTIME>
+<MEMO>备用字段</MEMO>
+</iDLInfo>
+4.6.5.2 用户服务交付接口（UserDeliverySubmi）
+4.6.5.2.1 概述
+用户服务交付接口是代理平台向用户交付服务的接口，接口信息 iUDLInfo 主要包括用户编号、订
+单编号、交付文件链接、交付完成时间等信息。
+4.6.5.2.2 接口数据项
+用户服务交付信息接口数据项见表 12。
+表 12 用户服务交付信息接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Userno String 用户编号
+2 Orderno String 订单编号
+3 Delivery Url 交付文件链接
+4 Deliverytime Datetime 交付完成时间
+4.6.5.2.3 接口请求
+用户服务交付信息接口请求参数如下。
+15
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8"?>
+<iUDLInfo>
+<USERNO>用户编号</USERNO>
+<ORDERNO>订单编号</ORDERNO>
+<DELIVERY>交付文件链接</DELIVERY>
+<DELIVERYTIME>交付完成时间</DELIVERYTIME>
+</iUDLInfo>
+4.6.6 质量评价服务接口
+4.6.6.1 用户质量评价服务接口（UserCommentSubmi）
+4.6.6.1.1 概述
+用户服务质量评价服务接口用于收集用户对服务商所提供的服务满意程度反馈信息接口。接口
+请求 iQEInfo 的主要内容包括订单编号、服务状态、服务响应速度、服务准确率等信息。
+4.6.6.1.2 接口数据项
+用户服务质量评价服务接口数据项见表 13。
+表 13 用户服务质量评价服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Orderno String 订单编号
+2 Status String 服务状态
+3 Content String 服务内容
+4 Speed String 服务响应速度
+5 Accuracy String 服务准确率
+6 SLA XML Element 服务等级协议
+7 Memo String 备用字段
+4.6.6.1.3 接口请求
+用户服务质量评价服务接口请求参数如下。
+16
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8"?>
+<iQEInfo>
+<ORDERNO>订单编号</ORDERNO>
+<STATUS>服务状态</STATUS>
+<CONTENT>服务内容</CONTENT>
+<SPEED>服务响应速度</SPEED>
+<ACCURACY>服务准确率</ACCURACY>
+<SLA Type=′专利申请服务′>
+<ACCEPTTIME>受理时间</ ACCEPTTIME >
+<APPROVALTIME>立项时间</ APPROVALTIME >
+<MODIFYTIMES>修改次数</ MODIFYTIMES >
+<FEES>服务费用</FEES>
+</SLA>
+<MEMO>备用字段</MEMO>
+</iQEInfo>
+4.6.6.2 服务商质量评价服务接口（SPCommentSubmit）
+4.6.6.2.1 概述
+服务商服务质量评价服务接口是代理平台向服务商反馈用户对服务满意程度的信息接口。接口
+请求 iSPQEInfo 的主要内容包括订单编号、服务状态、服务响应速度、服务准确率等信息。
+4.6.6.2.2 接口数据项
+服务商服务质量评价服务接口数据项见表 14。
+表 14 服务商服务质量评价服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Orderno String 订单编号
+2 Status String 服务状态
+3 Content String 服务内容
+4 Speed String 服务响应速度
+5 Accuracy String 服务准确率
+6 SLA XML Element 服务等级协议
+7 Memo String 备用字段
+4.6.6.2.3 接口请求
+服务商服务质量评价服务接口请求参数如下。
+17
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8"?>
+<iSPQEInfo>
+<ORDERNO>订单编号</ORDERNO>
+<STATUS>服务状态</STATUS>
+<CONTENT>服务内容</CONTENT>
+<SPEED>服务响应速度</SPEED>
+<ACCURACY>服务准确率</ACCURACY>
+<SLA Type=′专利申请服务′>
+<ACCEPTTIME>受理时间</ ACCEPTTIME >
+<APPROVALTIME>立项时间</ APPROVALTIME >
+<MODIFYTIMES>修改次数</ MODIFYTIMES >
+<FEES>服务费用</FEES>
+</SLA>
+<MEMO>备用字段</MEMO>
+</iSPQEInfo>
+4.7 下载服务接口（Download）
+4.7.1 概述
+下载服务接口是用于代理平台向用户提供文件下载功能的通用接口。用户通过该接口下载需要
+的文件，文件包括发票、申请审批单等。接口请求信息为 iDWInfo，返回信息为 iDWReturnInfo。
+4.7.2 接口数据项
+下载服务接口数据项见表 15。
+表 15 下载服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Userno String 用户编号
+2 Orderno String 订单编号
+3 File Url 下载文件链接
+4 Memo String 备用字段
+4.7.3 接口请求
+下载服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iDWInfo>
+<USERNO>用户编号</ USERNO >
+<ORDERNO>订单编号</ORDERNO>
+<MEMO>备用字段</MEMO>
+</iDWInfo>
+4.7.4 接口返回
+下载服务接口返回参数如下。
+18
+GB/T 44274—2024
+<?xml version="1.0" encoding="utf-8"?>
+<iDWReturnInfo>
+<USERNO>用户编号</ USERNO >
+<ORDERNO>订单编号</ORDERNO>
+<FILE>下载文件链接</ FILE>
+<MEMO>备用字段</MEMO>
+</iDWReturnInfo>
+4.8 检索服务接口（Search）
+4.8.1 概述
+检索服务接口是代理平台向用户和服务商提供文件检索、公司检索、法人检索、服务检索等功能的
+通用接口。检索服务接口会向用户返回匹配的数据信息。接口请求信息为 iSRInfo，返回信息为
+iSRReturnInfo。
+4.8.2 接口数据项
+检索服务接口数据项见表 16。
+表 16 检索服务接口数据项
+序号 数据项名称 数据项类型 数据项描述
+1 Search String 检索条件
+2 Content String 检索内容
+3 Memo String 备用字段
+4.8.3 接口请求
+检索服务接口请求参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iSRInfo>
+<SEARCH>检索条件</ SEARCH >
+<MEMO>备用字段</MEMO>
+</iSRInfo>
+4.8.4 接口返回
+检索服务接口返回参数如下。
+<?xml version="1.0" encoding="utf-8"?>
+<iSRReturnInfo>
+<SEARCH>检索条件</ SEARCH >
+<CONTENT>检索内容</ CONTENT >
+<MEMO>备用字段</MEMO>
+</iSRReturnInfo>
+19
+GB/T 44274—2024
+参 考 文 献
+［1］ GB/T 32419.4—2016 信息技术 SOA 技术实现规范 第 4 部分：基于发布/订阅的数据
+服务接口
+［2］ GB/T 34833—2017 专利代理机构服务规范
+［3］ GB/T 36610—2018 用于微博客的法人和其他组织统一社会信用代码实名认证服务接口
+规范
+［4］ 中华人民共和国中小企业促进法（2002 年 6 月 29 日第九届全国人民代表大会常务委员会
+第二十八次会议通过）.
+———————————
+20

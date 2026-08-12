@@ -1,0 +1,2863 @@
+ICS3524099
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T29807—2013
+信息技术 学习 教育和培训
+、
+学习对象元数据 绑定规范
+XML
+Informationtechnology—Learningeducationandtraining—
+,
+XMLbindingspecificationforlearningobjectmetadata
+2013-11-12发布 2014-05-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T29807—2013
+目 次
+前言 …………………………………………………………………………………………………………
+Ⅰ
+范围 ………………………………………………………………………………………………………
+1 1
+规范性引用文件 …………………………………………………………………………………………
+2 1
+术语和定义 ………………………………………………………………………………………………
+3 1
+使用约定 …………………………………………………………………………………………
+4 XML 1
+绑定详细描述 ……………………………………………………………………………………
+5 XML 4
+全局使用的元素…………………………………………………………………………………………
+6 35
+通用的元素………………………………………………………………………………………………
+7 37
+扩展性……………………………………………………………………………………………………
+8 40
+……………………………………………………………………………………………………
+9 vCard 41
+GB/T29807—2013
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本标准由全国信息技术标准化技术委员会 提出并归口
+(SAC/TC28) 。
+本标准起草单位 清华大学 中国电子技术标准化研究院
+: 、 。
+本标准主要起草人 郑莉 史元春 沈中南 向欣 李玉山 余云涛
+: 、 、 、 、 、 。
+Ⅰ
+GB/T29807—2013
+信息技术 学习 教育和培训
+、
+学习对象元数据XML绑定规范
+1 范围
+本标准规定了 中定义的学习对象元数据的 语言描述语法
+GB/T21365—2008 XML 。
+本标准适用于学习系统的开发人员对 标准的研发和使用
+GB/T21365—2008 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+数据元和交换格式 信息交换 日期和时间表示法
+GB/T7408 (GB/T7408—2005,ISO8601:
+2000,IDT)
+信息技术 通用多八位编码字符集
+GB13000 (UCS)(ISO/IEC10646.1:1993,IDT)
+信息技术 可扩展置标语言
+GB/T18793—2002 (XML)1.0
+信息技术 学习 教育和培训 基于规则的 绑定技术
+GB/T21364—2008 、 XML
+信息技术 学习 教育和培训 学习对象元数据
+GB/T21365—2008 、
+3 术语和定义
+和 界定的术语和定义适用于本文件
+GB/T21364—2008 GB/T21365—2008 。
+4 XML使用约定
+41 XML说明
+.
+定义了一个层次结构的概念模型 层次结构的模型可以方便的表示包含许多
+GB/T21365—2008 ,
+元素和子元素的数据 非常适合表示层次结构的模型 文档就是层次结构的 它由元素组
+。XML 。XML ,
+成 元素可以有自身的内容和属性 本章约定了 文档内容的一些使用规则
+, 。 XML 。
+42 元素名称
+.
+每一个元素都有一个名称 称为 标记名 标记名是大小区分的 本规范对于标记名的使
+, “ ”。XML 。
+用遵循如下的规则
+:
+所有标记名遵循 中的元素命名规则
+GB/T18793—2002 。
+标记名不得以大写 小写或大小写混合的 作为前 个字母
+、 “XML” 3 。
+本标准仅使用小写字母的标记名和元素名
+。
+元素名不得使用 中的保留字 如
+GB/T18793—2002 , :
+DOCTYPE
+ELEMENT
+1
+GB/T29807—2013
+ATTLIST
+ENTITY
+本标准中已定义的标记名不得重新定义
+。
+43 有效字符集
+.
+元数据实例的字符是 字汇 本标准不规定 文件编码方式
+GB13000 , XML 。
+44 属性的使用
+.
+在本标准中 属性用来表示元数据实例中词汇的结构和来源信息 而不用于表示资源的信息 本标
+, , 。
+准仅在某些地方以某种方式使用两个属性 属性和 属性
+:“xml:lang” “type” 。
+xmllang
+● : :
+该属性指明用何种语言表达元素的内容 它只能够作为 元素的属性 该属性的值可以
+, <langstring> 。
+是用两个字符表示的语种代码 跟上用两个字符表示的国家代码 如果有的话
+, ( )。
+示例
+:
+<otherplatformrequirements>
+<langstringxml:lang=”en-US”>Willnotruninbrowser.</langstring>
+</otherplatformrequirements>
+注 词汇表类型 在 和 元素中 中 元素的 属性值应为 例如
+: ( <source> <value> ) <langstring> “xml:lang” “x-none”。 :
+<role>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+作者
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</role>
+type
+● :
+该属性指明 元素中用于表示学习资源位置的字符串类型 它的值为 和
+<location> 。 “URI” “TEXT”
+中的一个 表示字符串是描述资源位置的语句或是因特网上的某一个地址 如
+, , URL。
+示例
+:
+<technical>
+<format/>
+<size>1032353</size>
+<locationtype=”URI”>http://www.example.com</location>
+</technical>
+45 列表
+.
+451 列表概述
+..
+在层次结构的多个级别中使用了列表 列表指元素内容的多次重复出现 在
+GB/T21365—2008 。 。
+文档中通过将包含的元素重复多次来实现
+XML 。
+示例
+:
+<?xmlversion="1.0"encoding="UTF-8"?>
+<! DOCTYPErecord[
+<! ELEMENTgeneral(language*)>
+<! ELEMENTlanguage(#PCDATA)>
+2
+GB/T29807—2013
+]>
+<record>
+<general>
+<language>en_US</language>
+<language>fr_FR</language>
+</general>
+</record>
+上面的例子中重复使用了 元素 因而 是重复内容 和 的包含
+<language> , ,<language> “en_US” “fr_FR”
+元素 在内容模型中重复元素的表示方法遵循 标准 星号 表示 实例化
+。 GB/T18793—2002 。 (*) XML
+过程中 元素可以重复任意次或不出现 列表主要分为两种类型 有序的和无序的
+<language> 。 : 。
+452 有序列表
+..
+在 结构中 列表元素在特定位置重复出现多次就是有序列表 这些元素在 文档中的位
+XML , , XML
+置说明它们是有序的 在下面的 片断示例中 元素包含了由
+。 XML ,<educational> <learningresourcetype>
+构成的有序列表
+。
+示例
+:
+<educational>
+<learningresourcetype>
+<source>
+<langstringxml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+试题
+<langstringxml:lang="x-none"> </langstring>
+</value>
+</learningresourcetype>
+<learningresourcetype>
+<source>
+<langstringxml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+试卷
+<langstringxml:lang="x-none"> </langstring>
+</value>
+</learningresourcetype>
+</educational>
+453 无序列表
+..
+在 结构中 列表元素在特定位置重复出现多次就是无序列表 元素的顺序无关紧要
+XML , , 。
+示例
+:
+<general>
+<language>en_US</language>
+<language>fr_FR</language>
+</general>
+在此例中 元素的每一次重复都生成一个新定义的 实例
+,<language> “language” 。
+中定义了元素列表的顺序属性
+GB/T21365—2008 。
+46 名称空间
+.
+允许用户定义自己的元素标签名 很明显 如果在某一个文档中使用了包含相同元素的不
+XML 。 ,
+3
+GB/T29807—2013
+同的 就会出现问题
+DTD, 。
+使用名称空间通常有两种方法
+:
+用来指明用于机器解释的特定编码方案
+——— ;
+用来作为唯一性和可能定义 语义 的引用
+——— ( ) 。
+这两种方法并不是互斥的 名称空间是作为元素名或属性名的前缀来使用的
+。 。
+示例
+:
+<dc:subject>
+前缀 是一个限定词 且应在文档中的其他位置定义 本标准的样例默认不使用命名空间 如果
+dc: , 。 ,
+使用 建议使用 名称空间应指向模式文件以供验证 要指向一个本地的模式文件 模式和
+, “itletcn”。 。 ,
+实例应在同一目录中 且以下面的形式出现
+XML , :
+<lomxmlns="http://www.celtsc.edu.cn/schema/lom"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.celtsc.edu.cn/schema/lomceltsc_metadata_xml.xsd">
+如果要在线验证 实例 名称空间的引用应该采用下面的形式
+XML , :
+<lomxmlns="http://www.celtsc.edu.cn/schema/lom"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.celtsc.edu.cn/schema/lom
+http://www.celtsc.edu.cn/schema/lom/celtsc_metadata_xml.xsd/download">
+5 XML绑定详细描述
+51 绑定说明
+.
+这一部分使用了一种简单的方法来描述 格式 本标准中提供的实现这种抽象格式的
+XML 。 DTD
+和 仅供参考
+XSD 。
+按照 的描述 最低峰值是指保证某一实现能够处理个数超过最低峰值的列表
+GB/T21365—2008 ,
+和长度超过最低峰值的字符串
+。
+52 lom 元素
+. < >
+描述 学习对象的一些通用信息
+: 。
+大小 元素是 实例的根元素 在一个元数据 实例中 要求出现且只能出现
+:<lom> XML , XML ,<lom>
+一次
+。
+属性
+:
+表示学习对象元数据的名称空间
+xmlns——— 。
+子元素
+:
+<general>
+<lifecycle>
+<metametadata>
+<technical>
+<educational>
+<rights>
+<relation>
+<annotation>
+<classification>
+4
+GB/T29807—2013
+53 general元素
+. < >
+531 根元素
+..
+描述 学习对象的一些通用信息
+: 。
+大小 元素在顶级 元素中要求出现且只能出现一次
+:<general> <lom> 。
+属性
+:
+无
+。
+子元素
+:
+<identifier>
+<title>
+<language>
+<description>
+<keyword>
+<coverage>
+<structure>
+<aggregationlevel>
+532 identifier元素
+.. < >
+5321 根元素
+...
+描述 学习对象的标号 该标号全球唯一
+: , 。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最低
+:<identifier> <general> , <general> ,
+峰值是
+10。
+属性
+:
+无
+。
+子元素
+:
+<catalog>
+<entry>
+示例
+:
+<general>
+<identifier>
+<catalog>ISBN</catalog>
+<entry>
+<langstring>0-226-10389-7</langstring>
+</entry>
+</identifier>
+</general>
+5322 catalog元素
+... < >
+描述 所属标识方案或编目方案的名称或指示符 一种命名方案
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<catalog> <identifier> 。
+属性
+:
+无
+。
+5
+GB/T29807—2013
+子元素
+:
+无
+。
+5323 entry元素
+... < >
+描述 在标识或编目方案中用于标识此学习对象的标识符 一个和名域相关的字符串
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<entry> <identifier> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <entry> , <lang-
+中的 属性应互不相同
+string> xml:lang 。)
+533 title元素
+.. < >
+描述 学习对象的名称
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<title> <general> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <title> , <lang-
+中的 属性应互不相同
+string> xml:lang 。)
+示例
+:
+<general>
+<title>
+<langstringxml:lang=”en”>Title1inEnglish</langstring>
+中文标题
+<langstringxml:lang=”zh”> 1</langstring>
+</title>
+</general>
+534 language元素
+.. < >
+描述 同目标用户交流时学习对象所主要使用的人类语言
+: 。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最低
+:<language> <general> , <general> ,
+峰值是
+10。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<general>
+<language>en</language>
+<language>zh</language>
+</general>
+535 description 元素
+.. < >
+描述 对学习对象内容的文本描述
+: 。
+6
+GB/T29807—2013
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最
+:<description> <general> , <general> ,
+低峰值是
+10。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <description> ,
+中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<general>
+<description>
+<langstringxml:lang=”en”>Englishdescription</langstring>
+中文描述
+<langstringxml:lang=”zh”> </langstring>
+</description>
+</general>
+536 keyword 元素
+.. < >
+描述 描述学习对象主题的关键字或短语 本数据元素不应该用于描述别的数据元素所描述的
+: 。
+特征
+。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最低
+:<keyword> <general> , <general> ,
+峰值是
+10。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <keyword> , <lan-
+中的 属性应互不相同
+gstring> xml:lang 。)
+示例
+:
+<general>
+<keyword>
+<langstringxml:lang=”en”>metadata</langstring>
+<langstringxml:lang=”nl”>metadata</langstring>
+元数据
+<langstringxml:lang=”zh”> </langstring>
+</keyword>
+<keyword>
+<langstringxml:lang=”en”>learningobject</langstring>
+<langstringxml:lang=”nl”>leerobject</langstring>
+学习对象
+<langstringxml:lang=”zh”> </langstring>
+</keyword>
+<keyword>
+<langstringxml:lang=”en”>education</langstring>
+</keyword>
+</general>
+537 coverage元素
+.. < >
+描述 学习对象所涉及的时间 文化和地理区域
+: 、 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在 元素
+:<coverage> <general> 、 , <general>
+7
+GB/T29807—2013
+中 它的最低峰值是
+, 10。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <coverage> , <lan-
+中的 属性应互不相同
+gstring> xml:lang 。)
+示例
+:
+<general>
+<coverage>
+明朝时期
+<langstringxml:lang=”zh”> </langstring>
+</coverage>
+</general>
+538 structure元素
+.. < >
+描述 学习对象的基本组织结构
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<structure> <general> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+原子
+集合
+网状
+层次
+线性
+示例
+:
+<general>
+<structure>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+集合
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</structure>
+</general>
+539 aggregationlevel元素
+.. < >
+描述 学习对象在功能上的粒度
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<aggregationlevel> <general> 。
+属性
+:
+无
+。
+8
+GB/T29807—2013
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+最小程度上的聚合 即原始的媒体数据或片段
+1: , 。
+聚合度为 的学习对象的集合 如一节课
+2: 1 , 。
+聚合度为 的学习对象的集合 如一门课程
+3: 2 , 。
+最大粒度的聚合 如为获得某项证书所需的所有课程的集合
+4: , 。
+示例
+:
+<general>
+<aggregationlevel>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+<langstringxml:lang=”x-none”>1</langstring>
+</value>
+</aggregationlevel>
+</general>
+54 lifecycle元素
+. < >
+541 根元素
+..
+描述 学习对象的历史和当前状态以及那些对学习对象的发展过程产生作用的实体
+: 。
+大小 元素在顶级 元素中要求出现且只能出现一次
+:<lifecycle> <lom> 。
+属性
+:
+无
+。
+子元素
+:
+<version>
+<status>
+<contribute>
+542 version 元素
+.. < >
+描述 学习对象的版本
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<version> <lifecycle> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <version> , <lang-
+中的 属性应互不相同
+string> xml:lang 。)
+示例
+:
+<lifecycle>
+<version>
+<langstringxml:lang=”en”>1.0.alpha</langstring>
+</version>
+9
+GB/T29807—2013
+</lifecycle>
+543 status元素
+.. < >
+描述 学习对象所处的状态或完成情况
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<status> <lifecycle> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+草案
+最终案
+修正案
+不可用
+示例
+:
+<lifecycle>
+<status>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+最终案
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</status>
+</lifecycle>
+544 contribute元素
+.. < >
+5441 根元素
+...
+描述 在学习对象的生存周期中为其发展做出贡献 如 创建 编辑 发行等 的实体 人或组织
+: ( : 、 、 ) ( )。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最
+:<contribute> <lifecycle> , <lifecycle> ,
+低峰值是
+30。
+属性
+:
+无
+。
+子元素
+:
+<role>
+<centity>
+<date>
+示例
+:
+<lifecycle>
+<contribute>
+<role>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+10
+GB/T29807—2013
+</source>
+<value>
+作者
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</role>
+<centity>
+<vcard>
+begin:vcard
+张三 作者
+fn:
+end:vcard
+</vcard>
+</centity>
+<date>
+<datetime>2000-12-12</datetime>
+<description>
+日期描述
+<langstring> </langstring>
+</description>
+</date>
+</contribute>
+</lifecycle>
+5442 role元素
+... < >
+描述 贡献的类型
+: 。
+大小 元素在 元素中要求出现且只能出现一次 如果有不同角色的多个贡献
+:<role> <contribute> 。
+者 那么应该重复使用 元素
+, <contribute> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+作者
+发行商
+未定义
+发起人
+终结者
+编辑
+总审核人
+图形设计
+技术实现
+内容提供者
+技术审核人
+教学审核人
+脚本编写者
+教学设计者
+11
+GB/T29807—2013
+内容专家
+5443 centity元素
+... < >
+描述 对学习对象做出贡献的实体 人或组织 的标识及相关信息 相关程度越高的实体越先列出
+: ( ) 。 。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的
+:<centity> <contribute> , <contribute> ,
+最低峰值是
+40。
+属性
+:
+无
+。
+子元素
+:
+<vcard>
+5444 date元素
+... < >
+描述 贡献者做出贡献的日期
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<date> <contribute> 。
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+55 metametadata元素
+. < >
+551 根元素
+..
+描述 元数据实例自身 不是元数据所描述的学习对象 的信息
+: ( ) 。
+大小 元素在顶级 元素中要求出现且只能出现一次
+:<metametadata> <lom> 。
+属性
+:
+无
+。
+子元素
+:
+<identifier>
+<contribute>
+<metadataschema>
+<language>
+552 identifier元素
+.. < >
+5521 根元素
+...
+描述 元数据实例的标号 该标号全球唯一
+: , 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<identifier> <metametadata> 、 ,
+元素中 它的最低峰值是
+<metametadata> , 10。
+属性
+:
+无
+。
+子元素
+:
+<catalog>
+<entry>
+12
+GB/T29807—2013
+示例
+:
+<metametadata>
+<identifier>
+<catalog>ISBN</catalog>
+<entry>
+<langstring>0-226-10389-7</langstring>
+</entry>
+</identifier>
+</metametadata>
+5522 catalog元素
+... < >
+描述 所属标识方案或编目方案的名称或指示符 一种命名方案
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<catalog> <identifier> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+5523 entry元素
+... < >
+描述 在标识或编目方案中用于标识此学习对象记录的标识符 一个和名域相关的字符串
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<entry> <identifier> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <entry> , <lang-
+中的 属性应互不相同
+string> xml:lang 。)
+553 contribute元素
+.. < >
+5531 根元素
+...
+描述 在学习对象元数据实例的生存周期中为其发展做出贡献 如 创建 编辑 发行等 的实体 人
+: ( : 、 、 ) (
+或组织
+)。
+大小 元素在 元素中要求出现一次或一次以上 在 元
+:<contribute> <metametadata> , <metametadata>
+素中 它的最低峰值是
+, 10。
+属性
+:
+无
+。
+子元素
+:
+<role>
+<centity>
+<date>
+示例
+:
+<metametadata>
+<contribute>
+<role>
+<source>
+13
+GB/T29807—2013
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+创建者
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</role>
+<centity>
+<vcard>
+begin:vcard
+fn:JoeCreator
+end:vcard
+</vcard>
+</centity>
+<date>
+<datetime>2000-12-12</datetime>
+<description>
+日期描述
+<langstring> </langstring>
+</description>
+</date>
+</contribute>
+</metametadata>
+5532 role元素
+... < >
+描述 贡献的类型 建议在元数据实例中包含创建者的信息
+: , 。
+大小 元素在 元素中要求出现且只能出现一次 如果有不用角色的多个贡献
+:<role> <contribute> 。
+者 那么应该重复使用 元素
+, <contribute> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+创建者
+审核人
+5533 centity元素
+... < >
+描述 对学习对象元数据实例做出贡献的实体 人或组织 的标识及相关信息 相关程度越高的实
+: ( ) 。
+体越先列出
+。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的
+:<centity> <contribute> , <contribute> ,
+最低峰值是
+10。
+属性
+:
+无
+。
+子元素
+:
+<vcard>
+14
+GB/T29807—2013
+5534 date元素
+... < >
+描述 贡献者做出贡献的日期
+: 。
+大小 元素在 元素中可以要求出现且只能出现一次
+:<date> <contribute> 。
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+554 metadataschema元素
+.. < >
+描述 用于创建元数据实例的规范的名称和版本 该规范需经过正式认证
+: , 。
+大小 元 素 在 元 素 中 要 求 出 现 一 次 或 一 次 以 上 在
+:<metadataschema> <metametadata> ,
+元素中 它的最低峰值是
+<metametadata> , 10。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<metametadata>
+<metadataschema>LOMv1.0</metadataschema>
+</metametadata>
+555 language元素
+.. < >
+描述 描述元数据实例所使用的语言
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<language> <metametadata> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<metametadata>
+<language>en</language>
+</metametadata>
+56 technical元素
+. < >
+561 根元素
+..
+描述 学习对象的技术要求及其相关特征
+: 。
+大小 元素在顶级 元素中要求出现且只能出现一次
+:<technical> <lom> 。
+属性
+:
+无
+。
+子元素
+:
+<format>
+15
+GB/T29807—2013
+<size>
+<location>
+<requirement>
+<installationremarks>
+<otherplatformrequirements>
+<duration>
+562 format元素
+.. < >
+描述 学习对象 及其所有组成成分 在技术上的数据类型
+: ( ) 。
+大小 元素在 元素中要求出现一次或一次以上 在 元素中 它的最低
+:<format> <technical> , <technical> ,
+峰值是
+40。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<technical>
+<format>video/mpeg</format>
+<format>text/html</format>
+</technical>
+563 size元素
+.. < >
+描述 数字化学习对象的大小 用十进制数字 到 表示 单位是 位 字节 不是兆字节等
+: 。 ‘0’ ‘9’ , (8 ) , 。
+该数据元素表明了学习对象的实际大小 如果学习对象经过压缩 则该数据元素的值是未压缩时的
+。 ,
+大小
+。
+大小 元素在 元素中可以不出现或出现一次
+:<size> <technical> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<technical>
+<size>568</size>
+</technical>
+564 location 元素
+.. < >
+描述 用于表明如何获取学习对象的字符串 它可能是一个位置 如 或解析出位置的一种
+: 。 ( URL),
+方法 如 最可取的位置优先列出
+( URI)。 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在 元
+:<location> <technical> 、 , <technical>
+素中 它的最低峰值是
+, 10。
+属性
+:
+type
+该属性的可能取值为
+:
+在 上有像 这样的具体地址的资源
+URI——— Internet URL 。
+16
+GB/T29807—2013
+对于资源位置的文本描述
+TEXT——— 。
+子元素
+:
+无
+。
+示例
+:
+<technical>
+<locationtype=”URI”>http://host/id</location>
+</technical>
+565 requirement元素
+.. < >
+5651 根元素
+...
+描述 使用学习对象所需要的技术要求 如果有多个要求 那么所有要求都应得到满足 即它们之
+: 。 , ,
+间的逻辑关系是与关系
+。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<requirement> <technical> 、 ,
+元素中 它的最低峰值是
+<technical> , 40。
+属性
+:
+无
+。
+子元素
+:
+<orcomposite>
+示例
+:
+<technical>
+<requirement>
+<orcomposite>
+<type>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+浏览器
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</type>
+<name>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+<langstringxml:lang=”x-none”>MicrosoftInternetExplorer</langstring>
+</value>
+</name>
+<minimumversion>4.0</minimumversion>
+<maximumversion>5.0</maximumversion>
+</orcomposite>
+</requirement>
+</technical>
+5652 orcomposite元素
+... < >
+56521 根元素
+....
+描述 多个要求的组合 当任何一个要求被满足时整个组合的要求被满足 即它们之间的逻辑关系
+: 。 ,
+17
+GB/T29807—2013
+是或关系
+。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<orcomposite> <technical> 、 ,
+元素中 它的最低峰值是
+<technical> , 40。
+属性
+:
+无
+。
+子元素
+:
+<type>
+<name>
+<minimumversion>
+<maximumversion>
+56522 type元素
+.... < >
+描述 使用学习对象所需要的技术 如硬件 软件 网络等
+: , 、 、 。
+大小 元素在 元素中要求出现且只能出现一次
+:<type> <orcomposite> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+操作系统
+浏览器
+56523 name元素
+.... < >
+描述 使用学习对象所需要的技术的名称
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<name> <orcomposite> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+如果 操作系统
+Technical.Requirement.OrComposite.Type= “ ”
+PC-DOS
+MS-Windows
+MacOS
+Unix
+Multi-OS
+无
+如果 浏览器
+Technical.Requirement.OrComposite.Type= “ ”
+任何浏览器
+NetscapeCommunicator
+MicrosoftInternetExplorer
+18
+GB/T29807—2013
+Opera
+Amaya
+56524 minimumversion 元素
+.... < >
+描述 使用学习对象所需技术的最低版本
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<minimumversion> <orcomposite> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+56525 maximumversion 元素
+.... < >
+描述 使用学习对象所需技术的最高版本
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<maximumversion> <orcomposite> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+56526 installationremarks元素
+.... < >
+描述 对如何安装学习对象的描述
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<installationremarks> <technical> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是
+<langstring>(<langstring> <installationremarks> ,
+每一个 中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<technical>
+<installationremarks>
+安装描述在这里
+<langstring> </langstring>
+</installationremarks>
+</technical>
+566 otherplatformrequirements元素
+.. < >
+描述 其他关于软件和硬件的需求信息
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<otherplatformrequirements> <technical> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以
+<langstring>(<langstring> <otherplatformrequirements>
+上 但是每一个 中的 属性应互不相同
+, <langstring> xml:lang 。)
+示例
+:
+<technical>
+19
+GB/T29807—2013
+<otherplatformrequirements>
+其他软硬件需求信息在这里
+<langstring> </langstring>
+</otherplatformrequirements>
+</technical>
+567 duration 元素
+.. < >
+描述 在指定的速度下连续运行学习对象所需要的时间
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<duration> <technical> 。
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+示例
+:
+<technical>
+<duration>
+<datetime>00:00:15</datetime>
+<description>
+播放这段剪辑的时间
+<langstring> </langstring>
+</description>
+</duration>
+</technical>
+57 educational元素
+. < >
+571 根元素
+..
+描述 学习对象在教育和教学方面的一些关键特征
+: 。
+大小 元素在顶级 元素中要求出现且只能出现一次 在 元素中 它的最
+:<educational> <lom> 。 <lom> ,
+低峰值为
+100。
+属性
+:
+无
+。
+子元素
+:
+<interactivitytype>
+<learningresourcetype>
+<interactivitylevel>
+<semanticdensity>
+<intendedenduserrole>
+<context>
+<typicalagerange>
+<difficulty>
+<typicallearningtime>
+<description>
+<language>
+572 interactivitytype元素
+.. < >
+描述 学习对象所支持的互动形式
+: 。
+20
+GB/T29807—2013
+大小 元素在 元素中可以不出现或出现一次
+:<interactivitytype> <educational> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+主动型
+解说型
+混合型
+示例
+:
+<educational>
+<interactivitytype>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+主动型
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</interactivitytype>
+</educational>
+573 learningresourcetype元素
+.. < >
+描述 学习对象的具体类型 越主要的类型越先列出
+: 。 。
+大小 元素在 元素中要求出现一次或一次以上 它的最低峰值
+:<learningresourcetype> <educational> ,
+是
+10。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+媒体素材
+试题
+试卷
+课件
+文献资料
+教学案例
+常见问题解答
+资源目录索引
+网络课程
+示例
+:
+<educational>
+<learningresourcetype>
+21
+GB/T29807—2013
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+试题
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</learningresourcetype>
+</educational>
+574 interactivitylevel元素
+.. < >
+描述 学习对象的交互程度 这里的交互是指学习者对学习对象的行为或其他方面所产生的影响
+: 。
+程度
+。
+大小 元素在 元素中可以不出现或出现一次
+:<interactivitylevel> <educational> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+很低
+低
+中
+高
+很高
+示例
+:
+<educational>
+<interactivitylevel>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+很高
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</interactivitylevel>
+</educational>
+575 semanticdensity元素
+.. < >
+描述 学习对象的简练程度 学习对象的语义密度可以通过它的大小 范围或持续时间 自身有时
+: 。 、 (
+间限制的资源如音频或视频 来衡量
+) 。
+大小 元素在 元素中可以不出现或出现一次
+:<semanticdensity> <educational> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+22
+GB/T29807—2013
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+很低
+低
+中
+高
+很高
+示例
+:
+<educational>
+<semanticdensity>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+很高
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</semanticdensity>
+</educational>
+576 intendedenduserrole元素
+.. < >
+描述 该学习对象的主要用户 最重要的优先列出
+: , 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<intendedenduserrole> <educational> 、 ,
+元素中 它的最低峰值是
+<educational> , 10。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+教师
+作者
+学习者
+管理者
+示例
+:
+<educational>
+<intendedenduserrole>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+学习者
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</intendedenduserrole>
+</educational>
+577 context元素
+.. < >
+描述 使用学习对象的主要情境
+: 。
+23
+GB/T29807—2013
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<context> <educational> 、 ,
+元素中 它的最低峰值是
+<educational> , 10。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+中小学校
+高等教育
+培训
+其他
+示例
+:
+<educational>
+<context>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+高等教育
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</context>
+</educational>
+578 typicalagerange元素
+.. < >
+描述 典型使用者的年龄范围
+: 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<typicalagerange> <educational> 、 , <ed-
+元素中 它的最低峰值是
+ucational> , 5。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一
+<langstring>(<langstring> <typicalagerange> ,
+个 中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<educational>
+<typicalagerange>
+有三年以上经验的成年飞行员
+<langstringxml:lang=”en”> </langstring>
+</typicalagerange>
+</educational>
+579 difficulty元素
+.. < >
+描述 对于典型的目标用户来说学习对象的难度
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<difficulty> <educational> 。
+24
+GB/T29807—2013
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+很容易
+容易
+中等
+难
+很难
+示例
+:
+<educational>
+<difficulty>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+中等
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</difficulty>
+</educational>
+5710 typicallearningtime元素
+.. < >
+描述 对于典型的目标用户来说 使用该学习对象一般或大约所需要的时间
+: , 。
+大小 元素在 元素中可以不出现或出现一次
+:<typicallearningtime> <educational> 。
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+示例
+:
+<educational>
+<typicallearningtime>
+<datetime>01:30:00</datetime>
+</typicallearningtime>
+</educational>
+5711 description 元素
+.. < >
+描述 对如何使用学习对象的描述
+: 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<description> <educational> 、 , <educa-
+元素中 它的最低峰值是
+tional> , 10。
+属性
+:
+无
+。
+25
+GB/T29807—2013
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <description> ,
+中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<educational>
+<description>
+在空中加油训练中使用
+<langstring> </langstring>
+</description>
+</educational>
+5712 language元素
+.. < >
+描述 学习对象的典型用户所使用的人类语言
+: 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<language> <educational> 、 ,
+元素中 它的最低峰值是
+<educational> , 10。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<educational>
+<language>en</language>
+</educational>
+58 rights元素
+. < >
+581 根元素
+..
+描述 学习对象的知识产权和使用条件等信息
+: 。
+大小 元素在顶级 元素中可以不出现或出现一次
+:<rights> <lom> 。
+属性
+:
+无
+。
+子元素
+:
+<cost>
+<copyrightandotherrestrictions>
+<description>
+582 cost元素
+.. < >
+描述 使用学习对象是否需要付费
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<cost> <rights> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+26
+GB/T29807—2013
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+是
+否
+示例
+:
+<rights>
+<cost>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+否
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</cost>
+</rights>
+583 copyrightandotherrestrictions元素
+.. < >
+描述 使用学习对象是否有版权问题和其他限制条件
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<copyrightandotherrestrictions> <rights> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+是
+否
+示例
+:
+<rights>
+<copyrightandotherrestrictions>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+否
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</copyrightandotherrestrictions>
+</rights>
+584 description 元素
+.. < >
+描述 对学习对象使用条件的描述
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<description> <rights> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <description> ,
+27
+GB/T29807—2013
+中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<rights>
+<description>
+<langstringxml:lang=”en”>LOMv1.0</langstring>
+</description>
+</rights>
+59 relation 元素
+. < >
+591 根元素
+..
+描述 学习对象和其他学习对象 目标学习对象 之间的关系
+: ( ) 。
+大小 元素在顶级 元素中可以不出现 出现一次或出现一次以上 它的最低峰值
+:<relation> <lom> 、 ,
+是
+100。
+属性
+:
+无
+。
+子元素
+:
+<kind>
+<resource>
+592 kind 元素
+.. < >
+描述 关系类型
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<kind> <relation> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+是 的一部分
+A B
+是 的一部分
+B A
+是 的某个版本
+A B
+是 的某个版本
+B A
+与 有相同的格式 先于
+A B ,B A
+与 有相同的格式 先于
+B A ,A B
+参考引用了
+A B
+参考引用了
+B A
+基于
+A B
+基于
+B A
+需要
+A B
+需要
+B A
+示例
+:
+<relation>
+<kind>
+28
+GB/T29807—2013
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+需要
+<langstringxml:lang=”x-none”>A B</langstring>
+</value>
+</kind>
+<resource>
+<identifier>
+<catalog>ISBN</catalog>
+<entry>
+<langstring>0-226-10389-7</langstring>
+</entry>
+</identifier>
+<description>
+对资源的描述
+<langstring> </langstring>
+</description>
+</resource>
+</relation>
+593 resource元素
+.. < >
+5931 根元素
+...
+描述 关系所引用的目标学习对象
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<resource> <relation> 。
+属性
+:
+无
+。
+子元素
+:
+<identifier>
+<description>
+5932 identifier元素
+... < >
+59321 根元素
+....
+描述 目标学习对象的标识 该标识全球唯一
+: , 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在 元
+:<identifier> <resource> 、 , <resource>
+素中 它的最低峰值是
+, 10。
+属性
+:
+无
+。
+子元素
+:
+<catalog>
+<entry>
+59322 catalog元素
+.... < >
+描述 所属标识方案或编目方案的名称或指示符 一种命名方案
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<catalog> <identifier> 。
+29
+GB/T29807—2013
+属性
+:
+无
+。
+子元素
+:
+无
+。
+59323 entry元素
+.... < >
+描述 在标识或编目方案中用于标识目标学习对象记录的标识符 一个和名域相关的字符串
+: 。 。
+大小 元素在 元素中要求出现且只能出现一次
+:<entry> <identifier> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <entry> , <lang-
+中的 属性应互不相同
+string> xml:lang 。)
+5933 description 元素
+... < >
+描述 对目标学习对象的描述
+: 。
+大小 元素在 元素中可以不出现 出现一次或出现一次以上 在
+:<description> <resource> 、 , <resource>
+元素中 它的最低峰值是
+, 10。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <description> ,
+中的 属性应互不相同
+<langstring> xml:lang 。)
+510 annotation 元素
+. < >
+5101 根元素
+. .
+描述 学习对象在教学使用方面的一些评价 以及这些评论的作者和创作时间 该类别能使教育者
+: , 。
+共享他们对学习资源的评价和使用建议等
+。
+大小 元素在顶级 元素中可以不出现 出现一次或出现一次以上 在 元素
+:<annotation> <lom> 、 , <lom>
+中 它的最低峰值是
+, 30。
+属性
+:
+无
+。
+子元素
+:
+<centity>
+<date>
+<description>
+5102 centity元素
+. . < >
+描述 创建评注的实体 人或组织
+: ( )。
+大小 元素在 元素中可以不出现或出现一次
+:<centity> <annotation> 。
+属性
+:
+无
+。
+30
+GB/T29807—2013
+子元素
+:
+<vcard>
+示例
+:
+<annotation>
+<centity>
+<vcard>
+begin:vcard
+org:exampleorganization
+end:vcard
+</vcard>
+</centity>
+</annotation>
+5103 date元素
+. . < >
+描述 创建评注的日期
+: 。
+大小 元素在 元素中可以不出现或出现一次
+:<date> <annotation> 。
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+示例
+:
+<annotation>
+<date>
+<datetime>2001-04-17</datetime>
+</date>
+</annotation>
+5104 description 元素
+. . < >
+描述 评注的内容
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<description> <annotation> 。
+属性
+:
+无
+。
+子元素
+:
+元素在 元素中可以出现一次或一次以上 但是每一个
+<langstring>(<langstring> <description> ,
+中的 属性应互不相同
+<langstring> xml:lang 。)
+示例
+:
+<annotation>
+<description>
+<langstringxml:lang=”zh”>
+该模拟课件可与空中加油训练课程配合使用
+。
+</langstring>
+</description>
+</annotation>
+31
+GB/T29807—2013
+511 classification 元素
+. < >
+5111 根元素
+. .
+描述 学习对象在某一特定分类系统中所处的位置
+: 。
+大小 元素在顶级 元素中要求出现一次或出现一次以上 它的最低峰值是
+:<classification> <lom> , 40。
+属性
+:
+无
+。
+子元素
+:
+<purpose>
+<taxonpath>
+<description>
+<keyword>
+5112 purpose元素
+. . < >
+描述 对学习对象进行分类的目的
+: 。
+大小 元素在 元素中要求出现且只能出现一次
+:<purpose> <classification> 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+GB/T21365—2008定义的词汇表 source元素的值为 LOMv1.0
+(< > “ ”)
+学科
+理念
+前需
+教学目标
+访问限制
+教育程度
+技能程度
+安全程度
+能力
+示例
+:
+<classification>
+<purpose>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+教学目标
+<langstringxml:lang=”x-none”> </langstring>
+</value>
+</purpose>
+</classification>
+32
+GB/T29807—2013
+5113 taxonpath 元素
+. . < >
+51131 根元素
+. ..
+描述 一个特定分类中的路径
+: 。
+大小 元素在 元素中出现一次或多次 它的最低峰值是
+:<taxonpath> <calssification> , 15。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<taxon>
+示例
+:
+<classification>
+<taxonpath>
+<source>
+<langstring>DDC</langstring>
+</source>
+</taxonpath>
+</classification>
+51132 source元素
+. .. < >
+描述 一个特定分类中的路径
+: 。
+大小 元素在 元素中出现零次或一次
+:<source> <taxonpath> 。
+属性
+:
+无
+。
+子元素
+:
+元素可以在 元素中出现一次或多次 然而 每个
+<langstring>-(<langstring> <source> 。 , langstring
+都应包含一个不同的 属性
+xml:lang )
+51133 taxon 元素
+. .. < >
+511331 根元素
+. ...
+描述 一个特定分类中的路径 一个分类树的路径决定一个分类路径 这是一个从一般到具体分类
+: 。 :
+的路径
+。
+大小 元素在 元素中出现一次或多次 在 元素中 它的最低峰值
+:<taxon> <taxonpath> 。 <taxonpath> ,
+是
+15。
+属性
+:
+无
+。
+子元素
+:
+<id>
+<entry>
+示例
+:
+<classification>
+<taxonpath>
+<source>
+33
+GB/T29807—2013
+一个涵盖很广的分类来源
+<langstringxml:lang="zh"> </langstring>
+</source>
+<taxon>
+<entry>
+信息科学
+<langstringxml:lang="zh"> </langstring>
+</entry>
+</taxon>
+<taxon>
+<entry>
+信息处理
+<langstringxml:lang="zh"> </langstring>
+</entry>
+</taxon>
+<taxon>
+<entry>
+元数据
+<langstringxml:lang="zh"> </langstring>
+</entry>
+</taxon>
+</taxonpath>
+</classification>
+511332 id 元素
+. ... < >
+描述 一个特定类别 可以是任何 正式 的分类
+: , “ ” 。
+大小 元素在 元素中出现零次或一次
+:<id> <taxon> 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+511333 entry元素
+. ... < >
+描述
+:
+大小 元素在 元素中要求出现且只能出现一次
+:<entry> <taxon> 。
+属性
+:
+无
+。
+子元素
+:
+元素可以在 元素中出现 次或 次 然而 每个
+<langstring>-(<langstring> <source> 0 1 。 , langstring
+都应包含一个不同的 属性
+xml:lang )
+5114 description 元素
+. . < >
+描述 对学习对象的关于目的的文字描述
+: 。
+大小 元素在 元素中出现零次或一次
+:<description> <classification> 。
+属性
+:
+无
+。
+子元素
+:
+元素可以在 元素中出现 次或 次 然而 每个
+<langstring>-(<langstring> <description> 0 1 。 , lang-
+都应包含一个不同的 属性
+string xml:lang )
+34
+GB/T29807—2013
+示例
+:
+<classification>
+<description>
+电子计算机生成的模拟
+<langstringxml:lang=”zh”> </langstring>
+</description>
+</classification>
+5115 keyword 元素
+. . < >
+描述 对学习对象的关键字 和学习对象的目的相关
+: 。 。
+大小 元素在 元素中出现零次或多次 在 元素中 它的最
+:<keyword> <classification> , <classification> ,
+小峰值是
+40。
+属性
+:
+无
+。
+子元素
+:
+元素可以在 元素中出现一次或多次 然而 每个
+<langstring>-(<langstring> <keyword> 。 ,
+都应包含一个不同的 属性
+langstring xml:lang )
+示例
+:
+<classification>
+<keyword>
+模拟
+<langstringxml:lang=”zh”> </langstring>
+</keyword>
+</classification>
+6 全局使用的元素
+61 自然语言串绑定
+.
+描述 自然语言
+:
+大小 最小峰值是
+: 10。
+属性
+:
+元素内容的自然语言种类 对于词汇类型 和 应有一个
+xml:lang——— 。 ,<source> <value> “x-none”
+的值
+。
+子元素
+:
+<langstring>
+示例
+:
+<classification>
+<keyword>
+模拟
+<langstringxml:lang=”zh”> </langstring>
+</keyword>
+</classification>
+62 日期绑定
+.
+621 概述
+..
+描述 定义时间类型的数据格式
+: 。
+大小 依父元素而定
+: 。
+35
+GB/T29807—2013
+属性
+:
+无
+。
+子元素
+:
+<datetime>
+<description>
+示例
+:
+<datetime>00:00:20</datetime>
+<description>
+日期的描述
+<langstring> </langstring>
+</description>
+622 datetime元素
+.. < >
+描述 标准格式的日期
+:GB/T7408 。
+大小 元素在父元素中出现零次或一次
+:<datetime> 。
+属性
+:
+无
+。
+623 description 元素
+.. < >
+描述 对日期的描述
+:
+大小 元素在父元素中出现零次或一次
+:<description> 。
+属性
+:
+无
+。
+子元素
+:
+元素可以在 元素中出现一次或多次 然而 每个
+<langstring>-(<langstring> <description> 。 , lang-
+都应包含一个不同的 属性
+string xml:lang )
+63 词汇绑定
+.
+631 根元素
+..
+描述 定义词汇的数据结构 一个词汇类型的数据由两个元素组成 描述词汇的来源 例
+: 。 :<source> (
+如 描述实际词汇项
+:“LOMv1.0”),<value> 。
+大小 依父元素而定
+: 。
+属性
+:
+无
+。
+子元素
+:
+<source>
+<value>
+示例
+:
+<status>
+<source>
+<langstringxml:lang=”x-none”>LOMv1.0</langstring>
+</source>
+<value>
+最终案
+<langstringxml:lang=”x-none”> </langstring>
+36
+GB/T29807—2013
+</value>
+</status>
+632 source元素
+.. < >
+描述 定义了值的来源 例如通过
+: , URI。
+大小 元素在父元素中出现零次或一次
+:<source> 。
+属性
+:
+无
+。
+子元素
+:
+<langstring>
+633 value元素
+.. < >
+描述 词汇类型的数据结构
+: 。
+大小 元素在父元素中要求出现且只能出现一次
+:<value> 。
+属性
+:
+无
+。
+子元素
+:
+<langstring>
+64 vCard绑定
+.
+描述 定义了电子的 虚拟 商务卡 可以存储个人信息 例如 姓名 地址 电话
+:vCard “ ” 。vCard , , 、 、 、email
+地址等
+。
+大小 依父元素而定
+: 。
+属性
+:
+无
+。
+子元素
+:
+无
+。
+示例
+:
+<vcard>
+begin:vcard
+张三 学生
+fn:
+解放路 号
+addr: 111
+end:vcard
+</vcard>
+7 通用的元素
+71 概述
+.
+在学习对象元数据中有一些通用的结构要使用多次 在实现中 使用这些通用的结构可以使数据存
+, ,
+储结构的建立变得方便 下面将详细讨论
+。 。
+72 类型
+.
+721 概述
+..
+这些结构一般都以 作为后缀 虽然有 作为后缀 但是它不是一
+“TYPE” 。“interactivitytype” “type” ,
+37
+GB/T29807—2013
+个 类型 结构 中定义并在本标准中实现的类型有
+“ ” 。GB/T21365 :
+LangStringType
+DateType
+VocabularyType
+722 LangString类型
+..
+表示一个自然语言或其他可理解的语言描述的字符串
+LangStringType 。
+本标准建议的绑定中 是含 属性的 元素来定义字符串使
+,LangStringType “xml:lang” <langstring>
+用的语言 字符串
+:<langstringxml:lang="en"> </langstring>。
+属性可以同时包含 中规定的语言代码和国家代码 任何含
+“xml:lang” GB/T18793—2002 。 <lang-
+元素都可以包含多语言串元素 多语言串元素中可以包含多个 元素 每个
+string> 。 langstring , langstring
+元素表示一种不同的语言
+。
+注意 元素中的每个 都包含类似的信息 只是语种不同 当 属性用在
+: <langstring> , 。 xml:lang
+和 中列出词汇时 应为
+<source> <value> ,xml:lang “x-none”。
+示例
+:
+<educational>
+<learningresourcetype>
+<source>
+<langstringxml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+模拟
+<langstringxml:lang="x-none"> </langstring>
+</value>
+</learningresourcetype>
+</educational>
+723 DateType类型
+..
+是格式化的时间 有两个子元素表示两种不同的时间格式 精确时间和时间信息都遵
+DateType 。 。
+照 标准 时间点和延续时间用 表示 而更一般的时间信息用 元素
+GB/T7408 。 <datetime> , <description>
+表示 一个时间类型的数据可以同时包含 和 值
+, DateTime Description 。
+有如下的逻辑结构
+DateType :
+DateType
+datetime
+description
+LangStringType
+是 作为一个有两个子元素的元素 和 遵照
+DateType <date> :<datetime> <description>。<datetime>
+中指定的时间格式
+GB/T7408 。
+示例
+:
+<datetime>1999-07-26<datetime>
+<datetime>1999-07-26T12:15:35<datetime>
+<datetime>1999-07-26T12:15:35+01:00<datetime>
+724 词汇表类型
+..
+词汇表用在很多元素中 一个 词汇表 是一组事先定义的值 词汇表有两个子元素 表
+, “ ” 。 。<source>
+38
+GB/T29807—2013
+示来源 是实际值 如果来源于 那么数据元素的取值应该来自于 基本
+,<value> 。 “LOMv1.0”, “LOMv1.0”
+框架中定义的取值列表 如果是其他来源 例如 那么实际值不对应 取值列表 而是
+。 , “URI”, “LOMv1.0” ,
+对应 来源 列表里的实际值 用户可以使用其他不在词汇表中的值 但是为了易读性 推荐在尽量使用
+“ ” 。 , ,
+中规定的值
+GB/T21365 。
+词汇表有如下的逻辑结构
+:
+VocabularyType
+source
+langstring
+value
+langstring
+为了确保 词汇 不是被当成其他自然语言 推荐用户指定 的属性 为
+“ ” , <langstring> xml:lang “x-
+none”。
+示例
+:
+<aggregationlevel>
+<source>
+<langstringxml:lang="x-none">LOMv1.0</langstring>
+</source>
+<value>
+<langstringxml:lang="x-none">2</langstring>
+</value>
+</aggregationlevel>
+73 多语言字符串langstring
+. < >
+用户可以指定 元素的默认语言种类 赋一个特定语言值给 元素的
+<langstring> 。 <metametadata>
+元素 每个 可以用 属性重载语言种类
+<langstring> 。 <langstring> xml:lang 。
+注意 默认语言值可以在 里指定 用 元素定义其他语言值
+: <metametadata> , <langstring> 。
+74 分类路径taxonpath
+. < >
+的值依分类路径 的寻址能力而定 如果 的 没有值或者
+<taxonpath> source 。 <taxonpath> <source>
+不指向一个逻辑来源 那么 元素就要包含分类路径的信息
+<source> 。 <taxonpath> 。
+注 尽量给 的 赋值
+: <taxonpath> <source> 。
+75 vcard
+. < >
+中至少有两个元素需要提供 实体 信息 和
+GB/T21365 “ ” :metametadata.contribute.entity
+实体 用来指明它们的提供者
+lifecycle.contribute.entity。“ ” 。
+元素 格式化的姓名 用来指定内容的提供者 如果提供者不是个人而是公司 值应
+“FN” ( ) 。 ,“ORG”
+出现
+。
+示例
+:
+<centity>
+<vcard>
+BEGIN:vCard
+FN:LottaData
+END:vCard
+</vcard>
+39
+GB/T29807—2013
+</centity>
+通常的 编译器把 和 之间的值作为一个字符串 所以如何使用 信息 取
+XML <vcard> </vcard> , vCard ,
+决于实现者 规范允许用户像后面的例子所说明的那样使用各种各样的信息集 读者可以通过
+。vCard 。
+阅读第 章来获得更详细的信息
+9 。
+76 关键字 keyword
+. < >
+中出现了 和 两个元素 一般来说 用来描述
+GB/T21365 general.keyword classification.keyword 。 ,
+学习资源的关键字是多语言串形式的 为了适应这一点 本标准用多个独立的 元素来表示关
+, , langstring
+键字或者关键字段 而不是用逗号分割的字符串 下面给出一个例子
+, , :
+注意 用 元素表示多个关键字和关键字段 用多个 元素表示同一关键字的
+: <keyword> 。 <langstring>
+不同语言描述
+。
+示例
+:
+<keyword>
+<langstringxml:lang="en">metadata</langstring>
+<langstringxml:lang="nl">metadata</langstring>
+元数据
+<langstringxml:lang="zh"> </langstring>
+</keyword>
+<keyword>
+<langstringxml:lang="en">learningobject</langstring>
+<langstringxml:lang="nl">leerobject</langstring>
+学习对象
+<langstringxml:lang="zh"> </langstring>
+</keyword>
+8 扩展性
+81 扩展性说明
+.
+为了保证元数据的扩展性 标准草案规定 在不和原有元素冲突的基础上
+,GB/T21365—2008 , ,
+元数据可以无限扩展 有两种扩展方式
+XML 。 :
+用已有的 元素定义新的元素
+1) GB/T21365—2008 。
+用域名空间扩展 元素
+2) XML 。
+两种方式定义如下
+:
+中定义了一些没有特定上下文的元素 元素的上下文不同 它的定义也就
+1) GB/T21365—2008 , ,
+可以不同 只要标准没有变化 这些元素就可以一直使用
+。 , 。
+用域名空间扩展 元素 把新的元素加入 的框架
+2) XML 。 XML 。
+学习对象数据 绑定定义了处理用户扩展的方法 这个机制依控制文件 不
+XML 。 (DTD,XSD,XDR)
+同而不同 控制文件用来开发元数据的应用
+。 。
+82 使用DTD扩展
+.
+通过规定在元数据出现的地方来定义扩展元素 在本标准的 文件中 每一个元
+XMLDTD 。 DTD ,
+素的内容模型中都包含了 它使得每个元素都可以包含扩展元素 唯一不能扩展的元素
+<extension>。 。
+是包含 词汇 类型的元素 元素的用法如下示例
+“ ” 。<extension> 。
+示例
+:
+<coverage>
+<langstring>1880-1900</langstring>
+40
+GB/T29807—2013
+<extension>
+时间范围
+<role> </role>
+</extension>
+</coverage>
+83 使用XML模式扩展
+.
+模式定义语言 并不排斥以上介绍的扩展方式 开发者可以使用
+XML (XSD,XDR) 。 GB/T21365—
+元素或在特定域名空间中定义的新元素来扩展元数据 用某一个 的元素扩
+2008 。 GB/T21365—2008
+展其他学习对象元数据元素的方法如下示例
+。
+示例
+:
+<coverage>
+<langstring>1880-1900</langstring>
+时间范围
+<role> </role>
+</coverage>
+使用域名空间扩展的方法如下示例
+。
+示例
+:
+<context>
+军事训练
+<langstringxml:lang="zh"> </langstring>
+<adl:type>
+罗马军事战术
+<title> </title>
+<langstringxml:lang="zh">
+本例子说明了罗马人如何定义现代战争的许多方面
+。
+</langstring>
+</adl:type>
+</context>
+9 vCard
+定义了一套属性 包含了描述一个组织或个人所需要的信息 的默认字符集是
+vCard , 。vCard
+并可以用 属性来修改这个默认值 例如 字符集在下面的地址信息中使用
+GB13000, “CHARSET” 。 :GBK :
+ADR;CHARSET=GBK:…
+一般的 简单表形式如下
+vCard :
+BEGIN:vcard
+Items
+END:vcard
+是一串用有效的行分割符分割的 行 例如 中 回车 码 换行
+Items “ ”。 :7-bitASCII , (CR,ASCII 13),
+码 回车加换行 或者 属性分割字符 作为分隔符 属性参数的子串用域分隔
+(LF,ASCII 10) (CRLF), “ ” 。
+符 分隔 它对应的十进制是 的一般格式如下
+“;” , 59。item :
+name:valueA;valueBCRLF
+一个没有子串的 的例子是格式化的姓名 是格式化的姓名
+item ,FN :
+FN:Mr.JamesQ.Smith,Jr.
+有些 可能有多个子串作为属性 比如 一个人的姓名 可以包括 姓 名 和其他一些前缀后
+Item , , ,N, : , ,
+缀 这个属性的值是用 分隔的 依次为 姓 名 附加名 前
+(prefixandasuffix)。 “;” 。 : , , (AdditionalNames),
+缀 名后缀
+(NamePrefix), (NameSuffix):
+N:Smith;James;Q.;Mr.;Jr
+41
+GB/T29807—2013
+未使用的域空出来 保留
+,“;” :
+N:Smith;James;Q.;;Jr
+可以用来表示分组 下面的例子中电话号码属性的评注用来分组
+vCard 。 :
+A.TEL;Home:+0-000-555-1234
+A.NOTE:Thisismyvacationhome.
+以下是常用的 有子串的属性 域子串不能用单独的行来表示 以下是为了明了才这么写
+vCard , , :
+格式化的名字
+:
+文本值
+FN:
+示例
+:
+FN:Dr.ThomasD.Wason,Sr.
+名字
+:
+姓
+N: ;
+名
+;
+附加名
+;
+前缀
+;
+名后缀
+示例
+:
+N:Wason;Thomas;D.;Dr.;Sr
+地址
+:
+它依次包括邮址 扩展地址 街道地址 地市 地域 邮编 国家 个子串
+、 、 、 、 、 、 7 。
+示例
+:
+ADR:;;examplestreet;examplecity;exampleprovince;0000;examplecountry
+地址分发标签
+:
+示例
+:
+LABEL;QUOTED-PRINTABLE:AProject=0A=
+1421ParkDrive=0A=
+Raleigh,NC27605-1727=0A=
+注意其中 的使用 属性参数用 跟在属性名称后面
+escapedlinefeed(=0A=) 。 “:” 。
+组织
+:
+依次包括 名称 单位 附加域 可以根据需要添加附加域
+: 、 (OrganizationUnit)、 。 :
+示例
+:
+ORG:examplename;exampleorganization;;
+电子邮箱
+:
+邮箱类型 邮箱地址
+EMAIL; :
+示例
+:
+EMAIL;INTERNET:example@example.org
+电话
+:
+电话号码
+TEL:
+示例
+:
+TEL:+0000.000.0000
+所有前面提到的属性都在下面的示例中出现
+。
+示例
+:
+BEGIN:VCARD
+N:Wason;Thomas;D.;Dr.;Sr.
+FN:ThomasD.Wason,Ph.D.
+42
+GB/T29807—2013
+ORG:examplename;exampleorganization;;
+ADR:;;examplestreet;examplecity;exampleprovince;0000;examplecountry
+TEL:+0000.000.0000
+EMAIL;INTERNET:example@example.org
+LABEL;QUOTED-PRINTABLE:AProject=0A=
+1421ParkDrive=0A=
+Raleigh,NC27605-1727=0A=
+END:VCARD
+中 华 人 民 共 和 国
+国 家 标 准
+信息技术 学习 教育和培训
+、
+学习对象元数据XML绑定规范
+GB/T29807—2013
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京市朝阳区和平里西街甲 号
+2 (100013)
+北京市西城区三里河北街 号
+16 (100045)
+网址
+:www.gb168.cn
+服务热线
+:010-51780168
+010-68522006
+年 月第一版
+2014 1
+*
+书号
+:155066·1-47995
+版权专有 侵权必究
+—
+/
+3102
+70892T
+BG

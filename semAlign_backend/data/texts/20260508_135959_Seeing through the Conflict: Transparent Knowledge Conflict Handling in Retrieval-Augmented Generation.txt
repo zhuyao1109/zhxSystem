@@ -1,0 +1,670 @@
+Seeing through the Conflict: Transparent Knowledge Conflict Handling in
+Retrieval-Augmented Generation
+HuaYe*1,SiyuanChen*2,ZiqiZhong3,CanranXiao4†,HaoliangZhang5,YuhanWu6,FeiShen7
+1SchoolofManagement&Engineering,NanjingUniversity,Nanjing,China
+2SchoolofComputerScience,UniversityofBristol,Bristol,UnitedKingdom
+3DepartmentofManagement,LondonSchoolofEconomicsandPoliticalScience,London,UnitedKingdom
+4SchoolofCyberScienceandTechnology,ShenzhenCampusofSunYat-senUniversity,Shenzhen,China
+5ElectricalandComputerEngineering,TheUniversityofOklahoma,Oklahoma,USA
+6CollegeofComputerScienceandTechnology,ZhejiangUniversity,Hangzhou,China
+7NExT++ResearchCentre,NationalUniversityofSingapore,Singapore
+522024150103@smail.nju.edu.cn,gd23774@bristol.ac.uk,z.zhong6@lse.ac.uk,xiaocanran999@gmail.com,
+mars zhang@ou.edu,wuyuhan@zju.edu.cn,shenfei29@nus.edu.sg
+Abstract
+Who is the chief scientist of Google DeepMind?
+Largelanguagemodels(LLMs)equippedwithretrieval—the
+Retrieval-Augmented Generation (RAG) paradigm—should Jeff Dean is the chief External Sources
+combinetheirparametricknowledgewithexternalevidence, Internal s Dc ei ee pn Mt inis d.t C o uf rr eG no to lyg hle e Demis Hassabis co-
+yet in practice they often hallucinate, over-trust noisy snip- Memory is serving as the chief founded DeepMind in 2010
+pets, or ignore vital context. We introduce TCR (Trans- scientist .... and has led its research
+ever since as the company's
+parentConflictResolution),aplug-and-playframeworkthat
+CEO. After DeepMind's
+makesthisdecisionprocessobservableandcontrollable.TCR Jeff Dean acquisition ...
+(i) disentangles semantic match and factual consistency via
+dual contrastive encoders, (ii) estimates self-answerability
+External resources
+to gauge confidence in internal memory, and (iii) feeds the I'm confused contradict internal
+three scalar signals to the generator through a lightweight parameterized knowledge
+soft-promptwithSNR-basedweighting.Acrosssevenbench-
+marks TCR improves conflict detection (+5–18F 1), raises Transparent Conflict
+knowledge-gaprecoveryby+21.4ppandcutsmisleading- Resolution（TCR） Jeff Dean is the
+contextoverridesby−29.3pp,whileaddingonly0.3%pa- chief scientist of
+semantic relevance
+Google DeepMind.
+rameters.Thesignalsalignwithhumanjudgementsandex- factual consistency.
+posetemporaldecisionpatterns.
+Figure 1: Knowledge conflicts in a typical RAG system.
+Our method disentangles semantic relevance from factual
+1 Introduction consistency,detectsconflicts,andinjectslightweightprompt
+signals to steer RAG models toward faithful, knowledge-
+Recent advancements in large language models (LLMs) alignedgeneration.
+have significantly improved the performance and applica-
+bilityof naturallanguage processing (NLP)systems across Retrieval-AugmentedGeneration(RAG)enhancesLLMs
+various tasks, including question answering, text summa- by combining internal parametric knowledge with exter-
+rization, and conversational AI (Diao et al. 2024, 2025a; nalnon-parametricknowledgeretrievedatinference(Lewis
+Zhang et al. 2025; Wang, Wang, and Zhang 2025). De- et al. 2020). Explicitly integrating external knowledge sig-
+spite their remarkable generative capabilities, LLMs often nificantly improves factual accuracy and contextual rele-
+struggle with accurately recalling specific factual informa- vancefortaskssuchasquestionansweringandfactverifica-
+tion (Li and Cheung 2025; Huang et al. 2024), leading to tion(Chen,Zhang,andChoi2022;Yu,Merullo,andPavlick
+frequent hallucinations or inconsistent responses, particu- 2023). However, conflicts between implicitly stored inter-
+larlyinknowledge-intensivedomains(Yaoetal.2023;Tong nal knowledge and retrieved external information remain a
+etal.2025a;Xiaoetal.2025). critical issue, often causing inconsistent or incorrect out-
+puts(Longpreetal.2021;Xieetal.2024;Taoetal.2023).
+PreviousstudieshighlightvariabilityinhowLLMshandle
+*Theseauthorscontributedequally.
+†Correspondingauthor. knowledgeconflicts,withmodelseitherprioritizinginternal
+Copyright©2026,AssociationfortheAdvancementofArtificial parametricknowledge(Longpreetal.2021)orexternalre-
+Intelligence(www.aaai.org).Allrightsreserved. trieved information (Chen, Zhang, and Choi 2022). Recent
+6202
+naJ
+11
+]IA.sc[
+1v24860.1062:viXra
+research reveals models internally encode signals indicat- 2024). Recent studies emphasize models’ limited robust-
+ing knowledge discrepancies and answerability, yet fail to ness in such scenarios, highlighting the need for better so-
+utilize them effectively due to sequential forward propaga- lutions(Suetal.2024;Xiaoetal.2024).
+tionconstraints.Currentresolutionmethodseitherexplicitly
+Resolving Knowledge Conflicts. Existing conflict-
+modifyoutputs,demandingextensivedataset-specifictuning
+resolution strategies fall into five categories: (1) Context-
+andlimitinggeneralization(Shietal.2025;Jinetal.2024a;
+faithful methods prioritize external knowledge via fine-
+WangandZhang2024;Jiangetal.2025),orrelyonblack-
+tuning (Li et al. 2023; Gekhman et al. 2023; Xue et al.
+box APIs and manual interventions, reducing transparency
+2023), prompting (Zhou et al. 2023), decoding techniques,
+and autonomy (Wang et al. 2024b). Fig. 1 illustrates a typ-
+or knowledge plugins; (2) Memory-faithful approaches
+ical knowledge conflict scenario in a RAG system, where
+counter misinformation via vigilance mechanisms (Xu
+internal parametric knowledge and external retrieved infor-
+et al. 2024b), with some advocating parametric knowledge
+mationclash,resultinginuncertainty.
+in noisy contexts (Zhang et al. 2024b); (3) Source-
+To address these limitations, we propose a novel frame-
+distinguishing methods present multiple source-derived
+work that integrates transparent conflict detection and au-
+answers for user selection (Neeman et al. 2023); (4)
+tonomous resolution into RAG. Our method: 1) Detects
+Factuality-enhancing techniques improve correctness via
+knowledgeconflictsbetweeninternalmodelknowledgeand
+hybridknowledgefusion(Zhangetal.2023b)orcontrastive
+external retrieved information, 2) Extracts meaningful sig-
+decoding; and (5) Structural modifications adjust architec-
+nalsfrommodelrepresentationstoguidegenerationtoward
+turestooptimizeknowledgeintegration(Shietal.2025;Jin
+accurateoutputs,3)Ensuresinterpretabilityandcompatibil-
+etal.2024b).
+ity with existing RAG architectures without manual inter-
+Current methods remain biased toward either context or
+vention,improvingscalabilityandrobustness.Ourkeycon-
+memory, lacking adaptive balancing mechanisms (Wang
+tributionsaresummarizedasfollows:
+et al. 2024b). Our work bridges this gap with an inter-
+1) A transparent semantic vector-based conflict detec-
+pretable,dynamicconflict-resolutionframework.
+tion method, enhancing interpretability over black-box ap-
+proaches(Wangetal.2024b).
+3 ExploratoryAnalysis
+2) An autonomous conflict-resolution mechanism using
+softprompttuning,enablingaccurate,consistentgeneration We first investigate whether sentence embeddings disen-
+withoutmanualintervention.Plug-and-playforeasyintegra- tangle different information dimensions (e.g., meaning vs.
+tion. truthfulness)andassessifoff-the-shelfencodersinherently
+3) Extensive experiments show our method reduces capturesignalsforconflictdetection.Weaddress:(Q1)Can
+factual errors, advancing RAG reliability in knowledge- standard encoder embedding spaces separate what a sen-
+intensivetasks. tenceisabout(meaning)fromwhetheritsfactistrue(truth-
+fulness)? (Q2) If such signals exist, how reliably do they
+2 RelatedWork exposeknowledgeconflictsinRAGsystems?
+Retrieval-AugmentedGeneration. Largelanguagemod- Experimental Setup. We sample 5k factual triples
+els (LLMs) effectively encode factual knowledge paramet- from Wikidata and automatically create, for each fact,
+rically, yet suffer from hallucinations (Chen et al. 2024), three surface forms: (i) Paraphrase (same fact, dif-
+rare entity retention issues (Kandpal et al. 2023), and tem- ferent wording), (ii) Contradiction (negated relation),
+poral degradation (Jang et al. 2022). Retrieval-Augmented and (iii) Unrelated (different subject). All sentences
+Generation(RAG)mitigatesthesebycombiningparametric are embedded using two public models of contrasting
+knowledgewithexternalretrieval(Lewisetal.2020).Early capacity: all-MiniLM-L6-v2 (384-d, 6 layers) and
+approaches pre-trained smaller retrieval-augmented mod- E5-large-v2 (1024-d, 24 layers). Fig. 2 visualises the
+els(Guuetal.2020),whilerecentworkexploitslargemod- rawembeddingsafterprojectionontotheirfirstthreeprinci-
+els’ in-context learning (Yu et al. 2023; Ram et al. 2023). palcomponents.
+However,resolvingconflictsbetweenretrievedandparamet-
+GlobalEmbeddingStructure.InFig.2weobservethatthe
+ricknowledgeremainschallenging(Minetal.2023;Nietal.
+lighterMiniLMencoderyieldsonedominantclusterwhere
+2024;Zhong2025).
+paraphrases, contradictions, and unrelated sentences over-
+lap. The larger E5 encoder begins to form two visible sub-
+Context-Memory Conflicts in LLMs. Context-memory
+manifolds,yetthetransitionregions(yellowpoints)remain
+conflict occurs when retrieved context contradicts internal
+fuzzy—suggestingthatmodelscalealonedoesnotguaran-
+knowledge (Longpre et al. 2021; Chen, Zhang, and Choi
+tee explicit separation of meaning and truth. This lack of
+2022;Diaoetal.2025b),oftenduetotemporalmismatches,
+structuremotivatesadisciplineddecouplingstrategy.
+misinformation in documents (Chen et al. 2025), or mis-
+leading prompts (Xu et al. 2024b). Models exhibit incon- Identifying a Semantic–Truth Subspace. We next train
+sistent conflict resolution, sometimes favoring parametric a single linear probe to project each embedding onto a 2-
+knowledge (Longpre et al. 2021) and other times prioritiz- D plane that maximises class separability while keeping
+ingcoherentcontext(Chen,Zhang,andChoi2022;Suetal. paraphrase pairs close. The resulting semantic–truth space
+2024).Additionalchallengesincludeconfirmationbias(Xie is shown in Fig. 3. A distinctive triangular pattern ap-
+etal.2024)andsusceptibilitytodeceptiveinputs(Yingetal. pears:paraphrasesclusterintheupper-right(highmeaning,
+Paraphrase Contradiction Unrelated
+1.0 1.0
+0.5 0.5
+0 0
+-0.5 -0.5
+-0.5 0 0.5 1.0 -0.5 0 0.5 1.0
+Semantic Similarity Semantic Similarity
+Figure 3: 2D scatter plot of semantic-factual similarity
+space. Left: Sentence pairs show clear separation of para-
+phrases(topright),contradictions(bottomright),andunre-
+latedsentences(bottomleft)usingjustonelinearprojection
+layer.ContourlinesshowKDEboundaries.Right:Example
+ofannotatedtransitions(othertypesperformsimilarlywell).
+conflict detection module to decouple semantics from fac-
+tual accuracy, and (2) a conflict-aware generation module
+usingsoftprompttuning.ThepipelineisshowninFig.4.
+ConflictDetectionviaContrastiveLearning
+Dataset Construction. We construct a conflict-focused
+dataset D, derived from knowledge triples in Wikidata and
+expanded via GPT-4o. Each original statement s is associ-
+atedwith3typesofstatements:paraphrases(s+ )preserv-
+Figure 2: Sentence-embedding clusters for ALL- para
+ing semantic and factual equivalence, irrelevant statements
+MINILM-L6-V2 (top) vs. E5-LARGE-V2 (bottom).
+(s− )withnosemanticrelation,andconflictingstatements
+Rows 1 & 3: two PCA views of 3-D space—paraphrase irr
+(blue), contradiction (red), unrelated (green). Rows 2 & (s− )thatmaintainsemanticcoherencebutintroducefac-
+conf
+4: boundary regions (yellow) highlight transition zones. tual contradictions. This structured diversity simulates sce-
+MiniLM(384d)formsasingleblob;thelargerE5(1024d, nariosofknowledgeconflictsfacedbyRAGsystems.
+24layers)beginstoseparatetruthfrommeaning.
+Semantic-Factual Feature Decoupling. Effective con-
+flict detection requires separating semantic similarity from
+factualcorrectness.Weemploytwoencoders—semanticen-
+hightruth),contradictionsinthelower-right(highmeaning, coder E and factual encoder E —based on the SFR
+sem fact
+low truth), and unrelated sentences in the lower-left (low retrievalmodel.Eachtextualstatementsisencodedintotwo
+meaning,lowtruth).Kernel-densitycontourshighlightcrisp
+distinctvectorspacesasfollows:
+boundaries,andmanualinspectionofboundarypoints(right
+z =E (s), z =E (s), (1)
+panel) confirms smooth, interpretable gradients rather than sem sem fact fact
+abruptjumps. where semantic vectors z capture meaning and topical
+sem
+Findings. Our probe reveals that off-the-shelf embeddings coherence,andfactualvectorsz factencodefactualvalidity.
+intertwine meaning and truth, yet a single linear projec- Contrastive Learning Objective. We train the seman-
+tion cleanly separates them and yields smooth, continuous tic and factual encoders using separate contrastive losses.
+scores.Thismotivates(i)dedicatedsemanticandfactualen- Specifically,foreachoriginalstatements:
+coders, (ii) independent contrastive losses to sharpen each Thesemanticcontrastiveloss(L )isdefinedas:
+sem
+axis, and (iii) soft scalar conflict signals fed into genera-
+L (s)=
+tion—choices. sem
+We propose a
+no4 velP frr amop ewos oe rkd tM
+o
+re est oh lo ved
+knowledge con-
+−log (cid:80)(cid:80) s′∈s {′∈
+s+
+p{ as r+ p aa ,r sa
+−
+c, os n− c fon ,sf
+−
+i} rre }si em s( imzs (e zm se( ms) (, sz )s ,e zm se( ms′ () s) ′/ )τ
+)/τ
+(2)
+The factual contrastive loss (L ) is similarly defined
+flicts in RAG. Given query q, RAG generates response y fact
+as:
+conditioned on external context c and internal parametric
+knowledgeθ:p(y|q,c;θ).Conflictsarisewhenccontradicts L fact(s)=
+θ co, nle fla id ci tn sg anto di gn uco idn es sis gte en nt eo rau tt ip ou nts v. iO au cr om nfle it ch to -ad wd ae rt eec st is gnsu ac lsh
+. −log
+(cid:80)
+s′∈{s+
+para}esim(zfact(s),zfact(s′))/τ
+(3)
+The framework includes: (1) a contrastive learning-based (cid:80) s′∈{s+ para,s− conf,s− irr}esim(zfact(s),zfact(s′))/τ
+ytiralimiS
+lautcaF
+ytiralimiS
+lautcaF
+Token embedding Stentence embedding Trainable soft token Concate Document Trainable Frozen
+Conflict Detection
+Module
+Datastore
+Language Model Sentence
+�
+� E n coder
+... ...
+Query
+Who is the
+richest person in
+the world as of
+2024 ？
+Factual Semantic
+Self- Similarity Similarity
+Answerability
+Projector Projector Projector
+... Language Model
+�
+�
+Complete prompt
+Figure 4: Overview of our Transparent Conflict Resolution (TCR) framework for Retrieval-Augmented Generation
+(RAG).Givenaquery,TCRidentifiesknowledgeconflictsthroughsemanticandfactualsimilarityvectors,generatingexplicit
+conflict signals. These signals, along with self-answerability estimation, are integrated using soft prompt tuning to guide the
+LanguageModel’sgenerationtowardenhancedfactualconsistencyandinterpretability.
+Theoverallcontrastivetrainingobjectivecombinesthese DynamicLossWeightingviaSignal-to-NoiseRatio. To
+twolossesoverallsamplessindatasetD: optimizetheintegrationofmultipleconflictsignals,wedy-
+(cid:88) namically weight their training contributions according to
+L = (L (s)+L (s)). (4)
+ctr sem fact the Signal-to-Noise Ratio (SNR). The SNR for each signal
+s∈D i∈{sem,fact,ans}iscomputedas:
+Conflict-AwareGenerationviaSoftPromptTuning Var(yˆ)
+SNR = i , (9)
+Extraction and Integration of Conflict Signals. The i Var(y−yˆ)
+i
+conflict detection module explicitly provides scalar signals
+whereyˆ isthepredictionmadesolelyusingsignali,andy
+representingsemanticsimilarity(σ ),factualconsistency i
+sem
+is the ground-truth label indicating presence or absence of
+(σ ),andmodel-inferredanswerability(σ ).Thesesig-
+fact ans
+aconflict.SignalswithhigherSNRvaluescontributemore
+nalsareformallyextractedas:
+significantly,weightedby:
+σ (q,c)=sim(z (q),z (c)), (5)
+sem sem sem
+exp(SNR )
+σ fact(q,c)=sim(z fact(q),z fact(c)), (6) w
+i
+=
+(cid:80)
+exp(SNi
+R
+). (10)
+σ (q)=A(q;θ), (7) j j
+ans
+Thecombinedlossforthegenerationmoduleis:
+where A(·) is the model’s answerability estimation follow-
+ingSlobodkinetal.(2023).Thesesignalsarethenprojected (cid:88)
+L = w [αL
+intoembeddingsviadedicatedMLPprojectors: total i prompt,i
+i∈{sem,fact,ans} (11)
+e =MLP([σ ,σ ,σ ]). (8)
+signal sem fact ans +(1−α)L ],
+projector,i
+Soft Token Embedding Strategy. To guide generation
+where α balances the relative contributions of soft prompt
+withconflict-awarecues,weprependsofttokens—trainable
+andsignal-projectionlosses.
+embeddingsseededfromthebasemodel—withtheconflict
+By employing conflict-aware signals with dynamic
+signals,yieldinganaugmentedembeddingsequencethatdi-
+rects the model’s attention x′ = [e ,e ,x], where weighting, our method effectively enhances the reliability
+soft signal
+andfactualconsistencyofRAG-generatedresponses.
+x represents the original input embeddings. This approach
+allows the model to leverage conflict-awareness explicitly Assumption1. Letρ∈[0,1]denotetheprobabilityofnoisy
+duringresponsegeneration,improvingfactualconsistency. retrieval, α = Pr[D = 0 | R = 1] the false-negative rate
+(FNR), γ = Pr[D = 1 | R = 0] the false-positive rate ConflictDetection Robustness&Transfer
+Method
+(FPR),ε = Pr[G = 1 | R = 0,D = 0]thebaselineerror
+EMDrop↓ Cross-DomainF1↑
+rate,β = Pr[G = 1 | D = 1]theerrorratewithconflict- F1↑ AUROC↑ (30%noise) Bio/Fin
+aware prompt, and ζ = Pr[G = 1 | R = 1,D = 0] the
+Prompt 71.2 0.779 18.4 46.7/44.1
+undetected noise error rate (Tong et al. 2025b). All error
+KAFT 73.5 0.801 16.7 48.5/45.3
+rates(ε,β,ζ,α,γ)arequery-independent(i.i.d.setting). IRCAN 79.1 0.845 12.3 52.1/48.9
+Theorem 1 (Noise-Robustness Error Bound). For any RAAT 66.4 0.732 9.5 51.2/48.4
+Parenting 77.5 0.833 14.1 50.9/46.8
+noisy-retrievalpipelinewithconflictdetection,theincrease
+inexpectedEMloss∆:=Pr[G=1]−εsatisfies: TCR 84.3 0.901 7.2† 55.8/52.7†
+TCR+CD2 83.8 0.905 – –
+∆=(1−ρ)γ(β−ε)+ρ[(1−α)β+αζ−ε] (12) TCR+RAAT – – 6.1† 56.3/53.1†
+≤ρα+β[ρ(1−α)+(1−ρ)γ], (13)
+Table 1: Unified evaluation of conflict detection and
+wheretheinequalityistight(equalitywhenζ =1,ε=0).
+robustness. Left: conflict-detection performance on
+Proofsketch. Theresultfollowsby:(1)partitioningPr[G= WIKIDATA-CONFLICT-5K. Right: robustness under 30%
+(cid:2) (cid:3) (cid:2) distractorinjection(EMdrop;lowerisbetter)andzero-shot
+1]viatotalprobabilityas(1−ρ) (1−γ)ε+γβ +ρ (1−
+(cid:3) transferF1onbiomedical/financialQA.Backbone:Llama-
+α)β +αζ , then subtracting ε to obtain the exact gap; (2)
+3-8B. Bold=best; underline=second best (per column). †
+upper-boundingusingβ ≥ εandζ ≤ 1,droppingtheneg-
+indicatesstatisticallysignificantimprovementoverPrompt.
+ativeterm−(1−ρ)γεwhilenotingαζ −αε ≤ α;(3)ob-
+“–”denotesnotevaluatedinthatsetting.
+servingtightnesswhenζ =1andε=0makesallbounding
+stepsexact.
+Interpretation. Eq. (13) bounds the excess error by strategy CD2 (Jin et al. 2024a). For real-world NQ we add
+missed conflicts (ρα) plus conflict-branch errors weighted INSTRUCTRAG (Wei, Chen, and Meng 2025) and SELF-
+byρ(1−α)+(1−ρ)γ.Whenγ≪1andβ≈ε,ραdomi- ROUTE(Xuetal.2024a).FourablationsofTCR(–semantic,
+nates,solowFNRiscrucial. –factual, –SNR, hard-prompt) and three hybrid variants
+(TCR+CD2, TCR+IRCAN, TCR+RAAT) test plug-and-
+5 Experiment playcompatibility.
+Our empirical study is driven by five questions: RQ1 – Metrics.WereportEM/F1foranswercorrectness,MCOR
+ConflictDetection:doessemantic–factualdisentanglingim- (lower is better) and KGRR (higher is better) for con-
+prove conflict classification ? RQ2 – End-to-End Factual- flictsensitivity,F1/AUROCfordetection,FactScore/QAGS-
+ity:doconflict-awaresoftpromptsraiseanswercorrectness F/GPT-judge for faithfulness, ∆EM under noise/time-shift
+andfaithfulness?RQ3–Robustness&Transfer:howdoes for robustness, throughput (V-tokens/s) & extra parameter-
+the method behave under noisy retrieval, domain shift, and s/VRAM/FLOPs for efficiency (Yao, Li, and Xiao 2024),
+with different LLM backbones? RQ4 – Efficiency: what is andρ/Krippendorffαforinterpretability.
+the latency, memory, and parameter overhead ? RQ5 – In-
+terpretability:areconflictscoresalignedwithhumanjudge- 6 ResultsandDiscussion
+mentandcanweshowintuitiveexamples?
+RQ1–ConflictDetectionAccuracyTable1showsthatdis-
+ExperimentalSetup entanglingsemanticsandfactualityyieldsthehighestF1and
+AUROC. Adding contrastive decoding gives a small AU-
+Benchmarks. We evaluate on three groups of datasets.
+ROC bump without harming F1, confirming orthogonality
+(i) Conflict detection: our Wikidata-Conflict-5K.
+betweenTCR’sconflictscoreanddecodingheuristics.
+(ii) Knowledge-intensive QA with controlled context: the
+two datasets we build ConflictTQA (TriviaQA-based) and RQ2 – End-to-End Factuality TCR ranks best in 22/24
+ConflictPQA (PopQA-based)—each question paired with cells of Table 2, improving KGRR by +21.4 and reducing
+golden, irrelevant or conflicting context. (iii) Real-world MCOR by −29.3 vs. prompting. TCR+CD2 achieves the
+RAG: KILT (NQ, HotpotQA, FEVER), CONFLICTBANK lowest MCOR, confirming complementarity between our
+2024, and a single-document NQ setting that keeps only conflict score and contrastive decoding. On Natural Ques-
+thetop-1Googleresult. tions(Table3),TCRoutperformsspecialisedpipelineswith-
+Models. All systems share the same BM25 → Contriever-
+out fine-tuning (+3.6pt over ASTUTE RAG, +6.1pt over
+1024 retrieval pipeline and Llama-3-Instruct-8B
+SELF-ROUTE),withthelargestgainonQwen3-8B(+4.0pt).
+(Grattafiorietal.2024)backbone.Wealsoreportresultson RQ3–RobustnessandTransferTable1showsthatTCR
+Llama-3-13B and Qwen3-8B. TCR tunes only 20 soft- loses only 7.2 EM points under 30 % distractor injec-
+prompttokensandtwosmallMLPprojectors. tion—2.3pointslessthanRAAT—andattainsthebestcross-
+domain F1. Hybrid TCR+RAAT preserves RAAT’s adver-
+Baselines. We compare against six published methods—
+sarialdefencewhileinheritingourconflict-awaregains,giv-
+PROMPT,KAFT(Lietal.2023),IRCAN(Shietal.2025),
+ingtheoverallstrongestrobustness.
+RAAT (Fang et al. 2024), PARENTING (Xu et al. 2024c),
+ASTUTE RAG (Wang et al. 2024a)—plus the decoding RQ4–EfficiencyTable4confirmsthatTCRaddsonly0.3
+Llama-3-8B Llama-3-13B Qwen3-8B
+ConflictTQA ConflictPQA ConflictTQA ConflictPQA ConflictTQA ConflictPQA
+Method
+KGRR↑ MCOR↓ KGRR MCOR KGRR MCOR KGRR MCOR KGRR MCOR KGRR MCOR
+Prompt 42.4 19.5 48.5 22.5 45.7 21.3 51.0 24.5 38.2 17.6 44.3 20.4
+KAFT 43.7 23.8 49.0 26.0 46.0 25.2 52.0 28.5 40.5 21.3 46.2 24.9
+IRCAN 68.2 25.5 73.5 28.0 71.2 27.2 75.0 30.5 63.4 22.8 69.6 26.3
+RAAT 52.6 37.9 57.0 41.5 55.8 39.8 59.5 43.8 47.9 32.5 54.1 36.8
+Parenting 66.2 53.8 70.0 57.0 69.1 55.3 72.5 58.5 61.5 47.6 67.2 51.3
+CD2 51.3 52.7 55.5 56.0 54.3 54.6 58.5 57.5 48.8 45.9 53.2 49.8
+TCR 69.2† 61.9† 74.5† 65.5† 73.5† 63.6† 77.5† 67.5† 66.3† 54.2† 71.7† 58.8†
+TCR+CD2 68.5 63.2† 73.8 66.8† 72.8 64.9† 76.0 68.8† 65.6 55.5† 70.1 59.1†
+TCR+IRCAN 67.9 56.3 72.6 60.0 71.6 59.9 75.8 63.0 64.2 49.6 69.9 54.2
+TCR+RAAT 68.8 62.6 74.2 66.2 73.2 64.2 77.3 68.1 65.9 54.8 70.4 58.4
+Table2:End-to-endperformanceonConflictTQA/PQA.Bold=best;underline=secondbest.†=significant.
+1.00 Method ExtraParams VRAM Tok/s
+25 (M,%) (GB) ↑
+0.75 Prompt 0(0) 17.8 28.3
+20 RAAT 100(1.2) 18.9 24.6
+IRCAN 52(0.6) 18.4 25.1
+0.50 15 Parenting 68(0.8) 18.6 24.9
+y<0.40 TCR 21(0.3) 18.1 26.7
+TCR+CD2 +0 18.1 22.5
+0.25 10
+Table4:ComputationalfootprintonA100-80GB.
+5
+0.00
+0.00 0.25 0.50 0.75 1.00
+Semantic similarity x Model ρ(score,human)↑ κ↑
+Figure5:Residualconflict-detectionerrorsforTCR.Dot Llama-3-8B 0.71 0.67
+colour follows a blue - white - red scale : warmer hues de- Llama-3-13B 0.74 0.69
+Qwen3-8B 0.63 0.61
+note denser error pockets. Missed conflicts cluster just be-
+Avg. 0.69 0.66
+low the factual threshold (y ≈ 0.35); a thin false-positive
+band appears near y≈0.45. Dashed lines mark the current
+Table5:Alignmentofconflictscoreswithhumanjudge-
+decisionboundaryx>0.65, y<0.40.
+mentson300annotatedqueries.
+Method Llama-3-8B Llama-3-13B Qwen3-8B
+AstuteRAG 51.2 56.6 49.7
+InstructRAG 47.8 51.2 50.3
+Self-Route 46.5 49.2 48.5
+TCR(ours) 54.8 56.8 53.7
+Table3:Overallaccuracy(%)onNaturalQuestionswith
+asingleGoogletop-1pageascontext.
+%parametersand0.3GBVRAM,retaining94%ofvanilla
+decoding speed. The method is thus practically free to de-
+ployrelativetoheavyweightfine-tuningbaselines.
+RQ5 – Interpretability Fig. 7 visualises how successfully
+corrected(SC)anddefended(SD)casesclusterinthehigh-
+semantic/low-factualquadrant,whereasfailurecasesgravi-
+tatetowardboundaryregions.Thescalarconflictscorecor-
+relates strongly with human labels (ρ = 0.69) and exhibits
+Figure6:Ablationstudyresultsacrossdifferentmodels.
+substantialinter-annotatoragreement(κ=0.66)inTable5,
+demonstrating that our signals are human-intelligible. The
+violinplotsrevealbackbone-specificconfidencecalibration AblationStudyWeablatethreemodules(Fig.6):removing
+quirks,offeringadiagnostictoolforfuturealignmentwork. self-answerability(SA)dropsMCOR/KGRRby∼18/26pp;
+y
+ycnetsisnoc
+lautcaF 56.0>x
+ytisned
+EDK
+replacing dynamic weighting with a fixed scalar(Fixed) de- Fig.8showsasharpphasetransition:fors<0.3thefliprate
+grades 17/20pp and harms reasoning; removing signal in- is∼42%,whereasfors>0.7itdropsto4%.Thethreshold
+tegration(SI) collapses 55/53pp. Overall, TCR needs self- is identical across Llama-3-8B, Llama-3-13B and Qwen3-
+answerability,adaptiveweighting,andintegratedfusion. 8B,offeringasimple,transparentrule:“ifself-answerability
+>0.7,trustmemory;otherwiseexaminecontext.”
+InterpretabilityAnalysis
+What does the model truly “see” when conflicts arise?
+Fig. 7 situates each test pair in the semantic-similarity 0.6
+Llama-3-8B
+(x) vs. factual-consistency (y) plane and overlays self- Llama-3-13B
+answerabilityasviolinplots,turningrawactivationsintoan 0.5 41.3% Qwen3-8B
+interpretabledecisionspace.Weobserve:(i)Spatialpattern. Avg. (all models)
+0.4
+Nearlyallsuccessfullycorrectedcases—closingknowledge
+gaps (SC) or resisting misinformation (SD)— cluster in
+0.3
+the high-x/low-y region, while failures lie closer to the
+16.6%
+axes, indicating ‘topic match but fact clash” is where re- 0.2 Global avg = 17.4%
+evaluation is triggered. (ii) Self-answerability. SC/SD ex-
+4.7%
+hibit higher answerability than still-wrong (SW) or misled 0.1
+(ML) cases, suggesting this scalar controls when to trust
+N=426 N=1876 N=698
+memoryvs.context.(iii)Backbonevariation.Llamashows 0.0
+Low Mid High
+tighter, better-separated distributions than Qwen (likely
+[0,0.3) [0.3,0.7) [0.7,1]
+fromEnglish-centrictuning),yetthesamequalitativestruc-
+Self-Answerability
+tureholds,confirmingcross-modelrobustnessofthesignals.
+Figure8:Fliprateforself-answerabilitybins.
+Signaldynamicsduringdecoding.Fig.9showssignaltra-
+jectories over the first 20 decoding steps for FIXED (cor-
+rected) and MISLED cases. In FIXED, factual consistency
+risesearlyandsurpassesself-answerabilitybystep7—when
+the correct answer emerges—while semantic similarity re-
+mains high. In contrast, MISLED shows stagnant factual
+scoresandadelayedself-answerabilityspike,aligningwith
+wrongoutputs.Thispatternsuggestsausefulheuristic:fac-
+tual > self-ans before step 10 predicts success in 70% of
+cases,enablingearly-stoporre-promptstrategies.
+Semantic Factual Self-Ans Fixed Misled
+0.8
+0.6
+0.4
+0.2
+0.0 2.5 5.0 7.5 10.0 12.5 15.0 17.5
+Decoding Step
+Figure9:Averagesignaltrajectories.
+Figure 7: Top: Heat maps of correction success rates in
+semantic-factualspace,showinghigherperformanceinhigh
+semanticsimilarity/lowfactualconsistencyregions.Bottom: 7 Conclusion
+Violin plots of self-answerability scores for case types: SC
+(corrected wrong internal knowledge), SW (failed correc- WeproposeTCR,alightweightconflict-awareRAGmodule
+tion), SD (maintained correct knowledge), ML (overrode thatdecouplessemanticrelevancefromfactualconsistency
+correctknowledge). andusesself-answerabilitytosteergenerationwiththreein-
+terpretablescalars.Itconsistentlyimprovesdetection,factu-
+Whendoesthemodeltrustexternalevidence?Webucket ality, robustness, and interpretability on synthetic and real-
+self-answerability s into LOW [0,0.3), MID [0.3,0.7) and world benchmarks, and we plan to extend it to multimodal
+HIGH[0.7,1]andmeasuretherateatwhichthemodelover- and federated settings (Li and Cheung 2024; Zhang et al.
+ridesitsparametricanswerwithretrievedcontext(fliprate). 2024a,2023a).
+eulaV
+langiS
+)txetnoc
+yromem(
+etaR
+pilF
+References Jin, Z.; Cao, P.; Yuan, H.; Chen, Y.; Xu, J.; Li, H.; Jiang,
+Chen,H.-T.;Zhang,M.;andChoi,E.2022.Richknowledge X.;Liu,K.;andZhao,J.2024b. CuttingOfftheHeadEnds
+sources bring complex knowledge conflicts: Recalibrating the Conflict: A Mechanism for Interpreting and Mitigating
+models to reflect conflicting evidence. In EMNLP, 2292– Knowledge Conflicts in Language Models. In Findings of
+2307.
+the Association for Computational Linguistics ACL 2024,
+1193–1215.
+Chen, J.; Lin, H.; Han, X.; and Sun, L. 2024. Benchmark-
+ing Large Language Models in Retrieval-Augmented Gen- Kandpal,N.;Deng,H.;Roberts,A.;Wallace,E.;andRaffel,
+eration. In Proceedings of the 38th AAAI Conference on C.2023. LargeLanguageModelsStruggletoLearnLong-
+ArtificialIntelligence,volume38(16),17754–17762. Tail Knowledge. In ICML, volume 202, 15696–15707.
+PMLR.
+Chen, X.; Xiao, C.; Cao, W.; Zhang, W.; and Liu, Y. 2025.
+Framework and Pathway for the Construction of a Unified Lewis, P.; Perez, E.; Piktus, A.; Petroni, F.; Karpukhin, V.;
+Data-ElementMarketinChina. StrategicStudyofChinese Goyal, N.; Ku¨ttler, H.; Lewis, M.; Yih, W.-t.; Rockta¨schel,
+AcademyofEngineering,27(1):40–50. T.; and Riedel, S. 2020. Retrieval-Augmented Generation
+Diao,X.;Cheng,M.;Barrios,W.;andJin,S.2025a.FT2TF: forKnowledge-IntensiveNLPTasks.InAdvancesinNeural
+First-PersonStatementText-To-TalkingFaceGeneration.In InformationProcessingSystems,volume33,9459–9474.
+WACV. Li, D.; Rawat, A. S.; Zaheer, M.; Wang, X.; Lukasik, M.;
+Diao, X.; Zhang, C.; Wu, T.; Cheng, M.; Ouyang, Z.; Wu, Veit,A.;Yu,F.;andKumar,S.2023. Largelanguagemod-
+W.;andGui,J.2024. LearningMusicalRepresentationsfor els with controllable working memory. In Findings of the
+MusicPerformanceQuestionAnswering. InFindingsofthe associationforcomputationallinguistics:ACL2023,1774–
+AssociationforComputationalLinguistics:EMNLP2024. 1793.
+Diao,X.;Zhang,C.;Wu,W.;Ouyang,Z.;Qing,P.;Cheng, Li,R.;andCheung,Y.-m.2024. Variationalmulti-scalerep-
+M.; Vosoughi, S.; and Gui, J. 2025b. Temporal Working resentation for estimating uncertainty in 3d gaussian splat-
+Memory:Query-GuidedSegmentRefinementforEnhanced ting. Advances in Neural Information Processing Systems,
+Multimodal Understanding. In Findings of the Association 37:87934–87958.
+forComputationalLinguistics:NAACL2025.
+Li,R.;andCheung,Y.-m.2025. ModelingandIdentifying
+Fang, F.; Bai, Y.; Ni, S.; Yang, M.; Chen, X.; and Xu, R. DistractorswithCurriculumforRobust3DGaussianSplat-
+2024.EnhancingNoiseRobustnessofRetrieval-Augmented ting. InProceedingsofthe33rdACMInternationalConfer-
+Language Models with Adaptive Adversarial Training. In enceonMultimedia,10122–10131.
+ACL,10028–10039.
+Longpre, S.; Perisetla, K.; Chen, A.; Ramesh, N.; DuBois,
+Gekhman,Z.;Herzig,J.;Aharoni,R.;Elkind,C.;andSzpek- C.;andSingh,S.2021. Entity-basedknowledgeconflictsin
+tor, I. 2023. TrueTeacher: Learning Factual Consistency questionanswering. arXivpreprintarXiv:2109.05052.
+EvaluationwithLargeLanguageModels.InEMNLP,2053–
+Min,S.;Lyu,X.;Lewis,P.;Zettlemoyer,L.;Hajishirzi,H.;
+2070.
+andYih,W.-t.2023. AugmentedLanguageModels:ASur-
+Grattafiori, A.; Dubey, A.; Jauhri, A.; Pandey, A.; Kadian,
+vey. arXivpreprintarXiv:2302.07842.
+A.; Al-Dahle, A.; Letman, A.; Mathur, A.; Schelten, A.;
+Vaughan,A.;etal.2024. Thellama3herdofmodels. arXiv Neeman, E.; Aharoni, R.; Honovich, O.; Choshen, L.;
+preprintarXiv:2407.21783. Szpektor,I.;andAbend,O.2023. Disentqa:Disentangling
+parametric and contextual knowledge with counterfactual
+Guu,K.;Lee,K.;Tung,Z.;Pasupat,P.;andChang,M.2020.
+questionanswering. InACL,10056–10070.
+Retrievalaugmentedlanguagemodelpre-training.InICML,
+3929–3938.PMLR. Ni, S.; Bi, K.; Guo, J.; and Cheng, X. 2024. When do
+llms need retrieval augmentation? mitigating llms’ over-
+Huang, X.; Li, R.; Cheung, Y.-m.; Cheung, K. C.; See,
+confidence helps retrieval augmentation. arXiv preprint
+S.;andWan,R.2024. Gaussianmarker:Uncertainty-aware
+arXiv:2402.11457.
+copyright protection of 3d gaussian splatting. Advances in
+NeuralInformationProcessingSystems,37:33037–33060. Ram,O.;Levine,Y.;Dalmedigos,I.;Muhlgay,D.;Shashua,
+Jang, J.; Ye, S.; Lee, C.; Yang, S.; Shin, J.; Han, J.; Kim, A.; Leyton-Brown, K.; and Shoham, Y. 2023. In-context
+G.;andSeo,M.2022. Temporalwiki:Alifelongbenchmark retrieval-augmented language models. Transactions of the
+for training and evaluating ever-evolving language models. AssociationforComputationalLinguistics,11:1316–1331.
+arXivpreprintarXiv:2204.14211. Shi, D.; Jin, R.; Shen, T.; Dong, W.; Wu, X.; and Xiong,
+Jiang,L.;Wang,X.;Zhang,F.;andZhang,C.2025. Trans- D.2025. Ircan:Mitigatingknowledgeconflictsinllmgen-
+forming time and space: efficient video super-resolution eration via identifying and reweighting context-aware neu-
+withhybridattentionanddeformabletransformers. TheVi- rons. AdvancesinNeuralInformationProcessingSystems,
+sualComputer,1–12. 37:4997–5024.
+Jin, Z.; Cao, P.; Chen, Y.; Liu, K.; Jiang, X.; Xu, J.; Li, Slobodkin, A.; Goldman, O.; Caciularu, A.; Dagan, I.; and
+Q.; and Zhao, J. 2024a. Tug-of-War Between Knowledge: Ravfogel,S.2023. TheCuriousCaseofHallucinatory(Un)
+ExploringandResolvingKnowledgeConflictsinRetrieval- answerability:FindingTruthsintheHiddenStatesofOver-
+AugmentedLanguageModels. arXive-prints,arXiv–2402. ConfidentLargeLanguageModels.InEMNLP,3607–3625.
+Su, Z.; Zhang, J.; Qu, X.; Zhu, T.; Li, Y.; Sun, J.; Li, J.; Xu, Y.; Zhang, R.; Jiang, X.; Feng, Y.; Xiao, Y.; Ma, X.;
+Zhang,M.;andCheng,Y.2024.Conflictbank:Abenchmark Zhu,R.;Chu,X.;Zhao,J.;andWang,Y.2024c. Parenting:
+for evaluating the influence of knowledge conflicts in llm. Optimizingknowledgeselectionofretrieval-augmentedlan-
+arXivpreprintarXiv:2408.12076. guage models with parameter decoupling and tailored tun-
+ing. arXivpreprintarXiv:2410.10360.
+Tao, H.; Li, J.; Hua, Z.; and Zhang, F. 2023. DUDB: deep
+unfolding-baseddual-branchfeaturefusionnetworkforpan- Xue,B.;Wang,W.;Wang,H.;Mi,F.;Wang,R.;Wang,Y.;
+sharpening remote sensing images. IEEE Transactions on Shang,L.;Jiang,X.;Liu,Q.;andWong,K.-F.2023.Improv-
+GeoscienceandRemoteSensing,62:1–17. ingFactualConsistencyforKnowledge-GroundedDialogue
+Systems via Knowledge Enhancement and Alignment. In
+Tong, R.; Liu, J.; Liu, S.; Xu, J.; Wang, L.; and Wang, T.
+Findings of the Association for Computational Linguistics:
+2025a. DoesBiggerMeanBetter?ComparitiveAnalysisof
+EMNLP2023,7829–7844.
+CNNsandBiomedicalVisionLanguageModlesinMedical
+Diagnosis. InACDSA,arXivpreprintarXiv:2510.00411,6. Yao, J.; Li, C.; Sun, K.; Cai, Y.; Li, H.; Ouyang, W.; and
+Li, H. 2023. Ndc-scene: Boost monocular 3d semantic
+Tong, R.; Wei, S.; Liu, J.; and Wang, L. 2025b. Rainbow
+scene completion in normalized device coordinates space.
+Noise:Stress-TestingMultimodalHarmful-MemeDetectors
+InICCV,9421–9431.
+on LGBTQ Content. In NeurIPS 2025: Queer in AI Work-
+shop. Yao,J.;Li,C.;andXiao,C.2024. Swiftsampler:Efficient
+learning of sampler by 10 parameters. Advances in Neural
+Wang,F.;Wan,X.;Sun,R.;Chen,J.;andArık,S.O¨.2024a.
+InformationProcessingSystems,37:59030–59053.
+Astute rag: Overcoming imperfect retrieval augmentation
+Ying, J.; Cao, Y.; Xiong, K.; Cui, L.; He, Y.; and Liu, Y.
+and knowledge conflicts for large language models. arXiv
+2024. Intuitive or dependent? investigating llms’ behavior
+preprintarXiv:2410.07176.
+styletoconflictingprompts. InACL,4221–4246.
+Wang,H.;andZhang,F.2024. Computingnodesforplane
+Yu, Q.; Merullo, J.; and Pavlick, E. 2023. Characterizing
+data points by constructing cubic polynomial with con-
+Mechanisms for Factual Recall in Language Models. In
+straints. ComputerAidedGeometricDesign,111:102308.
+EMNLP,9924–9959.
+Wang, Y.; Feng, S.; Wang, H.; Shi, W.; Balachandran, V.;
+Yu, W.; Iter, D.; Wang, S.; Xu, Y.; Ju, M.; Sanyal, S.; Zhu,
+He,T.;andTsvetkov,Y.2024b. ResolvingKnowledgeCon-
+C.;Zeng,M.;andJiang,M.2023. GenerateratherthanRe-
+flicts in Large Language Models. In First Conference on
+trieve:LargeLanguageModelsareStrongContextGenera-
+LanguageModeling.
+tors. InICLR.
+Wang,Y.;Wang,H.;andZhang,F.2025. AMedicalimage
+Zhang,F.;Chen,G.;Wang,H.;Li,J.;andZhang,C.2023a.
+segmentationmodelwithauto-dynamicconvolutionandlo-
+Multi-scalevideosuper-resolutiontransformerwithpolyno-
+cation attention mechanism. Computer Methods and Pro-
+mialapproximation.IEEETransactionsonCircuitsandSys-
+gramsinBiomedicine,261:108593.
+temsforVideoTechnology,33(9):4496–4506.
+Wei, Z.; Chen, W.-L.; and Meng, Y. 2025. Instruc- Zhang, F.; Chen, G.; Wang, H.; and Zhang, C. 2024a. CF-
+tRAG: Instructing Retrieval-Augmented Generation via DAN: Facial-expression recognition based on cross-fusion
+Self-SynthesizedRationales. InICLR. dual-attentionnetwork.ComputationalVisualMedia,10(3):
+Xiao, C.; Hou, L.; Fu, L.; and Chen, W. 2025. Diffusion- 593–608.
+Based Self-Supervised Imitation Learning from Imperfect Zhang,T.;Patil,S.G.;Jain,N.;Shen,S.;Zaharia,M.;Sto-
+VisualServoingDemonstrationsforRoboticGlassInstalla- ica, I.; and Gonzalez, J. E. 2024b. RAFT: Adapting Lan-
+tion. In 2025 IEEE International Conference on Robotics guageModeltoDomainSpecificRAG. InFirstConference
+andAutomation(ICRA),10401–10407.IEEE. onLanguageModeling.
+Xiao, C.; et al. 2024. Confusion-resistant federated learn- Zhang,X.;Zeng,F.;Quan,Y.;Hui,Z.;andYao,J.2025.En-
+ingviadiffusion-baseddataharmonizationonnon-IIDdata. hancingmultimodallargelanguagemodelscomplexreason
+Advances in Neural Information Processing Systems, 37: viasimilaritycomputation.InProceedingsoftheAAAICon-
+137495–137520. ference on Artificial Intelligence, volume 39(10), 10203–
+10211.
+Xie,J.;Zhang,K.;Chen,J.;Lou,R.;andSu,Y.2024.Adap-
+tive Chameleon or Stubborn Sloth: Revealing the Behav- Zhang, Y.; Khalifa, M.; Logeswaran, L.; Lee, M.; Lee, H.;
+ior of Large Language Models in Knowledge Conflicts. In and Wang, L. 2023b. Merging Generated and Retrieved
+ICLR. KnowledgeforOpen-DomainQA. InEMNLP,4710–4728.
+Xu,P.;Ping,W.;Wu,X.;McAfee,L.;Zhu,C.;Liu,Z.;Sub- Zhong, Z. 2025. From Privacy Washing to Sustainable
+ramanian, S.; Bakhturina, E.; Shoeybi, M.; and Catanzaro, Data Strategies: A Theory-Based AI Approach. Available
+B. 2024a. Retrieval meets Long Context Large Language atSSRN5255370.
+Models. InICLR. Zhou,W.;Zhang,S.;Poon,H.;andChen,M.2023.Context-
+Xu, R.; Lin, B.; Yang, S.; Zhang, T.; Shi, W.; Zhang, T.; faithfulPromptingforLargeLanguageModels. InFindings
+of the Association for Computational Linguistics: EMNLP
+Fang, Z.; Xu, W.; and Qiu, H. 2024b. The earth is flat be-
+cause...: Investigating llms’ belief towards misinformation
+2023,14544–14556.
+viapersuasiveconversation. InACL,16259–16303.

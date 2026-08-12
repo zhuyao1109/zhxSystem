@@ -1,0 +1,5195 @@
+ICS3524001
+. .
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T29806—2013
+信息技术 地下管线数据交换技术要求
+Informationtechnology—
+Technicalrequirementsforexchangingundergroundpipelinedata
+2013-11-12发布 2014-05-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T29806—2013
+目 次
+前言 …………………………………………………………………………………………………………
+Ⅲ
+引言 …………………………………………………………………………………………………………
+Ⅳ
+范围 ………………………………………………………………………………………………………
+1 1
+规范性引用文件 …………………………………………………………………………………………
+2 1
+术语和定义 ………………………………………………………………………………………………
+3 1
+数据的分类与编码 ………………………………………………………………………………………
+4 2
+地下管线数据元素 ………………………………………………………………………………………
+5 3
+元数据 ……………………………………………………………………………………………………
+6 4
+数据目录 …………………………………………………………………………………………………
+7 4
+数据交换格式与要求 ……………………………………………………………………………………
+8 4
+附录 规范性附录 地下管线数据分类代码 …………………………………………………………
+A( ) 6
+附录 规范性附录 地下管线数据元素字典 …………………………………………………………
+B( ) 8
+附录 规范性附录 地下管线元数据字典 ……………………………………………………………
+C( ) 11
+附录 规范性附录 数据目录描述规范 ………………………………………………………………
+D( ) 17
+附录 资料性附录 地下管线数据目录结构示例 ……………………………………………………
+E( ) 20
+附录 资料性附录 地下管线数据集交换格式 ………………………………………………………
+F( ) 21
+附录 资料性附录 地下管线元数据交换格式………………………………………………………
+G( ) 37
+附录 资料性附录 地下管线目录交换格式…………………………………………………………
+H ( ) 57
+参考文献 ……………………………………………………………………………………………………
+64
+Ⅰ
+GB/T29806—2013
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由北京市经济和信息化委员会提出
+。
+本标准由全国信息技术标准化技术委员会 归口
+(SAC/TC28) 。
+本标准的起草单位 北京市经济和信息化委员会 北京市信息资源管理中心 北京市市政市容管理
+: 、 、
+委员会信息中心 中国电子技术标准化研究院 建设综合勘察研究设计院有限公司 北京市测绘设计研
+、 、 、
+究院 厦门精图信息技术有限公司 重庆市地理信息中心 广州市城市规划自动化中心 北京超图软件股
+、 、 、 、
+份有限公司 曹妃甸工业区规划建设管理局
+、 。
+本标准主要起草人 张宁 江贻芳 黄坚 穆勇 耿丹 高文飞 杨瑛 董仲奎 周波 乔志勇 葛文兰
+: 、 、 、 、 、 、 、 、 、 、 、
+罗灵军 林广元 朱越杰 程筑群 王玲 李时锦 刘峥嵘 俞慈声 武利亚 林绍福 水海峰 张刚 许登超
+、 、 、 、 、 、 、 、 、 、 、 、 、
+高翔 徐进
+、 。
+Ⅲ
+GB/T29806—2013
+引 言
+地下管线是城市重要的基础设施 其规划 建设 运行管理 应急处置等公共管理事务亟需完备 准
+, 、 、 、 、
+确的地下管线信息资源支撑 地下管线信息资源物理上分散分布 并涉及多个行业的政府部门和企事
+。 ,
+业单位 共享和交换的实际需求迫切
+, 。
+本标准规定了地下管线数据的分类及代码要求 旨在解决跨地区 跨行业间信息共享与交换时不同
+, 、
+资源分类方案的对接 本标准以点数据元素 线数据元素的方式规定了交换时地下管线数据的定义及
+。 、
+组织要求
+。
+Ⅳ
+GB/T29806—2013
+信息技术 地下管线数据交换技术要求
+1 范围
+本标准规定了地下管线数据的分类及代码 数据元素要求 元数据要求 数据目录组成及指标项要
+、 、 、
+求 数据交换格式等内容
+、 。
+本标准适用于地下管线数据的交换
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 元数据注册系统 第 部分 数据定义的形成
+GB/T18391.4—2009 (MDR) 4 :
+信息技术 可扩展置标语言
+GB/T18793—2002 (XML)1.0
+地理信息 元数据
+GB/T19710
+政务信息资源交换体系 第 部分 技术要求
+GB/T21062.2 2 :
+政务信息资源交换体系 第 部分 数据接口规范
+GB/T21062.3—2007 3 :
+政务信息资源交换体系 第 部分 技术管理要求
+GB/T21062.4 4 :
+政务信息资源目录体系 第 部分 技术要求
+GB/T21063.2 2 :
+政务信息资源目录体系 第 部分 技术管理要求
+GB/T21063.6 6 :
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+地下管线数据 undergroundpipelinedata
+描述地下管线及其附属设施的空间位置 关系及其他属性的数据
+、 。
+32
+.
+对象类 objectclass
+可以对其界限和含义进行明确的标识 且特性和行为遵循相同规则的观念 抽象概念或现实世界中
+, 、
+事物的集合
+。
+定义
+[GB/T18391.1—2009, 3.3.22]
+33
+.
+特性 property
+一个对象类所有成员所共有的特征
+。
+定义
+[GB/T18391.1—2009, 3.3.29]
+34
+.
+表示 representation
+值域 数据类型的组合 必要时也包括计量单位或字符集
+、 , 。
+1
+GB/T29806—2013
+35
+.
+属性 attribute
+某个对象或实体的特征
+。
+定义
+[GB/T18391.1—2009, 3.1.1]
+36
+.
+数据元 dataelement
+用一组属性描述其定义 标识 表示和允许值的数据单元
+、 、 。
+定义
+[GB/T18391.1—2009, 3.3.8]
+注 一般由三部分组成 对象类 特性和表示
+: : 、 。
+37
+.
+管线点 surveyingpointofundergroundpipeline
+地下管线探查过程中 为准确描述地下管线的走向特征和附属设施信息 在地下管线探查或调查工
+, ,
+作中设立的测点
+。
+38
+.
+管线线段 surveyingsegmentofundergroundpipeline
+相邻管线特征点相连接的管线部分
+。
+39
+.
+元数据元素 metadataelement
+元数据的基本单元
+。
+定义
+[GB/T19710—2005, 4.6]
+注 元数据元素在元数据实体中是唯一的
+: 。
+310
+.
+元数据实体 metadataentity
+一组说明数据相同特性的元数据元素
+。
+定义
+[GB/T19710—2005, 4.7]
+311
+.
+地下管线数据目录 undergroundpipelinedatacatalog
+以元数据为基础 对地下管线数据资源的状态 权属 使用和获取方式等进行描述的信息集合
+, 、 、 。
+4 数据的分类与编码
+41 数据分类
+.
+411 分类原则
+..
+地下管线数据涉及多个领域的不同类别 其分类应遵循以下原则
+, :
+完整性 能覆盖各种地下管线 且地下管线数据按功能分类应无重复或交叉
+a) 。 , 。
+兼容性 确保地下管线数据按功能分类的大类和中类与其他分类标准的衔接
+b) 。 。
+合理性 分类层次分布合理 能正确反应地下管线的各种类别及其从属关系特征
+c) 。 , 。
+适用性 分类结果应有利于地下管线数据的交换 不同机构可进行现有资源与共享资源的描
+d) 。 ,
+述对照 实现有效资源的发现以及自有资源的共享服务
+, 。
+可扩展性 同一层次数据的分类留有扩充余地
+e) 。 。
+412 分类依据
+..
+地下管线数据分类以满足数据交换为目标 其分类依据是
+, :
+2
+GB/T29806—2013
+以地下管线的服务功能作为主要分类依据
+a) ;
+采用线分类法 按从属关系形成本标准的大类 中类 小类
+b) , 、 、 。
+413 分类结果
+..
+本标准的大类包括长输管线和城市管线两类 其中
+, :
+长输管线可分为输电 通信 输水 输油 输气和矿渣 个中类
+a) 、 、 、 、 6 ;
+城市管线可分为电力 电信 给水 排水 燃气 热力 工业和综合管沟 廊 个中类
+b) 、 、 、 、 、 、 ( )8 。
+42 数据分类编码
+.
+421 代码结构
+..
+分类代码采用 位数字进行编码 从左至右按顺序分别为大类 中类和小类码 其代码结构如图
+4 , 、 , 1
+所示
+。
+× × ××
+小类 第三 四位数字
+( 、 )
+中类 第二位数字
+( )
+大类 第一位数字
+( )
+图1 地下管线数据分类代码结构
+地下管线数据分类代码见附录
+A。
+422 代码扩展
+..
+当按照本标准中规定的分类代码不能满足时 应遵循以下规定进行代码扩展
+, :
+当附录 提供的分类不能满足实际需要时 可按 的原则进行扩展 但大类和中类不得
+a) A , 4.1.1 ,
+扩充
+;
+扩展类的代码应符合 的规定 且不应与已有的地下管线分类代码重复
+b) 4.2.1 , 。
+5 地下管线数据元素
+51 数据元素
+.
+511 管线点和管线线段
+..
+管线点和管线线段数据元素字典见附录
+B:
+地下管线点对象特性应包括 标识符 名称 分类码 X坐标Y坐标 地面高程 埋深或架空高
+a) : 、 、 、 、 、 、
+度 偏心距 旋转角等
+、 、 。
+地下管线线段对象特性应包括 标识符 名称 分类码 起点标识符 终点标识符 起点高程 终
+b) : 、 、 、 、 、 、
+点高程 管线权属 材质 规格 埋设年月 废弃年月 埋设方式 数据来源 竣测工程号 采集日
+、 、 、 、 、 、 、 、 、
+期等
+。
+地下管线点和地下管线线段对象特性的表示应包括 名称 定义 值域 约束 条件 数据类型
+c) : 、 、 、 / 、 、
+最大长度 表示精度 说明等描述
+、 、 。
+3
+GB/T29806—2013
+52 数据元素扩展
+.
+521 当附录 中的数据元素不能满足实际使用需要时 可扩展地下管线对象类 对象特性 表示 格
+.. B , 、 、 ,
+式见附录
+B。
+522 扩展数据元素的定义应符合 的规定
+.. GB/T18391.4 。
+523 已有的数据元素不得重复定义 扩展的数据元素与已有数据元素不得重复或交叉
+.. , 。
+524 数据元素扩展后应按照附录 编制相应的数据元素字典
+.. B 。
+6 元数据
+61 元数据内容
+.
+611 元数据结构
+..
+地下管线数据的元数据应含 个元数据子集 标识信息 内容信息 数据质量信息 参照信息 维护
+8 : 、 、 、 、
+信息 限制信息 分发信息和扩展信息
+、 、 。
+612 元数据字典
+..
+元数据字典及元数据代码表见附录
+C。
+62 元数据扩展
+.
+621 地下管线数据的元数据可根据需要进行扩展 并应符合 要求 新增的子集 实体和
+.. , GB/T19710 , 、
+元素应按照本标准附录 中所列项进行定义
+C 。
+622 经过扩展的元数据还应包含 扩展元素信息 子集 扩展元素信息 用以说明扩展的元数
+.. “ ” :“MD_ ”,
+据元素或元数据实体
+。
+7 数据目录
+71 数据目录描述
+.
+711 地下管线数据目录描述所涉及的元数据见
+.. D.1。
+712 目录指标项内容要求见 地下管线数据目录基本结构示例参见附录
+.. D.2, E。
+72 数据目录扩展
+.
+在对地下管线数据目录指标项进行扩展时 应优先考虑使用本标准中已定义的元数据 已有元数
+, 。
+据不能满足需求而需要新增时 应遵循本标准中元数据扩展 见 要求
+, ( 6.2) 。
+8 数据交换格式与要求
+81 交换格式
+.
+地下管线系统间进行数据交换时 应遵循以下格式要求
+, :
+宜采用可扩展置标语言 参照 进行地下管线数据共享与交换
+a) (XML), GB/T18793—2002 ;
+地下管线数据的结构宜符合 中 的规定
+b) GB/T21062.3—2007 5.3 ;
+地下管线数据集交换格式参见附录
+c) F;
+4
+GB/T29806—2013
+地下管线元数据交换格式参见附录
+d) G;
+地下管线目录交换格式参见附录
+e) H。
+82 交换要求
+.
+地下管线系统间进行数据交换时 应遵循国家相关标准
+, :
+地下管线数据的交换可采用离线 在线两种方式
+a) 、 ;
+基于数据库的在线数据交换 数据库建设和运行应满足国家相关标准要求
+b) , ;
+基于数据目录的在线数据交换 目录服务和交换服务系统建设和运行应满足
+c) , GB/T21062.2、
+的要求
+GB/T21062.4、GB/T21063.2、GB/T21063.6 ;
+地下管线数据的交换应满足国家相关安全 保密技术标准的要求
+d) 、 。
+5
+GB/T29806—2013
+附 录 A
+规范性附录
+( )
+地下管线数据分类代码
+地下管线数据分类代码见表
+A.1。
+表A1 地下管线数据分类代码表
+.
+代码
+名称
+大类 中类 小类
+长输管线数据
+1
+输电管线数据
+1
+通信管线数据
+2
+输水管线数据
+3
+输油管线数据
+4
+长输原油管线数据
+01
+长输成品油管线数据
+02
+长输航油管线数据
+03
+其他输油管线数据
+99
+输气管线数据
+5
+矿渣管线数据
+6
+其他长输管线数据
+9
+城市管线数据
+2
+电力管线数据
+1
+供电管线数据
+01
+照明管线数据
+02
+电车管线数据
+03
+信号管线数据
+04
+广告管线数据
+05
+直流专用线路数据
+06
+其他电力管线数据
+99
+电信管线数据
+2
+市话管线数据
+01
+长途管线数据
+02
+广播管线数据
+03
+有线电视管线数据
+04
+专用管线数据
+05
+其他电信管线数据
+99
+给水管线数据
+3
+供水管线数据
+01
+直饮水管线数据
+02
+循环水管线数据
+03
+6
+GB/T29806—2013
+表A1 续
+. ( )
+代码
+名称
+大类 中类 小类
+消防水管线数据
+04
+绿化水管线数据
+05
+中水管线数据
+06
+其他给水管线数据
+99
+排水管线数据
+4
+雨水管线数据
+01
+污水管线数据
+02
+合流管线数据
+03
+其他排水管线数据
+99
+燃气管线数据
+5
+煤气管线数据
+01
+天然气管线数据
+02
+液化气管线数据
+03
+其他燃气管线数据
+99
+热力管线数据
+6
+热水管线数据
+01
+蒸汽管线数据
+02
+温泉管线数据
+03
+其他热力管线数据
+99
+工业管线数据
+7
+氢气管线数据
+01
+氧气管线数据
+02
+乙炔管线数据
+03
+原油管线数据
+04
+成品油管线数据
+05
+航油管线数据
+06
+柴油管线数据
+07
+乙烯管线数据
+08
+排渣管线数据
+09
+其他工业管线数据
+99
+综合管沟 廊 数据
+8 ( )
+管沟数据
+01
+管廊数据
+02
+其他城市管线数据
+9
+7
+GB/T29806—2013
+附 录 B
+规范性附录
+( )
+地下管线数据元素字典
+B1 管线点数据元素字典
+.
+管线点数据元素字典见表
+B.1。
+表B1 管线点数据元素字典
+.
+存储
+数据 表示
+序号 名称 定义 约束 长度 值域 说明
+类型 精度
+字节
+( )
+管 线 点 标 数据中唯一标识管线点的字
+字符型 自由文本
+1 识符 符串 M 10 10
+描述管线点的特性或附属物等 应 遵 循 相 关 命 名
+管线点名称 字符型 自由文本
+2 性质类型的字符序列 M 12 12 标准
+管线点分类 标识管线点的特性或附属物等
+字符型 自由文本 应遵循本标准
+3 代码 性质类型 M 4 4
+管 线 点 X 双精
+记录管线点的横坐标信息 实型数
+4 坐标 M 度型 8 12(3)
+管 线 点 Y 双精
+记录管线点的纵坐标信息 实型数
+5 坐标 M 度型 8 12(3)
+管线点地面 双精
+记录管线点的地面高程信息 实型数
+6 高程 M 度型 8 8(3)
+管线点埋深 描述管线点顶部 排水为管或沟 双精 线高 正值为埋深
+( 实型数 , ,
+7 或架空高度 底部 到地面投影的垂直距离 O 度型 8 6(3) 负值为叫空高度
+)
+管线构筑物中心点
+管 线 点 偏 记录窨井中心偏离管线中心线 双精
+实型数 偏离管线中心线大
+8 心距 的水平距离 C 度型 8 6(3)
+于
+20cm
+以X轴正向为 取逆时针方
+管 线 点 旋 0°, 双精 按真方向绘制的点
+向 记录有向点状要素符号与X
+9 转角 , O 度型 8 4(2) 0~2π 符号 单位为弧度
+轴逆时针方向夹角 ,
+注1 表示该数据元素为必选 表示该数据元素为条件可选 表示该数据元素为可选
+:M ;C ;O 。
+注2 对于双精度型数据元素 表示精度 规定该数据元输出的 整数位数 位小数点位 小数位数 小数位
+: ,“ ” “ +1 + (
+数 如 即表示 位整数 位小数
+)”。 “12(3)” 8 、3 。
+B2 管线线段数据元素字典
+.
+管线线段数据元素字典见表
+B.2。
+8
+GB/T29806—2013
+表B2 管线线段数据元素字典
+.
+数据 最大 表示
+序号 名称 定义 约束 值域 说明
+类型 长度 精度
+数据集中 唯一标识
+管线线段标 ,
+管 线 线 段 的 字 符 字符型 自由文本
+1 识符 M 10 10
+序号
+描述管线线段的特
+管 线 线 段 管线线段名称 通常
+性或附属物等性质 字符型 自由文本 ,
+2 名称 M 12 12 遵循相关命名标准
+类型的字符序列
+标识管线线段的特 管线线段分类码 通
+管线线段分 ,
+性或附属物等性质 字符型 自由文本 常 遵 循 相 关 分 类
+3 类代码 M 4 4
+类型 标准
+管线线段起 管线线段起始管线 附录 中管
+字符型 B.1
+4 点标识符 点的标识符 M 10 10 线点的标识符
+管线线段终 管线线段终止管线 附录 中管
+字符型 B.1
+5 点标识符 点的标识符 M 10 10 线点的标识符
+管线线段起 记 录 管 线 起 点 的 双精
+实型数
+6 点高程 高程 M 度型 8 6(3)
+管线线段终 记 录 管 线 终 点 的 双精
+实型数
+7 点高程 高程 M 度型 8 6(3)
+管线线段管 该条管线所属的产
+整型
+8 线权属 权单位代码 M 2 2 0199
+管 线 线 段
+记录管线的材质 字符型 自由文本
+9 材质 M 10 10
+管 线 线 段
+记录管线的规格 字符型 自由文本 包括度量单位
+10 规格 M 30 30
+管线线段埋
+记 录 管 线 的 埋 设
+设 架 设 日期型
+11 ( ) 日期 M 8 8 YYYYMMDD
+日期
+管线线段废 记 录 管 线 的 废 弃
+日期型
+12 弃日期 日期 M 8 8 YYYYMMDD
+管线线段埋
+记 录 管 线 的 埋 设
+设 架 设 字符型 自由文本
+13 ( ) 方式 M 10 10
+方式
+管线线段数 探 测 竣 测 图 解
+记录数据的来源 字符型 自由文本 、 、 、
+14 据来源 M 50 50 整合
+管线线段竣 管线所属竣测工程 数 据 来 源 为 竣 工
+字符型 自由文本
+15 测工程号 的代号 C 30 30 测量
+管线线段采 管线数据最后一次
+日期型
+16 集日期 采集的日期 M 8 8 YYYYMMDD
+9
+GB/T29806—2013
+表B2 续
+. ( )
+数据 最大 表示
+序号 名称 定义 约束 值域 说明
+类型 长度 精度
+定义为 高压 中压
+长 输 管 线 记 录 长 输 管 线 的 “ 、 、
+字符型 自由文本 低压 管线为长输
+17 压力 压力 C 4 4 ”。
+管线
+表示起点到终点
+排 水 管 线 记 录 排 水 管 线 的 1 ,0
+整型 表示终点到起点
+18 流向 流向 C 2 1 0,1 。
+管线为排水管线
+定义为 高压 中压
+燃 气 管 线 燃 气 管 线 承 受 的 “ 、 、
+字符型 自由文本 低压
+19 压力 压力 C 4 4 ”。
+管线为燃气管线
+电 力 管 线 电力管线承载的工 双精 单位为
+实型数 kV。
+20 电压 作电压 C 度型 8 6(3) 管线为电力管线
+电信管线总 记录电信管线的总
+整型 整型数 管线为电信管线
+21 孔数 孔数 C 2 3
+定义为 高压 中压
+工 业 管 线 记录工业管线承受 “ 、 、
+字符型 自由文本 低压
+22 压力 的压力 C 4 4 ”。
+管线为工业管线
+仅以区分工业管道
+工业管线流 记录工业管线的流
+字符型 自由文本 流体种类
+23 体性质 体性质 C 10 10 。
+管线为工业管线
+综合管沟沟 记录综合管沟的沟 双精
+实型数 管线为综合管沟
+24 底深 底深度 C 度型 8 6(3)
+注 表示该数据元素为必选 表示该数据元素为条件可选 表示该数据元素为可选
+:M ;C ,O 。
+10
+GB/T29806—2013
+附 录 C
+规范性附录
+( )
+地下管线元数据字典
+C1 元数据元素
+.
+元数据元素见表
+C.1。
+表C1 元数据元素
+.
+最大出 数据
+序号 名称 英文名称 定义 约束 条件 值域 说明
+/ 现次数 类型
+元数据所描述数据集
+标识信息 标识子集
+1 的基本信息
+元 数 据 用于唯一标识该元数
+字符型 自由文本
+1.1 标识 MD_TAG 据的 位索引 M 1
+15
+数据名称 MD_ResourceTi-共享数据集的名称 字符型 自由文本
+1.2 M 1
+tle
+附录
+B
+分类代码 对于共享数据的分类 字符型 地下管线数
+1.3 MD_Classify M N
+据分类代码
+该主题的数据集中经
+关键词 字符型 自由文本
+1.4 MD_KEYS 常使用的单词或短语 M N
+对数 据 内 容 的 简 单
+摘要 字符型 自由文本
+1.5 MD_Abstract 说明 M 1
+用途 对数据集用途的描述 字符型 自由文本
+1.6 MD_Purpose M 1
+该数据集所涉及的勘 元数据
+勘测单位 类 C.2
+1.7 MD_Survey 测单位 M N ME_Rep 实体表
+该数据集所涉及的权 元数据
+权属单位 类 C.2
+1.8 MD_Own 属单位 M N ME_Rep 实体表
+元数据联系 该数据集元数据负责 元数据
+字符型 自由文本 C.2
+1.9 单位 MD_Contact 单位 M N 实体表
+不 使 用
+地理 覆 盖 该数据集的地理范围C/
+MD_ GeoExtent- 地理 边 界 字符型 自由文本
+1.10 范围 说明 1
+Dist 矩形时
+不 使 用
+地理 边 界 该数据集的地理边界C/ 元数据
+地理 范 围 类 ME_GeoBnd-C.2
+1.11 矩形 EX_GeoBndBox 矩形 N 实体表
+描述时 Box
+时间 覆 盖 该数据集内容跨越的
+字符型 自由文本
+1.12 范围 EX_TempExtent 时间段 O N
+11
+GB/T29806—2013
+表C1 续
+. ( )
+最大出 数据
+序号 名称 英文名称 定义 约束 条件 值域 说明
+/ 现次数 类型
+高程 覆 盖
+该数据集的高程范围 字符型 自由文本
+1.13 范围 EX_VertExtent O N
+内 容 信 息
+内容信息 数据集内容说明
+2 子集
+是否引用了要素分类
+符合代码 布尔型
+2.1 MD_CompCode 标准 M 1
+引用的要素分类标准 引 用 标
+引用标准 C/ 字符型 自由文本
+2.2 MD_Std 名称与版本 准时 1
+引用的标准要素名称 引 用 标
+引用要素 C/ 字符型 自由文本
+2.3 MD_Fea 或分类代码 准时 N
+使 用 标
+扩展 管 线 C/
+扩展要素及属性 准之 外 的 类
+2.4 要素 MD_ExFea N ME_ExFea
+要素时
+数据 质 量
+数据集的质量信息
+3 信息
+数据质量的综合描述
+,
+包括作业方法 采用的
+质量说明 、 字符型 自由文本
+3.1 DQ_Statement 标准 引用数据源 属M 1
+、 ,
+性数据质量等
+对综合管线或专题管
+完整性 字符型 自由文本
+3.2 DQ_Complete 线完整性的评价 O 1
+对通过管线点标识符建
+逻 辑 一 字符型
+立的管线线段间拓扑关 自由文本
+3.3 致性 DQ_LogConsis O 1
+系正确性的评价
+水平 位 置 竣工测量水平位置中 单位为分米
+实型 实型数 ,
+3.4 精度 DQ_PosAcc 误差 O N 小数后 位
+2
+高程 位 置 单位为米 小
+竣工测量高程中误差 实型 实型数 ,
+3.5 精度 DQ_VertAcc O N 数后 位
+2
+数据集采用的坐标系 参 照 信 息
+参照信息
+4 及高程系 子集
+平 面 坐 该数据集采用的平面 代码表
+字符型
+4.1 标系 RS_CoordPlat 坐标系 M 1 附录
+C.3.1
+该数 据 集 采 用 的 高 代码表
+高程基准 字符型
+4.2 RS_CoordHei 程系 M 1 附录
+C.3.2
+维 护 信 息
+维护信息 数据集的更新信息
+5 子集
+12
+GB/T29806—2013
+表C1 续
+. ( )
+最大出 数据
+序号 名称 英文名称 定义 约束 条件 值域 说明
+/ 现次数 类型
+数据更新的一般说明
+,
+更新说明 说明更新的范围 方 字符型 自由文本
+5.1 MI_UpdateInfo 、 M 1
+法 更新者信息等
+、
+数据最后一次更新的
+更新日期 日期型 YYYYMM-
+5.2 MI_UpdateDate 日期 M 1
+DD
+访问 数 据 集 的 限 制 限 制 信 息
+限制信息
+6 信息 子集
+能使用该数据集的用 代码表 应按现行保
+使用对象 字符型
+6.1 CT_Allowused 户范围 M 附录 密制度使用
+C.3.3
+安全 限 制 能使用该数据集的用 代码表
+字符型
+6.2 级别 CT_Purview 户权限级别 M 附录
+C.3.4
+分 发 信 息
+分发信息 数据集的分发信息
+7 子集
+元数据
+分发方 分发方的有关信息 类 C.2
+7.1 MD_Distributor M 1 ME_RepOrg 实体表
+扩展 元 素 新增 的 元 数 据 元 素 扩 展 元 素
+8 信息 定义 子集
+扩展 元 数 据 元 素 的
+名称 字符型 自由文本
+8.1 EXT_EleName 名称 M 1
+扩展元数据元素的缩
+缩写名 字符型 自由文本
+8.2 EXT_ShortName 写名 M 1
+扩展 元 数 据 元 素 的
+定义 字符型 自由文本
+8.3 EXT_EleDef 定义 M 1
+扩展元数据元素的约
+约束 条件 字符型 自由文本
+8.4 / EXT_EleOb 束条件 M 1
+最大 出 现 扩展元数据元素的最大
+整型 整型数
+8.5 次数 EXT_EleMxOc 出现次数 M 1
+扩展元数据元素的数
+数据类型 字符型 自由文本
+8.6 EXT_Datatype 据类型 M 1
+扩展 元 数 据 元 素 的
+值域 字符型 自由文本
+8.7 EXT_EleDomVal 值域 M 1
+扩展 元 数 据 元 素 的
+说明 字符型 自由文本
+8.8 EXT_Rationale 说明 M 1
+注 表示该数据元素为必选 表示该数据元素条件为可选 表示该数据元素为可选
+:M ;C ;O 。
+13
+GB/T29806—2013
+C2 元数据实体
+.
+元数据实体见表
+C.2。
+表C2 元数据实体
+.
+最大出 数据
+序号 名称 英文名称 定义 约束 条件 值域 说明
+/ 现次数 类型
+与数据集有关的负 负 责 单 位
+负责单位 类
+1 ME_RepParty 责人和单位信息 1.1~1.5 实体
+负责 单 位 与 数 据 集 有 关 的 选 用
+C/ 字符型 自由文本
+1.1 名称 RP_ParName 单位 负责单位 1
+与数据集有关的职
+职责 责 如勘测 数据加 可选 字符型 自由文本
+1.2 RP_Role , 、 1
+工 管理等
+、
+负 责 人 与数据集有关的负 选 用
+C/ 字符型 自由文本
+1.3 姓名 RP_IndName 责人或联系人 负责人 1
+职务 职务 可选 字符型 自由文本
+1.4 RP_PosName 1
+联系信息 如联系电
+,
+联系信息 话 通 讯 地 可选 字符型 自由文本
+1.5 RP_CntInfo 、Email、 1
+址等
+地理 边 界 该数据集的地理边 地 理 边 界
+ME _ GeoBnd- 类
+2 矩形 界矩形 2.1~2.4 矩形实体
+Box
+不 使
+最大 纵 坐 该数据集的最大纵 C/ 小 数 后 保
+用 地 理 实型 实型数
+2.1 标值 EX_Top 坐标值 1 留 位
+描述时 3
+不 使
+最小 纵 坐 该数据集的最小纵 C/ 小 数 后 保
+用 地 理 实型 实型数
+2.2 标值 EX_Bottom 坐标值 1 留 位
+描述时 3
+不 使
+最小 横 坐 该数据集的最小横 C/ 小 数 后 保
+用 地 理 实型 实型数
+2.3 标值 EX_Left 坐标值 1 留 位
+描述时 3
+不 使
+最大 横 坐 该数据集的最大横 C/ 小 数 后 保
+用 地 理 实型 实型数
+2.4 标值 EX_Right 坐标值 1 留 位
+描述时 3
+该数据集中扩展的
+扩展 管 线 扩 展 管 线
+各要素描述 要素编 类
+3 要素 ME_ExFea ( 3.1~3.5 要素实体
+目
+)
+名称 扩展要素名称 字符型 自由文本
+3.1 FC_FeaType M 1
+定义 扩展要素详细定义 字符型 自由文本
+3.2 FC_Definition M 1
+14
+GB/T29806—2013
+表C2 续
+. ( )
+最大出 数据
+序号 名称 英文名称 定义 约束 条件 值域 说明
+/ 现次数 类型
+分类代码 扩展要素分类码 字符型 自由文本
+3.3 FC_FeaCode M 1
+扩 展 要 素 的 几 何 枚举
+几何类型 字符型
+3.4 FC_SplType 类型 M 1 点 线
+[ 、 ]
+扩展要素所有的属 属性 属
+属性项 字符型 自由文本 1;
+3.5 FC_Att 性项名称 M 1 性 属性
+2; 3
+注 表示该数据元素为必选 表示该数据元素为条件可选 表示该数据元素为可选
+:M ;C ;O 。
+C3 元数据内容代码
+.
+C31 平面坐标系代码
+..
+平面坐标系代码见表
+C.3.1。
+表C31 平面坐标系代码
+..
+序号 名称 英文名称 域代码
+国家大地坐标系
+1 2000 ChinaGeodeticCoordinateSystem2000 CGCS2000
+西安坐标系
+2 1980 Xi’anGeodeticCoordinateSystem1980 XIAN80
+年北京坐标系
+3 1954 BeijingGeodeticCoordinateSystem1954 BJ54
+地方坐标系
+4 IndependentCoordinateSystem LocCS
+其他
+5 other OTH
+C32 高程系代码
+..
+高程系代码见表
+C.3.2。
+表C32 高程系代码
+..
+序号 名称 英文名称 域代码 定义
+经国务院批准 国家测绘局于 年
+国家高程基准 , 1987
+1 1985 NationalHeightDatum1985 Nation85 月 日公布使用
+5 26
+年黄海高程系 年后全国统一采用
+2 1956 HuanghaiElevationSystem1956 HH56 1961
+相对独立于国家高程系外的局部高
+地方高程系 LocalindependentElevationSys-
+3 LocES 程系
+tem
+其他 采用不同于以上的高程系
+4 other OTH
+C33 使用对象代码
+..
+使用对象代码见表
+C.3.3。
+15
+GB/T29806—2013
+表C33 使用对象代码
+..
+序号 名称 英文名称 域代码
+政府
+1 Government 1
+管线权属单位
+2 OwnUnit 2
+科研 设计单位
+3 、 InstitutionalUnit 3
+公众
+4 Public 4
+C34 安全限制级别代码
+..
+安全限制级别代码见表
+C.3.4。
+表C34 安全限制级别代码
+..
+序号 名称 英文名称 域代码 定义
+公开 含公开级和国内级 一般可以公开和交换
+1 unrestricted 1 ,
+不涉及国家秘密 但在一定时间内限制其交流和使用
+内部 ,
+2 restricted 2 范围
+一般的国家秘密 依照法定程序确定 在一定时间内
+, ,
+秘密 只限一定范围的人员知悉的事项 泄露会使国家的
+3 confidential 3 。
+安全和利益遭受损害
+重要的国家秘密 泄露会使国家的安全和利益遭受严
+机密 ,
+4 secret 4 重的损害
+最重要的国家秘密 泄露会使国家的安全和利益遭受
+绝密 ,
+5 topsecret 5 特别严重的损害
+注 参照 中华人民共和国保密法 定义秘密 机密和绝密
+: 《 》 、 。
+16
+GB/T29806—2013
+附 录 D
+规范性附录
+( )
+数据目录描述规范
+D1 数据目录描述涉及的元数据
+.
+数据目录描述所涉及的元数据包括政务信息资源目录体系元数据 地下管线数据元数据以及管理
+、
+和使用属性描述所需要的其他元数据
+。
+政务信息资源目录体系元数据参见
+GB/T21063.3—2007。
+地下管线数据元数据见附录
+C。
+管理和使用属性描述所必备的其他元数据有 数据需求方 数据提供方 相关业务事项 数据共享方
+: 、 、 、
+式 信息字段 详见表
+、 , D.1。
+表D1 管理和使用属性描述所需元数据
+.
+最大
+序号 名称 英文名称 定义 约束 条件 出现 数据类型 值域 说明
+/
+次数
+数 据 需 对数据有共享需求
+复合型 描述共享需求
+1 求方 的单位相关信息 C N
+数 据 需 求 对数据有共享需求
+NP_ Org- 字符型 描述共享需求
+1.1 单位名称 的单位名称 C N
+Name
+数 据 需 求 对数据有共享需求
+选用数据需求方且
+单 位 联 系 NP_ Ind- 的 单 位 的 联 系 人 字符型
+1.2 C 1 确定联系人
+人姓名 Name 姓名
+数 据 需 求 对数据有共享需求
+选用数据需求方且
+单 位 联 系 NP_CntIn- 的单位的联系电话 字符型
+1.3 、 C 1 有确定的联系方式
+方式 fo 地址 电子邮件等
+、
+数 据 提 对外提供数据的单
+复合型
+2 供方 位相关信息 M N
+数 据 提 供 对外提供数据的单
+SP _ Org- 字符型
+2.1 单位名称 位名称 M N
+Name
+数 据 提 供
+对外提供数据的单 数据管理责任落实
+单 位 联 系 SP _ Ind- 字符型
+2.2 位的联系人姓名 C 1 到确定的联系人
+人姓名 Name
+数 据 提 供 对外提供数据的单
+有 确 定 的 联 系 方
+单 位 联 系 位的联系电话 地 字符型
+2.3 SP_CntInfo 、 C 1 式时
+方式 址 电子邮件等
+、
+所需数据应用的业
+相 关 业 务
+务事项的名称及基 复合型 描述共享需求
+3 事项 C
+本描述
+17
+GB/T29806—2013
+表D1 续
+. ( )
+最大
+序号 名称 英文名称 定义 约束 条件 出现 数据类型 值域 说明
+/
+次数
+相 关 业 务 所需数据应用的业
+Bussiness- 字符型 描述共享需求
+3.1 事项名称 务事项名称 C 1
+name
+业务事项名称不足
+相 关 业 务 所需数据应用的业
+Bussiness 字符型 以直观反映业务内
+3.2 事项描述 务事项名称 C 1
+description 容需补充说明
+数 据 共 享 数 据 提 供 共 享 的
+字符型 描述共享需求时
+4 方式 Sharetype 方式 C 1
+描述该管线数据所
+信息字段 字符型 附录
+5 Datafactor 涉及的数据元名称 M 1 C
+注 表示该数据元素为必选 表示该数据元素为条件可选 表示该数据元素为可选
+:M ;C ;O 。
+D2 数据目录指标项内容要求
+.
+数据目录指标项内容要求见表
+D.2。
+表D2 数据目录指标项内容要求
+.
+序号 指标项 内容要求 对应元数据
+由前段码和后段码两部分组成 前段码和后
+,
+段码之间用字符 隔开 前段码为 位字
+“/” , 5
+数据标识符 母数字 用来标明政务信息数据目录管理
+1 ,
+者 后段码为不定长的字符型 表示形式
+, 。
+为
+:×××××/×…××
+数据名称 填写地下管线数据的名称 表 中 数据名称
+2 C.1 1.2
+数据分类代码 填写该数据所属的分类 依照附录 填写 表 中 分类代码
+3 , A C.1 1.3
+数据描述 填写该数据内容 用途的简要描述 表 中 摘要 用途
+4 、 。 C.1 1.5 、1.6
+数据勘测单位 填写负责勘测该数据集的单位名称 表 中 勘测单位
+5 C.1 1.7
+数据权属单位 填写该数据集的权属单位名称 表 中 权属单位
+6 C.1 1.8
+填写对该数据集负责的单位名称 联系人及 表 中 负责单位名称 负
+数据负责方 、 C.2 1.1 、1.3
+7 联系方式 责人姓名 联系信息
+、1.5
+填写对该数据有共享需求的单位名称 联系
+、
+人及联系方式
+。
+数据需求方 如有多个需求方 全部并列列出 之间用分
+8 , ,
+号 分隔 如需求方尚不明确此项可暂不
+“;” ;
+填写
+18
+GB/T29806—2013
+表D2 续
+. ( )
+序号 指标项 内容要求 对应元数据
+填写对外提供该数据的单位名称 联系人及
+数据提供方 、
+9 联系方式
+表 中 引用要素 扩展
+信息字段 填写描述该数据所涉及的数据元素名称 C.1 2.3 、2.4
+10 管线要素
+填写该数据的地理范围描述和地理边界 包
+, 表 中 地理覆盖范围
+地理覆盖范围 括最大纵坐标值 最小纵坐标值 最大横坐 C.1 1.10 、
+11 、 、 地理边界矩形
+标值 最小横坐标值 1.11
+、
+填写该数据的数据质量的综合描述 包括作
+,
+数据质量信息 业方法 引用数据源 采用的标准等 以及对 表 中 数据质量信息
+12 、 , , C.1 3
+综合管线或专题管线完整性的评价
+填写该数据集所采用的平面坐标系和高程 表 中 平面坐标系 高
+参照信息 C.1 4.1 、4.2
+13 系 依照 和 填写 程基准
+, C.3.1 C.3.2
+数据更新日期 填写该数据集最后一次更新的日期 表 中 更新日期
+14 C.1 5.2
+有权共享使用该数据的对象名称 依照
+数据使用对象 , 表 中 使用对象
+15 填写 要求列出具体单位名称 C.1 6.1
+C.3.3 ,
+填写该数据的安全权限级别 依照
+数据权限级别 , C.3.4 表 中 安全限制级别
+16 填写 C.1 6.2
+数据发布者 该数据集发布单位名称 表 中 分发方
+17 C.1 7.1
+数据发布日期 该数据发布的日期
+18
+备注 填写需要说明的其他情况
+19
+19
+GB/T29806—2013
+附 录 E
+资料性附录
+( )
+地下管线数据目录结构示例
+数据名称 电力供电电缆井
+数据标识符
+DLGDP/TDLJ30L
+数据分类 电力 供电 点 电缆井
+- _ _
+数据描述 电力 管井 电缆井
+_ _
+数据勘测单位 市电力公司
+数据权属单位 市电力公司
+×
+数据负责方 市电力公司
+×
+数据需求方 市市政市容管委会
+×
+数据提供方 市电力公司
+×
+信息字段
+BS、BH、DH、MC、JCSJ、SYQX、GC、MS、BFSJ、ZT、FSW
+地理覆盖范围 北纬 至 东经 至
+39°26′ 41°03′, 115°25′ 117°30′
+数据质量信息 数据完整 逻辑一致
+、
+参照信息 北京地方坐标系
+数据更新日期
+20080101
+数据使用对象 规划委
+×
+安全限制级别 高
+数据发布者 市市政市容管委会
+×
+数据发布日期
+20071212
+说明
+20
+GB/T29806—2013
+附 录 F
+资料性附录
+( )
+地下管线数据集交换格式
+F1 地下管线点数据集交换格式
+.
+xmlversion="1.0"
+<? ?>
+xsdschemaxmlnsxsd="http www.w3.org2001XMLSchema"
+< : : :// / / >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线点数据集交换格式
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelementname="PipPtData"type="PipPtDataType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="PipPtDataType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点数据类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementref="PipPtFeaMetadata"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点元数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementref="PipPtFeaCollection"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点数据集合
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="PipPtFeaMetadata"type="PipPtFeatureType"
+< : >
+xsdannotation
+< : >
+21
+GB/T29806—2013
+xsddocumentation
+< : >
+管线点要素的元数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="PipPtFeatureType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点要素类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="IdeCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点标识符
+:
+用来唯一标识数据集中管线点的字符序号
+。
+注 是否给定编码原则
+: 。
+</xsd:documentation>
+</xsd:annotation>
+<xsd:simpleType>
+<xsd:restrictionbase="xsd:string">
+<xsd:maxLengthvalue="10"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:elementname="Name"nillable="false">
+<xsd:annotation>
+<xsd:documentation>
+管线点名称
+:
+描述管线点的特性或附属物等性质类型的字符序列
+注 应遵循相关命名标准
+: 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="12"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="ClassCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点分类码
+:
+用来标识管线点的特性或附属物等性质类型
+注 应遵循相关分类标准
+: 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+22
+GB/T29806—2013
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="4"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="X"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点X坐标
+:
+用来记录管线点的横坐标信息
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="12"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Y"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点Y坐标
+:
+用来记录管线点的纵坐标信息
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="12"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Elevation"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点地面高程
+:
+用来记录管线点的地面高程信息
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="8"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+23
+GB/T29806—2013
+xsdelementname="BuiltDepth"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点埋深或架空高度
+:
+用来描述管线点顶部 排水为管或沟底部 到地面投影的垂直距离
+( )
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="EccDis"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点偏心距
+:
+用来记录窨井中心偏离管线中心线的垂直距离
+注 当 管线构筑物中心点偏离管线中心线大于 时 必选
+: “ 20cm” , 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="RotAngle"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点旋转角
+:
+以X轴正向为0度 取逆时针方向
+, ,
+记录有向点状要素符号与X轴逆时针方向夹角
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="4"
+< : />
+xsdfractionDigitsvalue="2"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="PipPtFeaCollection"type="PipPtFeaColType"
+< : />
+xsdcomplexTypename="PipPtFeaColType"
+< : >
+24
+GB/T29806—2013
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点集合类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="PipPtFeatureMember"type="PipPtFeatureType"
+< :
+maxOccurs="unbounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线点要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdschema
+</ : >
+F2 地下管线线段数据集交换格式
+.
+xmlversion="1.0"
+<? ?>
+xsdschemaxmlnsxsd="http www.w3.org2001XMLSchema"
+< : : :// / / >
+xsdelementname="PipLineData"type="PipLineDataType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线线段数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="PipLineDataType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线线段数据类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementref="PipLMetadata"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线线段数据元数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementref="PipLFeaCollection"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线线段数据集合
+xsddocumentation
+</ : >
+25
+GB/T29806—2013
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="PipLMetadata"
+< : >
+xsdcomplexType
+< : >
+xsdchoice
+< : >
+xsdelementname="GenlPipLMetadata"type="BasePipLineFeaType"maxOccurs="
+< :
+1"
+/>
+xsdelementname="LonDisPipLMetadata"
+< :
+type="LonDisPipelineType"maxOccurs="1"
+/>
+xsdelementname="DraPipLMetadata"type="DraPiplineType"maxOccurs="1"
+< : />
+xsdelementname="GasPipLMetadata"type="GasPiplineType"maxOccurs="1"
+< : />
+xsdelementname="ElecPipLMetadata"type="ElecPiplineType"maxOccurs="1"
+< : />
+xsdelementname="TelPipLMetadata"type="TelPiplineType"maxOccurs="1"
+< : />
+xsdelementname="IndPipLMetadata"type="IndPiplineType"maxOccurs="1"
+< : />
+xsdelementname="CompTrenchPipLMetadata"type="CompTrenchPipLType"
+< :
+maxOccurs="1"
+/>
+xsdchoice
+</ : >
+xsdcomplexType
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="BasePipLineFeaType"abstract="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+地下管线线要素抽象基类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="IdeCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段标识符
+:
+数据集中用来唯一标识数据集中管线线段的字符序号
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Name"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段名称
+:
+描述管线线段的特性或附属物等性质类型的字符序列
+。
+注 管线线段名称 通常遵循相关命名标准
+: , 。
+xsddocumentation
+</ : >
+26
+GB/T29806—2013
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="12"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="ClassCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段分类码
+:
+用来标识管线线段的特性或附属物等性质类型
+。
+注 管线线段分类码 通常遵循相关分类标准
+: , 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="4"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="StaIdeCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段起点标识符
+:
+管线线段起始管线点的标识符
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="EndIdeCode"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段终点的标识符
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="StaPtElev"nillable="false"
+< : >
+xsdannotation
+< : >
+27
+GB/T29806—2013
+xsddocumentation
+< : >
+管线线段起点高程
+:
+管线起点的高程
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="EndPtElev"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段终点高程
+:
+管线终点的高程
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Proprietor"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段管线权属
+:
+该条管线所属的产权单位代码
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="2"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Texture"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段材质
+:
+管线的材质
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+28
+GB/T29806—2013
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="Dimension"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段规格
+:
+管线的规格
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdpatternvalue="30"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="BuidDate"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段埋设 架设 年月
+( ) :
+管线的埋设 架设 日期
+( )
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddate"
+< : : >
+xsdpatternvalue="YYYYMMDD"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="AbanDate"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段废弃年月
+:
+管线的废弃年月
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddate"
+< : : >
+xsdpatternvalue="YYYYMMDD"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="BuryType"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段埋设 架设 方式
+( ) :
+管线的埋设 架设 方式
+( )
+29
+GB/T29806—2013
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="DatSource"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段数据来源
+:
+数据的来源
+。
+注 探测 竣测 图解 整合
+: 、 、 、 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="50"
+< : />
+xsdenumerationvalue= 探测
+< : “ ”/>
+xsdenumerationvalue= 竣测
+< : “ ”/>
+xsdenumerationvalue= 图解
+< : “ ”/>
+xsdenumerationvalue= 整合
+< : “ ”/>
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="FinalSurveyID"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段竣测工程号
+:
+管线所属竣测工程的代号
+注 当 数据来源为竣工测量 时 必选
+: “ ” , 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="30"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="AcquireTime"nillable="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线线段采集日期
+:
+管线数据最后一次采集的日期
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdrestrictionbase="xsddate"
+< : : />
+30
+GB/T29806—2013
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="LonDisPipelineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+长输管线类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="Pressure"nillable="true"
+< : >
+xsdsimpleType
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+长输管线的压力
+。
+注 当 管线为长输管线 必选
+: “ ”, 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="4"
+< : />
+xsdenumerationvalue="高压"
+< : />
+xsdenumerationvalue="中压"
+< : />
+xsdenumerationvalue="低压"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="DraPiplineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+排水管线类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="FlowDirection"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+排水管线流向
+:
+排水管线的流向
+。
+注 表示起点到终点 表示终点到起点
+:1 ;0 。
+xsddocumentation
+</ : >
+31
+GB/T29806—2013
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdinteger"
+< : : >
+xsdtotalDigitsvalue="1"
+< : />
+xsdenumerationvalue="0"
+< : />
+xsdenumerationvalue="1"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="GasPiplineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+燃气管线类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="GasPressure"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+燃气管线的压力
+注 当 管线为燃气管线 时 必选
+: “ ” , 。
+单位 kV 定义为 高压 中压 低压
+: “ 、 、 ”
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="4"
+< : />
+xsdenumerationvalue="高压"
+< : />
+xsdenumerationvalue="中压"
+< : />
+xsdenumerationvalue="低压"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="ElecPiplineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+电力管线类
+xsddocumentation
+</ : >
+32
+GB/T29806—2013
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="Voltage"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+电气管线的工作电压
+。
+注 当 管线为电力管线 时 必选
+: “ ” , 。
+单位 kV
+:
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="TelPiplineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+电信管线类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="TotHoles"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+电信管线的总孔数
+注 条件必选 管线为电信管线
+: / 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdinteger"
+< : : >
+xsdtotalDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+33
+GB/T29806—2013
+xsdcomplexType
+</ : >
+xsdcomplexTypename="IndPiplineType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+工业管线类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="IndPressure"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+工业管线的压力
+注 当 管线为工业管线 时 必选
+: “ ” , 。
+定义为 高压 中压 低压
+“ 、 、 ”
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="4"
+< : />
+xsdenumerationvalue="高压"
+< : />
+xsdenumerationvalue="中压"
+< : />
+xsdenumerationvalue="低压"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdelementname="LiqProp"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+工业管线流体性质
+:
+注 当 管线为工业管线 时 必选
+:a) “ ” , ;
+仅以区分工业管道流体种类
+b) 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsdstring"
+< : : >
+xsdmaxLengthvalue="10"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdcomplexTypename="CompTrenchPipLType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+34
+GB/T29806—2013
+综合管沟类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdcomplexContent
+< : >
+xsdextensionbase="BasePipLineFeaType"
+< : >
+xsdsequence
+< : >
+xsdelementname="Depth"nillable="true"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+综合管沟沟底深
+注 当 管线为综合管沟 时 必选
+: “ ” , 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsimpleType
+< : >
+xsdrestrictionbase="xsddecimal"
+< : : >
+xsdtotalDigitsvalue="6"
+< : />
+xsdfractionDigitsvalue="3"
+< : />
+xsdrestriction
+</ : >
+xsdsimpleType
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdextension
+</ : >
+xsdcomplexContent
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="PipLFeaCollection"type="PipLFeaColType"
+< : />
+xsdcomplexTypename="PipLFeaColType"abstract="false"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管线数据 管线线要素数据集合
+:
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdchoice
+< : >
+xsdelementname="GeneralPipFeaMember"
+< :
+type="BasePipLineFeaType"maxOccurs="unbounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+普通管线线要素 如给水 热力等管线
+: 、
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="LonDisPipLFeaMember"
+< :
+type="LonDisPipelineType"maxOccurs="unbounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+长输管线线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+35
+GB/T29806—2013
+xsdelementname="DraPipLFeaMember"type="DraPiplineType"maxOccurs="un-
+< :
+bounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+排水管线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="GasPipLFeaMember"type="GasPiplineType"maxOccurs="un-
+< :
+bounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+燃气管线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ElecPipLFeaMember"
+< :
+type="ElecPiplineType"maxOccurs="unbounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+电力管线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="IndPipLFeaMember"type="IndPiplineType"maxOccurs="un-
+< :
+bounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+工业管线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="CompTrenchPipLFeaMember"
+< :
+type="CompTrenchPipLType"maxOccurs="unbounded"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+综合管沟管线线要素
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdchoice
+</ : >
+xsdcomplexType
+</ : >
+xsdschema
+</ : >
+36
+GB/T29806—2013
+附 录 G
+资料性附录
+( )
+地下管线元数据交换格式
+xmlversion="1.0"encoding="gb2312"
+<? ?>
+xsschemaxmlnsxs="http www.w3.org2001XMLSchema"xmlnsxsd="undefined"
+< : : :// / / : >
+xselementname="PipMetadata"type="PipMetadataType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+地下管线数据元数据
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+--管线数据集元数据--
+<! >
+xscomplexTypename="PipMetadataType"
+< : >
+xssequence
+< : >
+xselementref="MDIdent"
+< : _ />
+xselementref="MDContent"
+< : _ />
+xselementref="MDDQ"
+< : _ />
+xselementref="RSREFInfo"
+< : _ />
+xselementref="MDMaiInfo"
+< : _ />
+xselementref="MDConstraints"
+< : _ />
+xselementref="MDDistribution"
+< : _ />
+xselementref="EXTEleInfo"
+< : _ />
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MDIdent"type="MDIdentType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+标识信息
+:
+元数据所描述数据集的基本信息
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDIdentType"
+< : >
+xssequence
+< : >
+xselementname="MDTAG"type="xsstring"maxOccurs="1"nillable="false"
+< : _ : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+元数据标识
+:
+用于唯一标识该元数据的15位索引
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDResourceTitle"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+37
+GB/T29806—2013
+xsannotation
+< : >
+xsdocumentation
+< : >
+数据名称
+:
+共享资源或数据集的名称
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDClassify"type="xsstring"
+< : _ :
+maxOccurs="unbounded"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+分类代码
+:
+对于共享数据的分类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDKEYS"type="xsstring"
+< : _ :
+maxOccurs="unbounded"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+关键词
+:
+该主题的数据集中经常使用的单词或短语
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDAbstract"maxOccurs="1"nillable="false"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+摘要
+:
+对数据内容的简单说明
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDPurpose"type="xsstring"maxOccurs="1"
+< : _ : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+用途
+:
+对数据集用途的描述
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDSurvey"type="MERepOrgType"
+< : _
+maxOccurs="unbounded"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+勘测单位
+:
+该数据集所涉及的勘测单位
+xsdocumentation
+</ : >
+38
+GB/T29806—2013
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDOwn"type="MERepOrgType"
+< : _
+maxOccurs="unbounded"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+权属单位
+:
+该数据集所涉及的权属单位
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDContact"type="MERepOrgType"
+< : _
+maxOccurs="unbounded"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+元数据联系单位
+:
+该数据集元数据负责单位
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDGeoExtentDist"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+地理覆盖范围
+:
+该数据集的地理范围说明
+注 当 不使用地理边界矩形 时 必选
+: “ ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXGeoBndBox"type="MEGeoBndBoxType"
+< : _
+maxOccurs="unbounded"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+地理边界矩形
+:
+该数据集的地理边界矩形
+注 当 不使用地理范围描述时 必选
+: “ ”, 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTempExtent"type="xsstring"
+< : _ :
+maxOccurs="unbounded"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+时间覆盖范围
+:
+该数据集内容跨越的时间段
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+39
+GB/T29806—2013
+xselement
+</ : >
+xselementname="EXVertExtent"type="xsstring"
+< : _ :
+maxOccurs="unbounded"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+高程覆盖范围 该数据集的高程范围
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MDContent"type="MDContentType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+内容信息
+:
+数据集内容说明
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDContentType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+内容信息类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="MDComplianceCode"type="xsboolean"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+符合代码
+:
+是否引用了要素分类标准
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDStd"type="xsstring"maxOccurs="1"
+< : _ :
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+引用标准
+:
+引用的要素分类标准名称与版本
+注 当 引用标准时 必选
+: “ ”, 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDFea"type="xsstring"
+< : _ :
+maxOccurs="unbounded"nillable="true"
+>
+xsannotation
+< : >
+40
+GB/T29806—2013
+xsdocumentation
+< : >
+引用要素
+:
+引用的标准要素名称或分类代码
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDExFea"maxOccurs="unbounded"
+< :
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+扩展管线要素 扩展要素及属性
+:
+注 当 使用标准之外的要素时 必选
+: “ ”, 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MDDA"type="MDDQType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+数据质量信息
+:
+数据集的质量信息
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDDQType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+数据质量信息类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="DQStatement"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+质量说明
+:
+数据质量的综合描述 包括作业方法 引用数据源 采用的标准等
+, 、 ,
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="DQComplete"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+完整性
+:
+对综合管线或专题管线完整性的评价
+41
+GB/T29806—2013
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="DQLogConsis"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+逻辑一致性
+:
+对通过管线点标识符建立的管线线段间拓扑关系
+正确性的评价
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="DQPosAcc"maxOccurs="unbounded"nillable="true"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+水平位置精度 竣工测量水平位置中误差
+:
+注 以 为单位
+:a) dm ;
+当地下管线数据 竣测资料 探查资料 时 必选
+b) “ 、 ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="2"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xselementname="DQVertAcc"maxOccurs="unbounded"
+< : _
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+高程位置精度 竣工测量高程中误差
+:
+注 以 为单位
+: m 。
+当地下管线数据是 竣测资料 探查资料 时 必选
+“ 、 ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="2"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="RSREFInfo"type="RSREFInfoType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+参照信息
+:
+42
+GB/T29806—2013
+数据集采用的坐标系及高程系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="RSREFInfoType"
+< : >
+xssequence
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+参照信息类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselementname="RSCoordPlat"type="PlatCooSysCdType"
+< : _
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+平面坐标系
+:
+该数据集采用的平面坐标系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="RSCoordHei"type="MDCoordHeightType"
+< : _
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+高程系
+:
+该数据集采用的高程系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MIUpdateInfo"type="MDMaiInfoType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+维护信息
+:
+数据集的更新信息
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDMaiInfoType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+更新维护信息类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="MDUpdateInf"type="xsstring"
+< : _ :
+43
+GB/T29806—2013
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+更新说明
+:
+数据更新的一般说明 说明更新的范围 方法等
+, 、
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MIUpdateDate"type="xsdate"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+更新日期
+:
+数据最后一次更新的日期
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MDConstraints"type="MDConstraintsType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+限制信息
+:
+访问数据集的限制信息
+注 限制信息子集
+: 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDConstraintsType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+限制信息类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="CTAllowused"type="MDAllowusedType"
+< : _
+nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+受用对象
+:
+能使用该数据集的用户范围
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="CTPurview"type="MDPurviewType"
+< : _
+nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+44
+GB/T29806—2013
+权限级别
+:
+能使用该数据集的用户权限级别
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="MDDistribution"type="MDDistributionType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+分发信息 数据集的分发信息
+:
+注 分发信息子集
+: 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDDistributionType"
+< : >
+xsannotation
+< : >
+xsdocumentation 分发信息类 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="MD Distributor"type="MERepOrgType"
+< : _
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+分发方 分发方的有关信息
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDReleaseDate"type="xsdate"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+发布日期 发布该数据集的日期
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselementname="EXTEleInfo"type="EXTEleInfooType"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+扩展元素信息
+:
+新增的元数据元素定义
+注 扩展元素子集
+: 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xscomplexTypename="MDEXEInfoType"
+< : >
+45
+GB/T29806—2013
+xsannotation
+< : >
+xsdocumentation
+< : >
+新增的元数据元素类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="EXTEleName"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+名称
+:
+扩展元数据元素的名称
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTShortName"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+缩写名
+:
+扩展元数据元素的缩写名
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTEleDef"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+定义
+:
+扩展元数据元素的定义
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTEleOb"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+约束 条件
+/ :
+扩展元数据元素的约束条件
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTEleMxOc"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+最大出现次数
+:
+扩展元数据元素的最大出现次数
+46
+GB/T29806—2013
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTDatatype"maxOccurs="1"
+< : _
+type="xsstring"nillable="false"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+数据类
+:
+扩展元数据元素的数据类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTEleDomVal"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+值域 扩展元数据元素的值域
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="EXTRationale"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+说明 扩展元数据元素的说明
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--负责单位--
+<! >
+xscomplexTypename="MERepPartyType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+负责单位类
+:
+数据集有关的负责人和单位信息
+注 负责单位实体
+: 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="RPParName"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+负责单位名称
+:
+与数据集有关的负责人和单位信息
+。
+注 负责单位实体
+: 。
+47
+GB/T29806—2013
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="RPRole"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+职责
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="RPIndName"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+负责人
+:
+与数据集有关的负责人
+注 当 未选用负责单位 时 必选
+: “ ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="RPPosName"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+职务
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="RPCntInfo"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+联系信息
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--地理边界矩形类--
+<! >
+xscomplexTypename="MEGeoBndBoxType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+地理边界矩形
+:
+数据集的地理边界矩形
+注 地理边界矩形实体
+: 。
+48
+GB/T29806—2013
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="EXTop"maxOccurs="1"nillable="true"
+< : _ >
+xsannotation
+< : >
+xsdocumentation
+< : >
+最大纵坐标值
+:
+该数据集的最大纵坐标值
+注 当 不使用地理描述时 必选
+: “ ”, 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="3"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xselementname="EXBottom"maxOccurs="1"
+< : _
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+最小纵坐标值
+:
+该数据集的最小纵坐标值
+注 当 不使用地理描述时 必选
+: “ ”, 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="3"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xselementname="EXLeft"maxOccurs="1"
+< : _
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+最小横坐标值
+:
+该数据集的最小横坐标值
+注 当 不使用地理描述时 时 必选
+: “ ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="3"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xselementname="EXRight"maxOccurs="1"
+< : _
+49
+GB/T29806—2013
+nillable="true"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+最大横坐标值
+:
+该数据集的最大横坐标值
+注 当 不使用地理描述时 时 必选
+: “ ” , 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsdecimal"
+< : : >
+xsfractionDigitsvalue="3"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--扩展管线要素类--
+<! >
+xscomplexTypename="MEExFeaType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+扩展管线要素类
+:
+该数据集中扩展的各要素描述 要素编目
+( )
+注 扩展管线要素实体
+: 。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="FCFeaType"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+名称
+:
+扩展要素名称
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FCDefinition"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+定义
+:
+扩展要素详细定义
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FCFeaCode"type="xsstring"
+< : _ :
+maxOccurs="1"nillable="false"
+>
+xsannotation
+< : >
+50
+GB/T29806—2013
+xsdocumentation
+< : >
+分类码
+:
+扩展要素分类码
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FCSplType"maxOccurs="1"
+< : _
+nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+几何类型 扩展要素的几何类
+:
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssimpleType
+< : >
+xsrestrictionbase="xsstring"
+< : : >
+xsenumerationvalue="点"
+< : />
+xsenumerationvalue="线"
+< : />
+xsrestriction
+</ : >
+xssimpleType
+</ : >
+xselement
+</ : >
+xselementname="FCAtt"type="xsstring"maxOccurs="1"
+< : _ :
+nillable="false"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+属性项 扩展要素所有的属性项名称
+:
+注 属性 属性 属性
+: 1; 2; 3。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--平面坐标系类--
+<! >
+xscomplexTypename="PlatCooSysCdType"
+< : >
+xsannotation
+< : >
+xsdocumentation 说明平面坐标系类型的代码
+< : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="BeijingGeodeticCoordinateSystem-1954"
+< :
+type="xsstring"fixed="101"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+1954年北京坐标系
+:
+采用克拉索夫斯基椭球体
+,
+长半轴 =6378245m
+,
+扁率 =1298.3
+/
+xsdocumentation
+</ : >
+51
+GB/T29806—2013
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="XiAnGeodeticCoordinateSystem-1980"
+< :
+type="xsstring"fixed="102"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+1980西安坐标系
+:
+采用1975年IUGG第16届大会推荐的椭球体
+,
+长半轴 =6378140m
+,
+扁率 =1298.257 xsdocumentation
+/ </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="ChinaGeodeticCoordinateSystem2000"
+< :
+type="xsstring"fixed="103"
+: >
+xsannotation
+< : >
+xsdocumentation
+: >
+2000国家大地坐标系
+:
+地球椭球参数
+,
+长半轴a=6378137m
+扁率 f=1298.257222101
+/
+地心引力常数 GM=3.986004418×1014m3 s2
+/
+自转角速度 =7.292115×10-5rads1
+ω /
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="WorldGeodeticSystem1984"
+< :
+type="xsstring"fixed="104"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+世界大地坐标系WGS84
+:
+地球椭球参数
+,
+长半轴=6378137m
+短半轴=6356752m
+扁率=1298.257223563
+/
+质点在地球质心
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="LocalCoordinateSystem"
+< :
+type="xsstring"default="105"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+地方坐标系
+:
+基于椭球的其他坐标系 相对于独立国家坐标系的局部坐标系
+,
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="other"type="xsstring"fixed="106"
+< : : >
+52
+GB/T29806—2013
+xsannotation
+< : >
+xsdocumentation
+< : >
+其他
+:
+采用不同于以上的平面坐标系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--高程系统类--
+<! >
+xscomplexTypename="MDCoordHeightType"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+说明高程系类型的代码
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="HuanghaiEleSys1956"type="xsstring"
+< : :
+fixed="101"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+1956年黄海高程系
+:
+1961年后全国统一采用
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="NationalHeiDatum1985"type="xsstring"
+< : :
+fixed="102"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+1985年国家高程基准
+:
+经国务院批准 国家测绘局于1987年5月26日公布使用
+,
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="LocalEleSys"type="xsstring"
+< : :
+minOccurs="1"fixed="103"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+地方高程系
+:
+相对于国家高程系外的局部高程系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="Other"type="xsstring"fixed="104"
+< : : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+53
+GB/T29806—2013
+其他
+:
+采用不同于以上的高程系
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--受用对象代码类--
+<! >
+xscomplexTypename="MDAllowusedType"abstract="false"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+受用对象代码类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="MDAllowused"fixed="Classcation-Cd"
+< : _
+type="xsstring"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+受用对象
+:
+对数据集操作进行限制的名称
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="Government"type="xsstring"
+< : :
+fixed="001"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+政府
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="PipOwnOrg"type="xsstring"
+< : :
+fixed="002"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+管线权属单位
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="InstitutionalUnit"type="xsstring"
+< : :
+fixed="003"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+非管线权属单位
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+54
+GB/T29806—2013
+xselement
+</ : >
+xselementname="Public"type="xsstring"fixed="004"
+< : : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+公众
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+--权限级别代码表 安全限制分级代码表 类--
+<! ( ) >
+xscomplexTypename="MDPurviewType"abstract="false"
+< : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+权限级别代码类
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xssequence
+< : >
+xselementname="TopSecret"type="xsstring"
+< : :
+fixed="005"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+绝密级
+:
+最重要的国家秘密 泄露会使国家的安全和利益
+,
+遭受特别严重的损害
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="Secret"type="xsstring"fixed="004"
+< : : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+机密级
+:
+重要的国家秘密 泄露会使国家的安全和利益遭
+,
+受严重的损害
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="Confidential"type="xsstring"fixed="003"
+< : : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+秘密级
+:
+一般的国家秘密 依照法定程序确定
+, ,
+在一定时间内只限一定范围的人员知悉的事项
+。
+泄露会使国家的安全和利益遭受损害
+。
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+55
+GB/T29806—2013
+xselementname="Restricted"type="xsstring"fixed="002"
+< : : >
+xsannotation
+< : >
+xsdocumentation
+< : >
+限制级
+:
+不涉及国家秘密 但在一定时间内限制其交流和
+,
+使用范围
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="Unrestricted"type="xsstring"
+< : :
+fixed="001"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+公开级
+:
+含公开级和国内级 一般可以公开和交换
+,
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="MDPurview"fixed="PurviewLevel"
+< : _
+type="xsstring"
+: >
+xsannotation
+< : >
+xsdocumentation
+< : >
+权限级别
+:
+能使用该数据集的用户权限级别
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xsschema
+</ : >
+56
+GB/T29806—2013
+附 录 H
+资料性附录
+( )
+地下管线目录交换格式
+H1 地下管线管理与使用属性的其他元数据交换格式
+.
+xmlversion="1.0"
+<? ?>
+xsdschemaxmlnsxsd="http www.w3.org2001XMLSchema"
+< : : :// / / >
+--地下管线的管理和使用属性的其他元数据--
+<! >
+xsdelementname="ManageAppCatalog"type="ManAppCatalogType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+管理和使用属性描述所必需的其他元数据
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="ManAppCatalogType"
+< : >
+xsdsequence
+< : >
+xsdelementref="NPOrg"maxOccurs="unbounded"
+< : _ />
+xsdelementref="SPOrg"maxOccurs="unbounded"
+< : _ />
+xsdelementref="Bussinessname"maxOccurs="1"
+< : />
+xsdelementref="Sharetype"maxOccurs="1"
+< : />
+xsdelementref="Datafactor"maxOccurs="1"
+< : />
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="NPOrg"type="NPOrgType"nillable="false"
+< : _ >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源需求方
+:
+对信息资源有共享需求的单位相关信息
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="NPOrgType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源需求方类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="NPOrgName"type="xsdstring"maxOccurs="unbounded"
+< : _ :
+nillable="false"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源需求单位名称 对信息资源有共享需求的单位名称
+:
+57
+GB/T29806—2013
+注 本数据元素为必选
+: 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="NPIndName"type="xsdstring"maxOccurs="1"nillable="
+< : _ :
+true"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+对信息资源有共享需求的单位的联系人姓名
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="NPCntInfo"type="xsdstring"maxOccurs="1"nillable="
+< : _ :
+true"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+对信息资源有共享需求的单位的联系电话 地址等
+、
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="SPOrg"type="SPOrgType"nillable="false"
+< : _ >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源提供方
+:
+对外提供信息资源的单位相关信息
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="SPOrgType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源提供方类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="SPOrgName"type="xsdstring"maxOccurs="unbounded"
+< : _ :
+nillable="false"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源提供单位名称 对外提供信息资源的单位名称
+:
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="SPIndName"type="xsdstring"maxOccurs="1"nillable="
+< : _ :
+true"
+>
+xsdannotation
+< : >
+58
+GB/T29806—2013
+xsddocumentation
+< : >
+资源提供单位联系人 对外提供信息资源的单位的联系人姓名
+:
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="SPCntInfo"type="xsdstring"maxOccurs="1"nillable="
+< : _ :
+true"
+>
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源提供单位联系方式 对外提供信息资源的单位的联系电话 地址等
+: 、
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdelementname="Bussinessname"type="xsdstring"nillable="true"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+相关业务事项名称 所需信息资源应用的业务事项名称
+:
+注 当描述共享需求时不可为空
+: 。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="Sharetype"type="xsdstring"nillable="true"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源共享方式
+:
+资源提供共享的方式
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="Datafactor"type="xsdstring"nillable="false"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+信息字段
+:
+描述该管线资源所涉及的数据元名称
+。
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdschema
+</ : >
+H2 数据目录指标项元数据交换格式
+.
+xmlversion="1.0"
+<? ?>
+xsdschemaxmlnsxsd="http www.w3.org2001XMLSchema"
+< : : :// / / >
+xsdelementname="ResCatItems"type="ResCatItemType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+59
+GB/T29806—2013
+数据目录指标项
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdcomplexTypename="ResCatItemType"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+数据目录指标项类型
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdsequence
+< : >
+xsdelementname="ResName"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源名称
+:
+填写地下管线资源的要素名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResIdentifier"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源标识符
+:
+由前段码和后段码两部分组成
+,
+前段码和后段码之间用字符 隔开
+“/” ,
+前段码为5位字母数字 用来标明政务信息数据目录管理者
+, ,
+后段码为不定长的字符型 表示形式为 ××××× × ××
+。 : / …
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResClass"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源分类
+:
+填写该资源所属的分类
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResDescription"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源描述
+该资源内容 用途的简要描述
+、
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResSurveyDept"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+60
+GB/T29806—2013
+xsddocumentation
+< : >
+资源勘测单位
+:
+负责勘测该资源相关数据集的单位名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResOwerDept"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源权属单位
+:
+资源相关数据集的权属单位名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResResponsibleDept"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源负责方
+:
+相关数据集负责的单位名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResDemandSide"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源需求方
+:
+资源有共享需求的单位名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResProvider"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源提供方
+:
+对外提供该资源的单位名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResDataFactor"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+信息字段
+:
+资源所涉及的数据元名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="GeoCoverScope"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+61
+GB/T29806—2013
+xsddocumentation
+< : >
+地理覆盖范围
+:
+资源的地理覆盖范围 包括最大纵坐标值 最小纵坐标值
+, 、 、
+最大横坐标值 最小横坐标值
+、
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="DataQualityInfo"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+数据质量信息
+:
+资源数据质量的综合描述
+,
+包括作业方法 引用数据源 采用的标准等
+、 , ,
+以及对综合管线或专题管线完整性的评价
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ReferenceInfo"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+参照信息
+:
+资源数据集所采用的平面坐标系和高程系
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResUpdateTime"type="xsddate"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源更新日期
+:
+资源数据集最后一次更新的日期
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResSecurityLimtGrade"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源安全限制分级
+:
+信息资源的安全权限级别
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="AllowusedObjects"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源受用对象
+:
+有权共享使用该信息资源的对象名称
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+62
+GB/T29806—2013
+xsdelement
+</ : >
+xsdelementname="ResPublisher"
+< : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源发布者
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="ResPublishTime"type="xsddate"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+资源发布日期
+:
+资源信息发布的日期
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdelementname="Remark"type="xsdstring"
+< : : >
+xsdannotation
+< : >
+xsddocumentation
+< : >
+说明
+:
+需要说明的其他情况
+xsddocumentation
+</ : >
+xsdannotation
+</ : >
+xsdelement
+</ : >
+xsdsequence
+</ : >
+xsdcomplexType
+</ : >
+xsdschema
+</ : >
+63
+GB/T29806—2013
+参 考 文 献
+基础地理信息要素分类与代码
+[1] GB/T13923
+城市地下管线探测技术规程
+[2] CJJ61—2003
+中华人民共和国保守国家秘密法 中华人民共和国主席令 第二十八号 年 月 日
+[3] 《 》 ( )2010 4 29
+64
+中 华 人 民 共 和 国
+国 家 标 准
+信息技术 地下管线数据交换技术要求
+GB/T29806—2013
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京市朝阳区和平里西街甲 号
+2 (100013)
+北京市西城区三里河北街 号
+16 (100045)
+网址
+:www.gb168.cn
+服务热线
+:400-168-0010
+010-68522006
+年 月第一版
+2014 3
+*
+书号
+:155066·1-48055
+版权专有 侵权必究
+—
+/
+3102
+60892T
+BG

@@ -1,0 +1,6186 @@
+ICS03060
+.
+CCSA11
+中 华 人 民 共 和 国 国 家 标 准
+GB/T45252—2025
+证券交易数据交换协议
+Securitiestradingexchangeprotocol
+2025-02-28发布 2025-02-28实施
+国 家 市 场 监 督 管 理 总 局
+发 布
+国 家 标 准 化 管 理 委 员 会
+GB/T45252—2025
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+应用环境
+4 ………………………………………………………………………………………………… 2
+会话机制
+5 ………………………………………………………………………………………………… 2
+消息格式
+6 ………………………………………………………………………………………………… 2
+安全与加密
+7 ……………………………………………………………………………………………… 4
+数据完整性
+8 ……………………………………………………………………………………………… 5
+扩展方式
+9 ………………………………………………………………………………………………… 5
+消息定义
+10 ………………………………………………………………………………………………… 6
+数据字典
+11 ……………………………………………………………………………………………… 55
+附录 资料性 应用环境参考实例
+A( ) …………………………………………………………………… 85
+附录 资料性 重复组实例
+B( ) …………………………………………………………………………… 86
+附录 资料性 计算校验和
+C( ) …………………………………………………………………………… 87
+Ⅰ
+GB/T45252—2025
+前 言
+本文件按照 标准化工作导则 第 部分 标准化文件的结构和起草规则 的规定
+GB/T1.1—2020《 1 : 》
+起草
+。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别专利的责任
+。 。
+本文件由全国金融标准化技术委员会 归口
+(SAC/TC180) 。
+本文件起草单位 上交所技术有限责任公司 上海证券交易所 深圳证券交易所 北京证券交易所有
+: 、 、 、
+限责任公司 中证信息技术服务有限责任公司
+、 。
+本文件主要起草人 吴韶平 曹兆勇 王泊 喻华丽 林琨 彭士超 马啸天 路一
+: 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T45252—2025
+证券交易数据交换协议
+1 范围
+本文件规定了证券交易所交易系统与市场参与者系统之间进行证券交易数据交换所需的应用环
+境 会话机制 消息格式 安全与加密 数据完整性 扩展方式 消息定义 数据字典内容
+、 、 、 、 、 、 、 。
+本文件适用于证券交易所与市场参与者和相关金融机构间的业务数据交换 也可供证券期货行业
+,
+各机构系统间连接参考使用
+。
+2 规范性引用文件
+下列文件中的内容通过文中的规范性引用而构成本文件必不可少的条款 其中 注日期的引用文
+。 ,
+件 仅该日期对应的版本适用于本文件 不注日期的引用文件 其最新版本 包括所有的修改单 适用于
+, ; , ( )
+本文件
+。
+世界各国和地区及其行政区划名称代码 第 部分 国家和地区代码
+GB/T2659.1 1 :
+日期和时间 信息交换表示法 第 部分 基本原则
+GB/T7408.1 1 :
+表示货币的代码
+GB/T12406
+信息技术 中文编码字符集
+GB18030
+证券及相关金融工具 交易所和市场识别码
+GB/T23696
+证券及相关金融工具 金融工具分类 编码
+GB/T35964 (CFI)
+轻量级实时 消息传输协议
+JR/T0182 STEP
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+证券交易数据交换协议 securitiestradingexchangeprotocolSTEP
+;
+证券交易所交易系统与市场参与者系统之间进行证券交易数据交换的信息标准
+。
+32
+.
+组件 component
+消息中具有一定业务相关的数据域集合
+。
+33
+.
+新订单 neworder-single
+交易客户方新产生的交易或其他业务请求
+。
+34
+.
+执行报告 executionreports
+交易服务方响应交易客户方的消息
+。
+35
+.
+指定交易 designatedtrading
+将证券账号与某一证券营业部所属的参与者业务单元 如席位号 相联系 从而限定该证券账号的
+( ) ,
+1
+GB/T45252—2025
+交易仅在该参与者业务单元下进行的交易方式
+。
+36
+.
+转托管 designationtransfer
+投资者将其托管在某一券商处的证券转到另一券商处托管的行为
+。
+37
+.
+参与者业务单元 participantbusinessunitPBU
+;
+市场参与者行使交易权利 获取交易服务的逻辑通道
+, 。
+38
+.
+市场参与者 marketparticipants
+参与证券交易的客户方
+。
+注 如交易所会员 证券营业部等
+: 、 。
+39
+.
+UTF-8 unicodetransformationformat
+统一码 的可变长度字符编码
+(unicode) 。
+4 应用环境
+证券交易数据交换协议应用环境可采用端到端的协议连接方式进行数据交换 也可用数据文件或
+,
+数据库进行数据交换 典型的应用环境参考实例参见附录
+。 A。
+5 会话机制
+应采用金融信息交换协议会话传输技术或按照 中确定的轻量级实时 消息传输
+JR/T0182 STEP
+协议
+。
+6 消息格式
+61 数据类型
+.
+611 数据类型概述
+..
+数据类型用于定义数据域的取值类型 由 个基本的数据类型 整数 浮点数 单字符 字符串 数据
+, 5 : 、 、 、 、
+以及在此基础上扩展的数据类型组成 除数据 类型外 其他数据类型均以美国信息交换
+(data), 。 (data) ,
+标准代码 字符串表示
+(ASCII) 。
+612 整数
+..
+无逗号和小数位的序号 可表示正负 由负数表示字符 可选的正数表示字符 数字 至
+, ( “-”, “+”, “0”
+组成 符号占据一个字符位置 允许前置字符零 例
+“9” )。 。 ( :“00023”=“23”)。
+整数类型的扩展定义如下所述
+。
+以整数表示字节为单位的数据长度 正数
+———Length: , 。
+以整数表示重复组的个数 正数
+———NumInGroup: , 。
+以整数表示消息序号 正数
+———SeqNum: , 。
+613 浮点数
+..
+含有可选的小数部分 可表示正负 由负数表示字符 可选的正数表示字符 至 和
+, ( “-”, “+”,“0” “9”
+2
+GB/T45252—2025
+组成 最多 位有效数字 允许前置字符零 例 允许小数部分后置字符零
+“.” )。 15 。 ( :“00023”=“23”)。
+例 除非特别声明 浮点数类型均有正负
+( :“23.0”=“23.0000”=“23”)。 , 。
+浮点数类型的扩展定义如下所述
+。
+量 股份数量 资产数量等 可有小数部分
+——— (Qty): 、 , 。
+价格 小数位数可变
+——— (Price): 。
+价格偏移量 代表价格偏移量的浮点域
+——— (PriceOffset): 。
+金额 典型的价格与数量相乘结果 如成交金额
+——— (Amt): , 。
+百分比 小数表示方法 如 代表
+——— (Percentage): , “.05” 5%。
+614 单个字符
+..
+除域界定符外所有字母字符和标点字符 区分字母大小写
+, 。
+字符类型的扩展定义布尔 该域取值于两个字符
+(Boolean): ,“‘Y’=True/Yes,‘N’=False/No”。
+615 字符串
+..
+区分字母大小写
+。
+字符串类型的扩展定义如下所述
+。
+多元值字符串 用空格分隔
+——— (MultipleValueString): 。
+国家与地区代码 按照 确定的代码
+——— : GB/T2659.1 。
+货币的字母码 按照 确定的字母码
+——— : GB/T12406 。
+交易所或市场编号 字符串 按照 确定的编号
+——— (Exchange): , GB/T23696 。
+日期和时间表示法按照 确定的格式如下所述
+GB/T7408.1 。
+年月日期 格式为 或 为
+——— (MonthYear): YYYYMM、YYYYMMDD YYYYMMWW,YYYY
+为 为 为
+0000~9999,MM 01~12,DD 01~31,WW w1、w2、w3、w4、w5。
+国际标准时时间戳 格式为 秒 或
+——— (UTCTimestamp): YYYYMMDD-HH:MM:SS( ) YYYYM-
+毫秒 为 为 为 为
+MDD-HH:MM:SS.sss( ),YYYY 0000~9999,MM 01~12,DD 01~31,HH
+为 为 秒 用于闰秒 为 毫秒
+00~23,MM 00~59,SS 00~60( ,60 ),sss 000~999( )。
+国际标准时时间 格式为 或 为
+——— (UTCTimeOnly): HH:MM:SS HH:MM:SS.sss,HH 00~23,
+为 为 秒 用于闰秒 为 毫秒
+MM 00~59,SS 00~60( ,60 ),sss 000~999( )。
+国际标准时日期 格式为 为 为
+——— (UTCDateOnly): YYYYMMDD,YYYY 0000~9999,MM 01~
+为
+12,DD 01~31。
+本地市场日期 格式为 为 为
+——— (LocalMktDate): YYYYMMDD,YYYY 0000~9999,MM 01~
+为
+12,DD 01~31。
+616 数据 data
+.. ( )
+无格式和内容限制的原始数据 包含长度域和数据域两个部分 数据域可包含十六进制数值
+, , 0x01,
+长度域指明数据域的字节数
+。
+62 域
+.
+621 域概述
+..
+域是基本的数据元素 每个域有其域号 业务含义和确定的取值范围 域号统一分配给不同的域 是
+, 、 , ,
+域的区分标志 在消息中 通过域号来确定不同的域 域的数据类型决定了其取值范围 域的取值范围
+, , 。 ,
+是一个集合 任何在此集合外的取值被认为是非法取值 允许数据前后有空格 对于数值类型 前后空
+, 。 , ,
+3
+GB/T45252—2025
+格处理时将被忽略 所有域的业务定义 数据类型和取值范围见第 章数据字典
+。 、 11 。
+622 域的使用
+..
+在消息中 域的使用有三种方式 必选 可选 条件限制选择 即根据其他相关域的存在与否或取值
+, : 、 、 (
+来决定 作为一个完整的消息 应包含必选域和条件限制选择域
+)。 , 。
+623 自定义域
+..
+如定义的域不够使用时 证券交易所或市场参与者可扩展定义新的域 即自定义域
+, , 。
+624 域汉字编码
+..
+域汉字取值的编码规则应符合 中的规定或以 编码 可由连接双方约定
+GB18030 UTF-8 , 。
+625 域界定
+..
+消息中所有的域 包含 类型数据域 都有一个分隔符来界定分隔 该分隔符为不可打印字符
+( data ) ,
+编码集中单字节部分 以 表示 所有消息以 或
+GB18030 0x01, <SOH> 。 “8=STEP.x.yz<SOH>” “8=
+字符串开始并以 字符串结束
+FIXT.x.y<SOH>” “10=nnn<SOH>” 。
+除 数据类型域外 其他数据域内容都不应包含域界定符
+data , <SOH>。
+626 语法
+..
+任何消息都应由多个 域号 值 的基本结构组成 域号 值 基本结构用域界定符 分隔
+“ = ” ,“ = ” <SOH> 。
+消息格式见图
+1。
+图1 消息格式
+消息由消息头 消息的正文和消息尾组成 同样 每个组成部分都由一系列 域号 值 组成 并且
+、 。 , “ = ” ,
+在遵循以下规则的前提下 域号 值 基本结构可是任意的次序
+“ = ” :
+开始部分应是消息头 随后是正文 最后是消息尾
+a) , , ;
+消息头的前 个域的次序不能改变 起始串 消息体长度 消息类型
+b) 3 : (Tag=8)、 (Tag=9)、 (Tag=35);
+消息尾的最后一个域应是校验和域
+c) (Tag=10);
+重复组中 域出现的顺序应遵循该重复组在消息或组件中定义时的次序
+d) , ;
+在一条消息中 除重复组域外任何其他域不应重复出现
+e) , 。
+627 重复组
+..
+域可在重复组里多次重复 用以传输数组类的数据 通常域名起始为 字符的域指明重复的次
+, 。 “No”
+数 并位于重复组的开始处 重复组的定义通过缩进的 符号表示 原则上重复组也可嵌套 为便于
+, 。 “ ” , ,
+解析不宜使用 嵌套使用时子重复组不应省略父重复组
+, 。
+具体见附录 重复组实例
+B 。
+7 安全与加密
+由于消息有可能在公网或不安全的网络上传输交换 因此应对相关的敏感数据加密处理
+, 。
+4
+GB/T45252—2025
+具体加密的方法由连接双方达成的协议而定
+。
+消息内除某些需要公开识别的域以明文传输外 其他任何域都可加密放置在密文数据域
+, (Secure-
+内
+Data) 。
+当决定使用加密方案时 可对消息正文内所有的域加密 如果消息的重复组内有部分需要加密的
+, 。 ,
+应要求对整个重复组加密
+。
+证券交易数据交换协议提供了域 用以支持数字签名 密钥交换和正文加密等安全技术方案
+, 、 。
+正文加密技术方案有以下三种
+:
+将安全敏感的域加密后移至 域
+a) SecureData ;
+将所有允许加密的域加密后移至 域
+b) SecureData ;
+将所有允许加密的域加密后移至 域 同时这些域以明文在消息中重复出现
+c) SecureData , 。
+8 数据完整性
+数据的完整性通过两个方法保证 消息体长度和校验和的验证
+: 。
+消息体长度是以 域来表示 其值是计算出的消息长度域后面的字符数 包含紧靠校验
+BodyLength , ,
+和域标志 之前的域界定符
+“10=” <SOH>。
+校验和是把每个字符的二进制值从消息开头 中的 开始相加 一直加到紧靠在校验和域
+“8=” “8” ,
+之前的域界定符 然后按 取模得到结果
+“10=” , 256 。
+校验和域位于消息的最末一个 校验和的计算是在加密之后进行的 计算校验和的代码段见
+, 。
+附录
+C。
+9 扩展方式
+91 扩展分类
+.
+扩展分为两个部分 消息定义扩展和域定义扩展
+: 。
+消息定义扩展可通过新增消息类型来实现 但优先在已有消息中通过域定义或取值扩展来定义新
+,
+业务 已有消息所代表的业务在扩展时不应改变
+。 。
+域定义扩展可通过新增域来实现 但尽量通过扩展域值来扩展域的定义 通常情况下 消息中已定
+, 。 ,
+义的必选的域尽可能保留 也不应改变成可选域
+, 。
+为保持标准更新的一致性 证券交易所 证券交易所 证券交易所等行业相关单位 如有
+,SH 、SZ 、BJ ,
+新增应用消息定义 新增域定义 新增域取值定义 并且需要对市场发布 应事先相互沟通 并通过行业
+、 、 , , ,
+内相关平台对外公开
+。
+92 扩展规则
+.
+自定义消息的消息类型值首字符为 其他类型的标准消息根据国际标准的变化统一定义并
+“U”。
+发布
+。
+当连接双方因业务紧急需求自定义消息 域 域取值 且使用范围仅限于连接双方 为避免与标准冲
+、 、 , ,
+突 可临时定义消息类型 域 域取值 通常情况下 应优先通过行业内统一平台协调沟通
+, 、 、 。 , 。
+消息类型临时定义原则 证券交易所临时定义消息的消息类型值首两位字符为 证券
+:SH “UA”,SZ
+交易所临时定义消息的消息类型值首两位字符为 股转公司临时定义消息的消息类型值首两
+“UB”;GG
+位字符为 证券交易所临时定义消息的消息类型值首两位字符为 其他机构临时定义消
+“UC”;BJ “UD”;
+息的消息类型值首两位字符宜为
+“UZ”。
+域号 根据国际标准的变化统一定义并发布 域号 以上由连接双方自行约定定义
+1~10000 ; 10000 ,
+5
+GB/T45252—2025
+原则上不宜作约束 因此不同机构间存在定义冲突的可能 谨慎情况下 对外发布使用时 证券交
+, 。 , ,SH
+易所宜使用 证券交易所宜使用 证券交易所宜使用
+100××、103××,SZ 101××、102××,BJ 104×
+其他机构宜使用 本文件定义的应用消息基于已应用的证券业务 连接双方可
+×、105××, 15×××。 ,
+对应用消息进行扩展 删减或修改 但应遵循本文件描述的相关规则及扩展方式
+、 , 。
+消息的模块顺序在扩展定义时不应改变 即保持消息头 消息体和消息尾的顺序 而模块的内部
+, 、 。 ,
+域和重复组的顺序是可变化的
+。
+消息头的头三个域的定义和位置不应改变 但可扩展增加消息头的可选域
+, 。
+消息尾最后一个域的定义和位置不应改变 但可扩展增加消息尾的可选域
+, 。
+93 STEP版本
+.
+临时定义由主管部门定期审核 审核通过后形成新版本
+, 。
+版本号可在会话层登录消息的 域中说明
+STEP 1408 。
+版本号格式 大版本号 小版本号 版本号从 起始 当前 版本号为
+STEP : . (X.YZ), 1.00 , STEP 1.40。
+10 消息定义
+101 消息头
+.
+每一个会话或应用消息均有一个消息头 该消息头指明消息类型 消息体长度 发送目的地 消息序
+, 、 、 、
+号 发送起始点和发送时间
+、 。
+其中有两个域用于消息重发 对于会话级的事件而重复发送消息时将可能重复发送标志
+, (Poss-
+设置为 发送时用原来的消息序号 当重新发送时使用新的消息序号时将可能重新发送标
+DupFlag) Y( ),
+志 设置为 接收者应按以下方法处理上述消息
+(PossResend) Y, 。
+可能重复发送 如果带有该消息序号的消息在以前曾经接收过 则忽略消息 如果未曾收到过
+——— : , , ,
+则按正常步骤处理
+。
+可能重新发送 将消息传递给应用层以确定此前是否收到该消息 通过检查订单编号或相关
+——— : (
+参数
+)。
+消息头格式见表
+1。
+表1 消息头格式
+域名 必选 说明
+Tag
+起始串 如 不可加密 消息的第一个域
+8 BeginString Y , FIXT.1.1( , )
+消息体长度 不可加密 消息的第二个域
+9 BodyLength Y ( , )
+消息类型 不可加密 消息的第三个域
+35 MsgType Y ( , )
+密文数据 紧跟密文数据长度域
+91 SecureData N ( )
+消息序号 可加密
+34 MsgSeqNum Y ( )
+发送方子标识符 可加密
+50 SenderSubID N ( )
+发送方方位标识符 可加密
+142 SenderLocationID N ( )
+接收方子标识符 可加密
+57 TargetSubID N ( )
+接收方方位标识符 可加密
+143 TargetLocationID N ( )
+最初发送方子标识符 可加密
+116 OnBehalfOfSubID N ( )
+6
+GB/T45252—2025
+表1 消息头格式 续
+( )
+域名 必选 说明
+Tag
+最初发送方方位标识符 可加密
+144 OnBehalfOfLocationID N ( )
+最终接收方方位标识符 可加密
+145 DeliverToLocationID N ( )
+可能重复发送标志 重复发送时 作此标记 可加密
+43 PossDupFlag N , , ( )
+可能重新发送标志 可加密
+97 PossResend N ( )
+发送时间 可加密
+52 SendingTime Y ( )
+原始发送时间 可加密
+122 OrigSendingTime N ( )
+消息中 域的字符编码类型 非 码
+347 MessageEncoding N EncodedText ( ASCII )
+最后处理消息序号 可加密
+369 LastMsgSeqNumProcessed N ( )
+最初发送时间 用 表示时间
+370 OnBehalfOfSendingTime N ( UTC )
+历史跳跃信息重复组 记录消息经第三方发送的历史 每次经
+, ,
+第三方发送为一个跳跃 仅当 使用时有效
+627 NoHops N , OnBehalfOfCompID ,
+主要用于跟踪消息的路径
+取值第三方的
+628 HopCompID N SenderCompID
+取值第三方的
+629 HopSendingTime N SendingTime
+取值第三方的
+630 HopRefID N MsgSeqNum
+102 消息尾
+.
+每一个消息 会话或应用消息 有一个消息尾 并以此终止 消息尾可用于分隔多个消息 包含有
+( ) , 。 ,
+位数的校验和值
+3 。
+消息尾格式见表
+2。
+表2 消息尾格式
+域名 必选 说明
+Tag
+数字签名长度 不可加密
+93 SignatureLength N ( )
+数字签名 不可加密
+89 Signature N ( )
+校验和 消息的最末域 不可加密
+10 CheckSum Y , ( )
+103 应用消息
+.
+1031 应用消息组件
+..
+10311 应用消息组件概述
+...
+大多数应用消息都会用到一系列定义证券品种的数据域
+:Symbol、SecurityIDSource、SecurityID
+等 在消息中定义了关键组件 在应用消息定义中直接用名称引用这些组件 实际的消息定义和使用
+。 , 。
+中 则应该将组件展开成为相应的数据域
+, 。
+组件可是重复组的部分 此时组件对应的整组数据域都位于组件所在重复组的级别上 符合重复组
+, ,
+的域顺序规则
+。
+7
+GB/T45252—2025
+10312 组件 Instrument
+... < >
+组件 定义了证券品种 金融工具 及其相关属性 其中证券代码和证券名称是必选
+<Instrument> ( ) ,
+的域
+。
+组件 结构见表
+<Instrument> 3。
+表3 组件 Instrument结构
+< >
+域名 必选 说明
+Tag
+证券名称
+55 Symbol ***
+证券代码
+48 SecurityID ***
+证券代码源
+22 SecurityIDSource N
+备选证券代码个数
+454 NoSecurityAltID N
+备选证券代码
+455 SecurityAltID N
+备选证券代码源 有效取值与证券代码源
+, (SecurityIDSource)
+456 SecurityAltIDSource N 相同
+的编码应符合 的规定
+461 CFICode N CFI GB/T35964
+交易场所代码
+207 SecurityExchange N
+证券子类别 与 配合使用
+762 SecuritySubType N , CFICode
+期权合约的标的证券
+309 UnderlyingSecurityID N
+债券折合成回购标准券的比例
+231 ContractMultiplier N
+证券描述 如英文简称
+107 SecurityDesc N ,
+注 表示域的 必选 属性依赖于该组件在消息定义中的 必选 属性
+:“***” “ ” “ ” 。
+备选证券代码域可在自定义证券代码标准向 编码标准过渡期间使用
+ISIN 。
+示例 假设 证券交易所证券代码正处于现有代码和 编码的切换期间 此时发出订单购买 现有代
+: SH ISIN , “PFYH”,
+码 代码 代码切换示例见图
+600000,ISIN CN0006000003, 2。
+图2 代码切换示例
+8
+GB/T45252—2025
+证券类别由 证券类别和 子类别共同描述 由市场自
+CFICode SecuritySubType 。SecuritySubType
+行定义 对 加以补充 在业务场景中 如果 可明确分辨证券类别 则无需自定义
+, CFICode , , CFICode , Secu-
+子类别
+ritySubType 。
+10313 组件 OrderQtyData
+... < >
+组件 用于表示证券数量 通常在订单中使用
+<OrderQtyData> , 。
+组件 结构见表
+<OrderQtyData> 4。
+表4 组件 OrderQtyData结构
+< >
+域名 必选 说明
+Tag
+订单数量
+38 OrderQty N
+上证 认购金额
+152 CashOrderQty N LOF
+10314 组件 Parties
+... < >
+组件 用于表示参与方信息
+<Parties> 。
+组件 结构见表
+<Parties> 5。
+表5 组件 Parties结构
+< >
+域名 必选 说明
+Tag
+参与方个数
+453 NoPartyIDs N
+参与方代码 结合 和
+448 PartyID N , PartyIDSource PartyRole
+指示 的代码源 取值依赖于
+447 PartyIDSource N PartyID , PartyRole
+指定参与方角色
+452 PartyRole N
+指示重复的参与方子代码个数
+802 NoPartySubIDs N
+参与方子代码
+523 PartySubID
+参与方子代码类型
+803 PartySubIDType
+市场参与方包括券商 投资者 清算公司 交易员等 通常 为参与方代码 用以指
+、 、 、 , PartyID ,PartyRole
+明参与方角色 如 取值 取值 用于表示账号 参与方其他信息如名称
+, PartyID A264820888,PartyRole 5 。
+等 可由 进一步描述 由 加以区分 如 取值
+, PartySubID , PartySubIDType , PartySubID WZX,PartySub-
+取值 用于表示名称 中国证券市场中常见参与方信息描述见表
+IDType 5 。 6。
+表6 常见参与方信息描述
+参与方信息
+“PartyRole”(452) “PartyIDSource”(447) “PartySubIDType”(803)
+中国投资者编号
+投资者证券账户 投资者编号 5= (Chinese
+5= (InvestorID) —
+InvestorID)
+合法全名
+投资者姓名 5= (Fulllegalname
+— —
+ofFirm)
+9
+GB/T45252—2025
+表6 常见参与方信息描述 续
+( )
+参与方信息
+“PartyRole”(452) “PartyIDSource”(447) “PartySubIDType”(803)
+通用市场参与者标识符
+C=
+席位或 代码 券商
+PBU 1= (ExecutingFirm) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+C= 合法全名
+席位或 名称 券商 5= (Fulllegalname
+PBU 1= (ExecutingFirm) (Generallyacceptedmarket
+ofFirm)
+participantidentifier)
+私有自定义代码
+交易员代码 交易员 D= (Pro-
+12= (ExecutingTrader) —
+prietary/Customcode)
+交易员 私有自定义代码
+交易员营业部代码 12= (ExecutingTrader) D= (Pro-
+营业部代码 —
+4001= prietary/Customcode)
+对手方交易员营业 对手方交易员 私有自定义代码
+37= (ContraTrader) D= (Pro-
+部代码 营业部代码 —
+4002= prietary/Customcode)
+通用市场参与者标识符
+交易对手方席位或 C=
+对方券商
+代码 17= (ContraFirm) (Generallyacceptedmarket —
+PBU
+participantidentifier)
+通用市场参与者标识符
+交易对手方席位或 C= 合 法 全 名
+对方券商 5= (Fulllegal
+名称 17= (ContraFirm) (Generallyacceptedmarket
+PBU nameofFirm)
+participantidentifier)
+交易对手方投资者 对方投资者编号 中国投资者编号
+39= (ContraIn- 5= (Chinese
+证券账户 —
+vestorID) InvestorID)
+交易对手方投资者 对方投资者编号 中国投资者编号 合法全名
+39= (ContraIn- 5= (Chinese 5= (Fulllegalname
+姓名
+vestorID) InvestorID) ofFirm)
+通用市场参与者标识符
+C=
+清算公司代码 清算公司
+4= (ClearingFirm) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+对手方清算公司 对方清算公司 C=
+18= (ContraClearing
+代码 (Generallyacceptedmarket —
+Firm)
+participantidentifier)
+通用市场参与者标识符
+转托管业务转入席 C=
+转入券商
+位或 代码 40= (TransfertoFirm) (Generallyacceptedmarket —
+PBU
+participantidentifier)
+来自 发送至托管 通用市场参与者标识符
+/ C=
+机构 持仓转 代理人
+(OEF 3= (Agent) (Generallyacceptedmarket —
+移来源方 目标方
+/ ) participantidentifier)
+结算机构代码 结算机构代码 交割机构
+4= (ClearingFirm) F= —
+通用市场参与者标识符
+合约账户标识码 C=
+合约账户标识码 38= (Positionac-
+(Generallyacceptedmarket —
+count)
+participantidentifier)
+10
+GB/T45252—2025
+表6 常见参与方信息描述 续
+( )
+参与方信息
+“PartyRole”(452) “PartyIDSource”(447) “PartySubIDType”(803)
+通用市场参与者标识符
+C=
+结算账号 结算账号
+38= (Positionaccount) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+C=
+申报交易商代码 申报交易商
+6= (IntroducingFirm) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+C=
+交易商代码 交易商
+7= (EnteringFirm) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+对手方交易商 C=
+对手方交易商代码 20= (UnderlyingContra
+(Generallyacceptedmarket —
+Firm)
+participantidentifier)
+通用市场参与者标识符
+C=
+回报交易单元 深 买卖方
+( ) 27= (Buyer/Seller) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+C=
+申报方交易员代码 申报方交易员
+36= (Enteringtrader) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+初始交易申报交易 初始交易申报交易商 C=
+13= (Order
+单元 (Generallyacceptedmarket —
+OriginationFirm)
+participantidentifier)
+要约收购收购人 私有自定义代码
+要约收购收购人编码 D= (Pro-
+编码 4003= —
+prietary/Customcode)
+对手方交易主体 私有自定义代码
+对手方交易主体代码 D= (Pro-
+代码 4004= —
+prietary/Customcode)
+申报方交易主体 私有自定义代码
+申报方交易主体代码 D= (Pro-
+代码 4005= —
+prietary/Customcode)
+投资者中国结算开 投资者中国结算开放式基金 私有自定义代码
+4010= D= (Pro-
+放式基金账户 账户 —
+prietary/Customcode)
+投资者中国结算交 私有自定义代码
+投资者中国结算交易账户 D= (Pro-
+易账户 4011= —
+prietary/Customcode)
+通用市场参与者标识符
+C=
+销售人代码 销售人代码
+117= (salesperson) (Generallyacceptedmarket —
+participantidentifier)
+通用市场参与者标识符
+券商客户端编码或网点号码 C=
+券商客户端编码 81=
+(Generallyacceptedmarket —
+(BrokerClientID)
+participantidentifier)
+11
+GB/T45252—2025
+表6 常见参与方信息描述 续
+( )
+参与方信息
+“PartyRole”(452) “PartyIDSource”(447) “PartySubIDType”(803)
+私有自定义代码
+投资者账户子编码 投资者账户子编码 D= (Pro-
+500= —
+prietary/Customcode)
+通用市场参与者标识符
+C=
+保证金账户 保证金账户
+100= (Marginaccount) (Generallyacceptedmarket —
+participantidentifier)
+1032 订单业务类
+..
+10321 订单业务类消息
+...
+订单业务类消息主要是支持日常实时交易和非交易的消息 其中最典型的是新订单消息 新订单消
+, ,
+息由交易客户方发出 用以提交订单
+, 。
+10322 新订单消息 MsgType=D
+... ( )
+新订单消息可带有执行指令 执行指令 指示订单的执行条件 执行指令中包含数量
+。 (ExecInst) 。
+条件
+。
+对于在消息头中设置了 标志的订单消息 应当使用交易客户方 券商 订单编号
+PossResend , ( ) (ClOr-
+核实是否已收到该订单 具体实现时还应检查订单参数 买卖方向 证券代码 数量等 进行核实
+dID) , ( 、 、 ) 。
+如果之前收到该订单 应以执行报告消息回应订单状态 如果之前未收到 则以执行报告消息回应订单
+, 。 ,
+确认
+。
+域指示订单发起时间 可结合业务规则来判断收到的订单是否已过期
+TransactTime , 。
+新订单消息也适用于使用撮合机制的协议交易 国债场内分销 国债回购等业务 作为交易客户方
+、 、 ,
+的指令
+。
+新订单消息支持交易订单和非交易订单
+。
+非交易订单指不通过实时交易而发生变化的行为 如发行 配股 转股 回售 质押 冻结 申购 赎
+, 、 、 、 、 、 、 、
+回 行权等
+、 。
+新订单消息 格式见表
+(NewOrder-Single) 7。
+表7 新订单消息 NewOrder-Single格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=D
+应用标识
+1180 ApplID N
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+执行指令
+18 ExecInst N
+交易所订单编号参考值
+1080 RefOrderID N
+组件 参与方
+<Parties> N
+组件 证券定义
+<Instrument> Y
+12
+GB/T45252—2025
+表7 新订单消息 NewOrder-Single格式 续
+( ) ( )
+域名 必选 说明
+Tag
+买卖方向
+54 Side Y
+订单发起时间 通常为客户方发起订单申报时间
+60 TransactTime Y ,
+组件 数量
+<OrderQtyData> Y
+订单有效时间类型
+59 TimeInForce N
+订单有效时间 订单有效时间类型为 时必选
+126 ExpireTime N ( GTD )
+初始交易日期
+1125 OrigTradeDate N
+购回交易日期
+541 MaturityDate N
+订单申报日期 仅日期
+75 TradeDate N ( )
+非交易业务订单类型
+8526 NonTradingOrdType N
+业务请求类型
+8540 ReqID N
+订单类型
+40 OrdType Y
+订单所有者类型
+522 OwnerType Y
+订单限定
+529 OrderRestrictions N
+价格类型
+423 PriceType N
+价格 限价订单时有效
+44 Price N ( )
+报价回购业务购回价格
+640 Price2 N
+止损价格
+99 StopPx N
+最多成交价位数 最大价格等级 沪港通
+, ( )
+表示不限制成交价位数 增强现价盘 沪港通
+0 , ( )
+1090 MaxPriceLevels N 表示竞价现价盘 沪港通
+1 ( )
+缺省值为
+0
+最小成交数量
+110 MinQty N 缺省值为
+0
+订单数量类型
+零股订单
+1= ,OddLot
+1093 LotType N 整手订单
+2= ,RoundLot
+缺省值为
+2
+初始交易金额
+921 StartCash N
+购回交易金额
+922 EndCash N
+约定购回业务合同编号
+914 AgreementID N
+期限 单位为天数
+580 NoDates N ,
+约定号
+664 ConfirmID N
+币种
+15 Currency N
+13
+GB/T45252—2025
+表7 新订单消息 NewOrder-Single格式 续
+( ) ( )
+域名 必选 说明
+Tag
+分红选择方式 开放式基金分红选择订单时必选
+8532 DividendSelect N ( )
+开放式基金基金转换时转入的产品代码 开放式基金基金转换
+(
+8533 DestSecurity N 时必选
+)
+期权序列代码
+309 UnderlyingSecurityID N
+开仓 平仓 取值 平仓 开仓
+77 PositionEffect N / , :C= ,O=
+备兑标签 衍生品交易填写
+,
+表示备兑仓
+0=Covered,
+203 CoveredOrUncovered N 表示普通仓
+1=UnCovered,
+缺省值为
+1
+期权业务处理类别
+747 ExerciseMethod N
+融资融券信用标识
+普通交易
+1=Cash,
+融资融券开仓
+544 CashMargin N 2=Open,
+融资融券平仓
+3=Close,
+缺省值为
+1
+期限 单位为天数
+8911 ExpirationDays N ,
+期限类型
+8906 ExpirationType N 固定期限
+1=
+备注
+58 Text N
+10323 执行报告消息 MsgType=8
+... ( )
+执行报告消息可用于
+:
+订单确认
+a) ;
+订单状态变化确认 如撤单确认
+b) ( );
+发送订单的成交回报
+c) ;
+订单拒绝
+d) 。
+每个执行报告中都包含两个域 订单状态 执行类型
+:OrdStatus ;ExecType 。
+用以报告订单当前状态 如果同时存在多个订单状态 则只报告优先级最高的状态 订
+OrdStatus , , 。
+单状态优先级见表
+8。
+表8 订单状态优先级
+优先级 说明
+OrdStatus
+待撤销 撤单请求待处理 用于确认收到撤单请求 而非确认撤单已成功
+11 (6)PendingCancel , ,
+修改单请求待处理 用于确认收到修改单请求 而非确认订单修改已成
+待替换 , ,
+10 (E)PendingReplace 功 修改单的 本文未做定义 连接双方自行约定
+, MsgType=G, ,
+14
+GB/T45252—2025
+表8 订单状态优先级 续
+( )
+优先级 说明
+OrdStatus
+当天完成 订单在当天未成交或未完全成交 闭市后结束该订单
+9 (3)DoneforDay ,
+已计算 订单在当天结束 成交或当天完成 后 计算并报告佣金或货币结算细节
+8 (B)Calculated ( ) ,
+已成交 订单全部成交 没有剩余数量
+7 (2)Filled ,
+已终止 订单在交易所被终止 用于价格保护和数量保护
+6 (7)Stopped ,
+已延缓 由于客户请求而暂停执行订单
+5 (9)Suspended
+已撤销 订单被撤销
+4 (4)Canceled
+已过期 订单由于时间条件而到期失效
+4 (C)Expired
+部分成交 订单部分成交 有剩余数量
+3 (1)Partiallyilled ,
+新 开放订单 已进入订单簿 等待撮合
+2 (0)New ( , )
+订单被交易服务方 交易所 拒绝 允许在订单确认之后拒绝订单 即从
+已拒绝 ( ) , ,
+2 (8)Rejected 状态 新 进入 已拒绝
+“ ” “ ”
+订单被交易服务方 交易所 接收到但还未处理 仅在状态请求信息的回
+待处理 ( ) ,
+2 (A)PendingNew 应可能出现
+已接受 订单被接受 并已被估价 仅用于 为 的一揽子订单
+1 (D)Acceptedforbidding , , BidType “Disclosed”
+注 订单状态优先级并未全部使用
+: 。
+域用以标识执行报告的执行类型 执行报告中 和 共同指示了订
+ExecType 。 ExecType OrdStatus
+单状态的改变 执行信息 如已成交或部分成交 与其他状态变化信息 如待撤销 待替换 已撤销 已替
+。 ( ) ( 、 、 、
+换 已接受 当天完成 不应在一个执行报告中同时传递
+、 、 ) 。
+执行报告消息注意事项
+。
+在订单处于 待处理 状态并将进入新状态 即待替换 时如果发生了成交 执行报告中应包括
+——— “ ” ( ) ,
+原始的订单参数 等 执行报告中 和 要进行更
+(ClOrdID、OrderQty、Price )。 CumQty AvgPx
+新 只有在发出 为已替换的执行报告后 才可认为订单被成功替换
+。 ExecType , 。
+撤单在订单有剩余数量时才有效
+——— 。
+如果要求替换的订单数量低于累计执行数量 的水平 券商将中止执行该订单
+● CumQty , 。
+对已成交订单要求修改价格将会被拒绝
+● 。
+和 共同反映出订单的累计状态 例如 订单 替换了
+———OrderQty,CumQty,LeavesQty AvgPx 。 , B
+部分成交的订单 订单 的 和 域也要加上订单 的
+A, B OrderQty、CumQty、LeavesQty AvgPx A
+累计数量
+。
+一般性公式为 订单数量 累计执行数量 订单剩余数量
+● : OrderQty= CumQty+ LeavesQty。
+公式的例外情况 如果 和 或 为已撤销 当天完成 已过期 已计算
+● : ExecType / OrdStatus 、 、 、 、
+已拒绝 则订单不处于活跃状态 为
+, ,LeavesQty 0。
+用以传递新成交信息 表明执行报告是由交
+———ExecType=F(Trade) 。ExecType=D(Restated)
+易服务方主动向交易客户方发送的 应给出 这可用在有时间条件的
+, ExecRestatementReason,
+订单到期 公司行为 电话口头报单 交易服务方修改价格或交易服务方主动撤单等情况
+、 、 、 。
+提供给交易客户方 机构 券商 中间商等 进行订单标识 在其内部系统中唯一 域
+———ClOrdID ( 、 、 ) , 。
+则是由交易服务方 券商 交易所 基金管理公司等 生成的订单标识 在撤单中
+OrderID ( 、 、 ) 。 ,
+15
+GB/T45252—2025
+应形成链接
+ClOrdID/OrigClOrdID 。
+执行报告消息 格式见表
+(ExecutionReport) 9。
+表9 执行报告消息 ExecutionReport格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=8
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID N
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID Y , ( )
+交易客户方 券商 订单编号
+11 ClOrdID N ( )
+原始交易客户方 券商 订单编号 指示被撤销 修改订单的
+( ) , /
+41 OrigClOrdID N
+ClOrdID
+组件 参与方
+<Parties> N
+如果订单是通过 发送的 指示订单所在清单编号
+66 ListID N NewOrder-List ,
+执行编号 交易服务方赋予的唯一执行标识 或称成交编号
+17 ExecID Y , ( )
+执行类型
+150 ExecType Y
+订单状态
+39 OrdStatus Y
+订单拒绝时需要
+103 OrdRejReason N
+撤单 拒绝原因说明 执行类型为 或 时填写
+1328 RejectText N / , 8 4
+国际市场互联对方市场拒绝原因说明
+10189 IMCRejectText N
+时需要
+378 ExecRestatementReason N ExecType=D(Restated)
+订单状态请求编号
+790 OrdStatusReqID N
+订单所有者类型
+522 OwnerType Y
+订单限定
+529 OrderRestrictions N
+组件 证券定义
+<Instrument> Y
+买卖方向
+54 Side Y
+组件 数量
+<OrderQtyData> Y
+订单有效时间类型
+59 TimeInForce N
+订单有效时间 订单有效时间类型为 时必选
+126 ExpireTime N ( GTD )
+非交易业务订单类型
+8526 NonTradingOrdType N
+订单类型
+40 OrdType N
+价格类型
+423 PriceType N
+价格
+44 Price N
+报价回购业务购回价格
+640 Price2 N
+止损价格
+99 StopPx N
+最多成交价位数
+1090 MaxPriceLevels N
+16
+GB/T45252—2025
+表9 执行报告消息 ExecutionReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+最小成交数量
+110 MinQty N
+融资融券信用标识
+544 CashMargin N
+订单数量类型
+1093 LotType N
+期限
+580 NoDates N
+币种
+15 Currency N
+上一成交数量 最近一笔成交数量
+32 LastQty N ( )
+上一成交价格 最近一笔成交价格
+31 LastPx N ( )
+订单剩余数量
+151 LeavesQty Y
+累计执行数量
+14 CumQty Y
+成交平均价
+6 AvgPx Y
+执行报告时间
+60 TransactTime N
+原有订单请求接收的时间
+42 OrigTime N
+成交金额
+8504 TotalValueTraded N
+订单申报时间
+8500 OrderEntryTime N
+股东持有数量
+8501 AccountSecPosition N
+期权序列代码
+309 UnderlyingSecurityID N
+开平仓标识
+77 PositionEffect N
+备兑标签
+203 CoveredOrUncovered N
+对应申报市价转限价的订单 这里填写转为限价订单的价格
+845 DiscretionPrice N ,
+冻结 解冻数量个数
+1362 NoFills N /
+冻结 解冻标志
+1443 FillLiquidityInd N /
+冻结 解冻数量
+1365 FillQty N /
+约定号
+664 ConfirmID N
+期限 单位为天数 深交所
+8911 ExpirationDays N , ( )
+期限类型
+8906 ExpirationType N
+购回交易日期
+541 MaturityDate N
+组件 用于回报 实时申购赎回的股份和资金交付明细
+<CompDeliverData> N ETF
+成分股记录数
+8902 NoSecurity Y
+成分股证券代码
+309 UnderlyingSecurityID Y
+证券代码源
+305 UnderlyingSecurityIDSource Y
+股份交付数量
+8903 DeliveryQty N
+现金替代金额
+8904 SubstCash N
+17
+GB/T45252—2025
+表9 执行报告消息 ExecutionReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件结束
+备注
+58 Text N
+标准消息尾
+— Y —
+10324 订单状态请求消息 MsgType=H
+... ( )
+订单状态请求用于向交易服务方请求某订单的状态 交易服务方通过执行报告消息返回订单状态
+, 。
+订单状态请求消息 格式见表
+(OrderStatusRequest) 10。
+表10 订单状态请求消息 OrderStatusRequest格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=H
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+组件 参与方
+<Parties> N
+原始交易客户方 券商 订单编号 指示被修改订单的
+41 OrigClOrdID Y ( ) , ClOrdID
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+订单状态请求编号 订单状态请求唯一标识 在返回的执行报
+, ,
+790 OrdStatusReqID N 告消息中需包含此编号
+组件 证券定义
+<Instrument> Y
+买卖方向
+54 Side Y
+标准消息尾
+— Y —
+10325 撤单消息 MsgType=F
+... ( )
+撤单消息用以撤销订单的全部订单剩余数量
+。
+撤单消息仅在订单能成功撤回 没有产生执行的情况下被接受
+, 。
+撤单消息也被赋予一个 可视作另外一个订单 如果被拒绝 撤单拒绝消息的
+ClOrdID, 。 , ClOrdID
+放置撤单消息的 而原始订单的 则放入 域 要保证唯一
+ClOrdID, ClOrdID OrigClOrdID 。ClOrdID 。
+撤单消息需要立即回应 除非撤单能立刻被处理或拒绝 否则应先发送一个待撤销的执行报告
+。 , 。
+撤单消息 格式见表
+(OrderCancelRequest) 11。
+表11 撤单消息 OrderCancelRequest格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=F
+原始订单应用标识
+1180 ApplID N
+原始交易客户方 券商 订单编号 指示被撤销订单的
+41 OrigClOrdID Y ( ) , ClOrdID
+18
+GB/T45252—2025
+表11 撤单消息 OrderCancelRequest格式 续
+( ) ( )
+域名 必选 说明
+Tag
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+组件 参与方
+<Parties> N
+组件 证券定义
+<Instrument> Y
+买卖方向
+54 Side Y
+订单发起时间
+60 TransactTime Y
+组件 数量
+<OrderQtyData> Y
+非交易业务订单类型
+8526 NonTradingOrdType N
+订单类型
+40 OrdType Y
+订单所有者类型
+522 OwnerType Y
+期权序列代码
+309 UnderlyingSecurityID N
+开仓 平仓 取值
+/ , :
+平仓
+77 PositionEffect N C=
+开仓
+O=
+备注
+58 Text N
+标准消息尾
+— Y —
+10326 撤单拒绝消息 MsgType=9
+... ( )
+本消息用于撤单 修改相关消息的拒绝 包括交易业务类撤单消息 非交易业务类撤单消息 注册指
+、 , 、 、
+令撤单消息等
+。
+交易服务方接收到撤单后发现无法执行 只有订单存在剩余数量时才允许更改价格或减少数量 已
+( ,
+成交订单不可更改等 将发送撤单拒绝消息
+), 。
+拒绝撤单时 撤单拒绝消息应用 指示撤单的 用 指示之前最后接
+, ClOrdID ClOrdID, OrigClOrdID
+受的订单 除非拒绝原因是 未知订单
+( “ ”)。
+撤单拒绝消息 格式见表
+(OrderCancelReject) 12。
+表12 撤单拒绝消息 OrderCancelReject格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=9
+回报记录号
+10179 ReportIndex Y
+原始订单应用标识
+1180 ApplID N
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID Y , ( )
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+19
+GB/T45252—2025
+表12 撤单拒绝消息 OrderCancelReject格式 续
+( ) ( )
+域名 必选 说明
+Tag
+原始交易客户方 券商 订单编号 指示被撤销 修改订单的
+( ) , /
+41 OrigClOrdID Y
+ClOrdID
+订单状态
+39 OrdStatus Y
+订单所有者类型
+522 OwnerType Y
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件 参与方
+<Parties> N
+订单发起时间
+60 TransactTime N
+撤单拒绝回应类型
+434 CxlRejResponseTo Y
+撤单拒绝原因
+102 CxlRejReason N
+拒绝原因说明
+1328 RejectText N
+58 Text N FreeText
+标准消息尾
+— Y —
+1033 报价业务类
+..
+10331 报价业务类消息概述
+...
+报价消息主要用于支持做市商进行做市的业务 如在期权业务中 做市商就期权合约不断报出买卖
+, ,
+价 并在相应价位上接受投资者的买卖要求
+, 。
+10332 报价消息 MsgType=S
+... ( )
+报价消息支持四种报价模式 双边报价 买报价 卖报价 撤销报价 通过对 字
+: 、 、 、 。 BidSize、OfferSize
+段的取值组合实现 种报价模式 见表
+4 , 13。
+表13 报价模式
+报价方式
+BidSize OfferSize
+双边报价
+>0 >0
+买报价
+>0 =0
+卖报价
+=0 >0
+撤销报价
+=0 =0
+对于期权业务的报价消息 如果 则应填写 如果 则应
+, BidSize>0, BidPositionEffect, OfferSize>0,
+填写
+OfferPositionEffect。
+报价消息 格式见表
+(Quote) 14。
+20
+GB/T45252—2025
+表14 报价消息 Quote格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=S
+应用标识
+1180 ApplID N
+客户报价消息编号
+1166 QuoteMsgID Y
+报价标识
+117 QuoteID Y
+报价所有者类型
+522 OwnerType Y
+报价发起时间
+60 TransactTime N
+预留字段
+131 QuoteReqID N 当报价是对报价请求的响应时 填写报价请求的
+, ID
+报价类型
+537 QuoteType N 表示可交易的报价
+1=Tradeable,
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+买报价
+132 BidPx N 时必选填写
+BidSize>0
+卖报价
+133 OfferPx N 时必选填写
+OfferSize>0
+买数量
+134 BidSize N
+卖数量
+135 OfferSize N
+买开平仓标志 衍生品报价填写
+,
+开仓
+8909 BidPositionEffect N O=
+平仓
+C=
+卖开平仓标志 衍生品报价填写
+,
+开仓
+8910 OfferPositionEffect N O=
+平仓
+C=
+备注
+58 Text N
+21
+GB/T45252—2025
+10333 报价状态回报消息 MsgType=AI
+... ( )
+报价状态回报消息是报价消息的确认 其中 报价状态 域说明报价是否被接受或者被
+, QuoteStatus( )
+拒绝
+。
+报价状态回报消息 格式见表
+(QuoteStatusReport) 15。
+表15 报价状态回报消息 QuoteStatusReport格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AI
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID N
+客户报价消息编号
+1166 QuoteMsgID Y
+报价所有者类型
+522 OwnerType Y
+当报价是对报价请求的响应时 填写报价请求的
+131 QuoteReqID N , ID
+报价类型
+537 QuoteType N 表示可交易的报价
+1=Tradeable,
+报价状态
+接受
+297 QuoteStatus N 0=Accepted,
+拒绝
+5=Rejected,
+报价拒绝原因代码
+300 QuoteRejectReason N
+报价拒绝原因说明
+1328 RejectText N
+报价接收时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+买报价
+132 BidPx N
+卖报价
+133 OfferPx N
+买数量
+134 BidSize N
+卖数量
+135 OfferSize N
+22
+GB/T45252—2025
+表15 报价状态回报消息 QuoteStatusReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+买开平仓标志
+开仓
+8909 BidPositionEffect N O=
+平仓
+C=
+卖开平仓标志
+开仓
+8910 OfferPositionEffect N O=
+平仓
+C=
+备注
+58 Text N
+1034 询价业务类
+..
+10341 询价业务类消息
+...
+投资者根据自身交易的需要 可向交易服务方提交询价指令 要求做市商对某一产品进行报价 交
+, , ,
+易服务方向市场揭示做市商的询价响应报价
+。
+10342 询价消息 MsgType=R
+... ( )
+询价消息 格式见表
+(QuoteRequest) 16。
+表16 询价消息 QuoteRequest格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=R
+应用标识
+1180 ApplID N 期权集中竞价交易询价
+042=
+报价请求
+131 QuoteReqID Y ID
+申报所有者类型
+522 OwnerType Y
+申报发起时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<RootParties> Y —
+参与人代码个数
+1116 NoRootPartyIDs Y
+参与人代码
+1117 RootPartyID Y
+参与人代码源
+1118 RootPartyIDSource Y
+参与人代码角色
+1119 RootPartyRole Y
+组件结束
+备注
+58 Text N
+23
+GB/T45252—2025
+10343 询价接受消息 MsgType=R
+... ( )
+询价接受消息报文格式与询价消息报文格式一样
+。
+10344 询价拒绝消息 MsgType=AG
+... ( )
+询价消息未通过交易服务方风控检查时 交易服务方将发送询价拒绝消息
+, ,QuoteRequestRejec-
+将说明具体的拒绝原因
+tReason 。
+询价拒绝消息 格式见表
+(QuoteRequestReject) 17。
+表17 询价拒绝消息 QuoteRequestReject格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AG
+应用标识
+1180 ApplID N
+报价请求
+131 QuoteReqID Y ID
+申报所有者类型
+522 OwnerType Y
+拒绝原因
+658 QuoteRequestRejectReason Y
+回报时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<RootParties> Y —
+参与人代码个数
+1116 NoRootPartyIDs Y
+参与人代码
+1117 RootPartyID Y
+参与人代码源
+1118 RootPartyIDSource Y
+参与人代码角色
+1119 RootPartyRole Y
+组件结束
+备注
+58 Text N
+1035 意向申报业务类
+..
+10351 意向申报业务类消息
+...
+交易客户方通过意向申报消息 向交易对手方揭示交易意愿 意向申报消息主要用于协议交易
+, 。
+业务
+。
+10352 意向申报消息 MsgType=6
+... ( )
+可使用意向申报消息申报意向申报或意向申报撤单 使用 域区分意向申报或意向
+, IOITransType
+申报撤单 若为意向申报撤单 则 为原意向申报的
+, , IOIRefID IOIID。
+意向申报消息 格式见表
+(IndicationofInterest) 18。
+24
+GB/T45252—2025
+表18 意向申报消息 IndicationofInterest格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=6
+应用标识
+1180 ApplID N 协议交易意向申报
+050=
+客户意向申报编号
+同一交易单元一个交易日内申报的所有意向申报 不能
+23 IOIID Y IOIID
+重复
+意向申报类型
+意向申报
+28 IOITransType Y N=
+意向申报撤单
+C=
+原意向申报 对于意向申报该字段取值为空 若为撤单则
+IOIID, ,
+26 IOIRefID N 为被撤原意向申报
+IOIID
+买卖方向
+买
+54 Side Y 1=
+卖
+2=
+意向申报所有者类型
+522 OwnerType Y
+意向申报发起时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+数量
+27 IOIQty N
+价格
+44 Price N
+联系人
+10184 Contactor N
+联系信息
+10185 ContactInfo N
+备注
+58 Text N
+10353 意向申报响应消息 MsgType=AJ
+... ( )
+意向申报响应消息可用于
+:
+意向申报确认
+a) ;
+25
+GB/T45252—2025
+意向申报撤单确认
+b) ;
+意向申报拒绝
+c) ;
+意向申报撤单拒绝
+d) 。
+意向申报响应消息 格式见表
+(QuoteResponse) 19。
+表19 意向申报响应消息 QuoteResponse格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AJ
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID N
+交易所意向申报响应编号
+693 QuoteRespID Y
+响应类型
+694 QuoteRespType Y 意向申报响应
+2=
+执行类型
+意向申报成功
+0=New,
+150 ExecType Y 意向申报撤单成功
+4=Canceled,
+意向申报拒绝
+8=Reject,
+意向申报撤单错误信息 供柜台系统读取错误信息 进行错误
+, ,
+102 CxlRejReason N 处理
+意向申报错误信息 供柜台系统读取错误信息 进行错误处理
+103 OrdRejReason N , ,
+拒绝原因代码 响应类型为 时填写
+300 QuoteRejectReason N , 8
+拒绝原因说明 响应类型为 时填写
+1328 RejectText N , 8
+客户意向申报编号
+23 IOIID Y
+意向申报类型
+28 IOITransType Y
+原意向申报 对于意向申报该字段取值为空 若为撤单
+IOIID, , ,
+26 IOIRefID N 则为被撤原意向申报
+IOIID
+买卖方向
+54 Side Y
+意向申报所有者类型
+522 OwnerType Y
+意向申报接收时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+26
+GB/T45252—2025
+表19 意向申报响应消息 QuoteResponse格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件结束
+数量
+27 IOIQty Y
+价格
+44 Price N
+联系人
+10184 Contactor N
+联系信息
+10185 ContactInfo N
+备注
+58 Text N
+1036 成交申报业务类
+..
+10361 成交申报业务类消息
+...
+交易客户方达成交易后向交易服务方申报成交申报消息 经过交易服务方确认后不应更改或者撤
+,
+销 主要用于 证券交易所协议交易业务 股票质押式回购 约定购回 报价回购等创新业务 证
+。 SZ 、 、 、 。SH
+券交易所相关业务通过新订单 执行报告消息实现
+、 。
+10362 成交申报消息 MsgType=AE
+... ( )
+成交申报消息有两种申报模式 协议配对和成交报告 协议配对模式是指交易客户买卖双方各申
+: 。
+报一笔成交申报 交易服务方对这两笔成交申报进行配对 成交报告模式是指由交易客户卖方申报一
+, 。
+笔包含交易双方完整信息的成交报告 交易服务方进行确认即可
+, 。
+成交申报消息 格式见表
+(TradeCaptureReport) 20。
+表20 成交申报消息 TradeCaptureReport格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AE
+应用标识
+1180 ApplID N
+客户成交申报编号 同一交易单元一个交易日内申报的成交申
+,
+571 TradeReportID Y 报的客户成交申报编号不得重复
+成交申报所有者类型
+522 OwnerType Y
+成交申报业务类别
+股票质押式回购初始交易
+1001=
+股票质押式回购提前购回
+1002=
+股票质押式回购到期购回
+1003=
+股票质押式回购延期购回
+1004=
+828 TrdType N 股票质押式回购终止购回
+1005=
+股票质押式回购补充质押
+1006=
+股票质押式回购部分解除质押
+1007=
+股票质押式回购违约处置
+1008=
+股票质押式回购部分购回
+1009=
+27
+GB/T45252—2025
+表20 成交申报消息 TradeCaptureReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+约定购回初始交易
+1011=
+约定购回提前购回
+1012=
+约定购回到期购回
+1013=
+约定购回延期购回
+1014=
+828 TrdType N 质押式报价回购初始交易
+1021=
+质押式报价回购提前购回
+1022=
+债券质押式协议回购初始交易
+1031=
+债券质押式协议回购购回交易
+1032=
+成交申报子业务类别 预留
+829 TrdSubType N ,
+成交申报类型
+856 TradeReportType Y 提交成交申报
+0=Submit,
+成交申报事务类别
+新申报
+487 TradeReportTransType Y 0=New,
+撤销申报
+1=Cancel,
+成交申报模式
+成交报告
+1123 TradeHandlingInstr N 1=Two-PartyReport,
+协议配对
+2=One-Partyreportformatching,
+原客户成交申报编号
+572 TradeReportRefID N 撤销成交申报时使用
+成交申报发起时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<RootParties> Y —
+参与人代码个数
+1116 NoRootPartyIDs Y
+参与人代码
+1117 RootPartyID Y
+参与人代码源
+1118 RootPartyIDSource Y
+参与人代码角色
+1119 RootPartyRole Y
+组件结束
+组件
+<TrdCapRptSideGrp> Y —
+个数
+552 NoSides Y side
+买卖方向
+54 Side Y
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+28
+GB/T45252—2025
+表20 成交申报消息 TradeCaptureReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件结束
+成交价格
+31 LastPx Y
+成交数量
+32 LastQty Y
+金额
+152 CashOrderQty N
+约定号
+664 ConfirmID N
+期限 单位为天数
+8911 ExpirationDays N ,
+期限类型 转融通证券出借填写
+,
+8906 ExpirationType N 固定期限
+1=
+股份性质
+8908 ShareProperty N
+购回交易日
+541 MaturityDate N
+到期续做方式 质押式报价回购填写
+,
+到期自动续做
+8907 ExpirationExecInst N 1=
+到期手动续做
+2=
+价格类型
+表示收益率
+1=Percentage,
+423 PriceType N 表示绝对价格 对于资产管理计划份额转让
+3=Fixedamount, ,
+业务指按 人民币现金 报价
+“ ”
+质权人类型
+10183 PledgeeType N
+初始交易交易所成交申报编号
+1126 OrigTradeID N
+初始交易客户成交申报编号
+10182 OrigTradeReportID N
+初始交易日期
+1125 OrigTradeDate N
+融资融券信用标识
+普通交易
+1=Cash,
+融资融券开仓
+544 CashMargin N 2=Open,
+融资融券平仓
+3=Close,
+缺省值为
+1
+交易编号 跨交易日唯一
+880 TrdMatchID N ,
+备注
+58 Text N
+10363 成交申报响应消息 MsgType=AR
+... ( )
+成交申报响应消息是成交申报消息的确认 包括被接受或被拒绝
+, 。
+每个成交申报响应消息包括两个域 成交申报响应状态 成交申报
+:TrdAckStatus, ;TrdRptStatus,
+状态
+。
+域用以报告当前成交申报是被交易服务方接受还是被拒绝的状态 域
+TrdAckStatus ,TrdRptStatus
+用以报告当前成交申报的被交易服务方处理的状态 具体包括接受 拒绝 已撤销 尚未匹配 已经匹配
+, 、 、 、 、 。
+成交申报响应消息 格式见表
+(TradeCaptureReportAck) 21。
+29
+GB/T45252—2025
+表21 成交申报响应消息 TradeCaptureReportAck 格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AR
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+交易所为成交申报分配的唯一
+1003 TradeID Y ID
+客户成交申报编号 同一交易单元一个交易日内申报的成交申
+,
+571 TradeReportID Y 报的客户成交申报编号不得重复
+成交申报所有者类型
+522 OwnerType Y
+成交申报业务类别
+828 TrdType N
+成交申报子业务类别
+829 TrdSubType N
+成交申报类型
+856 TradeReportType Y
+成交申报事务类别
+487 TradeReportTransType Y
+成交申报模式
+1123 TradeHandlingInstr N
+原客户成交申报编号
+572 TradeReportRefID N 撤销成交申报时使用
+成交申报响应状态
+接受
+8912 TrdAckStatus Y 0=Accepted,
+拒绝
+1=Rejected,
+成交申报状态
+接受
+0=Accepted,
+拒绝
+1=Rejected,
+939 TrdRptStatus N 已撤销
+2=Cancelled,
+尚未匹配
+100=Unmatched,
+已匹配
+101=Matched,
+成交申报被拒绝原因代码
+751 TradeReportRejectReason N
+成交申报被拒绝原因说明
+1328 RejectText N
+成交申报接收时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<RootParties> Y —
+参与人代码个数
+1116 NoRootPartyIDs Y
+参与人代码
+1117 RootPartyID Y
+参与人代码源
+1118 RootPartyIDSource Y
+参与人代码角色
+1119 RootPartyRole Y
+30
+GB/T45252—2025
+表21 成交申报响应消息 TradeCaptureReportAck 格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件结束
+组件
+<TrdCapRptSideGrp> Y —
+买卖方向数
+552 NoSides Y
+买卖方向
+54 Side Y
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+组件结束
+执行编号
+17 ExecID Y
+成交价格
+31 LastPx Y
+成交数量
+32 LastQty Y
+金额
+152 CashOrderQty N
+约定号
+664 ConfirmID N
+期限 单位为天数 转融通证券出借填写
+8911 ExpirationDays N , ,
+期限类型 转融通证券出借填写
+8906 ExpirationType N ,
+股份性质
+8908 ShareProperty N
+购回交易日期
+541 MaturityDate N
+到期续做方式 质押式报价回购填写
+8907 ExpirationExecInst N ,
+价格类型
+423 PriceType N
+质权人类型
+10183 PledgeeType N
+初始交易交易所成交申报编号
+1126 OrigTradeID N
+初始交易客户成交申报编号
+10182 OrigTradeReportID N
+初始交易日期
+1125 OrigTradeDate N
+融资融券信用标识
+544 CashMargin N
+交易编号 跨交易日唯一
+880 TrdMatchID N ,
+备注
+58 Text N
+10364 成交确认消息 MsgType=AE
+... ( )
+成交确认消息是对协议配对模式下成交申报配对成交时的回报
+。
+成交确认消息 格式见表
+(TradeCaptureReport) 22。
+31
+GB/T45252—2025
+表22 成交确认消息 TradeCaptureReport格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=AE
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+交易所为成交申报分配的唯一
+1003 TradeID Y ID
+客户成交申报编号 同一交易单元一个交易日内申报的成交申
+,
+571 TradeReportID Y 报的客户成交申报编号不得重复
+成交申报所有者类型
+522 OwnerType Y
+成交申报业务类别
+828 TrdType Y
+成交申报子业务类别
+829 TrdSubType N
+成交申报类型
+856 TradeReportType Y
+成交申报事务类别
+487 TradeReportTransType Y 成交申报成功
+2=Replace,
+成交申报模式
+1123 TradeHandlingInstr N
+成交确认时间
+60 TransactTime N
+组件
+<Instrument> Y —
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+组件结束
+组件
+<RootParties> Y —
+参与人代码个数
+1116 NoRootPartyIDs Y
+参与人代码
+1117 RootPartyID Y
+参与人代码源
+1118 RootPartyIDSource Y
+参与人代码角色
+1119 RootPartyRole Y
+组件结束
+组件
+<TrdCapRptSideGrp> Y —
+买卖方向数
+552 NoSides Y
+买卖方向
+54 Side Y
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+32
+GB/T45252—2025
+表22 成交确认消息 TradeCaptureReport格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件结束
+执行编号
+17 ExecID Y
+成交价格
+31 LastPx Y
+成交数量
+32 LastQty Y
+金额
+152 CashOrderQty N
+约定号
+664 ConfirmID N
+期限 单位为天数 转融通证券出借填写
+8911 ExpirationDays N , ,
+期限类型 转融通证券出借填写
+8906 ExpirationType N ,
+股份性质
+8908 ShareProperty N
+购回交易日
+541 MaturityDate N
+到期续做方式 质押式报价回购填写
+8907 ExpirationExecInst N ,
+价格类型
+423 PriceType N
+融资融券信用标识
+544 CashMargin N
+初始交易日期
+1125 OrigTradeDate N
+交易编号 跨交易日唯一
+880 TrdMatchID N ,
+备注
+58 Text N
+1037 投票业务类
+..
+10371 投票消息 MsgType=U004
+... ( )
+投票消息提供了在投票期间输入投票的具体功能
+。
+投票消息格式见表
+23。
+表23 投票消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U004
+应用标识
+1180 ApplID Y
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+投票所有者类型
+522 OwnerType Y
+组件 参与方
+<Parties> Y
+组件 证券定义
+<Instrument> Y
+订单发起时间
+60 TransactTime N
+股东大会编码 股东大会唯一序列号
+8547 GeneralMeetingSeq N ,
+33
+GB/T45252—2025
+表23 投票消息格式 续
+( )
+域名 必选 说明
+Tag
+投票议案号
+8529 VotingProposal Y
+投票子议案号
+8530 VotingSubProposal N
+投票意向
+8531 VotingPreference Y
+分段统计段号 仅对沪港通港结算有效
+8546 VotingSegment N ,
+总股份数量 仅对沪港通港结算有效
+704 LongQty N ,
+组件 数量
+<OrderQtyData> N
+备注
+58 Text N
+10372 投票执行报告消息 MsgType=U005
+... ( )
+投票执行报告消息将对投票消息做出响应 若未能通过有效性检查该投票将无效
+。 。
+投票执行报告消息格式见表
+24。
+表24 投票执行报告消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U005
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+投票所有者类型
+522 OwnerType Y
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+执行编号
+17 ExecID Y
+组件 参与方
+<Parties> N
+组件 证券定义
+<Instrument> Y
+执行类型 取值有
+, :
+请求接受
+150 ExecType Y 0=
+请求失败
+8=
+投票请求拒绝时表示投票请求拒绝的原因
+103 OrdRejReason N
+拒绝原因说明 执行类型为 时填写
+1328 RejectText N , 8
+请求接收时表示接受请求的时间 拒绝响应时无该字段
+60 TransactTime N ,
+投票议案号
+8529 VotingProposal Y
+投票子议案号或选举候选人
+8530 VotingSubProposal N
+投票意向
+8531 VotingPreference Y
+组件 为投票数量
+<OrderQtyData> N OrderQty
+备注
+58 Text N
+34
+GB/T45252—2025
+10373 投资者服务密码激活消息 MsgType=U006
+... ( )
+投资者服务密码激活消息使投资者可通过交易系统激活投资者在互联网投票系统中申请的密码
+,
+密码激活成功后 投资者可继续在互联网投票系统中使用其申请的密码进行登录并投票 本消息被
+, 。 SZ
+证券交易所定义为密码服务消息
+。
+投资者服务密码激活消息格式见表
+25。
+表25 投资者服务密码激活消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U006
+应用标识
+1180 ApplID Y
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+投票所有者类型
+522 OwnerType Y
+组件 证券定义
+<Instrument> Y
+组件 参与方
+<Parties> Y
+订单发起时间
+60 TransactTime N
+校验号码
+8539 ValidationCode Y
+备注
+58 Text N
+10374 投资者服务密码挂失消息 MsgType=U007
+... ( )
+投资者服务密码挂失消息使投资者可通过交易系统挂失投资者在互联网投票系统中申请的密码
+,
+密码挂失成功后 系统将注销原有用户信息 投资者若想使用密码服务 应重新申请服务密码并激活密
+, , ,
+码 本消息被 证券交所定义为密码服务执行报告
+。 SZ 。
+服务密码挂失注销后投资者可重新申领
+。
+投资者服务密码挂失消息格式见表
+26。
+表26 投资者服务密码挂失消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U007
+应用标识
+1180 ApplID Y
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+投票所有者类型
+522 OwnerType Y
+组件 证券定义
+<Instrument> Y
+组件 参与方
+<Parties> Y
+订单发起时间
+60 TransactTime N
+校验号码
+8539 ValidationCode Y
+备注
+58 Text N
+35
+GB/T45252—2025
+10375 投资者服务密码激活执行报告消息 MsgType=U008
+... ( )
+投资者服务密码激活执行报告消息将对投资者服务密码激活消息做出响应 如果未能通过有效性
+。
+检查 该密码将不会被激活
+, 。
+投资者服务密码激活执行报告消息格式见表
+27。
+表27 投资者服务密码激活执行报告消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U008
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+所有者类型
+522 OwnerType Y
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+执行编号
+17 ExecID Y
+组件 证券定义
+<Instrument> Y
+组件 参与方
+<Parties> N
+执行类型 取值有
+, :
+请求接受
+150 ExecType Y 0=
+请求失败
+8=
+请求拒绝时表示请求拒绝的原因
+103 OrdRejReason N
+拒绝原因说明 执行类型为 时填写
+1328 RejectText N , 8
+请求接收时表示接受请求的时间 拒绝响应时无该字段
+60 TransactTime N ,
+密码激活或重置校验号
+8539 ValidationCode Y
+备注
+58 Text N
+10376 投资者服务密码挂失执行报告消息 MsgType=U009
+... ( )
+投资者服务密码挂失执行报告消息将对投资者服务密码挂失消息做出响应 如果未能通过有效性
+。
+检查该密码将不被挂失
+。
+投资者服务密码挂失执行报告消息格式见表
+28。
+表28 投资者服务密码挂失执行报告消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U009
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+所有者类型
+522 OwnerType Y
+36
+GB/T45252—2025
+表28 投资者服务密码挂失执行报告消息格式 续
+( )
+域名 必选 说明
+Tag
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+执行编号
+17 ExecID Y
+组件 证券定义
+<Instrument> Y
+组件 参与方
+<Parties> N
+执行类型 取值有
+, :
+请求接受
+150 ExecType Y 0=
+请求失败
+8=
+请求拒绝时表示请求拒绝的原因
+103 OrdRejReason N
+拒绝原因说明 执行类型为 时填写
+1328 RejectText N , 8
+请求接收时表示接受请求的时间 拒绝响应时无该字段
+60 TransactTime N ,
+密码激活或重置校验号
+8539 ValidationCode Y
+备注
+58 Text N
+1038 注册业务类
+..
+10381 注册类消息概述
+...
+注册类消息是交易客户方申请或变更其证券账号交易权利的指令 是进行证券交易前的准备 注
+, 。
+册类消息支持指定交易 转托管 国债回购登记 注销等业务
+、 、 / 。
+10382 注册消息 MsgType=U001
+... ( )
+注册消息中的注册指令 用于指明注册业务的类别 指定交易登记 指定
+(DesignationInstruction), : 、
+交易撤销 转托管 国债回购登记 国债回购注销
+、 、 、 。
+指定交易注册消息用于 证券交易所的全面指定交易模式 由交易客户方发出 用以将证券账号
+SH , ,
+与参与者业务单元进行关联或撤销关联
+。
+转托管注册消息用于 证券交易所的账号托管模式 由交易客户方发出 用以变更账号持股与托
+SZ , ,
+管参与者业务单元间的指定关系
+。
+在转托管注册消息中 若无证券代码 表示该证券账号在该参与者业务单元下的所有证券都应转至
+, ,
+新的参与者业务单元 若无数量 表示该证券账号在该参与者业务单元下的该证券的全部持有量都转至
+; ,
+转入参与者业务单元
+。
+国债回购登记 注销注册消息由交易客户方发出 用于申请或注销国债回购业务的权利
+/ , 。
+注册消息通过指定注册类型来确定注册消息是新注册请求还是注册撤单 注册撤单由交易客户方
+,
+发出 用以撤销之前的注册请求
+, 。
+注册消息格式见表
+29。
+37
+GB/T45252—2025
+表29 注册消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U001
+应用标识
+1180 ApplID Y
+注册所有者类型
+522 OwnerType Y
+原始交易客户方 券商 订单编号 指示被撤销订单的
+41 OrigClOrdID N ( ) , ClOrdID
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+交易客户方 券商 订单编号
+11 ClOrdID Y ( )
+注册指令
+:
+指定交易登记
+1=
+指定交易撤销
+2=
+8502 DesignationInstruction Y 转托管
+3=
+国债回购登记
+4=
+国债回购注销
+5=
+注册类型
+:
+新注册请求
+8527 DesignationTransType N 1= (New)
+注册撤单
+3= (Cancel)
+组件 参与方
+<Parties> N
+组件 证券定义
+<Instrument> N
+事务发起时间
+60 TransactTime Y
+组件 数量
+<OrderQtyData> N
+备注
+58 Text N
+10383 注册执行报告消息 MsgType=U002
+... ( )
+注册执行报告消息由交易服务方发出 用以回应注册消息
+, 。
+注册执行报告消息格式见表
+30。
+表30 注册执行报告消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U002
+回报记录号
+10179 ReportIndex Y
+应用标识
+1180 ApplID Y
+注册所有者类型
+522 OwnerType Y
+订单编号 交易服务方 交易所 的唯一订单标识
+37 OrderID N , ( )
+交易客户方 券商 订单编号
+11 ClOrdID N ( )
+原始交易客户方 券商 订单编号 指示被撤销订单的
+41 OrigClOrdID N ( ) , ClOrdID
+38
+GB/T45252—2025
+表30 注册执行报告消息格式 续
+( )
+域名 必选 说明
+Tag
+执行编号 交易服务方赋予的唯一执行标识 或称成交编号
+17 ExecID N , ( )
+执行类型
+150 ExecType Y
+订单状态
+39 OrdStatus N
+订单拒绝原因
+103 OrdRejReason N
+拒绝原因说明 执行类型为 时填写
+1328 RejectText N , 8
+注册指令
+:
+指定交易登记
+1=
+指定交易撤销
+2=
+8502 DesignationInstruction Y 转托管
+3=
+国债回购登记
+4=
+国债回购注销
+5=
+注册类型
+表示新注册请求
+8527 DesignationTransType Y 1=New
+表示注册撤单
+3=Cancel
+组件 参与方
+<Parties> N
+组件 证券定义
+<Instrument> N
+事务发起时间
+60 TransactTime Y
+组件 数量
+<OrderQtyData> N
+备注
+58 Text N
+1039 保证金查询业务类
+..
+10391 保证金查询消息概述
+...
+交易客户方可通过申报保证金查询消息向交易服务方查询当前可用资金 该消息主要用于期权
+,
+业务
+。
+10392 保证金查询消息 MsgType=CH/U008
+... ( )
+消息类型 在 证券交易所定义为密码激活执行报告 在 证券交易所定义为保证金查
+U008 SH , SZ
+询 证券交易所保证金查询业务消息类型为
+,SH CH。
+证券交易所保证金查询消息 格式见表
+SH (MarginQuery) 31。
+表31 SH证券交易所保证金查询消息 MarginQuery格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=CH
+交易客户方 券商 查询申请内部编号
+1635 MarginReqmtInqID Y ( )
+组件
+<Parties> N —
+39
+GB/T45252—2025
+表31 SH证券交易所保证金查询消息 MarginQuery格式 续
+( ) ( )
+域名 必选 说明
+Tag
+参与人代码个数
+453 NoPartyIDs N
+参与人代码
+448 PartyID N
+参与人代码角色
+452 PartyRole N
+组件结束
+证券交易所保证金查询消息 格式见表
+SZ (MarginQuery) 32。
+表32 SZ证券交易所保证金查询消息 MarginQuery格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U008
+应用标识
+1180 ApplID Y
+申报发起时间
+60 TransactTime N
+客户查询编号
+11 ClOrdID Y
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+备注
+58 Text N
+10393 保证金查询结果消息 MsgType=CJ/U009
+... ( )
+消息类型 在 证券交易所定义为密码挂失执行报告 在 证券交易所定义为保证金查询
+U009 SH , SZ
+结果 证券交易所查询响应报告消息类型为 表示交易服务方收到保证金查询消息后发送保证
+,SH CJ。
+金查询结果消息
+。
+证券交易所保证金查询结果消息 格式见表
+SH (MarginQueryResult) 33。
+表33 SH证券交易所保证金查询结果消息 MarginQueryResult格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=CJ
+交易客户方 券商 查询申请内部编号
+1635 MarginReqmtInqID Y ( )
+查询失败时 填写请求拒绝的理由
+102 CxlRejReason N ,
+查询时间
+8541 TransactTimeOnly N
+40
+GB/T45252—2025
+表33 SH证券交易所保证金查询结果消息 MarginQueryResult格式 续
+( ) ( )
+域名 必选 说明
+Tag
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+组件
+<MarginAmt> N —
+查询结果总记录数
+1643 NoMarginAmt Y
+金额
+1645 MarginAmt Y
+金额类型
+1644 MarginAmtType Y
+组件结束
+证券交易所保证金查询结果消息 格式见表
+SZ (MarginQueryResult) 34。
+表34 SZ证券交易所保证金查询结果消息 MarginQueryResult格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=U009
+应用标识
+1180 ApplID Y
+申报发起时间
+60 TransactTime N
+客户查询编号
+11 ClOrdID Y
+执行编号
+17 ExecID Y
+执行类型
+表示请求接受
+150 ExecType Y 0=New
+表示请求失败
+8=Reject
+拒绝原因代码 执行类型为 时填写
+103 OrdRejReason N , 8
+拒绝原因说明 执行类型为 时填写
+1328 RejectText N , 8
+组件
+<Parties> Y —
+参与人代码个数
+453 NoPartyIDs Y
+参与人代码
+448 PartyID Y
+参与人代码源
+447 PartyIDSource Y
+参与人代码角色
+452 PartyRole Y
+组件结束
+组件
+<MarginItems> N —
+保证金条目个数
+10186 NoMarginItems Y
+41
+GB/T45252—2025
+表34 SZ证券交易所保证金查询结果消息 MarginQueryResult格式 续
+( ) ( )
+域名 必选 说明
+Tag
+保证金条目类别
+保证金可用余额
+10187 MarginItem Y 1=
+保证金总金额
+2=
+保证金金额
+10188 MarginAmount Y
+组件结束
+备注
+58 Text N
+10310 行情
+..
+103101 证券信息请求消息 MsgType=e
+.. . ( )
+证券信息请求用于交易客户方向交易服务方提出有关证券信息的请求 通过此信息 可得到一条或
+, ,
+多条有关证券信息消息
+。
+证券信息请求消息包含一个订阅请求类型 域 通过该域的不同取值告
+(SubscriptionRequestType) ,
+知对方所请求的是何种类型
+:
+表示请求人只要求快照或当前状态
+a) 0 ;
+表示请求人要求快照 更新 若状态发生变化
+b) 1 + ( );
+表示请求人要求撤销处于等待中的证券信息状态快照或更新请求
+c) 2 。
+证券信息请求消息 格式见表
+(SecurityStatusRequest) 35。
+表35 证券信息请求消息 SecurityStatusRequest格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=e
+证券信息请求编号
+324 SecurityStatusReqID N
+组件 证券定义
+<Instrument> Y
+币种
+15 Currency N
+订阅请求类型
+263 SubscriptionRequestType Y
+交易盘标识
+336 TradingSessionID N
+交易盘子标识 如
+, :
+股市场
+A
+股市场
+B
+中小企业市场
+基金市场
+625 TradingSessionSubID N 国债市场
+其他债券市场
+债券回购市场
+国际板市场
+创业板市场
+42
+GB/T45252—2025
+103102 证券信息广播消息 MsgType=f
+.. . ( )
+证券信息广播消息包含证券相关信息 市场交易信息等
+, 。
+证券信息广播消息 格式见表
+(SecurityStatus) 36。
+表36 证券信息广播消息 SecurityStatus格式
+( )
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=f
+组件 证券定义
+<Instrument> Y
+证券信息请求编号
+324 SecurityStatusReqID N
+交易单位 该证券订单数量的单位量 即最终的订单数量 订
+( , =
+561 RoundLot N 单数量 交易单位
+× )
+行业种类
+8507 IndustryClassification N
+币种
+15 Currency N
+股票面值
+8508 ShareFaceValue N
+总发行量
+8509 OutStandingShares N
+流通股数
+8510 PublicFloatShareQuantity N
+上年每股利润
+8511 PreviousYearProfitPerShare N
+本年每股利润
+8512 CurrentYearProfitPerShare N
+杂项费用类别数
+136 NoMiscFees N
+杂项费用类别
+佣金
+3= (LocalCommission)
+经手费
+4= (ExchangeFees)
+印花税
+139 MiscFeeType N 5= (Stamp)
+证管费
+6= (Levy)
+其他
+7= (Other)
+过户费
+13= (TransferFee)
+杂项费用金额
+137 MiscFeeAmt N
+上市日期
+225 IssueDate N
+到期 交割日
+541 MaturityDate N /
+每笔限量
+111 MaxFloor N
+买数量单位 买订单数量应为此域值的整数倍
+8513 BidLotSize N ( )
+卖数量单位 卖订单数量应为此域值的整数倍
+8514 AskLotSize N ( )
+价格档位
+8515 PriceTickSize N
+集合竞价限价参数
+8517 AuctionPriceLimit N
+连续竞价限价参数
+8518 ContinuousTradePriceLimit N
+限价参数类型
+8516 PriceLimitType N
+涨幅价格 最高价
+8519 DailyPriceUpLimit N ( )
+43
+GB/T45252—2025
+表36 证券信息广播消息 SecurityStatus格式 续
+( ) ( )
+域名 必选 说明
+Tag
+跌幅价格 最低价
+8520 DailyPriceDownLimit N ( )
+交易状态 含停牌标志
+( )
+停牌
+2= (TradingHalt)
+恢复
+3= (Resume)
+首日上市
+101=
+增发股份上市
+326 SecurityTradingStatus N 102=
+正常状态
+103=
+上网定价发行
+104=
+上网竞价发行
+105=
+国债挂牌分销
+106=
+证券属性
+正常
+N=
+股
+S=ST
+股
+P=PT
+证券交易所证券在 证券交易所代理
+H=SH SZ
+代办转让证券
+T=
+证券交易所证券在 证券交易所代理
+8521 SecurityProperties N Z=SZ SH
+上市开放型 基金
+L= LOF
+上市开放低风险收益型 基金
+D= LOF
+非交易型开放式基金
+F=
+交易型开放式指数基金
+E= (ETF)
+仅提供净值揭示服务的开放式基金
+O=
+仅在协议交易平台挂牌交易的证券
+B=
+除权除息标志
+除股息
+A= (Ex-Dividend)
+除分配
+B= (Ex-Distribution)
+除权
+292 CorporateAction N C= (Ex-Rights)
+新股
+D= (New)
+除利息
+E= (Ex-Interest)
+正常
+N= (Normal)
+所属指数数量
+8522 NoIndicesParticipated N
+所属指数代码
+8528 ParticipatingIndexID N
+纳入指数计算标志
+纳入该指数计算
+8523 IndexinclusionIndicator N Y=
+暂停纳入该指数计算
+N=
+每百元债券应计利息
+159 AccruedInterestAmt N
+行权方式代码
+美式权证
+A=
+8534 WarrantStyle N 欧式权证
+E=
+百慕大式权证
+B=
+44
+GB/T45252—2025
+表36 证券信息广播消息 SecurityStatus格式 续
+( ) ( )
+域名 必选 说明
+Tag
+认购认沽标志
+认购
+8535 WarrantPutOrCall N C=
+认沽
+P=
+权证结算方式
+证券结算
+8536 WarrantClearingType N S=
+现金结算
+C=
+行权比例
+231 ContractMultiplier N
+对权证表示行权开始日期
+916 StartDate N
+对权证表示行权结束日期
+917 EndDate N
+基础证券代码 权证
+309 UnderlyingSecurityID N ( 、ETF)
+日基金的单位净值
+8537 NAV N T-1
+数据生成时间
+42 OrigTime Y
+频道代码
+10201 ChannelNo Y
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+证券状态
+291 FinancialStatus N
+开关个数
+10202 NoSwitch N
+开关类别
+融资买入
+1=
+融券卖出
+2=
+申购
+3=
+赎回
+4=
+认购
+5=
+转股
+6=
+回售
+7=
+行权
+8=
+买开仓
+10=
+卖开仓
+11=
+10203 SecuritySwitchType Y 黄金 实物申购
+12= ETF
+黄金 实物赎回
+13= ETF
+预受要约
+14=
+解除要约
+15=
+转股撤单
+18=
+回售撤单
+19=
+质押
+20=
+解押
+21=
+表决权
+22=
+股票质押式回购
+23=
+实时分拆
+24=
+45
+GB/T45252—2025
+表36 证券信息广播消息 SecurityStatus格式 续
+( ) ( )
+域名 必选 说明
+Tag
+实时合并
+25=
+备兑开仓
+26=
+做市商报价
+27=
+港股通整手买
+10203 SecuritySwitchType Y 28=
+港股通整手卖
+29=
+港股通零股买
+30=
+港股通零股卖
+31=
+开关状态
+表示开
+10204 SecuritySwitchStatus Y Y
+表示关
+N
+103103 证券行情快照消息 MsgType=W
+.. . ( )
+每条行情快照消息包含一个产品的所有行情条目 每个行情条目就是某个产品的买 卖 成交 开
+。 、 、 、
+盘 结算 买卖方均衡 指数 最高 最低 交易量等
+、 、 、 、 、 、 。
+行情快照消息用于定期或不定期地发送行情 可用 字段来区分重复内容的快照
+, RefreshIndicator
+数据和带有新数据的快照数据
+。
+证券行情快照消息格式见表
+37。
+表37 证券行情快照消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=W
+消息的应用标识 可省略
+1180 ApplID N ,
+消息的应用编号 可省略
+1181 ApplSeqNum N ,
+交易所行情信息编号
+963 MDReportID N
+用以标识消息中是否有新的行情数据 取值
+, :
+有
+1187 RefreshIndicator N 1=
+无
+0=
+数据生成时间
+42 OrigTime Y
+频道代码
+10201 ChannelNo Y
+行情类别
+现货 股票 基金 债券等 集中竞价交易快照行情
+010= ( , , )
+质押式回购交易快照行情
+020=
+债券分销快照行情
+030=
+期权集中竞价交易快照行情
+040=
+1500 MDStreamID Y 以收盘价交易的盘后定价交易快照行情
+060=
+以成交量加权平均价交易的盘后定价交易快照行情
+061=
+港股实时行情
+630=
+指数快照行情
+900=
+成交量统计指标快照行情
+910=
+46
+GB/T45252—2025
+表37 证券行情快照消息格式 续
+( )
+域名 必选 说明
+Tag
+订单申报日期 仅日期
+75 TradeDate N ( )
+预留时间字段
+8541 TransactTimeOnly N
+证券名称
+55 Symbol N
+证券代码
+48 SecurityID N
+证券代码源
+22 SecurityIDSource N
+值 的编码应符合 的规定
+461 CFICode N CFICode ,CFI GB/T35964
+成交笔数
+8503 NumTrades N
+转融通费率
+44 Price N
+转融通申报总量
+271 MDEntrySize N
+期限
+580 NoDates N
+成交数量
+1020 TradeVolume N
+总持仓量
+8506 TotalLongPosition N
+成交总量
+387 TotalVolumeTraded Y
+成交金额
+8504 TotalValueTraded N
+昨日收盘价 可省略
+140 PrevClosePx N ,
+统计量指标样本个数
+10207 StockNum N
+行情条目个数
+268 NoMDEntries N
+行情条目类别
+买入
+0= (Bid)
+卖出
+1= (Offer)
+成交价
+2= (Trade)
+指数
+3= (IndexValue)
+今开盘价
+4= (OpeningPrice)
+今收盘价
+5= (ClosingPrice)
+结算价
+6= (SettlementPrice)
+最高价
+7= (TradingSessionHighPrice)
+最低价
+8= (TradingSessionLowPrice)
+269 MDEntryType N 最近集合竞价
+x=
+升跌一
+x1=
+升跌二
+x2=
+买入汇总 总量及加权平均价
+x3= ( )
+卖出汇总 总量及加权平均价
+x4= ( )
+股票市盈率一
+x5=
+股票市盈率二
+x6=
+基金 日净值
+x7= T-1
+基金实时参考净值 包括 的
+x8= ( ETF IOPV)
+权证溢价率
+x9=
+47
+GB/T45252—2025
+表37 证券行情快照消息格式 续
+( )
+域名 必选 说明
+Tag
+昨日收盘指数
+xa=
+开盘指数
+xb=
+最高指数
+xc=
+最低指数
+xd=
+涨停价 表示无涨停价格限制
+xe= ,999999999.9999
+跌停价 表示无跌停价格限制
+xf= ,-999999999.9999
+合约持仓量
+269 MDEntryType N xg=
+按盘价
+xh=
+参考价
+xi=
+申购 赎回的单位参考净值
+v=ETF / (IOPV)
+权证总行权数量
+u=
+权证总创设数量
+t=
+权证总注销数量
+s=
+行情条目价格
+270 MDEntryPx N
+行情条目数量 数量的单位对股票为股 基金为份 债券与回购
+, , ,
+271 MDEntrySize N 为手 权证为份
+,
+行情条目买卖盘序号 为 或 时有效
+290 MDEntryPositionNo N (MDEntryType 0 1 )
+买卖盘档位
+1023 MDPriceLevel N 从 开始
+1
+价位总委托笔数
+346 NumberOfOrders N 为 表示不揭示
+0
+价位揭示委托笔数
+73 NoOrders N 为 表示不揭示
+0
+订单数量
+38 OrderQty N
+交易阶段代码
+第 位
+1 :
+启动 开市前
+S= ( )
+开盘集合竞价
+O=
+连续竞价
+T=
+休市
+B=
+收盘集合竞价
+C=
+已闭市
+8538 TradingPhaseCode N E=
+临时停牌
+H=
+盘后交易
+A=
+波动性中断
+V=
+表示临时停牌
+P=
+收盘集合竞价
+U=
+表示可恢复交易的熔断 盘中集合竞价
+M= ( )
+表示不可恢复交易的熔断
+N=
+48
+GB/T45252—2025
+表37 证券行情快照消息格式 续
+( )
+域名 必选 说明
+Tag
+第 位
+2 :
+正常状态
+0=
+全天停牌
+1=
+第 位
+3 :
+表示不限制开仓 表示限制备兑开仓 表示限制卖出
+“0” ,“1” ,“2”
+开仓 表示限制卖出开仓 备兑开仓 表示限制买入开
+8538 TradingPhaseCode N ,“3” 、 ,“4”
+仓 表示限制买入开仓 备兑开仓 表示限制买入开仓
+,“5” 、 ,“6” 、
+卖出开仓 表示限制买入开仓 卖出开仓 备兑开仓
+,“7” 、 、
+第 位
+4 :
+表示此产品在当前时段不接受进行新订单申报 表示此
+“0” ,“1”
+产品在当前时段可接受进行新订单申报
+冷静期个数
+VCM
+或
+0 1
+1494 NoComplexEventTimes N 表示当前处于触发 的冷静期 下面的时间是冷静期的
+1 VCM ,
+开始结束时间
+冷静期开始时间
+1495 ComplexEventStartTime Y
+冷静期结束时间
+1496 ComplexEventEndTime Y
+和 用于发布当前行情的日期和时间 对于指数发布 可用相应的域
+MDEntryDate MDEntryTime 。 ,
+表示前收盘指数 今开盘指数 今成交金额 最高指数 最低指数 最新指数 成交股数等
+、 、 、 、 、 、 。
+103104 证券逐笔委托行情 MsgType=UA201
+.. . ( )
+交易服务方向市场揭示交易客户申报的每笔有效的订单
+。
+证券逐笔委托行情消息格式见表
+38。
+表38 证券逐笔委托行情消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=UA201
+频道代码
+10201 ChannelNo Y
+消息记录号
+1181 ApplSeqNum Y 从 开始计数
+1
+行情类别
+现货 股票 基金 债券等 集中竞价交易逐笔行情
+011= ( , , )
+质押式回购交易逐笔行情
+021=
+期权集中竞价交易逐笔行情
+1500 MDStreamID Y 041=
+协议交易逐笔意向行情
+051=
+协议交易逐笔定价行情
+052=
+转融通证券出借逐笔行情
+071=
+证券代码
+48 SecurityID Y
+49
+GB/T45252—2025
+表38 证券逐笔委托行情消息格式 续
+( )
+域名 必选 说明
+Tag
+证券代码源
+22 SecurityIDSource Y
+委托价格
+44 Price Y
+订单数量
+38 OrderQty Y
+买卖方向
+买
+1=
+卖
+54 Side Y 2=
+借入
+G=
+出借
+F=
+订单类别
+市价
+1=
+40 OrdType N 限价
+2=
+本方最优
+U=
+定价行情约定号
+为空表示是意向行情
+664 ConfirmID N ConfirmID
+否则为定价行情
+期限 单位为天数
+8911 ExpirationDays N ,
+期限类型
+8906 ExpirationType N
+委托时间
+60 TransactTime Y
+联系人
+10184 Contactor N
+联系信息
+10185 ContactInfo N
+103105 证券逐笔成交行情 MsgType=UA202
+.. . ( )
+交易服务方向市场揭示交易客户产生的每笔成交
+。
+证券逐笔成交行情消息格式见表
+39。
+表39 证券逐笔成交行情消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=UA202
+频道代码
+10201 ChannelNo Y
+消息记录号
+1181 ApplSeqNum Y 从 开始计数
+1
+行情类别
+现货 股票 基金 债券等 集中竞价交易逐笔行情
+011= ( , , )
+质押式回购交易逐笔行情
+021=
+期权集中竞价交易逐笔行情
+1500 MDStreamID Y 041=
+协议交易逐笔意向行情
+051=
+协议交易逐笔定价行情
+052=
+转融通证券出借逐笔行情
+071=
+50
+GB/T45252—2025
+表39 证券逐笔成交行情消息格式 续
+( )
+域名 必选 说明
+Tag
+买方委托索引
+10116 BidApplSeqNum N 从 开始计数 表示无对应委托
+1 ,0
+卖方委托索引
+10117 OfferApplSeqNum N 从 开始计数 表示无对应委托
+1 ,0
+证券代码
+48 SecurityID Y
+证券代码源
+22 SecurityIDSource Y
+成交价格
+31 LastPx N
+成交数量
+32 LastQty Y
+执行类型
+主动或自动撤单执行报告
+150 ExecType Y 4=Cancelled,
+成交执行报告
+F=Trade,
+成交时间
+60 TransactTime Y
+103106 快照行情频道统计 MsgType=UA004
+.. . ( )
+每个快照行情频道都会定期发送快照行情频道统计消息
+。
+快照行情频道统计消息格式见表
+40。
+表40 快照行情频道统计消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=UA004
+频道代码
+10201 ChannelNo Y
+消息记录号
+1181 ApplSeqNum Y 从 开始计数
+1
+数据生成时间
+42 OrigTime Y
+频道代码
+10201 ChannelNo Y
+行情类别个数
+10208 NoMDStreamID Y
+行情类别
+1500 MDStreamID Y
+证券只数
+10207 StockNum N
+闭市状态
+第 位
+0 :
+8538 TradingPhaseCode Y 连续竞价 全部证券尚未闭市
+T= ( )
+已闭市 全部证券已闭市
+E= ( )
+103107 公告 MsgType=B
+.. . ( )
+公告消息格式见表
+41。
+51
+GB/T45252—2025
+表41 公告消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=B
+公告时间
+42 OrigTime N
+公告类型
+1473 NewsCategory N
+频道代码
+10201 ChannelNo Y
+唯一标识
+空串表示公告概要 公告概要会重复发送 可通过公告概要确
+1472 NewsID N , 。
+定公告是否有遗漏或是修改
+公告标题
+148 Headline Y
+二进制数据格式
+10209 RawDataFormat Y
+二进制数据长度
+95 RawDataLength Y
+二进制数据
+96 RawData Y
+10311 市场控制
+..
+103111 市场参数请求消息 MsgType=BI
+.. . ( )
+市场参数请求消息用于接入方向交易所发送市场参数请求 获取当前市场相关控制参数 交易所应
+, ,
+以市场参数消息作为请求的响应
+。
+市场参数请求消息格式见表
+42。
+表42 市场参数请求消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=BI
+交易盘请求编号
+335 TradSesReqID Y
+交易盘标识
+336 TradingSessionID N
+交易盘子标识 如
+, :
+股市场
+A
+股市场
+B
+中小企业市场
+基金市场
+625 TradingSessionSubID N 国债市场
+其他债券市场
+债券回购市场
+国际板市场
+创业板市场
+交易场所代码
+207 SecurityExchange N
+52
+GB/T45252—2025
+表42 市场参数请求消息格式 续
+( )
+域名 必选 说明
+Tag
+交易盘交易方法
+电子交易系统
+1=
+338 TradSesMethod N 喊价交易
+2= (OpenOutcry)
+双方
+3= (TwoParty)
+交易盘交易模式
+系统测试
+1=
+339 TradSesMode N 模拟交易
+2=
+产品 正常交易
+3= ( )
+订阅请求类型
+263 SubscriptionRequestType Y
+103112 市场参数消息 MsgType=BJ
+.. . ( )
+市场参数消息用于交易所向交易客户方发送市场状态 时段信息 用以交易客户方控制交易
+、 , 。
+市场参数消息格式见表
+43。
+表43 市场参数消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=BJ
+交易盘请求编号
+335 TradSesReqID N
+交易盘个数
+386 NoTradingSessions Y
+交易盘标识
+336 TradingSessionID Y
+交易盘子标识 如
+, :
+股市场
+A
+股市场
+B
+中小企业市场
+基金市场
+国债市场
+625 TradingSessionSubID N 其他债券市场
+债券回购市场
+国际版市场
+创业板市场
+如果市场参数消息没有交易盘子标识
+(TradingSessionSubID),
+则表示所有市场参数相同
+交易场所代码
+207 SecurityExchange N
+交易盘交易方法
+电子交易系统
+1=
+338 TradSesMethod N 喊价交易
+2= (OpenOutcry)
+双方
+3= (TwoParty)
+53
+GB/T45252—2025
+表43 市场参数消息格式 续
+( )
+域名 必选 说明
+Tag
+交易盘交易模式
+系统测试
+1=
+339 TradSesMode N 模拟交易
+2=
+产品 正常交易
+3= ( )
+主动发送标识
+325 UnsolicitedIndicator N
+交易盘状态
+未知状态
+0= (Unknown)
+停盘
+1= (Halted)
+开盘
+2= (Open)
+闭盘
+3= (Closed)
+340 TradSesStatus Y 预开盘
+4= (Pre-Open)
+预闭盘
+5= (Pre-Close)
+挂起
+7= (Suspend)
+正常交易
+11= (Trading)
+中断
+21= (Break)
+交易盘状态请求拒绝原因
+567 TradSesStatusRejReason N
+交易盘开始时间
+341 TradSesStartTime N
+交易盘开盘时间
+342 TradSesOpenTime N
+交易盘预关闭时间
+343 TradSesPreCloseTime N
+交易盘关闭时间
+344 TradSesCloseTime N
+交易盘结束时间
+345 TradSesEndTime N
+总成交量
+387 TotalVolumeTraded N
+说明正文
+58 Text N
+编码文本长度
+354 EncodedTextLen N
+编码文本
+355 EncodedText N
+103113 市场实时状态 MsgType=h
+.. . ( )
+市场实时状态用于交易所向交易客户方发送市场状态 用以交易客户方控制交易
+, 。
+市场实时状态消息格式见表
+44。
+表44 市场实时状态消息格式
+域名 必选 说明
+Tag
+标准消息头
+— Y MsgType=h
+交易盘请求编号
+335 TradSesReqID N
+交易盘个数
+386 NoTradingSessions Y
+数据生成时间
+42 OrigTime Y
+54
+GB/T45252—2025
+表44 市场实时状态消息格式 续
+( )
+域名 必选 说明
+Tag
+频道代码
+10201 ChannelNo Y
+市场代码
+1301 MarketID Y
+市场板块代码 预留
+1300 MarketSegmentID Y ,
+交易会话
+336 TradingSessionID Y ID
+交易会话子
+ID
+当 为 为 时 交易会话子
+MarketID HKEX,TradingSessionID 1 ,
+取值如下
+ID :
+全日收市
+0=
+输入买卖盘 开盘集合竞价时段
+1= ( )
+对盘 开盘集合竞价时段
+2= ( )
+持续交易
+3=
+对盘 收盘集合竞价时段
+4= ( )
+输入买卖盘 收盘集合竞价时段
+5= ( )
+625 TradingSessionSubID N 暂停
+7=
+未开市
+100=
+对盘前 开盘集合竞价时段
+101= ( )
+102=ExchangeIntervention
+收市
+103=
+取消买卖盘
+104=
+参考价定价 收盘集合竞价时段
+105= ( )
+不可取消 收盘集合竞价时段
+106= ( )
+随机收市 收盘集合竞价时段
+107= ( )
+交易会话状态 预留
+340 TradSesStatus N ,
+交易会话起始时间 预留
+341 TradSesStartTime N ,
+交易会话结束时间 预留
+345 TradSesEndTime N ,
+每日初始额度
+834 ThresholdAmount N
+日中剩余额度
+708 PosAmt N 额度不可用时 发布固定值
+, 0.0000
+额度状态
+10210 AmountStatus N
+11 数据字典
+以下列出会话层消息和应用层消息中用到的数据域 域号 以上数据域为连接双方自定义数
+, 10000
+据域 仅作为样例参考 数据类型格式见 数据字典见表
+, 。 6.1, 45。
+表45 数据字典
+域名 域中文名 数据类型 说明
+Tag
+成交平均价 订单所有成交的平均成交价
+6 AvgPx Price
+起始消息序号 重发消息区的起始消息序号
+7 BeginSeqNo SeqNum
+55
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+起始串 起始串 指示会话层协议版本 如
+8 BeginString String , , FIXT.1.1
+消息体长度 消息体长度 不可加密 消息的第二个域
+9 BodyLength Length , ,
+校验和 校验和 不可加密 消息最后一个域
+10 CheckSum String , ,
+由交易客户方 券商 赋予的订单编号 对
+( ) ,
+相应券商 在订单交易时
+交易客户方订单编号 (SenderCompID)
+11 ClOrdID String 期内应保证唯一 对跨日订单 可在该域
+。 ,
+内嵌入交易日期
+累计执行数量 订单所有成交的成交总股数
+14 CumQty Qty
+币种 价格的货币单位 可缺省 但最好给出
+15 Currency Currency , ,
+重发消息区的结束消息序号
+表明重发一条消息
+结束消息序号 BeginSeqNo=EndSeqNo,
+16 EndSeqNo SeqNum 表明重发起始消息序号
+EndSeqNo=“0”,
+后的所有消息
+由交易服务方 即交易所 赋予的执行编
+( )
+号 在订单交易时期内应保证唯一 对跨
+执行编号 , 。
+17 ExecID String 日订单 可在该域内嵌入交易日期 或称
+, (
+成交编号
+)
+交易所订单处理指令
+执行指令
+18 ExecInst MultipleValueString
+G=Allornone-AON
+证券代码来源或代码集合 如果消息中使
+,
+用了 域则也应有
+SecurityID SecurityID-
+域 取值
+Source , :
+组织
+4=ISIN(ISIN )
+证券交易所
+101=SH
+证券代码源 证券交易所
+22 SecurityIDSource String 102=SZ
+联合交易所
+103=XG
+外汇交易中心
+105=
+证券交易所
+106=BJ
+全国股转公司
+108=
+自行内部使用
+(200+ )
+客户意向申报编号 客户意向申报编号
+23 IOIID String
+原意向申报
+原意向申报 IOIID
+26 IOIRefID IOIID String 撤销意向申报时使用
+意向申报数量 意向申报数量
+27 IOIQty Qty
+意向申报类型
+意向申报类型 意向申报
+28 IOITransType char N=
+意向申报撤单
+C=
+上一成交价格 订单最近一个成交的成交价
+31 LastPx Price
+56
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+上一成交数量 订单最近一个成交的股数
+32 LastQty Qty
+消息序号 消息序号
+34 MsgSeqNum SeqNum
+消息类型 不可加密 消息的第三个域
+, , 。
+消息类型取值
+:
+心跳
+0= (Heartbeat)
+测试请求
+1= (TestRequest)
+重发请求
+2= (ResendRequest)
+会话拒绝
+3= (Reject)
+序号重设
+4= (SequenceReset)
+注销
+5= (Logout)
+执行报告
+8= (ExecutionReport)
+撤单拒绝
+9= (OrderCancelReject)
+登录
+A= (Logon)
+新订单
+D= (Order-Single)
+新订单清单
+E= (Order-List)
+撤单
+F= (OrderCancelRequest)
+修改单
+G= (OrderCancel/ReplaceRequest)
+订单状态请求
+H= (OrderStatusRequest)
+证券信息请求
+e= (SecurityStatusRequest)
+证券信息广播
+f= (SecurityStatus)
+成交申报
+AE= (TradeCaptureReport)
+成交申报确认
+AR= (TradeCaptureReport
+Ack)
+消息类型 市场参数请求
+35 MsgType String BI= (TradingSessionList
+Request)
+市场参数
+BJ= (TradingSessionList)
+自定义消息类型以 开头 自定义消息
+“U” ,
+类型参考如下
+:
+注册指令
+U001=
+注册指令执行报告
+U002=
+证券行情广播
+U003=
+投票
+U004=
+投票响应
+U005=
+其中 证券交易所 交易数据
+SZ STEP
+接口使用的消息类型 字段与
+(MsgType)
+证券交易所有四个差异 具体如下所示
+SH , :
+在 证券交易所表示密码服务消
+U006, SZ
+息 在 证券交易所表示密码激活
+, SH ;
+在 证券交易所表示密码服务执
+U007, SZ
+行报告 在 证券交易所表示密码挂失
+, SH ;
+在 证券交易所表示保证金查询
+U008, SZ ,
+在 证券交易所表示密码激活执行报
+SH
+告 在 证券交易所表示保证金查
+;U009, SZ
+询结果 在 证券交易所表示密码挂失
+, SH
+执行报告
+。
+57
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+资金前端控制响应
+U010=
+回报同步消息
+U101= (ReportSynchroni-
+证券交易所
+zation)(SZ )
+平台状态消息
+U102= (Platform State
+证券交易所
+Info)(SZ )
+回报结束消息
+U103= (ReportFinished)
+证券交易所
+(SZ )
+平台信息消息
+U104= (PlatformInfo)(SZ
+证券交易所
+)
+分区序号同步
+U106= ExecRptSync(SH
+证券交易所
+消息类型 )
+35 MsgType String 分区序号同步响应
+U107= ExecRptSyncRsp
+证券交易所
+(SH )
+执行报告分区信息
+U108= ExecRptInfo
+证券交易所
+(SH )
+平台状态 证券
+U109= PlatformState(SH
+交易所
+)
+分区执行报告结束
+U110= ExecRptEnd-
+证券交易所
+OfStream(SH )
+证券逐笔委托行情
+UA201=
+证券逐笔成交行情
+UA202=
+快照行情频道统计
+UA004=
+新消息序号 新消息序号
+36 NewSeqNo SeqNum
+由交易服务方 交易所 赋予的订单编号
+( ) ,
+订单编号 在交易日内应保证唯一 对跨日订单 可
+37 OrderID String 。 ,
+在该域内嵌入交易日期
+订单数量 订单中的证券数量
+38 OrderQty Qty
+订单当前状态 取值
+, :
+新
+0= (New)
+部分成交
+1= (Partiallyfilled)
+已成交
+2= (Filled)
+当天完成
+3= (Doneforday)
+已撤销
+4= (Canceled)
+待撤销
+6= (PendingCancel)
+已终止
+7= (Stopped)
+订单状态 已拒绝
+39 OrdStatus char 8= (Rejected)
+已延缓
+9= (Suspended)
+待处理
+A= (PendingNew)
+已计算
+B= (Calculated)
+已过期
+C= (Expired)
+已接受
+D= (Acceptedforbidding)
+待替换
+E= (PendingReplace)
+非交易订单已接收
+Z= (Non-tradingorder
+hasbeenreceived)
+58
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+订单类型 取值
+, :
+市价
+1= (Market)
+限价
+2= (Limit)
+止损
+3= (Stop)
+止损限价
+4= (Stoplimit)
+含或不含
+6= (Withorwithout)
+限价或更好价
+7= (Limitorbetter)
+限价含或不含
+8= (Limitwithorwithout)
+基于基价
+9= (Onbasis)
+上次报价
+D= (Previouslyquoted)
+上次显示指定的
+E= (Previouslyindicated)
+外汇互换
+G= (Forex-Swap)
+当日有效限价 剩余部分在收市结束时
+I= ,
+变为市价
+[Funari(LimitDayOrderwith
+unexecutedportionhandledasMarketOn
+Close.E.g.Japan)]
+执行转市价 如果订单部分执行 所有
+J= , ,
+剩余部分立即变成为市价
+订单类型 [MarketIfTou-
+40 OrdType char
+ched(MIT)]
+市价订单未执行部分转现价
+K= ,[Market
+withLeftoverasLimit(marketorderthen
+unexecutedquantitybecomeslimitorder
+atlastprice)]
+上次基金定价 历史价格
+L= , [Previous
+FundValuationPoint(Historicpricing)
+(forCIV)]
+下次基金定价 预期价格
+M= , [NextFund
+ValuationPoint-(Forwardpricing)(forCIV)]
+挂钩
+P= (Pegged)
+冰山
+T= (Iceberg)
+本方最优
+U=
+对方最优
+V=
+最优五档
+W=
+协议交易
+X= (BlockTrade)
+协商交易
+Y= (NegotiatedTrade)
+非交易订单
+Z= (Non-TradingOrder)
+原始交易客户方订
+之前相关订单的 用于撤单
+41 OrigClOrdID 单编号 String ClOrdID,
+数据生成时间 数据生成时间 原有订单请求接收时间
+42 OrigTime UTCTimestamp ,
+指示该消息序号的消息可能重复发送
+,
+取值
+可能重复标志 :
+43 PossDupFlag Boolean 可能重复
+Y=
+首次发送
+N=
+价格 每股价格
+44 Price Price
+59
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+关联消息序号 消息的关联消息序号
+45 RefSeqNum SeqNum
+证券代码 应在 中指明
+证券代码 , SecurityIDSource
+48 SecurityID String 代码源
+发送方代码 发送方代码
+49 SenderCompID String
+发送方子标识符 发送方子代码 如交易员
+50 SenderSubID String ( )
+发送时间 消息发送时间
+52 SendingTime UTCTimestamp
+订单买卖方向 取值
+, :
+买入
+1= (Buy)
+卖出
+2= (Sell)
+买卖方向 融入或出借
+54 Side char F=
+融出或借入
+G=
+申购
+D=
+赎回
+E=
+证券名称 行情滚动屏上显示的证券名称
+55 Symbol String
+接收方代码 接收方代码
+56 TargetCompID String
+接收方子标识符 接收方的人员代码
+57 TargetSubID String
+文本 自由格式文本串
+58 Text String
+订单有效时间类型 取值范围
+, :
+当日有效
+0= (GFD)
+取消前有效
+1= (GTC)
+开盘有效
+2= [OPG(AttheOpening)]
+订单有效时间类型 即时否则取消
+59 TimeInForce char 3= (IOC)
+全额即时
+4= (FOK)
+指定日期前有效
+6= (GTD)
+收盘有效
+7= (AttheClose)
+合适时间有效
+A= (GoodForTime)
+事务时间 订单或执行的创建时间
+60 TransactTime UTCTimestamp
+交易客户方对批量订单的编号 日内唯
+,
+订单清单编号 一 如果跨日订单要保证唯一 可在订单
+66 ListID String , ,
+清单编号中加入日期
+订单清单序号 订单清单中单个订单的序号
+67 ListSeqNo int
+指示在同一 下所有消息中的订单
+全部订单数 ListID
+68 TotNoOrders int 总数 用以支持消息分割
+,
+订单个数 订单个数
+73 NoOrders NumInGroup
+交易日期 订单申报日期 仅日期
+75 TradeDate LocalMktDate ( )
+60
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+开仓 平仓 取值
+/ , :
+开仓平仓 平仓
+77 PositionEffect char C=
+开仓
+O=
+数字签名 数字签名
+89 Signature data
+密文数据长度 加密数据块长度
+90 SecureDataLen Length
+密文数据 加密数据块
+91 SecureData data
+数字签名长度 数字签名域的字节数
+93 SignatureLength Length
+无格式数据长度 无格式数据的字节数
+95 RawDataLength Length
+无格式数据 无格式的数据 可是位图 文档
+96 RawData Data , 、WORD
+指示该消息可能发送过 使用不同的消息
+(
+序号 取值
+可能重发标志 ), :
+97 PossResend Boolean 可能重发
+Y=
+首次发送
+N=
+加密方法 取值
+, :
+无加密或其他加密方法
+0= (None/other)
+加密方法 私有
+1=PKCS ( )
+加密方法 模式
+加密方法 2=DES (ECB )
+98 EncryptMethod int 加密方法 私有
+3=PKCS/DES ( )
+加密方法
+4=PGP/DES
+加密方法
+5=PGP/DES-MD5
+加密方法
+6=PEM/DES-MD5
+止损价格 止损价格
+99 StopPx Price
+撤单拒绝原因 取值
+, :
+撤单太晚
+0= (Toolatetocancel)
+未知订单
+1= (Unknownorder)
+自选原因
+2= (Broker/ExchangeOption)
+正在撤销
+3= (OrderalreadyinPending
+撤单拒绝原因 CancelorPendingReplacestatus)
+102 CxlRejReason Int 不能群组撤单
+4= (UnabletoprocessOrder
+MassCancelRequest)
+订单时间不匹配
+5= (OrigOrdModTime
+didnotmatchlastTransactTimeoforder)
+收到重复单
+6= (DuplicateClOrdIDreceived)
+其他
+99= (other)
+订单拒绝原因 取值
+, :
+券商 交易所选项
+0= / (Broker/Exchangeop-
+tion)
+订单拒绝原因 证券代码非法
+103 OrdRejReason int 1= (Unknownsymbol)
+交易关闭
+2= (Exchangeclosed)
+订单超过限价
+3= (Orderexceedslimit)
+订单太迟
+4= (Toolatetoenter)
+61
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+未知订单
+5= (UnknownOrder)
+重复订单
+6= [DuplicateOrder(e.g.dupe
+ClOrdID)]
+与口头报单重复
+7= (Duplicateofaverbally
+communicatedorder)
+失效订单
+8= (StaleOrder)
+9=TradeAlongrequired
+无效账户
+10= (InvalidInvestorID)
+不支持的订单特征
+11= (Unsupported
+ordercharacteristic)
+监查选择原因
+12= (SurveillanceOption)
+数量错误
+13= (Incorrectquantity)
+数量分配错误
+14= (Incorrectallocated
+quantity)
+未知账号
+15= [Unknownaccount(s)]
+其他
+99= (other)
+参与者业务单元代码非法
+100=
+委托日期非法
+101=
+证券停牌
+102=
+买订单数量不是
+103= SJS××.××
+的整数倍
+BLDW
+卖订单数量不是
+104= SJS××.××
+订单拒绝原因 的整数倍
+103 OrdRejReason int SLDW
+订单数量超出
+105= SJS××.××MBXL
+的限值
+委托价格不是
+106= SJS××.××JGDW
+的整数倍
+证券账户含有非数字字符
+107=
+非法的委托业务
+108=
+测试环境正式用户不允许报单
+109=
+字段没有填
+110=WTCLBZ “z”
+交易期间测试用户不允许报单
+111=
+该参与者业务单元无权经营该种
+112=
+证券
+该证券账户无权交易该种证券
+113=
+该证券在当前时间不可交易
+114=
+参与者业务单元被禁买或禁卖
+115=
+证券账户被禁买或禁卖
+116=
+参与者业务单元资金可用量不足
+117=
+该委托记录标有 标记
+118= DELETE
+回购卖空
+119=
+参与者业务单元卖空
+120=
+股东卖空
+121=
+总量超限
+122=
+价格过高
+123=
+62
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+价格过低
+124=
+价格错误
+125=
+数量非法
+126=
+数量超限
+127=
+重复申购
+128=
+账户非法
+129=
+转股禁止
+130=
+回售禁止
+131=
+非质押物
+132=
+持股超限
+133=
+参与者业务单元无此业务权限
+134=
+开放式基金申购禁止
+135=
+开放式基金赎回禁止
+136=
+权证行权禁止
+137=
+申购禁止
+138=ETF
+赎回禁止
+139=ETF
+全额现金替代申购禁止
+140=ETF
+申购时投资者篮子股份不足
+141=ETF
+赎回时基金篮子股份不足
+142=ETF
+申购现金替代比例超限
+143=ETF
+全额现金替代申购单个投资者
+144=ETF
+超限
+订单拒绝原因 全额现金替代申购单个代办证
+103 OrdRejReason int 145=ETF
+券公司超限
+该证券禁止融资买入
+146=
+该证券禁止融券卖出
+147=
+无效业务类别
+148=
+买卖业务禁止
+149=
+申报市价委托时因无法成交而导致
+150=
+交易主机生成的自动撤单记录
+赎回时当日赎回总量超过限制
+151=ETF
+申购时当日申购总量超过限制
+152=ETF
+无效证券代码
+203= (Invalidstockid)
+非交易时间
+204= (Thisstockisnotin
+tradinghours)
+证券被挂起
+213= (Stockissuspended)
+该股票不参与集合竞价
+214= (Ordersnot
+acceptedforthisstockduringopenperiod)
+无效账号
+215= (Invalidclientaccount)
+该账号未指定在你参与者业务单元
+216=
+(Yourfirmdoesnotownthisaccount)
+账号已挂起
+217= (Accountissuspended)
+无效价格
+218= (Invalidprice)
+申报价不能为零
+219= (Pricemaynotbe0
+foralimitorder)
+63
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+最小价格步长是
+220= (Minimumprice
+Stepis...)
+价格超出范围
+222= (Priceisoutofrange)
+无效数量
+224= (Invalidquantity)
+申报数量应大于
+225= 0(Quantitymust
+begreaterthan0)
+申报数量不符最小步长
+227= (Invalid
+quantityforminstep)
+申报量应不大于
+228= (Orderquantity
+mustnotbemorethan)
+超出限量
+229= (Holdinglimitwouldbe
+exceeded)
+余额不足
+231= (Insufficientaccountbalance
+forsellorder)
+股票持有量超出限量
+234= (Holdings
+limitonstockwouldbeexceeded)
+235=Unabletofindbasestockforrights
+机构账号不能买卖此证券
+243=
+账号不能买入
+244=S
+不能撤销指定 有卖空股票
+245= ( )
+不能撤销指定 有委托
+246= ( )
+不能撤销指定 公司卖空
+247= ( )
+订单拒绝原因 中央登记结算公司不允许撤销
+103 OrdRejReason int 248=SH
+指定
+该账号已指定在你参与者业务单元
+271=
+未做指定不能交易
+272=
+无效操作员代码
+401= (Invalidtraderid)
+无效申报序号
+403= (Invalidordernumber)
+他人申报
+404= (Notyourorder)
+账号不同
+405= (Accountdiffer)
+股票不同
+406= (Stockdiffer)
+买卖不同
+407= (BuySelldiffer)
+委托号太大
+1100= (Ordernumbertoolarge)
+记录不匹配
+1101= (Recordmismatch)
+委托失败
+1102= (Orderfailed)
+非法状态
+1000= (Invalidstatus)
+记录号出错
+1021= (Rec-numerror)
+证券账号错误
+1022= (ACCerror)
+证券代码错误
+1023= (STOCKerror)
+买卖标志错误
+1024= (B/Serror)
+价格错误
+1025= (PRICEerror)
+数量错误
+1026= (QTYerror)
+日期字段错误
+1027= (FieldDateError)
+日期出错
+2001= (Dateerror)
+时间出错
+2002= (Timeerror)
+64
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+券商 字段数据错误
+2003= ref (Brok-ref
+error)
+账号出错
+订单拒绝原因 2004= (Accounterror)
+103 OrdRejReason int 买卖出错
+2005= (B、Serror)
+代码出错
+2006= (Stockerror)
+价格出错
+2007= (Priceerror)
+证券描述信息 在 中用以描述证券
+证券描述 , STEP
+107 SecurityDesc String 的英文简称
+心跳间隔 心跳间隔 单位 秒
+108 HeartBtInt int ( : )
+最小成交数量 最小成交数量
+110 MinQty Qty
+每笔限量 每笔限量
+111 MaxFloor Qty
+用于测试请求消息 将包含在回应的心跳
+测试请求标识符 ,
+112 TestReqID String 消息中
+用于经第三方发送消息 指明原始发送方
+,
+最初发送方标识符 公司代码 域指明第三方
+115 OnBehalfOfCompID String ,SenderCompID
+公司代码
+用于经第三方发送消息 指明原始发送方
+最初发送方子标识符 ,
+116 OnBehalfOfSubID String 交易员代码
+报价标识 报价标识
+117 QuoteID String
+收到重发请求后 将订单重发时 记录的
+原始发送时间 , ,
+122 OrigSendingTime UTCTimestamp 原始消息发送时间
+用于序号重设消息 指示是否填补缺口
+, ,
+取值
+:
+序号重设 缺口填补消息 消息序号域
+Y= - ,
+缺口填补标志 有效
+123 GapFillFlag Boolean (GapFillmessage,MsgSeqNumfield
+valid)
+序号重设 重设消息 消息序号域无效
+N= - ,
+(SequenceReset,ignoreMsgSeqNum)
+订单有效时间 订单有效时间
+126 ExpireTime UTCTimestamp
+用于经第三方发送消息 指明最终接收方
+,
+最终接收方标识符 公司代码 域指明第三方
+128 DeliverToCompID String ,TargetCompID
+公司代码
+用于经第三方发送消息 指明最终接收方
+最终接收方子标识符 ,
+129 DeliverToSubID String 人员代码
+报价请求 报价请求
+131 QuoteReqID ID String ID
+买报价 买报价
+132 BidPx Price
+卖报价 卖报价
+133 OfferPx Price
+买数量 买数量
+134 BidSize Qty
+65
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+卖数量 卖数量
+135 OfferSize Qty
+杂项费用类别数 杂项费用重复组重复次数
+136 NoMiscFees NumInGroup
+杂项费用金额 杂项费用金额
+137 MiscFeeAmt Amt
+指明杂项费用的费用类型
+有效取值
+:
+监管费用
+1= [Regulatory(e.g.SEC)]
+税
+2= (Tax)
+佣金
+3= (LocalCommission)
+经手费
+4= (ExchangeFees)
+印花税
+5= (Stamp)
+杂项费用类别 证管费
+139 MiscFeeType String 6= (Levy)
+其他
+7= (Other)
+价格附加值
+8= (Markup)
+消费税
+9= (ConsumptionTax)
+每次交易
+10= (Pertransaction)
+转换费
+11= (Conversion)
+代理费
+12= (Agent)
+过户费
+13= (TransferFee)
+昨日收盘价 昨日收盘价
+140 PrevClosePx Price
+指示会话连接双方是否要重设序号
+需要重设序号
+序号重设标志 Y=Yes, (resetsequence
+141 ResetSeqNumFlag Boolean
+numbers)
+N=No
+发送方方位标识符 消息发起方人员所在地点
+142 SenderLocationID String
+接收方方位标识符 消息接收方人员所在地点
+143 TargetLocationID String
+最初发送方方位标 用于经第三方发送消息 指明消息原始发
+OnBehalfOfLoca- ,
+144 识符 String 起方人员所在地点
+tionID
+最终接收方方位标 用于经第三方发送消息 指明消息最终接
+,
+145 DeliverToLocationID 识符 String 收方人员所在地点
+证券个数 指示重复的证券个数
+146 NoRelatedSym NumInGroup
+公告标题
+公告标题
+148 Headline String 可能包含中文字符 表示最多 个字节
+, 128
+执行报告的类型 与 配合使用
+, OrdStatus ,
+取值
+:
+新
+0= (New)
+当天完成
+3= (Doneforday)
+已撤销 沪港通业务表示港股自动撤
+执行类型 4= ,
+150 ExecType char 单
+(Canceled)
+已替换
+5= (Replaced)
+待撤销
+6= (PendingCancel)
+已终止
+7= (Stopped)
+已拒绝
+8= (Rejected)
+66
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+已延缓
+9= (Suspended)
+待处理
+A= (PendingNew)
+已计算
+B= (Calculated)
+已过期
+C= (Expired)
+主动发送
+D= (Restated)
+待替换
+E= (PendingReplace)
+执行类型 成交或部分成交
+150 ExecType char F= [Trade(partialfillor
+fill)]
+成交修改
+G= (TradeCorrect)
+成交撤销
+H= (TradeCancel)
+订单状态
+I= (OrderStatus)
+交易且交收
+K= (Tradehasbeenreleased
+toclearing)
+剩余数量 订单仍开放 可撮合 部分的股数
+151 LeavesQty Qty ( )
+订单现金金额 上证 认购金额
+152 CashOrderQty Amt LOF
+应计利息 每百元债券应计利息
+159 AccruedInterestAmt Amt
+证券类别 指示证券类别 在 中未使用
+167 SecurityType String , STEP
+备兑标签 衍生品交易填写
+,
+备兑标签 备兑仓
+203 CoveredOrUncovered int 0= (Covered)
+表示普通仓
+1= (UnCovered)
+符合 标准 其中
+GB/T23696 , :
+交易场所代码 证券交易所
+207 SecurityExchange Exchange XSHG=SH
+证券交易所
+XSHE=SZ
+上市日期 上市日期
+225 IssueDate UTCDate
+债券折合成回购标准券的比例
+转换折合比例
+231 ContractMultiplier Percentage 权证行权比例
+订阅请求类型 取值范围
+, :
+快照
+0= (Snapshot)
+快照 预定更新
+1= + [Snapshot+Updates
+SubscriptionRe- 订阅请求类型
+263 char (Subscribe)]
+questType 忽略前快照 非预定更新
+2= + [Disable
+previousSnapshot+UpdateRequest(Un-
+subscribe)]
+行情条目个数 行情条目个数
+268 NoMDEntries NumInGroup
+行情条目类别
+买
+0= (Bid)
+卖
+1= (Offer)
+最新价
+2= (Trade)
+指数
+行情条目类别 3= (IndexValue)
+269 MDEntryType char 今开盘价
+4= (OpeningPrice)
+今收盘价
+5= (ClosingPrice)
+结算价
+6= (SettlementPrice)
+最高价
+7= (TradingSessionHighPrice)
+最低价
+8= (TradingSessionLowPrice)
+67
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+行情条目价格 行情条目中的价格
+270 MDEntryPx Price
+行情条目数量 行情条目中的数量
+271 MDEntrySize Qty
+行情条目日期 行情条目中的日期
+272 MDEntryDate UTCDate
+行情条目时间 行情条目中的时间
+273 MDEntryTime UTCTimeOnly
+行情条目中的市场 交易所 符合
+( )
+其中
+行情条目市场 GB/T23696, :
+275 MDMkt Exchange 证券交易所
+XSHG=SH
+证券交易所
+XSHE=SZ
+行情 条 目 买 卖 盘 行情条目买卖盘序号 为
+(MDEntryType
+290 MDEntryPositionNo 序号 int 时有效
+0/1 )
+证券状态
+上市公司早间披露提示
+证券状态 A=
+291 FinancialStatus String 上市公司午间披露提示
+B=
+最多可同时揭示八种状态 以空格分隔
+,
+股东大会决议 如除权除息等
+,
+有效取值
+:
+除股息
+A= (Ex-Dividend)
+除分配
+股东大会决议 B= (Ex-Distribution)
+292 CorporateAction MultipleValueString 除权
+C= (Ex-Rights)
+新股
+D= (New)
+除债券利息
+E= (Ex-Interest)
+正常
+N= (Normal)
+报价状态
+报价状态 接受
+297 QuoteStatus int 0=Accepted,
+拒绝
+5=Rejected,
+意向申报拒绝原因
+意向申报拒绝原因代码 正数
+300 QuoteRejectReason 代码 int ,
+基础证券代码源 取值同
+UnderlyingSecurity- 基础证券代码源 , SecurityID-
+305 String
+IDSource Source
+基础证券 期权序列 权证 其他衍生产品的基础证券代
+UnderlyingSecurity- / 、ETF、
+309 代码 String 码 参见 域
+ID , SecurityID(48)
+证券信息请求编号 证券信息请求的唯一编号
+324 SecurityStatusReqID String
+用于表示消息是主动发送或是响应请求
+而被动发送
+主动发送标识 有效取值
+325 UnsolicitedIndicator Boolean :
+消息主动发送
+Y=
+消息被动发送
+N=
+68
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+交易状态 取值
+, :
+停牌
+2= (TradingHalt)
+恢复
+3= (Resume)
+首日上市
+101=
+SecurityTradingSta- 交易状态 增发新股
+326 int 102=
+tus 正常状态
+103=
+上网定价发行
+104=
+上网竞价发行
+105=
+国债挂牌分销
+106=
+交易盘请求编号 交易盘请求消息的唯一编号
+335 TradSesReqID String
+交易盘标识 取值示例
+, (CLOSE、OPEN、
+交易盘标识
+336 TradingSessionID String BREAK1、TRADING1、BREAK2、
+TRADING2)
+市场交易方法
+电子交易系统
+市场交易方法 1=
+338 TradSesMethod int 喊价交易
+2= (OpenOutcry)
+双方
+3= (TwoParty)
+市场交易模式
+系统测试
+市场交易模式 1=
+339 TradSesMode int 模拟交易
+2=
+产品 正常交易
+3= ( )
+交易盘状态
+未知状态
+0= (Unknown)
+停盘
+1= (Halted)
+开盘
+2= (Open)
+闭盘
+交易盘状态 3= (Closed)
+340 TradSesStatus int 预开盘
+4= (Pre-Open)
+预闭盘
+5= (Pre-Close)
+挂起
+7= (Suspend)
+正常交易
+11= (Trading)
+中断
+21= (Break)
+交易盘开始时间 交易盘开始时间
+341 TradSesStartTime UTCTimestamp
+交易盘开盘时间 交易盘开盘时间
+342 TradSesOpenTime UTCTimestamp
+TradSesPreClose- 交易盘预关闭时间 交易盘预关闭时间
+343 UTCTimestamp
+Time
+交易盘关闭时间 交易盘关闭时间
+344 TradSesCloseTime UTCTimestamp
+交易盘结束时间 交易盘结束时间
+345 TradSesEndTime UTCTimestamp
+行情条目笔数 行情条目笔数
+346 NumberOfOrders int
+69
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+消息中编码域的字符编码类型 非
+( ASCII
+码
+)
+取值范围
+:
+EUC-JP(forusingEUC)
+Shift_JIS(forusingSJIS)
+消息编码类型 字符编码
+347 MessageEncoding String UTF-8(Unicode ,forusingUni-
+code)
+汉字编码标准 中国大陆 新加
+GBK(GBK , 、
+坡使用
+)
+汉字编码标准 中国港澳台
+BIG5(BIG5 ,
+使用
+)
+编码文本长度 域的字节数
+354 EncodedTextLen Length EncodedText
+域的编码形式 使用
+Text , MessageEncoding
+编码文本 域指明的编码方式 如果使用 应同时使用
+355 EncodedText data , ,
+域 用 码
+Text ( ASCII )
+最新一次接收并处理的消息序号 可在每
+LastMsgSeqNum- 最近处理消息序号 ,
+369 SeqNum 条消息中都给出 利于对方了解情况
+Processed ,
+OnBehalfOfSending- 最初发送时间 已过期取消
+370 UTCTimestamp
+Time
+相关域号 所引用的
+371 RefTagID int Tag
+相关消息类型 所引用消息的类型
+372 RefMsgType String
+用于会话消息拒绝 指示拒绝原因 取值
+, , :
+存在无效的域号
+0=
+该消息中必选的域丢失
+1=
+该消息中出现未曾定义的域
+2=
+未定义域号
+3=
+域未赋值
+4=
+域取值错误 范围溢出
+5= ( )
+取值格式错误
+6=
+解密错误
+7=
+会话拒绝原因 签名错误
+373 SessionRejectReason int 8=
+公司标识符错误
+9=
+发送时间精度错误
+10=
+无效的消息类型
+11=
+验证错误
+12=XML (XMLValidationerror)
+同一域多次出现 非重复组
+13= ( )
+有序的域出现次序错误
+14=
+重复组域次序错误
+15=
+重复组重复次数错误
+16=
+非 数据域中出现域界定符
+17= data <SOH>
+70
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+交易服务方主动发出的执行报告中给出
+主动执行原因 取值
+, :
+0=GTCorporateaction
+1=GTrenewal/restatement(nocorporate
+action)
+口头更改
+2= (Verbalchange)
+订单重新定价
+3= (Repricingoforder)
+经纪人选择权
+4= (Brokeroption)
+部分订单量拒绝 如交易所发起部分
+5= ,
+拒绝
+[PartialdeclineofOrderQty(e.g.ex-
+ExecRestatemen- 重述原因 change-initiatedpartialcancel)]
+378 int 因交易停止而取消
+tReason 6= (CancelonTrading
+Halt)
+因系统故障而取消
+7= (CancelonSystem
+Failure)
+市场 交易所选择权
+8= / [Market(Exchange)
+Option]
+国债回购到期反向成交
+101= (Repurchase
+Settlement)
+字段取值错误
+20106=
+不支持的消息类型
+20107=
+其他
+29999=
+成交金额
+成交金额 :CumQty×AvgPx(Currency
+381 GrossTradeAmt Amt 单位
+)
+最大消息长度 单条消息的最大字节数
+383 MaxMessageSize Length
+消息类型个数 重复组中 的个数
+384 NoMsgTypes NumInGroup MsgType
+指明消息方向
+取值范围
+消息方向 :
+385 MsgDirection char 发送
+S= (Send)
+接收
+R= (Receive)
+交易盘个数 指示重复的交易盘个数
+386 NoTradingSessions NumInGroup
+成交数量 交易成交数量 成交总量
+387 TotalVolumeTraded Qty ,
+报价请求的类型编码 取值范围
+, :
+非公开模式
+1= [“NonDisclosed”Style(e.
+报价类型 g.US/European)]
+394 BidType int 公开模式
+2= [“Disclosed”Style(e.g.Japa-
+nese)]
+无出价处理
+3= (NoBiddingProcess)
+71
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+价格类型代码 取值
+, :
+百分比
+1= (Percentage)
+每单位 每股或每合约
+2= , [perunit(i.e.
+pershareorcontract)]
+固定数量 绝对值
+3= , [FixedAmount(ab-
+solutevalue)]
+折扣 低于标准百分点
+4= , (discount—per-
+价格类型 centagepointsbelowpar)
+423 PriceType int 补贴 高于标准百分点
+5= , (premium—
+percentagepointsoverpar)
+与基准利率相差的点数
+6= (basispoints
+relativetobenchmark)
+三个月国债期货合同和三个月境外美
+7=
+元期货合同的价格差
+(TEDprice)
+三个月国债期货合同和三个月境外美
+8=
+元期货合同的收益差
+(TEDyield)
+在撤单拒绝消息中 指示是撤单还是修
+,
+改单
+撤单拒绝类型
+434 CxlRejResponseTo char 撤单
+1=
+修改单
+2=
+指示 的代码源 如果有
+PartyID , PartyID
+则该域应出现 取值依赖于
+, PartyRole
+股票
+1) PartyRole=“InvestorID”, (equity)
+韩国投资者编号
+1= (KoreanInvestorID)
+台湾
+2= QFII(TaiwaneseQualifiedForeign
+InvestorIDQFII/FID)
+台湾交易账户
+3= (TaiwaneseTradingAc-
+count)
+马来西亚中央登记号
+4= [MalaysianCentral
+Depository(MCD)number]
+中国投资者编号
+参与方代码源 5= (ChineseInvestorID)
+447 PartyIDSource char 其他情况 通常情况
+2) /
+银行代码
+B=SWIFT [BIC(BankIdentifi-
+cationCode—Swiftmanaged)code]
+通用市场参与者标识符
+C= [Generallyac-
+ceptedmarketparticipantidentifier(e.g.
+NASDmnemonic)]
+私有自定义代码
+D= (Proprietary/Custom
+code)
+国家与地区代码
+E=
+交割机构地址
+F= (SettlementEntityLo-
+cation)
+72
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+参与方代码 结合 和
+参与方代码 , PartyIDSource Party-
+448 PartyID String
+Role
+指定参与方角色 取值
+, :
+券商
+1= (ExecutingFirm)
+信用经纪人
+2= (BrokerofCredit)
+客户编号
+3= (ClientID)
+清算公司
+4= (ClearingFirm)
+投资者编号
+5= (InvestorID)
+介绍公司
+6= (IntroducingFirm)
+订单输入公司
+7= (EnteringFirm)
+卖空交易出借股票公司
+8= [Locate/
+LendingFirm(forshort-sales)]
+基金管理人客户编号
+9= [Fundmanager
+ClientID(forCIV)]
+结算地
+10= (SettlementLocation)
+订单发起交易员
+11= (OrderOrigination
+Trader)
+交易员
+12= (ExecutingTrader)
+订单发起公司
+13= (OrderOriginationFirm)
+不记名清算公司
+14= (GiveupClearingFirm)
+相应的 清 算 公 司
+15= (Correspondent
+参与方角色 ClearingFirm)
+452 PartyRole int 执行系统
+16= (ExecutingSystem)
+对方券商
+17= (ContraFirm)
+对方清算公司
+18= (ContraClearingFirm)
+资助公司
+19= (SponsoringFirm)
+对手公司
+20= (UnderlyingContraFirm)
+清算机构
+21= (ClearingOrganization)
+交易所
+22= (Exchange)
+客户账户
+24= (CustomerAccount)
+对应清算机构
+25= (CorrespondentClearing
+Organization)
+对应经纪人
+26= (CorrespondentBroker)
+买卖方 收发方
+27= , [Buyer/Seller(Re-
+ceiver/Deliverer)]
+托管人
+28= (Custodian)
+中间机构
+29= (Intermediary)
+代理人
+30= (Agent)
+子托管人
+31= (Subcustodian)
+受益人
+32= (Beneficiary)
+当事人
+33= (Interestedparty)
+监管机构
+34= (Regulatorybody)
+73
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+流动性提供者
+35= (Liquidityprovider)
+录入交易员
+36= (EnteringTrader)
+对方交易员
+37= (ContraTrader)
+投资账户
+38= (PositionAccount)
+参与方角色 对方投资者编号
+452 PartyRole int 39= (ContraInvestorID)
+转入券商
+40= (TransfertoFirm)
+保留给连接双方自定义用
+4000+=
+本方营业部代码
+4001=
+对方营业部代码
+4002=
+参与方个数 参与方个数
+453 NoPartyIDs NumInGroup
+备选证券代码个数 备选证券代码个数
+454 NoSecurityAltID NumInGroup
+备选证券代码 需要与
+备选证券代码 , SecurityAltIDSource
+455 SecurityAltID String 域配合使用
+备选证券代码源 如果有 则
+, SecurityAltID
+该域应出现
+备选证券代码源
+456 SecurityAltIDSource String 有效取值与证券代码源
+(SecurityIDSource)
+相同
+证券粗类别 指示证券类别 在 中未使用
+460 Product int , STEP
+编码 的编码应符合
+证券类别 CFI ,CFI GB/T35964
+461 CFICode CFICode String 的规定
+测试标志 指明该会话是测试连接或正常
+,
+运行连接 用于防止意外
+,
+TestMessageIndica- 测试标志 取值范围
+464 Boolean :
+tor
+Y=True
+N=False
+TradeReportTran- 成交申报事务类别 成交申报事务类别
+487 String
+sType
+订单比例 现未使用
+516 OrderPercent Percentage
+订单所有者类型 取值
+,
+个人投资者发起
+1=
+交易所发起
+101=
+期权经营机构 包括其风险管理部
+订单所有者类型 102= (
+522 OwnerType int 门 发起
+)
+机构投资者发起
+103=
+自营交易发起
+104=
+流动性服务提供商发起
+105=
+参与方子代码 参与方子代码
+523 PartySubID String
+订单限定 订单限定
+529 OrderRestrictions String
+74
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+报价类型 报价类型
+537 QuoteType int
+到期日期 购回交易日期
+541 MaturityDate LocalMktDate
+融资融券信用标识 融资融券信用标识 证券交易所
+544 CashMargin char (SZ )
+个数 买卖方向数
+552 NoSides side NumInGroup
+用户名 用户名或用户代码
+553 Username String
+密码 密码
+554 Password String
+该证券订单数量的单位量 即最终的订单
+交易单位 ,
+561 RoundLot Qty 数量应为订单数量 交易单位
+×
+交易盘状态请求拒绝原因
+交易盘状态请求拒 :
+TradSesStatusRe- 未知或无效交易盘标识
+567 绝原因 int 1=
+jReason 其他
+99=
+客户成交申报编号 同一交易单元一个交
+,
+客户成交申报编号 易日内申报的成交申报的客户成交申报
+571 TradeReportID String
+编号不得重复
+原客 户 成 交 申 报
+原客户成交申报编号
+572 TradeReportRefID 编号 String
+日期 转义用于期限
+580 NoDates NumInGroup
+可选 用以对交易盘加以限定 取值可由
+, ,
+相应市场自行定义
+:
+股市场
+A
+股市场
+B
+中小企业市场
+TradingSessionSub- 交易盘子标识 基金市场
+625 String
+ID 国债市场
+其他债券市场
+债券回购市场
+国际板市场
+创业板市场
+历史跳跃信息重复组 记录消息经第三方
+,
+发送的历史 每次经第三方发送为一个跳
+跳跃个数 ,
+627 NoHops NumInGroup 跃 仅当 使用时有
+, OnBehalfOfCompID
+效 主要用于跟踪消息的路径
+,
+取值第三方的 当使用
+跳跃公司代码 SenderCompID, On-
+628 HopCompID String 域时有效
+BehalfOfCompID
+取值用第三方的 当使用
+跳跃发送时间 SendingTime,
+629 HopSendingTime UTCTimestamp 域时有效
+OnBehalfOfCompID
+取值第三方的 当使用
+跳跃参考消息序号 MsgSeqNum, On-
+630 HopRefID String 域时有效
+BehalfOfCompID
+75
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+价格 报价回购业务购回价格
+640 Price2 2 Price
+QuoteRequestRejec- 报价拒绝原因 报价拒绝原因
+658 int
+tReason
+约定号 约定号
+664 ConfirmID String
+报价响应编号 交易所意向申报响应编号 证券交易所
+693 QuoteRespID String (SZ )
+响应类型 预留 取值
+, ,
+1=Hit/Lift
+2=Counter
+报价响应类型
+694 QuoteRespType int 3=Expired
+4=Cover
+5=DoneAway
+6=Pass
+总股份数量 总股份数量 仅对沪港通港结算有效
+704 LongQty Qty ,
+日中剩余额度 日中剩余额度
+708 PosAmt Amt
+处理类别 期权业务处理类别
+747 ExerciseMethod char
+成交 申 报 被 拒 绝
+TradeReportRejec- 成交申报被拒绝原因代码
+751 原因 int
+tReason
+证券子类别 与 或
+, CFICode(461) Security-
+证券子类别 共同描述证券类别 如果使用
+762 SecuritySubType String Type(167) , ,
+应同时使用 或
+CFICode SecurityType
+订单状态请求唯一标识 在返回的执行报
+订单状态请求编号 ,
+790 OrdStatusReqID String 告消息中需包含此编号
+参与方子代码个数 指示重复的参与方子代码个数
+802 NoPartySubIDs NumInGroup
+参与方子代码 的类型
+PartySubID(523) ,
+取值范围
+:
+公司
+1= (Firm)
+个人
+2= (Person)
+系统
+3= (System)
+4=Application
+合法全名
+5= (Fulllegalnameoffirm)
+参与方子代码类型 通信地址 含街道地址 区域 邮政编
+803 PartySubIDType int 6= , 、 、
+码
+[Postaladdress(inclusiveofstreetad-
+dress,location,andpostalcode)]
+电话号码
+7= (Phonenumber)
+电子信箱
+8= (Emailaddress)
+9=Contactname
+结 算 证 券 账 号
+10= [Securitiesaccount
+number(forsettlementinstructions)]
+76
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+结算注册号
+11= [Registrationnumber(for
+settlementinstructionsandconfirmations)]
+结算注册地址
+12= [Registeredaddress
+(forconfirmationpurposes)]
+13=Regulatorystatus(forconfirmation
+purposes)
+结算注册名
+14= [Registrationname(for
+settlementinstructions)]
+结算现金账号
+15= [Cashaccountnumber
+(forsettlementinstructions)]
+参与方子代码类型 银行代码
+803 PartySubIDType int 16= (BICcode)
+17=CSDparticipant/membercode
+注册地址
+18= (Registeredaddress)
+基金 账户名
+19= / (Fund/accountname)
+电报挂号
+20= (Telexnumber)
+传真号
+21= (Faxnumber)
+证券账户名
+22= (Securitiesaccountname)
+现金账户名
+23= (Cashaccountname)
+部门
+24= (Department)
+25=Location/Desk
+26=PositionAccountType
+成交申报业务类别 成交申报业务类别
+828 TrdType int
+成交 申 报 子 业 务
+成交申报子业务类别
+829 TrdSubType 类别 int
+每日初始额度 每日初始额度
+834 ThresholdAmount PriceOffset
+转为 限 价 订 单 的 对应申报市价转限价的订单 这里填写转
+,
+845 DiscretionPrice 价格 Price 为限价订单的价格
+成交申报类型 成交申报类型
+856 TradeReportType int
+交易编号 交易编号 跨交易日唯一
+880 TrdMatchID String ,
+杂项费用单位 取值范围
+, :
+绝对值
+杂项费用单位 0= (Absolute)
+891 MiscFeeBasis int 每单位
+1= (Perunit)
+百分比
+2= (Percentage)
+合同编号 约定购回业务合同编号
+914 AgreementID String
+起始日期 合约或事件的起始日期 如行权起始日期
+916 StartDate LocalMktDate ,
+结束日期 合约或事件的结束日期 如行权结束日期
+917 EndDate LocalMktDate ,
+初始交易金额 初始交易金额
+921 StartCash Amt
+购回交易金额 购回交易金额
+922 EndCash Amt
+77
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+成交申报状态 成交申报状态
+939 TrdRptStatus int
+行情信息编号 交易所行情信息编号
+963 MDReportID int
+成交申报 交易所为成交申报分配的唯一
+1003 TradeID ID String ID
+成交数量 成交数量
+1020 TradeVolume Qty
+买卖盘档位 买卖盘档位
+1023 MDPriceLevel int
+订单编号参考值 交易所订单编号参考值
+1080 RefOrderID String
+最多成交价位数 最大价格等级 沪港通
+, ( )
+不限制成交价位数 增强现价盘 沪
+0= , (
+最大价格等级 港通
+1090 MaxPriceLevels int )
+竞价现价盘 沪港通
+1= ( )
+缺省值为
+0
+订单数量类型 订单数量类型
+1093 LotType char
+参与人代码个数 参与人代码个数
+1116 NoRootPartyIDs NumInGroup
+参与人代码 参与人代码
+1117 RootPartyID String
+参与人代码源 参与人代码源
+1118 RootPartyIDSource char
+参与人代码角色 参与人代码角色
+1119 RootPartyRole int
+成交申报模式
+成交报告
+成交申报模式 1= (Two-PartyReport)
+1123 TradeHandlingInstr char 协议配对
+2= (One-Partyreportformatc-
+hing)
+初始交易日期 初始交易日期
+1125 OrigTradeDate LocalMktDate
+初始交易交易所成
+初始交易交易所成交申报编号
+1126 OrigTradeID 交申报编号 String
+客户报价消息编号 客户报价消息编号
+1166 QuoteMsgID String
+应用标识 应用标识
+1180 ApplID String
+消息的应用编号 消息的应用编号
+1181 ApplSeqNum SeqNum
+更新标识 用以标识消息中是否有新的行情数据
+1187 RefreshIndicator Boolean
+市场板块代码 市场板块代码 预留
+1300 MarketSegmentID String ,
+市场代码 市场代码 预留
+1301 MarketID Exchange ,
+拒绝原因说明 拒绝原因说明
+1328 RejectText String
+冻结 解冻数量个数 冻结 解冻数量个数
+1362 NoFills / int /
+冻结 解冻数量 冻结 解冻数量
+1365 FillQty / Qty /
+冻结 解冻标志 冻结 解冻标志
+1443 FillLiquidityInd / int /
+78
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+本次会话中 消息的缺省自定义应用
+,
+版本
+。
+证券交易所填写为
+SZ STEP1.20_SZ_n.xy
+本次会话中 消息的 其中 为数据接口规范版本 具体参见
+, n.xy ,
+DefaultCstmAppl- 缺省 自 定 义 应 用 交易数据接口规范首页中的版本
+1408 String STEP
+VerID 版本 号 如数据接口规范版本为 时
+, (Ver1.00) ,
+本标签填写为 如
+:STEP1.20_SZ_1.00; SZ
+证券交易所数据接口规范版本为
+(Ver1.
+时 本标签填写为
+01) , :STEP1.20_SZ_1.01
+唯一标识 唯一标识
+1472 NewsID News String News
+0=CompanyNews
+1=MarketplaceNews
+类型
+1473 NewsCategory News int 2=FinancialMarketNews
+3=TechnicalNews
+99=OtherNews
+NoComplexEvent- 冷静期个数 冷静期个数
+1494 VCM NumInGroup VCM
+Times
+ComplexEventStart- 冷静期开始时间 冷静期开始时间
+1495 UTCTimeOnly
+Time
+ComplexEventEnd- 冷静期结束时间 冷静期结束时间
+1496 UTCTimeOnly
+Time
+行情流 行情流
+1500 MDStreamID ID String ID
+查询申请编号 交易客户方 券商 查询申请内部编号
+1635 MarginReqmtInqID String ( )
+查询结果总记录数 查询结果总记录数
+1643 NoMarginAmt int
+金额类型 取值
+, :
+金额类型 当前的取值为总金额
+1644 MarginAmtType int 22=MarginAmt
+当前的取值为可用金额
+101=MarginAmt
+金额 金额
+1645 MarginAmt Amt
+订单申报时间 订单申报时间
+8500 OrderEntryTime UTCTimestamp
+持有数量 持有数量
+8501 AccountSecPosition Qty
+注册指令
+:
+指定交易登记
+1=
+指定交易撤销
+DesignationInstruc- 注册指令 2=
+8502 char 转托管
+tion 3=
+国债回购登记
+4=
+国债回购注销
+5=
+成交笔数 成交笔数
+8503 NumTrades int
+成交金额 成交金额
+8504 TotalValueTraded Amt
+79
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+价格变化 价格变化
+8505 LastPriceChange PriceOffset
+合约持仓量 合约持仓量
+8506 TotalLongPosition Qty
+IndustryClassifica- 行业种类 行业种类
+8507 String
+tion
+股票面值 股票面值
+8508 ShareFaceValue Price
+总发行量 总发行量
+8509 OutStandingShares Qty
+PublicFloat- 流通股数 流通股数
+8510 Qty
+ShareQuantity
+PreviousYearProfit- 上年每股利润 上年每股利润
+8511 Price
+PerShare
+CurrentYearProfit- 本年每股利润 本年每股利润
+8512 Price
+PerShare
+买数量单位 买订单数量应为此域值的整数倍
+8513 BidLotSize Qty
+卖数量单位 卖订单数量应为此域值的整数倍
+8514 AskLotSize Qty
+价格的最小变动单位 买卖订单价格应为
+价格档位 ,
+8515 PriceTickSize Price 此域值的整数倍
+集合竞价限价参数和连续竞价限价参
+0=
+数为价格
+限价参数类型
+8516 PriceLimitType char 集合竞价限价参数和连续竞价限价参
+1=
+数为比例
+集合竞价限价参数 集合竞价限价参数
+8517 AuctionPriceLimit float
+ContinuousTrade- 连续竞价限价参数 连续竞价限价参数
+8518 float
+PriceLimit
+涨幅价格 为当日涨幅限制的价格上限
+8519 DailyPriceUpLimit Price
+DailyPriceDown- 跌幅价格 为当日跌幅限制的价格下限
+8520 Price
+Limit
+正常
+N=
+股
+S=ST
+股
+P=PT
+证券交易所证券在 证券交易
+H=SH SZ
+所代理
+证券属性 代办转让证券
+8521 SecurityProperties char T=
+证券交易所证券在 证券交易所
+Z=SZ SH
+代理
+上市开放型 基金
+L= LOF
+上市开放低风险收益型 基金
+D= LOF
+非交易型开放式基金
+F=
+80
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+NoIndicesParticipat- 所属指数数量 所属指数数量
+8522 NumInGroup
+ed
+纳入该指数计算
+IndexinclusionIndi- 纳入指数计算标志 Y=
+8523 Boolean 暂停纳入该指数计算
+cator N=
+市盈率一 市盈率一
+8524 PERatio1 Float
+市盈率二 市盈率二
+8525 PERatio2 Float
+新股增发
+G=
+上网 申购
+IN= IPO
+市值配售 申购
+IE= IPO
+老股东增发 申购
+IS= IPO
+市值配售放弃认购
+NS=
+可转换债券转股
+CV=
+可转换债券回售
+CR=
+申购
+EC=ETF
+赎回
+ER=ETF
+保证金申购
+EM=ETF
+保证金补券
+ES=ETF
+申购赎回资金回报
+EZ=ETF
+开放式基金认购
+OS=
+开放式基金申购
+OC=
+开放式基金赎回
+OR=
+开放式基金撤销
+OL=
+非交 易 业 务 订 单 开放式基金分红选择
+NonTradingOrd- OD=
+8526 类型 String 开放式基金份额转入
+Type OF=
+开放式基金份额转出
+OT=
+开放式基金基金转换
+OV=
+配股行权
+RI=
+权证行权
+WE=
+权证创设
+WW=
+权证注销
+WC=
+质押券入库
+BD=
+质押券出库
+BW=
+无股份冻结质押
+PS=
+股份质押且冻结
+PF=
+无股份冻结解押
+RP=
+股份解押且解冻
+RF=
+预受要约
+PO=
+解除预受要约
+CO=
+报价入库
+QBD=
+报价出库
+QBW=
+81
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+注册指令类型 取值范围
+, :
+DesignationTran- 注册指令类型 新注册请求
+8527 int 1= (New)
+sType 注册撤单
+3= (Cancel)
+所属指数代码 证券所属指数的证券代码
+8528 ParticipatingIndexID String
+投票议案号 投票议案号 取值范围
+8529 VotingProposal int , :0~999
+投票子议案号 投票子议案号 取值范围
+8530 VotingSubProposal int , :0~99
+投票意向 取值范围
+, :
+同意
+投票意向 1=
+8531 VotingPreference char 反对
+2=
+弃权
+3=
+分红选择方式 取值范围
+, :
+分红选择方式 现金 领取现金分红
+8532 DividendSelect char C= ( )
+份额 转申购
+U= ( )
+转入基金代码 开放式基金基金转换时转入的产品代码
+8533 DestSecurity String
+行权方式代码
+美式权证
+行权方式代码 A=
+8534 WarrantStyle char 欧式权证
+E=
+百慕大式权证
+B=
+认购认沽标志
+认购认沽标志 认购
+8535 WarrantPutOrCall char C=
+认沽
+P=
+权证结算方式
+WarrantClearing- 权证结算方式 证券结算
+8536 char S=
+Type 现金结算
+C=
+日基金的单位
+T-1 日基金的单位净值
+8537 NAV 净值 float T-1
+产品所处的交易阶
+产品所处的交易阶段代码
+8538 TradingPhaseCode 段代码 String
+校验号码 目前用于密码激活服务 对应
+( ,
+校验号码 投资者在互联网投票系统中申请服务密
+8539 ValidationCode int
+码时系统分配的校验号码
+)
+意向申报
+BII=
+定向申报
+BPT=
+定价申报
+BQT=
+业务请求类型 报价回购
+8540 ReqID String QNE=
+报价回购提前购回
+QCA=
+初始交易
+RNE=
+购回交易
+RNR=
+82
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+预留时间 预留时间
+8541 TransactTimeOnly UTCTimestamp
+分段统计段号 分段统计段号
+8546 VotingSegment String
+股东大会编码 股东大会编码
+8547 GeneralMeetingSeq String
+交易网关登录 交易网关登录 订阅
+8560 GateWayPBU PBU String ( )PBU
+交易网关登录
+PBU 交易网关登录 订阅 数量
+8561 NoGateWayPBUs 数量 int ( )PBU
+分区执行报告起始
+分区执行报告起始序号
+8562 BeginReportIndex 序号 String
+分区执行报告最大
+分区执行报告最大序号
+8563 EndReportIndex 序号 String
+成分股记录数 成分股记录数
+8902 NoSecurity int
+股份交付数量 股份交付数量
+8903 DeliveryQty Qty
+现金替代金额 现金替代金额
+8904 SubstCash Amt
+期限类型
+期限类型
+8906 ExpirationType int 固定期限
+1=
+到期续做方式 到期续做方式 质押式报价回购填写
+8907 ExpirationExecInst String ,
+股份性质 股份性质 预留
+8908 ShareProperty String ,
+买开平仓标志 买开平仓标志 衍生品报价填写
+8909 BidPositionEffect String ,
+卖开平仓标志 卖开平仓标志 衍生品报价填写
+8910 OfferPositionEffect String ,
+期限 期限 单位为天数
+8911 ExpirationDays int ,
+成交申报响应状态 成交申报响应状态
+8912 TrdAckStatus int
+版本代码 版本代码
+8934 VersionCode String
+用户数目 用户数目
+8935 UserNum int
+下表部分为 以上自定义域参考样例
+10000
+重传状态 重传状态
+10076 ResendStatus int
+重发种类 重发种类
+10077 ResendType int
+买方委托索引 买方委托索引
+10116 BidApplSeqNum SeqNum
+卖方委托索引 卖方委托索引
+10117 OfferApplSeqNum SeqNum
+回报记录号 回报记录号
+10179 ReportIndex String
+初始交易客户成交
+初始交易客户成交申报编号
+10182 OrigTradeReportID 申报编号 String
+质权人类型 质权人类型
+10183 PledgeeType int
+联系人
+联系人
+10184 Contactor String 可能包含中文字符 表示最多 个字节
+, 12
+83
+GB/T45252—2025
+表45 数据字典 续
+( )
+域名 域中文名 数据类型 说明
+Tag
+联系信息
+可能包含中文字符 表示最多 个字节
+, 30
+联系信息 格式为 移动电话 个人 家庭电话
+10185 ContactInfo String :01 ( )、02
+个人 工作单位电话 个人 联系
+( )、03 ( )、04
+电话 传真 电子邮箱
+、05 、06
+保证金条目个数 保证金条目个数
+10186 NoMarginItems int
+保证金条目类别 保证金条目类别
+10187 MarginItem int
+保证金金额 保证金金额
+10188 MarginAmount Amt
+国际市场互联对方
+国际市场互联对方市场拒绝原因说明
+10189IMCRejectText 市场拒绝原因说明 String
+频道代码 频道代码
+10201 ChannelNo int
+开关个数 开关个数
+10202 NoSwitch NumInGroup
+开关类别 开关类别
+10203 SecuritySwitchType int
+SecuritySwitchSta- 开关状态 开关状态
+10204 Boolean
+tus
+频道结束标志 频道结束标志
+10205 EndOfChannel Boolean
+统计 量 指 标 样 本
+统计量指标样本个数
+10207 StockNum 个数 int
+行情类别个数 行情类别个数
+10208 NoMDStreamID NumInGroup
+二进制数据格式 取值为
+二进制数据格式 , TXT、PDF、
+10209 RawDataFormat String 等
+DOC
+额度状态
+额度状态 额度不可用
+10210 AmountStatus char 1=
+额度可用
+2=
+84
+GB/T45252—2025
+附 录 A
+资料性
+( )
+应用环境参考实例
+图 是应用环境参考实例
+A.1 。
+在该参考实例中证券交易数据交换协议用于市场参与者内部系统与市场参与者协议转换系统间的
+连接 交易所交易系统与采用 开放接口的市场参与者系统间的连接 同时也支持外部交易所接口
+、 STEP ,
+系统与外部交易所的连接
+。
+图A1 应用环境参考实例
+.
+85
+GB/T45252—2025
+附 录 B
+资料性
+( )
+重复组实例
+重复组实例见表
+B.1。
+表B1 重复组实例
+.
+备选证券代码个数
+454 NoSecurityAltID N
+455 SecurityAltID N
+456 SecurityAltIDSource N
+可能的应用表示为
+:
+454=2<SOH>455=600600<SOH>456=101<SOH>455=000001<SOH>456=102<SOH>
+86
+GB/T45252—2025
+附 录 C
+资料性
+( )
+计算校验和
+以下为计算校验和的代码段
+:
+char*GenerateCheckSum(char*buf,longbufLen)
+{
+staticchartmpBuf[4];
+longidx;
+unsignedintcks;
+for(idx=0L,cks=0;idx<bufLen;cks+=(unsignedint)buf[idx++]);
+sprintf(tmpBuf,“%03d”,(unsignedint)(cks%256));
+return(tmpBuf);
+}
+87

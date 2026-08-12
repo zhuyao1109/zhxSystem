@@ -1,0 +1,4915 @@
+ICS3304040
+. .
+L78
+中 华 人 民 共 和 国 国 家 标 准
+GB/T302466—2013
+.
+家庭网络
+第 部分 多媒体与数据网络通信协议
+6
+:
+Homenetwork—
+Part6 Multimediaanddatanetworkcommunicationprotocol
+:
+2013-12-31发布 2014-07-15实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T302466—2013
+.
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+引言
+………………………………………………………………………………………………………… Ⅳ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语 定义和缩略语
+3 、 ……………………………………………………………………………………… 2
+术语和定义
+3.1 ………………………………………………………………………………………… 2
+缩略语
+3.2 ……………………………………………………………………………………………… 3
+多媒体与数据网络通信协议概述
+4 ……………………………………………………………………… 4
+应用模型
+5 ………………………………………………………………………………………………… 5
+设备类型与功能组件
+5.1 ……………………………………………………………………………… 5
+交互模型
+5.2 …………………………………………………………………………………………… 8
+多媒体与数据网络通信协议
+6 …………………………………………………………………………… 13
+协议结构
+6.1 …………………………………………………………………………………………… 13
+设备管理
+6.2 …………………………………………………………………………………………… 15
+媒体管理
+6.3 …………………………………………………………………………………………… 44
+媒体传输
+6.4 …………………………………………………………………………………………… 52
+媒体格式
+6.5 …………………………………………………………………………………………… 53
+服务质量
+6.6 (QoS)…………………………………………………………………………………… 53
+多媒体网络与控制网络跨网应用
+7 ……………………………………………………………………… 54
+概述
+7.1 ………………………………………………………………………………………………… 54
+设备类型
+7.2 …………………………………………………………………………………………… 54
+应用模型
+7.3 …………………………………………………………………………………………… 55
+工作模式
+7.4 …………………………………………………………………………………………… 56
+附录 资料性附录 媒体管理服务相关操作参数
+A( ) …………………………………………………… 61
+内容目录服务 的操作参数
+A.1 (CDS) ………………………………………………………………… 61
+连接管理服务
+A.2 (CMS) …………………………………………………………………………… 63
+音视频传输服务
+A.3 (AVT)………………………………………………………………………… 64
+播放控制服务
+A.4 (RCS)……………………………………………………………………………… 67
+附录 资料性附录 媒体管理实例
+B( ) …………………………………………………………………… 74
+媒体管理流程实例
+B.1 ………………………………………………………………………………… 74
+消息实例
+B.2 …………………………………………………………………………………………… 76
+Ⅰ
+GB/T302466—2013
+.
+前 言
+家庭网络 分为如下 个部分
+GB/T30246《 》 11 :
+第 部分 系统体系结构及参考模型
+——— 1 : ;
+第 部分 控制终端规范
+——— 2 : ;
+第 部分 内部网关规范
+——— 3 : ;
+第 部分 终端设备规范 音视频及多媒体设备
+——— 4 : ;
+第 部分 终端设备规范 家用及类似用途电器
+——— 5 : ;
+第 部分 多媒体与数据网络通信协议
+——— 6 : ;
+第 部分 控制网络通信协议
+——— 7 : ;
+第 部分 设备描述文件规范 格式
+——— 8 : XML ;
+第 部分 设备描述文件规范 二进制格式
+——— 9 : ;
+第 部分 多媒体与数据网络接口一致性测试规范
+——— 10 : ;
+第 部分 控制网络接口一致性测试规范
+——— 11 : 。
+本部分为 的第 部分
+GB/T30246 6 。
+本部分按照 给出的规则起草
+GB/T1.1—2009 。
+请注意本文件的某些内容可能涉及专利 本文件的发布机构不承担识别这些专利的责任
+。 。
+本部分由中华人民共和国工业和信息化部提出
+。
+本部分由全国音频 视频及多媒体系统与设备标准化技术委员会 归口
+、 (SAC/TC242) 。
+本部分起草单位 海尔集团公司 华南理工大学 索尼 中国 有限公司 中山大学 中国电子技术标
+: 、 、 ( ) 、 、
+准化研究院 诺基亚 中国 投资有限公司 中国家用电器研究院 三星电子 中国 研发中心 广州市聚晖
+、 ( ) 、 、 ( ) 、
+电子科技有限公司 广东工业大学 西门子 中国 有限公司
+、 、 ( ) 。
+本部分主要起草人 张诚 张玲 冯承文 顾清坤 谢胜利 余荣 吴宗泽 陈任 蒋昊 罗笑南 张红
+: 、 、 、 、 、 、 、 、 、 、 、
+田晨燕 王劲松 邴旭卫 赵鹏 熊张亮 矫伟 陈健民 贾东耀 范一兵
+、 、 、 、 、 、 、 、 。
+Ⅲ
+GB/T302466—2013
+.
+引 言
+家庭网络是指将家庭范畴里的音视频设备 家用电器 信息设备 水电气暖计量表 照明系统 安防
+、 、 、 、 、
+报警求助系统等连接在一起组成的一种局域网 各种终端设备通过家庭网络实现网络化 能够互联互
+, ,
+通 实现各种网络化的管理和服务 实现资源和服务的共享 组成家庭信息 娱乐 控制的互联系统
+, , , 、 、 。
+Ⅳ
+GB/T302466—2013
+.
+家庭网络
+第6部分 多媒体与数据网络通信协议
+:
+1 范围
+的本部分规定了家庭多媒体与数据网络的通信协议 包括交互模型 设备管理 媒体
+GB/T30246 , 、 、
+管理 媒体传输机制以及其与控制网络的跨网应用和通信协议
+、 。
+本部分适用于家庭或类似的室内场所的消费类电子产品 计算机产品 通信产品所组成的多媒体与
+、 、
+数据网络构建
+。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+信息技术 系统间远程通信和信息交换局域网和城域网 特定要求 第
+GB15629.11—2003 11
+部分 无线局域网媒体访问控制和物理层规范
+:
+信息技术 系统间远程通信和信息交换 局域网和城域网 特定要求 第
+GB15629.1101—2006
+部分 无线局域网媒体访问控制和物理层规范 频段高速物理层扩展规范
+11 : :5.8GHz
+信息技术 系统间远程通信和信息交换 局域网和城域网 特定要求 第
+GB15629.1102—2003
+部分 无线局域网媒体访问控制和物理层规范 频段较高速物理层扩展规范
+11 : :2.4GHz
+信息技术 系统间远程通信和信息交换 局域网和城域网 特定要求 第
+GB15629.1104—2006
+部分 无线局域网媒体访问控制和物理层规范 频段更高数据速率扩展规范
+11 : :2.4GHz
+家庭网络 第 部分 系统体系结构及参考模型
+GB/T30246.1 1 :
+家庭网络 第 部分 终端设备规范 音视频及多媒体设备
+GB/T30246.4 4 :
+家庭网络 第 部分 控制网络通信协议
+GB/T30246.7 7 :
+家庭网络 第 部分 设备描述文件规范 格式
+GB/T30246.8 8 : XML
+信息技术 设备结构 第 部分 设备体系结构版本
+ISO/IEC29341-1:2008 UPnP 1 :UPnP 1.0
+(Informationtechnology—UPnPdevicearchitecture—Part1:UPnPdevicearchitectureversion1.0)
+信息技术 设备结构 第 部分 音视频控制协议
+ISO/IEC29341-3:2008 UPnP 3 : (Information
+technology—UPnPdevicearchitecture—Part3:Audiovideocontrolprotocol)
+信息技术 设备结构 第 部分 成像设备控制协议
+ISO/IEC29341-9:2008 UPnP 9 : (Information
+technology—UPnPdevicearchitecture—Part9:Imagingdevicecontrolprotocol)
+数字生活网络联盟家庭网络设备互操作导则 第 部分 结构和协议
+IEC62481-1:2007 1 : [Digital
+livingnetworkalliance(DLNA)homenetworkinteroperabilityguidelines—Part1:Architectureandprotocols]
+数字生活网络联盟家庭网络设备互操作导则 第 部分 媒体格式
+IEC62481-2:2007 2 : (Digitalliving
+networkalliance(DLNA)homenetworkinteroperabilityguidelines—Part2:DLNAmediaformats]
+的增补 多段 基带网络 第 章 的系统注意事项及双绞线附属单元
+IEEE802.3i 802.3 10M/s ( 13 )
+和基带介质规范 类型 第 章
+,10BASE-T ( 14 )[Supplementto802.3—SystemConsiderationsformulti-
+segment10M/sbasebandnetworks(Section13)andtwisted-pairmediumattachmenunitandbase-
+bandmedspec,type10BASE-T(Section14)]
+1
+GB/T302466—2013
+.
+局域网和城域网 增补 以太网的媒介访问控制方法和物理层 媒
+IEEE802.3u IEEE 100Mb/s 、
+介附属单元及中继器规范
+[IEEElocalandmetropolitanareanetworks—Supplement—Mediaaccess
+control(MAC)parameters,physicallayer,mediumattachmentunitsandrepeaterfor100Mb/sopera-
+tion,type100BASE-T(Clauses21-31)]
+信息技术 电信和系统间的信息交换 无线局域网媒质接入控制层及物理
+IEEE802.11a/b/g/n
+层标准 第 部分 无线局域网媒体访问控制 和物理层 规范
+11 : (MAC) (PHY) [IEEEstandardforinfor-
+mationtechnology—Telecommunicationsandinformationexchangebetweensystems—Localandmet-
+ropolitanareanetworks—Specificrequirements—Part11:WirelessLAN medium accesscontrol
+(MAC)andphysicallayer(PHY)specifications]
+信息技术 电信和系统间的信息交换 局域网和城域网 通用规范 虚拟桥接局域
+IEEE802.1q :
+网
+(Informationtechnology—Telecommunicationsandinformationexchangebetweensystems—Local
+andmetropolitanareanetworks—Commonspecifications:Virtualbridgedlocalareanetworks)
+3 术语 定义和缩略语
+、
+31 术语和定义
+.
+界定的以及下列术语和定义适用于本文件
+GB/T30246.1 。
+311
+..
+家庭多媒体与数据网络 homemultimediaanddatanetwork
+家庭网络中主要用来传输多媒体和数据信息的高速网络
+。
+312
+..
+家庭控制网络 homecontrolnetwork
+家庭网络中主要用来传输控制信息的网络
+。
+313
+..
+控制网关 homecontrolgateway
+在家庭控制网络中提供协议转换 设备管理 网络管理和各种控制服务的家庭逻辑功能网关
+、 、 。
+314
+..
+媒体设备 mediadevice
+能够提供音视频内容传输及管理 存储或呈现相关服务 并能够被媒体控制点发现及控制的逻辑功
+、 ,
+能实体
+。
+315
+..
+媒体控制点 mdiacontrolpoint
+能够对媒体设备及其服务进行发现 订阅服务状态及控制的逻辑功能实体
+、 。
+316
+..
+设备类型 deviceclass
+一组具备媒体管理 媒体传输或控制的功能集合 一个物理设备至少支持一种设备类型
+、 , 。
+317
+..
+服务描述 servicedescription
+对操作及其参数 状态变量及其数据类型 范围和事件特征等信息的描述 包括指令或操作列表以
+、 、 ,
+及每个操作的参数 状态变量列表等 家庭多媒体与数据网络中的服务描述采用可扩展置标语言
+、 。 。
+318
+..
+服务 service
+具有执行操作 更新状态或发布状态更新等功能的逻辑控制单元
+、 。
+2
+GB/T302466—2013
+.
+32 缩略语
+.
+下列缩略语适用于本文件
+。
+音视频传输服务
+AVT: (AVTransportService)
+内容目录服务
+CDS: (ContentDirectoryService)
+连接管理服务
+CMS: (ConnectionManagerService)
+动态主机配置协议
+DHCP: (DynamicHostConfigurationProtocol)
+数字项目声明语言
+DIDL: (DigitalItemDeclarationLanguage)
+数字项目声明语言精简版
+DIDL-Lite: (DigitalItemDeclarationLanguage-Lite)
+数字生活网络联盟
+DLNA: (DigitalLivingNetworkAlliance)
+数字媒体控制点
+DMC: (DigitalMediaController)
+数字媒体播放器
+DMP: (DigitalMediaPlayer)
+数字媒体打印机
+DMPr: (DigitalMediaPrinter)
+数字媒体渲染器
+DMR: (DigitalMediaRenderer)
+数字媒体服务器
+DMS: (DigitalMediaServer)
+差分服务代码点
+DSCP: (DifferentiatedServicesCodePoint)
+因特网协议数字传输内容保护
+DTCP-IP: (DigitalTransmissionContentProtectionoverInternet
+Protocol)
+通用事件通知架构
+GENA: (GenericEventNotificationArchitecture)
+家庭网络设备
+HND: (HomeNetworkDevice)
+超文本标记语言
+HTML: (HyperTextMark-upLanguage)
+超文本传输协议
+HTTP: (HyperTextTransferProtocol)
+互联网协议第四版
+IPv4: (InternetProtocol:Version4)
+线性脉冲编码调制
+LPCM: (LinearPulseCodeModulation)
+移动数字媒体控制点
+M-DMC: (MobileDigitalMediaController)
+移动数字媒体下载器
+M-DMD: (MobileDigitalMediaDownloader)
+移动数字媒体播放器
+M-DMP: (MobileDigitalMediaPlayer)
+移动数字媒体服务器
+M-DMS: (MobileDigitalMediaServer)
+移动数字媒体上传器
+M-DMU: (MobileDigitalMediaUploader)
+移动手持设备
+MHD: (MobileHandheldDevice)
+媒体播放器控制点
+MRCP: (MediaRendererControlPoint)
+媒体播放器
+MRD: (MediaRendererDevice)
+媒体服务器控制点
+MSCP: (MediaServerControlPoint)
+媒体服务器
+MSD: (MediaServerDevice)
+打印机控制点
+PrCP: (PrinterControlPoint)
+打印机设备
+PrD: (PrinterDevice)
+服务质量
+QoS: (QualityofService)
+播放控制服务
+RCS: (RenderingControlService)
+实时传输控制协议
+RTCP: (RealTimeControlProtocol)
+实时传输协议
+RTP: (RealTimeProtocol)
+实时流媒体传输协议
+RTSP: (RealTimeStreamingProtocol)
+简单对象访问协议
+SOAP: (SimpleObjectAccessProtocol)
+简单服务发现协议
+SSDP: (SimpleServiceDiscoveryProtocol)
+传输控制协议
+TCP: (TransmissionControlProtocol)
+3
+GB/T302466—2013
+.
+用户数据报协议
+UDP: (UserDatagramProtocol)
+通用即插即用
+UPnP: (UniversalPlugandPlay)
+统一资源标识符
+URI: (UniformResourceIdentifier)
+统一资源定位器
+URL: (UniformResourceLocator)
+统一资源名称
+URN: (UniformResourceName)
+全球唯一标识符
+UUID: (UniversallyUniqueIdentifier)
+虚拟数字媒体播放器
+VirtualDMR: (VirtualDigitalMediaRender)
+虚拟数字媒体服务器
+VirtualDMS: (VirtualDigitalMediaServer)
+虚拟移动数字媒体服务器
+VirtualM-DMS: (VirtualMobileDigitalMediaServer)
+多媒体
+WMM:WiFi (WiFiMultimedia)
+可扩展置标语言
+XML: (ExtensibleMarkupLanguage)
+4 多媒体与数据网络通信协议概述
+本部分规定了家庭多媒体与数据网络设备互连及媒体资源共享的通信及应用协议 规定了家庭多
+,
+媒体与数据网络内部及多媒体网络与控制网络间的跨网通信框架 协议以及应用模型
+、 。
+家庭多媒体与数据网络基于 网络协议 可支持多种有线和无线传输方式 支持不同厂商的不同
+IP , ,
+产品间的互连互通和互操作
+。
+多媒体与数据网络应用基于设备管理 媒体管理和媒体传输协议 包括无中心节点模式和有中心节
+、 ,
+点模式 多媒体网络与控制网络跨网应用基于多媒体与控制网络跨网通信协议
+。 。
+多媒体与数据网络通信协议功能结构如图 所示 物理层和数据链路层应支持以下至少一种标准
+1 。
+选项
+:
+图1 多媒体与数据网络通信协议结构
+4
+GB/T302466—2013
+.
+a) IEEE802.3i/u;
+或
+b) IEEE802.11a GB15629.1101—2006;
+或 或
+c) IEEE802.11b/g GB15629.1102—2003 GB15629.1104—2006;
+d) IEEE802.11n。
+物理层和数据链路层可选支持蓝牙通信协议
+(Bluetooth)。
+网络层应支持 协议
+IPv4 。
+传输层应支持 协议和 协议
+TCP UDP 。
+5 应用模型
+51 设备类型与功能组件
+.
+511 媒体功能组件
+..
+5111 概述
+...
+本部分将家庭多媒体与数据网络中的设备分为若干设备类型 每种设备类型中包含相应的媒体功
+,
+能组件和控制功能组件 设备类型定义参见
+。 5.1.2。
+媒体功能组件包括媒体服务器 媒体播放器 媒体服务器控制点 媒体播放
+(MSD)、 (MRD)、 (MSCP)、
+器控制点 打印机控制点 打印机设备 以及中心控制节点 其中 是
+(MRCP)、 (PrCP)、 (PrD) (CCN)。 MSD
+媒体内容的提供者 是媒体内容的接收者 和 可以对媒体内容进行识别 管理 传输及
+,MRD ;MSD MRD 、 、
+呈现 支持相应的媒体管理服务 参见 是对 实施操作的设备 可以设定 初始化
+, ( 6.3)。MSCP MSD , 、
+控制 管理媒体内容传输 是对 实施操作的设备 可以设定 初始化 控制 管
+MSD, 、 。MRCP MRD , 、 MRD, 、
+理媒体内容传输
+。
+后续章条中将包含 或 功能组件的设备称为媒体控制点 将包含 或 功能
+MSCP MRCP , MSD MRD
+组件的设备统称为媒体设备
+。
+媒体控制点可以触发或调用媒体设备的媒体管理服务 但自身不参与对媒体内容的处理
+, 。
+5112 媒体服务器
+...
+提供在家庭网络内可传送的媒体内容 包括视频 音频 图像等 并允许媒体控制点浏览 搜
+MSD ( 、 、 ), 、
+索其媒体内容列表 符合 的相关规定 并应支持内容目录服务 及
+。MSD ISO/IEC29341-3:2008 , (CDS)
+连接管理服务 可支持音视频传输服务
+(CMS), (AVT)。
+5113 媒体播放器
+...
+可呈现在家庭网络内获取的媒体内容 并允许媒体控制点控制内容的呈现 如亮度 对比度
+MRD , , 、 、
+音量 静音等 而且基于不同的传输协议还可对媒体流的呈现过程进行控制 如终止 暂停 快进等
+、 , , 、 、 。
+符合 的相关规定 并应支持播放控制服务 及 可支持
+MRD ISO/IEC29341-3:2008 , (RCS) CMS, AVT。
+5114 媒体控制点
+...
+媒体控制点可以是 或 其作用是初始化和配置 或 触发媒体流传输 控制
+MSCP MRCP, MSD MRD, ,
+和协调 或 的多媒体内容共享过程 媒体控制点符合 的相关规定
+MSD MRD 。 ISO/IEC29341-3:2008 。
+媒体控制点可具备以下功能
+:
+5
+GB/T302466—2013
+.
+通过设备管理发现家庭网络中的 或 设备
+a) MSD MRD ;
+通过调用 上 中的 及 操作对媒体内容进行定位 并可通过其响应信
+b) MSD CDS Browse Search ,
+息获取 所支持的媒体传输协议及数据格式
+MSD ;
+获取 的播放能力 可以通过调用 上 中的 操作 获取
+c) MRD : MRD CMS GetProtocolInfo , MRD
+支持的传输协议及数据格式
+;
+比较 匹配媒体传输协议及媒体格式 对可以获取的 及 支持的传输协议及数据格
+d) / : MSD MRD
+式进行比较 并选择两者共同支持的传输协议及数据格式
+, ;
+配置 及 的媒体传输及媒体播放属性 可以通过调用 中的
+e) MSD MRD : CMS PrepareForConnec-
+操作 将选定的传输协议及数据格式信息告诉 及 或 根据该信息
+tion , MSD MRD;MSD MRD
+向媒体控制点返回一个音视频传输例程标识 媒体控制点利用该
+(AVTransportInstanceID),
+标识对媒体流进行播放 终止 暂停 快进等控制 此外 向媒体控制点返回一个播放控
+、 、 、 。 ,MRD
+制例程标识 媒体控制点利用该标识对播放属性进行控制
+(RenderingControlInstanceID), ;
+选择媒体内容 利用 调用 操作确认需要传输
+f) : AVTransportInstanceID, SetAVTransportURI
+的媒体内容
+;
+启动媒体内容传输 媒体控制点利用 通过调用各种媒体控制操作 控制媒体传输过程
+g) : AVT, ,
+包括播放 终止 快进等
+( 、 、 );
+调节媒体播放属性 媒体控制点利用 通过触发各种播放控制操作对 的亮度 对比
+h) : RCS, MRD 、
+度 音量等进行控制
+、 。
+5115 打印机控制点
+...
+的作用是在相应的打印机上创建打印任务 调用打印服务 符合
+PrCP , 。PrCP ISO/IEC29341-9:
+的相关规定
+2008 。
+5116 打印机设备
+...
+的作用是执行打印机控制点分配的打印任务 打印媒体内容 图像等 符合
+PrD , ( )。PrD ISO/IEC29341-
+的相关规定
+9:2008 。
+5117 中心控制节点
+...
+中心控制节点的作用是搜集网络中的设备 设备上的媒体资源与媒体控制点信息 为媒体控制点提
+、 ,
+供设备查询 资源查询等服务 主要可分为以下两个方面
+、 , :
+建立并维护设备注册表 并提供给媒体控制点 为媒体控制点提供网络中的媒体设备信息
+a) , , ;
+主动搜集浏览媒体设备存储的媒体资源 生成媒体资源列表 为媒体控制点提供媒体资源管理
+b) , ,
+服务 具备资源查询 资源浏览功能
+, 、 。
+中心控制节点具有媒体控制点的功能 是在媒体控制点基础上的扩展 在多数情况下 中心控制节
+, 。 ,
+点可以同时具备 的功能
+MSD 。
+512 设备类型
+..
+设备类型是集合媒体管理 媒体传输等功能模块 具有完整协议栈的逻辑实体 每种设备类型在实
+、 , 。
+际应用中可对应多种不同的产品 一种产品可以集成一种或多种设备类型 在家庭多媒体与数据网络
+。 。
+通信协议中的设备类型如表 所示
+1 。
+6
+GB/T302466—2013
+.
+表1 设备类型
+设备类型 媒体功能组件 作 用 描 述
+数字媒体服务器 显示媒体内容列表和发送媒体内容 可以包括数字机
+。
+MSD 顶盒或数字照相机
+(DMS)
+数字媒体播放器 发现 或 上的媒体内容 在该设备上播放内
+DMS M-DMS ,
+MSCP 容 可以包括电视或掌上游戏机等
+(DMP) 。
+家庭网络设备 数字媒体渲染器 受 或 控制建立连接 播放 或
+DMC M-DMC , DMS M-
+MRD 传输的内容
+(HND) (DMR) DMS
+数字媒体控制器 发现 显示 的媒体内容列表 可匹配内容与
+或 DMS, DMS ,
+MSCP MRCP 的能力 建立 和 之间的连接
+(DMC) DMR , DMS DMR
+数字媒体打印机
+打印图片
+PrD
+(DMPr)
+移动数字媒体服务器
+显示媒体内容列表和发送媒体内容
+MSD
+(M-DMS)
+移动数字媒体播放器 发现 或 上的媒体内容 在该设备上播放
+DMS M-DMS ,
+MSCP 内容
+(M-DMP)
+移动数字媒体上传器
+移动手持设备 使用上载功能发送内容到 或
+MSCP M-DMS DMS
+(M-DMU)
+(MHD) 移动数字媒体下载器 发现和下载 或 显示媒体内容列表对应的
+M-DMS DMS
+MSCP 媒体内容 并在该设备上播放下载后的内容
+(M-DMD) ,
+发现 或 显示的媒体内容列表 可匹配内容
+移动数字媒体控制器 M-DMS DMS ,
+或 与 的能力 建立 或 和 之间的
+MSCP MRCP DMR , DMS M-DMS DMR
+(M-DMC) 连接
+搜集网络中的设备 媒体设备上的媒体资源与媒体控制
+中心节点 中心节点 中心控制节点 、
+点信息 为 提供设备查询 资源查询等服务
+, DMC 、
+其中在家庭网络中相对位置固定的设备称为 可便携的设备称为 和 可
+HND, MHD。HND MHD
+具有相同或类似功能但可支持不同的媒体格式
+。
+媒体管理模块是位于媒体管理层面 能够实现 等媒体管理服务的逻辑实
+, CDS、AVT、CMS、RCS
+体 媒体管理模块的规定符合
+。 6.3。
+媒体传输模块是基于 传输协议 实现媒体内容在家庭网络环境中以相应的传输模式及服务
+HTTP ,
+质量进行传输的逻辑实体 相关规定符合 及
+, 6.4 6.6。
+在一些应用模型中 不同设备类型可实现相同的媒体控制功能 这些共通的功能称为控制功能组
+, ,
+件 控制功能组件的相关规定见表
+。 2。
+表2 控制功能组件
+控制功能组件 对应设备类型 媒体功能组件 控制功能描述
+推送控制器 任意 能将本地媒体内容推送到
+MRCP DMR
+能够控制 进行图像打印 并能向 输出
+打印控制器 任意 DMPr , DMPr
+-1 PrCP 打印文件及相应图像内容
+XHTML
+7
+GB/T302466—2013
+.
+表2 续
+( )
+控制功能组件 对应设备类型 媒体功能组件 控制功能描述
+能够控制 进行图像打印 并能在 上
+DMPr , DMS/M-DMS
+打印控制器 任意 PrCP 查找图像内容 向 提供 打印文件 并能
+-2 , DMPr XHTML ,
+MSCP 指导 打印从 上获得的图像内容
+DMPr DMS/M-DMS
+上传控制器 任意 能够向 上传媒体内容
+MSCP DMS/M-DMS
+下载控制器 任意 能够从 下载媒体内容
+MSCP DMS/M-DMS
+52 交互模型
+.
+521 概述
+..
+多媒体与数据网络内部的媒体传输与共享包括 个典型的媒体交互模型 这些交互模型包含媒体
+9 ,
+共享 媒体打印 数据共享 媒体转换及多媒体控制场景 交互模型遵循 的规定
+、 、 、 。 IEC62481-1:2007 。
+522 媒体共享
+..
+5221 媒体点播
+...
+用户通过操控 或 实现浏览 选择 或 上的媒体内容 以点播的方式获
+DMP M-DMP, 、 DMS M-DMS ,
+取 或 的媒体内容 具体流程如图 所示
+DMS M-DMS 。 2 :
+或 请求浏览 或 上的媒体内容列表并选择需要播放的媒体内容
+a) DMP M-DMP DMS M-DMS ,
+该步调用了 操作
+CDS:Browse ;
+或 通过 向 或 请求获取其媒体内容
+b) DMP M-DMP HTTPGET DMS M-DMS ;
+或 通过 响应向 或 传送媒体内容
+c) DMS M-DMS HTTPGET DMP M-DMP 。
+图2 媒体点播应用模型
+5222 媒体推送
+...
+用户通过操控带有推送控制器功能的设备 选择播放的媒体内容 并将媒体内容推送到 具
+, , DMR。
+体流程如图 所示
+3 :
+推送控制器启动 的媒体播放程序 该步调用了 下的设置音视频传输标识
+a) DMR ; AVT
+操作
+(SetAVTransportURI) ;
+通过 向推送控制器请求获取其媒体内容
+b) DMR HTTPGET ;
+推送控制器通过 响应向 传送媒体内容
+c) HTTPGET DMR 。
+8
+GB/T302466—2013
+.
+图3 媒体推送应用模型
+5223 第三方控制的媒体共享
+...
+用户通过操控 或 浏览 或 上的媒体内容 选择合适的 并将
+DMC M-DMC, DMS M-DMS , DMR,
+或 上的媒体内容传送到 具体流程如图 所示
+DMS M-DMS DMR。 4 :
+或 通过调用 操作浏览 或 上的媒体内容列表并选择
+a) DMC M-DMC CDS:Browse DMS M-DMS
+需要播放的媒体内容
+;
+或 通过调用 操作获取 的播放能力信息 并确认其
+b) DMC M-DMC CMS:GetProtocolInfo DMR ,
+具备播放该媒体内容的能力 或 通过调用 操作建
+;DMC M-DMC AVT:SetAVTransportURI
+立 到 或 的连接
+DMR DMS M-DMS ;
+通过 请求获取 上的媒体内容
+c) DMR HTTPGET DMS/M-DMS ;
+通过 响应向 传送媒体内容
+d) DMS/M-DMS HTTPGET DMR 。
+图4 第三方控制的媒体共享应用模型
+9
+GB/T302466—2013
+.
+523 媒体打印
+..
+5231 点对点打印
+...
+用户通过操控带有打印控制器 功能的设备 将要打印的内容传送至打印设备 该交互模
+-1 , DMPr。
+型中设备利用了 打印方式 其中打印控制器 存有需要打印的内容 具体流程如图 所示
+XHTML 。 -1 。 5 :
+打印控制器 调用 的打印服务 向 提供图像内容的
+a) -1 DMPr ; DMPr URL;
+打印控制器 向 传送 打印文件
+b) -1 DMPr XHMTL ;
+向打印控制器 请求获取图像内容
+c) DMPr -1 ;
+打印控制器 向 传送图像内容
+d) -1 DMPr 。
+图5 点对点打印应用模型
+5232 第三方控制的打印
+...
+用户通过操控带有打印控制器 功能的设备 将 或 上的图像内容传送至 具
+-2 , DMS M-DMS DMRr。
+体流程如图 所示
+6 :
+图6 第三方控制的打印应用模型
+10
+GB/T302466—2013
+.
+打印控制器 浏览 或 上的媒体内容列表并选择需要打印的内容
+a) -2 DMS M-DMS ;
+打印控制器 获取图像内容的 并生成相应的 打印文件
+b) -2 URL, XHTML ;
+打印控制器 调用 的打印服务 向 提供图像内容的
+c) -2 DMPr ; DMPr URL;
+打印控制器 向 传送 打印文件
+d) -2 DMPr XHMTL ;
+向 或 请求获取图像内容
+e) DMPr DMS M-DMS ;
+或 向 传送图像内容
+f) DMS M-DMS DMPr 。
+524 数据共享
+..
+5241 下载
+...
+用户通过操控带有下载控制器功能的设备或 从 或 下载媒体内容 具体流
+M-DMD, DMS M-DMS 。
+程如图 所示
+7 :
+下载控制器或 通过调用 在 或 上查找可下载的媒体内容
+a) M-DMD CDS:Browse DMS M-DMS ;
+下载控制器或 通过 向 或 请求下载媒体内容
+b) M-DMD HTTPGET DMS M-DMS ;
+或 通过 响应向下载控制器或 传送媒体内容
+c) DMS M-DMS HTTPGET M-DMD 。
+图7 下载应用模型
+5242 上传
+...
+用户通过操控带有上传控制器功能的设备或 向 或 上传媒体内容 具体流
+M-DMU, DMS M-DMS 。
+程如图 所示
+8 :
+上传控制器或 通过调用 为上传的媒体内容创建一个 端口
+a) M-DMU CDS:CreatObject CDS ;
+上传控制器或 通过 方式向 或 传送媒体内容
+b) M-DMU HTTPPUT DMS M-DMS 。
+图8 上传应用模型
+11
+GB/T302466—2013
+.
+525 媒体转换
+..
+和 对媒体的要求存在差异 通常 受屏幕尺寸 处理器能力 存储量以及带宽能力
+HND MHD ; MHD 、 、
+的限制 会采用优化的或限定的媒体特性集 可能造成与家庭网络设备不匹配 从而无法解析 传送或播
+, , , 、
+放对方的媒体内容 可通过一个 与 间的媒体转换应用接口 实现两种设备间媒体的编码
+。 HND MHD ,
+转换 速率转换以及媒体内容的缩放等功能
+、 。
+具备该应用接口的设备称为虚拟设备 包括虚拟媒体服务器 虚拟移动媒体服务器
+, (VitrualDMS),
+和虚拟媒体播放器 虚拟设备封装了 或 的相关功能 具
+(VirtualM-DMS) (VirtualDMR)。 DMS DMR ,
+有相应设备描述文件标识及控制 接口 并且具有媒体转换功能模块 从而能够在 和
+URL , , HND MHD
+之间转发指令消息并进行媒体转换 应支持 的所有必选及可选功能和属性
+。VirtualDMS DMS 。
+应支持 的所有必选功能和属性 应支持 的所有必选功能
+VirtualM-DMS M-DMS 。VirtualDMR DMR
+和属性
+。
+该模型定义了利用虚拟设备实现 与 和 间互通的功能 具体流程如图
+MHD HND(DMS DMR) 。 9、
+图 所示
+10 。
+图9 媒体转换应用模型 虚拟媒体服务器
+( )
+图10 媒体转换应用模型 虚拟媒体播放器
+( )
+526 多媒体控制
+..
+用户通过操控 或 控制 或 的媒体流传输 并控制 的呈现 示例
+DMC M-DMC, DMS M-DMS , DMR 。
+如图 所示
+11 :
+或 可通过调用 等操作控制媒体流
+a) DMC M-DMC AVT:Play,Stop,Pause ;
+或 能通过调用 等操作控制显示器 音量 亮度 对比度等
+b) DMC M-DMC RCS:SetVolume ( 、 、 )。
+12
+GB/T302466—2013
+.
+图11 设备控制应用模型
+6 多媒体与数据网络通信协议
+61 协议结构
+.
+611 概述
+..
+多媒体与数据网络通信协议包括如下功能
+:
+实现所有多媒体设备之间的互联和互操作
+a) ;
+在多媒体设备之间建立可相互发现的设备管理机制 使多媒体设备能够发现网络上其他设备
+b) ,
+和服务的存在 并能识别它们的功能和相关能力 比如配置这些设备和服务以及控制的能力
+, , ;
+在多媒体设备之间建立可互操作的媒体管理和控制框架 能够使不同厂商提供的设备之间实
+c) ,
+现媒体信息的交换和控制以及对媒体内容进行组织 浏览 搜索和选择
+、 、 ;
+在多媒体设备之间建立可互操作媒体格式和流协议 以确保可以共享和使用媒体
+d) , ;
+在多媒体设备间建立一致的 机制
+e) QoS 。
+打印机媒体管理不在本部分中作详细规定 应遵循 中第 部分和第 部
+, ISO/IEC29341-9:2008 1 12
+分关于打印机设备和基本打印服务的规定
+。
+612 无中心节点模式
+..
+多媒体与数据网络在无中心模式下 需要共享媒体资源的设备间可以自动互相发现 识别 建立连
+, 、 、
+接并进行媒体资源传输 在此过程中无需借助其他节点进行协调和控制 其无中心节点模式下 设备管
+, 。 ,
+理 媒体管理与媒体传输协议的协议栈如图 所示
+、 12 。
+13
+GB/T302466—2013
+.
+图12 设备管理 媒体管理与媒体传输协议 无中心节点模式
+、 ( )
+该协议符合 协议的互操作性框架的规定 包含所支持设备和软件基础设施的互
+IEC62481-1:2007 ,
+操作构建模块 以及设备管理 媒体管理 媒体传输 媒体格式等要求 以及相应的 和链接保护机
+, 、 、 、 , QoS
+制 可在家庭环境中实现各种联网设备的自动发现 自动配置和自动管理 并建立无缝紧密的连接 实施
+; 、 , ,
+完整的控制和数据传输 内容共享
+、 。
+基于上述框架 多媒体传输与共享按实现过程可分为三个阶段 设备管理 媒体管理和媒体传输
+, : 、 。
+具体为
+:
+设备管理包括设备寻址 设备发现 服务发现及调用操作等功能 应遵循
+a) 、 、 , IEC62481-1:2007,
+的相关规定 其中 设备寻址宜采用 寻址机制 设备也可以通过
+ISO/IEC29341-1:2008 ; , DHCP ;
+手工设置 地址或 确定其地址 并保证其地址和其他设备没有冲突
+IP Auto-IP , ;
+媒体管理体现为设备间对多媒体内容的识别 管理和分发 应遵循
+b) 、 , IEC62481-1:2007、
+和 的相关规定
+ISO/IEC29341-3:2008 ISO/IEC29341-9:2008 ;
+媒体传输 即多媒体内容的传输 应遵循 和 的相关规定
+c) , , IEC62481-1:2007 IEC62481-2:2007 ,
+应支持 可支持 协议和 协议
+HTTP1.0/1.1, DTCP-IP RTP/RTSP 。
+613 有中心节点模式
+..
+当家庭多媒体网络中存在中心节点时 可采用集中管理方式 家庭网络的集中管理模式修改了无
+, 。
+中心节点模式部分技术内容 并与之兼容 其协议栈如图 所示
+, 。 13 :
+设备管理包括设备寻址 中心节点宣告 媒体设备注册与注销 媒体控制点注册与注销 设备发
+a) 、 、 、 、
+现 服务发现及调用操作等功能 设备可以通过手工设置 地址或 确定其地址 并保
+、 ; IP Auto-IP ,
+证其地址和其他设备地址没有冲突
+;
+媒体管理体现为设备间对多媒体内容的识别 管理和分发 有中心节点的媒体管理主要体现为
+b) 、 ;
+提供集中式的设备目录以及统筹式媒体资源信息服务
+;
+媒体传输 即多媒体内容的传输 应遵循 的相关规定 应
+c) , , IEC62481-1:2007、IEC62481-2:2007 ,
+支持 可支持 协议
+HTTP1.0/1.1, RTP/RTSP 。
+14
+GB/T302466—2013
+.
+图13 设备管理与媒体管理协议 有中心节点模式
+( )
+62 设备管理
+.
+621 概述
+..
+设备管理包括设备注册 设备注销 设备和服务发现 调用操作和事件触发等几部分 设备管理结
+、 、 、 。
+构符合 的相关规定 设备管理利用了 和 协议
+ISO/IEC29341-1:2008 。 HTTP、SOAP、SSDP GENA 。
+设备管理分为无中心节点和有中心节点两种模式
+。
+622 无中心节点的设备管理
+..
+6221 概述
+...
+在无中心节点的设备管理机制下 需要进行媒体资源共享的设备间自动发现 识别并对媒体资源进
+, 、
+行控制和调用 无中心节点的设备管理的逻辑实体包括媒体控制点和媒体设备 即 和
+。 ( MSD MRD)。
+媒体设备入网后首先要向媒体控制点注册 包括两种方式 媒体设备可以通过入网宣告的方式向媒
+, :
+体控制点发送注册信息 媒体控制点也可以通过设备搜索发现媒体设备 并从媒体设备的响应中获得注
+; ,
+册信息 注册信息包括设备的 设备类型 服务类型和设备描述文件的 等
+。 UUID、 、 URL 。
+在媒体设备注册后 媒体控制点可执行下述操作
+, :
+获取媒体设备的设备描述文件和服务描述文件 检索该媒体设备的描述并获取有关服务的
+a) ,
+列表
+;
+检索服务描述 查找需要的服务
+b) , ;
+调用操作控制服务
+c) ;
+向服务的事件源订阅事件 当该服务的状态发生变化 事件服务器都会向媒体控制点发送事件
+d) ; , 。
+15
+GB/T302466—2013
+.
+媒体设备需要注销时可直接退出 也可向媒体控制点发送退网宣告 从而退出网络
+, , 。
+上述设备管理过程可见图
+14。
+图14 无中心节点的设备管理过程
+6222 设备注册
+...
+62221 概述
+....
+媒体设备上线后 可以以宣告的方式向媒体控制点进行注册 使媒体控制点可以发现媒体设备并获取其
+, ,
+设备属性 设备标识 服务类型及其设备描述文件的 同样 当一个媒体控制点上线后 可以在网络搜索
+、 、 URL。 , ,
+需要的媒体设备 从而获取媒体设备信息 两种情况下的基本交换信息均为一条发现消息 其中包含关于该
+, 。 ,
+设备或其服务之一的少量基础性的细节信息 例如其类型 标识符和指向更详细信息的一个
+( 、 URL)。
+媒体设备应至少包括一个根设备 并可以包括一个或若干个嵌入式设备 其中根设备为不能被嵌
+, 。
+入其他设备的逻辑实体
+。
+当一个新的媒体设备上线后 它会多播若干发现消息来宣告根设备及其嵌入式设备和服务 媒体
+, 。
+16
+GB/T302466—2013
+.
+控制点可监听标准的多播地址 以获知该媒体设备的信息
+, 。
+同样 当一个新媒体控制点上线后 它会多播一条发现消息来搜索需要的设备 服务 或同时搜索二
+, , 、 ,
+者 所有媒体设备应监听这些消息的标准多播地址 同时应在其任何嵌入式设备或服务与发现消息中
+。 ,
+的搜索标准相符合时做出响应
+。
+媒体控制点可通过目标设备的宣告消息或搜索目标设备发现需要的媒体设备 在任何一种情况
+。
+下 如果媒体控制点需要了解关于该媒体设备的更多信息 则该媒体控制点利用发现消息中的信息来发
+, ,
+送一条描述询问消息
+。
+为了限制网络拥塞 每个 数据包针对每条多播消息的有效期限 宜默认为
+, IP (TTL) 4。
+62222 入网宣告
+....
+当媒体设备上线后 可以通过向一个标准地址和端口 多播宣告消息 宣告其
+, 239.255.255.250:1900 ,
+服务给媒体控制点 媒体控制点监听此端口来探测新功能何时在网上可用 为了宣告其全部能力 一
+。 。 ,
+个媒体设备对应其每个嵌入式设备和服务 需要多播一系列的发现消息 每条消息均包含关于嵌入式
+, 。
+设备 或服务 的信息 以及关于其内含设备的信息 消息应包括直到宣告过期的持续时间 如果设备仍
+( ) , 。 ,
+然可用 则应重新发送宣告消息 带有新的持续时间 如果设备不再可用 则设备宜明确撤消其宣告 如
+, ( ); , ,
+果设备本身不能发送撤消消息 则宣告将自动过期
+, 。
+媒体设备与媒体控制点通过 协议发送和接收宣告和搜索消息 详细规定符合
+SSDP , ISO/IEC29341-
+1:2008。
+62223 入网宣告消息
+....
+在媒体设备上线时 它采用多播方式发送入网宣告消息 以告知其包含的根设备信息 所有嵌入式
+, , 、
+设备以及它包含的服务 入网宣告消息应使用 方法 其格式如下
+。 NOTIFY , :
+*
+NOTIFY HTTP/1.1
+HOST:239.255.255.250:1900
+宣告合法持续时间
+CACHE-CONTROL:max-age=
+根设备设备描述
+LOCATION: URL
+设备或服务类型
+NT:
+NTS:ssdp:alive
+OSversion productversion
+SERVER: / UPnP/1.0 /
+UUID
+USN:
+信息包的 缺省为 并且可配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+3。
+表3 入网宣告消息
+消息 说 明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+以 为单位 取整数
+s , 。
+宣告合法持 应包含 指宣告有效时间 如果超过此时间间隔 媒体控制
+CACH-CONTROL: max-age, 。 , 必选
+续时间 点可以认为设备 或服务 不再可用 宜大于或等于 具体由
+( ) 。 1800s,
+厂商指定
+17
+GB/T302466—2013
+.
+表3 续
+( )
+消息 说 明 必选 可选
+/
+根设备设备描述 包含根设备描述的 地址 在某些未受管理的网络中 主
+LOCATION: URL 。 ,URL 必选
+机可能包含 地址而非域名 具体由厂商决定 单一
+URL IP 。 。 URL
+通知类型 应采用以下一种形式 单一
+。 。 URI。
+UPnP:rootdevice
+根设备发送一次
+。
+device-UUID
+uuid:
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceTypev
+urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次
+设备或服务类型 ( ) 。 必选
+NT: serviceTypev
+urn:schemas-UPnP-org:service: :
+每种服务发送一次
+。
+Typev
+urn:domain-name:device:device :
+每种设备 根设备或嵌入式设备 发送一次
+( ) 。Domainname,device
+和 由设备厂商指定
+type v 。
+serviceTypev
+urn:domain-name:service: :
+每种服务发送一次 和 由设备厂商
+。Domainname,sevicetype v
+指定
+通知子类型 应为 单一 必选
+NTS:ssdp:alive , ssdp:alive, URI
+描述设备系统信息
+OSversion 。
+SERVER: / UPnP/1.0 由操作系统名称 操作系统版本 产品名称以及产品版本 必选
+productversion 、 、UPnP/1.0、
+/ 等信息串行组合的字符串 具体由厂商决定
+。
+唯一服务名称 应是以下一种 前缀 位于双冒号前 应与设备描
+。 。 ( )
+述中的 元素值相匹配 单一
+UDN 。 URI。
+deviceUUID
+uuid: - ::UPnP:rootdevice
+根设备发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID
+uuid: -
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceUUID deviceTypev
+uuid: - ::urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+UUID 指定 必选
+USN: 。
+deviceUUID serviceTypev
+uuid: - ::urn:schemas-UPnP-org:service: :
+每种服务发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID deviceTypev
+uuid: - ::urn:domain-name:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备
+( ) 。 UUID,
+和 由厂商指定
+domain-name,devicetype v 。
+deviceUUID serviceTypev
+uuid: - ::urn:domain-name:service: :
+每种服务发送一次 设备 和
+。 UUID,domain-name,servicetype v
+由厂商指定
+。
+方法发送的请求没有响应消息
+(NOTIFY 。)
+18
+GB/T302466—2013
+.
+每个入网宣告消息都包含四个主要组成部分
+:
+在 标头标志设备类型或服务类型
+a) NT ;
+在 标头标志设备或服务唯一标识符
+b) USN ;
+在 标头标志设备描述的 地址 或有关服务的内含设备
+c) LOCATION URL ( );
+在 标头标志宣告合法持续时间
+d) CACHE-CONTROL 。
+一个设备通过多播多条消息来宣告其能力 对于根设备 需要发送以下三种入网宣告消息 如表
+。 , , 4
+所示
+。
+表4 根设备入网宣告消息
+序号 NT USN*
+deviceUUID
+1 upnp:rootdevice uuid: - ::upnp:rootdevice
+deviceUUID deviceUUID 根设备的
+2 uuid: - " uuid: - ( UUID)
+deviceUUID
+deviceType uuid: - ::urn:schemas-upnp-org:device:
+urn:schemas-upnp-org:device: : deviceTypev 根设备 或
+v或 :( )
+3 deviceUUID domainname
+domainname deviceTypev uuid: - ::urn: - :device:
+urn: - :device: : deviceTypev
+:
+对于嵌入式设备 需要发送以下两种入网宣告消息 如表 所示
+, , 5 。
+表5 嵌入式设备入网宣告消息
+序号 NT USN*
+deviceUUID deviceUUID
+1 uuid: - " uuid: -
+deviceUUID
+deviceType uuid: - ::urn:schemas-upnp-org:device:
+urn:schemas-upnp-org:device: : deviceTypev或
+v或 :
+2 deviceUUID domainname
+domainname deviceTypev uuid: - ::urn: - :device:
+urn: - :device: : deviceTypev
+:
+对上述每种设备 每种服务需要发送一次入网宣告消息 如表 所示
+, , 6 。
+表6 服务入网宣告消息
+序号 NT USN*
+deviceType deviceUUID
+urn:schemas-upnp-org:device: : uuid: - ::urn:schemas-upnp-org:device:
+v或 deviceTypev或
+1 :
+domainname deviceTypev deviceUUID domainname deviceTypev
+urn: - :device: : uuid: - ::urn: - :device: :
+表 表 中
+3~ 6 :
+和 由设备生产厂商定义
+a) device-UUID domain-name ;
+标头前缀 位于双冒号前 应与设备描述中的 元素值相匹配 描述部分主要说明
+b) USN ( ) UDN (
+元素 标头值应与设备描述中的 元素值相匹配
+UDN )。UT UDN 。
+如果一个根设备有d个嵌入式设备k个不同的服务 应发出 d k条发现消息
+, , 3+2 + 。
+19
+GB/T302466—2013
+.
+6223 设备注销
+...
+62231 退网宣告
+....
+在媒体设备及其服务将要从网络中退出时 对于每个未超期的 消息以多播方式发送
+, ssdp:alive
+消息 但如果媒体设备突然从网络退出 且在 标头规定的有效时间
+ssdp:byebye 。 , CACHE-CONTROL
+内没有再次宣告 媒体控制点则认为该设备不可用并将其从缓存中删除 当媒体控制点将要从网络中
+, 。
+退出时 不需要进行退网宣告
+, 。
+媒体设备与媒体控制点通过 协议发送和接收退网宣告消息 符合 的
+SSDP , ISO/IEC29341-1:2008
+规定
+。
+62232 退网宣告消息
+....
+当媒体设备即将从网络中退出时 它为每一条 消息发送一条多播请求 以明确撤销其入
+, ssdp:alive ,
+网宣告消息 每个多播请求应采用 方法 并且 标头中的 采用以下格式
+。 NOTIFY , NTS ssdp:byebye :
+*
+NOTIFY HTTP/1.1
+HOST:239.255.255.250:1900
+设备或服务类型
+NT:
+NTS:ssdp:byebye
+UUID
+USN:
+信息包的 缺省为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+7。
+表7 退网宣告消息
+消息 说明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+设备或服务类型 参见以上 中 标头的要求值列表 必选
+NT: ssdp:aliveNOTIFY NT
+通知子类型 应是 单一 必选
+NTS:ssdp:byebye 。 ssdp:byebye。 URI
+UUID 参见以上 中 标头的要求值列表 必选
+USN: ssdp:aliveNOTIFY USN
+6224 设备和服务发现
+...
+62241 设备搜索
+....
+当一个媒体控制点上线时 可以通过多播发送搜索消息寻找网络上需要的设备 搜索消息包括类
+, 。
+型或目标 相当于设备或服务的类型或标识符 媒体设备应监听该多播地址 符合条件的媒体设备以单
+, 。 ,
+播方式返回响应消息
+。
+媒体设备通过 协议发送和接收设备搜索消息 符合 的相关规定
+SSDP , ISO/IEC29341-1:2008 。
+62242 设备搜索请求消息
+....
+媒体控制点上线时 它应采用以下格式的 方法发送多播请求
+, M-SEARCH :
+*
+M-SEARCH HTTP/1.1
+20
+GB/T302466—2013
+.
+HOST:239.255.255.250:1900
+MAN:"ssdp:discover"
+最大延迟响应时间
+MX:
+搜索目标类型
+ST:
+信息包的 宜缺省为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+8。
+表8 设备搜索请求
+消息 说 明 必选 可选
+/
+对 进行扩展的命令行 定义的搜索请求方法 基
+SSDP HTTP ,SSDP , 必选
+M-SEARCH* HTTP/1.1 于
+HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+与 和 标头不同 标头的值采用双引号 应为
+NTS ST ,MAN 。 "ssdp: 必选
+MAN:"ssdp:discover"
+discover"
+响应延迟的最大时间 以 为单位 取值为 之间 收到请求
+。 s , 1~120 。
+消息后 符合查找条件的设备应随机延迟 到 发出查找响应
+最大延迟响应时间 , 0 MXs , 必选
+MX: 这样可以为媒体控制点响应平衡网络负载 如果大量设备需要响
+。
+应或如果网络延迟过长 那么该值应该适当增大 具体由厂商决定
+, 。
+搜索目标 应是以下一种 如上 中的 标
+。 。( ssdp:aliveNOTIFY NT
+头 单一
+) URI。
+ssdp:all
+搜索所有设备和服务
+。
+UPnP:rootdevice
+只搜索根设备
+搜索目标类型 。 必选
+ST: deviceUUID
+uuid: -
+搜索特定 设备
+uuid 。
+deviceTypev
+urn:schemas-UPnP-org:device: :
+搜索特定设备类型的设备
+。
+serviceTyp v
+urn:schemas-UPnP-org:service: e:
+搜索具有特定类型服务的设备
+媒体控制点应多次发送每个 消息 媒体设备应定期重新发送其入网宣告信息
+M-SEARCH 。 。
+62243 设备搜索响应消息
+....
+当媒体设备接收设备搜索请求消息并符合搜索类型时 媒体设备须向发送设备搜索请求消息的多
+,
+播通道的源 地址与端口发送响应信息
+IP 。
+响应应采用以下格式发送
+:
+HTTP/1.1200OK
+宣告合法持续时间
+CACHE-CONTROL:max-age=
+响应生成时间
+DATE:
+EXT:
+根设备设备描述文件
+LOCATION: URL
+OSversion productversion
+SERVER: / UPnP/1.0 /
+21
+GB/T302466—2013
+.
+搜索目标类型
+ST:
+UUID
+USN:
+采用 信息包响应请求时无需将 限定为
+( IP TTL 4。)
+上述消息的详细信息见表
+9。
+表9 设备搜索响应
+消息 说明 必选 可选
+/
+命令行 必选
+HTTP/1.1200OK HTTP
+说明本设备可能的在线时间
+。
+应带有 指代宣告有效持续时间 如果超过此时间间隔 媒
+CACHE-CONTROL:max-age= max-age, 。 , 必选
+宣告合法持续时间 体控制点可以认为设备 或服务 不再可用 宜大于 具体
+( ) 。 1800s。
+由厂商决定 取整数
+。
+响应生成时间 响应生成时间 可选 推荐
+DATE: ( )
+确定 标头已经被理解 只限标头 无值 必选
+EXT: MAN ( , )
+根设备设备描述 根设备描述所需的 在某些未受管理的网络中 主机可
+LOCATION: URL。 ,URL 必选
+文件 能包含 地址 而非域名 具体由厂商决定 单一
+URL IP , 。 。 URL
+包含操作系统名称 操作系统版本 产品名称以及产品版
+、 、UPnP/1.0、 必选
+SERVER: 本等信息的串行字符串 具体由厂商决定 字符串
+。 。
+搜索目标类型 搜索目标 单一 详细规定见表 标头要求值列表 必选
+ST: 。 URI, 3NT
+设备类型标识符
+UUID 。 必选
+USN: 唯一服务名称 详细规定见表 标头要求值列表
+, 3USN
+如果设备搜索请求出现错误 如 头字段存在无效值 或 头字段丢失 或其他错误内容 设
+, MAN , MX , ,
+备宜忽视该请求 而不建议发送错误响应消息
+, 。
+62244 设备描述
+....
+设备描述包括特定厂商 制造商信息 如模块名称和编号 序列号 制造商名称 特定厂商网站
+、 , 、 、 、 URL
+等 对于设备中的每种服务 设备描述可包含服务类型 名称 服务描述 控制 以及事件
+。 , 、 、 URL、 URL
+设备描述还包含所有嵌入式设备描述与 地址集
+URL。 URL 。
+一个物理设备可以包含多个逻辑设备 多个逻辑设备既可以是嵌入多个设备 服务 的单一根设
+。 ( )
+备 也可以是多个根设备 可能没有嵌入式设备 前者是一个有关根设备的设备描述 其中包含所有嵌
+, ( )。 ,
+入式设备描述 后者是多个设备描述 每个根设备对应一种描述
+。 , 。
+设备描述采用 语法 设备描述文件格式符合 的规定
+XML , GB/T30246.8 。
+62245 服务描述
+....
+服务描述包括一系列命令或操作 服务的响应与每种动作的参数或变量 服务描述还包括一系列
+, 。
+变量 这些变量描述了服务运行时的状态 其中包括数据类型 取值范围和事件特性的描述 本部分主
+, , 、 。
+要规定了操作描述 变量 状态变量 以及这些变量的性质
+、 、 , 。
+在服务可用期间 媒体控制点应认为服务描述没有发生改变 如果服务变为不可用后再次可用 媒
+, 。 ,
+体控制点应认为服务描述发生了变化并重新获取
+。
+22
+GB/T302466—2013
+.
+服务描述采用 句法 除了定义非标准服务 厂商可以为标准设备添加新的动作和服务 服
+XML 。 , 。
+务描述的模板符合 的规定
+GB/T30246.8 。
+62246 获取描述
+....
+媒体控制点从发现消息中得到设备描述的 通过 取得设备描述 然后 媒体控制点使用
+URL, URL 。 ,
+设备描述中提供的 取得一个或多个服务描述
+URL 。
+媒体控制点向设备描述中的 发出 请求 媒体设备在 响应的消息体中返
+URL HTTPGET , HTTP
+回其描述
+。
+获取描述的请求消息如下
+:
+设备或服务描述文件URL
+GET HTTP/1.1
+目标地址端口号
+HOST:
+优选语言
+ACCEPT-LANGUAGE:
+获取描述请求的详细信息如表 所示
+10 。
+表10 获取描述请求
+消息 说 明 必选 可选
+/
+设备或服务描述文件 定义的方法 设备描述文件 或服务描述文件 的
+GET URL HTTP 。 URL URL 必选
+路径部分 单一 相对
+HTTP/1.1 。 、 URL
+设备描述 或服务描述 的域名或 地址及可选端口 如
+目标地址端口号 URL URL( IP 。 必选
+HOST: 果该端口为空或未给出 则假定为端口
+, 80
+优选语 用于描述的优选语言 如果该没有指定语言的描述可用 则设备可
+ACCEPT-LANGUAGE: 。 , 推荐
+言 以返回使用缺省语言的描述
+在媒体控制点发送请求之后 媒体设备返回描述 媒体设备应在 内做出响应 其中包括预期
+, 。 30s ,
+的传输时间 如果在这段时间内没有响应 媒体控制点应该再次发送请求 媒体设备应采用如下消息
+。 , 。
+作出响应
+:
+HTTP/1.1200OK
+描述语言
+CONTENT-LANGUAGE:
+消息体长度
+CONTENT-LENGTH:
+CONTENT-TYPE:text/xml
+响应生成时间
+DATE:
+该消息的详细说明如表 所示
+11 。
+表11 获取描述响应
+消息 说明 必选 可选
+/
+命令行 必选
+HTTP/1.1200OK HTTP
+仅当请求包括 标头时要求 描
+CONTENT-LANGUAGE: ACCEPT-LANGUAGE 。 条件必选
+描述语言 述所使用的语言
+23
+GB/T302466—2013
+.
+表11 续
+( )
+消息 说明 必选 可选
+/
+消息体
+CONTENT-LENGTH: 以字节为单位来表示的消息体长度 为整数 必选
+长度 ,
+应是 必选
+CONTENT-TYPE text/xml
+响应生成时间 响应生成时间 可选 推荐
+DATE: ( )
+6225 调用操作
+...
+62251 调用操作概述
+....
+调用操作指媒体控制点向媒体设备发出操作指令 在接收设备描述和服务描述之后 媒体控制点
+。 ,
+就可以根据描述向这些服务发出操作指令 同时媒体控制点也可以接收关于操作执行结果的响应 媒
+, 。
+体控制点将操作对象调用发送到设备服务 当操作完成 或执行失败 后 媒体设备服务返回相应的结果
+, ( ) ,
+或出错信息
+。
+媒体控制点可能会查询服务的状态变量值以获得状态变量的当前值 与发出一个操作的过程相
+。
+似 媒体控制点向服务的控制 发送一个适当的查询消息 而服务则返回相应的变量值 每个服务
+, URL 。 ;
+应保持状态表的一致性 以便媒体控制点能够轮询并接收到有意义的值
+, 。
+62252 调用操作请求消息
+....
+为了控制一个媒体设备 媒体控制点向设备服务发出一个操作 由媒体控制点向服务的控制
+, 。 URL
+地址发送一个控制消息 服务则会对此操作做出响应 返回相关结果 操作的效果可以通过服务运行
+。 , 。
+时状态变量的改变进行建模 在这些状态变量改变时 事件将被发布到所有相关的媒体控制点
+。 , 。
+调用操作使用 来向设备提供控制消息 并将结果返回媒体控制点
+SOAP , 。
+下面是一个使用 方法发送的控制消息 没有 标头 随后是标头和消息体的解释 在
+POST ( MAN ), 。
+这之后是一个采用 方法和 标头发送的控制消息列表
+M-POST MAN 。
+为了向媒体设备的服务发出一个动作 媒体控制点应采用以下格式的 方法发送一个请求
+, POST 。
+调用操作请求消息如下 消息用斜体表示的值为实际值的占位符
+, :
+控制
+POST URLHTTP/1.1
+主机 以及端口
+HOST: URL URL
+消息体长度
+CONTENT-LENGTH:
+encoding
+CONTENT-TYPE:text/xml;charset=" "
+serviceTypev actionName
+SOAPACTION:"urn:schemas-upnp-org:service: :# "
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+actionName serviceTypev
+<u: xmlns:u="urn:schemas-upnp-org:service: :">
+argumentName argumentName
+< >inargvalue</ >
+otherinargsand gohereifany
+theirvalues ,
+24
+GB/T302466—2013
+.
+actionName
+</u: >
+</s:Body>
+</s:Envelope>
+具体字段解释见表
+12。
+表12 调用操作请求
+消息 说 明 必选 可选
+/
+控制 命令行 包含该服务的控制 必选
+POST URLHTTP/1.1 HTTPPOST 。 URL
+控制此服务的域名或 地址 以及可选的端口 设备描述服务
+IP 、 (
+主机 以及端口 元素的 子元素 如果该端口为空或未给出 则假 必选
+HOST: URL URL controlURL )。 ,
+定为端口
+80
+消息体长度 以字节为单位来表示的消息体长度 为整数 必选
+CONTENT-LENGTH: ,
+应是 宜包括使用的字符编码 编码格式自定义 可
+CONTENT-TYPE:text/xml;charset text/xml。 , , 必选
+encoding 为 或 等
+=" " GB13000 utf-8
+标头 应是要调用的服务类型 井号 和动作名称 均用双
+。 、 (#) ,
+引号括起来
+。 必选
+SOAPACTION: 如果用于采用 方法的请求 标头名称应符合 标
+M-POST , MAN
+头中定义的 名字空间 单一
+HTTP 。 URI
+<?xmlversion="1.0"?>
+<s:Envelope 名字空间属性应为
+xmlns “http://schemas.xmlsoap.org/soap/
+xmlns:s="http://schemas.xmlsoap. 应包括带有值为 必选
+envelope/”。 http://schemas.xmlsoap.org/
+org/soap/envelope/" 的 属性 包含子元素
+soap/encoding/ encodingStyle 。 <Body>
+s:encodingStyle="http://schemas.
+xmlsoap.org/soap/encoding/">
+<s:Body>
+应符合 名字空间 包含以下子元素
+<u:actionNamexmlns:u="urn:schemas- SOAP 。 :
+serviceTypev actionName
+upnp-org:service: :"> < >
+必选 元素名称即要调用的动作名称
+<argumentName>inargvalue</argu- 。 。
+名字空间属性应为双引号中包含的服务类型 应为
+mentName> xmlns 。 必选
+的 第 一 个 子 元 素 包 含 以 下 有 序 子 元 素
+otherinargandtheirvaluesgohere, <Body> 。 :
+argumentName如果且仅当动作带有输入变量时要求 传送给
+ifany < > 。
+动作的值 每个输入变量重复一次 单一数据类型遵照服务描
+</u:actionName> 。 。
+述定义
+</s:Body>
+</s:Envelope>
+如果一个 请求被拒绝并返回 信息 则媒体控制点应采用以下格式的
+POST “405MethodNotAllowed” ,
+和 方法发送第二个请求
+M-POST MAN :
+pathofcontrolURL
+M-POST HTTP/1.1
+主机 以及端口
+HOST: URL URL
+消息体长度
+CONTENT-LENGTH:
+25
+GB/T302466—2013
+.
+encoding
+CONTENT-TYPE:text/xml;charset=" "
+MAN:"http://schemas.xmlsoap.org/soap/envelope/";ns=01
+serviceTypev actionName
+01-SOAPACTION:"urn:schemas-upnp-org:service: :# "
+具体字段解释见表
+13。
+表13 调用操作请求2
+消息 说明 必选 可选
+/
+扩展 命令行 必选
+M-POST/HTTP/1.1 HTTP
+设备描述 或服务描述 的域名或 地址及可
+主机 以及端口 URL URL( IP 必选
+HOST: URL URL 选端口 如果该端口为空或未给出 则假定为端口
+。 , 80
+消息体长度 以字节为单位来表示的消息体长度 为整数 必选
+CONTENT-LENGTH: ,
+enco- 应是 宜包括使用的字符编码 编码格式自定
+CONTENT-TYPE:text/xml;charset=" text/xml。 , 必选
+ding 义 可为 或 等
+" , GB13000 utf-8
+应为
+“http://schemas.xmlsoap.org/soap/envelope/”。
+指令定义用于其他 标头的名字空间 如 必选
+MAN: ns SOAP ( 01)
+如
+( SOAPACTION)
+SOAPACTION:"urn:schemas-upnp-org: 同表 中 的定义 必选
+serviceTypev actionName 12 SOAPACION
+service: :# "
+62253 调用操作响应
+....
+收到调用操作请求后 服务应完成操作调用 并在 内响应 服务应采用以下格式发送调用操
+, , 30s 。
+作响应
+:
+HTTP/1.1200OK
+消息体长度
+CONTENT-LENGTH:
+CONTENT-TYPE:text/xml;charset="encoding"
+响应生成时间
+DATE:
+EXT:
+SERVER:OS/versionUPnP/1.0product/version
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+serviceTypev
+<u:actionNameResponsexmlns:u="urn:schemas-upnp-org:service: :">
+<argumentName>outargvalue</argumentName>
+otheroutargsandtheirvaluesgohere,ifany
+</u:actionNameResponse>
+</s:Body>
+</s:Envelope>
+26
+GB/T302466—2013
+.
+具体字段解释见表
+14。
+表14 调用操作响应
+消 息 说 明 必选 可选
+/
+命令行
+HTTP 。 必选
+HTTP/1.1200OK 为 成功代码
+200OK HTTP
+消息体长度 消息体大小 以字节来表示 为整数 必选
+CONTENT-LENGTH: , ,
+应是 宜包括使用的字符编码 编码格式
+CONTENT-TYPE:text/xml;charset="enco- text/xml。 , 必选
+可为 或 等
+ding" GB13000 utf-8
+响应生成时间 响应生成时间 可选 推荐
+DATE: ( )
+确定 标头已被理解 无值 必选
+EXT: MAN ( )
+包含操作系统名称 操作系统版本 产品
+、 、UPnP/1.0、
+名称以及产品版本信息的串行字符串 具体由厂 必选
+SERVER:OS/versionUPnP/1.0productversion 。
+商决定
+元素是 规定使用的元素
+<?xmlversion="1.0"?> <Envelope> SOAP 。xmlns
+名字空间属性应为
+<s:Envelope “http://schemas.xmlsoap.org/
+应包括带有值为
+xmlns:s soap/envelope/”。 “http://schemas. 必选
+的
+="http://schemas.xmlsoap.org/soap/envelope/" xmlsoap.org/soap/encoding/” encodingStyle
+属性
+s:encodingStyle="http://schemas.xmlsoap.org/ 。
+包含子元素
+soap/encoding/"> <Body>
+元素是 规定使用的元素 应符合
+<Body> SOAP 。
+名字空间 包含以下子元素
+SOAP 。 :
+<s:Body> actionNameResponse
+<u:actionNamexmlns:u="urn:schemas-upnp- 必选 元素名称即前置于响应的动作名称
+。 。xmlns
+org:service:serviceType:v"> 名字空间属性应为双引号中包含的服务类型 应
+。
+<argumentName>outargvalue</argumentName> 为消息体的第一个子元素 包含以下子元素 必选
+。 :
+otheroutargandtheirvaluesgohere,ifany argumentName
+</u:actionName> 如果且仅当动作带有输出变量时要求 值从动作
+。
+</s:Body 中返回 每个变量重复一次 如果动作带有标记
+。 。
+</s:Envelope> 为 的变量 则此变量应为第一个元素 单一
+retval , 。
+数据类型遵照服务描述定义
+如果服务在调用媒体控制点发送的操作时出现错误 则服务应在 内发送响应 包括预计的传
+, 30s ,
+送时间 不能使用输出变量来传达错误信息 输出变量只能用于返回数据 错误响应应采用以下格式
+。 ; ;
+发送
+:
+HTTP/1.1500InternalServerError
+bytesinbody
+CONTENT-LENGTH:
+CONTENT-TYPE:text/xml;charset="encoding"
+whenresponsewasgenerated
+DATE:
+EXT:
+27
+GB/T302466—2013
+.
+OSversion productversion
+SERVER: / UPnP/1.0 /
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<s:Fault>
+<faultcode>s:Client</faultcode>
+<faultstring>UPnPError</faultstring>
+<detail>
+<UPnPErrorxmlns="urn:schemas-upnp-org:control-1-0">
+errorcode
+<errorCode> </errorCode>
+errorstring
+<errorDescription> </errorDescription>
+</UPnPError>
+</detail>
+</s:Fault>
+</s:Body>
+</s:Envelope>
+具体字段解释见表
+15。
+表15 调用操作响应 错误
+( )
+消 息 说 明 必选 可选
+/
+命令行
+HTTP 。 必选
+HTTP/1.1500 为内部服务器错误
+500
+bytesinbody 同表 中 定义 必选
+CONTENT-LENGTH: 14 CONTENT-LENGTH
+同表 中 的定义 必选
+CONTENT-TYPE:text/xml;charset="encoding" 14 CONTENT-TYPE
+whenresponsewasgenerated 同表 中 的定义 可选 推荐
+DATE: 14 DATE ( )
+同表 中 的定义 必选
+EXT: 14 EXT
+OSversion productversion 同表 中 的定义 必选
+SERVER: / UPnP/1.0 14 SERVER
+<?xmlversion="1.0"?> 元素是 规定使用的元素
+<Envelope> SOAP 。xmlns
+<s:Envelope 名字空间属性应为
+“http://schemas.xmlsoap.org/
+xmlns:s="http://schemas.xmlsoap.org/soap/ 应包括带有值为 必选
+soap/envelope/”。 “http://schemas.
+envelope/" 的 属性
+xmlsoap.org/soap/encoding/” encodingStyle 。
+s:encodingStyle="http://schemas.xmlsoap.org/ 包含子元素
+<Body>
+soap/encoding/">
+28
+GB/T302466—2013
+.
+表15 续
+( )
+消 息 说 明 必选 可选
+/
+<Body>
+规定使用的元素 应符合 名字空间
+SOAP 。 SOAP 。
+包含以下子元素
+:
+<s:Body> <Fault>
+规定使用的元素 调用动作时遇到的错误
+<s:Fault> SOAP 。 。
+应符合 名字空间 包含以下子元素
+<faultcode>s:Client</faultcode> SOAP 。 :
+<faultstring>UPnPError</faultstring> <faultcode>
+规定使用的元素 值应符合 名字空
+<detail> SOAP 。 SOAP
+间 值应为
+<UPnPErrorxmlns="urn:schemas- 。 Client。
+upnp-org:control-1-0"> <faultstring>
+errorcode 规定使用的元素 值应为 必选
+<errorCode> </errorCode> SOAP 。 UPnPError。
+errorstring
+<errorDescription> </error- <detail>
+规定使用的元素 包括如下子元素
+Description> SOAP 。 :
+</UPnPError> <UPnPError>
+规定使用的元素 包括如下子元素
+</detail> UPnP 。 :
+</s:Fault> <errorCode>
+规定使用的元素 代码识别遇到过哪些错
+</s:Body> UPnP 。
+误 整数
+</s:Envelope> 。 。
+<errorDescription>
+规定使用的元素 简短描述 立即查看下表
+UPnP 。 。
+的值 字符串 推荐小于 字符
+。 。 256
+6226 事件触发
+...
+62261 概述
+....
+媒体控制点发现媒体设备和取得该设备及其服务的描述之后 可以使用事件触发功能 一个服务
+, 。
+描述包括服务响应的动作列表和运行时描述服务状态的变量列表
+。
+订阅是媒体控制点的可选功能 要订阅事件 订阅者可发事件发布者发送一条订阅消息 如果发
+。 , 。
+布者收到此消息 将回复此订阅的持续时间 要保持订阅 订阅者应在订阅过期之前进行续订 当订阅
+, 。 , 。
+者不再需要发布者发送的事件时 订阅者应当取消其订阅
+, 。
+如果一个或多个状态变量可以被事件触发 服务将会在这些变量发生变化时发布更新 媒体控制点
+, ,
+可以通过订阅事件获得此信息 事件的发布者通常为设备服务 事件的订阅者通常为媒体控制点
+。 , 。
+订阅和事件消息经过处理 如添加服务标志符或变量名等 通过通用事件通知架构 方法
+( ), (GENA)
+和标头进行扩展的 依次被发送 消息通过 发送
+HTTP 。HTTP TCP/IP 。
+62262 事件订阅
+....
+媒体控制点要订阅事件 可向事件发布者发送一条订阅消息
+, 。
+事件订阅消息格式如下
+:
+发布者事件
+SUBSCRIBE URLHTTP/1.1
+目标主机 以及端口
+HOST: URL URL
+事件消息回调
+CALLBACK:< URL>
+29
+GB/T302466—2013
+.
+upnpevent
+NT: :
+Second订阅超时时间
+TIMEOUT: -
+具体字段解释见表
+16。
+表16 事件订阅
+消 息 说 明 必选 可选
+/
+命令行
+HTTP 。
+方法由 定义
+发布者事件 GENA 。 必选
+SUBSCRIBE URLHTTP/1.1 发布者URL 事件 的路径组成 发布者的事件
+: URL 。
+单一 相对
+URL。 、 URL
+事件 的域名或 地址和可选端口 如果该缺少
+目标主机 以及端口 URL IP 。 必选
+HOST: URL URL 或为空 则假定为端口
+, 80
+事件消息回调 事件消息回调 单一 必选
+CALLBACK:< URL> URL。 URL
+upnpevent 通知类型 应为 必选
+NT: : , upnp:event
+Second订阅超时时间 订阅超时时间 单位为 取整数 可选
+TIMEOUT: - , s,
+事件发布者消息响应格式如下
+:
+HTTP/1.1200OK
+响应生成时间
+DATE:
+OSversion productversion
+SERVER: / UPnP/1.0 /
+uuid 订阅标识符
+SID: :
+Second订阅超时时间
+TIMEOUT: -
+具体字段解释见表
+17。
+表17 事件订阅响应定义
+消 息 说 明 必选 可选
+/
+命令行 必选
+HTTP/1.1200OK HTTP
+响应生成时间 同表 中 定义 必选
+DATE: 14 DATE
+OSversion productversion 同表 中 定义 必选
+SERVER: / UPnP/1.0 / 14 SERVER
+订阅标识符 订阅标识符 必选
+SID:uuid:
+Second订阅超时时间 订阅超时时间 单位为 取整数 可选
+TIMEOUT: - , s,
+62263 事件续订
+....
+要保持订阅 订阅者应在订阅过期之前进行续订
+, 。
+事件续订消息格式如下
+:
+发布者事件
+SUBSCRIBE URLHTTP/1.1
+目标主机 以及端口
+HOST: URL URL
+subscriptionUUID
+SID:uuid:
+Secondrequestedsubscriptionduration
+TIMEOUT: -
+具体字段解释见表
+18。
+30
+GB/T302466—2013
+.
+表18 事件续订定义
+消 息 说 明 必选 可选
+/
+发布者事件
+SUBSCRIBE URLHTTP/ 命令行 必选
+HTTP
+1.1
+事件 的域名或 地址和可选端口 如果该缺少
+目标主机 以及端口 URL IP 。 必选
+HOST: URL URL 或为空 则假定为端口
+, 80
+subscriptionUUID 订阅标识符 必选
+SID:uuid:
+Secondrequestedsubscription
+TIMEOUT: - 订阅超时时间 单位为 取整数 可选
+duration , s,
+62264 订阅取消
+....
+当订阅者不再需要发布者发送的事件消息时 订阅者应当取消其订阅
+, 。
+取消订阅消息格式如下
+:
+发布者事件
+UNSUBSCRIBE URLHTTP/1.1
+目标主机 以及端口
+HOST: URL URL
+订阅标识符
+SID:uuid:
+具体字段解释见表
+19。
+表19 订阅取消定义
+消 息 说 明 必选 可选
+/
+命令行
+HTTP 。
+发布者事件 方法由 定义
+UNSUBSCRIBE URL GENA 。 必选
+发布者事件URL 事件 的路径组成 发布者事件
+HTTP/1.1 : URL 。
+单一 相对
+URL。 、 URL
+目标主机 以及端口 事件 的域名或 地址和可选端口 如果该缺少
+HOST: URL URL IP 。 必选
+或为空 则假定为端口
+URL , 80
+订阅标识符 订阅标识符 应以 开头 必选
+SID:uuid: , uuid
+62265 事件消息
+....
+发布者通过发送事件消息提醒订阅者状态变量改变 事件消息包含多个状态变量名称和这些变量
+。
+的当前值 以 表示 在订阅者第一次订阅时 需要发送一个专门的初始化事件消息 该事件消息
+, XML 。 , 。
+包含所有事件变量的名称和值 并且允许订阅者初始化其服务状态模型 为了支持多个媒体控制点 在
+, 。 ,
+动作生效后所有订阅者均会收到通知
+。
+为修复事件订阅 例如 如果订阅者已丢失一条或多条事件消息 订阅者应取消订阅并重新进行订
+, , ,
+阅 这样 订阅者将获得一个新的订阅标识符 一个新的初始化事件消息和一个新的事件编号
+。 , 、 。
+要发送事件消息 发布者应以下列格式发送一个采用 方法的请求
+, NOTIFY :
+目标
+NOTIFY URLHTTP/1.1
+目标地址 以及端口
+HOST: URL URL
+CONTENT-TYPE:text/xml
+31
+GB/T302466—2013
+.
+Bytesinbody
+CONTENT-LENGTH:
+NT:upnp:event
+NTS:upnp:propchange
+subscriptionUUID
+SID:uuid: -
+事件编号
+SEQ:
+<? xmlversion="1.0"?>
+<e:propertysetxmlns:e="urn:schemas-upnp-org:event-1-0">
+<e:property>
+variableNamenewvalue variableName
+< > </ >
+</e:property>
+Othervariablenamesandvaluesifanygohere
+( ) .
+</e:propertyset>
+事件消息的具体字段解释如表 所示
+20 。
+表20 事件消息
+消 息 说 明 必选 可选
+/
+命令行
+HTTP 。
+方法由 定义 通知客户关于事件的情况
+目标 GENA 。 。 必选
+NOTIFY URL HTTP/1.1 目标 交付 的路径组成 事件消息的目的
+URL: URL 。
+地 单一 相对
+。 、 URL
+交付 的域名或 地址和可选端口 如果该缺少
+目标地址 以及端口 URL IP 。 必选
+HOST: URL URL 或为空 则假定为端口
+, 80
+消息体长度 以字节来表示 为整数 必选
+CONTENT-LENGTH: , ,
+应是 必选
+CONTENT-TYPE:text/xml text/xml
+通知类型 应为 必选
+NT:upnp:event 。 upnp:event
+通知子类型 应为 必选
+NTS:upnp:propchange 。 upnp:propchange
+订阅标识符 应是唯一的 应以 开头 由设备厂
+subscriptionUUID 。 。 uuid: , 必选
+SID:uuid: - 商规定 单一
+。 URI
+事件编号 初始化事件消息应为 发送给特定订阅者
+。 0。
+事件编号 的每条事件消息应以 为增量 长度应为 为防 必选
+SEQ: 1 。 32bit。
+止溢出 应回置到 一个整数
+, 1。
+元素
+<?xmlversion="1.0"?> <propertyset>
+名字空间属性应为
+<e:propertyset xmlns urn:schemas-upnp-org:event-
+包含以下子元素
+xmlns:e="urn:schemas-upnp-org:event- 1-0。 :
+1-0"> <property>
+必选字段 事件消息中的变量名称和值重复一次 值
+<e:property> 。 。
+variableNamenew 应符合 名字空间 包含以下子元素 必选
+< > propertyset 。 :
+value variableName
+</ > <variableName>
+必选字段 元素是更改的状态变量名称 服务描述中
+</e:property> 。 (
+Othervariablenamesandvalues 元 素 的 名 字 子 元 素 值 应 符 合
+stateVariable )。
+ifanygohere 名字空间 值是指这一状态变量的新值
+( ) . propertyset 。 。
+单一数据类型遵照服务描述确定
+</e:propertyset>
+32
+GB/T302466—2013
+.
+62266 事件消息响应
+....
+要确认收到了事件消息 订阅者应要在 内做出响应 如果订阅者未在 内做出响应 发布
+, 30s 。 30s ,
+者应停止向订阅者发送此消息 但应保持订阅并向订阅者发送未来的事件消息 直到订阅期满或取消
+, ,
+为止
+。
+订阅者应采用以下格式发送响应
+:
+采用 方法的请求无消息体 但请注意 消息与最后一个
+a) HTTP/1.1200OK: NOTIFY , , HTTP
+标头之间应空一行 如果事件消息存在错误 则订阅者应返回下面一种错误 该响应应在
+; , ; 30s
+包括预计的传输时间 内发出
+( ) ;
+缺少 如果 标头缺少或为空 订阅者应返回 错误
+b) SID:412PreconditionFailed, SID , HTTP 412
+进行响应
+PreconditionFailed ;
+无效 如果 不响应一个已知的订阅 订阅者应返回
+c) SID:412PreconditionFailed。 SID , HTTP
+错误 进行响应 当服务接收到这一错误响应时 应终止这一
+412PreconditionFailed ; , SID;
+缺少 或 标头 如果 或 标头缺少 订阅者应返回 错
+d) NT NTS :400BadRequest, NT NTS , HTTP
+误 进行响应
+400BadRequest ;
+无效 标头 如果 标头不符合 订阅者应返回
+e) NT :412PreconditionFailed, NT upnp:event,
+错误 进行响应
+HTTP 412PreconditionFailed ;
+无效 标头 如果 标头不符合 订阅者应
+f) NTS :412PreconditionFailed, NTS upnp:propchange,
+返回 错误 进行响应
+HTTP 412PreconditionFailed 。
+事件订阅的实例可参见
+B.2.2。
+623 有中心节点的设备管理
+..
+6231 概述
+...
+当家庭多媒体网络中存在中心节点时 可采用有中心节点的设备管理方式
+, 。
+有中心节点的设备管理是一种集中式的管理方式 包含三种逻辑设备 中心节点 媒体设备 媒体控
+, : 、 、
+制点
+。
+中心节点指具有设备登记 提供设备与服务搜索服务以及管理多媒体网络内媒体设备信息 媒体资
+、 ,
+源信息等功能的设备 中心节点会监听网络中媒体设备的入网宣告 媒体控制点的注册信息 整合媒体
+。 、 ,
+设备信息生成设备注册表 并可向媒体控制点提供设备注册表相关的服务调用操作接口
+, 。
+媒体控制点以及媒体设备定义见 在有中心节点的设备管理方式下 媒体控制点可以通过中
+5.1.1。 ,
+心节点发现家庭多媒体网络内存在的设备与服务
+。
+注 在物理实现时 建议在家庭网络内部网关中实现中心节点的功能
+: , 。
+6232 中心节点入网与退网
+...
+62321 中心节点宣告
+....
+当网络中存在中心节点时 中心节点可以通过向一个标准地址和端口 多播
+, 239.255.255.250:1900
+宣告消息 向媒体设备以及媒体控制点宣告其状态以及提供的服务 媒体设备以及媒体控制点通过监
+, 。
+听组播端口报文 可以获知中心节点的存在以及基本信息 中心节点宣告具体消息格式如下
+, 。 :
+NOTIFY* HTTP/1.1
+HOST:239.255.255.250:1900
+33
+GB/T302466—2013
+.
+宣告合法持续时间
+CACHE-CONTROL:max-age=
+根设备描述文件
+LOCATION: URL
+设备或服务类型
+NT:
+NTS:ssdp:alive
+OSversion productversion
+SERVER: / UPnP/1.0 /
+UUID
+USN:
+信息包的 缺省宜为 并且可以配置
+IP TTL 4, 。
+下面的列表提供了上面出现的命令行与标头的详细信息 除特别注明外 所有标头值均要区分大
+。 ,
+小写
+。
+中心节点宣告的消息定义如表 所示
+21 。
+表21 中心节点宣告
+消 息 说 明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+应包含 指宣告合法持续时间 如果超过此时间间隔
+max-age, 。 ,
+CACHE-CONTROL:max-age= 媒体控制设别可以认为设备 或服务 不再可用 应大于 必选
+宣告合法持续时间 ( ) 。 1800s
+具体由厂商决定 取整数
+(30min)。 。
+设备描述文件的 包含根设备的设备描述 地址 在
+根设备描述文件 URL, URL 。
+LOCATION: 某些未受管理的网络中 主机可能包含 地址而非域名 必选
+URL ,URL IP 。
+具体由厂商决定 单一
+。 URL
+规定使用的标头 通知类型 应采用以下一种形式
+GENA 。 。 。
+单一
+URI。
+UPnP:rootdevice
+根设备发送一次
+。
+uuid:device-UUID
+每种设备 根设备或嵌入式设备 发送一次 设备 由
+( ) 。 UUID
+厂商指定
+。
+设备或服务类型 urn:schemas-UPnP-org:device:deviceType:v 必选
+NT: 每种设备 根设备或嵌入式设备 发送一次
+( ) 。
+urn:schemas-UPnP-org:service:serviceType:v
+每种服务发送一次
+。
+urn:schemas-CHNS-org:device:Center
+嵌入式设备为中心节点时 发送一次
+, 。
+urn:schemas-chns:service:registry-1-0
+嵌入式设备为中心节点时 为设备注册表服务发送一次 设
+, 。
+备 由厂商指定
+UUID
+通知子类型 应为 单一 必选
+NTS:ssdp:alive , ssdp:alive, URI
+描述设备系统信息
+OSversion 。
+SERVER: / UPnP/1.0 由操作系统名称 操作系统版本 产品名称以及产品 必选
+productversion 、 、UPnP/1.0、
+/ 版本等信息串行组合的字符串 具体由厂商决定
+。
+34
+GB/T302466—2013
+.
+表21 续
+( )
+消 息 说 明 必选 可选
+/
+唯一服务名称 应是以下一种 前缀 位于双冒号前 应与设
+。 。 ( )
+备描述中的 元素值相匹配 描述部分主要说明 元
+UDN 。( UDN
+素 单一
+。) URI。
+uuid:device-UUID::UPnP:rootdevice
+根设备发送一次 设备 由厂商指定
+。 UUID 。
+uuid:device-UUID
+每种设备 根设备或嵌入式设备 发送一次 设备 由
+( ) 。 UUID
+厂商指定
+。
+uuid:device-UUID::urn:schemas-UPnP-org:device:deviceType:v
+每种设备 根设备或嵌入式设备 发送一次 设备 由 必选
+USN:UUID ( ) 。 UUID
+厂商指定
+。
+uuid:device-UUID::urn:schemas-UPnP-org:service:service-
+Type:v
+每种服务发送一次 设备 由厂商指定
+。 UUID 。
+uuid:device-UUID::urn:schemas-CHNS-org:device:Center
+嵌入式设备为中心节点时 发送一次
+, 。
+uuid:device-UUID::urn:schemas-chns:registry-1-0
+嵌入式设备为中心节点时 为设备注册表服务发送一次 设
+, 。
+备 由厂商指定
+UUID
+62322 中心节点退网宣告
+....
+当中心节点退出时 应以组播方式传送 消息 宣告其离线 中心节点退网宣告消息采
+, ssdp:byebye , 。
+用以下格式
+:
+NOTIFY* HTTP/1.1
+HOST:239.255.255.250:1900
+设备或服务类型
+NT:
+NTS:ssdp:byebye
+UUID
+USN:
+信息包的 缺省为 并且可配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+22。
+表22 中心节点退网宣告消息
+消 息 说 明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+设备或服务类型 见 中 标头的要求值列表 必选
+NT: 6.2.3.2.1 NT
+通知子类型 应是 单一 必选
+NTS:ssdp:byebye 。 ssdp:byebye。 URI
+UUID 见以上 中 标头的要求值列表 必选
+USN: ssdp:aliveNOTIFY USN
+35
+GB/T302466—2013
+.
+当媒体设备以及控制点收到中心节点退网宣告消息或中心节点入网宣告超时时 可以认为网络中
+,
+无中心节点 并可以选择采用无中心节点的设备管理方式
+, 。
+6233 媒体设备注册与注销
+...
+62331 概述
+....
+当媒体设备上线并在第一次监听到中心节点的在线宣告时 需向中心节点单播一个注册消息提供
+,
+设备相关信息完成注册操作 并周期性的多播设备入网宣告 更新设备状态 当媒体设备退出网路时
+, , 。 ,
+可向中心节点单播一个注销消息 并多播退网宣告 告知媒体控制设备其退出网络 注册 注销流程如
+, , 。 /
+图 所示
+15 。
+图15 有中心节点的媒体设备注册/注销流程
+62332 媒体设备注册
+....
+当媒体设备及其服务上线时 需监听网络中心节点宣告 发现中心节点 并在第一次接收到中心节
+, , ,
+点宣告时 向中心节点单播一个注册消息 当中心节点监听到媒体设备的注册消息时 则添加设备信息
+, , ,
+到设备注册表 设备注册消息格式如表 所示
+, 23 。
+此外 如同无中心节点模式下的媒体设备入网宣告 有中心节点模式下的媒体设备也将周期性地通
+, ,
+过标准的组播 消息宣告其根设备和嵌入式设备与服务 当中心节点第一次接收
+ssdp:aliveNOTIFY 。
+到该媒体设备注册消息时 会提取媒体设备注册消息中的所有信息 如设备类型 设备 设备描述
+, , 、 UUID、
+文件 等 添加媒体设备到设备注册表中
+URL , 。
+NOTIFY* HTTP/1.1
+中心节点地址 端口号
+HOST: :
+宣告合法持续时间
+CACHE-CONTROL:max-age=
+设备描述文件
+LOCATION: URL
+设备或服务类型
+NT:
+NTS:ssdp:alive
+OSversion productversion
+SERVER: / UPnP/1.0 /
+UUID
+USN:
+信息包的 缺省为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+23。
+36
+GB/T302466—2013
+.
+表23 媒体设备注册消息
+消 息 说 明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+中心节点地址 端口号 中心节点网络地址 以及中心节点网络监听地址 必选
+HOST: : ,
+应包含 指宣告合法持续时间 如果超过此时间间隔 媒体
+max-age, 。 ,
+CACHE-CONTROL:max-age= 控制设别可以认为设备 或服务 不再可用 应大于等于 具 必选
+宣告合法持续时间 ( ) 。 1800s,
+体由厂商指定
+设备描述文件 设备描述文件的 在某些未受管理的网络中 主机可能
+LOCATION: URL。 ,URL 必选
+包含 地址而非域名 具体由厂商决定 单一
+URL IP 。 。 URL
+通知类型 应采用以下一种形式 单一
+。 。 URI。
+UPnP:rootdevice
+根设备发送一次
+。
+deviceUUID
+uuid: -
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceTypev
+urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次
+设备或服务类型 ( ) 。 必选
+NT: serviceTypev
+urn:schemas-UPnP-org:service: :
+每种服务发送一次
+。
+deviceTypev
+urn:domain-name:device: :
+每种设备 根设备或嵌入式设备 发送一次
+( ) 。Domainname,device
+和 由设备厂商指定
+type v 。
+serviceTypev
+urn:domain-name:service: :
+向每种服务发送一次 和 由设备厂商
+。Domainname,sevicetype v
+指定
+通知子类型 应为 单一 必选
+NTS:ssdp:alive , ssdp:alive, URI
+OSversion 由操作系统名称 操作系统版本 产品名称以及产品版本
+SERVER: / UPnP/1.0 、 、UPnP/1.0、 必选
+productversion 等信息串行组合的字符串 具体由厂商决定
+/ 。
+唯一服务名称 应是以下一种 前缀应与设备描述中的 元素
+。 。 UDN
+值相匹配 单一
+。 URI。
+deviceUUID
+uuid: - ::UPnP:rootdevice
+根设备发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID
+uuid: -
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceUUID deviceTypev
+uuid: - ::urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+UUID 指定 必选
+USN: 。
+deviceUUID serviceTypev
+uuid: - ::urn:schemas-UPnP-org:service: :
+每种服务发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID deviceTypev
+uuid: - ::urn:domain-name:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备
+( ) 。 UUID,
+和 由厂商指定
+domain-name,devicetype v 。
+deviceUUID serviceTypev
+uuid: - ::urn:domain-name:service: :
+每种服务发送一次 设备 和
+。 UUID,domain-name,servicetype v
+由厂商指定
+。
+方法发送的请求没有响应消息
+(NOTIFY )
+37
+GB/T302466—2013
+.
+62333 媒体设备注销
+....
+当媒体设备即将从网络中退出时 它为每一条 消息发送一条多播请求 以明确撤销其入
+, ssdp:alive ,
+网宣告消息 每个多播请求应采用 方法 并且 标头中的 告知媒体控制设
+。 NOTIFY , NTS ssdp:byebye,
+别其嵌入式设备和服务将不再可用
+。
+此外 在有中心节点的设备管理下 媒体设备还应需向中心节点单播一个注销消息 中心节点并在
+, , ,
+设备注册表上注销该设备 注销消息应采用 方法 并且 标头中的 采用以
+。 NOTIFY , NTS ssdp:byebye
+下格式
+:
+*
+NOTIFY HTTP/1.1
+中心节点地址 端口号
+HOST: :
+设备或服务类型
+NT:
+NTS:ssdp:byebye
+UUID
+USN:
+信息包的 缺省宜为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+24。
+表24 媒体设备注销消息格式
+消息 说明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+中心节点地址 端口号 中心节点网络地址 以及中心节点网络监听地址 必选
+HOST: : ,
+通知类型 应采用以下一种形式 单一
+。 。 URI。
+UPnP:rootdevice
+根设备发送一次
+。
+deviceUUID
+uuid: -
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceTypev
+urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次
+设备或服务类型 ( ) 。 必选
+NT:
+serviceTypev
+urn:schemas-UPnP-org:service: :
+每种服务发送一次
+。
+deviceTypev
+urn:domain-name:device: :
+每种设备 根设备或嵌入式设备 发送一次
+( ) 。Domainname,device
+和 由设备厂商指定
+type v 。
+serviceTypev
+urn:domain-name:service: :
+向每种服务发送一次 和 由设备厂商
+。Domainname,sevicetype v
+指定
+通知子类型 应是 单一 必选
+NTS:ssdp:byebye 。 ssdp:byebye。 URI
+38
+GB/T302466—2013
+.
+表24 续
+( )
+消息 说明 必选 可选
+/
+唯一服务名称 应是以下一种 前缀应与设备描述中的 元素
+。 。 UDN
+值相匹配 单一
+。 URI。
+deviceUUID
+uuid: - ::UPnP:rootdevice
+根设备发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID
+uuid: -
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+指定
+。
+deviceUUID deviceTypev
+uuid: - ::urn:schemas-UPnP-org:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备 由厂商
+( ) 。 UUID
+UUID 指定 必选
+USN: 。
+deviceUUID serviceTypev
+uuid: - ::urn:schemas-UPnP-org:service: :
+每种服务发送一次 设备 由厂商指定
+。 UUID 。
+deviceUUID deviceTypev
+uuid: - ::urn:domain-name:device: :
+每种设备 根设备或嵌入式设备 发送一次 设备
+( ) 。 UUID,
+和 由厂商指定
+domain-name,devicetype v 。
+deviceUUID serviceTypev
+uuid: - ::urn:domain-name:service: :
+每种服务发送一次 设备 和
+。 UUID,domain-name,servicetype v
+由厂商指定
+。
+方法发送的请求没有响应消息
+(NOTIFY )
+6234 媒体控制点的注册与注销
+...
+62341 概述
+....
+当一个媒体控制点上线时 首先需要监听组播端口 发现中心节点 媒体控制点在每次接收到中心
+, , 。
+节点宣告时 通过 消息向中心节点单播一个发送注册消息 相应的 当媒体控制点退
+, HTTPNOTIFY 。 ,
+出网络时 需向中心节点发送一个注销消息 具体流程如图 所示
+, 。 16 。
+图16 有中心节点模式下的媒体控制点注册/注销流程
+62342 媒体控制点注册
+....
+每当媒体控制点监听到中心节点宣告时 媒体控制点需向中心节点发送一个注册消息 并采用以下
+, ,
+39
+GB/T302466—2013
+.
+格式
+:
+NOTIFY* HTTP/1.1
+中心节点地址 端口
+HOST: :
+ControllPoint
+NT:
+NTS:ssdp:alive
+OSversion productversion
+SERVER: / UPnP/1.0 /
+信息包的 缺省宜为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+25。
+表25 媒体控制点注册消息
+消息 说明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+中心节点地址 端口 中心节点网络地址 以及中心节点网络监听地址 必选
+HOST: : ,
+通知类型 标明该设备为媒体控制点 取值应为ControllPoint 每
+ControllPoint , , 。 必选
+NT: 个媒体控制点发送一次
+通知子类型 应是 单一 必选
+NTS:ssdp:alive 。 ssdp:alive。 URI
+OSversion 由操作系统名称 操作系统版本 产品名称以及产品版本
+SERVER: / 、 、UPnP/1.0、 必选
+productversion 等信息串行组合的字符串 具体由厂商决定
+UPnP/1.0 / 。
+62343 媒体控制点注销
+....
+当媒体控制点离开网络时 可向中心节点发送 注销消息 告知中心节点将
+, ssdp:byebyeNOTIFY ,
+退出网络 从而在中心节点上注销 当中心节点在广播宣告后的有效时间内 没有收到媒体控制点的注
+, 。 ,
+册消息 则中心节点可以认为该媒体控制点离开了网络
+, 。
+当一个媒体控制点即将从网络中退出时 以明确撤销其注册消息 注销消息应采用 方
+, 。 NOTIFY
+法 采用以下格式
+, :
+NOTIFY* HTTP/1.1
+中心节点地址 端口
+HOST: :
+ControllPoint
+NT:
+byebye
+NTS:ssdp:
+信息包的 缺省宜为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+26。
+表26 媒体设备注销消息格式
+消息 说明 必选 可选
+/
+发送通知和事件消息的方法 基于 必选
+NOTIFY* HTTP/1.1 NOTIFY, , HTTP1.1
+中心节点地址 端口 中心节点网络地址 以及中心节点网络监听地址 必选
+HOST: : ,
+宣告设备标识符 通知类型 标明该设备为媒体控制点 取值应为
+ControllPoint , 。 , 必选
+NT: ControllPoint 每个媒体控制点发送一次
+。
+byebye 通知子类型 应是 byebye 单一 必选
+NTS:ssdp: 。 ssdp: 。 URI
+40
+GB/T302466—2013
+.
+6235 设备和服务发现
+...
+62351 流程概述
+....
+当一个媒体控制点上线时 首先需要监听组播端口 发现中心节点 然后可以通过向中心节点发送
+, , ,
+设备搜索消息或获取中心节点提供的设备注册表两种方式发现网络中存在设备与服务
+。
+媒体控制点发现网络中的设备与服务的流程如图 所示
+17 。
+当媒体控制点监听到中心节点宣告后 可以获知中心节点的基本信息 如设备 设备类型 服
+, , UUID、 、
+务类型 设备描述文件 等 媒体控制点需周期性的向中心节点发送注册消息 此时 媒体控制点
+、 URL , 。 ,
+有两种方法可以发现在中心节点上注册的媒体设备
+:
+向中心节点发送设备搜索指令 搜索感兴趣的设备
+a) , ;
+通过获取中心节点维护的设备注册表
+b) 。
+图17 媒体控制点的设备发现流程
+62352 设备搜索
+....
+当一个媒体控制点上线网络中时 它应该采用以下格式的 方法发送多播请求
+, M-SEARCH 。
+*
+M-SEARCH HTTP/1.1
+HOST:239.255.255.250:1900
+41
+GB/T302466—2013
+.
+MAN:"ssdp:discover"
+最大响应延迟
+MX:
+目标设备或服务类型
+ST:
+信息包的 宜缺省为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+27。
+表27 设备搜索请求
+消息 说明 必选 可选
+/
+对 进行扩展的命令行 定义的搜索请求方法 基
+SSDP HTTP ,SSDP , 必选
+M-SEARCH* HTTP/1.1 于
+HTTP1.1
+应为 必选
+HOST:239.255.255.250:1900 239.255.255.250:1900
+与 和 标头不同 标头的值采用双引号 应为
+NTS ST ,MAN 。 "ssdp: 必选
+MAN:"ssdp:discover"
+discover"
+响应延迟的最大时间 以 为单位 取值为 之间 收到请求
+, s , 1~120 。
+消息后 符合查找条件的设备应随机延迟 到 发出查找响应
+, 0 MXs ,
+最大响应延迟 这样可以为媒体控制点响应平衡网络负载 如果大量设备需要响 必选
+MX: 。
+应或如果网络延迟过长 那么该值应该适当增大 具体由厂商决
+, 。
+定 取整数
+。
+搜索目标 应是以下一种 如上 中的 标
+。 。( ssdp:aliveNOTIFY NT
+头 单一
+) URI。
+ssdp:all
+搜索所有设备和服务
+。
+UPnP:rootdevice
+只搜索根设备
+目标设备或服务类型 。 必选
+ST: deviceUUID
+uuid: -
+搜索特定 设备
+uuid 。
+deviceTypev
+urn:schemas-UPnP-org:device: :
+搜索特定设备类型的设备
+。
+serviceTyp v
+urn:schemas-UPnP-org:service: e:
+搜索具有特定类型服务的设备
+鉴于 的不可靠性 媒体控制点应多次发送每个 消息 因此 为了排除无法接收
+UDP , M-SEARCH 。 ,
+媒体控制点 消息的可能性 媒体设备应该定期重新发送其入网宣告信息 见表 中
+M-SEARCH , ( 3 ssdp:
+中包含的 标头
+aliveNOTIFY CACHE-CONTROL )。
+62353 设备搜索响应消息
+....
+当媒体设备以及中心节点接收设备搜索请求消息并符合搜索类型时 媒体设备以及中心节点须向
+,
+发送设备搜索请求消息的多播通道的源 地址与端口发送响应信息
+IP 。
+传送给 的响应消息遵循上述 相同的形式 处理将 标头改做
+M-SEARCH ssdp:aliveNOTIFY , NT
+标头 响应应采用以下格式发送
+ST 。 :
+HTTP/1.1200OK
+secondsuntiladvertisementexpires
+CACHE-CONTROL:max-age=
+响应生成时间
+DATE:
+EXT:
+42
+GB/T302466—2013
+.
+根设备设备描述文件
+LOCATION: URL
+OSversion productversion
+SERVER: / UPnP/1.0 /
+目标设备或服务类型
+ST:
+UUID
+USN:
+信息包的 宜缺省为 并且可以配置
+IP TTL 4, 。
+命令行与标头的详细信息见表
+28。
+表28 设备搜索响应
+消息 说明 必选 可选
+/
+命令行 必选
+HTTP/1.1200OK HTTP
+说明本设备可能的在线时间
+。
+应带有 指代宣告有效持续时间 如果超过此时间间隔 媒
+max-age, 。 , 必选
+CACHE-CONTROL: 体控制点可以认为设备 或服务 不再可用 宜大于
+( ) 。 1800s(30
+具体由厂商决定 取整数
+min)。 。
+可选
+响应生成时间 响应发生的日期 日期
+DATE: 。RFC1123 推荐
+( )
+确定 标头已经被理解 只限标头 无值 必选
+EXT: MAN ( , )
+根设备设备描 根设备设备描述的 在某些未受管理的网络中 主机可
+LOCATION: URL。 ,URL 必选
+述文件URL 能包含 地址 而非域名 具体由厂商决定 单一
+IP , 。 。 URL
+OSversion 包含操作系统名称 操作系统版本 产品名称以及产品版
+SERVER: / UPnP/ 、 、UPnP/1.0、 必选
+productversion 本等信息的串行字符串 具体由厂商决定 字符串
+1.0 / 。 。
+搜索目标 单一 请求中不同的 标头 对应的响应也不同
+。 URI。 ST , :
+ssdp:all
+如果根设备带有d种嵌入式设备与s种嵌入服务且只有k种不同
+服务类型 那么其响应次数为 d k 标头值应与采用
+, 3+2 + 。ST ss-
+的 消息中的 标头保持统一 单一
+dp:alive NOTIFY NT 。 URI。
+UPnP:rootdevice
+每个匹配的根设备响应一次 应是 单
+。 UPnP:rootdevice。
+一
+URI。
+deviceUUID
+uuid: -
+每个匹配的设备 根设备或嵌入式设备 响应一次 应是
+( ) 。 uuid:
+deviceUUID 设备 由厂商指定 单一
+- 。 UUID 。 URI。
+目标设备或服务类型 deviceTypev 必选
+ST: urn:schemas-UPnP-org:device: :
+每个匹配的设备 根设备或嵌入式设备 响应一次 应是
+( ) 。
+deviceTypev
+urn:schemas-UPnP-org:device: :。
+serviceTypev
+urn:schemas-UPnP-org:service: :
+每个匹配的服务类型响应一次 应是
+。 urn:schemas-UPnP-org:
+serviceTypev
+service: :。
+deviceTypev
+urn:domain-name:device: :
+每个匹配的设备 根设备或嵌入式设备 响应一次 域名
+( ) 。 (domain
+设备类型和版本由设备厂商定义
+name), 。
+serviceTypev
+urn:domain-name:service: :
+每个匹配的服务类型响应一次 域名 服务类型
+。 (domainname),
+和版本由设备厂商定义
+设备类型标识符
+。
+UUID 唯一服务名称 详见以上 中 标头要求 必选
+USN: 。( ssdp:aliveNOTIFY USN
+值列表 单一
+) URI
+43
+GB/T302466—2013
+.
+如果设备搜索请求出现错误 如 头字段存在无效值 或 头字段丢失 或其他错误内容 设
+, MAN , MX , ,
+备宜忽视该请求 而不建议发送错误响应消息
+, 。
+62354 获取设备注册表
+....
+中心节点需监听网络中的媒体设备 媒体控制点注册 注销消息 收集家庭网络中的设备与服务信
+, / ,
+息 生成设备注册表 并在中心节点服务描述文件中向媒体控制点提供获取 更新设备注册表等服务调
+, , 、
+用接口 相应的操作接口见
+, 6.3.6.1。
+媒体控制点获取了中心节点宣告以及中心节点的设备描述后 可以通过调用中心节点提供的设备
+,
+注册表相关服务索取设备注册表 获知在所有在中心节点注册的设备的基本信息 从而发现家庭多媒体
+, ,
+网络中存在的设备与服务 设备注册表具体格式符合 的规定
+。 GB/T30246.8 。
+62355 中心节点设备描述
+....
+中心节点描述可包括中心节点标志符 特定厂商 制造商信息 如模块名称和编号 序列号 制造商
+、 、 , 、 、
+名称 特定厂商网站 设备类型 中心节点服务描述文件 控制 等 采用 语法 遵
+、 URL、 、 URL、 URL , XML ,
+循标准的中心节点设备模版
+。
+中心节点设备描述模板符合 的规定
+GB/T30246.8 。
+62356 中心节点服务描述
+....
+服务描述包括一系列命令或操作 服务的响应与每种动作的参数或变量 服务描述还包括一系列
+, 。
+变量 这些变量描述了服务运行时的状态 其中包括数据类型 取值范围和事件特性的描述 本部分说
+。 , 、 。
+明了操作描述 变量 状态变量 以及这些变量的性质 中心节点的服务描述包含获取 更新设备注册表
+、 、 , 。 、
+等相关的接口 定义了这些接口的入口参数以及出口参数 变量属性等内容 中心节点服务描述模版
+, 、 。 ,
+符合 的规定
+GB/T30246.8 。
+62357 媒体设备的设备描述
+....
+符合 关于设备描述的规定
+6.2.2.4.4 。
+62358 媒体设备的服务描述
+....
+符合 关于服务描述的规定
+6.2.2.4.5 。
+6236 调用操作
+...
+符合 关于调用操作的规定
+6.2.2.5 。
+6237 事件触发
+...
+符合 关于事件触发的规定
+6.2.2.6 。
+63 媒体管理
+.
+631 概述
+..
+媒体管理提供发布 识别 管理和传输媒体内容的功能 这些功能通过媒体控制点 和
+、 、 。 、MSD MRD
+三种逻辑实体的交互来实现 媒体管理模型如图 所示
+。 18 。
+44
+GB/T302466—2013
+.
+图18 媒体管理模型
+和媒体播放器上具有识别 呈现和传输媒体内容的相关资源 这些资源由媒体控制点负责调
+MSD 、 ,
+用或触发 媒体控制点控制媒体传输的过程 但其本身并不参与媒体内容的处理
+; , 。
+本部分还定义了由 和 提供的四种服务 以及 以及中心节点扩展
+MSD MRD :CDS、CMS、AVT RCS
+服务
+。
+其中每种服务包含多种可调用的操作 包括可选操作和必选操作 每种服务包含的操作见
+, 。 6.3.2~
+6.3.7。
+632 内容目录服务
+..
+为媒体控制点提供了列举 上各种可用的媒体内容 视频 音频和图片等 的能力
+CDS MSD ( 、 ) 。
+该服务的一个主要操作是 媒体控制点通过调用该操作可以获取 上各项媒体内容
+Browse(); MSD
+的详细信息 包括名称 艺术家 创建日期 大小等 该信息包含在元数据 中 另外该操作返
+, 、 、 、 ; (meta-data) 。
+回的元数据标识中还包含 对特定媒体内容所支持的传输协议和数据格式信息 媒体控制点可以
+MSD ;
+利用该信息判断当前 是否具有播放该媒体内容的能力 的主要操作如表 所示
+MRD 。CDS 29 。
+表29 内容目录服务 CDS 主要操作
+( )
+操作名称 说明 必选 可选
+/
+返回指示媒体控制点所支持的搜索能力的变量参数 必选
+GetSearchCapabilities
+返回媒体控制点用于对搜索或浏览服务结果进行排序的特定参数 必选
+GetSortCapabilities
+返回一个反映 中属性有所变化的参数 必选
+GetSystemUpdateID CDS
+浏览媒体设备的内容目录对象结构 必选
+Browse
+对媒体设备的内容目录搜索符合特定搜索条件的对象 搜索条件通
+;
+常由代表某种属性的查询字符串结合比较运算符或逻辑运算符 可选
+Search
+构成
+创建一个用于启动新的 所需的对象 返回一个独有的对象标识
+CDS , 可选
+CreateObject 和对象描述
+45
+GB/T302466—2013
+.
+表29 续
+( )
+操作名称 说明 必选 可选
+/
+删除媒体设备内容目录中的某个对象 该对象一经删除其子目录的
+; 可选
+DestroyObject 所有对象也被同时删除
+更新媒体设备内容目录下的某个对象 包括修改 删除或添加该对
+, 、 可选
+UpdateObject 象的元数据信息
+用于从源端传送一个媒体文件到目的端 其源端和目的端分别由各
+,
+自的 地址指定 该操作返回一个传输序列号 用于启动 可选
+ImportResource URI ; , HTTP
+传输过程
+GET
+用于从源端传送一个媒体文件到目的端 其源端和目的端分别由各
+,
+自的 地址指定 该操作返回一个传输序列号 用于启动 可选
+ExportResource URI ; , HTTP
+传输过程
+POST
+用于终止由 或 启动的传输过程 可选
+StopTransferResource ImportResource() ExportResource()
+用于查询由 或 启动的传输进程 可选
+GetTransferProgress ImportResource() ExportResource()
+用于删除媒体设备内容目录中某一对象的媒体资源信息
+(<res> 可选
+DeleteResource 信息
+)
+用于对内容目录项生成参考信息项 该操作返回一个新的项目标
+; 可选
+CreateReference 识
+NewID
+操作详细定义及参数应符合 的相关规定
+ISO/IEC29341-3:2008 。
+633 连接管理服务
+..
+用于管理特定设备之间建立媒体传输的连接过程
+CMS 。
+对于 该服务最主要的操作是 通过调用该操作媒体控制点可以指
+MSD, PrepareForConnection()。
+示 为媒体传输做准备 媒体控制点利用该操作返回的例程标识 通过
+MSD 。 (InstanceID), AVT
+可以对媒体内容的传输过程实施控制 包括终止 暂停 快进等
+(AVTransportservice) ( 、 、 )。
+允许 同时与多个 连接 通过 区分各个连接 每个 标识与一
+CMS MSD MRD , InstanceID , InstanceID
+个特定 的连接
+MRD 。
+对于 最主要的操作是 媒体控制点通过调用该操作可以列举
+MRD,CMS GetProtocolInfo()。 MRD
+所支持的传输协议与数据格式 从而进一步判断该 是否有能力播放给定的媒体内容
+, MRD 。
+可以支持 操作 通过调用该操作媒体控制点可以指示 为媒
+MRD PrepareForConnection() 。 MRD
+体传输做准备 该操作产生一个唯一的连接标识 媒体控制点利用该操作返回的例程
+; (ConnectionID)。
+标识 通过 可以对媒体内容的传输过程实施控制 包括终止
+(InstanceID), AVT(AVTransportservice) ( 、
+暂停 快进等 此外 该操作返回一个唯一的播放控制例程标识 媒体
+、 )。 , (RenderingControlInstanceID),
+控制点利用该标识可以对 的播放属性 包括亮度 对比度 音量等 进行控制
+MRD ( 、 、 ) 。
+媒体控制点通过调用 操作终止一个连接
+ConnectionComplete() 。
+的主要操作如表 所示
+CMS 30 。
+46
+GB/T302466—2013
+.
+表30 连接管理服务 CMS 主要操作
+( )
+操作名称 说明 必选 可选
+/
+返回媒体设备当前的协议相关信息 必选
+GetProtocolInfo
+返回当前存在的连接号列表 必选
+GetCurrentConnectionIDs
+返回指定连接号下的连接相关信息 必选
+GetCurrentConnectionInfo
+指示媒体内容的接收或发送设备建立连接 该操作返回即将进行的
+; 可选
+PrepareForConnection 传输连接号和传输序列号
+用于媒体控制点指示由 建立的连接资源可
+PrepareForConnection() 可选
+ConnectionComplete 以释放 即连接结束
+,
+操作详细定义及参数应符合 的相关规定
+ISO/IEC29341-3:2008 。
+634 音视频传输服务
+..
+通过该服务媒体控制点可以对播放过程及媒体流进行控制 包括终止 暂停 快进等 对
+, 、 、 。AVT
+及 都是可选服务
+MSD MRD 。
+主要操作见表
+AVT 31。
+表31 音视频传输服务 AVT 主要操作
+( )
+操作名称 说明 可选 必选
+/
+用于指定一个 例程所控制的媒体资源 必选
+SetAVTransportURI AVT URI
+返回某个指定例程的当前媒体信息 必选
+GetMediaInfo
+返回某个指定例程相关的传输状态信息 必选
+GetTransportInfo
+返回某个指定例程的传输位置相关信息 必选
+GetPositionInfo
+返回某个指定例程的控制功能组件信息 如支持的播放 录制格式
+, 、 , 必选
+GetDeviceCapabilities 以及支持的录制质量等级等
+返回某个指定例程的设定信息 包括当前的播放模式 当前的录制
+, 、 必选
+GetTransportSettings 质量模式等
+终止某个指定例程的当前媒体资源的进程 必选
+Stop
+对某个指定例程的媒体资源以指定的速率 播放模式由当前位置开
+、
+始进行播放 直到媒体资源播放完毕或接到 或 操作时播 必选
+Play , Stop Pause
+放结束
+对指定例程的媒体资源搜索到指定位置 对基于磁盘介质的媒体资
+;
+源该操作可以搜索指定的曲目 对基于磁带介质的媒体资源该操作 必选
+Seek ,
+相当于快进或快倒
+对指定例程的媒体资源推进到下一个曲目 必选
+Next
+对指定例程的媒体资源退回到上一个曲目 必选
+Previous
+用于指定当前 例程所控制的下一个媒体资源 可选
+SetNextAVTransportURI AVT URI
+暂停某个指定 例程的当前媒体资源的进程 可选
+Pause AVT
+47
+GB/T302466—2013
+.
+表31 续
+( )
+操作名称 说明 可选 必选
+/
+对指定 例程的当前媒体资源进行录制 可选
+Record AVT
+对指定的 例程设定播放模式 可选
+SetPlayMode AVT
+对指定的 例程设定录制质量模式 可选
+SetRecordQualityMode AVT
+返回当前 例程下的操作状态变量 可选
+GetCurrentTransportActions AVT
+操作详细定义及参数应符合 的相关规定
+ISO/IEC29341-3:2008 。
+635 播放控制服务
+..
+为媒体控制点提供了控制 播放属性 包括亮度 对比度 音量 静音等 的能力 并为
+RCS MRD ( 、 、 、 ) ,
+提供了融合多项媒体内容的功能 如画中画
+MRD ( )。
+的主要操作见表
+RCS 32。
+表32 播放控制服务 RCS 主要操作
+( )
+操作名称 说明 必选 可选
+/
+返回指定例程当前的预设项名称列表 该预设项包括静态的预设和
+; 必选
+ListPresets 动态创建 用户定义 的预设
+( )
+重置指定例程中指定预设项的状态变量值 必选
+SelectPreset
+返回指定例程中的亮度状态变量值 可选
+GetBrightness
+设定指定例程中的亮度状态变量值 可选
+SetBrightness
+返回指定例程中的对比度状态变量值 可选
+GetContrast
+设定指定例程中的对比度状态变量值 可选
+SetContrast
+返回指定例程中的锐度状态变量值 可选
+GetSharpness
+设定指定例程中的锐度状态变量值 可选
+SetSharpness
+返回指定例程中的红色视频增益状态变量值 可选
+GetRedVideoGain
+设定指定例程中的红色视频增益状态变量值 可选
+SetRedVideoGain
+返回指定例程中的绿色视频增益状态变量值 可选
+GetGreenVideoGain
+设定指定例程中的绿色视频增益状态变量值 可选
+SetGreenVideoGain
+返回指定例程中的蓝色视频增益状态变量值 可选
+GetBlueVideoGain
+设定指定例程中的蓝色视频增益状态变量值 可选
+SetBlueVideoGain
+返回指定例程中的红色视频黑电平增益状态变量值 可选
+GetRedVideoBlackLevel
+设定指定例程中的红色视频黑电平增益状态变量值 可选
+SetRedVideoBlackLevel
+返回指定例程中的绿色视频黑电平增益状态变量值 可选
+GetGreenVideoBlackLevel
+设定指定例程中的绿色视频黑电平增益状态变量值 可选
+SetGreenVideoBlackLevel
+返回指定例程中的蓝色视频黑电平增益状态变量值 可选
+GetBlueVideoBlackLevel
+设定指定例程中的蓝色视频黑电平增益状态变量值 可选
+SetBlueVideoBlackLevel
+48
+GB/T302466—2013
+.
+表32 续
+( )
+操作名称 说明 必选 可选
+/
+返回指定例程中的色温状态变量值 可选
+GetColorTemperature
+设定指定例程中的色温状态变量值 可选
+SetColorTemperature
+返回指定例程中的水平梯形校正状态变量值 可选
+GetHorizontalKeystone
+设定指定例程中的水平梯形校正状态变量值 可选
+SetHorizontalKeystone
+返回指定例程中的垂直梯形校正状态变量值 可选
+GetVerticalKeystone
+设定指定例程中的垂直梯形校正状态变量值 可选
+SetVerticalKeystone
+返回指定例程中指定频道的静音状态变量值 可选
+GetMute
+设定指定例程中指定频道的静音状态变量值 可选
+SetMute
+返回指定例程中指定频道的音量状态变量值 可选
+GetVolume
+设定指定例程中指定频道的音量状态变量值 可选
+SetVolume
+返回指定例程中指定频道的音量分贝状态变量值 可选
+GetVolumeDB
+设定指定例程中指定频道的音量分贝状态变量值 可选
+SetVolumeDB
+返回指定例程中指定频道的音量分贝范围状态变量值 可选
+GetVolumeDBRange
+返回指定例程中指定频道的响度状态变量值 可选
+GetLoudness
+设定指定例程中指定频道的响度状态变量值 可选
+SetLoudness
+操作详细定义及参数应符合 的相关规定
+ISO/IEC29341-3:2008 。
+636 中心节点扩展服务
+..
+6361 设备注册表服务
+...
+当网络中存在中心节点时 设备注册表服务为媒体控制点提供了获取和查询设备注册表的能力 通
+, ,
+过该服务媒体控制点可以获取在中心节点上注册的媒体设备 相关的操作接口见表
+。 33。
+表33 媒体资源列表服务
+操作名称 说明 可选 必选
+/
+获取中心节点维护的设备注册表 必选
+X_GetRegistry
+获取设备注册信息 必选
+X_GetRegistryByDeviceID
+获取设备注册表同步信息 必选
+X_SynchroniseRegistry
+获取相应设备的状态 必选
+X_GetStatus
+操作接口详细信息 应符合 的相关规定
+, GB/T30246.8 。
+6362 媒体资源列表服务
+...
+当网络中存在中心节点时 中心节点会周期性的获取网络中 的内容目录 根据内容目录的内
+, MSD ,
+容生成全网络的媒体资源列表 并为媒体控制点提供获取该列表的操作接口 见表
+, 。 34。
+49
+GB/T302466—2013
+.
+表34 媒体资源列表服务
+操作名称 说明 必选 可选
+/
+浏览中心节点维护的内容目录对象结构 可见 中 必选
+CDS:Browse , 6.3.2 CDS。
+该服务典型操作流程示意图见图
+19:
+中心节点周期性的浏览 上的媒体资源信息 通过调用家庭网络内部 的
+a) MSD [ MSD CDS:
+服务来实现
+Browse() ];
+中心节点根据从 上获取的资源列表 对家庭网络内部的媒体资源信息进行整理和更新
+b) MSD , ,
+并生成媒体资源列表 该列表的资源项目至少包含媒体资源名称以及媒体资源出处
+, ;
+媒体控制点通过调用中心节点提供的媒体资源列表服务 获取家庭网络内部的资源列表 获知
+c) , ,
+家庭网络内部的所有媒体资源信息以及存储对应媒体资源的
+MSD;
+中心节点接收到媒体控制点获取媒体资源列表的请求 返回当前维护的最新的媒体资源列表
+d) , 。
+图19 媒体资源列表服务操作参考流程
+6363 媒体资源搜索服务
+...
+为了媒体控制点可以更快的查找到需要的媒体资源 中心节点为媒体控制点提供全网络的媒体资
+,
+源搜索服务 并为媒体控制点提供搜索资源的操作接口 见表
+, 。 35。
+表35 媒体资源搜索服务
+操作名称 说明 必选 可选
+/
+对中心节点的媒体资源搜索符合特定搜索条件的对象 搜索条件通
+;
+常由代表某种属性的查询字符串结合比较运算符或逻辑运算符构 必选
+CDS:Search
+成 可见 内容目录服务
+, 6.3.2
+典型操作流程示意图如图 所示
+20 :
+中心节点周期性的浏览 上的媒体资源信息 通过调用家庭网络内部 的
+a) MSD [ MSD CDS:
+50
+GB/T302466—2013
+.
+服务来实现
+Browse() ];
+中心节点根据从 上获取的资源列表 对家庭网络内部的媒体资源信息进行整理和更新
+b) MSD , ,
+并生成媒体资源列表 该列表的资源项目至少包含媒体资源名称以及媒体资源出处
+, ;
+媒体控制点调用中心节点提供的媒体资源全局搜索服务 向中心节点发送媒体资源全局搜索
+c) ,
+请求
+;
+中心节点根据媒体控制点的媒体资源全局搜索请求 查询全局媒体资源列表
+d) , ;
+中心节点返回全局媒体资源搜索结果
+e) 。
+图20 媒体资源搜索服务典型操作流程
+637 媒体管理模块与媒体管理服务
+..
+和 设备所支持的媒体管理服务不同 如表 表 所示
+MSD MRD , 36~ 38 。
+表36 MSD支持的媒体管理服务
+操作名称 必选 可选
+/
+必选
+CDS(ContentDirectory:1)
+必选
+CMS(ConnectionManager:1)
+可选
+AVT(AVTransport:1)
+表37 MRD支持的媒体管理服务
+操作名称 可选 必选
+/
+必选
+RCS(RenderingControl:1)
+必选
+CMS(ConnectionManager:1)
+必选
+AVT(AVTransport:1)
+51
+GB/T302466—2013
+.
+表38 中心节点支持的媒体管理服务
+操作名称 可选 必选
+/
+设备注册表服务 必选
+媒体资源列表服务 必选
+媒体资源搜索服务 可选
+必选
+CDS(ContentDirectory:1)
+推荐
+CMS(ConnectionManager:1)
+可选
+AVT(AVTransport:1)
+638 媒体管理实例
+..
+参见附录
+B。
+64 媒体传输
+.
+媒体传输包含三种从媒体源到接收端的传输模式
+:
+流传输 指媒体源和媒体接收端都以一个固定速率传输及接收媒体内容的传输模式 该传输速
+a) , ,
+率为媒体内容的编码速率 音视频中音频或视频的速率 对播放系统要求的时钟频率 媒体内
+( ) ;
+容可以实时地在媒体接收端上播放 也可以在媒体接收端存储后进行播放 流传输对应的
+, ; QoS
+等级是
+DLNAQOS_2;
+交互式传输 指媒体内容不要求以特定时序进行传输 其优先级低于流传输 一般图像信息或
+b) , , ,
+打印文件的传输 交互式传输对应的 等级是
+; QoS DLNAQOS_1;
+后台传输 指媒体内容以最低优先级进行的非实时传输 最典型的是数据文件的上传和下载
+c) , ; ;
+后台传输对应的 等级是
+QoS DLNAQOS_0。
+上述三种传输模式在家庭多媒体与数据网络应用模型的对应关系见表
+39。
+表39 媒体传输模式与应用模型的典型对应关系
+媒体传输模式 音视频 音频 图像 打印文件
+XHTML
+媒体推送 流传输 流传输 交互式传输
+—
+媒体点播 流传输 流传输 交互式传输
+—
+第三方控制的媒体
+流传输 流传输 交互式传输
+共享 —
+下载 流传输 后台传输 流传输 后台传输 后台传输
+/ / —
+上传 后台传输 后台传输 后台传输
+—
+点对点打印 交互式传输 后台传输 交互式传输 后台传输
+— — / /
+第三方控制的打印 交互式传输 后台传输 交互式传输 后台传输
+— — / /
+在家庭网络中提供和播放媒体内容的家庭联网设备应支持 协议 可支持 协议
+HTTP , RTP 。
+媒体传输模式由媒体源 决定 媒体传输模式信息包含在媒体管理消息中的
+(MSD) 。 DLNA.ORG_
+参数中 可以通过调用媒体管理服务获取媒体传输模式信息 详细规定见
+FLAGS ,MRD , IEC62481-1:
+根据传输模式决定采取相应的 或 传输方式获取媒体内容
+2007。MRD HTTP RTP 。
+52
+GB/T302466—2013
+.
+对于点对点的应用模型 带有控制终端功能的 可以调用 的 操作 通过该
+, MRD MSD CDS:Browse ,
+操作的响应消息获得特定媒体内容的相关信息 其 消息体中的 参数包含了
+, <res> DLNA.ORG_FLAGS
+媒体内容的传输模式 获取媒体传输模式的流程 点对点 如图 所示
+。 ( ) 21 。
+图21 媒体传输模式的获取 点对点
+( )
+对于有第三方 媒体控制点 控制的应用模型 控制终端调用 的 操作并获取相
+( ) , MSD CDS:Browse
+应媒体内容的 信息体后 在调用 的 操作时会将 消息体转发给
+<res> , MRD AVT:SetTransportURI <res>
+从而 获取了媒体内容的传输模式 获取媒体传输模式的流程 第三方控制 如图 所示
+MRD, MRD 。 ( ) 22 。
+图22 媒体传输模式的获取 第三方控制
+( )
+65 媒体格式
+.
+为了保证设备间的互操作性 同时兼顾现有内容资源 媒体格式包括必选和可选格式集 媒体格式
+, , 。
+的详细规定符合 的相关规定
+GB/T30246.4 。
+66 服务质量 QoS
+. ( )
+多媒体传输与共享可支持一定的 机制 以便进行有效的流媒体传输 这就要求设备能够支持
+QoS , 。
+一定的服务优先级 并且含有服务优先级的标识能否在设备间进行交互
+, 。
+等级与媒体内容的传输模式相对应 缺省情况下的优先级等级为 即默认的传
+QoS , DLNAQOS_2,
+输模式为流传输
+。
+本部分可支持包括 和 在内的底层 机制 其与应用层 等级的对应关
+802.1q,WMM DSCP QoS , QoS
+系如表 所示
+40 。
+53
+GB/T302466—2013
+.
+表40 多媒体传输与共享可支持的底层QoS等级
+等级 传输消息类型 等级 等级 等级
+QoS 802.1q WMM DSCP
+内容接受方发出的 消息
+DLNAQOS_3 RTCP
+最高 连接保护交互消息 7 VO 0x38
+( ) DLNA
+音频流媒体传输
+流媒体控制消息
+UPnPAVTransport
+DLNAQOS_2 内容源发出的 消息 5 VI 0x28
+RTCP
+消息
+RTSP
+默认 等级
+QoS
+DLNAQOS_1 交互式传输 0 BE 0x00
+背景传输
+DLNAQOS_0
+最低 1 BK 0x08
+( )
+7 多媒体网络与控制网络跨网应用
+71 概述
+.
+根据 在家庭网络中可能有多媒体网络与控制网络同时存在的情况 需要相应的规
+GB/T30246.1, ,
+程支持跨网通信 即不同网络之间设备与服务的相互发现相互操作 本章规定了控制网络与多媒体与
+, 。
+数据网络的跨网通信协议
+。
+家庭网络中多媒体网络与控制网络之间跨网通信的典型例子是 通过多媒体子网的控制终端 如便
+, (
+携式个人计算机和便携式手持终端 实现对家庭控制网络终端设备的控制操作 多媒体网络与控制网
+), 。
+络子网的跨网通信的网络结构如图 所示
+23 。
+图23 跨控制子网网络结构图
+多媒体网络的控制终端需通过控制网关 才能对家庭控制网络内的终端设备进行操作 控制网关同
+, 。
+时连接控制网络与多媒体网络 在多媒体网络与控制网络的通信中提供协议转换 设备管理 网络管理以
+, 、 、
+及各种控制服务 除此之外 控制网关负责管理家庭控制网络 控制网网络通信协议符合
+。 , , GB/T30246.7
+的规定
+。
+控制网关应支持第 章的多媒体与数据网络通信协议 控制网关需建立控制网络的设备注册表并在
+6 。
+其设备描述文件中提供设备注册表 以及缓存设备描述文件并在设备注册表中提供对应设备的设备
+URL,
+描述文件 为控制子网外设备提供设备与服务发现以及服务调用功能 相关规定符合本部分的规定
+URL, , 。
+72 设备类型
+.
+721 概述
+..
+在跨多媒体网络与控制网络通信协议中 根据设备功能分为 类 控制终端 多媒体网络 控制网
+, 3 : ( )、
+关以及终端设备 控制网络
+( )。
+54
+GB/T302466—2013
+.
+722 控制终端
+..
+控制终端的作用是通过控制网关操作配置终端设备 通常控制终端通过图形用户界面直接面向用
+,
+户 由用户完成操作过程 控制终端具体功能如下
+, 。 :
+通过控制网关发现控制网络提供的控制服务或终端设备
+a) ;
+能够对根据工作模式对控制网络终端设备进行操作
+b) 。
+723 控制网关
+..
+控制网关是管理家庭控制网络 具有协议转换 网络地址转换 描述文件转换 可选 等能力的功能
+, 、 、 ( )
+设备 具体功能如下
+。 :
+网络地址转换 控制网关需要生成网络地址映射表 主要记录控制终端网络地址到控制网络网
+a) : ,
+络地址转换 以及终端设备的网络地址到多媒体网络网络地址转换
+, ;
+协议转换 控制网关为控制终端与终端设备间的通信提供协议转换功能 桥接多媒体网络与控
+b) : ,
+制网络
+;
+报文转发 在基本模式下 监听控制网络终端设备以及控制终端的报文 根据网络地址映射表
+c) : , , ,
+进行相应转发
+;
+设备映射 在扩展模式下 控制网关为多媒体网络一个普通媒体设备并把控制网络终端设备提
+d) : ,
+供的控制操作映射为控制网关的控制服务 并在服务描述文件中向媒体控制点提供服务接口
+, ;
+代理操作 在扩展模式下 解析来自控制终端的控制指令 对相应的终端设备进行控制操作
+e) : , , 。
+724 终端设备
+..
+控制网络终端设备需符合 的规定
+GB/T30246.4 。
+73 应用模型
+.
+跨多媒体网络与控制网络通信应用模型 如图 所示 该应用模型定义了多媒体网络控制终端通
+, 24 。
+过控制网关控制家庭控制网络中的终端设备 流程如下
+, :
+控制终端向控制网关传输控制操作指令
+a) ;
+控制网关解析指令对控制网络终端设备进行相应的操作
+b) 。
+图24 跨多媒体网络与控制网络的应用模型
+55
+GB/T302466—2013
+.
+74 工作模式
+.
+741 概述
+..
+多媒体网络与控制网络的跨网通信可选支持两种工作模式其中一种 基本模式和扩展模式
+: 。
+742 基本模式
+..
+7421 概述
+...
+在基本模式下 控制终端需支持控制网络通信协议 能够解析经过 封装的控制网络通信协议报
+, , IP
+文 控制终端通过控制网关实现多媒体数据网络协议到控制网络协议的转换 如多媒体网络内的控制
+。 ,
+终端 在发现控制网络电冰箱的存在以及操作指令时 可以直接通过 数据报传输操作指令给控制网
+, , IP
+关 控制网关根据控制网络通信协议转发给相应的终端设备 通信协议转化如图 所示
+, , 25 。
+图25 基本模式协议转换图
+控制网关在加入家庭多媒体网络后 需支持多媒体网络内部设备管理办法 见 并在其设备描述
+, , 6.2,
+文件中标识支持基本模式 多媒体网络控制终端可通过 数据报传输控制网络指令给控制网关 由控
+。 IP ,
+制网关进行控制操作
+。
+在基本模式下 控制网关通过实现多媒体网络通信协议底层协议与控制网络通信协议底层协议的
+,
+转换 使控制终端成为一个模拟的控制网络控制器 从而可以发现终端设备并对终端设备进行操作
+, , 。
+控制网络设备与服务发现机制符合 的规定
+GB/T30246.7 。
+家庭多媒体网络控制终端根据 设备管理机制发现并获取控制网关设备描述文件后 获知控制
+6.2 ,
+网关工作于基本模式后 控制终端需解析来自控制网关的报文
+。 。
+7422 跨网协议转换
+...
+控制网关需为控制终端与终端设备的通信进行协议转换 协调双方通信 协议转换图可参见图
+, , 26。
+7423 网络地址转换
+...
+控制网关应为控制终端与终端设备的通信建立两张网络地址映射表 控制终端在控制网络的地址
+:
+映射表和终端设备在多媒体网络地址映射表
+。
+56
+GB/T302466—2013
+.
+控制网关应把控制终端 地址端口号映射到空闲的控制网络地址 供终端设备向控制终端传输信
+IP ,
+息时使用
+。
+控制网关应把终端设备网络地址映射为 地址 并为其分配空闲的端口号 供控制终端向终端设
+IP , ,
+备发送控制指令时使用
+。
+7424 报文转发
+...
+控制网关具有连接家庭多媒体网络与家庭控制网络的功能 为控制终端与终端设备间的跨网通信
+,
+报文提供转发功能
+。
+当控制网关在接收到来自多媒体网络的控制报文时 为该报文进行协议转换 查询控制终端的地址
+, ,
+映射表 转发给相应的终端设备
+, 。
+当控制网关接收到来自终端设备的报文时 查询网络地址映射表 如目的地址为控制终端映射在控
+, ,
+制网络的网络地址 则进行协议转换并转发给相应的控制终端 否则作控制网络内部通信处理
+, , 。
+743 扩展模式
+..
+7431 概述
+...
+在扩展模式下 控制终端仅需要支持多媒体通信协议 控制网关集中管理控制网络 并给控制终端
+, , ,
+提供各个设备控制服务的多媒体网络服务调用接口 如图 所示 家庭网络内部互联网关具有连接多
+。 27 ,
+媒体数据网络与控制网络的功能
+。
+控制网关会对控制网络设备的二进制设备描述文件转化成 格式的设备描述文件 并缓存在
+XML ,
+控制网关上 提供给控制终端 此外 控制网关可以代理控制终端进行控制操作 控制终端仅需要支持
+, 。 , ,
+多媒体数据网络通信协议 协议转换如图 所示
+。 26 。
+图26 扩展模式下协议转换图
+在扩展模式下 控制网关为家庭多媒体数据子网设备 并把控制子网内设备提供的控制操作映射为
+, ,
+控制网关的嵌入服务 模型图如图 所示
+。 27 。
+57
+GB/T302466—2013
+.
+图27 扩展模式模型图
+7432 设备映射
+...
+控制网关管理控制子网 获知设备功能 设备状态等 并通过一定映射规则把控制子网内设备映射
+, 、 ,
+为控制网关的服务 生成对应设备的服务描述文件 加入多媒体网络
+, , 。
+7433 入网宣告
+...
+控制网关作为家庭多媒体网络一个根设备 为控制子网终端设备映射的服务在多媒体网络中多播
+,
+入网宣告 例如控制子网内有n个设备 映射为控制网关n个服务 则控制网关需周期性为控制网络发
+, , ,
+送 n个入网宣告 即控制网关的入网宣告以及n种服务的入网宣告 如图 所示 控制终端可以
+3+ , , 28 。
+根据入网宣告发现控制网关以及控制子网提供的服务 入网宣告消息格式参照
+, 6.2.2.2。
+图28 扩展模式入网宣告
+58
+GB/T302466—2013
+.
+7434 设备和服务发现
+...
+具体内容参见
+6.2.2.4。
+7435 调用操作
+...
+控制网关承载着代理控制终端控制家庭控制网络设备的功能 控制终端通过控制网关获取了感兴
+,
+趣的控制设备对应设备描述以及服务描述后 可以通过家庭网络内部互联网关设备控制模块对在家庭
+,
+网络内部互联网关上注册的设备进行控制
+。
+在扩展模式下 控制终端调用操作见 控制终端可向控制网关的控制 发送服务调用
+, 6.2.2.5。 URL
+信息 控制网关向相应的终端设备发出操作指令 并返回操作结果 此外 控制网关可以对操作信息进行
+, , , ,
+记录
+。
+控制网关支持扩展模式下 控制终端发现终端设备 并通过控制网关控制终端设备的流程见图
+, , 29:
+图29 扩展模式下设备控制实例
+终端设备根据在控制网关上进行注册 并提供二进制设备描述文件 控制网关根据终端设备的
+a) , ;
+设备描述文件进行映射 产生并缓存对应终端设备控制服务的服务描述文件
+, ;
+控制网关支持多媒体与数据网络通信协议 在多媒体数据网络中组播入网宣告
+b) , ;
+根据入网宣告的设备描述文件 利用 消息可以获取控制网关的设备描述
+c) URL, HTTPGET
+59
+GB/T302466—2013
+.
+文件
+;
+解析控制网关设备描述文件 可以获取控制网关的控制服务以及服务描述 如发现需要
+d) , URL;
+的控制服务 可以根据该服务描述文件 利用 消息获取该控制服务的服务
+, URL, HTTPGET
+描述文件
+;
+利用 调用操作的内容 向控制网关进行服务调用
+e) 6.2.2.5 , ;
+控制网关支持对终端设备进行相应的操作
+f) ;
+控制网关根据操作结果 返回结果给控制终端
+g) , 。
+60
+GB/T302466—2013
+.
+附 录 A
+资料性附录
+( )
+媒体管理服务相关操作参数
+A1 内容目录服务 CDS 的操作参数
+. ( )
+A11 GetSearchCapabilities
+..
+必选
+。
+请求
+< >
+无
+。
+应答
+< >
+GetSearchCapabilities(SearchCaps)
+A12 GetSortCapabilities
+..
+必选
+。
+请求
+< >
+无
+。
+应答
+< >
+GetSortCapabilities(SortCaps)
+A13 GetSystemUpdateID
+..
+必选
+。
+请求
+< >
+无
+。
+应答
+< >
+GetSystemUpdateID(Id)
+A14 Browse
+..
+必选
+。
+请求
+< >
+Browse(ObjectID,BrowseFlag,Filter,StartingIndex,RequestedCount,SortCriteria,Null,
+Null,Null,Null)
+应答
+< >
+Browse(Null,Null,Null,Null,Null,Null,Result,NumberReturned,TotalMatches,Up-
+dateID)
+A15 Search
+..
+可选
+。
+请求
+< >
+Search(ContainerID,SearchCriteria,Filter,StartingIndex,RequestCount,SortCriteria,Null,
+61
+GB/T302466—2013
+.
+Null,Null,Null)
+应答
+< >
+Search (Null,Null,Null,Null,Null,Null,Result,NumberReturned,TotalMatches,Up-
+dateID)
+A16 CreateObject
+..
+可选
+。
+请求
+< >
+CreateObject(ContainerID,Elements,Null,Null)
+应答
+< >
+CreateObject(Null,Null,ObjectID,Result)
+A17 DestroyObject
+..
+可选
+。
+请求
+< >
+Object(ObjectID)
+应答
+< >
+无
+。
+A18 UpdateObject
+..
+可选
+。
+请求
+< >
+UpdateObject(ObjectID,CurrentTagValue,NewTagValue)
+应答
+< >
+无
+。
+A19 ImportResource
+..
+可选
+。
+请求
+< >
+ImportResource(SourceURI,DestinationURI,Null)
+应答
+< >
+A110 ExportResource
+..
+可选
+。
+请求
+< >
+ExportResource(SourceURI,DestinationURI,Null)
+应答
+< >
+ExportResource(Null,Null,TransferID)
+A111 StopTransferResource
+..
+可选
+。
+请求
+< >
+CreateObject(ContainerID,Elements,Null,Null)
+62
+GB/T302466—2013
+.
+应答
+< >
+CreateObject(Null,Null,ObjectID,Result)
+A112 GetTransferProgress
+..
+可选
+。
+请求
+< >
+GetTransferProgress(TransferID)
+应答
+< >
+无
+。
+A113 DeleteResourse
+..
+可选
+。
+请求
+< >
+DeleteResourse(ResourceURI)
+应答
+< >
+无
+。
+A114 CreateReference
+..
+可选
+。
+请求
+< >
+CreateReference(ContainerID,ObjectID,Null)
+应答
+< >
+Create(Null,Null,NewID)
+A2 连接管理服务 CMS
+. ( )
+A21 GetProtocolInfo
+..
+必选
+。
+请求
+< >
+无
+。
+应答
+< >
+GetProtocolInfo(Source,Sink)
+A22 GetCurrentConnectionIDs
+..
+必选
+。
+请求
+< >
+无
+。
+应答
+< >
+GetCurrentConnectionIDs(ConnectionIDs)
+A23 GetCurrentConnectionInfo
+..
+必选
+。
+请求
+< >
+63
+GB/T302466—2013
+.
+GetCurrentConnectionInfo(ConnectionID,Null,Null,Null,Null,Null,Null,Null)
+应答
+< >
+GetCurrentConnectionInfo(Null,RcsID,AVTransportID,ProtocolInfo,PeerConnectionMan-
+ager,PeerConnectionID,Direction,Status)
+A24 PrepareForConnection
+..
+可选
+。
+请求
+< >
+PrepareForConnection(RemoteProtocolInfo,PeerConnectionManager,PeerConnectionID,Di-
+rection,Null,Null,Null)
+应答
+< >
+PrepareForConnection(Null,Null,Null,Null,ConnectionID,AVTransportID,RcsID)
+A25 ConnectionComplete
+..
+可选
+。
+请求
+< >
+ConnectionComplete(ConnectionID)
+应答
+< >
+无
+。
+A3 音视频传输服务 AVT
+. ( )
+A31 SetAVTransportURI
+..
+必选
+。
+请求
+< >
+SetAVTransportURI(InstanceID,NextURI,NextURIMetaData)
+应答
+< >
+无
+。
+A32 GetMediaInfo
+..
+必选
+。
+请求
+< >
+GetMediaInfo(InstanceID,Null,Null,Null,Null,Null,Null,Null,Null,Null)
+应答
+< >
+GetMediaInfo(Null,NrTracks,MeidaDuration,CurrentURIm CurrentURIMetadata,Nex-
+tURI,NextURIMetaData,PlayMedium,RecordMedium,WriteStatus)
+A33 GetTransportInfo
+..
+必选
+。
+请求
+< >
+GetTransportInfo(InstanceID,Null,Null,Null)
+应答
+< >
+GetTransportInfo(Null,CurrentTransportState,CurrentTransportStatus,CurrentSpeed)
+64
+GB/T302466—2013
+.
+A34 GetPositionInfo
+..
+必选
+。
+请求
+< >
+GetPositionInfo(InstanceID,Null,Null,Null,Null,Null,Null,Null,Null)
+应答
+< >
+GetPositionInfo(Null,Track,TrackDuration,TrackMetaData,TrackURI,RelTime,AbsTime,Rel-
+Count,AbsCount)
+A35 GetDeviceCapabilities
+..
+必选
+。
+请求
+< >
+GetDeviceCapabilities(InstanceID,Null,Null,Null)
+应答
+< >
+GetDeviceCapabilities(Null,PlayMedia,RecMedia,RecQualityModes)
+A36 GetTransportSettings
+..
+必选
+。
+请求
+< >
+GetTransportSettings(InstanceID,Null,Null)
+应答
+< >
+GetTransportSettings(Null,PlayMode,RecQualityMode)
+A37 Stop
+..
+必选
+。
+请求
+< >
+Stop(InstanceID)
+应答
+< >
+无
+。
+A38 Play
+..
+必选
+。
+请求
+< >
+Play(InstanceID,Speed)
+应答
+< >
+无
+。
+A39 Seek
+..
+必选
+。
+请求
+< >
+Seek(InstanceID,Unit,Target)
+应答
+< >
+无
+。
+65
+GB/T302466—2013
+.
+A310 Next
+..
+必选
+。
+请求
+< >
+Next(InstanceID)
+应答
+< >
+无
+。
+A311 Previous
+..
+必选
+。
+请求
+< >
+Previous(InstanceID)
+应答
+< >
+无
+。
+A312 SetNextAVTransportURI
+..
+可选
+。
+请求
+< >
+SetNextAVTransportURI(InstanceID,NextURI,NextURIMetaData)
+应答
+< >
+无
+。
+A313 Pause
+..
+可选
+。
+请求
+< >
+Pause(InstanceID,NextURI,NextURIMetaData)
+应答
+< >
+无
+。
+A314 Record
+..
+可选
+。
+请求
+< >
+Record(InstanceID)
+应答
+< >
+无
+。
+A315 SetPlayMode
+..
+可选
+。
+请求
+< >
+SetPlayMode(InstanceID,NewPlayMode)
+应答
+< >
+无
+。
+66
+GB/T302466—2013
+.
+A316 SetRecordQualityMode
+..
+可选
+。
+请求
+< >
+SetRecordQualityMode(InstanceID,NewRecordQualityMode)
+应答
+< >
+无
+。
+A317 GetCurrentTransportActions
+..
+可选
+。
+请求
+< >
+GetCurrentTransportActions(InstanceID,Null)
+应答
+< >
+GetCurrentTransportActions(Null,Actions)
+A4 播放控制服务 RCS
+. ( )
+A41 ListPresets
+..
+必选
+。
+请求
+< >
+ListPresets(InstanceID,Null)
+应答
+< >
+ListPresets(Null,CurrentPresetNameList)
+A42 SelectPreset
+..
+必选
+。
+请求
+< >
+SelectPreset(InstanceID,PresetName)
+应答
+< >
+无
+。
+A43 GetBrightness
+..
+可选
+。
+请求
+< >
+GetBrightness(InstanceID,Null)
+应答
+< >
+GetBrightness(Null,CurrentBrightness)
+A44 SetBrightness
+..
+可选
+。
+请求
+< >
+GetBrightness(InstanceID,DesiredBrightness)
+67
+GB/T302466—2013
+.
+应答
+< >
+无
+。
+A45 GetContrast
+..
+可选
+。
+请求
+< >
+GetContrast(InstanceID,Null)
+应答
+< >
+GetContrast(Null,CurrentContrast)
+A46 SetContrast
+..
+可选
+。
+请求
+< >
+SetContrast(InstanceID,DesiredContrast)
+应答
+< >
+无
+。
+A47 GetSharpness
+..
+可选
+。
+请求
+< >
+GetSharpness(InstanceID,Null)
+应答
+< >
+GetSharpness(Null,CurrentSharpness)
+A48 SetSharpness
+..
+可选
+。
+请求
+< >
+SetSharpness(InstanceID,DesiredSharpness)
+应答
+< >
+无
+。
+A49 GetRedVideoGain
+..
+可选
+。
+请求
+< >
+GetRedVideoGain(InstanceID,Null)
+应答
+< >
+GetRedVideoGain(Null,CurrentRedVideoGain)
+A410 SetRedVideoGain
+..
+可选
+。
+请求
+< >
+SetRedVideoGain(InstanceID,DesiredRedVideoGain)
+应答
+< >
+68
+GB/T302466—2013
+.
+无
+。
+A411 GetGreenVideoGain
+..
+可选
+。
+请求
+< >
+GetGreenVideoGain(InstanceID,Null)
+应答
+< >
+GetGreenVideoGain(Null,CurrentGreenVideoGain)
+A412 SetGreenVideoGain
+..
+可选
+。
+请求
+< >
+SetGreenVideoGain(InstanceID,DesiredGreenVideoGain)
+应答
+< >
+无
+。
+A413 GetBlueVideoGain
+..
+可选
+。
+请求
+< >
+GetBlueVideoGain(InstanceID,Null)
+应答
+< >
+GetBlueVideoGain(Null,CurrentBlueVideoGain)
+A414 SetBlueVideoGain
+..
+可选
+。
+请求
+< >
+SetBlueVideoGain(InstanceID,DesiredBlueVideoGain)
+应答
+< >
+无
+。
+A415 GetRedVideoBlackLevel
+..
+可选
+。
+请求
+< >
+GetRedVideoBlackLevel(InstanceID,Null)
+应答
+< >
+GetRedVideoBlackLevel(Null,CurrentRedVideoBlackLevel)
+A416 SetRedVideoBlackLevel
+..
+可选
+。
+请求
+< >
+SetRedVideoBlackLevel(InstanceID,DesiredRedVideoBlackLevel)
+应答
+< >
+无
+。
+69
+GB/T302466—2013
+.
+A417 GetGreenVideoBlackLevel
+..
+可选
+。
+请求
+< >
+GetGreenVideoBlackLevel(InstanceID,Null)
+应答
+< >
+GetGreenVideoBlackLevel(Null,CurrentGreenVideoBlackLevel)
+A418 SetGreenVideoBlackLevel
+..
+可选
+。
+请求
+< >
+SetGreenVideoBlackLevel(InstanceID,DesiredGreenVideoBlackLevel)
+应答
+< >
+无
+。
+A419 GetBlueVideoBlackLevel
+..
+可选
+。
+请求
+< >
+GetBlueVideoBlackLevel(InstanceID,Null)
+应答
+< >
+GetBlueVideoBlackLevel(Null,CurrentBlueVideoBlackLevel)
+A420 SetBlueVideoBlackLevel
+..
+可选
+。
+请求
+< >
+SetBlueVideoBlackLevel(InstanceID,DesiredBlueVideoBlackLevel)
+应答
+< >
+无
+。
+A421 GetColorTemperature
+..
+可选
+。
+请求
+< >
+GetColorTemperature(InstanceID,Null)
+应答
+< >
+GetColorTemperature(Null,CurrentColorTemperature)
+A422 SetColorTemperature
+..
+可选
+。
+请求
+< >
+SetColorTemperature(InstanceID,DesiredColorTemperature)
+应答
+< >
+无
+。
+70
+GB/T302466—2013
+.
+A423 GetHorizontalKeystone
+..
+可选
+。
+请求
+< >
+GetHorizontalKeystone(InstanceID,Null)
+应答
+< >
+GetHorizontalKeystone(Null,CurrentHorizontalKeystone)
+A424 SetHorizontalKeystone
+..
+可选
+。
+请求
+< >
+SetHorizontalKeystone(InstanceID,DesiredHorizontalKeystone)
+应答
+< >
+无
+。
+A425 GetVerticalKeystone
+..
+可选
+。
+请求
+< >
+GetVerticalKeystone(InstanceID,Null)
+应答
+< >
+GetVerticalKeystone(Null,CurrentVerticalKeystone)
+A426 SetVerticalKeystone
+..
+可选
+。
+请求
+< >
+SetVerticalKeystone(InstanceID,DesiredVerticalKeystone)
+应答
+< >
+无
+。
+A427 GetMute
+..
+可选
+。
+请求
+< >
+GetMute(InstanceID,Channel,Null)
+应答
+< >
+GetMute(Null,Null,CurrentMute)
+A428 SetMute
+..
+可选
+。
+请求
+< >
+SetMute(InstanceID,Channel,DesiredMute)
+应答
+< >
+无
+。
+71
+GB/T302466—2013
+.
+A429 GetVolume
+..
+可选
+。
+请求
+< >
+GetVolume(InstanceID,Channel,Null)
+应答
+< >
+GetVolume(Null,Null,CurrentVolume)
+A430 SetVolume
+..
+可选
+。
+请求
+< >
+SetVolume(InstanceID,Channel,DesiredVolume)
+应答
+< >
+无
+。
+A431 GetVolumeDB
+..
+可选
+。
+请求
+< >
+GetVolumeDB(InstanceID,Channel,Null)
+应答
+< >
+GetVolumeDB(Null,Null,CurrentVolume)
+A432 SetVolumeDB
+..
+可选
+。
+请求
+< >
+SetVolumeDB(InstanceID,Channel,DesiredVolume)
+应答
+< >
+无
+。
+A433 GetVolumeDBRange
+..
+可选
+。
+请求
+< >
+GetVolumeDBRange(InstanceID,Channel,Null,Null)
+应答
+< >
+GetVolumeDBRange(Null,Null,MinValue,MaxValue)
+A434 GetLoudness
+..
+可选
+。
+请求
+< >
+GetLoudness(InstanceID,Channel,Null)
+应答
+< >
+GetLoudness(Null,Null,CurrentLoudness)
+72
+GB/T302466—2013
+.
+A435 SetLoudness
+..
+可选
+。
+请求
+< >
+SetLoudness(InstanceID,Channel,DesiredLoudness)
+应答
+< >
+无
+。
+73
+GB/T302466—2013
+.
+附 录 B
+资料性附录
+( )
+媒体管理实例
+B1 媒体管理流程实例
+.
+B11 典型媒体播放流程
+..
+一个典型的由媒体控制点控制的媒体播放过程如图 所示
+B.1 。
+图B1 典型媒体播放过程
+.
+媒体播放流程如下
+:
+向 发出 调用请求 浏览 的内容目录
+a) DMC DMS CDS:Browse , DMS ;
+向 发出 响应 返回其内容目录中的相关信息 包含在 消息体中
+b) DMS DMC CDS:Browse , ( <res> );
+向 发出 调用请求 告诉 要获取的媒体内容
+c) DMC DMR AVT:SetAVTransportURI , DMR URI
+及 信息
+<res> ;
+向 发出 调用请求 指明播放的初始位置时间
+d) DMC DMR AVT:Seek , rel_time;
+向 发出 调用请求 播放选定的媒体内容
+e) DMC DMR AVT:Play , ;
+根据媒体文件 及 向 发出 请求 请求获取媒体内容
+f) DMR URI rel_time DMS HTTPGET , ;
+向 以 响应的是传送媒体内容
+g) DMS DMR HTTPGET 。
+B12 第三方控制的播放器切换流程
+..
+如图 所示
+B.2 。
+74
+GB/T302466—2013
+.
+图B2 流程实例 第三方控制的播放器切换流程
+. :
+B13 多个DMC控制同一DMS/DMR的快进流程
+..
+如图 所示
+B.3 。
+75
+GB/T302466—2013
+.
+图B3 流程实例 多个DMC控制同一DMS/DMR的快进流程
+. :
+B2 消息实例
+.
+B21 典型消息实例
+..
+下面是结合了 以及 的一个实例
+CDS:Browse,AVT:SetAVTransportURI CDS:CreateObject 。
+假设 上 下的目录结构如图 所示
+DMS “Movie” B.4 。
+图B4 消息实例 DMS目录结构
+. :
+76
+GB/T302466—2013
+.
+希望浏览 该目录下的文件 向 发出包含如下参数的 操作请求
+DMC DMS , DMS Browse() :
+Browse("3","BrowseDirectChildren","*",0,3,"+dc:title")
+其相应的 请求消息为
+HTTPPOST(SOAP) :
+POSTpathofcontrolURLHTTP/1.1
+HOST:hostofcontrolURL:portofcontrolURL
+CONTENT-LENGTH:bytesinbody
+CONTENT-TYPE:text/xml;charset="encoding"
+SOAPACTION:"urn:schemas-upnp-org:service:ContentDirectory:1#Browse"
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:Browsexmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<ObjectID>3</ObjectID>
+<BrowseFlag>BrowseDirectChildren</BrowseFlag>
+<Filter>* </Filter>
+<StartIndex>0</StartIndex>
+<RequestedCount>3</RequestedCount>
+<SortCriteria>+dc:title</SortCriteria>
+</u:Browse>
+</s:Body>
+</s:Envelope>
+收到请求后 向 发出包含如下参数的 响应
+DMS , DMC Browse() :
+Browse("<DIDL-Litexmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
+xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+<itemid="6"parentID="3"restricted="false">
+<dc:title>RedCliff</dc:title>
+<dc:creator>JohnWoo</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="200000">
+http://198.68.1.3/movie/getcontent.asp?id=6
+</res>
+</item>
+<itemid="8"parentID="3"restricted="false">
+<dc:title>RedCliff2</dc:title>
+<dc:creator>JohnWoo</dc:creator>
+77
+GB/T302466—2013
+.
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="240000">
+http://198.68.1.3/movie/getcontent.asp?id=8
+</res>
+</item>
+<itemid="7"parentID="3"restricted="false">
+<dc:title>RedCliffMaking</dc:title>
+<dc:creator>HanSanping</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="45000">
+http://198.68.1.3/movie/getcontent.asp?id=7
+</res>
+</item>
+</DIDL-Lite>",3,4,18)
+其相应的 消息为
+HTTPPOST :
+HTTP/1.1200OK
+CONTENT-LENGTH:bytesinbody
+CONTENT-TYPE:text/xml;charset="encoding"
+DATE:whenresponsewasgenerated
+EXT:
+SERVER:OS/versionUPnP/1.0product/version
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:BrowseResponsexmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<Result><DIDL-Litexmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
+xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+<itemid="6"parentID="3"restricted="false">
+<dc:title>RedCliff</dc:title>
+<dc:creator>JohnWoo</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+78
+GB/T302466—2013
+.
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="200000">
+http://198.68.1.3/movie/getcontent.asp?id=6
+</res>
+</item>
+<itemid="8"parentID="3"restricted="false">
+<dc:title>RedCliff2</dc:title>
+<dc:creator>JohnWoo</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="240000">
+http://198.68.1.3/movie/getcontent.asp?id=8
+</res>
+</item>
+<itemid="7"parentID="3"restricted="false">
+<dc:title>RedCliffMaking</dc:title>
+<dc:creator>HanSanping</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="45000">
+http://198.68.1.3/movie/getcontent.asp?id=7
+</res>
+</item>
+</DIDL-Lite></Result>
+<NumberReturned>3</NumberReturned>
+<TotalMatches>4</TotalMatches>
+<UpdateID>18</UpdateID>
+</u:BrowseResponse>
+</s:Body>
+</s:Envelope>
+假如 在 下选定了 节目 则向 发送 调用
+DMC Movie “RedCliff” , DMR AVT:SetAVTransportURI
+请求 从而 能够根据该请求提供的 向 以 方式获取该节目内容
+; DMR URI DMS HTTPGET 。
+相应的 请求消息为
+HTTP :
+POSTpathofcontrolURLHTTP/1.1
+HOST:hostofcontrolURL:portofcontrolURL
+CONTENT-LENGTH:bytesinbody
+CONTENT-TYPE:text/xml;charset="encoding"
+SOAPACTION:"urn:schemas-upnp-org:service:AVTransport:1#SetAVTransportURI"
+<? xmlversion="1.0"?>
+79
+GB/T302466—2013
+.
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:SetAVTransportURIxmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+<instanceID>0</instanceID>
+<CurrentURI>http://198.68.1.3/movie/getcontent.asp?id=6</CurrentURI>
+<CurrentURIMetaData><DIDL-Litexmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
+xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+<itemid="6"parentID="3"restricted="false">
+<dc:title>RedCliff</dc:title>
+<dc:creator>JohnWoo</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="200000">
+http://198.68.1.3/movie/getcontent.asp?id=6
+</res>
+</item>
+</DIDL-Lite></CurrentURIMetaData>
+</u:SetAVTransportURI>
+</s:Body>
+</s:Envelope>
+向 发出的响应消息为
+DMR DMC :
+HTTP/1.1200OK
+CONTENT-LENGTH:bytesinbody
+CONTENT-TYPE:text/xml;charset="encoding"
+DATE:whenresponsewasgenerated
+EXT:
+SERVER:OS/versionUPnP/1.0product/version
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:SetAVTransportURIResponsexmlns:u="urn:schemas-upnp-org:service:AVTransport:1">
+</u:SetAVTransportURIResponse>
+</s:Body>
+</s:Envelope>
+假设用户希望向 以点对点推送方式 上传一个文件 具体信息包括 如图
+DMS (2-BoxPush) , ( B.5
+80
+GB/T302466—2013
+.
+所示
+):
+Title:RedCliff2Making
+Creator:HanSanping
+@id=9
+图B5 消息实例 上传文件后的DMS目录结构
+. :
+这在实现上需要通过 向 发出 操作调用请求来完成
+DMC DMS CDS:CreateObjcect 。
+向 发出的 请求为
+DMC DMS HTTPPOST :
+POSTpathofcontrolURLHTTP/1.1
+HOST:hostofcontrolURL:portofcontrolURL
+CONTENT-LENGTH:bytesinbody
+encoding
+CONTENT-TYPE:text/xml;charset=" "
+SOAPACTION:"urn:schemas-upnp-org:service:ContentDirectory:1#CreateObject"
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:CreateObjectxmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<ContainerID>3</ContainerID>
+<Elements><DIDL-Litexmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
+xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+<itemid=""parentID="3"restricted="false">
+<dc:title>RedCliff2Making</dc:title>
+<dc:creator>HanSanping</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="55000">
+81
+GB/T302466—2013
+.
+</res>
+</item>
+</DIDL-Lite></Elements>
+</u:CreateObject>
+</s:Body>
+</s:Envelope>
+如果在 内成功上传 向 发出响应
+30s ,DMS DMC :
+HTTP/1.1200OK
+CONTENT-LENGTH:bytesinbody
+CONTENT-TYPE:text/xml;charset="encoding"
+DATE:whenresponsewasgenerated
+EXT:
+SERVER:OS/versionUPnP/1.0product/version
+<? xmlversion="1.0"?>
+<s:Envelope
+xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<s:Body>
+<u:CreateObjectResponsexmlns:u="urn:schemas-upnp-org:service:ContentDirectory:1">
+<ObjectID>9</ObjectID>
+<Result><DIDL-Litexmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"
+xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/">
+<itemid="9"parentID="3"restricted="false">
+<dc:title>RedCliff2Making</dc:title>
+<dc:creator>HanSanping</dc:creator>
+<upnp:class>objecti.tem.videoItem.movie</upnp:class>
+<res
+protocolInfo="http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=
+01;DLNA.ORG_FLAGS=AD50000000000000000000000000000"size="55000">
+http://198.68.1.3/movie/getcontent.asp?id=9
+</res>
+</item>
+</DIDL-Lite></Result>
+</u:CreateObjectResponse>
+</s:Body>
+</s:Envelope>
+B22 事件订阅实例
+..
+假设 原始的目录结构如图 所示
+DMS B.6 。
+82
+GB/T302466—2013
+.
+图B6 事件订阅实例 DMS原始目录结构
+. :
+经过上传操作后新的目录结构如图 所示
+B.7 。
+图B7 事件订阅实例 DMS新的目录结构
+. :
+则 向 发送的 消息为
+DMS DMC SystemUpdateID :
+NOTIFYdeliverypathHTTP/1.1
+HOST:deliveryhost:deliveryport
+CONTENT-TYPE:text/xml
+CONTENT-LENGTH:Bytesinbody
+NT:upnp:event
+NTS:upnp:propchange
+SID:uuid:subscription-UUID
+SEQ:eventkey
+<? xmlversion="1.0"?>
+<e:propertysetxmlns:e="urn:schemas-upnp-org:event-1-0">
+<e:property>
+<SystemUpdateID>123</SystemUpdateID>
+83
+GB/T302466—2013
+.
+</e:property>
+</e:propertyset>
+媒体控制点收到该消息后 比较 的值是否发生变化 如果变化 可以进一步向 发
+, “123” ; ,DMC DMS
+送 请求或 请求获取变化的信息
+CDS:Browse CDS:Search 。
+84
+􀏕
+中 华 人 民 共 和 国
+国 家 标 准
+家庭网络
+第6部分 多媒体与数据网络通信协议
+:
+GB/T30246.6—2013
+*
+中 国 标 准 出 版 社 出 版 发 行
+北京市朝阳区和平里西街甲 号
+2 (100029)
+北京市西城区三里河北街 号
+16 (100045)
+网址
+:www.gb168.cn
+服务热线
+:400-168-0010
+010-68522006
+年 月第一版
+2014 7
+*
+书号
+:155066·1-49199
+版权专有 侵权必究
+—
+/
+3102
+664203T
+BG

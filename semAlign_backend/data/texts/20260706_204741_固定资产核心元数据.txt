@@ -1,0 +1,2089 @@
+ICS35040
+.
+L67
+中 华 人 民 共 和 国 国 家 标 准
+GB/T31360—2015
+固定资产核心元数据
+Coremetadataforfixedasset
+2015-02-04发布 2015-08-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T31360—2015
+目 次
+前言
+………………………………………………………………………………………………………… Ⅰ
+引言
+………………………………………………………………………………………………………… Ⅱ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语与定义
+3 ……………………………………………………………………………………………… 1
+固定资产核心元数据的属性
+4 …………………………………………………………………………… 2
+固定资产核心元数据
+5 …………………………………………………………………………………… 3
+固定资产核心元数据描述
+6 ……………………………………………………………………………… 5
+核心元数据扩展原则和方法
+7 …………………………………………………………………………… 15
+附录 规范性附录 固定资产核心元数据 字典描述
+A( ) - ……………………………………………… 17
+附录 规范性附录 固定资产核心元数据 定义
+B( ) -XMLSchema …………………………………… 21
+附录 资料性附录 固定资产核心元数据示例
+C( ) ……………………………………………………… 25
+附录 资料性附录 行政事业单位资产管理信息系统数据项对照表
+D( ) ……………………………… 28
+GB/T31360—2015
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由全国信息分类与编码标准化技术委员会 提出并归口
+(SAC/TC353) 。
+本标准起草单位 中国标准化研究院 广州市标准化研究院 中华人民共和国财政部 资产管理司
+: 、 、 ( )、
+财政部信息网络中心 北京久其软件股份有限公司 标新科技 北京 有限公司
+、 、 ( ) 。
+本标准主要起草人 高昂 程越 梁小明 朱虹 孙广芝 孙文峰 陆庆平 彭艳祥 赵福君 肖雪峰
+: 、 、 、 、 、 、 、 、 、 、
+宋国斌 李奇云 施瑞丰 项贤春 刘红娟 赵彦朝 欧阳曜 石磊 王金辉 王超 崔跃峰 姚俊君 吴家仲
+、 、 、 、 、 、 、 、 、 、 、 、 、
+张戈 陈冠南 杨淑丽 谢言 温悦 蔡志斌 欧阳标才 刘东华 张艳琦 史立武 杨晓峰 刘敬光 郑飞
+、 、 、 、 、 、 、 、 、 、 、 、 、
+叶巧云 唐仲宁
+、 。
+Ⅰ
+GB/T31360—2015
+引 言
+固定资产作为一项基础性物质资源 在我国经济建设和社会发展中起着重要作用 固定资产具有
+, 。
+单位价值高 使用期限长 周转速度慢 占总资产比重大等特点 是各类机构开展各项业务工作和生产经
+、 、 、 ,
+营活动的物质保证
+。
+目前 各行业 地方所使用的信息化系统中 涉及固定资产描述的元数据标准各不相同 不能做到对
+, 、 , ,
+固定资产信息的统一描述 给不同机构之间 信息化系统之间的固定资产信息交换 数据共享及汇总上
+, 、 、
+报带来困难
+。
+为此 本标准规定了各行业 地方共同使用的固定资产核心元数据 以及元数据在具体应用中的扩
+, 、 ,
+展方法 以实现固定资产的统一描述 满足各类机构对固定资产信息化管理的需求 实现固定资产在信
+, , ,
+息化系统中对固定资产条目的全生命周期统一描述 保证固定资产的合理配置和有效利用
+, 。
+Ⅱ
+GB/T31360—2015
+固定资产核心元数据
+1 范围
+本标准规定了固定资产元数据的属性 核心元数据的构成 元数据扩展原则和方法
+、 、 。
+本标准适用于涉及固定资产管理的信息系统开发与建设 适用于在办公自动化 财务管理 企业资
+, 、 、
+源计划系统之间 以及各类机构之间实现固定资产数据的共享与交换
+, 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+数据元和交换格式 信息交换 日期和时间表示方法
+GB/T7408—2005 (ISO8601:2000,IDT)
+表示货币和资金的代码
+GB/T12406—2008 (ISO4217:2001,IDT)
+固定资产分类与代码
+GB/T14885—2010
+国际贸易计量单位代码
+GB/T17295—2008 (CEFACT/ICG/2006/IC001,NEQ)
+信息技术 元数据注册系统 第 部分 框架
+GB/T18391.1—2009 (MDR) 1 : (ISO/IEC11179-1:
+2004,IDT)
+基于 的电子商务 第 部分 报文设计规则
+GB/T19256.8—2009 XML 8 : (UN/CEFACTXML
+naminganddesignrulesV2.0,MOD)
+地理信息 元数据
+GB/T19710—2005 (ISO19115:2003,MOD)
+信息资源核心元数据
+GB/T26816—2011
+3 术语与定义
+下列术语和定义适用于本文件
+。
+31
+.
+元数据 metadata
+定义和描述其他数据的数据
+。
+定义
+[GB/T18391.1—2009, 3.2.16]
+32
+.
+元数据元素 metadataelement
+元数据的基本单元
+。
+注1 与 术语中的属性同义
+: UML 。
+注2 元数据元素在元数据实体中是唯一的
+: 。
+定义
+[GB/T19710—2005, 4.6]
+33
+.
+元数据实体 metadataentity
+一组说明数据相同特性的元数据元素
+。
+注1 与 术语中的类同义
+: UML 。
+1
+GB/T31360—2015
+注2 可以包含一个或一个以上元数据实体
+: 。
+定义
+[GB/T19710—2005, 4.7]
+34
+.
+元数据子集 metadatasection
+元数据的子集合 由相关的元数据实体和元素组成
+, 。
+注 与 术语中的包同义
+: UML 。
+定义
+[GB/T19710—2005, 4.8]
+35
+.
+核心元数据 coremetadata
+描述信息资源基本属性的元数据元素和元数据实体
+。
+定义
+[GB/T26816—2011, 3.5]
+36
+.
+固定资产 fixedassets
+使用期限在一年以上 单位价值在规定标准以上 并且在使用过程中基本保持原有物质形态的
+, ,
+资产
+。
+注 单位价值虽未达到规定标准 但是耐用时间在一年以上的大批同类物资 作为固定资产管理
+: , , 。
+定义
+[GB/T14885—2010, 2.1]
+37
+.
+UCC方式
+将每个单词的首字母大写 并把这些单词组合起来的一种方式
+, 。
+定义
+[GB/T19256.8—2009, 3.1.68]
+38
+.
+LCC方式
+除了第一个单词外的每个单词的首字母大写 并把这些单词组合起来的一种方式
+, 。
+定义
+[GB/T19256.8—2009, 3.1.48]
+4 固定资产核心元数据的属性
+本标准从语义和语法两方面对每个元数据元素和元数据实体进行了描述 本标准使用下列属性
+, :
+41 中文名称
+.
+赋予元数据元素或元数据实体的一个中文标记 元数据实体名称在本标准范围内应唯一 元数据
+。 ,
+元素名称在元数据实体中也应唯一
+。
+42 英文名称
+.
+赋予元数据元素或元数据实体的一个英文名称 英文名称以牛津英语词典的英文拼写为准
+。 。
+43 缩写名
+.
+元数据元素或元数据实体的英文缩写名称 缩写规则如下
+。 :
+缩写名在本标准范围内必须唯一
+a) ;
+缩写名不应包括任何空格 破折号 下划线或分隔符等
+b) 、 、 ;
+缩写名不应使用复数形式的英文单词 除非该单词本身就是复数形式 如
+c) , , “Goods”;
+元数据实体缩写名描述应采用 方式 元数据元素缩写名描述应采用 方式
+d) UCC ; LCC ;
+2
+GB/T31360—2015
+对存在国际或行业领域惯用英文名称缩写的 采用惯用缩写
+e) , 。
+44 定义
+.
+对元数据元素或元数据实体含义的解释 以使元数据元素或元数据实体与其他元数据元素或元数
+,
+据实体在概念上相区别
+。
+45 数据类型
+.
+对元数据元素的有效值域的规定和允许对该值域内的值进行有效操作的规定 例如数值型 字符
+, 、
+串 日期型 二进制 布尔型等
+、 、 、 。
+本标准中元数据实体为复合型
+。
+46 值域
+.
+规定了元数据元素的有效值域
+。
+47 约束/条件
+.
+说明一个元数据元素或元数据实体是否选取的描述符 该描述符分别为
+。 :
+必选 表明该元数据元素或元数据实体必须选择
+a) M: , 。
+可选 根据实际应用可以选择也可以不选的元数据元素或元数据实体 已经定义的可选元
+b) O: , 。
+数据元素和可选元数据实体 可指导部门元数据标准制定人员充分说明其信息
+, 。
+如果一个可选元数据实体未被使用 则该实体所包含的元素 包括必选元素 也不选用 可选
+, ( ) 。
+元数据实体可以有必选元素 但只当可选实体被选用时才成为必选
+, 。
+条件必选 当满足约束条件中所定义的条件时应选择 条件必选用于以下三种可能性
+c) C: , 。
+之一
+:
+当在多个选项中进行选择时 至少一个选项必选 且必须使用
+——— , , ;
+当另一个元数据元素已经使用时 选用一个元数据实体或元数据元素
+——— , ;
+当另一个元数据元素已经选择了一个特定值时 选用一个元数据元素
+——— , 。
+48 最大出现次数
+.
+说明元数据元素或元数据实体可以出现的最大次数 只出现一次的用 表示 多次重复出现的用
+。 “1” ,
+表示 允许不为 的固定出现次数用相应的数字表示 例如 等
+“N” 。 1 , “2”、“3”、“4” 。
+49 备注
+.
+对元数据元素或实体进一步的补充说明
+。
+5 固定资产核心元数据
+51 UML模型符号
+.
+本标准采用统一建模语言 描述元数据子集 元数据实体和元数据元素之间的关系 用
+(UML) 、 。
+中的包来表示元数据子集 类来表示元数据实体 属性来表示元数据元素 本标准中使用的
+UML , , 。
+符号如图 所示
+UML 1 :
+3
+GB/T31360—2015
+图1 UML符号及说明
+52 固定资产核心元数据包
+.
+固定资产相关信息化系统中的固定资产核心元数据包 如图 所示
+, 2 。
+图2 固定资产核心元数据包
+固定资产核心元数据包包括固定资产实体信息 固定资产归属信息 固定资产业务信息 固定资产
+、 、 。
+实体信息又包括价格信息和固定资产标识信息 固定资产生产信息和固定资产分类信息
+、 。
+53 固定资产核心元数据包UML图
+.
+固定资产核心元数据包的 图如图 所示
+UML 3 。
+4
+GB/T31360—2015
+图3 固定资产核心元数据包UML图
+6 固定资产核心元数据描述
+61 固定资产实体信息
+.
+英文名称
+:FixedAssetEntityInformation
+缩 写 名
+:FixedAssetEntityInformation
+定 义 描述固定资产实体的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+611 固定资产名称
+..
+英文名称
+:FixedAssetName
+缩 写 名
+:fixedAssetName
+定 义 固定资产的中文名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+5
+GB/T31360—2015
+612 使用方向
+..
+英文名称
+:Direction
+缩 写 名
+:direction
+定 义 固定资产的使用方向 如自用 出租 出借 对外投资等
+: , 、 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+613 使用状态
+..
+英文名称
+:UseState
+缩 写 名
+:useState
+定 义 固定资产的使用现状 如库存 在用 闲置 报废等
+: , 、 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+614 折旧状态
+..
+英文名称
+:DepreciationState
+缩 写 名
+:depreciationState
+定 义 固定资产现阶段所属的折旧状态 如计提折旧 不提折旧 已完成折旧等
+: , 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+615 固定资产生产信息
+..
+英文名称
+:FixedAssetManufactureInformation
+缩 写 名
+:FixedAssetManufactureInformation
+定 义 描述固定资产生产的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6151 生产厂家
+...
+英文名称
+:ManufacturerName
+缩 写 名
+:manufacturerName
+定 义 固定资产的生产厂商名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+6
+GB/T31360—2015
+最大出现次数
+:1
+6152 品牌
+...
+英文名称
+:Brand
+缩 写 名
+:brand
+定 义 固定资产的产品品牌
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+6153 规格型号
+...
+英文名称
+:Specification
+缩 写 名
+:specification
+定 义 固定资产的规格型号
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+616 固定资产购置信息
+..
+英文名称
+:FixedAssetPurchaseInformation
+缩 写 名
+:FixedAssetPurchaseInformation
+定 义 描述固定资产购置的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6161 供应商名称
+...
+英文名称
+:SupplierName
+缩 写 名
+:supplierName
+定 义 固定资产的供应商名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6162 合同编号
+...
+英文名称
+:ContractNumber
+缩 写 名
+:contractNumber
+定 义 购置固定资产的合同的编号
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+7
+GB/T31360—2015
+约束 条件
+/ :O
+最大出现次数
+:1
+6163 会计凭证号
+...
+英文名称
+:AccountingDocumentNumber
+缩 写 名
+:accountingDocumentNumber
+定 义 固定资产购买单据对应的记账凭证编号
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+6164 发票号
+...
+英文名称
+:InvoiceNumber
+缩 写 名
+:invoiceNumber
+定 义 固定资产供应商出具的发票编号
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+6165 取得方式
+...
+英文名称
+:AcquirementWay
+缩 写 名
+:acquirementWay
+定 义 描述固定资产的获得方式 如新购 调拨 捐赠 自建 置换 盘盈等
+: , 、 、 、 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6166 取得日期
+...
+英文名称
+:AcquirementDate
+缩 写 名
+:acquirementDate
+定 义 获得固定资产的时间
+:
+数据类型 时间日期型
+:
+值 域 按照 中的规定的执行
+: GB/T7408—2005
+约束 条件
+/ :M
+最大出现次数
+:1
+6167 保修截止日期
+...
+英文名称
+:WarrantyDeadlineDate
+缩 写 名
+:warrantyDeadlineDate
+定 义 固定资产的承诺保修时间
+:
+8
+GB/T31360—2015
+数据类型 时间日期型
+:
+值 域 按照 中的规定的执行
+: GB/T7408—2005
+约束 条件
+/ :O
+最大出现次数
+:1
+6168 预计使用年限
+...
+英文名称
+:EstimatedUsefulLife
+缩 写 名
+:estimatedUsefulLife
+定 义 固定资产的预计使用年限
+:
+数据类型 数值型
+:
+值 域 按照 中的规定的执行
+: GB/T7408—2005
+约束 条件
+/ :O
+最大出现次数
+:1
+6169 财务入账状态
+...
+英文名称
+:FinancialAccountingStatus
+缩 写 名
+:financialAccountingStatus
+定 义 购置固定资产的入账形式 如已入账 未入账等
+: , 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+61610 采购组织形式
+...
+英文名称
+:ProcurementWay
+缩 写 名
+:procurementWay
+定 义 单位采购固定资产的方式 如政府集中采购 部门集中采购 分散采购等
+: , 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+61611 预算项目编号
+...
+英文名称
+:BudgetItemNumber
+缩 写 名
+:budgetItemNumber
+定 义 采购固定资产的预算项目的编号
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+61612 价值类型
+...
+英文名称
+:ValueType
+9
+GB/T31360—2015
+缩 写 名
+:valueType
+定 义 固定资产的所属价值的类型的描述 如原值 暂估值 评估值 重置值 无价值等
+: , 、 、 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+617 固定资产标识信息
+..
+英文名称
+:FixedAssetIDInformation
+缩 写 名
+:FixedAssetIDInformation
+定 义 描述固定资产标识的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6171 标识符类型
+...
+英文名称
+:IDType
+缩 写 名
+:IDType
+定 义 标识固定资产的标识符的类型
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6172 标识代码
+...
+英文名称
+:IDCode
+缩 写 名
+:IDCode
+定 义 标识固定资产的标识符的代码
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+618 固定资产分类信息
+..
+英文名称
+:FixedAssetClassificationInformation
+缩 写 名
+:FixedAssetClassificationInformation
+定 义 描述固定资产分类的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6181 固定资产分类标准
+...
+英文名称
+:FixedAssetClassificationStandard
+10
+GB/T31360—2015
+缩 写 名
+:fixedAssetClassificationStandard
+定 义 固定资产分类采用的国际 国家 行业 地方 企业标准等
+: 、 、 、 、
+数据类型 字符串
+:
+值 域 自由文本
+:
+性 质
+:M
+最大出现次数
+:1
+6182 固定资产分类代码
+...
+英文名称
+:FixedAssetClassificationCode
+缩 写 名
+:fixedAssetClassificationCode
+定 义 固定资产分类对应的代码
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+性 质
+:M
+最大出现次数
+:1
+备注 可采用 等标准中规定的代码
+: GB/T14885—2010
+6183 固定资产分类名称
+...
+英文名称
+:FixedAssetClassificationName
+缩 写 名
+:fixedAssetClassificationName
+定 义 固定资产分类体系中固定资产的分类代码对应的中文名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+619 价值信息
+..
+英文名称
+:ValueInformation
+缩 写 名
+:ValueInformation
+定 义 描述固定资产价格的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+6191 单价
+...
+英文名称
+:UnitPrice
+缩 写 名
+:unitPrice
+定 义 固定资产的单位数量的价格
+:
+数据类型 数值型
+:
+值 域 正实数
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+11
+GB/T31360—2015
+6192 货币名称
+...
+英文名称
+:CurrencyName
+缩 写 名
+:currencyName
+定 义 单价的币种 如人民币 美元等
+: , 、
+数据类型 字符串
+:
+值 域 建议采用 中规定的名称
+: GB/T12406—2008
+约束 条件
+/ :O
+最大出现次数
+:1
+6193 计量单位
+...
+英文名称
+:MeasureUnit
+缩 写 名
+:measureUnit
+定 义 计量固定资产的标准量的名称 如台 件等
+: , 、
+数据类型 字符串
+:
+值 域 采用 中规定的名称
+: GB/T17295—2008
+约束 条件
+/ :M
+最大出现次数
+:1
+62 固定资产归属信息
+.
+英文名称
+:FixedAssetProprietorInformation
+缩 写 名
+:FixedAssetProprietorInformation
+定 义 描述固定资产所有权归属的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+621 使用人名称
+..
+英文名称
+:UserName
+缩 写 名
+:userName
+定 义 对固定资产进行相关操作 如使用和管理 人员的姓名
+: ( )
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+622 单位名称
+..
+英文名称
+:AgencyName
+缩 写 名
+:agencyName
+定 义 单位的中文名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+12
+GB/T31360—2015
+最大出现次数
+:1
+623 部门名称
+..
+英文名称
+:DepartmentName
+缩 写 名
+:departmentName
+定 义 固定资产归属部门的名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+624 存放地点
+..
+英文名称
+:PlacementLocation
+缩 写 名
+:placementLocation
+定 义 固定资产的实际存放地点
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+625 组织机构代码
+..
+英文名称
+:OrganizationCode
+缩 写 名
+:organizationCode
+定 义 单位的组织机构代码
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+626 单位地址
+..
+英文名称
+:AgencyAddress
+缩 写 名
+:agencyAddress
+定 义 单位的中文详细地址
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+627 邮政编码
+..
+英文名称
+:ZipCode
+缩 写 名
+:zipCode
+定 义 单位的邮政编码
+:
+数据类型 字符串
+:
+13
+GB/T31360—2015
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+628 使用人联系电话
+..
+英文名称
+:UserContactTelephoneNumber
+缩 写 名
+:userContactTelephoneNumber
+定 义 对固定资产进行相关操作 如使用和管理 的人员的联系电话
+: ( )
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+629 使用人电子邮箱
+..
+英文名称
+:UserEmail
+缩 写 名
+:userEmail
+定 义 固定资产使用人的电子邮箱
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+63 固定资产业务信息
+.
+英文名称
+:FixedAssetBusinessInformation
+缩 写 名
+:FixedAssetBusinessInformation
+定 义 描述固定资产管理的普遍业务流程的一组信息
+:
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:N
+631 业务名称
+..
+英文名称
+:BusinessName
+缩 写 名
+:businessName
+定 义 对固定资产进行相关管理操作的名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+632 业务代码
+..
+英文名称
+:BusinessCode
+缩 写 名
+:businessCode
+定 义 固定资产进行相关管理操作的代码
+:
+14
+GB/T31360—2015
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+633 业务执行日期
+..
+英文名称
+:BusinessExecutionDate
+缩 写 名
+:businessExecutionDate
+定 义 固定资产业务活动的时间
+:
+数据类型 时间日期型
+:
+值 域 按照 中的规定的执行
+: GB/T7408—2005
+约束 条件
+/ :M
+最大出现次数
+:1
+634 业务执行人
+..
+英文名称
+:BusinessExecutor
+缩 写 名
+:businessExecutor
+定 义 实施固定资产业务活动的人员名称
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+635 业务描述
+..
+英文名称
+:BusinessDescription
+缩 写 名
+:businessDescription
+定 义 业务活动相关信息的描述
+:
+数据类型 字符串
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+7 核心元数据扩展原则和方法
+71 概述
+.
+固定资产在不同行业 不同地区的应用需求可能存在变化 要根据需求在应用中对本标准规定的元
+、 ,
+数据进行补充 在对本标准规定的元数据内容进行扩展时 应包含固定资产核心元数据 固定资产核
+。 , 。
+心元数据允许进行下列类型的扩展
+:
+增加新的元数据元素
+a) ;
+增加新的元数据实体
+b) ;
+建立新的代码表 代替值域为 自由文本 的现有元数据元素的值域
+c) , “ ” ;
+创建新的代码表元素 对值域为代码表的元数据的值域进行扩充
+d) ( );
+15
+GB/T31360—2015
+对现有元数据施加更严格的可选性限制
+e) ;
+对现有元数据施加更严格的最大出现次数限制
+f) ;
+缩小现有元数据的值域
+g) 。
+72 核心元数据扩展原则
+.
+新建元数据需要遵循如下基本原则
+:
+选取元数据时 既要考虑固定资产信息化管理系统在应用中的特点以及工作的复杂 难易程
+a) , 、
+度 又要充分满足固定资产信息化系统建设以及用户的查询 提取数据的需要
+, 、 ;
+选取的元数据不但要满足当前阶段的应用需求 更应考虑扩展需求
+b) , ;
+新建的元数据不应与本标准定义的元数据中现有的元数据实体 元素 代码表的名称 定义相
+c) 、 、 、
+冲突
+;
+增加的元数据元素应按照本标准所确定的层次关系进行合理的组织 如果本标准现有的元
+d) 。
+数据实体无法满足新增元数据的需要 则可以新建元数据实体
+, ;
+允许以枚举型替代值域为自由文本的现有元数据元素的值域
+e) ;
+允许对现有的元数据元素的值域进行缩小 例如 在本标准中规定的元数据元素的值域为自由
+f) ( ,
+文本的 在扩展后可以规定它的值域为枚举型 采用某个代码表中的值
+, , );
+允许对现有的元数据的可选性和最大出现次数施以更严格的限制 例如 在本标准中定义为
+g) ( ,
+可选的元数据 在扩展后可以是必选的 在本标准中定义为可无限次重复出现的元数据 在扩
+, ; ,
+展后可以是只能出现 次
+1 )。
+73 核心元数据扩展实施
+.
+在对固定资产核心元数据进行扩展时 主要分为 个步骤 如图 所示
+, 7 , 4 。
+图4 核心元数据拓展步骤
+16
+GB/T31360—2015
+附 录 A
+规范性附录
+( )
+固定资产核心元数据-字典描述
+固定资产核心元数据字典描述见表
+A.1。
+表A1 固定资产核心元数据字典
+.
+约束 最大
+数据
+序号 中文名称 英文名称 缩写名 定义 值域 条 出现
+类型 /
+件 次数
+定义和描述固定资产
+元数据
+0 Metadata Metadata 相关数据的数据 M 1
+固定 资 产 描述固定资产实体的
+FixedAssetEntityFixedAssetEntity- 复合型 行 行
+1 实体信息 一组信息 1.1 ~1.9 M 1
+Information Information
+固定 资 产
+固定资产的中文名称 字符串 自由文本
+1.1 名称 FixedAssetNamefixedAssetName M 1
+固定资产的使用方向
+,
+使用方向 如自用 出租 出借 对 字符串 自由文本
+1.2 Direction direction 、 、 、 M 1
+外投资等
+固定资产的使用现状
+,
+使用状态 如库存 在用 闲置 报 字符串 自由文本
+1.3 UseState useState 、 、 、 M 1
+废等
+固定资产现阶段所属
+的折旧状态 如 计提
+折旧状态 , “ 字符串 自由文本
+1.4 DepreciationStatedepreciationState 折旧 不提折旧 M 1
+”、“ ”、
+已完成折旧
+“ ”
+固定 资 产FixedAssetMan-FixedAssetManu-描述固定资产生产的 行
+复合型 1.5.1 ~
+1.5 生产信息 ufactureInforma-factureInforma- 一组信息 行 M 1
+1.5.3
+tion tion
+固定资产的生产厂商
+生产厂家 Manufacturer manufacturer- 字符串 自由文本
+1.5.1 名称 O 1
+Name Name
+品牌 固定资产的产品品牌 字符串 自由文本
+1.5.2 Brand brand O 1
+规格型号 固定资产的规格型号 字符串 自由文本
+1.5.3 Specification specification O 1
+固定 资 产 描述固定资产购置的 行
+FixedAssetPur-FixedAssetPur- 复合型 1.6.1 ~
+1.6 购置信息 一组信息 行 M 1
+chaseInformationchaseInformation 1.6.12
+供 应 商 固定 资 产 的 供 应 商
+字符串 自由文本
+1.6.1 名称 SupplierName supplierName 名称 M 1
+购置固定资产的合同
+合同编号 字符串 自由文本
+1.6.2 ContractNumbercontractNumber 的编号 O 1
+固定资产购置过程中
+会 计 凭 ,
+AccountingDocu-accountingDocu- 购买单据对应的记账 字符串 自由文本
+1.6.3 证号 O 1
+mentNumber mentNumber 凭证的编号
+17
+GB/T31360—2015
+表A1 续
+.( )
+约束 最大
+数据
+序号 中文名称 英文名称 缩写名 定义 值域 条 出现
+类型 /
+件 次数
+固定资产供应商出具
+发票号 字符串 自由文本
+1.6.4 InvoiceNumber invoiceNumber 的发票编号 O 1
+固定资产的获得方式
+,
+取得方式 如新购 调拨 捐赠 自 字符串 自由文本
+1.6.5 AcquirementWayacquirementWay 、 、 、 M 1
+建 置换 盘盈等
+、 、
+按照
+获得 该 固 定 资 产 的
+取得日期 时间日期
+1.6.6 AcquirementDateacquirementDate 时间 GB/T7408—2005 M 1
+中的规定执行
+按照
+保修 截 止 固定资产的承诺保修
+Warranty warrantyDeadline- 时间日期
+1.6.7 日期 时间 GB/T7408—2005 O 1
+DeadlineDate Date 中的规定执行
+预计 使 用 固定资产的预计使用
+Estimated estimatedUseful- 数值型 正实数
+1.6.8 年限 年限 O 1
+UsefulLife Life
+购置固定资产的入账
+财务 入 账
+Financial Ac-financialAccount- 形式 如已入账 未入 字符串 自由文本
+1.6.9 状态 , 、 M 1
+countingStatus ingStatus 账等
+单位采购固定资产的
+采购 组 织 方式 如政府集中采
+, 字符串 自由文本
+1.6.10形式 ProcurementWayprocurementWay 购 部门集中采购 分 O 1
+、 、
+散采购等
+预算 项 目 采购固定资产所用的
+Budget budgetItemNum- 字符串 自由文本
+1.6.11编号 预算项目的编号 O 1
+ItemNumber ber
+固定资产的所属价值
+的类型的描述 如原
+价值类型 , 字符串 自由文本
+1.6.12 ValueType valueType 值 暂估值 评估值 重 M 1
+、 、 、
+置值 无价值等
+、
+固定 资 产 描述固定资产标识的 行
+Fixed AssetFixedAssetIDIn- 复合型 1.7.1 ~
+1.7 标识信息 一组信息 行 M 1
+IDInformation formation 1.7.3
+标 识 符 标识固定资产的标识
+字符串 自由文本
+1.7.1 类型 IDType IDType 符的类型 M 1
+标识固定资产的标识
+标识代码 字符串 自由文本
+1.7.2 IDCode IDCode 符的代码 M 1
+固定 资 产FixedAssetClas-FixedAssetClassi-描述固定资产分类的 行
+复合型 1.8.1 ~
+1.8 分类信息 sificationInforma-ficationInforma- 一组信息 行 M 1
+1.8.3
+tion tion
+固定资产分类采用的
+固定 资 产
+FixedAssetClas-fixedAssetClassi- 国际 国家 行业 地 字符串 自由文本
+1.8.1 分类标准 、 、 、 M 1
+sificationStandardficationStandard 方 企业标准等
+、
+18
+GB/T31360—2015
+表A1 续
+.( )
+约束 最大
+数据
+序号 中文名称 英文名称 缩写名 定义 值域 条 出现
+类型 /
+件 次数
+自由文本 注
+( :
+可 采 用
+固定 资 产 固定资产分类对应的 GB/T
+FixedAssetClas-fixedAssetClassi- 字符串 等
+1.8.2 分类代码 代码 14885—2010 M 1
+sificationCode ficationCode 标准中规定的
+代码
+)
+固定资产分类体系中
+固定 资 产
+FixedAssetClas-fixedAssetClassi- 固定资产的分类代码 字符串 自由文本
+1.8.3 分类名称 M 1
+sificationName ficationName 对应的中文名称
+描述固定资产价格的 行
+价值信息 复合型 1.9.1 ~
+1.9 ValueInformationValueInformation 一组信息 行 M 1
+1.9.3
+固定资产的单位数量
+单价 数值型 正实数
+1.9.1 UnitPrice unitPrice 的价格 M 1
+建议采用
+单价的币种 如人民
+货币名称 , 字符串
+1.9.2 CurrencyName currencyName 币 美元等 GB/T12406—2008 O 1
+、 中规定的名称
+建议采用
+计量固定资产的标准
+计量单位 字符串
+1.9.3 MeasureUnit measureUnit 量的名称 如台 件等 GB/T17295—2008 M 1
+, 、 中规定的名称
+固定 资 产FixedAssetPro- 描述固定资产所有权
+FixedAssetPropri- 复合型 行 行
+2 归属信息 prietor Informa- 归属的一组信息 2.1 ~2.4 M 1
+etorInformation
+tion
+对固定资产进行相关
+使用人
+操作 如使用和管理 字符串 自由文本
+2.1.1 名称 UserName userName ( ) M 1
+的人员的姓名
+单位名称 单位的中文名称 字符串 自由文本
+2.1.2 AgencyName agencyName M 1
+固定资产归属部门的
+部门名称 字符串 自由文本
+2.1.3 DepartmentNamedepartmentName 名称 M 1
+固定资产的实际存放
+存放地点 Placement Loca- 字符串 自由文本
+2.1.4 placementLocation地点 M 1
+tion
+组织 机 构
+单位的组织机构代码 字符串 自由文本
+2.1.5 代码 OrganizationCodeorganizationCode O 1
+单位地址 单位的中文详细地址 字符串 自由文本
+2.1.6 AgencyAddress agencyAddress O 1
+邮政编码 单位的邮政编码 字符串 自由文本
+2.1.7 ZipCode zipCode O 1
+对固定资产进行相关
+使用 人 联
+UserContactTel-userContactTele- 操作 如使用和管理 字符串 自由文本
+2.1.8 系电话 ( ) O 1
+ephoneNumber phoneNumber 的人员的联系电话
+使用 人 电 固定资产使用人的电
+字符串 自由文本
+2.1.9 子邮箱 UserEmail userEmail 子邮箱 O 1
+19
+GB/T31360—2015
+表A1 续
+.( )
+约束 最大
+数据
+序号 中文名称 英文名称 缩写名 定义 值域 条 出现
+类型 /
+件 次数
+描述固定资产管理的
+固定 资 产
+FixedAssetBusi-FixedAssetBusi- 普遍业务流程的一组 复合型 行 行
+3 业务信息 3.1 ~3.5 M N
+nessInformation nessInformation 信息
+对固定资产进行相关
+业务名称 字符串 自由文本
+3.1 BusinessName businessName 管理操作的名称 M 1
+对固定资产进行相关
+业务代码 字符串 自由文本
+3.2 BusinessCode businessCode 管理操作的代码 M 1
+按照
+业务 执 行 固定资产业务活动的
+Business businessExecu- 时间日期
+3.3 日期 时间 GB/T7408—2005 M 1
+ExecutionDate tionDate 中的规定执行
+业 务 执 实施固定资产业务活
+字符串 自由文本
+3.4 行人 BusinessExecutorbusinessExecutor 动的人员名称 M 1
+业务活动相关信息的
+业务描述 BusinessDescrip-businessDescrip- 字符串 自由文本
+3.5 描述 O 1
+tion tion
+20
+GB/T31360—2015
+附 录 B
+规范性附录
+( )
+固定资产核心元数据-XMLSchema定义
+固定资产核心元数据 定义如下
+-XMLSchema :
+xmlversion="1.0"encoding="UTF-8"
+<? ? >
+-- 被2012 使用XMLSpyv编辑的 http www.altova.com by--
+<! () ( :// ) >
+xs schema xmlns xs="http www.w3.org2001XMLSchema" elementFormDefault=
+< : : :// / /
+"qualified"attributeFormDefault="unqualified"
+>
+xsannotation
+< : >
+xsdocumentation
+< : >
+xsdocumentation 固定资产核心元数据 xsdocumentation
+< : > </ : >
+xsdocumentation 1.0 xsdocumentation
+< : > </ : >
+xsdocumentation 中国标准化研究院 xsdocumentation
+< : > </ : >
+xsdocumentation
+</ : >
+xsannotation
+</ : >
+xselementname="metadata"
+< : >
+xsannotation
+< : >
+xsdocumentation 元数据 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="FixedAssetEntityInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产实体信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetProprietorInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产归属信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetBusinessInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产业务信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xs anynamespace=" other"processContents="lax"minOccurs="0"
+< : # #
+maxOccurs="unbounded"
+/>
+xssequence
+</ : >
+xsattributename="any"
+< : />
+xscomplexType
+</ : >
+21
+GB/T31360—2015
+xselement
+</ : >
+xselementname="FixedAssetEntityInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产实体信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="fixedAssetName"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 固定资产名称 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="direction"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 使用方向 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="state"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 使用状态 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="depreciationState"type="xsstring"
+< : : >
+xsannotation
+< : >
+xsdocumentation 折旧状态 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetManufactureInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 固定资产生产信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetPurchaseInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 固定资产购置信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetIDInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 固定资产标识信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetClassificationInformation"type="xsanyType"
+< : : >
+22
+GB/T31360—2015
+xsannotation
+< : >
+xsdocumentation 固定资产分类信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="PriceInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 价格信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xscomplexType
+</ : >
+xselement
+</ : >
+xselementname="FixedAssetProprietorInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产归属信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xs elementname="personInformation"type="xs anyType"maxOccurs=
+< : :
+"unbounded"
+>
+xsannotation
+< : >
+xsdocumentation 人员信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="CompanyInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 单位信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="DepartmentInformation"type="xsanyType"
+< : : >
+xsannotation
+< : >
+xsdocumentation 部门信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xselementname="placementLocation"type="xsstring"minOccurs="0"
+< : : >
+xsannotation
+< : >
+xsdocumentation 存放地点 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xselement
+</ : >
+xssequence
+</ : >
+xsattributename="any"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+23
+GB/T31360—2015
+xselementname="FixedAssetBusinessInformation"
+< : >
+xsannotation
+< : >
+xsdocumentation 固定资产业务信息 xsdocumentation
+< : > </ : >
+xsannotation
+</ : >
+xscomplexType
+< : >
+xssequence
+< : >
+xselementname="businessName"type="xsstring"
+< : : />
+xselementname="businessCode"type="xsstring"
+< : : />
+xselementname="businessTime"type="xsdateTime"
+< : : />
+xselementname="businessExecutor"type="xsstring"
+< : : />
+xselementname="businessDescription"type="xsstring"minOccurs="0"
+< : : />
+xssequence
+</ : >
+xsattributename="any"
+< : />
+xscomplexType
+</ : >
+xselement
+</ : >
+xsschema
+</ : >
+24
+GB/T31360—2015
+附 录 C
+资料性附录
+( )
+固定资产核心元数据示例
+C1 示例概述
+.
+本附录按照第 章的要求给出完整的核心元数据示例 所填元数据内容仅仅具有示意性
+6 , 。
+C2 元数据示例
+.
+固定资产实体信息
+——— :
+固定资产名称 计算机
+——— :
+使用方向 办公
+——— :
+使用状态 在用
+——— :
+折旧状态 无折旧
+——— :
+固定资产生产信息
+——— :
+生产厂家 集团有限公司
+——— :**
+品牌 联
+——— : *
+规格型号
+——— :Y400N-IFI(H)
+固定资产购置信息
+——— :
+供应商 北京某科技有限公司
+——— :
+合同编号
+——— :HT20140001
+会计凭证号
+——— :KJ20140001
+发票号
+——— :FP20140001
+取得方式 新购
+——— :
+取得日期 年 月 日
+——— :2014 3 3
+保修截止日期 年 月 日
+——— :2015 3 3
+预计使用年限 年
+——— :6
+财务入账状态 已入账
+——— :
+采购组织形式 统一采购
+——— :
+预算项目编号
+——— :YS20140001
+价值类型 原值
+——— :
+固定资产标识信息
+——— :
+标识符类型 年份流水码
+——— :
+标识代码
+——— :20140001
+固定资产分类信息
+——— :
+固定资产分类标准 固定资产分类与代码
+——— :GB/T14885—2010
+固定资产分类代码
+——— :2010105
+固定资产分类名称 便携式计算机
+——— :
+价值信息
+——— :
+单价
+——— :6000
+25
+GB/T31360—2015
+货币名称 人民币
+——— :
+计量单位 台
+——— :
+固定资产归属信息
+——— :
+使用人姓名 张某
+——— :
+单位名称 北京某设计院
+——— :
+部门名称 市场部
+——— :
+存放地点 办公室
+——— :807
+组织机构代码
+——— :12345**890
+单位地址 北京市朝阳区某街 号
+——— : ×
+邮政编码
+——— :1000**
+使用人联系电话
+——— :010123**678
+使用人电子邮箱
+——— :123456abc@***.com
+固定资产业务信息
+——— :
+业务名称 领用
+——— :
+业务代码
+——— :002
+业务执行日期 年 月 日
+——— :2014 3 3
+业务执行人 李
+——— : *
+业务描述 新到设备的领用操作
+——— :
+C3 元数据XML编码示例
+.
+xmlversion="1.0"encoding="UTF-8"
+<? ? >
+metadataxmlnsxsi="http www.w3.org2001XMLSchema-instance"
+< : :// / /
+xsinoNamespaceSchemaLocation="fixedassetmetadata.xsd"
+: >
+FixedAssetEntityInformation
+< >
+fixedAssetName 计算机 fixedAssetName
+< > </ >
+direction 办公 direction
+< > </ >
+useState 在用 useState
+< > </ >
+depreciationState 无折旧 depreciationState
+< > </ >
+ProductManufactureInformation
+< >
+supplierName 集团有限公司 supplierName
+< >** </ >
+brand 联 brand
+< > *</ >
+specification Y400N-IFIH specification
+< > ()</ >
+ProductManufactureInformation
+</ >
+FixedAssetPurchaseInformation
+< >
+manufacturerName 北京某科技有限公司 manufacturerName
+< > </ >
+contractNumber HT20140001 contractNumber
+< > </ >
+accountingDocumentNumber KJ20140001 accountingDocumentNumber
+< > </ >
+invoiceNumber FP20140001 invoiceNumber
+< > </ >
+acquirementWay 新购 acquirementWay
+< > </ >
+acquirementDate 2014年3月3日 acquirementDate
+< > </ >
+warrantyDeadlineDate 2015年3月3日 warrantyDeadlineDate
+< > </ >
+estimatedUsefulLife 6年 estimatedUsefulLife
+< > </ >
+26
+GB/T31360—2015
+financialAccountingStatus 已入账 financialAccountingStatus
+< > </ >
+procurementWay 统一采购 procurementWay
+< > </ >
+budgetItemNumber YS20140001 budgetItemNumber
+< > </ >
+valueType 原值 valueType
+< > </ >
+FixedAssetPurchaseInformation
+</ >
+FixedAssetIDInformation
+< >
+IDType 年份流水码 IDType
+< > </ >
+IDCode 20140001 IDCode
+< > </ >
+FixedAssetIDInformation
+</ >
+FixedAssetClassificationInformation
+< >
+fixedAssetclassificationStandard GBT14885 2010固定资产分类与代码
+< > / —
+fixedAssetclassificationStandard
+</ >
+fixedAssetClassificationCode 2010105 fixedAssetClassificationCode
+< > </ >
+fixedAssetClassificationName 便携式计算机 fixedAssetClassificationName
+< > </ >
+FixedAssetClassificationInformation
+</ >
+ValueInformation
+< >
+unitPrice 6000 unitPrice
+< > </ >
+currencyName 人民币 currencyName
+< > </ >
+measureUnit 台 measureUnit
+< > </ >
+ValueInformation
+</ >
+FixedAssetEntityInformation
+</ >
+FixedAssetProprietorInformation
+< >
+UserInformation
+< >
+userName 张某 userName
+< > </ >
+agencyName 北京某设计院 agencyName
+< > </ >
+DepartmentName 市场部 DepartmentName
+< > </ >
+placementLocation 807办公室 placementLocation
+< > </ >
+organizationCode 12345 890 organizationCode
+< > ** </ >
+agencyaddress 北京市朝阳区某街×号 agencyaddress
+< > </ >
+zipCode 1000 zipCode
+< > **</ >
+userContactTelephoneNumber 010123 678 userContactTelephoneNumber
+< > ** </ >
+email 123456abc 163.com email
+< > @ </ >
+UserInformation
+</ >
+FixedAssetProprietorInformation
+</ >
+FixedAssetBusinessInformation
+< >
+businessName 领用 businessName
+< > </ >
+businessCode 002 businessCode
+< > </ >
+businessExcutionDate 2014年3月3日 businessExcutionDate
+< > </ >
+businessExecutor 李 businessExecutor
+< > *</ >
+businessDescription 新到设备的领用操作 businessDescription
+< > </ >
+FixedAssetBusinessInformation
+</ >
+metadata
+</ >
+27
+GB/T31360—2015
+附 录 D
+资料性附录
+( )
+行政事业单位资产管理信息系统数据项对照表
+行政事业单位资产管理信息系统数据项对照表见表
+D.1。
+表D1 行政事业单位资产管理信息系统数据项对照表
+.
+行政事业单位 行政事业单位
+固定资产核心元 固定资产核心元 固定资产核心元
+资产管理信息 资产管理信息
+数据中文名称 数据英文名称 数据英文缩写名
+系统名称 系统系统标识
+元数据
+Metadata Metadata
+固定资产实体信息 FixedAssetEntityInforma-
+FixedAssetEntityInformation
+tion
+固定资产名称 资产名称
+FixedAssetName fixedAssetName ZICMC
+使用方向 使用方向
+Direction direction SHIYFXID
+使用状态 使用状态
+UseState useState SHIYZKID
+折旧状态 折旧状态
+DepreciationState depreciationState ZHEJZTID
+固定资产生产信息 FixedAssetManufactureIn-FixedAssetManufactureIn-
+formation formation
+生产厂家 生产厂家
+ManufacturerName manufacturerName SHENGCCJ
+品牌 品牌
+Brand brand PINP
+规格型号 规格型号
+Specification specification GUIGXH
+固定资产购置信息 FixedAssetPurchaseInfor-FixedAssetPurchaseInforma-
+mation tion
+供应商 供应商
+SupplierName supplierName JIXS
+合同编号 合同编号
+ContractNumber contractNumber HETBH
+会计凭证号 会计凭证号
+AccountingDocumentNumber accountingDocumentNumber KUAIJPZH
+发票号 发票号
+InvoiceNumber invoiceNumber FAPH
+取得方式 取得方式
+AcquirementWay acquirementWay QUDFSID
+取得日期 取得日期
+AcquirementDate acquirementDate QUDRQ
+保修截止日期 保修截止日期
+WarrantyDeadlineDate warrantyDeadlineDate BAOXJZRQ
+预计使用年限 寿
+预计使用年限 /
+EstimatedUsefulLife estimatedUsefulLife 命 种龄 YUJSMZL
+/
+财务入账状态 财务入账状态
+FinancialAccountingStatus financialAccountingStatus RUZXS
+采购组织形式 采购组织形式
+ProcurementWay procurementWay CAIGZZXSID
+预算项目编号 预算项目编号
+BudgetItemNumber budgetItemNumber YUSXMBH
+价值类型 价值类型
+ValueType valueType JIAZLXID
+固定资产标识信息
+FixedAssetIDInformation FixedAssetIDInformation
+28
+GB/T31360—2015
+表D1 续
+.( )
+行政事业单位 行政事业单位
+固定资产核心元 固定资产核心元 固定资产核心元
+资产管理信息 资产管理信息
+数据中文名称 数据英文名称 数据英文缩写名
+系统名称 系统系统标识
+固 定 资 产 标 识
+标识符类型
+IDType IDType 类型 GUDZCBZLX
+标识代码 资产编号
+IDCode IDCode BILLCODE
+固定资产分类信息 FixedAssetClassificationIn-FixedAssetClassificationInfor-
+formation mation
+固 定 资 产 分 类
+固定资产分类标准 FixedAssetClassification fixedAssetClassificationStand- ZICFLID.ZICFL-
+标准
+Standard ard BZ
+固定资产分类代码 FixedAssetClassification 资产分类代码 ZICFLID. STD-
+fixedAssetClassificationCode
+Code CODE
+固定资产分类名称 FixedAssetClassification 资产分类名称 ZICFLID. STD-
+fixedAssetClassificationName
+Name NAME
+价值信息 价值
+ValueInformation ValueInformation JIAZ
+单价 单价
+UnitPrice unitPrice DANJ
+货币名称 货币名称
+CurrencyName currencyName HUOBMC
+计量单位 计量单位
+MeasureUnit measureUnit JILDW
+固定资产归属信息 FixedAssetProprietorInfor-FixedAssetProprietorInforma-
+mation tion
+使用人名称 使用人名称 SHIYRID.STD-
+UserName userName
+NAME
+单位名称 名称 MD_ORG.STD-
+AgencyName agencyName
+NAME
+使 用 管 理 部 门
+部门名称 / SHIYBMID.STD-
+DepartmentName departmentName 名称
+NAME
+存放地点 存放地点
+PlacementLocation placementLocation CUNFDDID
+组织机构代码 组织机构代码 MD_ORG.ZUZJG-
+OrganizationCode organizationCode
+DM
+单位地址 单位地址 MD_ ORG.DAN-
+AgencyAddress agencyAddress
+WDZ
+邮政编码 邮政编码
+ZipCode zipCode MD_ORG.YOUZBM
+使用人联系电话 UserContactTelephone 电话号码 SHIYRID.PHO-
+userContactTelephoneNumber
+Number NENUMBER
+使用人电子邮箱 电子邮箱
+UserEmail userEmail MD_ORG.EMAIL
+固定资产业务信息 Fixed AssetBusinessInfor-FixedAssetBusinessInforma-
+mation tion
+29
+GB/T31360—2015
+表D1 续
+.( )
+行政事业单位 行政事业单位
+固定资产核心元 固定资产核心元 固定资产核心元
+资产管理信息 资产管理信息
+数据中文名称 数据英文名称 数据英文缩写名
+系统名称 系统系统标识
+业务名称 单据定义标题 B0104_ BILLDE-
+BusinessName businessName
+FINE.TITLE
+GAMS_ ASSET-
+业务代码 单据编号
+BusinessCode businessCode BUSTRACE.
+BILLCODE
+GAMS_ ASSET-
+业务执行日期 单据日期
+BusinessExecutionDate businessExecutionDate BUSTRACE.
+BILLTIME
+业务执行人 制单人
+BusinessExecutor businessExecutor CREATER
+GAMS_ ASSET-
+业务描述 业务描述
+BusinessDescription businessDescription BUSTRACE.
+BUSTYPEDESC
+30

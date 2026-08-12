@@ -1,0 +1,3027 @@
+ICS0308035240
+. ; .
+A00
+中 华 人 民 共 和 国 国 家 标 准
+GB/T31779—2015
+科技服务产品数据描述规范
+Datadescriptionspecificationforproductsofscienceandtechnologyservice
+2015-07-03发布 2016-02-01实施
+中华人民共和国国家质量监督检验检疫总局
+发 布
+中 国 国 家 标 准 化 管 理 委 员 会
+GB/T31779—2015
+目 次
+前言
+………………………………………………………………………………………………………… Ⅲ
+引言
+………………………………………………………………………………………………………… Ⅳ
+范围
+1 ……………………………………………………………………………………………………… 1
+规范性引用文件
+2 ………………………………………………………………………………………… 1
+术语和定义
+3 ……………………………………………………………………………………………… 1
+元数据属性
+4 ……………………………………………………………………………………………… 3
+描述
+5 UML ……………………………………………………………………………………………… 4
+模型符号
+5.1 UML ……………………………………………………………………………………… 4
+科技服务产品元数据包
+5.2 …………………………………………………………………………… 5
+科技服务产品元数据实体
+5.3 ………………………………………………………………………… 5
+科技服务产品的元数据
+6 ………………………………………………………………………………… 6
+服务基本信息
+6.1 ……………………………………………………………………………………… 6
+服务团队信息
+6.2 ……………………………………………………………………………………… 8
+服务机构信息
+6.3 ……………………………………………………………………………………… 9
+服务价格
+6.4 …………………………………………………………………………………………… 12
+服务提供
+6.5 …………………………………………………………………………………………… 13
+服务交付物
+6.6 ………………………………………………………………………………………… 14
+服务质量评价
+6.7 ……………………………………………………………………………………… 15
+科技服务产品元数据的扩展规则
+7 ……………………………………………………………………… 17
+具体元数据的扩展类型
+7.1 …………………………………………………………………………… 17
+元数据扩展规则
+7.2 …………………………………………………………………………………… 17
+附录 规范性附录 科技服务产品其他数据描述形式
+A( ) ……………………………………………… 18
+附录 资料性附录 主要科技服务类别
+B( ) ……………………………………………………………… 34
+附录 资料性附录 科技服务产品元数据扩展示例
+C( ) ………………………………………………… 35
+附录 资料性附录 科技服务产品元数据示例
+D( ) ……………………………………………………… 37
+参考文献
+…………………………………………………………………………………………………… 41
+Ⅰ
+GB/T31779—2015
+前 言
+本标准按照 给出的规则起草
+GB/T1.1—2009 。
+本标准由全国信息分类与编码标准化技术委员会 提出并归口
+(SAC/TC353) 。
+本标准主要起草单位 北京智识企业管理咨询有限公司 中国标准化研究院 北京市长城企业战略
+: 、 、
+研究所 东莞市科技咨询服务中心
+、 。
+本标准主要起草人 武文生 王涛 石宁宁 程俊 岳高峰 黄波 王瑛 石会昌 牛瑜洁 李黎芬
+: 、 、 、 、 、 、 、 、 、 、
+刘佳薇 邵翔 李毅
+、 、 。
+Ⅲ
+GB/T31779—2015
+引 言
+随着我国经济的快速发展 科技服务市场需求不断扩大 我国科技服务业呈现出快速发展的趋势
+, , 。
+科技服务具有智力密集的特征 交付成果的质量 有效性均难以度量 由于缺乏规范化的产品描述 科
+, 、 。 ,
+技服务供需双方在需求提出 服务交付等方面存在信息不对称 加大了需求方判别服务机构和产品的难
+、 ,
+度 同时 在新一代信息技术快速发展的条件下 线上线下结合的科技服务平台成为科技服务发展的新
+。 , ,
+模式 但是由于缺乏统一的数据规范 各个科技服务平台之间的数据难以共享和交换
+, , 。
+为方便需求方评价服务机构和服务产品 促成科技服务供需双方有效对接 本标准在统一基本概念
+, ,
+的基础上 建立科技服务产品的数据描述框架 为科技服务的描述 发布 查询 共享 交换提供标准 为
+, , 、 、 、 、 ,
+科技服务平台的规范化 集成化建设与发展提供支撑
+、 。
+Ⅳ
+GB/T31779—2015
+科技服务产品数据描述规范
+1 范围
+本标准规定了科技服务产品的元数据及其表示方法 并提供了元数据的扩展规则和方法
+, 。
+本标准适用于科技服务产品的描述 发布 查询 共享 交换等
+、 、 、 、 。
+2 规范性引用文件
+下列文件对于本文件的应用是必不可少的 凡是注日期的引用文件 仅注日期的版本适用于本文
+。 ,
+件 凡是不注日期的引用文件 其最新版本 包括所有的修改单 适用于本文件
+。 , ( ) 。
+数据元和交换格式 信息交换 日期和时间表示法
+GB/T7408—2005
+全国组织机构代码编制规则
+GB11714—1997
+电子商务 企业核心元数据
+GB/T24663—2009
+3 术语和定义
+下列术语和定义适用于本文件
+。
+31
+.
+服务 service
+服务提供者与顾客接触过程中所产生的一系列活动的过程及其结果 其结果通常是无形的
+, 。
+定义
+[GB/T28222—2011, 2.1]
+32
+.
+科技服务 scienceandtechnologyservice
+为满足客户需求 服务机构运用科学知识 技术和分析研究方法以及经验等要素提供的无形的 非
+, 、 、
+实体的智力服务
+。
+注1 智力服务结果可以包括无形的或有形的服务成果
+: 。
+注2 科技服务等同于科技服务产品
+: 。
+33
+.
+科技服务业 scienceandtechnologyserviceindustry
+运用科学知识 技术手段和分析方法 依托现代商业模式 主要服务于科研活动 技术创新和成果转
+、 , , 、
+化的产业
+。
+注 包括研究开发 技术转移 检验检测 创业孵化 知识产权 科技咨询 科技金融 科学技术普及 综合科技服
+: 、 、 、 、 、 、 、 、
+务等
+。
+34
+.
+研究开发及其服务 research&developmentandservice
+各类服务机构围绕科研活动和技术创新 提供的研发外包 设计以及科研支撑等第三方服务
+, 、 。
+35
+.
+技术转移服务 technologytransferservice
+服务机构围绕成果转化 技术扩散 为科技型企业提供如技术评估 技术交易 技术转让 技术代理
+、 , 、 、 、 、
+技术拍卖以及技术集成等各类服务
+。
+1
+GB/T31779—2015
+36
+.
+检验检测服务 inspectionandtestingservice
+具备检验检测认证资质或能力的企业 机构 按照相关标准 方法对技术和产品进行检验和测试的
+、 , 、
+服务
+。
+注 一般包括质量检验 性能测试 成果鉴定和资质认定等
+: 、 、 。
+37
+.
+创业孵化服务 pioneeringincubationservice
+围绕企业成长生命周期 在想法 创业等环节为项目或初创企业提供如投资 辅导 培训 技术创新
+, 、 、 、 、 、
+办公环境等一系列服务
+。
+38
+.
+知识产权服务 intellectualpropertyservice
+提供专利 商标 著作权 集成电路布图设计等各类知识产权 获权 用权 维权 的相关服务及衍
+、 、 、 “ — — ”
+生服务
+。
+注 一般包括知识产权代理服务 知识产权法律服务 知识产权信息服务 知识产权商用化服务 知识产权咨询服务
+: 、 、 、 、
+和知识产权培训服务
+。
+39
+.
+科技咨询服务 technologyconsultingservice
+为政府部门 企事业单位 各类社会组织 团队及个人的决策 运作提供的一系列专业智力服务
+、 、 、 、 。
+注 一般包括企业咨询 公共咨询 科技信息等
+: 、 、 。
+310
+.
+科技金融服务 technologyfinancialservice
+各类社会组织 个人 金融机构 政府围绕科研活动 成果转化和产业化等科技创新全链条 为创业
+、 、 、 、 ,
+者和科技型企业提供的金融服务
+。
+注 一般包括创业投资 科技资本市场 科技信贷 科技保险等服务
+: 、 、 、 。
+311
+.
+科学技术普及服务 scienceandtechnologypopularizationservice
+利用各种传媒以浅显的方式向普通大众普及科学技术知识 倡导科学方法 传播科学思想 弘扬科
+, 、 、
+学精神的服务
+。
+注 新经济条件下 科普服务呈现内容和渠道多样化 传播网络化等发展趋势 其物理形态主要包括科技馆 博物
+: , 、 , 、
+馆 书籍 数字音视频 期刊和网站等
+、 、 、 。
+312
+.
+综合科技服务 integratedtechnologyservice
+通过整合技术创新链上各个环节的科技服务要素 形成科技服务机构之间的协作网络 为企业或产
+, ,
+业集群提供研究开发 技术转移 科技咨询 知识产权和科技金融等综合性服务
+、 、 、 。
+注 业务集成化 服务专业化是综合科技服务的内涵 跨领域融合 跨区域合作是综合科技服务的主要发展方向
+: 、 , 、 。
+313
+.
+元数据 metadata
+定义和描述其他数据的数据 用于提供某种资源的有关信息的结构数据
+, 。
+定义
+[GB/T18391.1—2009, 3.2.16]
+314
+.
+元数据元素 metadataelement
+元数据的基本单元
+。
+注1 与 术语中的属性同义
+: UML 。
+注2 元数据元素在元数据实体中是唯一的
+: 。
+定义
+[GB/T19710—2005, 4.6]
+2
+GB/T31779—2015
+315
+.
+元数据实体 metadataentity
+一组说明数据相同特性的元数据元素
+。
+注1 与 术语中的类同义
+: UML 。
+注2 可以包含一个或一个以上元数据实体
+: 。
+定义
+[GB/T19710—2005, 4.7]
+316
+.
+元数据子集 metadatasection
+元数据的子集合 由相关的元数据实体和元素组成
+, 。
+注 与 术语中的包同义
+: UML 。
+定义
+[GB/T19710—2005, 4.8]
+4 元数据属性
+在 第 章中规定的元数据描述方法适用于本标准
+GB/T24663—2009 4 :
+中文名称
+a) :
+赋予元数据的一个中文标记 元数据实体名称在本标准范围内应唯一 元数据元素名称在元
+。 ,
+数据实体中也应唯一
+。
+英文名称
+b) :
+赋予元数据的一个英文名称 英文名称以牛津英语词典的英文拼写为准
+。 。
+缩写名
+c) :
+元数据的英文缩写名称 缩写名应遵守如下规则
+。 :
+缩写名在本标准范围内应唯一
+1) ;
+缩写名不应包括任何空格 破折号 下划线或分隔符等
+2) 、 、 ;
+元数据实体缩写名应采用 命名方式 即每个英文单词的首字母
+3) UCC(UpperCamelCase) ,
+均大写 其他字母均为小写 并把这些单词组合起来 元数据元素缩写名应采用
+, , ; LCC
+命名方式 即除第一个英文单词外 每个单词的首字母大写 其他字
+(LowerCamelCase) , , ,
+母均为小写 并把这些单词组合起来
+, ;
+对存在惯用英文名称缩写的 采用惯用缩写
+4) , 。
+定义
+d) :
+对元数据含义的解释 以使元数据与其他元数据在概念上相区别
+, 。
+数据类型
+e) :
+对元数据元素的有效值域的规定和允许对该值域内的值进行有效操作的规定 例如数值型 字
+, 、
+符串 日期型 二进制 布尔型等
+、 、 、 。
+本标准中元数据实体为复合型
+。
+值域
+f) :
+元数据元素所允许值的集合
+。
+约束 条件
+g) / :
+元数据的一个说明符 说明一个元数据是否应当总是在元数据中选用或有时选用 即有值
+, ( )。
+该说明符分别为
+:
+必选 表明该元数据实体或元数据元素必须选择
+1) M: , 。
+一定条件下必选 当满足约束条件中所定义的条件时必须选择 条件必选用于以下三
+2) C: , ,
+种可能性之一
+:
+当在多个选项中进行选择时 至少有一个选项为必选 且必须使用
+——— , , ;
+当一个元数据元素已经使用时 选用另一个元数据实体或元数据元素
+——— , ;
+3
+GB/T31779—2015
+当一个元数据元素已经选择了一个特定值时 选用另一个元数据元素
+——— , 。
+可选 根据实际应用可以选择也可以不选的元数据实体或元数据元素 已经定义的可
+3) O: , 。
+选元数据实体和可选元数据元素 可指导部门元数据标准制定人员充分说明其信息
+, 。
+如果一个可选元数据实体未被使用 则该实体所包含的元素 包括必选元素 也不选用
+, ( ) 。
+可选元数据实体可以有必选元素 但只当可选实体被选用时才成为必选
+, 。
+最大出现次数
+h) :
+元数据在实际使用时可能重复出现的最大次数 只出现一次的表示为 重复出现的表示为
+。 “1”,
+N
+“ ”。
+备注
+i) :
+元数据进一步的补充说明 根据需要选用
+。( )
+5 UML描述
+51 UML模型符号
+.
+在 中规定的元数据描述方法适用于本标准 本标准采用统一建模语言
+GB/T24663—20095.1 ,
+描述元数据子集 元数据实体和元数据元素之间的关系 用 中的包来表示元数据子集
+(UML) 、 。 UML ,
+类来表示元数据实体 属性来表示元数据元素 本标准中使用的 符号如图 所示
+, 。 UML 1 :
+图1 UML符号及说明
+4
+GB/T31779—2015
+52 科技服务产品元数据包
+.
+科技服务产品元数据包采用 包形式来描述 主要包括服务基本信息 服务团队信息 服务机
+UML , 、 、
+构信息 服务价格 服务提供 服务交付物 服务质量评价 如图 所示
+、 、 、 、 , 2 。
+图2 科技服务产品元数据实体
+53 科技服务产品元数据实体
+.
+科技服务产品元数据 包括服务基本信息 服务团队信息 服务机构信息 服务价格 服务提供 服务
+, 、 、 、 、 、
+交付物 服务质量评价 个元数据实体 如图 所示 科技服务产品的数据字典 定义见
+、 7 , 3 。 、XMLSchema
+附录 科技服务产品的数据实例参见附录
+A, D。
+图3 科技服务产品元数据实体
+5
+GB/T31779—2015
+6 科技服务产品的元数据
+61 服务基本信息
+.
+英文名称
+:ServiceBasicInformation
+缩 写 名
+:ServBasicInfo
+定 义 服务产品的基本信息
+: ;
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+611 标识符
+..
+英文名称
+:ProductID
+缩 写 名
+:prodId
+定 义 服务产品的唯一代码
+: ;
+数据类型 字符型
+:
+值 域 采用 位阿拉伯数字
+: 8
+约束 条件
+/ :M
+最大出现次数
+:1
+612 名称
+..
+英文名称
+:ProductName
+缩 写 名
+:prodName
+定 义 服务产品的名称
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+613 关键词
+..
+英文名称
+:Subject
+缩 写 名
+:subj
+定 义 描述服务产品主题或内容的主题词
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数 N
+:
+614 简要说明
+..
+英文名称
+:BriefIntroduction
+缩 写 名
+:briefIntrod
+定 义 服务机构对服务产品的简短文字描述 可以主要说明服务内容和服务特色
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+6
+GB/T31779—2015
+约束 条件
+/ :M
+最大出现次数
+:1
+615 服务类别
+..
+英文名称
+:ServiceCategory
+缩 写 名
+:servCateg
+定 义 服务产品所属的科技服务类别名称
+: ;
+数据类型 字符型
+:
+值 域 自由文本 参见附录
+: , B
+约束 条件
+/ :M
+最大出现次数
+:1
+616 成功案例
+..
+英文名称
+:SuccessfulCase
+缩 写 名
+:succeCase
+定 义 服务产品为客户提供服务后 经过检验是成功的并可作为典型事例的服务过程
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+617 适用行业
+..
+英文名称
+:ApplicableIndustry
+缩 写 名
+:appliIndus
+定 义 服务产品所适用的行业领域
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+618 发布方
+..
+英文名称
+:Publisher
+缩 写 名
+:publi
+定 义 发布服务产品的机构名称
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+619 发布日期
+..
+英文名称
+:PublishDate
+缩 写 名
+:publiDate
+定 义 服务产品发布的日期
+: ;
+7
+GB/T31779—2015
+数据类型 日期型
+:
+值 域 自由文本 采用 所规定 表达方式
+: , GB/T7408—2005 YYYY-MM-DD
+约束 条件
+/ :O
+最大出现次数
+:1
+6110 产品网址
+..
+英文名称
+:ProductURL
+缩 写 名
+:prodURL
+定 义 服务产品发布的网址 客户通过该网址可查看到该服务产品信息
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+62 服务团队信息
+.
+英文名称
+:ServiceTeamInformation
+缩 写 名
+:ServTeamInfo
+定 义 提供科技服务的人员构成 知识结构 认证资格及联系信息
+: 、 、 ;
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+621 人员构成
+..
+英文名称
+:StaffConstitute
+缩 写 名
+:staffConsti
+定 义 服务团队的负责人 主要成员介绍 包括姓名 职务 业绩等
+: 、 , 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+622 知识结构
+..
+英文名称
+:KnowledgeStructure
+缩 写 名
+:knowlStru
+定 义 服务团队人员的学历情况 职称情况 从业经历情况等描述
+: 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+623 认证资格
+..
+英文名称
+:Certification
+缩 写 名
+:certif
+8
+GB/T31779—2015
+定 义 服务团队人员的业务能力水平 获得国家相关认证机构认证的情况
+: 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+624 联系人姓名
+..
+英文名称
+:ContactPerson
+缩 写 名
+:contactPers
+定 义 服务产品的联系人姓名
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+625 固定电话
+..
+英文名称
+:FixedTelephone
+缩 写 名
+:fixedTele
+定 义 服务产品联系人的固定电话
+: ;
+数据类型 字符型 区号 电话号码
+: , -
+值 域 位数字字符 三位区号 位电话号码或四位区号 位电话号码
+:11 ( +8 +7 )
+约束 条件
+/ :M
+最大出现次数 N
+:
+626 移动电话
+..
+英文名称
+:MobilePhone
+缩 写 名
+:phone
+定 义 服务产品联系人的手机号码
+: ;
+数据类型 字符型
+:
+值 域 位数字字符
+:11
+约束 条件
+/ :O
+最大出现次数 N
+:
+627 电子邮箱
+..
+英文名称
+:ContactEmail
+缩 写 名
+:email
+定 义 服务产品联系人的邮箱
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+63 服务机构信息
+.
+英文名称
+:ServiceOrganizationInformation
+9
+GB/T31779—2015
+缩 写 名
+:ServOrgInfo
+定 义 提供服务产品的组织机构的信息描述
+: ;
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+631 机构名称
+..
+英文名称
+:ServiceProvider
+缩 写 名
+:servProvider
+定 义 提供服务产品的组织机构名称
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+632 组织机构代码
+..
+英文名称
+:OrganizationCode
+缩 写 名
+:orgCode
+定 义 提供服务产品的组织机构在全国范围内唯一的 始终不变的代码标识
+: 、 ;
+数据类型 字符型
+:
+值 域 来源于组织机构的组织机构代码证 由八位数字 或大写拉丁字母 本体代码和一位数字
+: , ( )
+或大写拉丁字母 校验码组成 参见
+( ) , GB11714—1997
+约束 条件
+/ :M
+最大出现次数
+:1
+633 机构性质
+..
+英文名称
+:ProviderCharacter
+缩 写 名
+:providerChar
+定 义 依法成立的机关 企业 事业单位 社会团体等类型
+: 、 、 、 ;
+数据类型 字符型
+:
+值 域 机关 企业 事业单位 社会团体或民办非企业单位
+: 、 、 、
+约束 条件
+/ :O
+最大出现次数
+:1
+634 成立时间
+..
+英文名称
+:FoundingTime
+缩 写 名
+:foundingTime
+定 义 服务机构成立的日期
+: ;
+数据类型 日期型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+10
+GB/T31779—2015
+635 业务范围
+..
+英文名称
+:ServiceScope
+缩 写 名
+:servScope
+定 义 对服务机构所能从事的业务活动的简要描述
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+636 简要介绍
+..
+英文名称
+:Profile
+缩 写 名
+:profile
+定 义 对服务机构的成立背景 发展历程 地理位置 组织结构等方面的文字说明
+: 、 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+637 机构人员构成
+..
+英文名称
+:OrganizationalConstitute
+缩 写 名
+:orgConsti
+定 义 对服务机构中专业技术人员的专业 学历 职称情况的文字说明
+: 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+638 服务资质
+..
+英文名称
+:ServiceQuality
+缩 写 名
+:servQual
+定 义 服务机构所取得的国家或者地方认可的资质证书说明
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+639 机构荣誉
+..
+英文名称
+:Honors
+缩 写 名
+:honors
+定 义 服务机构所获得的来自客户或社会组织的正式的 积极的评价 如荣誉证书 奖励证
+: 、 , 、
+书等
+;
+数据类型 字符型
+:
+11
+GB/T31779—2015
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+6310 机构地址
+..
+英文名称
+:OrganizationAddress
+缩 写 名
+:orgAdd
+定 义 服务机构的通信地址
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+6311 机构网址
+..
+英文名称
+:Website
+缩 写 名
+:website
+定 义 服务机构的互联网网站地址
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+64 服务价格
+.
+英文名称
+:ServicePrice
+缩 写 名
+:ServPrice
+定 义 服务产品的价格信息描述
+: ;
+数据类型 复合型
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+641 产品价格
+..
+英文名称
+:ProductPrice
+缩 写 名
+:prodPrice
+定 义 服务机构对所提供服务产品制定的价格
+: ;
+数据类型 数值型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+642 收费标准
+..
+英文名称
+:ChargesStandard
+缩 写 名
+:chargesStd
+定 义 服务机构对所提供服务产品制定的收费计算方式或者收费计算单位 如按项目 按工
+: , 、
+12
+GB/T31779—2015
+时等
+;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+643 付款方式
+..
+英文名称
+:Payment
+缩 写 名
+:payment
+定 义 对所提供的服务产品的付费方式以及付费条件的说明 如一次性支付或者多次支付等
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+65 服务提供
+.
+英文名称
+:ServiceProvision
+缩 写 名
+:ServProvision
+定 义 为满足客户需求 服务机构与客户之间直接或间接接触的活动过程
+: , ;
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+651 服务流程
+..
+英文名称
+:ServiceProcess
+缩 写 名
+:servProcess
+定 义 为客户提供科技服务产品的具体活动过程
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+652 服务周期
+..
+英文名称
+:ServiceCycle
+缩 写 名
+:servCycle
+定 义 为客户提供科技服务产品所需的总时长 服务流程的阶段划分 以及每个阶段应该完成
+: , ,
+的成果
+;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+653 服务验收
+..
+英文名称
+:ServiceAcceptance
+13
+GB/T31779—2015
+缩 写 名
+:servAccept
+定 义 服务机构与客户双方共同达成的服务产品在进行验收交付时所应该达到的条件
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+654 服务方式
+..
+英文名称
+:ServiceWay
+缩 写 名
+:servWay
+定 义 服务活动所采用的工作方式 如线上 线下 线上线下相结合方式
+: , 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+655 服务地点
+..
+英文名称
+:ServicePlace
+缩 写 名
+:servPlace
+定 义 提供服务产品的服务活动的地点 如驻场在客户单位或在服务机构内部
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+656 服务条件
+..
+英文名称
+:ServiceCondition
+缩 写 名
+:servCond
+定 义 服务机构在提供服务的过程中 客户应提供的场所 设备 人员 信息等前提要素
+: , 、 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+66 服务交付物
+.
+英文名称
+:Deliverables
+缩 写 名
+:Deliv
+定 义 服务产品可交付的成果
+: ;
+数据类型 复合型
+:
+约束 条件
+/ :M
+最大出现次数 N
+:
+661 交付物名称
+..
+英文名称
+:DeliverableName
+14
+GB/T31779—2015
+缩 写 名
+:delivName
+定 义 服务机构向客户交付的成果名称
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :M
+最大出现次数
+:1
+662 交付物类型
+..
+英文名称
+:DeliverableType
+缩 写 名
+:delivType
+定 义 服务机构向客户交付的成果类型 如报告 方案 技术文档等
+: , 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+663 交付日期
+..
+英文名称
+:DeliveryTime
+缩 写 名
+:delivTime
+定 义 服务机构向客户交付成果的时间
+: ;
+数据类型 日期型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+664 知识产权归属
+..
+英文名称
+:DeliverableCopyright
+缩 写 名
+:delivCopyright
+定 义 服务成果的知识产权界定 如归服务机构所有 归客户所有 或归服务机构和客户共有
+: , , , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+67 服务质量评价
+.
+英文名称
+:ServiceQualityEvaluation
+缩 写 名
+:ServQualEval
+定 义 客户对科技服务产品的质量所进行的定量和定性的评价数据 服务质量评价由客户或独
+: ,
+立第三方提供
+;
+数据类型 复合型
+:
+约束 条件
+/ :O
+最大出现次数 N
+:
+15
+GB/T31779—2015
+671 交付物质量评价
+..
+英文名称
+:DeliverablesQualityEvaluation
+缩 写 名
+:delivQualEval
+定 义 客户在消费 使用某种交付物的过程中及之后的一段时期内对其质量水平的实际感受
+: 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+672 服务专业性评价
+..
+英文名称
+:ServiceSpecialityEvaluation
+缩 写 名
+:servSpecEval
+定 义 客户实际感受到的服务人员所具有的知识 表达自信和可信的能力 包括完成服务的能
+: 、 ,
+力 与顾客有效沟通等
+, ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+673 服务响应性评价
+..
+英文名称
+:ServiceResponsivityEvaluation
+缩 写 名
+:servRespEval
+定 义 客户实际感受到的服务人员提供快捷服务的能力
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+674 服务态度评价
+..
+英文名称
+:ServiceAttitudeEvaluation
+缩 写 名
+:servAttitudeEval
+定 义 客户在接受服务过程中对服务机构提供周到 个性化服务 主动积极服务的实际感受
+: 、 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+675 服务性价比评价
+..
+英文名称
+:ServiceCost-effectiveEvaluation
+缩 写 名
+:servCost-effectiveEval
+定 义 客户综合了所接受的服务质量水平对其付出价格的感受
+: ;
+值 域 自由文本
+:
+16
+GB/T31779—2015
+约束 条件
+/ :O
+最大出现次数
+:1
+7 科技服务产品元数据的扩展规则
+针对具体的研究开发及其服务 技术转移服务 检验检测服务 创业孵化服务 知识产权服务 科技
+、 、 、 、 、
+咨询服务 科技金融服务 科学技术普及服务 综合科技服务 当需要对其服务产品描述进行扩展时 应
+、 、 、 , ,
+遵循如下规则
+。
+71 具体元数据的扩展类型
+.
+具体元数据的扩展类型包括如下内容
+:
+增加新的元数据元素
+a) ;
+增加新的元数据实体
+b) ;
+增加新的元数据子集
+c) ;
+建立新的代码表 代替值域为 自由文本 的现有元数据无素的值域
+d) , “ ” ;
+对现有元数据实体 元素施加更严格的约束条件
+e) / ;
+对现有元数据实体 元素施加更严格的最大出现次数限制
+f) / 。
+72 元数据扩展规则
+.
+元数据扩展规则包括如下内容
+:
+扩展的元数据元素不应改变本标准中现有元数据元素的名称 定义或者数据类型属性
+a) 、 ;
+扩展的元数据可以定义为实体 该实体可以包含扩展的和现有的元数据元素 作为其组成
+b) , ,
+部分
+;
+允许对现有元数据实体 元素施加比本标准要求更加严格的约束条件 如在本标准中是可选的
+c) / ,
+元数据元素 在扩展后可以是必选的
+, ;
+允许对元数据元素的值域采用比本标准更严格的限制 如在本标准中值域为 自由文本 的元
+d) , “ ”
+数据元素 在扩展标准中可以限定为适当值的列表
+, ;
+允许对本标准认可的值域的使用进行限制 如现有元数据元素的值域有多个值 在扩展后可以
+e) , ,
+规定它的值域只包含两个
+。
+研究开发及其服务产品 技术转移服务产品 检验检测服务产品以及科技咨询服务产品的元数据扩
+、 、
+展示例参见附录
+C。
+17
+GB/T31779—2015
+18
+!!"!!
+""!%$#!
+3210/.-,+*)(’&
+1054/.!!!+*)(’&!!!!
+##!".-,+*)(’&%$#"!
+54/.7+*)(’&!!!!6
+EDCB
+HG
+A@$?>
+=<
+;:(’
+98
+376
+4325
+4321
+0/
+’F
+L(’IKJ&%$#"!98
+#
+QP
+(’()(’&%
+(’()(’&%
+(’I
+$
+ONM
+SR&%$#"!
+.-0(/&.-,+&*
+#
+QP
+;WV
+UTSRL&%$#
+4321.-0(/,+&*
+UTSR$#
+#
+ON(’IXUT
+24-’(5+4321
+#
+QP
+)’dcba:K‘
+;[)
+_^]\L&%$#
+)1)4+9
+81’.7)4+6
+[ZY
+#!#
+#
+QP
+S2fe
+;[)
+43L&%$#
+&5(<)4+9
+&5(<’.7)4+6
+43
+;!#
+Krqihgpo
+jLnmlkj&%$#,+
+!
+QP
+S2fe
+;[)
+?>70
+’.&?>7*
+ihg
+=!#
+ut’&%[)2s
+ik
+)2}vL&%$#|{z$#
+3&-+/
+#
+QP
+S2fe
+;[)
+#(cid:128)nm$#yxwj(cid:127)~&,+
+)4+’213&-+>
+yxwv
+@!#
+24-’.7)4+’21
+(cid:130)(cid:129)$
+(cid:131):$#"!L(cid:133)(cid:132)&%$#
+&.-,+&*
+#
+QP
+/(cid:136)(cid:135)-(cid:134)&S2fe
+;[)
+C&’(B,+&0
+(cid:131):$#
+A!#
+43
+D+4C&’(B
+(cid:148)(cid:147)&(cid:146)$#(cid:145)(cid:144)(cid:143)(cid:142)(cid:141)&%$#
+!
+Q~
+S2fe
+;[)
+(cid:140)(cid:153);*(cid:141)(cid:152)~(cid:151)L(cid:138)(cid:137)X(cid:150)(cid:149)
+&0(B&..70
+&0(BF7300&..7*
+(cid:140)(cid:139)(cid:138)(cid:137)
+E!#
+(cid:154)(cid:148)$#L
+书书书
+GB/T31779—2015
+19
+"!!!!!!
+:987
+=<
+65#43
+21
+0/.-
+,+
+&*)
+’&%(
+’&%$
+#"
+-;
++&*)(’&%%$
+!
+ON
+M%LK
+0JI
+2HA@G?>FEDCB
+0/.-,’&%%)
+A@?>
+#!"
+3210/.-,
+"
+ON
+M%LK
+0JI
+’&TSGEDCBQP
+’&*/%
+2+60’&*/5
+RQP
+4!"
+?==>$4=<#;#:9?W
+"
+ON
+88ABBA@@@@+XF
+0VU
+VUGQPEDCB
++1)8’&*/%
++1)860’&*/5
+VUQP
+7!"
+[RZY
+ba‘_^%]\GQPEDCB
+"
+ON
+M%LK
+0JI
+FED.C2%
+FED1(/.C25
+]\ED
+="!"
+gfEDCBbedcN]\
+.-~GTSCB
+srq&pTonGCBmlkj
+I)+;+(’H2+G
+"
+O}
+0|{
+CJ-,I)+;H2+G
+gfihCB
+>
+(cid:128)(cid:127)
+gfzyxwvut&T
+-C’1)I2CJ-,
+(cid:133)op(cid:132)(cid:131)&n(cid:130)(cid:129)GihCB
+!
+ON
+M%LK
+0JI
+’10-CKJJ)10
++1/1’10-CKJJ)1G
+pTon
+"!>
+(cid:139)A&C(cid:138)&&(cid:137)(cid:136)(cid:135)%(cid:134)
+(cid:142)’(cid:138)&(cid:143)(cid:142)(cid:141)(cid:140)GonihCB
++N.+&MC-L
+!
+ON
+M%LK
+0JI
+/21G&MC-O
+Tsrq
+>!>
+(cid:148)(cid:147)(cid:146)(cid:143)(cid:142)(cid:141)(cid:145)A(cid:144)&(cid:143)
++2/1(/21G
+(cid:153)&(cid:152)(cid:151)(cid:150)(cid:149)CAGonihCB
+!
+ON
+M%LK
+0JI
+J’12+(
+-C’1)(’J’12+K
+wvut
+P!>
+(cid:143)(cid:142)GutTSut(cid:158)(cid:157)(cid:156)(cid:155)(cid:154)
+!
+ON
+M%LK
+0JI
+&(cid:137)nzyGEDCB
+02+51()1-C(
+-C02+51()1-CK
+&(cid:137)nzy
+<!>
+¢P!JII-¢""
+“'¡(cid:160)zy¤§
+¥⁄#¡(cid:160)¢4S#£
+!
+O}
+0JI
+¡(cid:160)+(cid:159)GnzyEDCB
++&+;.+R’J
++-C6%+&+;.+R’Q
+¡(cid:160)+(cid:159)
+?!>
+›‹(%’#J%«?
+¢#S#£¢ƒ
+"⁄#¡(cid:160)
+!
+ON
+JII-¢""
+0JI
+⁄#S(cid:176)GnzyEDCB
++-C6%
++-C65+&’*CB
+¡(cid:160)flfi
+T!>
+书书书
+GB/T31779—2015
+20
+"!!!!!!
+:987
+=<
+65#43
+21
+0/.-
+,+
+&*)
+’&%(
+’&%$
+#"
+-;
+&2!&SRRQ ?>WV$UTI
+!
+PO
+N%ML
+0KJ
+A@IHGFEDCB
+-,(+.
+-,(+*’)(’&%$
+A@?>
+#!"
+\R[ZYX6@
+^]&$%#K%
+Wnml‘_CB
+.),21.0
+rq$p?.-o
+baI‘_feIEDCBdc
+8
+Pk
+0ji
+%7&641321.0
+&%,’(5,&(413
+ba‘_CB
+/
+wv.-outs
+hg
+&%,’(+1%7&6
+yo.-ox
+8
+Pk
+N%ML
+0KJ
+’&‘_feIEDCBdc
+1.:,2%1921.;
+1.:,2%19.),21.0
+’&‘_
+8!/
+feI‘_fe(cid:138)(cid:137)(cid:136) -(cid:141)(cid:140)M$(cid:139){z‘_ N"(cid:145)J(cid:144)(cid:143)*8(cid:142)!J
+}|q‘_feIEDCBdc
+&%,’(5,&(413
+8
+Pk
+(cid:142)!J-(cid:141)n(cid:146){zw
+0KJ
+{zI(cid:133)(cid:132)(cid:131)(cid:130)’In(cid:129)(cid:128)(cid:127)~
+.:%$41%
+{z‘_fe
+"!/
+.:%$
+{(cid:148)(cid:147)"(cid:145)J(cid:144)(cid:143)*8
+(cid:135)(cid:134)
+(cid:151)(cid:150)$(cid:149)e
+#??8(>8#88=< (cid:159)(cid:160)’(cid:159)(cid:158)’(cid:157)_
+’(cid:141)¡(cid:159)(cid:160)’(cid:159)(cid:158)’(cid:157)_I(cid:156)(cid:149)(cid:155)(cid:154)
+1.:,2%19
+8
+PO
+(cid:142)w⁄£¢’(cid:141)¡
+0KJ
+1(@$1.:,2%1A
+(cid:153)(cid:152)‘_
+/!/
+0/¥w⁄£¢
+1.’)(1(@$
+(cid:141)¡(cid:159)(cid:158)¤§ƒ
+8
+Pk
+N%ML
+0«“
+«“I(cid:156)(cid:149)‘_CB
+.+,D4&,:&C%7.+,D4&,:&C%B
+['(cid:156)(cid:149)
+>!/
+–(cid:176)C(cid:159)I(cid:160)flfi›‘_CB‹
+8
+Pk
+N%ML
+0KJ
+.A%)021.;
+.A%)0.),21.0
+(cid:127)~C(cid:159)
+E!/
+hg‡†I
+”„‚’•¶(cid:156)(cid:149)I‘_CB‹
+8
+Pk
+N%ML
+0KJ
+I(cid:192)¿¥‘(cid:190)fe’‰(cid:141)…X’»
+.-,7%1A
+.-,7%19
+(cid:181)·‡†
+F!/
+´`J%
+书书书
+GB/T31779—2015
+21
+"!!!!!!
+:987
+=<
+65#43
+21
+0/.-
+,+
+&*)
+’&%(
+’&%$
+#"
+-;
+FJA@IHGF$?>EDC
+-’(,)+’*)(’&%$
+2
+XW
+V%UT
+0SP
+)+/(,.&%,
+B?A@?>
+#!"
+RQP%JON’M$LK$G
+1+0+)+/(,.
+S%jiZYhg
+cba‘_^J]\[?>ED
+!
+XW
+V%UT
+0SP
+-’075%1/
+8+)-’0716)5%14
+ZYED
+3!"
+lk’&%#
+RQfeZYJWd
+s‘rqTpJ]o[?>ED
+!
+XW
+V%UT
+0SP
+}&|{Jzy$JxwJvut
+/%,(,;
+/%,(,:
+nm?>
+9!"
+(cid:128)fe(cid:127)~$fenm
+(,)+’*)(’&%$
+!
+XW
+V%UT
+0SP
+(cid:129)b(cid:131)(cid:130)J?>ED
+>>=&%,
+(cid:129)b?>
+<2!"
+//1%>>=
+2
+XW
+V%UT
+0SP
+(cid:129)b(cid:135)(cid:132)(cid:132)(cid:134)(cid:133)J?>ED
+1+)/@1A
+1+)/@1?
+(cid:129)(cid:132)?>
+22!"
+.-(cid:144)J(cid:138)(cid:137)ED
+2
+XW
+0(cid:143)(cid:142)
+(cid:141)(cid:140)(cid:139)(cid:131)(cid:136)|J(cid:138)(cid:137)ED
+16)%C5%14
+16)%C16)5%14
+(cid:136)|ED
+B
+(cid:146)(cid:145)
++(cid:149)(cid:138)(cid:137)ED(cid:148)(cid:147)[C?>ED
+2
+XW
+V%UT
+01-
+16)%C>,%D
+16)%C+60>,%C
+(cid:136)|(cid:138)(cid:137)
+2!B
+(cid:136)|J
++(cid:149)(cid:138)(cid:137)ED(cid:148)(cid:147)[C?>ED
+/1&%’;.
+2
+XW
+V%UT
+0SP
+(cid:156)(cid:155)(cid:154)(cid:151)(cid:150)a‘xc(cid:155)(cid:154)(cid:151)(cid:150)J
+>+4/1&%’;6
+(cid:153)(cid:152)(cid:151)(cid:150)
+E!B
+>%’>(’+4
+(cid:128)¢¡(cid:158)$(cid:160)(cid:159)(cid:158)}&(cid:157)
+xc(cid:151)£J(cid:138)(cid:137)EDJ(cid:148)(cid:147)[C
+2
+XW
+V%UT
+0SP
+¤§;ƒ}&RQJ65(cid:151)£¥i
++(1F8’D
++(1F8’C
+xc⁄£
+"!B
+(cid:128)£¤;ga‘£
+.-(cid:144)J(cid:138)(cid:137)ED
+rqfi?>ED&›‹rq«“'
+16)5%14
+2
+X‚
+0(cid:143)(cid:142)
+(,)/)5,%C5%14
+(cid:148)(cid:147)ED
+G
+(cid:146)(cid:145)
+•¶(cid:181)·J‡††(cid:176)‘†–(cid:176)fl
+(,)/)5,%C
+(cid:146)»J(cid:138)(cid:137)EDH”(cid:148)(cid:147)rq'
+2
+X‚
+V%UT
+0SP
+//16,%C5%1/
+//16,%C16)5%14
+•„ED
+2!G
+•¶(cid:181)·
+书书书
+GB/T31779—2015
+22
+"!!!!!!
+:987
+=<
+65#43
+21
+0/.-
+,+
+&*)
+’&%(
+’&%$
+#"
+-;
+MLKJI?>HGFEDCB
+.
+fe
+d%cb
+0a‘
+W$VUTSMRQ?>$PON
+%,)+*’&%-
+%,)+*%)(’&%$
+A@?>
+#!"
+_^M^]\[TSZYX
+M^ponmlDCkji?>
+%)(’&%$
+.
+fe
+d%cb
+0a‘
+[KOuthgsrqJI?>
+21%))0’&%-
+hg?>
+/!"
+%)4321%))0
+65Mvp\
+(cid:127)~$wm}|M{zKyx?>
+.
+f(cid:133)
+d%cb
+0a‘
++36’&%-
++36%)(’&%$
+wm?>
+5!"
+wm(cid:132)(cid:131)(cid:130)(cid:129)(cid:127)(cid:128)(cid:127)%(cid:129)(cid:127)%(cid:128)
+$(cid:135)(cid:134)Myx?>MJI?>FE
+.
+f(cid:133)
+d%cb
+0a‘
+ji?>q(cid:140)(cid:139)(cid:138)DCq(cid:137)(cid:136)~
+%)3,7’&%-
+%)3,7%)(’&%$
+(cid:135)(cid:134)?>
+"!"
+(cid:142)(cid:141)
+C$$R(cid:143)M?>FEqji?>
+%)(’&%$
+.
+f(cid:133)
+d%cb
+0a‘
+(cid:149)(cid:148)%(cid:147)(cid:146)%(cid:145)(cid:144)%K(cid:137)MFE[D
+:49*’&%-
+65?>
+8!"
+-49(2(:49*
+(cid:153)(cid:152)E(cid:151)(cid:150)
+.-(cid:156)MJI?>
+!
+fe
+0(cid:132)(cid:155)
+_^Mut(cid:133)JI?>
+’(,%;
+-%,<3&%’(,%;
+(cid:154)ut?>
+8
+(cid:158)(cid:157)
+%,<3&%’(,%;
+.
+fe
+d%cb
+0a‘
+’&_^MutDC(cid:159)ji?>
+%>3=’(,%:
+’&(cid:154)ut
+.!8
+%>3=
+$0/_^MutDC(cid:159)ji?>
+%,<3&%’(,%;
+.
+f(cid:133)
+d%cb
+0a‘
+%1+?’(,%:
+0/(cid:154)ut
+#!8
+(cid:150)⁄%£H%¢m%¡(cid:160)~
+%1+?
+.
+f(cid:133)
+d%cb
+0A¥
+ƒOM_^utDC(cid:159)ji?>
+%>(?’(,%:
+%>(?+&%’(,%;
+A¥ut
+/!8
+>“~$+‹'I¤§M_^?>
+%,<3&%’(,%;
+.
+f(cid:133)
+d%cb
+0a‘
+>“(cid:140)$›KDC“$›Kji?
+2A@(&+19*’(,%:
+«“'I¤§
+5!8
+2A@(&+19*
+›nDCfiji?
+书书书
+GB/T31779—2015
+23
+"!!!!!!
+:987
+=<
+65#43
+21
+0/.-
+,+
+&*)
+’&%(
+’&%$
+#"
+-;
+MLA@KJI?>HGFED
+.-^KJI?>
+?>$.-CBKP+OA+KN
+.-’,+*)$(’&%$#
+!
+]\
+0[Z
+,+&/,+*)&%$#
+CBA@?>
+"
+‘_
+WVUTSREDQCBA@
+10’-+*,+&/
+YX
+kKcbajihg%fedED
+5$,4+%$&’,$3
+A@cba
+2
+]\
+~%Q}
+0|{
+@uFtsrqpKonm$l
+,+&/,+*)&’,$6
+.-’,+*)
+2!"
+CB
+zyx_KwvA
+10’-+*,+&/
+(cid:132)L(cid:131)(cid:130)?>K(cid:129)zyx_ED
+$(’&%$#
+(cid:139)K(cid:138)\O(cid:138)}(cid:137)(cid:136)%(cid:135)(cid:134)K(cid:133)
+P(cid:128)(cid:127)?>
+2
+]\
+~%Q}
+0|{
+,+&/($8#&%$5
+.-’,+’($8#
+7!"
+D(cid:146)(cid:145)$(cid:140)(cid:139)K?>(cid:144)(cid:143)(cid:142)(cid:141)$(cid:140)
+CB
+10’-+*,+&/
+(cid:150)(cid:149)(cid:148)(cid:147)(cid:133)
+$(’&%$#
+YX(cid:131)(cid:130)?>K(cid:129)zyx_ED
+P(cid:152)(cid:151)?>
+2
+]\
+~%Q}
+0|{
+,+&/85$:&%$5
+.-’&’51085$:
+9!"
+(cid:140)(cid:139)K?>(cid:154)(cid:153)
+CB
+10’-+*,+&/
+(cid:158)?>F$lk?>z(cid:157)dED
+$(’&%$#
+$6*-’--<&%$5
+2
+]\
+~%Q}
+0|{
+¥⁄£%?>¢P¡%(cid:129)(cid:160)YX(cid:159)
+$6*-’--<
+CB(cid:156)(cid:155)?>
+;!"
+,+&/
+zyx_K?>ƒ
+10’-+*,+&/
+?-50>$(’&%$#
+vA@?>Kz(cid:157)L'[¤ED
+?-50>&%$5
+§CP?>
+2
+]\
+~%Q}
+0|{
+$&’-($@@$
+=!"
+zyK“C9buFw
+,+&/$&’-($@@$
+CB
+10’-+*,+&/
+书书书
+GB/T31779—2015
+A2 科技服务产品XMLSchema定义
+.
+科技服务产品元数据 定义如下
+-XMLSchema :
+<? xmlversion="1.0"encoding="UTF-8"?>
+<xs:schemaxmlns:xs="http://www.w3.org/2001/XMLSchema"elementFormDefault="qualified"
+attributeFormDefault="unqualified">
+<xs:elementname="metadata">
+<xs:annotation>
+元数据
+<xs:documentation> </xs:documentation>
+<xs:documentation>metadata</xs:documentation>
+定义科技服务产品元数据的根实体
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:elementref="ServBasicInfo"/>
+<xs:elementref="ServTeamInfo"/>
+<xs:elementref="ServOrgInfo"/>
+<xs:elementref="ServPrice"/>
+<xs:elementref="ServProvision"/>
+<xs:elementref="Deliv"/>
+<xs:elementref="ServQualEval"/>
+<xs:anynamespace="# #other"processContents="lax"minOccurs="0"max-
+Occurs="unbounded"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+元数据 实体集信息
+<!--******** 《 》********-->
+<xs:elementname="ServBasicInfo">
+<xs:annotation>
+服务基本信息
+<xs:documentation> </xs:documentation>
+服务产品的基本信息
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="prodId"type="xs:string">
+<xs:annotation>
+标识符
+<xs:documentation> </xs:documentation>
+服务产品的唯一代码
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="prodName"type="xs:string">
+24
+GB/T31779—2015
+<xs:annotation>
+名称
+<xs:documentation> </xs:documentation>
+服务产品的名称
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="subj"type="xs:string">
+<xs:annotation>
+关键词
+<xs:documentation> </xs:documentation>
+描述服务产品主题或内容的主题词 关键词
+<xs:documentation> 、
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="briefIntrod"type="xs:string">
+<xs:annotation>
+简要说明
+<xs:documentation> </xs:documentation>
+服务机构对服务产品的简短文字描述 可以主要说明
+<xs:documentation> ,
+服务内容和服务特色
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servCateg"type="xs:string">
+<xs:annotation>
+服务类别
+<xs:documentation> </xs:documentation>
+服务产品所属的科技服务类别名称
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="succeCase"type="xs:string">
+<xs:annotation>
+成功案例
+<xs:documentation> </xs:documentation>
+服务产品为客户提供服务后 经过检验是成功的并可作为
+<xs:documentation> ,
+典型事例的服务过程
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="appliIndus"type="xs:string">
+<xs:annotation>
+适用行业
+<xs:documentation> </xs:documentation>
+服务产品所适用的行业领域
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="publi"type="xs:string">
+<xs:annotation>
+发布方
+<xs:documentation> </xs:documentation>
+发布服务产品的机构名称
+<xs:documentation> </xs:documentation>
+25
+GB/T31779—2015
+</xs:annotation>
+</xs:element>
+<xs:elementname="publiDate"type="xs:string">
+<xs:annotation>
+发布日期
+<xs:documentation> </xs:documentation>
+服务产品发布的日期
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="prodURL"type="xs:string">
+<xs:annotation>
+产品网址
+<xs:documentation> </xs:documentation>
+服务产品发布的网址 客户通过该网址可查看到该服
+<xs:documentation> ,
+务产品信息
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="ServTeamInfo">
+<xs:annotation>
+服务团队信息
+<xs:documentation> </xs:documentation>
+提供科技服务的人员构成 知识结构 认证资格及联系信息
+<xs:documentation> 、 、
+</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="staffConsti"type="xs:int">
+<xs:annotation>
+人员构成
+<xs:documentation> </xs:documentation>
+服务团队的负责人 主要成员介绍 包括姓名 职务 业
+<xs:documentation> 、 , 、 、
+绩
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="knowlStru"type="xs:string">
+<xs:annotation>
+知识结构
+<xs:documentation> </xs:documentation>
+服务团队人员的学历情况 职称情况 从业经历情况等
+<xs:documentation> 、 、
+描述
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+26
+GB/T31779—2015
+<xs:elementname="certif"type="xs:string">
+<xs:annotation>
+认证资格
+<xs:documentation> </xs:documentation>
+服务团队人员的业务能力水平 获得国家相关认证机
+<xs:documentation> 、
+构认证的情况
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="contactPers"type="xs:string">
+<xs:annotation>
+联系人姓名
+<xs:documentation> </xs:documentation>
+服务产品的联系人姓名
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="fixedTele"type="xs:string">
+<xs:annotation>
+固定电话
+<xs:documentation> </xs:documentation>
+服务产品联系人的固定电话
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="phone"type="xs:string">
+<xs:annotation>
+移动电话
+<xs:documentation> </xs:documentation>
+服务产品联系人的手机号码
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="email"type="xs:string">
+<xs:annotation>
+电子邮箱
+<xs:documentation> </xs:documentation>
+服务产品联系人的邮箱
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="ServOrgInfo">
+<xs:annotation>
+服务机构信息
+<xs:documentation> </xs:documentation>
+提供服务产品的组织机构的信息描述
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+<xs:complexType>
+27
+GB/T31779—2015
+<xs:sequence>
+<xs:elementname="servProvider"type="xs:string">
+<xs:annotation>
+机构名称
+<xs:documentation> </xs:documentation>
+提供服务产品的组织机构名称
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="orgCode"type="xs:string">
+<xs:annotation>
+组织机构代码
+<xs:documentation> </xs:documentation>
+提供服务产品的组织机构在全国范围内唯一的 始终
+<xs:documentation> 、
+不变的代码标识
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="providerChar"type="xs:string">
+<xs:annotation>
+机构性质
+<xs:documentation> </xs:documentation>
+依法成立的机关 企业 事业单位 社会团体等类型
+<xs:documentation> 、 、 、
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="foundingTime"type="xs:date">
+<xs:annotation>
+成立时间
+<xs:documentation> </xs:documentation>
+服务机构成立的日期
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servScope"type="xs:string">
+<xs:annotation>
+业务范围
+<xs:documentation> </xs:documentation>
+对服务机构所能从事的业务活动的简要描述
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="profile"type="xs:string">
+<xs:annotation>
+简要介绍
+<xs:documentation> </xs:documentation>
+对服务机构的成立背景 发展历程 地理位置 组织结
+<xs:documentation> 、 、 、
+构等方面的文字说明
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="orgConsti"type="xs:string">
+<xs:annotation>
+28
+GB/T31779—2015
+机构人员构成
+<xs:documentation> </xs:documentation>
+对服务机构中专业技术人员的专业 学历 职称情况的
+<xs:documentation> 、 、
+文字说明
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servQual"type="xs:string">
+<xs:annotation>
+服务资质
+<xs:documentation> </xs:documentation>
+服务机构所取得的国家或者地方认可的资质证书说明
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="honors"type="xs:string">
+<xs:annotation>
+机构荣誉
+<xs:documentation> </xs:documentation>
+服务机构所获得的来自客户或社会组织的正式的 积
+<xs:documentation> 、
+极的评价 如荣誉证书 奖励证书等
+, 、 </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="orgAdd"type="xs:string">
+<xs:annotation>
+机构地址
+<xs:documentation> </xs:documentation>
+服务机构的通信地址
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="website"type="xs:string">
+<xs:annotation>
+机构网址
+<xs:documentation> </xs:documentation>
+服务机构的互联网网站地址
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="ServPrice">
+<xs:annotation>
+服务价格
+<xs:documentation> </xs:documentation>
+服务产品的价格信息描述
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+<xs:complexType>
+29
+GB/T31779—2015
+<xs:sequence>
+<xs:elementname="prodPrice"type="xs:float">
+<xs:annotation>
+产品价格
+<xs:documentation> </xs:documentation>
+服务机构对所提供服务产品制定的价格
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="chargesStd"type="xs:string">
+<xs:annotation>
+收费标准
+<xs:documentation> </xs:documentation>
+服务机构对所提供服务产品制定的收费计算方式或者
+<xs:documentation>
+收费计算单位 如按项目 按工时等
+, 、 </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="payment"type="xs:string">
+<xs:annotation>
+付款方式
+<xs:documentation> </xs:documentation>
+对所提供的服务产品的付费方式以及付费条件的说
+<xs:documentation>
+明 如一次性支付或者多次支付等
+, </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="ServProvision">
+<xs:annotation>
+服务提供
+<xs:documentation> </xs:documentation>
+为满足客户需求 服务机构与客户之间直接或间接接触的活动过程
+<xs:documentation> ,
+</xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="servProcess"type="xs:string">
+<xs:annotation>
+服务流程
+<xs:documentation> </xs:documentation>
+为客户提供科技服务产品的具体活动过程
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+30
+GB/T31779—2015
+<xs:elementname="servCycle"type="xs:string">
+<xs:annotation>
+服务周期
+<xs:documentation> </xs:documentation>
+为客户提供科技服务产品所需的总时长 服务流程的
+<xs:documentation> ,
+阶段划分 以及每个阶段应该完成的成果
+, </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servAccept"type="xs:string">
+<xs:annotation>
+服务验收
+<xs:documentation> </xs:documentation>
+服务机构与客户双方共同达成的服务产品在进行验收
+<xs:documentation>
+交付时所应该达到的条件
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servWay"type="xs:string">
+<xs:annotation>
+服务方式
+<xs:documentation> </xs:documentation>
+服务活动所采用的工作方式 如线上 线下 线上线下
+<xs:documentation> , 、 、
+相结合方式
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servPlace"type="xs:string">
+<xs:annotation>
+服务地点
+<xs:documentation> </xs:documentation>
+提供服务产品的服务活动的地点 如驻场在客户单位
+<xs:documentation> ,
+或在服务机构内部
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servCond"type="xs:string">
+<xs:annotation>
+服务条件
+<xs:documentation> </xs:documentation>
+服务机构在提供服务的过程中 客户应提供的场所 设
+<xs:documentation> , 、
+备 人员 信息等前提要素
+、 、 </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="Deliv">
+<xs:annotation>
+31
+GB/T31779—2015
+服务交付物
+<xs:documentation> </xs:documentation>
+服务产品可交付的成果
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="delivName"type="xs:string">
+<xs:annotation>
+交付物名称
+<xs:documentation> </xs:documentation>
+服务机构向客户交付的成果名称
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="delivType"type="xs:string">
+<xs:annotation>
+交付物类型
+<xs:documentation> </xs:documentation>
+服务机构向客户交付的成果类型 如报告 方案 技术
+<xs:documentation> , 、 、
+文档等
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="delivTime"type="xs:string">
+<xs:annotation>
+交付日期
+<xs:documentation> </xs:documentation>
+服务机构向客户交付成果的时间
+<xs:documentation> </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="delivCopyright"type="xs:string">
+<xs:annotation>
+知识产权归属
+<xs:documentation> </xs:documentation>
+服务成果的知识产权界定 如归服务机构所有 归客户
+<xs:documentation> , ,
+所有 或归服务机构和客户共有
+, </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbound-
+ed"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+<xs:elementname="ServQualEval">
+<xs:annotation>
+服务质量评价
+<xs:documentation> </xs:documentation>
+客户对科技服务产品的质量所进行的定量和定性的评价数据 服务
+<xs:documentation> ,
+质量评价由客户或独立第三方提供
+</xs:documentation>
+</xs:annotation>
+32
+GB/T31779—2015
+<xs:complexType>
+<xs:sequence>
+<xs:elementname="delivQualEval"type="xs:string">
+<xs:annotation>
+交付物质量评价
+<xs:documentation> </xs:documentation>
+客户在消费 使用某种交付物的过程中及之后的一段
+<xs:documentation> 、
+时期内对其质量水平的实际感受
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servSpecEval"type="xs:string">
+<xs:annotation>
+服务专业性评价
+<xs:documentation> </xs:documentation>
+客户实际感受到的服务人员所具有的知识 表达自信
+<xs:documentation> 、
+和可信的能力 包括完成服务的能力 与顾客有效沟通等
+, , </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servRespEval"type="xs:string">
+<xs:annotation>
+服务响应性评价
+<xs:documentation> </xs:documentation>
+客户实际感受到的服务人员提供快捷服务的能力
+<xs:documentation>
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servAttitudeEval"type="xs:string">
+<xs:annotation>
+服务态度评价
+<xs:documentation> </xs:documentation>
+客户在接受服务过程中对服务机构提供周到 个性化
+<xs:documentation> 、
+服务 主动积极服务的实际感受
+、 </xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:elementname="servCost-effectiveEval"type="xs:string">
+<xs:annotation>
+服务性价比评价
+<xs:documentation> </xs:documentation>
+客户综合了所接受的服务质量水平对其付出价格的感
+<xs:documentation>
+受
+</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:anynamespace="# #any"processContents="lax"minOccurs="0"maxOccurs="unbounded"/>
+</xs:sequence>
+<xs:anyAttributeprocessContents="lax"/>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+33
+GB/T31779—2015
+附 录 B
+资料性附录
+( )
+主要科技服务类别
+B1 主要科技服务类别
+.
+主要科技服务类别见表
+B.1。
+表B1 主要科技服务类别
+.
+服务分类 说 明
+研究开发及其服务 各类服务机构围绕科研活动和技术创新 提供的研发外包 设计以及科研支撑等第三方服务
+, 、
+服务机构围绕成果转化 技术扩散 为科技型企业提供如技术评估 技术交易 技术转让 技术
+技术转移服务 、 , 、 、 、
+代理 技术拍卖以及技术集成等各类服务
+、
+具备检验检测认证资质或能力的企业 机构 按照相关标准 方法对技术和产品进行检验和测
+检验检测服务 、 , 、
+试的服务 如质量检验 性能测试 成果鉴定和资质认定等
+, 、 、
+围绕企业成长生命周期 在想法 创业等环节为项目或初创企业提供如投资 辅导 培训 技术
+创业孵化服务 , 、 、 、 、
+创新 办公环境等一系列服务
+、
+提供专利 商标 著作权 集成电路布图设计等各类知识产权 获权 用权 维权 的相关服务
+、 、 、 “ — — ”
+知识产权服务 及衍生服务 如知识产权代理服务 知识产权法律服务 知识产权信息服务 知识产权商用化
+。 、 、 、
+服务 知识产权咨询服务和知识产权培训服务
+、
+为政府部门 企事业单位 各类社会组织 团队及个人的决策 运作提供的一系列专业智力服
+科技咨询服务 、 、 、 、
+务 如企业咨询 公共咨询 科技信息等
+。 、 、
+各类社会组织 个人 金融机构 政府围绕科研活动 成果转化和产业化等科技创新全链条 为
+、 、 、 、 ,
+科技金融服务 创业者和科技型企业提供的金融服务 主要包括创业投资 科技资本市场 科技信贷 科技保
+。 、 、 、
+险等服务
+利用各种传媒以浅显的方式向普通大众普及科学技术知识 倡导科学方法 传播科学思想 弘
+, 、 、
+科学技术普及服务 扬科学精神的服务 新经济条件下 科普服务呈现内容和渠道多样化 传播网络化等发展趋
+。 , 、
+势 其物理形态主要包括科技馆 博物馆 书籍 数字音视频 期刊和网站等
+, 、 、 、 、
+通过整合技术创新链上各个环节的科技服务要素 形成科技服务机构之间的协作网络 为企
+, ,
+业或产业集群提供研究开发 技术转移 科技咨询 知识产权和科技金融等综合性服务 业务
+综合科技服务 、 、 、 。
+集成化 服务专业化是综合科技服务发展的内涵 跨领域融合 跨区域合作是综合科技服务的
+、 , 、
+主要发展方向
+34
+GB/T31779—2015
+附 录 C
+资料性附录
+( )
+科技服务产品元数据扩展示例
+C1 研究开发及其服务产品扩展元数据
+.
+C11 带头人
+..
+英文名称
+:Leader
+缩 写 名
+:leader
+定 义 具有一定学术水平的教学和科研成果 负责具体研发服务产品的核心人物
+: , ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C12 核心技术
+..
+英文名称
+:CoreTechnology
+缩 写 名
+:coreTechnology
+定 义 研发服务产品的关键技术或者专利名称及相应介绍
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C13 研发条件
+..
+英文名称
+:ResearchCondition
+缩 写 名
+:researchCondition
+定 义 研发过程中所需要的研发仪器设备和资源
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C2 技术转移服务产品扩展元数据
+.
+C21 技术交易服务平台
+..
+英文名称
+:TransactionPlatform
+缩 写 名
+:transactionPlatform
+定 义 服务产品的具体的交易服务平台介绍
+: ;
+数据类型 字符型
+:
+35
+GB/T31779—2015
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C3 检验检测服务产品扩展元数据
+.
+C31 检测方法
+..
+英文名称
+:TestMethod
+缩 写 名
+:testMethod
+定 义 服务产品所使用的检测方法 以及所遵循的国际或者国家标准 规范等
+: , 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C32 检测仪器
+..
+英文名称
+:TestingInstrument
+缩 写 名
+:testingInstrument
+定 义 服务产品使用的检测仪器
+: ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+C4 科技咨询服务产品扩展元数据
+.
+C41 咨询方法/工具
+..
+英文名称
+:ConsultantMethod
+缩 写 名
+:consultantMethod
+定 义 服务机构提供的解决问题的基本思路 模型方法及辅助工具等
+: 、 ;
+数据类型 字符型
+:
+值 域 自由文本
+:
+约束 条件
+/ :O
+最大出现次数
+:1
+36
+GB/T31779—2015
+附 录 D
+资料性附录
+( )
+科技服务产品元数据示例
+D1 元数据示例
+.
+科技服务产品元数据示例见表
+D.1。
+表D1 高成长企业管理咨询
+.
+元数据 说 明
+服务基本信息
+标识符
+20140111
+名称 高成长企业管理咨询
+关键词 战略咨询 管理咨询
+,
+服务内容由三部分组成 战略规划 战略增长点 商业模式 战略实施与年度计划 组织管
+简要说明 :1. 、 、 、 ;2.
+理体系设计 薪酬绩效设计 年度咨询与重大决策支持
+、 ;3.
+服务类别 科技咨询服务
+成功案例 高成长咨询
+××××
+适用行业 电子信息 食品 生物医药 能源化工 装备制造 现代服务业
+、 、 、 、 、
+发布方
+×××
+发布日期
+2012-3-20
+产品网址
+http://×××.×××.×××
+服务团队信息
+负责人 项目经理
+:××× ;
+人员构成 成员 高级咨询师
+1:××× ;
+成员 咨询师
+2:×××
+知识结构 硕士占
+80%
+认证资格 注册咨询师 人
+32
+联系人姓名
+×××
+固定电话
+010-××××××××
+移动电话
+139××××××××
+电子邮箱
+market@××.com
+服务机构信息
+机构名称
+×××
+组织机构代码
+××××××××
+机构性质 私营企业
+成立时间 年 月 日
+×××× ×× ××
+37
+GB/T31779—2015
+表D1 续
+.( )
+元数据 说 明
+以 战略咨询 为核心 管理咨询 信息化咨询 为两翼的咨询业务结构 包括企业战略 人
+“ ” ,“ ”,“ ” , 、
+业务范围 力资源管理 企业运营管理 区域战略规划 高科技园区发展 产业发展战略 循环经济 科技
+、 、 、 、 、 、
+管理与公共政策 知识管理与社交化等
+、
+简要介绍 公司发展历程和业务
+××××( )
+目前拥有 多人组成的专业咨询团队 由合伙人 高级咨询师 咨询师 分析师四部分构成
+机构人员构成 300 , 、 、 、 ,
+同时拥有由著名学者 企业家 政府领导组成的 多名外部专家
+、 、 3000
+服务资质 北京市民政局授予社会组织等级评估 级称号
+5A
+年 项目获 奖
+机构荣誉 2012 ,“××××” ×× ;
+年 荣获 称号
+2013 , ××“××”
+机构地址 市 区 路
+×× ×× ×× ×××
+机构网址
+http://×××.×××.×××
+服务价格
+产品价格 面议
+收费标准 按工时收费 平均每人月 万元
+, 5
+付款方式 分三笔支付 合同签订后付 项目第一次汇报后付 项目完成后付
+, 30%, 40%, 30%
+服务提供
+服务工作按以下 个步骤展开 确认咨询需求 签署合作协议 确定项目工作计划
+服务流程 6 :1. ;2. ;3. ;
+调研与诊断 咨询方案报告 实施与培训
+4. ;5. ;6.
+服务周期 个月
+3~5
+服务验收 客户汇报成果验收
+服务方式 线下服务
+服务地点 客户现场完成调研工作 在本公司完成研究工作
+,
+服务条件 客户提供项目所需材料 配合调研 协调走访
+, ;
+主要使用的咨询方法包括 头脑风暴法 介入式咨询法 岗位动态管理模型 开放式绩效管理
+咨询方法 工具 : 、 、 、
+/ 模型 商业模式分析模型
+、
+服务交付物
+高成长企业战略规划报告 高成长企业组织管理体系设计方案 战略增长点选择与培育计划
+交付物名称 、 、
+报告 薪酬绩效体系设计方案
+、
+交付物类型 报告
+交付日期 项目工作完成后一周内
+知识产品归属 本公司与客户双方共同拥有
+服务质量评价
+交付物质量评价
+★★★★★
+服务专业性评价
+★★★★
+服务响应性评价
+★★★★
+服务态度评价
+★★★★
+服务性价比评价
+★★★★
+38
+GB/T31779—2015
+D2 元数据XML编码示例
+.
+<? xmlversion="1.0"encoding="UTF-8"?>
+<metadataxmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"xsi:noNamespaceSchema-
+Location="metadata20140910.xsd">
+<ServBasicInfo>
+<prodId>20140111</prodId>
+高成长企业管理咨询
+<prodName> </prodName>
+战略咨询 管理咨询
+<subj> , </subj>
+服务内容由三部分组成 战略规划 战略增长点 商业模式 战略实施与年度计
+<briefIntrod> :1. 、 、 、
+划 组织管理体系设计 薪酬绩效设计 年度咨询与重大决策支持
+;2. 、 ;3. </briefIntrod>
+科技咨询服务
+<servCateg> </servCateg>
+高成长咨询
+<succeCase>×××× </succeCase>
+电子信息 食品 生物医药 能源化工 装备制造 现代服务业
+<appliIndus> 、 、 、 、 、 </appliIndus>
+<publi>×××</publi>
+<publiDate>2012-3-20</publiDate>
+<prodURL>http://xxx.xxx.xxx</prodURL>
+</ServBasicInfo>
+<ServTeamInfo>
+负责人 项目经理 成员 高级咨询师 成员 咨询师
+<staffConsti> :XXX ; 1:XXX ; 2:XXX </staff-
+Consti>
+硕士占
+<knowlStru> 80%</knowlStru>
+注册咨询师 人
+<certif> 32 </certif>
+<contactPers>×××</contactPers>
+<fixedTele>010-×××××××× </fixedTele>
+<phone>139×××××××× </phone>
+<email>market@××.com</email>
+</ServTeamInfo>
+<ServOrgInfo>
+<servProvider>×××</servProvider>
+<orgCode>×××××××× </orgCode>
+私营企业
+<providerChar> </providerChar>
+年 月 日
+<foundingTime>×××× ×× ×× </foundingTime>
+以 战略咨询 为核心 管理咨询 信息化咨询 为两翼的咨询业务结构 包括企
+<servScope> “ ” ,“ ”,“ ” ,
+业战略 人力资源管理 企业运营管理 区域战略规划 高科技园区发展 产业发展战略 循环经济 科技
+、 、 、 、 、 、 、
+管理与公共政策 知识管理与社交化等
+、 </servScope>
+公司发展历程和业务
+<profile>××××( )</profile>
+目前拥有 多人组成的专业咨询团队 由合伙人 高级咨询师 咨询师 分析师
+<orgConsti> 300 , 、 、 、
+四部分构成 同时拥有由著名学者 企业家 政府领导组成的 多名外部专家
+, 、 、 3000 </orgConsti>
+北京市民政局授予社会组织等级评估 级称号
+<servQual> 5A </servQual>
+年 项目获 奖 年 荣获 称号
+<honors>2012 ,“××××” ×× ;2013 , ××“××” </honors>
+市 区 路
+<orgAdd>×× ×× ×× ×××</orgAdd>
+39
+GB/T31779—2015
+<website>http://×××.×××.××× </website>
+</ServOrgInfo>
+<ServPrice>
+面议
+<prodPrice> </prodPrice>
+按工时收费 平均每人月 万元
+<chargesStd> , 5 </chargesStd>
+分三笔支付 合同签订后付 项目第一次汇报后付 项目完成后付
+<payment> , 30%, 40%, 30%</
+payment>
+</ServPrice>
+<ServProvision>
+服务工作按以下 个步骤展开 确认咨询需求 签署合作协议 确定项目
+<servProcess> 6 :1. ;2. ;3.
+工作计划 调研与诊断 咨询方案报告 实施与培训
+;4. ;5. ;6. </servProcess>
+个月
+<servCycle>3~5 </servCycle>
+客户汇报成果验收
+<servAccept> </servAccept>
+线下服务
+<servWay> </servWay>
+客户现场完成调研工作 在本公司完成研究工作
+<servPlace> , </servPlace>
+客户提供项目所需材料 配合调研 协调走访
+<servCond> , ; </servCond>
+主要使用的咨询方法包括 头脑风暴法 介入式咨询法 岗位动态管理模
+<ConsultantMethod> : 、 、
+型 开放式绩效管理模型 商业模式分析模型
+、 、 </ConsultantMethod>
+</ServProvision>
+<Deliv>
+高成长企业战略规划报告 高成长企业组织管理体系设计方案 战略增长点选择
+<delivName> 、 、
+与培育计划报告 薪酬绩效体系设计方案
+、 </delivName>
+报告
+<delivType> </delivType>
+项目工作完成后一周内
+<delivTime> </delivTime>
+本公司与客户双方共同拥有
+<delivCopyright> </delivCopyright>
+</Deliv>
+<ServQualEval>
+<delivQualEval>★★★★★ </delivQualEval>
+<servSpecEval>★★★★ </servSpecEval>
+<servRespEval>★★★★ </servRespEval>
+<servAttitudeEval>★★★★ </servAttitudeEval>
+<servCost-effectiveEval>★★★★ </servCost-effectiveEval>
+</ServQualEval>
+</metadata>
+40
+GB/T31779—2015
+参 考 文 献
+全国主要产品分类与代码 第 部分 不可运输产品
+[1] GB/T7635.2 2 :
+信息技术 元数据注册系统
+[2] GB/T18391 (MDR)
+电子商务 产品核心元数据
+[3] GB/T24662
+服务业组织标准化工作指南 第 部分 标准体系
+[4] GB/T24421.2 2 :
+企业信用评价指标体系分类及代码
+[5] GB/T23794
+交通科技信息资源共享平台信息资源建设要求 第 部分 核心元数据
+[6] JT/T735.1 1 :
+商业服务业顾客满意度测评规范
+[7] SB/T10409
+国务院关于加快科技服务业发展的若干意见 国发 号
+[8] ( 〔2014〕49 )
