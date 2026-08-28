@@ -3,11 +3,12 @@
 检索通路：
     1. SQL 元数据模糊匹配（标准号、名称、描述）；
     2. Chroma metadata 与 ChunkStore 向量 + BM25 混合召回；
-    3. 可选 RAG 生成式回答（由 search_rag_enabled 控制）。
+    3. 可选 RAG 生成式回答（由 search_rag_enabled 控制；算法由 RAG_ALGORITHM 选择）。
 """
 
 from __future__ import annotations
 
+import json
 import sqlite3
 import logging
 from pathlib import Path
@@ -28,12 +29,46 @@ from utils.document_processor import get_chunk_store
 router = APIRouter(prefix="/search", tags=["智能检索"])
 logger = logging.getLogger(__name__)
 
+# 前端追问时把历史编码进 keyword，避免改动 query 参数签名
+HISTORY_PAYLOAD_PREFIX = "__RAG_HISTORY__:"
+
 
 # ---------------------------------------------------------------------------
 # RAG 与元数据评分辅助
 # ---------------------------------------------------------------------------
 
-def _run_optional_rag(keyword: str) -> tuple[str, list[str]]:
+def _parse_search_keyword(keyword: str) -> tuple[str, list[dict[str, str]]]:
+    """解析关键词；若带历史载荷则拆出真实问题与问答轮次。"""
+    if not keyword.startswith(HISTORY_PAYLOAD_PREFIX):
+        return keyword, []
+
+    raw = keyword[len(HISTORY_PAYLOAD_PREFIX) :]
+    try:
+        parsed = json.loads(raw)
+        real_keyword = str(parsed.get("keyword") or "").strip()
+        history_raw = parsed.get("history") or []
+        history_turns: list[dict[str, str]] = []
+        if isinstance(history_raw, list):
+            for turn in history_raw:
+                if not isinstance(turn, dict):
+                    continue
+                question = str(turn.get("question") or "").strip()
+                answer = str(turn.get("answer") or "").strip()
+                if question:
+                    history_turns.append({"question": question, "answer": answer})
+        if not real_keyword:
+            logger.warning("history 载荷缺少 keyword，回退原始字符串")
+            return keyword, []
+        return real_keyword, history_turns
+    except (json.JSONDecodeError, TypeError, AttributeError):
+        logger.warning("history 载荷解析失败，按普通关键词处理: %r", keyword[:80])
+        return keyword, []
+
+
+def _run_optional_rag(
+    keyword: str,
+    history: list[dict[str, str]] | None = None,
+) -> tuple[str, list[str]]:
     """可选 RAG 开关：默认关闭，开启时失败也不影响主流程。"""
     if not settings.search_rag_enabled:
         return "", []
@@ -41,7 +76,12 @@ def _run_optional_rag(keyword: str) -> tuple[str, list[str]]:
         from utils.rag import rag_query  # 惰性导入，避免未安装依赖时启动失败
 
         rag_top_k = max(1, int(settings.search_rag_top_k))
-        rag = rag_query(keyword, top_k=rag_top_k)
+        rag = rag_query(
+            keyword,
+            top_k=rag_top_k,
+            history=history or None,
+            algorithm=settings.rag_algorithm or None,
+        )
         answer = str(rag.get("answer") or "").strip()
         sources = [str(x).strip() for x in (rag.get("sources") or []) if str(x).strip()]
         # 去重保序
@@ -394,30 +434,36 @@ async def search_standards(
     current_user: User = Depends(get_current_user),
 ):
     """智能检索主接口：元数据 + 向量 + BM25 多通路融合。"""
+    real_keyword, history_turns = _parse_search_keyword(keyword)
+    if not real_keyword.strip():
+        return APIResponse(
+            data=SearchResponse(results=[], answer="", sources=[], suggestions=[], total=0)
+        )
+
     query = db.query(Standard).filter(
         or_(
-            Standard.standard_no.contains(keyword),
-            Standard.name.contains(keyword),
-            Standard.description.contains(keyword),
-            Standard.source_file.contains(keyword),
+            Standard.standard_no.contains(real_keyword),
+            Standard.name.contains(real_keyword),
+            Standard.description.contains(real_keyword),
+            Standard.source_file.contains(real_keyword),
         )
     )
     metadata_hits = query.all()
     result_map: Dict[int, SearchResult] = {
         item.id: _to_result(
             item,
-            relevance_score=_metadata_score(item, keyword),
+            relevance_score=_metadata_score(item, real_keyword),
             match_type="metadata",
-            excerpt=_snippet(item.description, keyword),
+            excerpt=_snippet(item.description, real_keyword),
         )
         for item in metadata_hits
     }
 
-    _apply_direct_vector_rows(db, result_map, keyword)
-    _apply_chunk_store_hits(db, result_map, keyword)
+    _apply_direct_vector_rows(db, result_map, real_keyword)
+    _apply_chunk_store_hits(db, result_map, real_keyword)
 
     results = sorted(result_map.values(), key=lambda item: item.relevance_score, reverse=True)
-    rag_answer, rag_sources = _run_optional_rag(keyword)
+    rag_answer, rag_sources = _run_optional_rag(real_keyword, history=history_turns or None)
     return APIResponse(
         data=SearchResponse(
             results=results,

@@ -68,6 +68,8 @@ class Settings(BaseSettings):
     # ==================== 搜索增强（可选 RAG） ====================
     search_rag_enabled: bool = False
     search_rag_top_k: int = 5
+    # naive / hyde / rqrag / autograph；空字符串表示跟随 utils.rag 默认(naive)
+    rag_algorithm: str = "naive"
 
     # ==================== LLM 网关配置 ====================
     fourz_api_key: Optional[str] = None

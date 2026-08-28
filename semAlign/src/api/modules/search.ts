@@ -27,7 +27,7 @@ import type { ApiResponse, SearchQueryData, SearchQueryOptions, SearchSuggestion
  */
 export const searchApi = {
   /**
-   * 搜索标准
+   * 搜索标准（options.history 用于多轮追问）
    */
   query: async (keyword: string, options?: SearchQueryOptions): Promise<ApiResponse<SearchQueryData>> => {
     return apiAdapter.search.query(keyword, options);

@@ -44,6 +44,12 @@ function standardsToSearchRows(standards: Standard[]): SearchResult[] {
   }));
 }
 
+interface QATurn {
+  question: string;
+  answer: string;
+  sources: string[];
+}
+
 const SUGGEST_TYPE_LABELS: Record<string, string> = {
   standard_no: '标准号',
   name: '标准名称',
@@ -349,13 +355,13 @@ const Search: React.FC = () => {
   const [query, setQuery] = useState<string>('');
   const [searchMode, setSearchMode] = useState<SearchMode>('semantic');
   const [followUpInput, setFollowUpInput] = useState<string>('');
+  const [followUpLoading, setFollowUpLoading] = useState<boolean>(false);
+  const [qaHistory, setQaHistory] = useState<QATurn[]>([]);
   const [rawResults, setRawResults] = useState<SearchResult[]>([]);
   const [sortBy, setSortBy] = useState<'relevance' | 'code'>('relevance');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchError, setSearchError] = useState<string | null>(null);
-  const [aiAnswer, setAiAnswer] = useState<string>('');
-  const [aiSources, setAiSources] = useState<string[]>([]);
   const [detailLoading, setDetailLoading] = useState<boolean>(false);
   const [selectedStandard, setSelectedStandard] = useState<Standard | null>(null);
   const [selectedSearchResult, setSelectedSearchResult] = useState<SearchResult | null>(null);
@@ -372,10 +378,16 @@ const Search: React.FC = () => {
     if (!q) {
       return;
     }
+    setQaHistory([]);
     if (!config.api.useRealApi) {
       setRawResults(MOCK_SEARCH_RESULTS);
-      setAiAnswer('');
-      setAiSources([]);
+      setQaHistory([
+        {
+          question: q,
+          answer: '（模拟）已根据关键词返回相关标准，可继续追问细化需求。',
+          sources: [],
+        },
+      ]);
       setSearchError(null);
       setCurrentPage(1);
       return;
@@ -387,21 +399,24 @@ const Search: React.FC = () => {
       if (res.code !== 200) {
         setSearchError(res.message || '检索失败');
         setRawResults([]);
-        setAiAnswer('');
-        setAiSources([]);
+        setQaHistory([]);
         setCurrentPage(1);
         return;
       }
       const mapped = standardsToSearchRows(res.data.standards);
       setRawResults(mapped);
-      setAiAnswer((res.data.answer || '').trim());
-      setAiSources((res.data.sources || []).filter(Boolean));
+      setQaHistory([
+        {
+          question: q,
+          answer: (res.data.answer || '').trim(),
+          sources: (res.data.sources || []).filter(Boolean),
+        },
+      ]);
       setCurrentPage(1);
     } catch (err: unknown) {
       setSearchError(getApiErrorMessage(err, '检索失败'));
       setRawResults([]);
-      setAiAnswer('');
-      setAiSources([]);
+      setQaHistory([]);
       setCurrentPage(1);
     } finally {
       setLoading(false);
@@ -541,29 +556,38 @@ const Search: React.FC = () => {
 
   const handleFollowUp = useCallback(async (): Promise<void> => {
     const followUp = followUpInput.trim();
-    if (!followUp) {
+    if (!followUp || followUpLoading) {
       return;
     }
-    setLoading(true);
+    setFollowUpInput('');
+    setFollowUpLoading(true);
+    setSearchError(null);
     try {
-      const res = await searchApi.query(followUp);
+      const history = qaHistory.map(({ question, answer }) => ({ question, answer }));
+      const res = await searchApi.query(followUp, { history });
       if (res.code !== 200) {
-        throw new Error(res.message || '追问失败');
+        setSearchError(res.message || '追问失败');
+        return;
       }
       setQuery(followUp);
-      setHasSearched(true);
-      setRawResults(standardsToSearchRows(res.data.standards || []));
-      setAiAnswer((res.data.answer || '').trim());
-      setAiSources((res.data.sources || []).filter(Boolean));
-      setCurrentPage(1);
-      setSearchError(null);
-      setFollowUpInput('');
+      setQaHistory((prev) => [
+        ...prev,
+        {
+          question: followUp,
+          answer: (res.data.answer || '').trim(),
+          sources: (res.data.sources || []).filter(Boolean),
+        },
+      ]);
+      if (res.data.standards) {
+        setRawResults(standardsToSearchRows(res.data.standards));
+        setCurrentPage(1);
+      }
     } catch (err: unknown) {
       setSearchError(getApiErrorMessage(err, '追问失败'));
     } finally {
-      setLoading(false);
+      setFollowUpLoading(false);
     }
-  }, [followUpInput]);
+  }, [followUpInput, followUpLoading, qaHistory]);
 
   const handleViewOriginal = useCallback(async (item: SearchResult): Promise<void> => {
     setDetailLoading(true);
@@ -626,25 +650,54 @@ const Search: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* 左侧：AI 问答结果 */}
+        {/* 左侧：AI 问答结果（多轮对话） */}
         <div className="lg:col-span-1">
           <Card className="sticky top-24 border-blue-100 bg-blue-50/50">
             <div className="flex items-center gap-2 mb-4 text-blue-700 font-bold">
               <MessageSquare className="w-5 h-5" /> 智能问答结果
             </div>
-            <div className="p-4 bg-white rounded-lg shadow-sm text-sm text-slate-700 leading-relaxed mb-4">
-              <div className="font-medium mb-2">查询："{query}"</div>
-              {aiAnswer ? (
-                <p className="mb-4 whitespace-pre-wrap">{aiAnswer}</p>
-              ) : (
-                <p className="mb-4 text-slate-500">
-                  暂无智能问答结果，可输入问题后点击“提交追问”进行补充检索。
-                </p>
-              )}
-              <div className="text-xs text-slate-400 mt-4 pt-4 border-t border-slate-100">
-                引用来源：{aiSources.length > 0 ? aiSources.join('，') : '暂无'}
+
+            {loading && (
+              <div className="flex flex-col items-center justify-center py-8 text-slate-400 gap-2">
+                <span className="text-sm">AI 正在思考中…</span>
               </div>
-            </div>
+            )}
+
+            {!loading && qaHistory.length === 0 && (
+              <div className="p-4 text-sm text-slate-400 text-center mb-4">
+                暂无智能问答结果，可输入问题后点击“提交追问”进行补充检索。
+              </div>
+            )}
+
+            {!loading && qaHistory.length > 0 && (
+              <div className="space-y-4 mb-4 max-h-[60vh] overflow-y-auto pr-1">
+                {qaHistory.map((turn, i) => (
+                  <div
+                    key={`${turn.question}-${i}`}
+                    className="p-4 bg-white rounded-lg shadow-sm text-sm text-slate-700 leading-relaxed"
+                  >
+                    <div className="font-medium mb-2 text-xs text-slate-400">
+                      {i === 0 ? '查询' : '追问'}："{turn.question}"
+                    </div>
+                    <div className="space-y-2 whitespace-pre-wrap">
+                      {turn.answer ? (
+                        turn.answer
+                      ) : (
+                        <span className="text-slate-400">（暂无回答）</span>
+                      )}
+                    </div>
+                    {turn.sources.length > 0 && (
+                      <div className="text-xs text-slate-400 mt-4 pt-3 border-t border-slate-100">
+                        引用来源：{turn.sources.join('、')}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {followUpLoading && (
+                  <div className="text-slate-400 text-sm px-1">AI 正在思考追问…</div>
+                )}
+              </div>
+            )}
 
             {/* 追问输入框 */}
             <div className="relative">
@@ -654,10 +707,12 @@ const Search: React.FC = () => {
                 value={followUpInput}
                 onChange={(e) => setFollowUpInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleFollowUp()}
+                disabled={followUpLoading}
               />
               <button
                 onClick={handleFollowUp}
-                className="absolute right-2 top-2 px-3 py-1.5 rounded text-xs"
+                disabled={followUpLoading}
+                className="absolute right-2 top-2 px-3 py-1.5 rounded text-xs disabled:opacity-50"
                 style={{ backgroundColor: '#2563eb', color: '#ffffff' }}
               >
                 提交追问

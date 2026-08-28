@@ -234,13 +234,19 @@ function parseReasoningSteps(reasoningRaw: unknown): string[] | undefined {
 export const searchAdapter = {
   /**
    * 搜索标准（支持 retrieval_mode：hybrid | sparse | dense，与语义建模及检索层约定对齐）
+   * 追问时可通过 options.history 携带历史轮次（编码进 keyword，后端解析）。
    */
   query: async (
     keyword: string,
     options?: SearchQueryOptions
   ): Promise<ApiResponse<SearchQueryData>> => {
     const retrievalMode: RetrievalMode | undefined = options?.retrievalMode;
-    const params: Record<string, string> = { keyword };
+    const history = options?.history;
+    const payloadKeyword =
+      history && history.length > 0
+        ? `__RAG_HISTORY__:${JSON.stringify({ keyword, history })}`
+        : keyword;
+    const params: Record<string, string> = { keyword: payloadKeyword };
     if (retrievalMode) {
       params.retrieval_mode = retrievalMode;
     }

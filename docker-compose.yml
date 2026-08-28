@@ -25,6 +25,8 @@ services:
       DEEPSEEK_API_MODEL: ${DEEPSEEK_API_MODEL:-deepseek-chat}
       ALIGNMENT_CHAT_MODE: ${ALIGNMENT_CHAT_MODE:-auto}
       SEARCH_RAG_ENABLED: ${SEARCH_RAG_ENABLED:-false}
+      SEARCH_RAG_TOP_K: ${SEARCH_RAG_TOP_K:-5}
+      RAG_ALGORITHM: ${RAG_ALGORITHM:-naive}
     volumes:
       - ./semAlign_backend/data:/app/data
     expose:
