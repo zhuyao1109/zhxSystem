@@ -345,6 +345,12 @@ class DocumentProcessor:
         if not text.strip():
             raise ValueError("文件中没有可提取的文本内容")
 
+        from utils.text_cleaner import clean_parsed_text
+
+        text = clean_parsed_text(text)
+        if not text.strip():
+            raise ValueError("文件中没有可提取的文本内容")
+
         self._save_text(text, saved_filename)
         return text, images
 
@@ -477,7 +483,10 @@ class ChunkStore:
         return True
 
     def upsert_text(self, text: str, meta: Optional[Dict[str, Any]] = None) -> int:
+        from utils.text_cleaner import clean_parsed_text
+
         meta = dict(meta or {})
+        text = clean_parsed_text(text)
         if "file_id" not in meta or meta.get("file_id") in (None, ""):
             standard_id = meta.get("standard_id")
             source = meta.get("source_file") or meta.get("source")

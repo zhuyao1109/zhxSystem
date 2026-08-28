@@ -20,6 +20,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 from utils.document_processor import get_chunk_store
+from utils.text_cleaner import clean_display_text
 
 logger = logging.getLogger(__name__)
 load_dotenv()
@@ -72,7 +73,10 @@ def extract_context(chunks: List[Dict[str, Any]]) -> "tuple[str, List[str]]":
     content_list: List[str] = []
     sources: List[str] = []
     for item in chunks:
-        content_list.append(item["page_content"])
+        raw = item.get("page_content") or ""
+        cleaned = clean_display_text(raw, preserve_paragraphs=True)
+        if cleaned:
+            content_list.append(cleaned)
         src = item.get("metadata", {}).get("source", "")
         if src and src not in sources:
             sources.append(src)

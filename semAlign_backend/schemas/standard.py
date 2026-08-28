@@ -2,9 +2,10 @@
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from .base import APIResponse, PaginatedResponse
+from utils.text_cleaner import summarize_standard_text
 
 
 class StandardBase(BaseModel):
@@ -46,6 +47,13 @@ class StandardResponse(StandardBase):
     source_file: Optional[str] = None
     created_at: datetime
     updated_at: Optional[datetime] = None
+
+    @field_validator("description", mode="before")
+    @classmethod
+    def _summarize_description(cls, value: str | None) -> str | None:
+        if not value or len(value.strip()) <= 320:
+            return value
+        return summarize_standard_text(value)
     
     class Config:
         from_attributes = True

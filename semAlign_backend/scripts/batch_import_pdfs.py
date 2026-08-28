@@ -88,7 +88,9 @@ async def _import_one(
     record["source_file"] = filename
     record["saved_filename"] = saved_filename
     if not record.get("description"):
-        record["description"] = parsed_text[:8000]
+        from utils.text_cleaner import summarize_standard_text
+
+        record["description"] = summarize_standard_text(parsed_text)
 
     db = SessionLocal()
     try:

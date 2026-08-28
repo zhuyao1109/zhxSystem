@@ -25,6 +25,7 @@ from models.user import User
 from schemas.base import APIResponse
 from schemas.search import SearchResponse, SearchResult, SearchSuggestion
 from utils.document_processor import get_chunk_store
+from utils.text_cleaner import format_excerpt
 
 router = APIRouter(prefix="/search", tags=["智能检索"])
 logger = logging.getLogger(__name__)
@@ -113,17 +114,7 @@ def _metadata_score(standard: Standard, keyword: str) -> float:
 
 def _snippet(text: str | None, keyword: str) -> str | None:
     """截取包含关键词的上下文片段用于搜索结果展示。"""
-    if not text:
-        return None
-    normalized = " ".join(text.split())
-    if not normalized:
-        return None
-    idx = normalized.lower().find(keyword.lower())
-    if idx < 0:
-        return normalized[:180]
-    start = max(0, idx - 50)
-    end = min(len(normalized), idx + 130)
-    return normalized[start:end]
+    return format_excerpt(text, keyword=keyword, max_len=220)
 
 
 def _to_result(

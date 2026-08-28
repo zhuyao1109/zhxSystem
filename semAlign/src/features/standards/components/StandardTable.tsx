@@ -89,7 +89,7 @@ export const StandardTable: React.FC<StandardTableProps> = ({
               <td className="px-4 py-3 text-sm">
                 <div>
                   <div className="font-medium text-slate-900">{standard.name}</div>
-                  <div className="text-xs text-slate-400">{standard.description}</div>
+                  <div className="text-xs text-slate-400 line-clamp-2 break-words">{standard.description}</div>
                 </div>
               </td>
               <td className="px-4 py-3 text-sm">

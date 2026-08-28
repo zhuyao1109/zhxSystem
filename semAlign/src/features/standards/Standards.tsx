@@ -130,6 +130,76 @@ interface StandardFilterOptionsData {
 
 const SKELETON_ROW_KEYS = ['skeleton-row-1', 'skeleton-row-2', 'skeleton-row-3'] as const;
 
+const STANDARD_NO_PATTERN =
+  /(?:GB\/T|MH\/T|ISO|IEC|YY\/T|GA\/T|JR\/T|DB\/T?)\s*[\d./:：／-]+(?:—|–|-)\d{4}/i;
+
+/**
+ * 函数 `splitSourceDocuments`：拆分来源文档字段为独立条目。
+ */
+function splitSourceDocuments(raw: string): string[] {
+  return raw
+    .split(/[,，、;；]/)
+    .map((item) => item.trim().replace(/^《|》$/g, ''))
+    .filter(Boolean);
+}
+
+/**
+ * 函数 `shortenSourceLabel`：优先提取标准号，否则截断长文件名/标题。
+ */
+function shortenSourceLabel(doc: string, maxLen = 32): string {
+  const normalized = doc.trim().replace(/^《|》$/g, '').replace(/\.md$/i, '');
+  const stdMatch = normalized.match(STANDARD_NO_PATTERN);
+  if (stdMatch) {
+    return stdMatch[0].replace(/\s+/g, ' ').trim();
+  }
+  if (normalized.length <= maxLen) {
+    return normalized;
+  }
+  return `${normalized.slice(0, maxLen - 1)}…`;
+}
+
+/**
+ * 函数 `formatConflictTypeLabel`：将内部冲突类型编码转为可读标签。
+ */
+function formatConflictTypeLabel(raw: string): string {
+  const matched = raw.match(/^冲突类型_\d+_(.+)$/);
+  if (matched) {
+    return matched[1].replace(/_/g, '/');
+  }
+  return raw;
+}
+
+/**
+ * React 组件 `SourceDocumentTags`：来源文档标签化展示。
+ */
+const SourceDocumentTags: React.FC<{ raw: string; maxVisible?: number }> = ({
+  raw,
+  maxVisible = 3,
+}) => {
+  const labels = splitSourceDocuments(raw).map((item) => shortenSourceLabel(item));
+  if (labels.length === 0) {
+    return <span className="text-slate-400">-</span>;
+  }
+  const visible = labels.slice(0, maxVisible);
+  const hiddenCount = labels.length - visible.length;
+  return (
+    <div className="flex flex-wrap gap-1 max-w-[220px]" title={raw}>
+      {visible.map((label, index) => (
+        <span
+          key={`${label}-${index}`}
+          className="inline-block max-w-[200px] truncate rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-700"
+          title={label}
+        >
+          {label}
+        </span>
+      ))}
+      {hiddenCount > 0 && (
+        <span className="text-xs text-slate-400 self-center">+{hiddenCount}</span>
+      )}
+    </div>
+  );
+};
+
 /**
  * React 组件 `LoadingSkeleton`：负责对应页面或区块的 UI 与交互。
  */
@@ -372,7 +442,11 @@ const TermConflictOverviewContent: React.FC<{ overview: TermConflictOverviewData
           {overview.rows.map((row) => (
             <tr key={row.id} className="hover:bg-slate-50 transition-colors">
               <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.term_name}</td>
-              <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
+              <td className="px-4 py-3 text-sm text-slate-700" title={row.conflict_type}>
+                <span className="inline-block max-w-[120px] truncate rounded bg-blue-50 px-1.5 py-0.5 text-xs text-blue-700">
+                  {formatConflictTypeLabel(row.conflict_type)}
+                </span>
+              </td>
               <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_1}</td>
               <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_2}</td>
               <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.conflict_desc}>
@@ -478,15 +552,21 @@ const ConflictDialogueOverviewContent: React.FC<{ overview: ConflictDialogueOver
         </thead>
         <tbody className="divide-y divide-slate-200">
           {overview.rows.map((row) => (
-            <tr key={row.id} className="hover:bg-slate-50 transition-colors">
-              <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.dialogue_id}</td>
-              <td className="px-4 py-3 text-sm text-slate-700">{row.original_conflict_id}</td>
-              <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
-              <td className="px-4 py-3 text-sm text-slate-700 max-w-md truncate" title={row.source_document}>
-                {row.source_document}
+            <tr key={row.id} className="hover:bg-slate-50 transition-colors align-top">
+              <td className="px-4 py-3 text-xs font-mono text-slate-700">{row.dialogue_id}</td>
+              <td className="px-4 py-3 text-xs font-mono text-slate-600">{row.original_conflict_id}</td>
+              <td className="px-4 py-3 text-sm text-slate-700" title={row.conflict_type}>
+                <span className="inline-block max-w-[120px] truncate rounded bg-blue-50 px-1.5 py-0.5 text-xs text-blue-700">
+                  {formatConflictTypeLabel(row.conflict_type)}
+                </span>
               </td>
-              <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.question}>
-                {row.question}
+              <td className="px-4 py-3 text-sm text-slate-700">
+                <SourceDocumentTags raw={row.source_document} />
+              </td>
+              <td className="px-4 py-3 text-sm text-slate-700 max-w-md">
+                <div className="line-clamp-2 break-words" title={row.question}>
+                  {row.question}
+                </div>
               </td>
             </tr>
           ))}
@@ -512,7 +592,11 @@ const ConflictDialogueOverviewContent: React.FC<{ overview: ConflictDialogueOver
           {overview.term_conflict_rows.map((row) => (
             <tr key={`dialogue-term-${row.id}`} className="hover:bg-slate-50 transition-colors">
               <td className="px-4 py-3 text-sm font-medium text-slate-900">{row.term_name}</td>
-              <td className="px-4 py-3 text-sm text-slate-700">{row.conflict_type}</td>
+              <td className="px-4 py-3 text-sm text-slate-700" title={row.conflict_type}>
+                <span className="inline-block max-w-[120px] truncate rounded bg-blue-50 px-1.5 py-0.5 text-xs text-blue-700">
+                  {formatConflictTypeLabel(row.conflict_type)}
+                </span>
+              </td>
               <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_1}</td>
               <td className="px-4 py-3 text-sm text-slate-700">{row.standard_no_2}</td>
               <td className="px-4 py-3 text-sm text-slate-700 max-w-xl truncate" title={row.conflict_desc}>
@@ -718,7 +802,7 @@ export const Standards: React.FC = () => {
 
       <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
         <div className="p-4 border-b border-slate-200">
-          <h2 className="text-lg font-semibold text-slate-900">标准文件向量数据（临时展示）</h2>
+          <h2 className="text-lg font-semibold text-slate-900">标准文件向量数据</h2>
           <p className="text-sm text-slate-500 mt-1">展示后端向量数据库中已入库标准文件的 collection、chunk 数量与文件来源</p>
         </div>
 
@@ -734,7 +818,7 @@ export const Standards: React.FC = () => {
 
       <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
         <div className="p-4 border-b border-slate-200">
-          <h2 className="text-lg font-semibold text-slate-900">冲突对数据（问答，临时展示）</h2>
+          <h2 className="text-lg font-semibold text-slate-900">冲突对数据</h2>
           <p className="text-sm text-slate-500 mt-1">展示冲突问答入库数量、映射数量与最近 20 条问答记录</p>
         </div>
 

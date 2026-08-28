@@ -33,14 +33,13 @@ import { getApiErrorMessage } from '@/utils/apiError';
  * 函数 `standardsToSearchRows`：本模块内部业务辅助逻辑。
  */
 function standardsToSearchRows(standards: Standard[]): SearchResult[] {
-  const n = standards.length;
-  return standards.map((s, index) => ({
+  return standards.map((s) => ({
     id: s.id,
     code: s.code,
     title: s.name,
     content: s.description?.trim() ? s.description : `${s.name}（${s.code} ${s.version}）`,
     department: s.department,
-    relevance: n <= 1 ? 95 : Math.max(45, Math.round(95 - (index * 50) / Math.max(n - 1, 1))),
+    relevance: s.relevanceScore ?? 50,
   }));
 }
 
@@ -759,7 +758,7 @@ const Search: React.FC = () => {
                     <span className="text-xs text-slate-400">{item.department}</span>
                   </div>
                   <p className="text-slate-800 font-medium mb-2">{item.title}</p>
-                  <p className="text-slate-600 text-sm mb-2">{item.content}</p>
+                  <p className="text-slate-600 text-sm mb-2 whitespace-pre-line line-clamp-4">{item.content}</p>
 
                   {/* 相关度指示器 */}
                   <div className="flex items-center gap-4 mt-4">

@@ -280,6 +280,9 @@ async def get_standard_content(
     max_chars = 20000
     if text_path is not None:
         raw = text_path.read_text(encoding="utf-8", errors="ignore")
+        from utils.text_cleaner import clean_parsed_text
+
+        raw = clean_parsed_text(raw)
         text_length = len(raw)
         if text_length > max_chars:
             text_content = raw[:max_chars]
