@@ -14,3 +14,29 @@ __MACOSX/
 
 # 超大整包超过 GitHub LFS 单文件上限（约 2GB），无法上传
 semAlign_0615.zip
+
+# 运行数据（非源码，本地/Docker 运行时生成）
+semAlign_backend/data/uploads/*
+!semAlign_backend/data/uploads/.gitkeep
+semAlign_backend/data/chroma_db/
+semAlign_backend/data/*.db
+semAlign_backend/data/bm25_chunks.pkl
+semAlign_backend/data/batch_import*.log
+semAlign_backend/data/images/
+semAlign_backend/standard_alignment.db
+**/standard_alignment.db
+
+# 嵌入模型权重（非源码，运行时下载或 Docker 镜像内置）
+semAlign_backend/models/gte-multilingual-base/*
+!semAlign_backend/models/gte-multilingual-base/.gitkeep
+semAlign_backend/models/models--sentence-transformers--all-MiniLM-L6-v2/
+semAlign_backend/models/.locks/
+
+# 环境变量（保留示例文件）
+.env
+.env.*
+!.env.docker.example
+!**/.env.example
+
+# 已合入主项目的临时升级包
+update_0815/
