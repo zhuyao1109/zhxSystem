@@ -1,0 +1,16 @@
+# SemAlign 后端【可选】依赖
+# 安装：pip install -r requirements-optional.txt
+# 前提：已安装 requirements.txt（及 CPU 版 torch，如需向量检索）
+
+# Word / Markdown 解析（services/preprocessing/document_parser.py）
+python-docx>=1.1.0,<2
+markdown>=3.5,<4
+
+# 报表可视化（services/reporting/visualization.py）
+plotly>=5.18.0,<6
+
+# 备用 OCR（services/preprocessing/ocr.py）
+# 体积大、与 rapidocr-onnxruntime 功能重叠；仅在需要 Paddle 链路时安装
+# CPU 示例（按官方文档选择对应平台轮子）：
+#   pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+paddleocr>=2.7.0,<3

@@ -1,75 +1,81 @@
-# ==================== Web Framework ====================
+# SemAlign 后端依赖
+#
+# 安装说明：
+#   1) 必装（主流程：API / PDF 导入 / OCR / 检索 / 对齐聊天 / 冲突检测）
+#        pip install -r requirements.txt
+#   2) PyTorch（sentence-transformers 需要；建议 CPU 轮，避免默认拉 CUDA）
+#        pip install torch --index-url https://download.pytorch.org/whl/cpu
+#      Docker 镜像已在 Dockerfile 中单独安装，勿把 GPU 版 torch 写进本文件。
+#   3) 可选能力（Word/Markdown、PaddleOCR、报表可视化）
+#        pip install -r requirements-optional.txt
+#
+# 约定：本文件仅包含「必装」可执行依赖；可选包见文件末尾说明与 requirements-optional.txt。
 
-# FastAPI 核心框架
+# ==================== 【必装】Web Framework ====================
 fastapi==0.104.1
-# 开发服务器（支持热重载）
 uvicorn[standard]==0.24.0
-# 生产服务器（高性能）
 gunicorn==21.2.0
 
-# ==================== Database ====================
-
-# SQLAlchemy ORM 框架
+# ==================== 【必装】Database ====================
 sqlalchemy==2.0.23
-# 数据库迁移工具
 alembic==1.12.1
 
-# ==================== Authentication ====================
-
-# JWT Token 处理
+# ==================== 【必装】Authentication ====================
 python-jose[cryptography]==3.3.0
-# 密码加密（注意：bcrypt 必须 <=4.0.1，与 passlib 兼容）
+# bcrypt 必须 <=4.0.1，与 passlib 兼容
 bcrypt==4.0.1
 passlib[bcrypt]==1.7.4
-# 文件上传支持
 python-multipart==0.0.6
 
-# ==================== Validation ====================
-
-# Pydantic 数据验证
+# ==================== 【必装】Validation ====================
 pydantic>=2.7.4,<3.0
-# Pydantic 配置管理
 pydantic-settings>=2.1.0,<3.0
-# 邮箱验证（支持 EmailStr 类型）
 email-validator==2.1.0
 
-# ==================== Utilities ====================
-
-# 环境变量管理
+# ==================== 【必装】Utilities / LLM ====================
 python-dotenv==1.0.0
-# OpenAI-compatible LLM client，用于标准对齐 AI 助手
+# OpenAI-compatible 客户端（对齐助手 / DeepSeek / 兼容网关）
 openai>=1.0.0,<2
+# 冲突检测 LLM 调用重试
+tenacity>=8.2.0,<10
 
-# ==================== File Processing ====================
-
-# 与 opencv-python 4.13+、pandas 2.2+ 对齐：需 numpy 2.x（勿与环境中已装的 numpy 1.26 混用）
+# ==================== 【必装】File Processing ====================
+# 与 pandas 2.2+、当前 OCR 栈对齐：需 numpy 2.x
 numpy>=2.0.0,<3
-# PDF 文件解析
 pdfplumber==0.10.3
-# OCR / PDF 高级抽取
 pymupdf==1.26.4
 pillow==11.3.0
+# 主 OCR 路径（document_processor）；勿与 paddleocr 混用为默认
 rapidocr-onnxruntime==1.4.4
-# Excel 数据（2.2+ 官方兼容 numpy 2）
 pandas>=2.2.0,<3
-# Excel 读取引擎
 openpyxl==3.1.2
-# Excel 旧版本支持
 xlrd==2.0.1
 
-# ==================== Testing ====================
-pytest==7.4.3
-pytest-cov==4.1.0
-httpx>=0.27.0,<0.28
-
-# ==================== NLP ====================
-# 中文分词（条款对齐 / 相似度计算）
+# ==================== 【必装】NLP / Conflict Detection ====================
+# 中文分词（条款对齐 / 相似度）
 jieba>=0.42.1
+# TF-IDF 候选对召回（llm_conflict_detector）
+scikit-learn>=1.4.0,<2
 
-# ==================== Vector Retrieval ====================
+# ==================== 【必装】Vector Retrieval ====================
 chromadb==1.0.15
 langchain==0.3.27
 langchain-chroma==0.2.5
 langchain-community==0.3.27
 langchain-text-splitters==0.3.9
+# 依赖 torch；请按文件头说明单独安装 CPU 版 torch
 sentence-transformers==5.0.0
+
+# ==================== 【必装】Testing ====================
+pytest==7.4.3
+pytest-cov==4.1.0
+httpx>=0.27.0,<0.28
+
+# =============================================================================
+# 【可选】以下包不在默认安装范围，需要时执行：
+#   pip install -r requirements-optional.txt
+#
+# - python-docx / markdown : Word / Markdown 文档解析
+# - paddlepaddle / paddleocr : 备用 OCR（体积大，与 rapidocr 二选一扩展）
+# - plotly                 : 报表可视化
+# =============================================================================
