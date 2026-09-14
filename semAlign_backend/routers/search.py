@@ -38,15 +38,25 @@ HISTORY_PAYLOAD_PREFIX = "__RAG_HISTORY__:"
 # RAG 与元数据评分辅助
 # ---------------------------------------------------------------------------
 
-def _parse_search_keyword(keyword: str) -> tuple[str, list[dict[str, str]]]:
-    """解析关键词；若带历史载荷则拆出真实问题与问答轮次。"""
+def _parse_search_keyword(
+    keyword: str,
+) -> tuple[str, list[dict[str, str]], str]:
+    """解析关键词；若带历史载荷则拆出追问、问答轮次与检索主题。
+
+    Returns:
+        (followup_or_keyword, history_turns, retrieval_topic)
+        - 无历史时：三者中追问与主题相同，均为原始 keyword
+        - 有历史时：keyword 为追问文本；topic 优先用 payload.topic，否则用首轮问题
+    """
     if not keyword.startswith(HISTORY_PAYLOAD_PREFIX):
-        return keyword, []
+        text = keyword.strip()
+        return text, [], text
 
     raw = keyword[len(HISTORY_PAYLOAD_PREFIX) :]
     try:
         parsed = json.loads(raw)
         real_keyword = str(parsed.get("keyword") or "").strip()
+        topic = str(parsed.get("topic") or "").strip()
         history_raw = parsed.get("history") or []
         history_turns: list[dict[str, str]] = []
         if isinstance(history_raw, list):
@@ -59,22 +69,84 @@ def _parse_search_keyword(keyword: str) -> tuple[str, list[dict[str, str]]]:
                     history_turns.append({"question": question, "answer": answer})
         if not real_keyword:
             logger.warning("history 载荷缺少 keyword，回退原始字符串")
-            return keyword, []
-        return real_keyword, history_turns
+            return keyword, [], keyword
+        if not topic and history_turns:
+            topic = history_turns[0]["question"]
+        retrieval_topic = topic or real_keyword
+        return real_keyword, history_turns, retrieval_topic
     except (json.JSONDecodeError, TypeError, AttributeError):
         logger.warning("history 载荷解析失败，按普通关键词处理: %r", keyword[:80])
-        return keyword, []
+        text = keyword.strip()
+        return text, [], text
+
+
+def _is_conversational_followup(text: str) -> bool:
+    """寒暄/极短追问：不应作为标准库检索词（否则会变成 0 条）。"""
+    t = (text or "").strip().lower()
+    if not t:
+        return True
+    if len(t) <= 2:
+        return True
+    greetings = (
+        "你好",
+        "您好",
+        "hello",
+        "hi",
+        "在吗",
+        "谢谢",
+        "感谢",
+        "好的",
+        "嗯",
+        "哦",
+    )
+    if t in greetings:
+        return True
+    return any(t.startswith(g) for g in ("你好", "您好", "hello", "hi "))
+
+
+def _build_extractive_answer(
+    question: str,
+    fallback_context: str,
+    *,
+    total_hits: int = 0,
+) -> str:
+    """LLM 不可用时，基于检索摘要生成可读回答（保证问答区有内容）。"""
+    lines = [ln.strip() for ln in (fallback_context or "").splitlines() if ln.strip()]
+    bullets = [ln for ln in lines if ln.startswith("- ")][:6]
+    if not bullets and not lines:
+        return (
+            f"关于「{question}」，当前未能生成智能问答。"
+            "请查看下方相关标准列表，或换个更具体的问法。"
+        )
+    header = f"关于「{question}」，共检索到 {total_hits or len(bullets)} 条相关标准。"
+    if bullets:
+        body = "较相关的条目包括：\n" + "\n".join(bullets)
+    else:
+        body = "相关摘要：\n" + "\n".join(lines[:8])
+    footer = (
+        "\n\n（说明：大模型暂不可用，以上为基于检索结果的摘要。"
+        "配置有效的 DEEPSEEK_API_KEY / FOURZ_API_BASE 后可生成更完整回答。）"
+    )
+    return f"{header}\n{body}{footer}"
 
 
 def _run_optional_rag(
     keyword: str,
     history: list[dict[str, str]] | None = None,
+    *,
+    fallback_context: str = "",
+    fallback_sources: list[str] | None = None,
+    total_hits: int = 0,
 ) -> tuple[str, list[str]]:
-    """可选 RAG 开关：默认关闭，开启时失败也不影响主流程。"""
+    """可选 RAG 开关：默认关闭，开启时失败也不影响主流程。
+
+    当向量 ChunkStore 不可用时，可用 fallback_context（元数据检索摘要）仍生成回答。
+    """
     if not settings.search_rag_enabled:
         return "", []
     try:
         from utils.rag import rag_query  # 惰性导入，避免未安装依赖时启动失败
+        from utils.rag_common import DEFAULT_SYSTEM, call_llm
 
         rag_top_k = max(1, int(settings.search_rag_top_k))
         rag = rag_query(
@@ -85,6 +157,32 @@ def _run_optional_rag(
         )
         answer = str(rag.get("answer") or "").strip()
         sources = [str(x).strip() for x in (rag.get("sources") or []) if str(x).strip()]
+
+        # 向量无块或仅有降级提示时，用标准列表摘要再调一次 LLM
+        needs_fallback = (not answer) or ("未能从向量知识库检索" in answer)
+        if needs_fallback and fallback_context.strip():
+            prompt = (
+                f"问题:{keyword}\n\n"
+                f"相关标准摘要:\n{fallback_context.strip()}\n\n"
+                "请基于以上标准列表，用【简体中文】概括回答用户问题；"
+                "列出最相关的几条标准及其要点，并说明可继续追问细化。"
+            )
+            fb_answer = call_llm(prompt, system=DEFAULT_SYSTEM, history=history).strip()
+            if fb_answer:
+                answer = fb_answer
+                if fallback_sources:
+                    sources = list(fallback_sources)
+
+        # LLM 仍失败时，用抽取式摘要保证前端有内容
+        if (not answer) or ("未能从向量知识库检索" in answer):
+            answer = _build_extractive_answer(
+                keyword,
+                fallback_context,
+                total_hits=total_hits,
+            )
+            if fallback_sources and not sources:
+                sources = list(fallback_sources)
+
         # 去重保序
         dedup_sources: list[str] = []
         seen: set[str] = set()
@@ -96,6 +194,11 @@ def _run_optional_rag(
         return answer, dedup_sources
     except Exception as exc:
         logger.warning("RAG 开关已启用，但调用失败，已回退普通检索: %s", exc)
+        if fallback_context.strip():
+            return (
+                _build_extractive_answer(keyword, fallback_context, total_hits=total_hits),
+                list(fallback_sources or []),
+            )
         return "", []
 
 
@@ -117,6 +220,20 @@ def _snippet(text: str | None, keyword: str) -> str | None:
     return format_excerpt(text, keyword=keyword, max_len=220)
 
 
+def _display_text(*candidates: object, fallback: str = "") -> str:
+    """取首个可用展示文案，过滤 None / 空串 / 字面量 null|undefined。"""
+    for raw in candidates:
+        if raw is None:
+            continue
+        text = str(raw).strip()
+        if not text:
+            continue
+        if text.lower() in {"null", "undefined"}:
+            continue
+        return text
+    return fallback
+
+
 def _to_result(
     standard: Standard,
     relevance_score: float,
@@ -124,18 +241,24 @@ def _to_result(
     excerpt: str | None = None,
 ) -> SearchResult:
     """将 Standard ORM 对象转换为 SearchResult 响应结构。"""
+    source_name = _display_text(standard.source_file)
+    source_base = Path(source_name).name if source_name else ""
     return SearchResult(
         id=standard.id,
-        standard_no=standard.standard_no,
-        name=standard.name,
-        version=standard.version,
-        status=standard.status,
-        category=standard.category,
+        standard_no=_display_text(
+            standard.standard_no,
+            source_base and f"FILE::{source_base}",
+            fallback=f"STD-{standard.id}",
+        ),
+        name=_display_text(standard.name, source_base, fallback="未命名标准"),
+        version=_display_text(standard.version, fallback="-"),
+        status=_display_text(standard.status, fallback="有效"),
+        category=_display_text(standard.category, fallback="未分类"),
         department=standard.department,
         source_file=standard.source_file,
         relevance_score=max(0.0, min(relevance_score, 1.0)),
         match_type=match_type,
-        match_excerpt=excerpt,
+        match_excerpt=_display_text(excerpt) or None,
     )
 
 
@@ -149,18 +272,19 @@ def _vector_only_result(
 ) -> SearchResult:
     """构造仅来自向量命中、未关联标准库记录的伪结果项。"""
     base = Path(source_name).name if source_name else "未命名文档"
+    base = _display_text(base, fallback="未命名文档")
     return SearchResult(
         id=pseudo_id,
-        standard_no=(standard_no or "").strip() or f"VECTOR::{base}",
-        name=(display_name or "").strip() or base,
+        standard_no=_display_text(standard_no, fallback=f"VECTOR::{base}"),
+        name=_display_text(display_name, base, fallback="未命名文档"),
         version="-",
         status="向量库文档",
         category="临时索引",
         department=None,
-        source_file=source_name or base,
+        source_file=_display_text(source_name, base) or None,
         relevance_score=max(0.0, min(relevance_score, 1.0)),
         match_type="vector",
-        match_excerpt=excerpt,
+        match_excerpt=_display_text(excerpt) or None,
     )
 
 
@@ -425,36 +549,93 @@ async def search_standards(
     current_user: User = Depends(get_current_user),
 ):
     """智能检索主接口：元数据 + 向量 + BM25 多通路融合。"""
-    real_keyword, history_turns = _parse_search_keyword(keyword)
-    if not real_keyword.strip():
+    real_keyword, history_turns, retrieval_topic = _parse_search_keyword(keyword)
+    if not real_keyword.strip() and not retrieval_topic.strip():
+        return APIResponse(
+            data=SearchResponse(results=[], answer="", sources=[], suggestions=[], total=0)
+        )
+
+    # 追问场景：标准列表按首轮主题检索（如「电子」），避免用「你好」把结果刷成 0 条
+    if history_turns:
+        search_term = (retrieval_topic or real_keyword).strip()
+    else:
+        search_term = (real_keyword or retrieval_topic).strip()
+
+    if not search_term:
         return APIResponse(
             data=SearchResponse(results=[], answer="", sources=[], suggestions=[], total=0)
         )
 
     query = db.query(Standard).filter(
         or_(
-            Standard.standard_no.contains(real_keyword),
-            Standard.name.contains(real_keyword),
-            Standard.description.contains(real_keyword),
-            Standard.source_file.contains(real_keyword),
+            Standard.standard_no.contains(search_term),
+            Standard.name.contains(search_term),
+            Standard.description.contains(search_term),
+            Standard.source_file.contains(search_term),
         )
     )
     metadata_hits = query.all()
     result_map: Dict[int, SearchResult] = {
         item.id: _to_result(
             item,
-            relevance_score=_metadata_score(item, real_keyword),
+            relevance_score=_metadata_score(item, search_term),
             match_type="metadata",
-            excerpt=_snippet(item.description, real_keyword),
+            excerpt=_snippet(item.description, search_term),
         )
         for item in metadata_hits
     }
 
-    _apply_direct_vector_rows(db, result_map, real_keyword)
-    _apply_chunk_store_hits(db, result_map, real_keyword)
+    _apply_direct_vector_rows(db, result_map, search_term)
+    _apply_chunk_store_hits(db, result_map, search_term)
+
+    # 实质性追问再用追问词补召回；寒暄追问跳过
+    if (
+        history_turns
+        and real_keyword
+        and real_keyword != search_term
+        and not _is_conversational_followup(real_keyword)
+    ):
+        extra = db.query(Standard).filter(
+            or_(
+                Standard.standard_no.contains(real_keyword),
+                Standard.name.contains(real_keyword),
+                Standard.description.contains(real_keyword),
+                Standard.source_file.contains(real_keyword),
+            )
+        )
+        for item in extra.all():
+            if item.id in result_map:
+                continue
+            result_map[item.id] = _to_result(
+                item,
+                relevance_score=_metadata_score(item, real_keyword),
+                match_type="metadata",
+                excerpt=_snippet(item.description, real_keyword),
+            )
+        _apply_direct_vector_rows(db, result_map, real_keyword)
+        _apply_chunk_store_hits(db, result_map, real_keyword)
 
     results = sorted(result_map.values(), key=lambda item: item.relevance_score, reverse=True)
-    rag_answer, rag_sources = _run_optional_rag(real_keyword, history=history_turns or None)
+    # RAG 用追问本身 + 历史；寒暄时模型可结合 history 回答
+    rag_question = real_keyword or search_term
+    fallback_lines: list[str] = []
+    fallback_sources: list[str] = []
+    for item in results[:8]:
+        title = f"{item.standard_no} {item.name}".strip()
+        excerpt = (item.match_excerpt or item.name or "").strip().replace("\n", " ")
+        if len(excerpt) > 220:
+            excerpt = excerpt[:220] + "…"
+        fallback_lines.append(f"- {title}\n  {excerpt}")
+        src = (item.source_file or item.standard_no or "").strip()
+        if src and src not in fallback_sources:
+            fallback_sources.append(src)
+    rag_answer, rag_sources = _run_optional_rag(
+        rag_question,
+        history=history_turns or None,
+        fallback_context="\n".join(fallback_lines),
+        fallback_sources=fallback_sources,
+        total_hits=len(results),
+    )
     return APIResponse(
         data=SearchResponse(
             results=results,

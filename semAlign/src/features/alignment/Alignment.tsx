@@ -200,6 +200,16 @@ const Alignment: React.FC = () => {
     const question = inputValue.trim();
     if (!question) return;
 
+    if (!selectedGroup1 && !selectedGroup2) {
+      showWarning('请先选择至少一个标准组，再向助手提问');
+      return;
+    }
+
+    const left = standards.find((item) => item.id === selectedGroup1);
+    const right = standards.find((item) => item.id === selectedGroup2);
+    const group1Label = left ? `${left.code} ${left.name}` : undefined;
+    const group2Label = right ? `${right.code} ${right.name}` : undefined;
+
     const newUserMessage: AlignmentMessage = {
       id: Date.now().toString(),
       type: 'user',
@@ -215,6 +225,8 @@ const Alignment: React.FC = () => {
         message: question,
         group1Id: selectedGroup1 || undefined,
         group2Id: selectedGroup2 || undefined,
+        group1Label,
+        group2Label,
       });
       const aiResponse: AlignmentMessage = {
         id: (Date.now() + 1).toString(),
@@ -229,7 +241,7 @@ const Alignment: React.FC = () => {
     } finally {
       setChatLoading(false);
     }
-  }, [inputValue, selectedGroup1, selectedGroup2, showError]);
+  }, [inputValue, selectedGroup1, selectedGroup2, standards, showError, showWarning]);
 
   const handleQuickQuestion = useCallback((question: string): void => {
     setInputValue(question);
@@ -398,6 +410,26 @@ const Alignment: React.FC = () => {
               <Bot size={20} /> 标准对齐助手{' '}
               <span className="text-xs bg-blue-500 px-2 py-0.5 rounded text-blue-100">在线</span>
             </div>
+          </div>
+          <div className="px-4 py-2 border-b border-slate-100 bg-blue-50 text-xs text-slate-700">
+            {selectedGroup1 || selectedGroup2 ? (
+              <span>
+                当前已选：
+                {selectedGroup1
+                  ? ` 组1=${
+                      standards.find((s) => s.id === selectedGroup1)?.code || selectedGroup1
+                    }`
+                  : ''}
+                {selectedGroup1 && selectedGroup2 ? '；' : ''}
+                {selectedGroup2
+                  ? ` 组2=${
+                      standards.find((s) => s.id === selectedGroup2)?.code || selectedGroup2
+                    }`
+                  : ''}
+              </span>
+            ) : (
+              <span className="text-amber-700">尚未选择标准组，请先在上方选择后再提问</span>
+            )}
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-6 bg-slate-50">

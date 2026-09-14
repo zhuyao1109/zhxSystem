@@ -1,8 +1,12 @@
 """应用配置管理 - 使用 Pydantic Settings 管理所有配置项"""
 
-from typing import List, Optional
+from __future__ import annotations
+
+import json
+from typing import Annotated, List, Optional
+
 from pydantic import Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -44,14 +48,17 @@ class Settings(BaseSettings):
 
     # ==================== CORS 跨域配置 ====================
     # 允许的前端访问地址（根据实际前端部署地址修改）
-    cors_origins: List[str] = ["http://localhost:5173", "http://localhost:3000"]
+    # NoDecode：避免 pydantic-settings 对非 JSON 字符串（逗号分隔）直接 json.loads 失败
+    cors_origins: Annotated[
+        List[str], NoDecode
+    ] = ["http://localhost:5173", "http://localhost:3000"]
 
     # ==================== 文件上传配置 ====================
     upload_dir: str = "./data/uploads"  # 文件上传目录
     text_output_dir: str = "./data/texts"  # 抽取后的纯文本目录
     image_output_dir: str = "./data/images"  # PDF 图片抽取目录
     max_upload_size: int = 20971520  # 最大上传大小（20MB）
-    allowed_extensions: List[str] = [".xlsx", ".xls", ".pdf"]  # 允许的文件类型
+    allowed_extensions: Annotated[List[str], NoDecode] = [".xlsx", ".xls", ".pdf"]  # 允许的文件类型
 
     # ==================== 向量检索配置 ====================
     vector_store_enabled: bool = True
@@ -84,6 +91,9 @@ class Settings(BaseSettings):
 
     # ==================== OCR 配置 ====================
     ocr_dpi: int = 300
+    # 上传导入场景 OCR 快速模式：仅扫前若干页抓标准号，避免前端超时
+    upload_ocr_max_pages: int = 3
+    upload_ocr_dpi: int = 160
     ocr_min_image_size: int = 100
     ocr_min_stddev: float = 10.0
 
@@ -98,12 +108,22 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    @field_validator("cors_origins", mode="before")
+    @field_validator("cors_origins", "allowed_extensions", mode="before")
     @classmethod
-    def parse_cors_origins(cls, v):
-        """解析 CORS 来源（支持逗号分隔的字符串）"""
+    def parse_str_list(cls, v):
+        """解析列表配置：支持 JSON 数组或逗号分隔字符串。"""
         if isinstance(v, str):
-            return [origin.strip() for origin in v.split(",")]
+            text = v.strip()
+            if not text:
+                return []
+            if text.startswith("["):
+                try:
+                    parsed = json.loads(text)
+                    if isinstance(parsed, list):
+                        return [str(item).strip() for item in parsed if str(item).strip()]
+                except json.JSONDecodeError:
+                    pass
+            return [item.strip() for item in text.split(",") if item.strip()]
         return v
 
 

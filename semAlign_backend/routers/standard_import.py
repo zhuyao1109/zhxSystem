@@ -267,7 +267,7 @@ async def upload_file(
 
         # 8. 标准信息提取：PDF 直接从 xc 抽取文本提取，Excel 仍按结构化解析
         if file_ext == ".pdf":
-            records = pdf_parser.parse_text(parsed_text)
+            records = pdf_parser.parse_text(parsed_text, source_name=file.filename)
         else:
             records = await pdf_parser.parse(file_content, "excel", source_name=file.filename)
         logger.info("标准信息提取完成: name=%s, records=%d", file.filename, len(records))
@@ -278,10 +278,15 @@ async def upload_file(
                 detail="文件中没有有效数据"
             )
         
-        # 9. 验证数据
+        # 9. 验证数据；为 PDF 主记录补齐可读摘要（避免列表里显示前言套话/全文）
+        from utils.text_cleaner import summarize_standard_text
+
+        summary = summarize_standard_text(parsed_text) if file_ext == ".pdf" else ""
         for record in records:
             record["source_file"] = file.filename
             record["saved_filename"] = safe_filename
+            if summary and not (record.get("description") or "").strip():
+                record["description"] = summary
         validator = create_validator(db)
         validation_result = validator.validate_records(records)
         

@@ -75,7 +75,13 @@ export const alignmentService = {
   /**
    * 对齐助手聊天
    */
-  chat: async (data: { message: string; group1Id?: string; group2Id?: string }) => {
+  chat: async (data: {
+    message: string;
+    group1Id?: string;
+    group2Id?: string;
+    group1Label?: string;
+    group2Label?: string;
+  }) => {
     return await alignmentApi.chat(data);
   },
 };

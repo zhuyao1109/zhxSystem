@@ -29,6 +29,11 @@ semAlign_backend/standard_alignment.db
 # 嵌入模型权重（非源码，运行时下载或 Docker 镜像内置）
 semAlign_backend/models/gte-multilingual-base/*
 !semAlign_backend/models/gte-multilingual-base/.gitkeep
+# 离线加载所需的 Alibaba NewModel 自定义代码（非权重）
+!semAlign_backend/models/gte-multilingual-base/configuration.py
+!semAlign_backend/models/gte-multilingual-base/modeling.py
+!semAlign_backend/models/gte-multilingual-base/__init__.py
+!semAlign_backend/models/gte-multilingual-base/config.json
 semAlign_backend/models/models--sentence-transformers--all-MiniLM-L6-v2/
 semAlign_backend/models/.locks/
 

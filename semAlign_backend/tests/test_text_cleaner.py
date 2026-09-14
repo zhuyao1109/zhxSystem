@@ -21,6 +21,30 @@ class TestTextCleaner:
     def test_fixes_cjk_spacing(self) -> None:
         assert clean_display_text("信 息 安 全") == "信息安全"
 
+    def test_clean_parsed_text_preserves_paragraphs(self) -> None:
+        raw = (
+            "中 华 人 民 共 和 国 国 家 标 准\n"
+            "\n"
+            "1 范围\n"
+            "本标准规定了信息安全管理的基本要求。\n"
+            "本标准适用于各类组织的信息安全管理活动。\n"
+            "\n"
+            "2 规范性引用文件\n"
+            "下列文件对于本文件的应用是必不可少的。\n"
+            "--- 图片开始 ---\n"
+            "[文件: page1_img1.png]\n"
+            "--- 图片结束 ---\n"
+            "3 术语和定义\n"
+        )
+        cleaned = clean_parsed_text(raw)
+        assert "--- 图片" not in cleaned
+        assert "中华人民共和国国家标准" in cleaned
+        assert "1 范围" in cleaned
+        assert "2 规范性引用文件" in cleaned
+        # 关键：不能再把全文压成一行
+        assert cleaned.count("\n") >= 3
+        assert "本标准规定了信息安全管理的基本要求。" in cleaned
+
     def test_format_excerpt_around_keyword(self) -> None:
         text = "A" * 80 + "信息安全" + "B" * 80
         excerpt = format_excerpt(text, keyword="信息安全", max_len=60)
@@ -44,3 +68,11 @@ class TestTextCleaner:
         assert "三维测量仪" in summary
         assert "ICS61020" not in summary
         assert "给出的规则起草" not in summary
+
+    def test_summarize_skips_toc_only_text(self) -> None:
+        raw = (
+            "GB/T35311—2017\n中文新闻图片内容描述元数据规范\n目次\n"
+            "范围 1 规范性引用文件 2 缩略语 3 元数据元素的属性约定 4\n"
+            "图片内容元数据元素定义 5 5.1公共元数据\n"
+        )
+        assert summarize_standard_text(raw, max_len=120) == ""

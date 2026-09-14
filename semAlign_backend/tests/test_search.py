@@ -48,6 +48,30 @@ class TestSearchApi:
         assert body["data"]["answer"] == "追问回答"
         assert body["data"]["sources"] == ["src.pdf"]
 
+    def test_followup_greeting_keeps_topic_results(self, client, sample_standard) -> None:
+        """寒暄追问应按首轮主题检索，而不是用「你好」搜出 0 条。"""
+        import json
+
+        payload = "__RAG_HISTORY__:" + json.dumps(
+            {
+                "keyword": "你好",
+                "topic": "信息安全",
+                "history": [{"question": "信息安全", "answer": ""}],
+            },
+            ensure_ascii=False,
+        )
+        with (
+            patch("routers.search._vector_metadata_rows", return_value=[]),
+            patch("routers.search.get_chunk_store", return_value=None),
+            patch("routers.search._run_optional_rag", return_value=("你好，我可以继续帮你查信息安全相关标准。", [])),
+        ):
+            response = client.get("/api/search", params={"keyword": payload})
+        assert response.status_code == 200
+        body = response.json()
+        assert body["code"] == 200
+        assert len(body["data"]["results"]) >= 1
+        assert any(r["standard_no"] == "GB/T 90001-2020" for r in body["data"]["results"])
+
     def test_search_suggest(self, client, sample_standard) -> None:
         with patch("routers.search._vector_metadata_rows", return_value=[]):
             response = client.get("/api/search/suggest", params={"keyword": "GB"})

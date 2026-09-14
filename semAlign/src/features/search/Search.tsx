@@ -29,18 +29,43 @@ import { getApiErrorMessage } from '@/utils/apiError';
 // 说明：复杂交互请保持函数单一职责，必要时抽取至 hooks 或 service。
 // -----------------------------------------------------------------------------
 
+/** 拒绝空值与字面量 "null"/"undefined"，避免相关条款展示成 null（null null） */
+function safeSearchText(...candidates: Array<string | null | undefined>): string {
+  for (const raw of candidates) {
+    if (raw == null) {
+      continue;
+    }
+    const text = String(raw).trim();
+    if (!text) {
+      continue;
+    }
+    const lower = text.toLowerCase();
+    if (lower === 'null' || lower === 'undefined') {
+      continue;
+    }
+    return text;
+  }
+  return '';
+}
+
 /**
  * 函数 `standardsToSearchRows`：本模块内部业务辅助逻辑。
  */
 function standardsToSearchRows(standards: Standard[]): SearchResult[] {
-  return standards.map((s) => ({
-    id: s.id,
-    code: s.code,
-    title: s.name,
-    content: s.description?.trim() ? s.description : `${s.name}（${s.code} ${s.version}）`,
-    department: s.department,
-    relevance: s.relevanceScore ?? 50,
-  }));
+  return standards.map((s) => {
+    const code = safeSearchText(s.code) || `DOC-${s.id}`;
+    const title = safeSearchText(s.name) || '未命名标准';
+    const version = safeSearchText(s.version) || '-';
+    const excerpt = safeSearchText(s.description);
+    return {
+      id: s.id,
+      code,
+      title,
+      content: excerpt || `${title}（${code} ${version}）`,
+      department: safeSearchText(s.department),
+      relevance: s.relevanceScore ?? 50,
+    };
+  });
 }
 
 interface QATurn {
@@ -562,23 +587,26 @@ const Search: React.FC = () => {
     setFollowUpLoading(true);
     setSearchError(null);
     try {
+      // 追问携带首轮主题 + 历史；不要把页面主检索词改成寒暄语（否则会显示 0 条）
       const history = qaHistory.map(({ question, answer }) => ({ question, answer }));
-      const res = await searchApi.query(followUp, { history });
+      const topic = (qaHistory[0]?.question || query).trim() || followUp;
+      const res = await searchApi.query(followUp, { history, topic });
       if (res.code !== 200) {
         setSearchError(res.message || '追问失败');
         return;
       }
-      setQuery(followUp);
       setQaHistory((prev) => [
         ...prev,
         {
           question: followUp,
-          answer: (res.data.answer || '').trim(),
+          answer: (res.data.answer || '').trim() || '（暂未生成文字回答，可继续追问或换个问法）',
           sources: (res.data.sources || []).filter(Boolean),
         },
       ]);
-      if (res.data.standards) {
-        setRawResults(standardsToSearchRows(res.data.standards));
+      // 仅当追问带回新的相关标准时才刷新列表；空结果保留上一轮（如「电子」）
+      const nextStandards = res.data.standards || [];
+      if (nextStandards.length > 0) {
+        setRawResults(standardsToSearchRows(nextStandards));
         setCurrentPage(1);
       }
     } catch (err: unknown) {
@@ -586,7 +614,7 @@ const Search: React.FC = () => {
     } finally {
       setFollowUpLoading(false);
     }
-  }, [followUpInput, followUpLoading, qaHistory]);
+  }, [followUpInput, followUpLoading, qaHistory, query]);
 
   const handleViewOriginal = useCallback(async (item: SearchResult): Promise<void> => {
     setDetailLoading(true);
@@ -754,11 +782,18 @@ const Search: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-bold text-blue-600 group-hover:underline">{item.code}</h3>
-                    <span className="text-xs text-slate-400">{item.department}</span>
+                    <h3 className="font-bold text-blue-600 group-hover:underline">
+                      {safeSearchText(item.code) || `DOC-${item.id}`}
+                    </h3>
+                    <span className="text-xs text-slate-400">{safeSearchText(item.department)}</span>
                   </div>
-                  <p className="text-slate-800 font-medium mb-2">{item.title}</p>
-                  <p className="text-slate-600 text-sm mb-2 whitespace-pre-line line-clamp-4">{item.content}</p>
+                  <p className="text-slate-800 font-medium mb-2">
+                    {safeSearchText(item.title) || '未命名标准'}
+                  </p>
+                  <p className="text-slate-600 text-sm mb-2 whitespace-pre-line line-clamp-4">
+                    {safeSearchText(item.content) ||
+                      `${safeSearchText(item.title) || '未命名标准'}（${safeSearchText(item.code) || `DOC-${item.id}`}）`}
+                  </p>
 
                   {/* 相关度指示器 */}
                   <div className="flex items-center gap-4 mt-4">

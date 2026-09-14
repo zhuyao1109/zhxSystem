@@ -14,6 +14,8 @@ if [ ! -f .env ]; then
   echo "已创建 .env，请按需填写 DEEPSEEK_API_KEY / SECRET_KEY"
 fi
 
+bash scripts/restore-runtime-data.sh
+
 echo "==> 启动 SemAlign（前端 + 后端）..."
 docker compose up -d
 

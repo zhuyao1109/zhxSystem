@@ -188,16 +188,13 @@ class _OCRPdfParser:
                     "size": pil_img.size,
                 }
             )
-            return {
-                "y": img_rect.y0 * scale_y,
-                "content": (
-                    "\n--- 图片开始 ---\n"
-                    f"[文件: {img_filename}]\n"
-                    f"[标题: {caption}]\n"
-                    f"[尺寸: {pil_img.size[0]}x{pil_img.size[1]}]\n"
-                    "--- 图片结束 ---\n"
-                ),
-            }
+            # 不写入图片占位符；若识别到图注则保留图注文案
+            if caption:
+                return {
+                    "y": img_rect.y0 * scale_y,
+                    "content": caption,
+                }
+            return None
         except Exception as exc:
             logger.warning("PDF 图片抽取失败: %s", exc)
             return None
@@ -358,10 +355,11 @@ class DocumentProcessor:
         texts: List[str] = []
         with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
             for page in pdf.pages:
-                text = page.extract_text()
-                if text:
-                    texts.append(text)
-        return "\n".join(texts)
+                # 略微放宽容差，减轻中文字间距断裂；页间空行保留段落边界
+                text = page.extract_text(x_tolerance=1.5, y_tolerance=3) or ""
+                if text.strip():
+                    texts.append(text.strip())
+        return "\n\n".join(texts)
 
     def _needs_ocr_fallback(self, text: str) -> bool:
         """
@@ -379,6 +377,15 @@ class DocumentProcessor:
             return True
         cjk = re.findall(r"[\u4e00-\u9fff]", visible_chars)
         cjk_ratio = len(cjk) / max(len(visible_chars), 1)
+        symbol_ratio = len(
+            re.findall(r"[!\"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~]", visible_chars)
+        ) / max(len(visible_chars), 1)
+
+        # 无标准号提示时，只要正文足够长且几乎无中文/符号噪声过高，也强制 OCR
+        if len(visible_chars) >= 80 and cjk_ratio < 0.02:
+            return True
+        if symbol_ratio > 0.35 and cjk_ratio < 0.05:
+            return True
 
         # 若包含标准关键字但中文占比极低，通常是乱码/错码文本层
         has_std_hint = any(k in sample.upper() for k in ("GB/T", "MH/T", "ISO", "标准"))

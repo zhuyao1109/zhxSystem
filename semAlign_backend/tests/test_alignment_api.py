@@ -262,13 +262,21 @@ class TestAlignmentChatApi:
             response = client.post(
                 "/api/alignment/chat",
                 json={
-                    "message": "这两条标准有什么差异",
+                    "message": "这两个标准的主要差异是什么?",
                     "group1_id": str(sample_standard.id),
                     "group2_id": str(sample_standard_b.id),
                 },
             )
         assert response.status_code == 200
-        assert response.json()["data"]["answer"]
+        payload = response.json()["data"]
+        answer = payload["answer"]
+        refs = payload.get("references") or []
+        # 元问题不应把已选标准上下文过滤掉
+        assert "未检索到直接相关的条款片段" not in answer
+        assert sample_standard.standard_no in answer or sample_standard.standard_no in " ".join(refs)
+        assert sample_standard_b.standard_no in answer or sample_standard_b.standard_no in " ".join(refs)
+        assert any(sample_standard.standard_no in r for r in refs)
+        assert any(sample_standard_b.standard_no in r for r in refs)
 
     def test_chat_llm_success(self, client) -> None:
         mock_message = MagicMock()

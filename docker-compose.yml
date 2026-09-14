@@ -27,8 +27,15 @@ services:
       SEARCH_RAG_ENABLED: ${SEARCH_RAG_ENABLED:-false}
       SEARCH_RAG_TOP_K: ${SEARCH_RAG_TOP_K:-5}
       RAG_ALGORITHM: ${RAG_ALGORITHM:-naive}
+      # 嵌入模型已本地化（含 configuration.py/modeling.py），禁止运行时访问 HuggingFace
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
     volumes:
       - ./semAlign_backend/data:/app/data
+      # 模型权重由 restore-runtime-data.sh 从 Git 历史解压到宿主机，再挂载进容器
+      - ./semAlign_backend/models/gte-multilingual-base:/app/models/gte-multilingual-base:ro
+      - ./semAlign_backend/models/models--sentence-transformers--all-MiniLM-L6-v2:/app/models/models--sentence-transformers--all-MiniLM-L6-v2:ro
     expose:
       - "8000"
     healthcheck:

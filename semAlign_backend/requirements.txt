@@ -79,3 +79,5 @@ httpx>=0.27.0,<0.28
 # - paddlepaddle / paddleocr : 备用 OCR（体积大，与 rapidocr 二选一扩展）
 # - plotly                 : 报表可视化
 # =============================================================================
+# BM25 混合检索（langchain BM25Retriever）
+rank_bm25>=0.2.2

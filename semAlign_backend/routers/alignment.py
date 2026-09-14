@@ -47,6 +47,9 @@ class AlignmentChatRequest(BaseModel):
     message: str
     group1_id: str | None = None
     group2_id: str | None = None
+    # 前端展示用标签（编号+名称），解析失败时仍可告诉大模型用户选了什么
+    group1_label: str | None = None
+    group2_label: str | None = None
 
 
 class AlignmentChatResponse(BaseModel):
@@ -1051,33 +1054,100 @@ async def delete_alignment_task(
 
 
 def _try_build_target_context_blocks(
-    group1_id: str | None, group2_id: str | None, db: Session
+    group1_id: str | None,
+    group2_id: str | None,
+    db: Session,
+    *,
+    group1_label: str | None = None,
+    group2_label: str | None = None,
 ) -> tuple[list[str], list[str]]:
+    """加载用户在页面显式选中的标准正文，作为聊天必保留上下文。
+
+    有哪个 ID 就解析哪个（不必两个都选）。解析失败不中断聊天，
+    若前端传了 label，则至少把标签写入上下文，避免助手谎称未选择。
+    """
     target_refs: list[str] = []
     context_blocks: list[str] = []
-    if not (group1_id and group2_id):
+    selected = [
+        (idx, gid, label)
+        for idx, (gid, label) in enumerate(
+            [(group1_id, group1_label), (group2_id, group2_label)], start=1
+        )
+        if (gid or "").strip() or (label or "").strip()
+    ]
+    if not selected:
         return target_refs, context_blocks
-    try:
-        left = _resolve_alignment_target(group1_id, db)
-        right = _resolve_alignment_target(group2_id, db)
-        for idx, item in enumerate([left, right], start=1):
+
+    for idx, gid, label_hint in selected:
+        item = None
+        if (gid or "").strip():
+            try:
+                item = _resolve_alignment_target(gid, db)
+            except HTTPException as exc:
+                logger.warning(
+                    "对齐助手无法解析选中标准 group%s=%r: %s", idx, gid, exc.detail
+                )
+
+        if item is not None:
             label, excerpt = _build_chat_context_from_target(item)
             target_refs.append(label)
             if excerpt:
                 context_blocks.append(f"[标准{idx}] {label}\n{excerpt}")
-    except HTTPException:
-        # 聊天场景下不强制中断，转为标准库检索增强
-        pass
+            else:
+                meta = _clean_text_for_chat(
+                    " ".join(
+                        x
+                        for x in [
+                            getattr(item, "standard_no", "") or "",
+                            getattr(item, "name", "") or "",
+                            getattr(item, "description", "") or "",
+                            getattr(item, "source_file", "") or "",
+                            label_hint or "",
+                        ]
+                        if str(x).strip()
+                    )
+                )
+                context_blocks.append(
+                    f"[标准{idx}] {label}\n"
+                    f"{meta or '（已选中该标准，但尚未加载到正文全文，请先完成标准导入/解析）'}"
+                )
+            continue
+
+        # ID 解析失败时，仍用前端标签占位，明确告诉模型“用户已选择”
+        fallback_label = (label_hint or gid or "").strip() or f"标准{idx}"
+        target_refs.append(fallback_label)
+        context_blocks.append(
+            f"[标准{idx}] {fallback_label}\n"
+            "（页面已选择该标准，但服务端未能加载正文；请确认标准已导入且 ID 有效。）"
+        )
     return target_refs, context_blocks
 
 
-def _build_alignment_chat_user_prompt(message: str, context_blocks: list[str]) -> str:
+def _build_alignment_chat_user_prompt(
+    message: str,
+    context_blocks: list[str],
+    *,
+    selected_refs: list[str] | None = None,
+) -> str:
+    refs = [r for r in (selected_refs or []) if r]
     if context_blocks:
+        selected_line = (
+            f"用户已在页面选择：{' ｜ '.join(refs)}\n\n" if refs else ""
+        )
         return (
             f"用户问题：{message}\n\n"
+            f"{selected_line}"
             f"可用上下文：\n{chr(10).join(context_blocks)}\n\n"
-            "请结合上下文回答。若问题涉及两个标准的对齐，请尽量输出：\n"
+            "请结合上下文回答。注意：用户已经选择了标准，不要说“未检测到选定文件”。"
+            "若问题涉及两个标准的对齐，请尽量输出：\n"
             "1) 关键差异\n2) 可能冲突\n3) 优先级建议\n4) 执行建议\n5) 依据来源"
+        )
+    if refs:
+        return (
+            f"用户问题：{message}\n\n"
+            f"用户已在页面选择标准：{' ｜ '.join(refs)}。\n"
+            "虽然正文片段暂不可用，请基于标准名称说明当前限制，并给出下一步对齐建议；"
+            "不要声称用户没有选择标准。"
         )
     return (
         f"用户问题：{message}\n\n"
@@ -1088,7 +1158,9 @@ def _build_alignment_chat_user_prompt(message: str, context_blocks: list[str]) -
 
 
 def _try_llm_alignment_chat(
-    message: str, context_blocks: list[str], target_refs: list[str]
+    message: str,
+    context_blocks: list[str],
+    target_refs: list[str],
 ) -> tuple[APIResponse[AlignmentChatResponse] | None, str]:
     llm_client, llm_model = _build_alignment_chat_llm()
     if llm_client is None:
@@ -1097,11 +1169,14 @@ def _try_llm_alignment_chat(
         sys_prompt = (
             "你是 SemAlign 标准对齐系统中的 AI 助手，熟悉标准管理、标准检索、"
             "条款对齐、冲突识别、优先级规则和人工审核流程。请用中文回答。"
-            "当提供了标准上下文时，优先基于上下文回答并引用依据；"
-            "当没有足够上下文时，可以给出通用方法建议，但必须明确说明没有检索到直接证据。"
+            "当提供了标准上下文或“用户已选择”清单时，必须承认用户已选定这些标准，"
+            "优先基于上下文回答并引用依据；禁止在已提供选择信息时声称未检测到文件。"
+            "当确实没有任何选择与上下文时，可以给出通用方法建议，并明确说明没有检索到直接证据。"
             "回答要专业、清晰、可执行。"
         )
-        user_prompt = _build_alignment_chat_user_prompt(message, context_blocks)
+        user_prompt = _build_alignment_chat_user_prompt(
+            message, context_blocks, selected_refs=target_refs
+        )
         resp = llm_client.chat.completions.create(
             model=llm_model,
             messages=[
@@ -1126,6 +1201,7 @@ def _try_llm_alignment_chat(
             hint = "（提示：当前配置的大模型 API Key 无效或已过期，请更新 .env 中的 FOURZ_API_KEY 或 DEEPSEEK_API_KEY。）"
         return None, hint
     return None, ""
+
 
 
 def _alignment_chat_use_llm() -> bool:
@@ -1227,10 +1303,15 @@ def _build_vector_engine_chat_response(
             _format_context_block_for_answer(block)
             for block in context_blocks[:4]
         ]
+        selected_hint = (
+            "以上内容来自你当前选中的标准（及检索增强结果）。"
+            if target_refs
+            else "如需对两个标准做条款级差异与冲突分析，请在页面选择 **标准组 1** 和 **标准组 2** 后继续提问。"
+        )
         answer = (
             f"针对你的问题「{message}」，我在标准库/向量库中找到 {len(context_blocks)} 条相关依据：\n\n"
             + "\n\n".join(sections)
-            + "\n\n如需对两个标准做条款级差异与冲突分析，请在页面选择 **标准组 1** 和 **标准组 2** 后继续提问。"
+            + f"\n\n{selected_hint}"
         )
         if llm_unavailable_hint:
             answer += f"\n\n{llm_unavailable_hint}"
@@ -1333,19 +1414,27 @@ async def chat_alignment_assistant(
             detail="消息不能为空",
         )
 
-    target_refs, context_blocks = _try_build_target_context_blocks(
-        data.group1_id, data.group2_id, db
+    # 用户显式选中的标准正文必须保留，不能做关键词过滤（否则「主要差异」等
+    # 元问题会把整段上下文清掉，表现为助手读不到所选文件）。
+    selected_refs, selected_blocks = _try_build_target_context_blocks(
+        data.group1_id,
+        data.group2_id,
+        db,
+        group1_label=data.group1_label,
+        group2_label=data.group2_label,
     )
 
-    if not context_blocks:
+    retrieval_blocks: list[str] = []
+    retrieval_refs: list[str] = []
+    if not selected_blocks:
+        query_topic = _extract_chat_query(message) or message
         retrieval_blocks, retrieval_refs = _build_chat_retrieval_context(message, db)
-        context_blocks.extend(retrieval_blocks)
-        target_refs.extend(retrieval_refs)
+        retrieval_blocks, retrieval_refs = _filter_relevant_chat_context(
+            retrieval_blocks, retrieval_refs, query_topic
+        )
 
-    query_topic = _extract_chat_query(message) or message
-    context_blocks, target_refs = _filter_relevant_chat_context(
-        context_blocks, target_refs, query_topic
-    )
+    context_blocks = selected_blocks + retrieval_blocks
+    target_refs = _dedupe_refs_preserve_order(selected_refs + retrieval_refs)
 
     if not _alignment_chat_use_llm():
         return _build_vector_engine_chat_response(message, context_blocks, target_refs)

@@ -382,6 +382,8 @@ export interface SearchQueryOptions {
   retrievalMode?: RetrievalMode;
   /** 追问时传入此前问答轮次，后端据此做上下文感知检索 */
   history?: Array<{ question: string; answer: string }>;
+  /** 追问时保留的首轮检索主题，用于标准列表召回 */
+  topic?: string;
 }
 
 /** GET /search 解包后的业务数据 */

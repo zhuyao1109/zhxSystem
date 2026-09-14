@@ -51,9 +51,20 @@ class StandardResponse(StandardBase):
     @field_validator("description", mode="before")
     @classmethod
     def _summarize_description(cls, value: str | None) -> str | None:
-        if not value or len(value.strip()) <= 320:
+        if not value:
             return value
-        return summarize_standard_text(value)
+        text = value.strip()
+        looks_raw = (
+            text.startswith("ICS")
+            or "目次" in text[:80]
+            or "中华人民共和国国家标准" in text[:120]
+            or len(text) > 320
+        )
+        if not looks_raw:
+            return value
+        summary = summarize_standard_text(value)
+        return summary or value[:280]
+
     
     class Config:
         from_attributes = True

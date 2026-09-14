@@ -10,6 +10,8 @@ if [ ! -f .env ]; then
   echo "请编辑 .env 中的 SECRET_KEY 后重新运行。"
 fi
 
+bash scripts/restore-runtime-data.sh
+
 echo "==> 构建并启动 SemAlign ..."
 docker compose up -d --build
 

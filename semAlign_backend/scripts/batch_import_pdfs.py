@@ -80,7 +80,7 @@ async def _import_one(
 
     file_bytes = pdf_path.read_bytes()
     parsed_text, _ = await processor.parse(file_bytes, ".pdf", saved_filename)
-    records = pdf_parser.parse_text(parsed_text)
+    records = pdf_parser.parse_text(parsed_text, source_name=filename)
     if not records:
         raise ValueError("未能从 PDF 提取标准信息")
 

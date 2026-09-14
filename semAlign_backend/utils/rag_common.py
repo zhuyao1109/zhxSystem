@@ -40,12 +40,31 @@ _llm: OpenAI | None = None
 def get_llm() -> OpenAI:
     global _llm
     if _llm is None:
-        _llm = OpenAI(
-            api_key=os.getenv("FOURZ_API_KEY"),
-            base_url=os.getenv("FOURZ_API_BASE"),
+        fourz_key = (os.getenv("FOURZ_API_KEY") or "").strip()
+        fourz_base = (os.getenv("FOURZ_API_BASE") or "").strip()
+        deepseek_key = (os.getenv("DEEPSEEK_API_KEY") or "").strip()
+        deepseek_base = (
+            (os.getenv("DEEPSEEK_API_BASE") or "").strip() or "https://api.deepseek.com/v1"
         )
+
+        # FOURZ 必须同时有 key + base；只有 key 没有网关时回退 DeepSeek
+        if fourz_key and fourz_base:
+            api_key, base_url = fourz_key, fourz_base
+            os.environ["_SEMALIGN_LLM_PROVIDER"] = "fourz"
+        elif deepseek_key:
+            api_key, base_url = deepseek_key, deepseek_base
+            os.environ["_SEMALIGN_LLM_PROVIDER"] = "deepseek"
+        elif fourz_key:
+            api_key, base_url = fourz_key, None
+            os.environ["_SEMALIGN_LLM_PROVIDER"] = "fourz-default"
+            logger.warning("FOURZ_API_BASE 未设置，将尝试默认 OpenAI 入口")
+        else:
+            api_key, base_url = None, None
+            os.environ["_SEMALIGN_LLM_PROVIDER"] = "none"
+
+        _llm = OpenAI(api_key=api_key or None, base_url=base_url or None)
         if not _llm.api_key:
-            logger.warning("FOURZ_API_KEY 未设置,LLM 调用将失败")
+            logger.warning("FOURZ_API_KEY / DEEPSEEK_API_KEY 均未设置,LLM 调用将失败")
     return _llm
 
 # ================================================================== #
@@ -94,8 +113,19 @@ def call_llm(prompt: str, system: str, history: List[Turn] | None = None) -> str
     messages.append({"role": "user", "content": prompt})
 
     try:
+        provider = (os.getenv("_SEMALIGN_LLM_PROVIDER") or "").strip()
+        if provider == "deepseek" or (
+            not (os.getenv("FOURZ_API_KEY") or "").strip()
+            or not (os.getenv("FOURZ_API_BASE") or "").strip()
+        ):
+            if (os.getenv("DEEPSEEK_API_KEY") or "").strip():
+                model = (os.getenv("DEEPSEEK_API_MODEL") or "").strip() or "deepseek-chat"
+            else:
+                model = (os.getenv("FOURZ_API_MODEL") or "").strip() or "gpt-4o-mini"
+        else:
+            model = (os.getenv("FOURZ_API_MODEL") or "").strip() or "gpt-4o-mini"
         resp = get_llm().chat.completions.create(
-            model=os.getenv("FOURZ_API_MODEL", "gpt-4o-mini"),
+            model=model,
             messages=messages,
             temperature=float(os.getenv("LLM_TEMPERATURE", "0.7")),
             top_p=float(os.getenv("LLM_TOP_P", "0.85")),
@@ -103,7 +133,7 @@ def call_llm(prompt: str, system: str, history: List[Turn] | None = None) -> str
         return resp.choices[0].message.content or ""
     except Exception as exc:
         logger.error("LLM 调用失败: %s", exc, exc_info=True)
-        return "(AI 生成失败,请稍后重试)"
+        return ""
 
 # 最终回答 system prompt —— 中文系统,强制中文作答(沿用原 rag.py 的措辞并中文化)
 DEFAULT_SYSTEM = (
@@ -160,6 +190,13 @@ class NaiveRAG(BaseRAG):
                 "请基于以上上下文,用【简体中文】给出详细回答:"
             )
             answer = call_llm(prompt, system=DEFAULT_SYSTEM, history=history)
+        else:
+            # 向量库不可用时仍给出可感知回复，避免前端一直「暂无回答」
+            logger.warning("NaiveRAG 未召回到文档块，返回降级提示")
+            answer = (
+                "当前未能从向量知识库检索到正文片段（可能是嵌入模型未就绪）。"
+                "请先查看下方「相关标准条款」列表；你也可以换个更具体的问法继续追问。"
+            )
 
         return RAGResult(
             answer=answer, sources=sources, chunks=chunks, algorithm=self.name

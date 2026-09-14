@@ -49,18 +49,52 @@ import {
 } from '@/utils/dataMapper';
 import { buildCreateAlignmentTaskBody } from '@/api/alignmentPayload';
 
-/** semAlign_backend GET /search 返回 data.results 中单条形状 */
+/** semAlign_backend GET /search 返回 data.results 中单条形状（兼容旧字段别名） */
 interface BackendSearchResultRow {
   id: number;
-  standard_no: string;
-  name: string;
-  version: string;
-  status: string;
-  category: string;
+  standard_no?: string | null;
+  /** 旧版/别名：与 standard_no 同义 */
+  code?: string | null;
+  name?: string | null;
+  /** 旧版/别名：与 name 同义 */
+  title?: string | null;
+  version?: string | null;
+  status?: string | null;
+  category?: string | null;
   department?: string | null;
   source_file?: string | null;
   match_excerpt?: string | null;
+  /** 旧版/别名：与 match_excerpt 同义 */
+  content?: string | null;
   relevance_score?: number;
+}
+
+/** 过滤 null / undefined / 空串 / 字面量 "null""undefined"，避免 UI 出现 null（null null） */
+function pickDisplayText(...candidates: Array<string | null | undefined>): string {
+  for (const raw of candidates) {
+    if (raw == null) {
+      continue;
+    }
+    const text = String(raw).trim();
+    if (!text) {
+      continue;
+    }
+    const lower = text.toLowerCase();
+    if (lower === 'null' || lower === 'undefined') {
+      continue;
+    }
+    return text;
+  }
+  return '';
+}
+
+function sourceFileBasename(sourceFile: string | null | undefined): string {
+  const raw = pickDisplayText(sourceFile);
+  if (!raw) {
+    return '';
+  }
+  const parts = raw.replace(/\\/g, '/').split('/');
+  return parts[parts.length - 1] || raw;
 }
 
 /** 将后端相关度统一为 0–100，供列表「语义相关度」条使用 */
@@ -85,16 +119,23 @@ function mapSearchResultRowToStandard(r: BackendSearchResultRow): Standard {
     已废止: 'deprecated',
     新增: 'new',
   };
+  const sourceBase = sourceFileBasename(r.source_file);
+  const excerpt = pickDisplayText(r.match_excerpt, r.content);
+  const code = pickDisplayText(r.standard_no, r.code) || (sourceBase ? `VECTOR::${sourceBase}` : `DOC-${r.id}`);
+  const name = pickDisplayText(r.name, r.title, sourceBase, excerpt.slice(0, 60)) || '未命名标准';
+  const version = pickDisplayText(r.version) || '-';
+  const statusRaw = pickDisplayText(r.status) || '有效';
+
   return {
     id: String(r.id),
-    code: r.standard_no,
-    name: r.name,
-    version: r.version,
-    status: statusMap[r.status] || (r.status as Standard['status']),
-    department: r.department || r.source_file || '',
+    code,
+    name,
+    version,
+    status: statusMap[statusRaw] || (statusRaw as Standard['status']),
+    department: pickDisplayText(r.department, r.source_file, sourceBase),
     date: new Date().toISOString().slice(0, 10),
-    category: r.category || '',
-    description: r.match_excerpt || undefined,
+    category: pickDisplayText(r.category) || '未分类',
+    description: excerpt || undefined,
     relevanceScore: normalizeRelevanceScore(r.relevance_score),
   };
 }
@@ -242,9 +283,14 @@ export const searchAdapter = {
   ): Promise<ApiResponse<SearchQueryData>> => {
     const retrievalMode: RetrievalMode | undefined = options?.retrievalMode;
     const history = options?.history;
+    const topic = options?.topic?.trim();
     const payloadKeyword =
       history && history.length > 0
-        ? `__RAG_HISTORY__:${JSON.stringify({ keyword, history })}`
+        ? `__RAG_HISTORY__:${JSON.stringify({
+            keyword,
+            history,
+            ...(topic ? { topic } : {}),
+          })}`
         : keyword;
     const params: Record<string, string> = { keyword: payloadKeyword };
     if (retrievalMode) {

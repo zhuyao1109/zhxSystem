@@ -193,11 +193,15 @@ export const alignmentApi = {
     message: string;
     group1Id?: string;
     group2Id?: string;
+    group1Label?: string;
+    group2Label?: string;
   }): Promise<ApiResponse<AlignmentChatResultData>> => {
     const response: ApiResponse<AlignmentChatResultData> = await api.post(Endpoints.ALIGNMENT_CHAT, {
       message: payload.message,
       group1_id: payload.group1Id,
       group2_id: payload.group2Id,
+      group1_label: payload.group1Label,
+      group2_label: payload.group2Label,
     });
     return response;
   },
